@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuVendedo));
             panel1 = new Panel();
+            picRestaurar = new PictureBox();
+            picMaxPantalla = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            btnMenu = new Button();
             PMenuLat = new Panel();
             label1 = new Label();
             picCerrarSesion = new PictureBox();
@@ -42,28 +47,23 @@
             PLogo = new Panel();
             picUsuario = new PictureBox();
             PVentana = new Panel();
-            btnMenu = new Button();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox4 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             PMenuLat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).BeginInit();
             PSubmenu1.SuspendLayout();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(1, 1, 2);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(picRestaurar);
+            panel1.Controls.Add(picMaxPantalla);
             panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(btnMenu);
@@ -72,6 +72,71 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(934, 39);
             panel1.TabIndex = 0;
+            // 
+            // picRestaurar
+            // 
+            picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picRestaurar.Cursor = Cursors.Hand;
+            picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
+            picRestaurar.Location = new Point(878, 3);
+            picRestaurar.Name = "picRestaurar";
+            picRestaurar.Size = new Size(22, 24);
+            picRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
+            picRestaurar.TabIndex = 16;
+            picRestaurar.TabStop = false;
+            picRestaurar.Visible = false;
+            // 
+            // picMaxPantalla
+            // 
+            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
+            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
+            picMaxPantalla.Location = new Point(878, 3);
+            picMaxPantalla.Name = "picMaxPantalla";
+            picMaxPantalla.Size = new Size(22, 23);
+            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaxPantalla.TabIndex = 19;
+            picMaxPantalla.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox3.Cursor = Cursors.Hand;
+            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
+            pictureBox3.Location = new Point(849, 11);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(23, 21);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox3.TabIndex = 18;
+            pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox4.Cursor = Cursors.Hand;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(906, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(24, 21);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 17;
+            pictureBox4.TabStop = false;
+            // 
+            // btnMenu
+            // 
+            btnMenu.BackColor = Color.FromArgb(1, 1, 2);
+            btnMenu.BackgroundImage = (Image)resources.GetObject("btnMenu.BackgroundImage");
+            btnMenu.BackgroundImageLayout = ImageLayout.None;
+            btnMenu.FlatAppearance.BorderSize = 0;
+            btnMenu.FlatStyle = FlatStyle.Flat;
+            btnMenu.ForeColor = SystemColors.ControlLightLight;
+            btnMenu.Location = new Point(0, 3);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Padding = new Padding(10, 0, 0, 0);
+            btnMenu.Size = new Size(141, 35);
+            btnMenu.TabIndex = 15;
+            btnMenu.Text = "Menu Principal";
+            btnMenu.TextAlign = ContentAlignment.MiddleRight;
+            btnMenu.UseVisualStyleBackColor = false;
             // 
             // PMenuLat
             // 
@@ -243,71 +308,6 @@
             PVentana.Size = new Size(684, 561);
             PVentana.TabIndex = 3;
             // 
-            // btnMenu
-            // 
-            btnMenu.BackColor = Color.FromArgb(1, 1, 2);
-            btnMenu.BackgroundImage = (Image)resources.GetObject("btnMenu.BackgroundImage");
-            btnMenu.BackgroundImageLayout = ImageLayout.None;
-            btnMenu.FlatAppearance.BorderSize = 0;
-            btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.ForeColor = SystemColors.ControlLightLight;
-            btnMenu.Location = new Point(0, 3);
-            btnMenu.Name = "btnMenu";
-            btnMenu.Padding = new Padding(10, 0, 0, 0);
-            btnMenu.Size = new Size(141, 35);
-            btnMenu.TabIndex = 15;
-            btnMenu.Text = "Menu Principal";
-            btnMenu.TextAlign = ContentAlignment.MiddleRight;
-            btnMenu.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(878, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(22, 24);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 16;
-            pictureBox1.TabStop = false;
-            pictureBox1.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.FromArgb(1, 1, 2);
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(878, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(22, 23);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 19;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox3.Cursor = Cursors.Hand;
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(849, 11);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(23, 21);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 18;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox4.Cursor = Cursors.Hand;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(906, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(24, 21);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 17;
-            pictureBox4.TabStop = false;
-            // 
             // MenuVendedo
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
@@ -324,16 +324,16 @@
             Text = "Form1";
             Load += MenuVendedo_Load;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picRestaurar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             PMenuLat.ResumeLayout(false);
             PMenuLat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).EndInit();
             PSubmenu1.ResumeLayout(false);
             PLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -352,8 +352,8 @@
         private PictureBox picCerrarSesion;
         private Label label1;
         private Button btnMenu;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
+        private PictureBox picRestaurar;
+        private PictureBox picMaxPantalla;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
     }

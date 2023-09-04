@@ -1,0 +1,34 @@
+-La capa de datos maneja el almacenamiento y acceso a los datos,La capa de datos se encarga de manejar todo lo relacionado con la persistencia y el almacenamiento de la información.
+Su principal responsabilidad es interactuar con la fuente de datos, que generalmente es una base de datos,
+Esta capa es la encargada de realizar operaciones de lectura, escritura, actualización y eliminación de datos. 
+
+Algunas de sus funciones clave incluyen:
+Establecer conexiones con la fuente de datos.
+Ejecutar consultas SQL o realizar llamadas a servicios para obtener o modificar datos.
+Mapear los resultados de las consultas a objetos que el resto del sistema pueda entender (si se utiliza un ORM).
+
+-la capa de negocio implementa la lógica del negocio:
+La capa de diseño, también conocida como capa de negocio o capa de lógica de negocio, es donde se implementa la lógica y el flujo de trabajo del sistema. Aquí se toman las decisiones relacionadas con la operación y la manipulación de los datos. Esta capa no se preocupa por cómo se muestran los datos ni por cómo se almacenan, sino más bien por cómo se procesan. 
+
+Algunas de sus funciones clave son:
+Validar datos antes de que sean almacenados o procesados.
+Implementar reglas de negocio y cálculos complejos.
+Orquestar la interacción entre la capa de datos y la capa de presentación.
+Controlar el flujo de la aplicación y la gestión de estados.
+
+-la capa de presentación se encarga de la interfaz de usuario
+
+Esto facilita la comprensión, el mantenimiento y la escalabilidad del proyecto, ya que cada capa puede modificarse o reemplazarse sin afectar las demás.
+La capa de presentación es la que interactúa con los usuarios y muestra la interfaz gráfica con la que estos interactúan. Su principal objetivo es proporcionar una experiencia amigable y funcional al usuario final. Esta capa se encarga de recibir las acciones del usuario, mostrar los resultados y proporcionar una forma de interacción. 
+
+Algunas de sus funciones clave incluyen:
+Mostrar datos de manera visual y comprensible para el usuario.
+Recopilar datos ingresados por el usuario a través de formularios u otras interfaces.
+Enviar comandos y solicitudes a la capa de negocio en función de las acciones del usuario.
+Presentar la información de manera organizada y atractiva.
+dfgdfgdfgdgfdgfg
+=----------------------------
+
+par apoder hacer uso de las capas de datos con la de negocio debo de referenciarlas para esto haga click izq sobre alguna de las capas(en referencia o pdependecia) y
+voy ahsta referencia y referncio dichas capas  o marco las capas qeu quiero referenciar en este caso datos con logica y logica  con presentacion
+esto lo ahgo apra que se puedan comuinicar entre las capas 

@@ -17,7 +17,6 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\ref\CapaPresentacion.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Admin.FrmRegistrarPerfil.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Admin.FrmRegitrarUsuario.resources
-C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Vendedor.FormMenuGerente.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Vendedor.MenuGerente.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Login.formLogin.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\Proyecto_Taller.Presentacion.Formularios.Vendedor.FormPrueba.resources
@@ -36,3 +35,4 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.csproj.AssemblyReference.cache
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.csproj.CopyComplete
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Properties.Resources.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.GestionarClientes.resources
