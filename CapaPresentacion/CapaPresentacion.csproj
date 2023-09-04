@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Formularios\Inicio\" />
+    <Folder Include="Formularios\Menu\" />
+    <Folder Include="Fotos\Admin\" />
+    <Folder Include="Fotos\Gerente\" />
+    <Folder Include="Fotos\Inicio\" />
+    <Folder Include="Fotos\Login\" />
+    <Folder Include="Fotos\Menu\" />
+    <Folder Include="Fotos\Vendedor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CapaLogica\CapaLogica.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
