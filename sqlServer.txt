@@ -78,3 +78,23 @@ delete cliente where id_cliente=3  aca que me elimine con el id 3
 
 ----------------
 para hacerlo de forma graficar debo de dar click derecho en la tabla y editar los 200 registro y ahi me dejria ir insertando
+
+
+
+
+-----------------
+CLAVES FORANEAS
+
+-para ver las claves foraneas de las tablas :
+	SELECT name
+	FROM sys.foreign_keys
+	WHERE parent_object_id = OBJECT_ID('nombre_de_la_tabla');
+
+-Crear la clave foránea utilizando una sentencia ALTER TABLE. Aquí tienes un ejemplo de cómo hacerlo:
+	ALTER TABLE usuarios
+	ADD CONSTRAINT FK_Usuario_Rol FOREIGN KEY (id_rol)
+	REFERENCES rol(id_rol);
+
+-para eliminar claves foranea 
+	ALTER TABLE nombre_de_la_tabla
+	DROP CONSTRAINT nombre_de_la_restriccion;

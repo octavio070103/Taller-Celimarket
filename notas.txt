@@ -1,0 +1,21 @@
+creacion de un archivo appConfig en el proyecto en la capa presentaicon para ahorrarme tener que escribir la cadena de conexion en la capa de datos siempre
+
+appConfig:archivo de configuración de la aplicación (archivo app.config) a un proyecto de C#, puede personalizar el modo en que Common Language Runtime busca y carga archivos de ensamblado.
+
+dentro de este archivos definimos lo siguiente
+La etiqueta <connectionStrings> en un archivo de configuración de una aplicación .NET (como el archivo app.config o web.config) se utiliza 
+para definir las cadenas de conexión a bases de datos u otros servicios de datos que la aplicación necesita. 
+
+<connectionStrings>: Esta es la etiqueta principal que encapsula todas las definiciones de cadenas de conexión en el archivo de configuración.
+<add>: Esta etiqueta se utiliza para definir una cadena de conexión específica. Dentro de la etiqueta <add>, puedes proporcionar varios atributos que describen la conexión. Los atributos comunes incluyen:
+name: Es un nombre descriptivo que le das a la cadena de conexión para que puedas hacer referencia a ella desde el código de tu aplicación.
+connectionString: Aquí se especifica la cadena de conexión real que contiene la información necesaria para conectarse a la base de datos o servicio de datos. Esto incluye detalles como el servidor, la autenticación, la base de datos, etc.
+providerName (opcional): Indica el proveedor de datos que se utilizará para conectarse a la base de datos. En este caso, se utiliza "System.Data.SqlClient" para indicar que se usará el proveedor de datos de SQL Server.
+<connectionStrings>
+    <add name="cadena_conexion" 
+         connectionString="Data Source=Servidor;Initial Catalog=BaseDeDatos;User Id=Usuario;Password=Contraseña;"
+         providerName="System.Data.SqlClient" />
+</connectionStrings>
+
+En el código de tu aplicación, puedes acceder a esta cadena de conexión utilizando el nombre que le has dado en el atributo name. Por ejemplo, en C# podrías hacer algo como esto:
+string connectionString = ConfigurationManager.ConnectionStrings["cadena_conexion"].ConnectionString;

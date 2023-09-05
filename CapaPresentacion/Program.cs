@@ -1,4 +1,5 @@
 using CapaPresentacion.Formularios.Gerente;
+using Proyecto_Taller.Presentacion.Formularios.Login;
 
 namespace CapaPresentacion
 {
@@ -13,7 +14,7 @@ namespace CapaPresentacion
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new GestionarClientes());
+            Application.Run(new formLogin());
         }
     }
 }

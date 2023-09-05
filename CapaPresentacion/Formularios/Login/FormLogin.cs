@@ -13,6 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Runtime.InteropServices;
 using System.Drawing.Text;
 using System.Net;
+using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
 namespace Proyecto_Taller.Presentacion.Formularios.Login
 {
@@ -165,6 +166,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                 {
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
+                    //aca va el formulario que quiero qeu se abra
+                    MenuGerente formAbrir = new MenuGerente();
+                    formAbrir.Show();
+                    this.Hide();
                 }
                 else
                 {
