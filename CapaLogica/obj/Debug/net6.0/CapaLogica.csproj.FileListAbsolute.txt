@@ -13,3 +13,5 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\Capa
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\refint\CapaLogica.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\CapaLogica.pdb
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\ref\CapaLogica.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\bin\Debug\net6.0\capaEntidad.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\bin\Debug\net6.0\capaEntidad.pdb

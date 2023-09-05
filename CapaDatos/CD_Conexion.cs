@@ -8,32 +8,14 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Configuration;
+//librerias importante 
 
 namespace CapaDatos
 {
-    public class CD_Conexion
+    public class CD_conexion
     {
-        //cadena de conexion
-        private SqlConnection Conexion = new SqlConnection("Server =(local);DataBase=DbSistema;Integrated Security=true");
-
-        public SqlConnection AbrirConexion()
-        {
-            if (Conexion.State == ConnectionState.Closed)
-            {
-                Conexion.Open();
-            }
-            return Conexion;
-        }
-
-        public SqlConnection CerrarConexion()
-        {
-            if (Conexion.State == ConnectionState.Open)
-            {
-                Conexion.Close();
-            }
-            return Conexion;
-        }
+        /*2da forma de conexion debo de instalar el ensabladoi en dependecias System.Configuration , osino aparece el nugget en esta clase :system.configuration.con con ellos podre hacer uso de los emtodos y calse de configursation */
+        //aca llammos al meotodo que tiene esa clase configuration para realizar la cadnea de conexion
+        public static string cadena = ConfigurationManager.ConnectionStrings["cadena_conexion"].ConnectionString;
     }
 }
-
-

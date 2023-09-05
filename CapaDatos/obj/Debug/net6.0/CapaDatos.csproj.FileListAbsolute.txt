@@ -10,3 +10,6 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\refin
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\CapaDatos.pdb
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\ref\CapaDatos.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\bin\Debug\net6.0\capaEntidad.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\bin\Debug\net6.0\capaEntidad.pdb
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.CopyComplete

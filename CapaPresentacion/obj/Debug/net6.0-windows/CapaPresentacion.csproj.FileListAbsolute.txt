@@ -36,3 +36,17 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.csproj.CopyComplete
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Properties.Resources.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.GestionarClientes.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\CapaPresentacion.dll.config
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\FontAwesome.Sharp.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\System.Security.Cryptography.ProtectedData.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\System.Security.Permissions.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\System.Windows.Extensions.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\capaEntidad.dll
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\capaEntidad.pdb

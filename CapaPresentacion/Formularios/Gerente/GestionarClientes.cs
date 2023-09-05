@@ -27,7 +27,7 @@ namespace CapaPresentacion.Formularios.Gerente
         private void MostrarClientes()
         {
 
-            dataGridView1.DataSource = objetoCL.MostrarClien();
+            //dataGridView1.DataSource = objetoCL.MostrarClien();
         }
     }
 }

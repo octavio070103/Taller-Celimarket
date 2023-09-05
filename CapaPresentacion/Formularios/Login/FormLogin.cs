@@ -14,6 +14,9 @@ using System.Runtime.InteropServices;
 using System.Drawing.Text;
 using System.Net;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
+using CapaLogica;
+using capaEntidad;
+using CapaDatos;
 
 namespace Proyecto_Taller.Presentacion.Formularios.Login
 {
@@ -159,10 +162,14 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
             if (validarCampos())
             {
                 borrarMensajeError();
+                List<usuario>TEST = new CL_usuario().listar();
+
+               usuario obj_usuario = new CD_usuario().listar().Where(u => u.dni == txtUsuario.Text && u.password == txtPassword.Text).FirstOrDefault();
+
 
                 /*Ejemplo hasta conectar a la BD autenticación y validación del usuario y contraseña*/
 
-                if (txtUsuario.Text == "octi" && txtPassword.Text == "123")
+                if (obj_usuario != null)
                 {
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
