@@ -42,9 +42,13 @@ También se comunica con la capa de datos para realizar operaciones en la base d
 Capa de Presentación: Esta capa es la interfaz de usuario de la aplicación. Es donde los usuarios interactúan con la aplicación a través de una interfaz gráfica o de línea de comandos. La capa de presentación se encarga de mostrar datos al usuario, 
 recibir entradas y transmitir acciones del usuario a la capa de lógica para su procesamiento.
 
-Cuatro Capas:
+4 Cuatro Capas:
 En el enfoque de cuatro capas, se agrega una capa adicional llamada "Capa de Entidad" o "Capa de Modelado" que se utiliza para representar la estructura de datos de la aplicación. Las diferencias principales son:
 Capa de Entidad o Modelo: Esta capa se encarga de definir la estructura de datos de la aplicación, como las clases que representan objetos de negocio, propiedades, relaciones y validaciones de datos. Su propósito
  es modelar la información de la aplicación y proporcionar una representación coherente de los datos que se utilizan en la capa de lógica y la capa de presentación.
 La principal ventaja de tener una capa de entidad o modelo es que proporciona una abstracción más clara de los datos de la aplicación y promueve la reutilización de clases de entidad en toda la aplicación. 
 Sin embargo, también agrega una capa adicional que puede aumentar la complejidad y el tiempo de desarrollo.
+
+---
+Si decides pasar de un enfoque de 4 capas a un enfoque de 3 capas, generalmente incorporarías la funcionalidad de la capa de entidad en la capa de lógica y la capa de presentación. La capa de entidad se encarga principalmente de modelar y representar la estructura de datos de la aplicación,
+Al combinar la funcionalidad de la capa de entidad en la capa de lógica y la capa de presentación, simplificas la estructura de tu aplicación y reduces la complejidad al eliminar una capa intermedia. Sin embargo, es importante mantener una buena separación de responsabilidades entre las capas para mantener un diseño limpio y modular.
