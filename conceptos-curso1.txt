@@ -1,0 +1,219 @@
+ que es git?
+Git es un sistema de control de versiones distribuido que se utiliza para rastrear los cambios en los 
+archivos y coordinar el trabajo en proyectos de desarrollo de software. 
+En esencia, Git ayuda a los equipos de programadores a colaborar en proyectos 
+de manera eficiente, permitiendo un seguimiento preciso de las modificaciones realizadas en 
+el código fuente y facilitando la gestión de diferentes versiones del mismo.
+
+git trabaja de forma decentralizada para cada m,iembro y subir sus archivos a un servidor central 
+usos de git:-historial
+-almacenar codigo
+-trabajar en equipo
+-nos permite detectar cuando se introdujo un erorr con el roolback para rasrear donde se introujo ese error
+
+recomendacon:usar gitBash y no la terminal de windows 
+Git Bash es una terminal de línea de comandos que viene incluida con la instalación de Git para sistemas Windows. Proporciona una interfaz de línea de comandos similar a la que se encuentra en sistemas basados en Unix, lo que permite a los usuarios ejecutar comandos de Git y otros comandos de la línea de comandos de Unix directamente en el entorno de Windows
+--------------------------------------
+comandos para configuarar nuestro git
+
+git config --global(con esto hacemos que la configuracion que vamos a realizar luego de este comando se fectue de manera global y no por poryecto
+ej $ git config --global user.email octaviosanchez070103@gmail.com
+aca le indico que esa configuracon que voy a relizar en ete caso voy a darle mi gmail se haga de manera global y no por proyecto
+
+comandos que uso 
+$ git config --global user.email octaviosanchez070103@gmail.com
+$ git config --global user.name "octavio sanchezz"
+$ git config --global core.editor "code --wait"
+$ git config --global -e
+
+configuacion de core.autocrlf
+cuando el desaarollador quiera subir un archivo debe eliminar el caracter carech return o cr(windows)
+o si queire descargar codigo del repositorio debera agregar el caracter de cr
+el valor de core.autocrl dee de estar en true para esto
+asi $ git config --global core.autocrlf true
+
+-----------------------------
+comandos basicos
+-1er comando que vamos a usar es 
+ls <-que podemos listar las carpteads y arhivos que tengo 
+pwd <-puedo ver donde estoy en que carpeta
+cd nombre  <-para movernos a una determinada carpeta y luego pongo el nombre de la carpeta a ;la que quiero ir 
+para salir de esa carpeta es cd .. <-
+mkdir nombre <-para crear una carpeta en la ubicacion que estemos 
+
+----------------------------------------
+inicializasmo un proyecto que vamos a utilizar con git
+
+inicializamos el repositorio(totalmente vacoi):
+git init <-este comando lo ponemos en la carpeta o directorio que queremos inicializar (se va a inicializar esa carpeta en donde nos encontremos en ese momento)
+si queremos ver los archivos con exension .git debemos de listarlo con el comando:  
+ls -a
+
+luego para acceder al arhivo .git que se creo anteriormente hago 
+cd .git
+
+-------------------
+flujo de trabajo con GIT
+computador | Stege |commit |Server
+
+Working Directory (Directorio de Trabajo):
+El directorio de trabajo es donde se encuentran tus archivos y en el que estás realizando cambios.
+
+Staging Area (Área de Preparación o Index):
+La zona de preparación es un espacio intermedio entre tu directorio de trabajo y el repositorio. Aquí agregas los cambios que deseas incluir en el próximo commit.
+Puedes pensar en ello como un lugar donde seleccionas los cambios específicos que deseas guardar en tu próximo snapshot (instantánea) del repositorio.
+
+Com "mit:
+Un commit es una instantánea de tus cambios en un momento específico. Representa una versión del proyecto que está almacenada en tu repositorio Git.
+Cada commit tiene un mensaje que describe los cambios realizados en ese punto en el tiempo.
+
+Repositorio:
+El repositorio es la base de datos donde se almacenan todas las versiones de tus archivos y la información relacionada con la historia de cambios.
+Puede estar en tu máquina local o en un servidor remoto (como GitHub, GitLab o Bitbucket) al que otros colaboradores pueden acceder.
+
+Servidor Remoto (Remote Server):
+Un servidor remoto es una ubicación en línea donde se almacena tu repositorio Git, permitiendo la colaboración entre múltiples personas en el mismo proyecto.
+Plataformas como GitHub, GitLab y Bitbucket proporcionan servicios de alojamiento para repositorios remotos.
+
+-si yo quiero eliminar un archivo lo mismo debo de hacer el add para tener un registreo del mismo se va a eliminar recien en el server 
+
+-------
+agregando cambios a stage
+
+git status <-puedo ver el estado de mi repositorio
+
+si me salta en rojo mis archivos(untracked) son por lo sig:
+-git no sigue todos los archivos de nuestro repositorio nosotros debemos de selecionarlos
+con git add
+git add nombreArchivo.extension o git add * <-agrego todos los arhivos igual que git add . 
+estos dos ultimos son una maal practica ,seimpre se agrega poniendo el nombre del arhivo
+
+luego pasaria a texto verde(esta siendo ahora si seguido por git) porque pasaron a 
+una etapa de stages es decir estan preparados para sewr comprometidos 
+
+-Puedo agregar varios archivos al mismo tiempo con su nombre pero separado por un espacio
+ej  git add archivo1.txt archivo2.txt
+
+-modificacion
+para actualizar los cambios que hice en un archivo se debe de volver a agregar usando 
+git add archivo.extension <- ya que sino va a quedar en stage solamente la version anteior y la actualizada quedan en rojo en not stage
+
+--------------
+commit git(comprometer el trabajo)
+git commit -m "Algo que tenga sentido verdaderamente" <-con este comando vamos a commitear o compromenter nuestro archivos o trabajo que tengamos en stage
+si ahora usamos git status vamos a darnos cuenta que movio todo lo que estaba en stage a commit ya no tenemos ningun archivo que le podamos realizar un stage
+
+commit alternativo 
+si se modifica(o actualiza) un archivo que agregamos anteriomente 
+debemos agregarlo a la etapa de stages a esa actulizaciopn de ese arhicov usando el git add
+usamos
+git commit <- este comando nos abrira el editor de texto que elegimos,en un aerhivo de commit
+que ahi deberemos agregarle el texto con sentido que decriba a eseb archivo,guardarlo y cerrar ese archivo 
+asi en la consola nos aparecera que se inserto el archivo
+
+-------------
+borrar archivos del repositorio
+rm arhivo.extension <-con este comando eliminamos un archivo del repositorio
+eso lo podemos ver usando el git status <-este comando en este momento nos va a permitir ver que se realizo ese cambio 
+pero que debemos de agrgarlo a la etapa de stage con git add arhivo.extension
+luego de nuevo con el git status <-usandolo va a salir que ese cambio (eliminacion )se agrego a la etapa de stage
+ahora solo faltaria psarlo a la etapa de commit (realizar un coimmit)
+podemos realizar el commit de cualquiera de las 2 formas 
+luego si usamos git status podemos ver que no hay ningun archivo para realizar un commit
+y si usamos ls<- para listar podemos ver que el archivo se elimino correctamente pq no va a estar listado 
+
+-podemos ahorrarnos mas tiempo usando git rm arhivo.ext <-con este comando lo pasamos a etpa de stage listo para realizar
+el commit (ser comprometido)del archivo 
+-si queremos restaurar ese arhico antes de pasarlo al commit debemos de usar
+ git restore arhivo.ext <-con esto recuperamos antes del commit
+
+----------------------------------------
+mover o renombrar archivos
+mv      archivo.ext     archivo1.ext <-asi funciona este comando mv archivoAmover.ext destino.ext
+comando archivo a mover(renombrar) destino
+
+una vez que hicimos esto de renombrar o mover ese arhicov podemos usar git status y ver que ese nuevo archivo 
+lo debemos de aniadir para que git lo comience a seguir con 
+git add archivoMover.ext archivoDesti.ext 
+
+luego con git status <-nos debe de decir reneme el archivoMover->archivoDesti
+luego de esto ya podemos hacer el commit para el nuevo archivo destino o que se renombro
+git commit -m "renombrando archivo"
+
+-podemos agilizar esto usando 
+git mv archivoAMov.ext archivoDest.ext <-con esto se agrega inmeditamente a etapa de stage listo para commit
+
+-----------------
+ignorando archivo y directorios
+para hacer eso debo de crear un archivo asi en mi editor
+.gitignore
+en donde dentro de este voy a cargar con los archivos que quiero que git ignore para no comprometerlo,etc
+para ignorar carpetas es: /nombreCarpeta
+y para archivos es :  nombre.ext
+luego debemos agregar gitignore y luego el commit del mismo 
+----------------------------------
+Forma de ver mejor el git status(comndo git status -s)
+con git status podemos saber en que rama estamos el estado de los archivo y cuales son lso archivos que esta siguiendo git y cuales no
+
+git status -s <- este comando me permite ver con siglas y colores el estado de mis archivos
+
+---------------------------
+visualizar cambios(de manera visual) que realizo con ccomando git diff
+git diff <-con este comando puedo ver lso cambios que realice en un archivo (que no estan en la etapa de staged
+git diff --staged <- con este comando puedo ver los cambios que realice en un archivo que esta en la etapa de staged
+
+--------------------
+ver historial
+git log --oneline <- con esto puedo ver el historial
+
+-----
+ramas de git o branches
+-primero debemos de ver en que rama nos encotnramos 
+git branch <- con este comando vemos en que rama estamos
+git checkout -b nombRama o etiqueta de la rama a cambiarme <- con este comando creo la rama en la que voy a trabajr 
+
+cat archivo1.txt <- con este comando veo el contenido de larchivo que actulice o que tengo 
+y si modifico y agrego ese archivo luego realizo el commit estando en la rama creada ,esa actulizando o cambio
+se realizara solamente en el archivo de esa rama y no en la rama principal por lo que si yo vuelvo 
+a mi rama main o master(la principal) y hago git cat archivo.ext me va a mostrar la version de esta rama principal y no la que actualice en mi rama creada
+
+para actualizar los cambios que realice en mi rama secundaria o creada en m irama main o master lo que hago es 
+1ro debo de estar en la rama main o master
+2do uso el comando git merge ramaATraer <-con este comando traigo  y agrego la rama que tiene lo cambios que quiero agregar a la main
+
+-----
+conetcrar a github
+git remote add origin https://github.com/octavio070103/miweb.git <- con este comando que nos da la web le indico la url en la que quiero qeu se suba mis archivos
+git push -u origin master<- indico que en origen se cree la rama principal llamada master ya que en el repositorio no le tengo 
+----
+con git push lo subo al repositorio remoto
+git pull me trae los cambios que se hiciegit ron 
+git clone 
+
+----------------------------
+conflictos en git
+Los conflictos en Git ocurren cuando hay cambios en el mismo archivo o línea de código tanto en tu rama local como en la rama remota que estás intentando fusionar.
+En otras palabras, Git no puede determinar automáticamente cuál de las dos versiones debería prevalecer, ya que ambas tienen cambios diferentes en el mismo lugar.
+Esto se llama un conflicto de fusión.
+
+Cuando se produce un conflicto, Git marca el archivo en conflicto y muestra un mensaje que indica que debes resolver manualmente el conflicto antes de poder continuar. 
+Un conflicto en Git puede ocurrir cuando tú y tu compañero han realizado cambios en la misma parte de un archivo y ambos han enviado esos cambios al repositorio remoto. 
+Cuando intentas hacer un git pull para obtener los cambios de tu compañero, Git detectará que hay una discrepancia entre lo que tienes en tu rama local y lo que está 
+en el repositorio remoto. Esto se considera un conflicto.
+--------
+resolver conflicto en git
+Para resolver un conflicto, debes editar el archivo en conflicto y decidir qué cambios deseas conservar o combinar de ambas versiones.
+Una vez que hayas editado el archivo para reflejar la versión deseada, debes eliminar las marcas de conflicto
+(las líneas <<<<<<<, =======, >>>>>>>) y guardar el archivo.
+
+Luego, debes realizar un git add para marcar el archivo como resuelto y un git commit para confirmar la resolución del conflicto.
+
+Aquí está el proceso general para resolver un conflicto:
+
+Abre el archivo en conflicto en tu editor de código.
+Edita el archivo para elegir qué cambios deseas conservar.
+Elimina las marcas de conflicto (<<<<<<<, =======, >>>>>>>).
+Guarda el archivo.
+Ejecuta git add <nombre_del_archivo> para marcar el archivo como resuelto.
+Ejecuta git commit para confirmar la resolución del conflicto.
+Finalmente, puedes continuar con git push si estás fusionando cambios en el repositorio remoto.
