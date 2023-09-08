@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuAdmin));
             btnCaja = new Button();
             PLogo = new Panel();
+            label2 = new Label();
+            label1 = new Label();
             pictureBox1 = new PictureBox();
             picUsuario = new PictureBox();
             btnCerrarCaja = new Button();
@@ -56,10 +58,11 @@
             btnLogout = new Button();
             PVentana = new Panel();
             panel1 = new Panel();
+            lblTituloMenu = new Label();
             picRestaurar = new PictureBox();
             btnMenu = new Button();
-            picMaxPantalla = new PictureBox();
             picMinPantalla = new PictureBox();
+            picMaxPantalla = new PictureBox();
             picCerrar = new PictureBox();
             sidebarTime = new System.Windows.Forms.Timer(components);
             PLogo.SuspendLayout();
@@ -73,8 +76,8 @@
             PVentana.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             SuspendLayout();
             // 
@@ -90,7 +93,7 @@
             btnCaja.Margin = new Padding(4, 3, 4, 3);
             btnCaja.Name = "btnCaja";
             btnCaja.Padding = new Padding(12, 0, 0, 0);
-            btnCaja.Size = new Size(276, 52);
+            btnCaja.Size = new Size(203, 52);
             btnCaja.TabIndex = 0;
             btnCaja.Text = "Gestionar Usuarios";
             btnCaja.TextAlign = ContentAlignment.MiddleLeft;
@@ -100,14 +103,38 @@
             // PLogo
             // 
             PLogo.BackColor = Color.FromArgb(9, 10, 25);
+            PLogo.Controls.Add(label2);
+            PLogo.Controls.Add(label1);
             PLogo.Controls.Add(pictureBox1);
             PLogo.Controls.Add(picUsuario);
             PLogo.Dock = DockStyle.Top;
             PLogo.Location = new Point(0, 0);
             PLogo.Margin = new Padding(4, 3, 4, 3);
             PLogo.Name = "PLogo";
-            PLogo.Size = new Size(276, 142);
+            PLogo.Size = new Size(203, 142);
             PLogo.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(4, 114);
+            label2.Name = "label2";
+            label2.Size = new Size(165, 25);
+            label2.TabIndex = 17;
+            label2.Text = "nombre y apellido";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(4, 81);
+            label1.Name = "label1";
+            label1.Size = new Size(35, 25);
+            label1.TabIndex = 16;
+            label1.Text = "rol";
             // 
             // pictureBox1
             // 
@@ -126,7 +153,7 @@
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(172, 0);
+            picUsuario.Location = new Point(103, 0);
             picUsuario.Margin = new Padding(4, 3, 4, 3);
             picUsuario.Name = "picUsuario";
             picUsuario.Size = new Size(98, 97);
@@ -146,7 +173,7 @@
             btnCerrarCaja.Margin = new Padding(4, 3, 4, 3);
             btnCerrarCaja.Name = "btnCerrarCaja";
             btnCerrarCaja.Padding = new Padding(41, 0, 0, 0);
-            btnCerrarCaja.Size = new Size(276, 46);
+            btnCerrarCaja.Size = new Size(203, 46);
             btnCerrarCaja.TabIndex = 1;
             btnCerrarCaja.Text = "Cierre de Caja";
             btnCerrarCaja.TextAlign = ContentAlignment.MiddleLeft;
@@ -165,7 +192,7 @@
             btnInfoCaja.Margin = new Padding(4, 3, 4, 3);
             btnInfoCaja.Name = "btnInfoCaja";
             btnInfoCaja.Padding = new Padding(41, 0, 0, 0);
-            btnInfoCaja.Size = new Size(276, 46);
+            btnInfoCaja.Size = new Size(203, 46);
             btnInfoCaja.TabIndex = 1;
             btnInfoCaja.Text = "Registrar Usuario";
             btnInfoCaja.TextAlign = ContentAlignment.MiddleLeft;
@@ -184,7 +211,7 @@
             btnVentas.Margin = new Padding(4, 3, 4, 3);
             btnVentas.Name = "btnVentas";
             btnVentas.Padding = new Padding(12, 0, 0, 0);
-            btnVentas.Size = new Size(276, 52);
+            btnVentas.Size = new Size(203, 52);
             btnVentas.TabIndex = 2;
             btnVentas.Text = "Ventas";
             btnVentas.TextAlign = ContentAlignment.MiddleLeft;
@@ -200,7 +227,7 @@
             PSubmenu1.Location = new Point(0, 194);
             PSubmenu1.Margin = new Padding(4, 3, 4, 3);
             PSubmenu1.Name = "PSubmenu1";
-            PSubmenu1.Size = new Size(276, 88);
+            PSubmenu1.Size = new Size(203, 88);
             PSubmenu1.TabIndex = 1;
             // 
             // btnReportes
@@ -215,7 +242,7 @@
             btnReportes.Margin = new Padding(4, 3, 4, 3);
             btnReportes.Name = "btnReportes";
             btnReportes.Padding = new Padding(41, 0, 0, 0);
-            btnReportes.Size = new Size(276, 48);
+            btnReportes.Size = new Size(203, 48);
             btnReportes.TabIndex = 3;
             btnReportes.Text = "Reporte Financieros";
             btnReportes.TextAlign = ContentAlignment.MiddleLeft;
@@ -234,7 +261,7 @@
             btnGastos.Margin = new Padding(4, 3, 4, 3);
             btnGastos.Name = "btnGastos";
             btnGastos.Padding = new Padding(41, 0, 0, 0);
-            btnGastos.Size = new Size(276, 46);
+            btnGastos.Size = new Size(203, 46);
             btnGastos.TabIndex = 2;
             btnGastos.Text = "Gastos";
             btnGastos.TextAlign = ContentAlignment.MiddleLeft;
@@ -253,7 +280,7 @@
             btnIngresos.Margin = new Padding(4, 3, 4, 3);
             btnIngresos.Name = "btnIngresos";
             btnIngresos.Padding = new Padding(41, 0, 0, 0);
-            btnIngresos.Size = new Size(276, 59);
+            btnIngresos.Size = new Size(203, 59);
             btnIngresos.TabIndex = 1;
             btnIngresos.Text = "Generar  Resumen de ingresos";
             btnIngresos.TextAlign = ContentAlignment.MiddleLeft;
@@ -272,7 +299,7 @@
             btnInfomeVenta.Margin = new Padding(4, 3, 4, 3);
             btnInfomeVenta.Name = "btnInfomeVenta";
             btnInfomeVenta.Padding = new Padding(41, 0, 0, 0);
-            btnInfomeVenta.Size = new Size(276, 46);
+            btnInfomeVenta.Size = new Size(203, 46);
             btnInfomeVenta.TabIndex = 1;
             btnInfomeVenta.Text = "Generar Informe de Venta";
             btnInfomeVenta.TextAlign = ContentAlignment.MiddleLeft;
@@ -290,7 +317,7 @@
             submenuVentas.Location = new Point(0, 334);
             submenuVentas.Margin = new Padding(4, 3, 4, 3);
             submenuVentas.Name = "submenuVentas";
-            submenuVentas.Size = new Size(276, 200);
+            submenuVentas.Size = new Size(203, 200);
             submenuVentas.TabIndex = 8;
             // 
             // btnReportePersonal
@@ -305,11 +332,12 @@
             btnReportePersonal.Margin = new Padding(4, 3, 4, 3);
             btnReportePersonal.Name = "btnReportePersonal";
             btnReportePersonal.Padding = new Padding(41, 0, 0, 0);
-            btnReportePersonal.Size = new Size(276, 52);
+            btnReportePersonal.Size = new Size(203, 52);
             btnReportePersonal.TabIndex = 2;
             btnReportePersonal.Text = "Generar Reporte de Personal";
             btnReportePersonal.TextAlign = ContentAlignment.MiddleLeft;
             btnReportePersonal.UseVisualStyleBackColor = false;
+            btnReportePersonal.Click += btnReportePersonal_Click;
             // 
             // btnGestionPersonal
             // 
@@ -323,7 +351,7 @@
             btnGestionPersonal.Margin = new Padding(4, 3, 4, 3);
             btnGestionPersonal.Name = "btnGestionPersonal";
             btnGestionPersonal.Padding = new Padding(41, 0, 0, 0);
-            btnGestionPersonal.Size = new Size(276, 46);
+            btnGestionPersonal.Size = new Size(203, 46);
             btnGestionPersonal.TabIndex = 1;
             btnGestionPersonal.Text = "Gestionar Personal";
             btnGestionPersonal.TextAlign = ContentAlignment.MiddleLeft;
@@ -342,7 +370,7 @@
             btnPersonal.Margin = new Padding(4, 3, 4, 3);
             btnPersonal.Name = "btnPersonal";
             btnPersonal.Padding = new Padding(12, 0, 0, 0);
-            btnPersonal.Size = new Size(276, 52);
+            btnPersonal.Size = new Size(203, 52);
             btnPersonal.TabIndex = 11;
             btnPersonal.Text = "Personal";
             btnPersonal.TextAlign = ContentAlignment.MiddleLeft;
@@ -361,7 +389,7 @@
             btnCuentas.Margin = new Padding(4, 3, 4, 3);
             btnCuentas.Name = "btnCuentas";
             btnCuentas.Padding = new Padding(41, 0, 0, 0);
-            btnCuentas.Size = new Size(276, 46);
+            btnCuentas.Size = new Size(203, 46);
             btnCuentas.TabIndex = 1;
             btnCuentas.Text = "Administrar Cuentas";
             btnCuentas.TextAlign = ContentAlignment.MiddleLeft;
@@ -380,7 +408,7 @@
             btnPromocionDescuento.Margin = new Padding(4, 3, 4, 3);
             btnPromocionDescuento.Name = "btnPromocionDescuento";
             btnPromocionDescuento.Padding = new Padding(12, 0, 0, 0);
-            btnPromocionDescuento.Size = new Size(276, 52);
+            btnPromocionDescuento.Size = new Size(203, 52);
             btnPromocionDescuento.TabIndex = 14;
             btnPromocionDescuento.Text = "Promocion y Descuento";
             btnPromocionDescuento.TextAlign = ContentAlignment.MiddleLeft;
@@ -397,7 +425,7 @@
             submenuPersonal.Location = new Point(0, 586);
             submenuPersonal.Margin = new Padding(4, 3, 4, 3);
             submenuPersonal.Name = "submenuPersonal";
-            submenuPersonal.Size = new Size(276, 142);
+            submenuPersonal.Size = new Size(203, 142);
             submenuPersonal.TabIndex = 12;
             // 
             // btnDescuentos
@@ -412,7 +440,7 @@
             btnDescuentos.Margin = new Padding(4, 3, 4, 3);
             btnDescuentos.Name = "btnDescuentos";
             btnDescuentos.Padding = new Padding(41, 0, 0, 0);
-            btnDescuentos.Size = new Size(276, 46);
+            btnDescuentos.Size = new Size(203, 46);
             btnDescuentos.TabIndex = 1;
             btnDescuentos.Text = "Gestionar Descuentos";
             btnDescuentos.TextAlign = ContentAlignment.MiddleLeft;
@@ -431,7 +459,7 @@
             btnPromociones.Margin = new Padding(4, 3, 4, 3);
             btnPromociones.Name = "btnPromociones";
             btnPromociones.Padding = new Padding(41, 0, 0, 0);
-            btnPromociones.Size = new Size(276, 46);
+            btnPromociones.Size = new Size(203, 46);
             btnPromociones.TabIndex = 1;
             btnPromociones.Text = "Gestionar Promociones";
             btnPromociones.TextAlign = ContentAlignment.MiddleLeft;
@@ -447,7 +475,7 @@
             subMenuPromocion.Location = new Point(0, 780);
             subMenuPromocion.Margin = new Padding(4, 3, 4, 3);
             subMenuPromocion.Name = "subMenuPromocion";
-            subMenuPromocion.Size = new Size(276, 92);
+            subMenuPromocion.Size = new Size(203, 92);
             subMenuPromocion.TabIndex = 15;
             // 
             // PMenuLat
@@ -467,10 +495,10 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(293, 647);
-            PMenuLat.MinimumSize = new Size(59, 647);
+            PMenuLat.MaximumSize = new Size(220, 647);
+            PMenuLat.MinimumSize = new Size(49, 647);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(293, 647);
+            PMenuLat.Size = new Size(220, 647);
             PMenuLat.TabIndex = 15;
             // 
             // btnLogout
@@ -482,7 +510,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = SystemColors.ControlLightLight;
-            btnLogout.Location = new Point(4, 3857);
+            btnLogout.Location = new Point(4, 8357);
             btnLogout.Margin = new Padding(4, 3, 4, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(12, 0, 0, 0);
@@ -494,7 +522,7 @@
             // 
             // PVentana
             // 
-            PVentana.BackColor = Color.FromArgb(52, 53, 68);
+            PVentana.BackColor = Color.FromArgb(67, 68, 89);
             PVentana.Controls.Add(PMenuLat);
             PVentana.Dock = DockStyle.Fill;
             PVentana.Location = new Point(0, 45);
@@ -506,10 +534,11 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(1, 1, 2);
+            panel1.Controls.Add(lblTituloMenu);
             panel1.Controls.Add(picRestaurar);
             panel1.Controls.Add(btnMenu);
-            panel1.Controls.Add(picMaxPantalla);
             panel1.Controls.Add(picMinPantalla);
+            panel1.Controls.Add(picMaxPantalla);
             panel1.Controls.Add(picCerrar);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -518,12 +547,23 @@
             panel1.Size = new Size(934, 45);
             panel1.TabIndex = 4;
             // 
+            // lblTituloMenu
+            // 
+            lblTituloMenu.AutoSize = true;
+            lblTituloMenu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTituloMenu.ForeColor = SystemColors.ControlLightLight;
+            lblTituloMenu.Location = new Point(508, 13);
+            lblTituloMenu.Name = "lblTituloMenu";
+            lblTituloMenu.Size = new Size(58, 25);
+            lblTituloMenu.TabIndex = 15;
+            lblTituloMenu.Text = "Inicio";
+            // 
             // picRestaurar
             // 
             picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picRestaurar.Cursor = Cursors.Hand;
             picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
-            picRestaurar.Location = new Point(873, 3);
+            picRestaurar.Location = new Point(874, 5);
             picRestaurar.Margin = new Padding(4, 3, 4, 3);
             picRestaurar.Name = "picRestaurar";
             picRestaurar.Size = new Size(26, 28);
@@ -545,24 +585,11 @@
             btnMenu.Margin = new Padding(4, 3, 4, 3);
             btnMenu.Name = "btnMenu";
             btnMenu.Padding = new Padding(12, 0, 0, 0);
-            btnMenu.Size = new Size(164, 40);
+            btnMenu.Size = new Size(125, 40);
             btnMenu.TabIndex = 14;
             btnMenu.Text = "Menu Principal";
             btnMenu.TextAlign = ContentAlignment.MiddleRight;
             btnMenu.UseVisualStyleBackColor = false;
-            // 
-            // picMaxPantalla
-            // 
-            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
-            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
-            picMaxPantalla.Location = new Point(1029, 5);
-            picMaxPantalla.Margin = new Padding(4, 3, 4, 3);
-            picMaxPantalla.Name = "picMaxPantalla";
-            picMaxPantalla.Size = new Size(26, 27);
-            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
-            picMaxPantalla.TabIndex = 8;
-            picMaxPantalla.TabStop = false;
-            picMaxPantalla.Click += picMaxPantalla_Click;
             // 
             // picMinPantalla
             // 
@@ -577,6 +604,19 @@
             picMinPantalla.TabIndex = 1;
             picMinPantalla.TabStop = false;
             picMinPantalla.Click += picMinPantalla_Click;
+            // 
+            // picMaxPantalla
+            // 
+            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
+            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
+            picMaxPantalla.Location = new Point(874, 5);
+            picMaxPantalla.Margin = new Padding(4, 3, 4, 3);
+            picMaxPantalla.Name = "picMaxPantalla";
+            picMaxPantalla.Size = new Size(26, 27);
+            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaxPantalla.TabIndex = 8;
+            picMaxPantalla.TabStop = false;
+            picMaxPantalla.Click += picMaxPantalla_Click;
             // 
             // picCerrar
             // 
@@ -609,6 +649,7 @@
             Name = "MenuAdmin";
             Text = "MenuAdmin";
             PLogo.ResumeLayout(false);
+            PLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).EndInit();
             PSubmenu1.ResumeLayout(false);
@@ -618,9 +659,10 @@
             PMenuLat.ResumeLayout(false);
             PVentana.ResumeLayout(false);
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             ResumeLayout(false);
         }
@@ -658,5 +700,8 @@
         private Panel panel1;
         private System.Windows.Forms.Timer sidebarTime;
         private PictureBox pictureBox1;
+        private Label lblTituloMenu;
+        private Label label2;
+        private Label label1;
     }
 }

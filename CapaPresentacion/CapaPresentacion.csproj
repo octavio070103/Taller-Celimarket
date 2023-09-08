@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Formularios\Admin\MenuAdmin.cs" />
+    <Compile Remove="Formularios\Admin\MenuAdmin.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Formularios\Admin\MenuAdmin.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Formularios\Inicio\" />
     <Folder Include="Formularios\Menu\" />
     <Folder Include="Fotos\Admin\" />

@@ -17,6 +17,7 @@ using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using CapaLogica;
 using capaEntidad;
 using CapaDatos;
+using CapaPresentacion.Formularios.Admin;
 
 namespace Proyecto_Taller.Presentacion.Formularios.Login
 {
@@ -173,9 +174,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                 {
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
+
                     //aca va el formulario que quiero qeu se abra
-                    MenuGerente formAbrir = new MenuGerente();
+                    MenuAdministrador formAbrir = new MenuAdministrador();
                     formAbrir.Show();
                     this.Hide();
                 }

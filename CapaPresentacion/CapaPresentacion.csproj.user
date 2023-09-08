@@ -1,13 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Formularios\Admin\FrmRegistrarPerfil.cs">
+    <Compile Update="Formularios\Admin\FrmEditarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Admin\FrmRegitrarUsuario.cs">
+    <Compile Update="Formularios\Admin\MenuAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Admin\MenuAdmin.cs">
+    <Compile Update="Formularios\Admin\FrmListaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Admin\RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Gerente\GestionarClientes.cs">

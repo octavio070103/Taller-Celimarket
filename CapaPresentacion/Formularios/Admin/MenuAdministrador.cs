@@ -1,6 +1,4 @@
-﻿
-using FontAwesome.Sharp;
-using Proyecto_Taller.Presentacion.Formularios.Admin;
+﻿using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
+namespace CapaPresentacion.Formularios.Admin
 {
-    public partial class MenuAdmin : Form
+    public partial class MenuAdministrador : Form
     {
         private Point mouseDownLocation;
         private Size originalSize;
@@ -24,7 +22,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         bool sidebarExpand;
 
-        public MenuAdmin()
+        public MenuAdministrador()
         {
             InitializeComponent();
             personalizarDiseno();
@@ -76,8 +74,6 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
             //*** Hacer para cada submenu - borrar
         }
-
-
         private void mostrarSubmenu(Panel subMenu)
         {
             //**** Este metodo permite mostrar un ocultar un determinado submenu al tocar un boton ****
@@ -98,14 +94,14 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         /*submenu caja*/
         private void btnCaja_Click(object sender, EventArgs e)
         {
-            //     OpenChildForm(new Admin(this));
+            OpenChildForm(new Admin.FrmListaUsuario(this));
             //*** Modificar si es necesario - borrar
             mostrarSubmenu(PSubmenu1);
         }
 
         private void btnInfoCaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Admin.FrmRegistrarPerfil(this));
+
 
             ocultarSubmenu(PSubmenu1);
 
@@ -115,6 +111,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnCerrarCaja_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Admin.FrmEditarUsuario(this));
             ocultarSubmenu(PSubmenu1);
 
 
@@ -124,6 +121,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void btnVentas_Click(object sender, EventArgs e)
         {
             mostrarSubmenu(submenuVentas);
+            OpenChildForm(new Admin.RegistrarUsuario(this));
         }
 
         private void btnInfomeVenta_Click(object sender, EventArgs e)
@@ -179,21 +177,21 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             ocultarSubmenu(subMenuPromocion);
         }
 
-        private void btnPromocionDescuento_Click_1(object sender, EventArgs e)
+        private void btnPromocionDescuento_Click_2(object sender, EventArgs e)
         {
             mostrarSubmenu(subMenuPromocion);
         }
 
-        private void btnPromociones_Click_1(object sender, EventArgs e)
+        private void btnPromociones_Click_2(object sender, EventArgs e)
         {
             ocultarSubmenu(subMenuPromocion);
         }
 
-        private void btnDescuentos_Click_1(object sender, EventArgs e)
+        private void btnDescuentos_Click_2(object sender, EventArgs e)
         {
             ocultarSubmenu(subMenuPromocion);
         }
-
+        /****ver cuales bvorrar
         private Form formularioActivo = null;
         private void abrirFormularioHijo(Form formHijo)
         {
@@ -212,34 +210,16 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 formHijo.Show();
             }
 
-        }
+        }*/
 
-        private void MenuVendedo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PVentana_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void picCerrar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-
-
-        private void picRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            picRestaurar.Visible = false;
-            picMaxPantalla.Visible = true;
-        }
-
-        private void picMinPantalla_Click(object sender, EventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void picMaxPantalla_Click(object sender, EventArgs e)
@@ -249,7 +229,17 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             picRestaurar.Visible = true;
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            picRestaurar.Visible = false;
+            picMaxPantalla.Visible = true;
+        }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            sidebarTime.Start();
+        }
 
         private void sidebarTime_Tick(object sender, EventArgs e)
         {
@@ -273,16 +263,5 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 }
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            sidebarTime.Start();
-        }
-
-        private void btnReportePersonal_Click(object sender, EventArgs e)
-        {
-
-        }
     }
-
 }
