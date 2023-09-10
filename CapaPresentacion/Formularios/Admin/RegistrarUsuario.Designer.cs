@@ -51,6 +51,8 @@
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             lblNombre = new Label();
+            btnCancelar = new Button();
+            btnActualizar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).BeginInit();
@@ -84,6 +86,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(btnActualizar);
+            panel2.Controls.Add(btnCancelar);
             panel2.Controls.Add(pciBoxSubirImg);
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(contraVisible);
@@ -298,6 +302,34 @@
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre";
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Anchor = AnchorStyles.Top;
+            btnCancelar.BackColor = Color.FromArgb(1, 1, 2);
+            btnCancelar.FlatStyle = FlatStyle.Popup;
+            btnCancelar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelar.ForeColor = SystemColors.ButtonFace;
+            btnCancelar.Location = new Point(151, 346);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(161, 43);
+            btnCancelar.TabIndex = 64;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Anchor = AnchorStyles.Top;
+            btnActualizar.BackColor = Color.FromArgb(47, 33, 75);
+            btnActualizar.FlatStyle = FlatStyle.Popup;
+            btnActualizar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnActualizar.ForeColor = SystemColors.ButtonFace;
+            btnActualizar.Location = new Point(374, 343);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(161, 43);
+            btnActualizar.TabIndex = 65;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            // 
             // RegistrarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -340,5 +372,7 @@
         private ComboBox comboBox1;
         private FontAwesome.Sharp.IconButton contraVisible;
         private PictureBox pciBoxSubirImg;
+        private Button btnCancelar;
+        private Button btnActualizar;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion.Formularios.Admin
 {
-    partial class FrmListaUsuario
+    partial class FrmGestionarConsulta
     {
         /// <summary>
         /// Required designer variable.
@@ -28,16 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            txtDni = new TextBox();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            dateTimePicker1 = new DateTimePicker();
             txtNombre = new TextBox();
             textBox2 = new TextBox();
             lblApellido = new Label();
             lblNombre = new Label();
             lblDni = new Label();
             lblFiltrar = new Label();
-            lblListaEmpleados = new Label();
+            lblListaConsultas = new Label();
             dataGridUsuarios = new DataGridView();
             panel2 = new Panel();
             lblDatosUsuario = new Label();
@@ -53,36 +55,58 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
-            panel1.Controls.Add(txtDni);
+            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(dateTimePicker1);
             panel1.Controls.Add(txtNombre);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(lblApellido);
             panel1.Controls.Add(lblNombre);
             panel1.Controls.Add(lblDni);
             panel1.Controls.Add(lblFiltrar);
-            panel1.Controls.Add(lblListaEmpleados);
+            panel1.Controls.Add(lblListaConsultas);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 92);
-            panel1.TabIndex = 0;
+            panel1.TabIndex = 1;
             // 
-            // txtDni
+            // textBox1
             // 
-            txtDni.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtDni.ForeColor = Color.Silver;
-            txtDni.Location = new Point(211, 58);
-            txtDni.Multiline = true;
-            txtDni.Name = "txtDni";
-            txtDni.Size = new Size(97, 20);
-            txtDni.TabIndex = 11;
-            txtDni.Text = "DNI";
+            textBox1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.Silver;
+            textBox1.Location = new Point(687, 58);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(97, 20);
+            textBox1.TabIndex = 12;
+            textBox1.Text = "Apellido";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlLightLight;
+            label1.Location = new Point(616, 59);
+            label1.Name = "label1";
+            label1.Size = new Size(65, 17);
+            label1.TabIndex = 11;
+            label1.Text = "Prioridad";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.CalendarFont = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(220, 59);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(88, 23);
+            dateTimePicker1.TabIndex = 2;
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNombre.ForeColor = Color.Silver;
-            txtNombre.Location = new Point(378, 59);
+            txtNombre.Location = new Point(356, 58);
             txtNombre.Multiline = true;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(97, 20);
@@ -93,7 +117,7 @@
             // 
             textBox2.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBox2.ForeColor = Color.Silver;
-            textBox2.Location = new Point(550, 58);
+            textBox2.Location = new Point(513, 58);
             textBox2.Multiline = true;
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(97, 20);
@@ -105,11 +129,11 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblApellido.ForeColor = SystemColors.ControlLightLight;
-            lblApellido.Location = new Point(484, 59);
+            lblApellido.Location = new Point(459, 59);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(60, 17);
+            lblApellido.Size = new Size(48, 17);
             lblApellido.TabIndex = 8;
-            lblApellido.Text = "Apellido";
+            lblApellido.Text = "Buscar";
             // 
             // lblNombre
             // 
@@ -118,9 +142,9 @@
             lblNombre.ForeColor = SystemColors.ControlLightLight;
             lblNombre.Location = new Point(314, 59);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(58, 17);
+            lblNombre.Size = new Size(36, 17);
             lblNombre.TabIndex = 6;
-            lblNombre.Text = "Nombre";
+            lblNombre.Text = "Tipo";
             // 
             // lblDni
             // 
@@ -129,9 +153,9 @@
             lblDni.ForeColor = SystemColors.ControlLightLight;
             lblDni.Location = new Point(171, 59);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(36, 17);
+            lblDni.Size = new Size(43, 17);
             lblDni.TabIndex = 4;
-            lblDni.Text = "DNI ";
+            lblDni.Text = "Fecha";
             // 
             // lblFiltrar
             // 
@@ -144,19 +168,19 @@
             lblFiltrar.TabIndex = 1;
             lblFiltrar.Text = "Filtrar:";
             // 
-            // lblListaEmpleados
+            // lblListaConsultas
             // 
-            lblListaEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            lblListaEmpleados.AutoSize = true;
-            lblListaEmpleados.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            lblListaEmpleados.ForeColor = SystemColors.ControlLightLight;
-            lblListaEmpleados.ImageAlign = ContentAlignment.TopCenter;
-            lblListaEmpleados.Location = new Point(267, 0);
-            lblListaEmpleados.Name = "lblListaEmpleados";
-            lblListaEmpleados.Size = new Size(276, 45);
-            lblListaEmpleados.TabIndex = 0;
-            lblListaEmpleados.Text = "Lista De Usuarios";
-            lblListaEmpleados.TextAlign = ContentAlignment.MiddleCenter;
+            lblListaConsultas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblListaConsultas.AutoSize = true;
+            lblListaConsultas.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            lblListaConsultas.ForeColor = SystemColors.ControlLightLight;
+            lblListaConsultas.ImageAlign = ContentAlignment.TopCenter;
+            lblListaConsultas.Location = new Point(267, 0);
+            lblListaConsultas.Name = "lblListaConsultas";
+            lblListaConsultas.Size = new Size(291, 45);
+            lblListaConsultas.TabIndex = 0;
+            lblListaConsultas.Text = "Lista De Consultas";
+            lblListaConsultas.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dataGridUsuarios
             // 
@@ -165,22 +189,22 @@
             dataGridUsuarios.BackgroundColor = Color.White;
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Location = new Point(80, 161);
+            dataGridUsuarios.Location = new Point(80, 144);
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 25;
-            dataGridUsuarios.Size = new Size(427, 277);
-            dataGridUsuarios.TabIndex = 1;
+            dataGridUsuarios.Size = new Size(427, 269);
+            dataGridUsuarios.TabIndex = 2;
             // 
             // panel2
             // 
@@ -188,18 +212,18 @@
             panel2.Controls.Add(lblDatosUsuario);
             panel2.Location = new Point(550, 98);
             panel2.Name = "panel2";
-            panel2.Size = new Size(238, 340);
-            panel2.TabIndex = 3;
+            panel2.Size = new Size(238, 315);
+            panel2.TabIndex = 4;
             // 
             // lblDatosUsuario
             // 
             lblDatosUsuario.AutoSize = true;
             lblDatosUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatosUsuario.Location = new Point(32, 9);
+            lblDatosUsuario.Location = new Point(75, 10);
             lblDatosUsuario.Name = "lblDatosUsuario";
-            lblDatosUsuario.Size = new Size(180, 30);
+            lblDatosUsuario.Size = new Size(87, 30);
             lblDatosUsuario.TabIndex = 0;
-            lblDatosUsuario.Text = "Datos Del Usuario";
+            lblDatosUsuario.Text = "Detalles";
             // 
             // btnAgregar
             // 
@@ -209,88 +233,86 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.CommentDots;
             btnAgregar.IconColor = Color.White;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(80, 99);
+            btnAgregar.Location = new Point(123, 99);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(89, 39);
-            btnAgregar.TabIndex = 7;
-            btnAgregar.Text = "Agregar";
+            btnAgregar.Size = new Size(103, 39);
+            btnAgregar.TabIndex = 8;
+            btnAgregar.Text = "Responder";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
             btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregar.UseVisualStyleBackColor = false;
             // 
             // iconButton1
             // 
-            iconButton1.BackColor = Color.FromArgb(56, 182, 255);
+            iconButton1.BackColor = Color.DarkGray;
             iconButton1.Cursor = Cursors.Hand;
             iconButton1.FlatAppearance.BorderColor = Color.Black;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpen;
             iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(192, 99);
+            iconButton1.Location = new Point(267, 99);
             iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(96, 39);
-            iconButton1.TabIndex = 8;
-            iconButton1.Text = "Modificar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
+            iconButton1.Size = new Size(83, 39);
+            iconButton1.TabIndex = 9;
+            iconButton1.Text = "Marcar Leido";
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
             // iconButton2
             // 
-            iconButton2.BackColor = Color.FromArgb(250, 21, 21);
+            iconButton2.BackColor = Color.FromArgb(255, 222, 89);
             iconButton2.Cursor = Cursors.Hand;
             iconButton2.FlatAppearance.BorderColor = Color.Black;
             iconButton2.FlatStyle = FlatStyle.Flat;
             iconButton2.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             iconButton2.ForeColor = SystemColors.ControlLightLight;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.UserSlash;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Recycle;
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 30;
-            iconButton2.Location = new Point(314, 98);
+            iconButton2.Location = new Point(198, 419);
             iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(89, 39);
-            iconButton2.TabIndex = 9;
-            iconButton2.Text = "Eliminar";
-            iconButton2.TextAlign = ContentAlignment.MiddleRight;
+            iconButton2.Size = new Size(192, 39);
+            iconButton2.TabIndex = 10;
+            iconButton2.Text = "Ver Papelera";
             iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton2.UseVisualStyleBackColor = false;
             // 
             // iconButton3
             // 
-            iconButton3.BackColor = Color.FromArgb(216, 103, 30);
+            iconButton3.BackColor = Color.FromArgb(250, 21, 21);
             iconButton3.Cursor = Cursors.Hand;
             iconButton3.FlatAppearance.BorderColor = Color.Black;
             iconButton3.FlatStyle = FlatStyle.Flat;
             iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             iconButton3.ForeColor = SystemColors.ControlLightLight;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            iconButton3.IconChar = FontAwesome.Sharp.IconChar.Trash;
             iconButton3.IconColor = Color.White;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(426, 98);
+            iconButton3.Location = new Point(387, 99);
             iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(90, 39);
-            iconButton3.TabIndex = 10;
-            iconButton3.Text = "Permiso";
+            iconButton3.Size = new Size(88, 39);
+            iconButton3.TabIndex = 11;
+            iconButton3.Text = "Eliminar";
             iconButton3.TextAlign = ContentAlignment.MiddleRight;
             iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton3.UseVisualStyleBackColor = false;
             // 
-            // FrmListaUsuario
+            // FrmGestionarConsulta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 471);
             Controls.Add(iconButton3);
             Controls.Add(iconButton2);
             Controls.Add(iconButton1);
@@ -298,8 +320,8 @@
             Controls.Add(panel2);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
-            Name = "FrmListaUsuario";
-            Text = "Lista de Usuarios";
+            Name = "FrmGestionarConsulta";
+            Text = "Gestionar Consultas ";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
@@ -311,15 +333,17 @@
         #endregion
 
         private Panel panel1;
-        private Label lblListaEmpleados;
-        private DataGridView dataGridUsuarios;
-        private Label lblDni;
-        private Label lblFiltrar;
+        private TextBox txtNombre;
         private TextBox textBox2;
         private Label lblApellido;
         private Label lblNombre;
-        private TextBox txtDni;
-        private TextBox txtNombre;
+        private Label lblDni;
+        private Label lblFiltrar;
+        private Label lblListaConsultas;
+        private DateTimePicker dateTimePicker1;
+        private TextBox textBox1;
+        private Label label1;
+        private DataGridView dataGridUsuarios;
         private Panel panel2;
         private Label lblDatosUsuario;
         private FontAwesome.Sharp.IconButton btnAgregar;

@@ -51,3 +51,5 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.MenuAdministrador.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.RegistrarUsuario.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.FrmEditarUsuario.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.FrmGestionarConsulta.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.FrmRespaldo.resources
