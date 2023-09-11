@@ -15,3 +15,20 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\Capa
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\obj\Debug\net6.0\ref\CapaLogica.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\bin\Debug\net6.0\capaEntidad.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaLogica\bin\Debug\net6.0\capaEntidad.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\CapaLogica.deps.json
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\CapaLogica.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\CapaLogica.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\capaEntidad.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\CapaDatos.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\bin\Debug\net6.0\capaEntidad.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.csproj.AssemblyReference.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.AssemblyInfoInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.AssemblyInfo.cs
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.csproj.CoreCompileInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.csproj.CopyComplete
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\refint\CapaLogica.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\CapaLogica.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaLogica\obj\Debug\net6.0\ref\CapaLogica.dll

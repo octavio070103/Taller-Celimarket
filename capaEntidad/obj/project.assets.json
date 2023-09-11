@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\octav\\.nuget\\packages\\": {},
+    "C:\\Users\\Lauch\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\capaEntidad.csproj",
+      "projectUniqueName": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\capaEntidad\\capaEntidad.csproj",
       "projectName": "capaEntidad",
-      "projectPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\capaEntidad.csproj",
-      "packagesPath": "C:\\Users\\octav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\obj\\",
+      "projectPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\capaEntidad\\capaEntidad.csproj",
+      "packagesPath": "C:\\Users\\Lauch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\capaEntidad\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\octav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lauch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -33,7 +33,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

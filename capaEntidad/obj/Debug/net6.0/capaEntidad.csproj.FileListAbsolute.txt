@@ -9,3 +9,14 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\capaEntidad\obj\Debug\net6.0\cap
 C:\Users\octav\source\repos\Proyecto-CeliMarket\capaEntidad\obj\Debug\net6.0\refint\capaEntidad.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\capaEntidad\obj\Debug\net6.0\capaEntidad.pdb
 C:\Users\octav\source\repos\Proyecto-CeliMarket\capaEntidad\obj\Debug\net6.0\ref\capaEntidad.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\bin\Debug\net6.0\capaEntidad.deps.json
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\bin\Debug\net6.0\capaEntidad.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\bin\Debug\net6.0\capaEntidad.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.AssemblyInfoInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.AssemblyInfo.cs
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.csproj.CoreCompileInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\refint\capaEntidad.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\capaEntidad.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\capaEntidad\obj\Debug\net6.0\ref\capaEntidad.dll

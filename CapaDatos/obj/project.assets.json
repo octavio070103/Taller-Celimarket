@@ -799,23 +799,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\octav\\.nuget\\packages\\": {},
+    "C:\\Users\\Lauch\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaDatos\\CapaDatos.csproj",
+      "projectUniqueName": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaDatos\\CapaDatos.csproj",
       "projectName": "CapaDatos",
-      "projectPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaDatos\\CapaDatos.csproj",
-      "packagesPath": "C:\\Users\\octav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaDatos\\obj\\",
+      "projectPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaDatos\\CapaDatos.csproj",
+      "packagesPath": "C:\\Users\\Lauch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaDatos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\octav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lauch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -824,15 +824,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\capaEntidad.csproj": {
-              "projectPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\capaEntidad.csproj"
+            "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\capaEntidad\\capaEntidad.csproj": {
+              "projectPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\capaEntidad\\capaEntidad.csproj"
             }
           }
         }
