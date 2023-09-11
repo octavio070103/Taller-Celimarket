@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacion.Formularios.Vendedor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -63,10 +64,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAbrirClientes_Click(object sender, EventArgs e)
         {
             //*** Modificar si es necesario - borrar
-            mostrarSubmenu(PSubmenu1);
+            abrirFormularioHijo(new frmModuloCliente());
+            //mostrarSubmenu(PSubmenu1);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -74,13 +76,14 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             //*** Modificar si es necesario - hacer para cada evento - borrar
 
             //**** Falta el codigo a ejecutar - borrar 
-            abrirFormularioHijo(new FormPrueba());
+            //abrirFormularioHijo(new frmRegistrarCliente());
             ocultarSubmenu();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             //**** Falta el codigo a ejecutar - borrar 
+            abrirFormularioHijo(new FormPrueba());
             ocultarSubmenu();
         }
 
@@ -98,7 +101,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
             if (formularioActivo == null) // cambiar por !=
             {
-                //formularioActivo.Close();
+
                 formularioActivo = formHijo;
                 formHijo.TopLevel = false;
                 formHijo.FormBorderStyle = FormBorderStyle.None;
@@ -106,6 +109,18 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 PVentana.Controls.Add(formHijo);
                 PVentana.Tag = formHijo;
                 //formHijo.BringToFront();
+                formHijo.Show();
+            }
+            else
+            {
+                formularioActivo.Close();
+                formularioActivo = formHijo;
+                formHijo.TopLevel = false;
+                formHijo.FormBorderStyle = FormBorderStyle.None;
+                formHijo.Dock = DockStyle.Fill;
+                PVentana.Controls.Add(formHijo);
+                PVentana.Tag = formHijo;
+                formHijo.BringToFront();
                 formHijo.Show();
             }
 

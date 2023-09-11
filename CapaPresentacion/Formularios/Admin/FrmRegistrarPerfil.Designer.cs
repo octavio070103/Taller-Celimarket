@@ -28,126 +28,123 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.lblPerfilID = new System.Windows.Forms.Label();
-            this.lblPerfilDescripcion = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnBorrar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.dataGridViewUsuario = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).BeginInit();
-            this.SuspendLayout();
+            btnAgregar = new Button();
+            textBoxNombre = new TextBox();
+            lblPerfilID = new Label();
+            lblPerfilDescripcion = new Label();
+            textBox1 = new TextBox();
+            btnModificar = new Button();
+            btnBorrar = new Button();
+            btnCancelar = new Button();
+            SuspendLayout();
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(108, 88);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 19;
-            this.btnAgregar.Text = "agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(126, 102);
+            btnAgregar.Margin = new Padding(4, 3, 4, 3);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(88, 27);
+            btnAgregar.TabIndex = 19;
+            btnAgregar.Text = "agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(108, 62);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(144, 20);
-            this.textBoxNombre.TabIndex = 18;
+            textBoxNombre.Location = new Point(126, 72);
+            textBoxNombre.Margin = new Padding(4, 3, 4, 3);
+            textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.Size = new Size(167, 23);
+            textBoxNombre.TabIndex = 18;
             // 
             // lblPerfilID
             // 
-            this.lblPerfilID.AutoSize = true;
-            this.lblPerfilID.Location = new System.Drawing.Point(137, 46);
-            this.lblPerfilID.Name = "lblPerfilID";
-            this.lblPerfilID.Size = new System.Drawing.Size(21, 13);
-            this.lblPerfilID.TabIndex = 17;
-            this.lblPerfilID.Text = "ID:";
+            lblPerfilID.AutoSize = true;
+            lblPerfilID.Location = new Point(160, 53);
+            lblPerfilID.Margin = new Padding(4, 0, 4, 0);
+            lblPerfilID.Name = "lblPerfilID";
+            lblPerfilID.Size = new Size(21, 15);
+            lblPerfilID.TabIndex = 17;
+            lblPerfilID.Text = "ID:";
             // 
             // lblPerfilDescripcion
             // 
-            this.lblPerfilDescripcion.AutoSize = true;
-            this.lblPerfilDescripcion.Location = new System.Drawing.Point(328, 46);
-            this.lblPerfilDescripcion.Name = "lblPerfilDescripcion";
-            this.lblPerfilDescripcion.Size = new System.Drawing.Size(63, 13);
-            this.lblPerfilDescripcion.TabIndex = 20;
-            this.lblPerfilDescripcion.Text = "Descricpion";
+            lblPerfilDescripcion.AutoSize = true;
+            lblPerfilDescripcion.Location = new Point(383, 53);
+            lblPerfilDescripcion.Margin = new Padding(4, 0, 4, 0);
+            lblPerfilDescripcion.Name = "lblPerfilDescripcion";
+            lblPerfilDescripcion.Size = new Size(69, 15);
+            lblPerfilDescripcion.TabIndex = 20;
+            lblPerfilDescripcion.Text = "Descricpion";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(283, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(266, 20);
-            this.textBox1.TabIndex = 21;
+            textBox1.Location = new Point(330, 72);
+            textBox1.Margin = new Padding(4, 3, 4, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(310, 23);
+            textBox1.TabIndex = 21;
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(214, 88);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 23);
-            this.btnModificar.TabIndex = 22;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Location = new Point(250, 102);
+            btnModificar.Margin = new Padding(4, 3, 4, 3);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(88, 27);
+            btnModificar.TabIndex = 22;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Location = new System.Drawing.Point(316, 88);
-            this.btnBorrar.Name = "btnBorrar";
-            this.btnBorrar.Size = new System.Drawing.Size(75, 23);
-            this.btnBorrar.TabIndex = 23;
-            this.btnBorrar.Text = "Borrar";
-            this.btnBorrar.UseVisualStyleBackColor = true;
+            btnBorrar.Location = new Point(369, 102);
+            btnBorrar.Margin = new Padding(4, 3, 4, 3);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(88, 27);
+            btnBorrar.TabIndex = 23;
+            btnBorrar.Text = "Borrar";
+            btnBorrar.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(412, 88);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 24;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewUsuario
-            // 
-            this.dataGridViewUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsuario.Location = new System.Drawing.Point(84, 141);
-            this.dataGridViewUsuario.Name = "dataGridViewUsuario";
-            this.dataGridViewUsuario.Size = new System.Drawing.Size(465, 230);
-            this.dataGridViewUsuario.TabIndex = 25;
+            btnCancelar.Location = new Point(481, 102);
+            btnCancelar.Margin = new Padding(4, 3, 4, 3);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(88, 27);
+            btnCancelar.TabIndex = 24;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
             // FrmRegistrarPerfil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridViewUsuario);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnBorrar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lblPerfilDescripcion);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.textBoxNombre);
-            this.Controls.Add(this.lblPerfilID);
-            this.Name = "FrmRegistrarPerfil";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsuario)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(52, 53, 68);
+            ClientSize = new Size(707, 460);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnBorrar);
+            Controls.Add(btnModificar);
+            Controls.Add(textBox1);
+            Controls.Add(lblPerfilDescripcion);
+            Controls.Add(btnAgregar);
+            Controls.Add(textBoxNombre);
+            Controls.Add(lblPerfilID);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FrmRegistrarPerfil";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.Label lblPerfilID;
-        private System.Windows.Forms.Label lblPerfilDescripcion;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnBorrar;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridView dataGridViewUsuario;
+        private Button btnAgregar;
+        private TextBox textBoxNombre;
+        private Label lblPerfilID;
+        private Label lblPerfilDescripcion;
+        private TextBox textBox1;
+        private Button btnModificar;
+        private Button btnBorrar;
+        private Button btnCancelar;
     }
 }

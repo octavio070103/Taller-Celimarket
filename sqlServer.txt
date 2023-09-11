@@ -1,0 +1,100 @@
+TEcnica Transact-sql y procedimiento o procedural
+
+Transact-SQL (T-SQL):
+Transact-SQL (T-SQL) es un lenguaje de programación que se utiliza específicamente para trabajar con bases de datos SQL Server.
+T-SQL se utiliza principalmente para escribir consultas SQL, que son instrucciones que recuperan o manipulan datos en una base de datos.
+En tu código, la línea que comienza con comando.CommandText contiene una consulta SQL escrita en T-SQL. Esta consulta se utiliza para seleccionar todos los registros de la tabla cliente.
+T-SQL es adecuado para realizar consultas ad hoc, consultas simples y consultas complejas en una base de datos SQL Server.
+
+Procedimientos Almacenados:
+Los procedimientos almacenados son fragmentos de código T-SQL que se almacenan en la base de datos y se pueden ejecutar como una unidad desde la aplicación.
+Los procedimientos almacenados se crean en la base de datos y se pueden llamar desde una aplicación utilizando una instrucción EXECUTE o un equivalente en el lenguaje de programación que estés utilizando.
+Los procedimientos almacenados son útiles para encapsular lógica de negocios o consultas complejas en la base de datos. También pueden mejorar la seguridad y el rendimiento al evitar la inyección de SQL y permitir la reutilización de código.
+
+En resumen, T-SQL es el lenguaje utilizado para escribir consultas SQL, mientras que los procedimientos almacenados son fragmentos de código T-SQL que se almacenan en la base de datos y se pueden llamar desde una aplicación.
+Ambos enfoques son comunes y útiles para interactuar con bases de datos SQL Server, 
+una combinación de ambos enfoques puede ser apropiada, utilizando procedimientos almacenados para operaciones críticas y consultas T-SQL directas para operaciones más simples.
+
+Consultas Transact-SQL (T-SQL) Directas:
+Simplicidad: Las consultas T-SQL directas son simples de escribir y comprender. Son adecuadas para consultas sencillas y operaciones de CRUD (Crear, Leer, Actualizar y Eliminar) básicas.
+Flexibilidad: Puedes escribir consultas T-SQL ad hoc según sea necesario. Esto es útil para consultas dinámicas y personalizadas que pueden variar según la lógica de tu aplicación.
+Rendimiento: En algunas situaciones, las consultas T-SQL directas pueden tener un rendimiento similar o incluso mejor que los procedimientos almacenados, especialmente para consultas simples.
+
+Procedimientos Almacenados:
+Reutilización de Código: Los procedimientos almacenados permiten la reutilización de código SQL en múltiples partes de la aplicación. Esto puede simplificar el mantenimiento y garantizar que la lógica de acceso a datos sea coherente en toda la aplicación.
+Seguridad: Los procedimientos almacenados pueden ayudar a mejorar la seguridad al reducir el riesgo de inyección de SQL, ya que los parámetros se pueden pasar de manera segura a través de la llamada al procedimiento almacenado.
+Optimización de Consultas: Los procedimientos almacenados se pueden optimizar y compilar en la base de datos, lo que puede mejorar el rendimiento en consultas complejas o repetitivas.
+Capas de Negocio: Los procedimientos almacenados pueden encapsular lógica de negocio en la base de datos, lo que puede ser útil en aplicaciones empresariales donde se necesita un alto grado de abstracción de la base de datos.
+
+-----------------------------------------
+sql server]
+para crear una nueva bd debo de dirigirme a la carpeta database y tocar en nuevo
+ luego lo mismo para una tabla
+para asignar clave primaria a un campo hago doble click primary key y luego si va a ser una clave auto incremental debemos ir a las propeidades de este campo 
+y desplegar identity specification y is idetyty marcar yes ,y ahi podemos elegir tambien de cuanto en cuanto incremento el valor
+
+luego para crear las clave foraneas debo de ir a database diagrams y tocar nuevo,luego vinculo la clave primaria con la forenea y debo restrigir para que la 
+modficacion o actualizacion sea en cascada
+
+la capa de negocio es el qeu se debe de encargar de convertir los datos que vienen de la capa de presentacion por jeemplo los valores de los textBox son string bueno en la 
+capa de presentacion nNO convierto en en la de negocio
+---
+para insertar en sql hago lo siguiente
+creo una nueva consulta con new Query 
+luego selccicono mi base de datos a trabajar en la interfeaz o con comandos
+luego selecciono mi tabla que quiero insertar los datos 
+le paso los values o vlaores
+
+ej:
+--insertar datos tabla cliente
+
+--aca le digo que me inserte en ewsa tabla en esos campos
+insert into cliente (nombre,apellido,dni,telefono,direccion)
+--aca le paso los valores que quiero que tenga esa instancia en esos campos
+values
+('octavio','sanchez',44622119,3795058041,'garcia de cossio 2310'),
+('fernando','sanchez',446221209,3795058040,'Honduras 2010'),
+('lautaro','romero',33567890,3795055041,'9 de julio 345'),
+('fernando','gomez',40678900,3798090807,'pueyrredon 2111'),
+
+--para selecionar y ver los valores que estan insertabdos en una tabla uso select 
+SELECT * FROM cliente;
+Este comando recuperará todas las filas y columnas de la tabla cliente y mostrará sus valores en el resultad
+----Esto mostrará solo las columnas nombre, apellido y dni de la tabla cliente.
+SELECT nombre, apellido, dni FROM cliente;
+
+Modificar 
+---modificando datos enla tabla clientes,aca le decimos el campo que queremos modificar de la tabla tal mientras que el id sea =2 es decir que busque el id 2 y me cambie por ese nuevo nombre que esta entre ''
+update cliente set nombre ='nuevoNombre' where id =2
+
+ej:---modificando datos enla tabla clientes
+update cliente set nombre='Andres' where id_cliente=4  aca modifico el id=4 y el campo nombre si quiero modificar mas campos le debo de separar por , luego del set
+update cliente set nombre='Andres',apellido=gomez where id_cliente=4
+
+Eliminar
+--eliminando datos en la tabla clientes,aca le decimos que nos elimine el registro que tenga el nombre andre
+delete cliente where nombre='Andres'
+delete cliente where id_cliente=3  aca que me elimine con el id 3 
+
+----------------
+para hacerlo de forma graficar debo de dar click derecho en la tabla y editar los 200 registro y ahi me dejria ir insertando
+
+
+
+
+-----------------
+CLAVES FORANEAS
+
+-para ver las claves foraneas de las tablas :
+	SELECT name
+	FROM sys.foreign_keys
+	WHERE parent_object_id = OBJECT_ID('nombre_de_la_tabla');
+
+-Crear la clave foránea utilizando una sentencia ALTER TABLE. Aquí tienes un ejemplo de cómo hacerlo:
+	ALTER TABLE usuarios
+	ADD CONSTRAINT FK_Usuario_Rol FOREIGN KEY (id_rol)
+	REFERENCES rol(id_rol);
+
+-para eliminar claves foranea 
+	ALTER TABLE nombre_de_la_tabla
+	DROP CONSTRAINT nombre_de_la_restriccion;

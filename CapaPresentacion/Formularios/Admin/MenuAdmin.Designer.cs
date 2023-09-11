@@ -482,7 +482,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = SystemColors.ControlLightLight;
-            btnLogout.Location = new Point(4, 3632);
+            btnLogout.Location = new Point(4, 3857);
             btnLogout.Margin = new Padding(4, 3, 4, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(12, 0, 0, 0);
@@ -500,7 +500,7 @@
             PVentana.Location = new Point(0, 45);
             PVentana.Margin = new Padding(4, 3, 4, 3);
             PVentana.Name = "PVentana";
-            PVentana.Size = new Size(1090, 647);
+            PVentana.Size = new Size(934, 516);
             PVentana.TabIndex = 5;
             // 
             // panel1
@@ -515,7 +515,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1090, 45);
+            panel1.Size = new Size(934, 45);
             panel1.TabIndex = 4;
             // 
             // picRestaurar
@@ -523,7 +523,7 @@
             picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picRestaurar.Cursor = Cursors.Hand;
             picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
-            picRestaurar.Location = new Point(1029, 3);
+            picRestaurar.Location = new Point(873, 3);
             picRestaurar.Margin = new Padding(4, 3, 4, 3);
             picRestaurar.Name = "picRestaurar";
             picRestaurar.Size = new Size(26, 28);
@@ -569,7 +569,7 @@
             picMinPantalla.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picMinPantalla.Cursor = Cursors.Hand;
             picMinPantalla.Image = (Image)resources.GetObject("picMinPantalla.Image");
-            picMinPantalla.Location = new Point(995, 14);
+            picMinPantalla.Location = new Point(839, 14);
             picMinPantalla.Margin = new Padding(4, 3, 4, 3);
             picMinPantalla.Name = "picMinPantalla";
             picMinPantalla.Size = new Size(27, 24);
@@ -583,7 +583,7 @@
             picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picCerrar.Cursor = Cursors.Hand;
             picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
-            picCerrar.Location = new Point(1062, 5);
+            picCerrar.Location = new Point(906, 5);
             picCerrar.Margin = new Padding(4, 3, 4, 3);
             picCerrar.Name = "picCerrar";
             picCerrar.Size = new Size(28, 24);
@@ -601,7 +601,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1090, 692);
+            ClientSize = new Size(934, 561);
             Controls.Add(PVentana);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

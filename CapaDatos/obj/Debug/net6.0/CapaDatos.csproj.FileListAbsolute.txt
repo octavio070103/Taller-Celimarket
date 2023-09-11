@@ -10,3 +10,27 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\refin
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\CapaDatos.pdb
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\ref\CapaDatos.dll
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\bin\Debug\net6.0\CapaDatos.deps.json
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\bin\Debug\net6.0\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\bin\Debug\net6.0\CapaDatos.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.AssemblyInfoInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.AssemblyInfo.cs
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\refint\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\CapaDatos.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Borrar\Taller-Celimarket-74b34721bcc9c568b2784c365fb8670d0c53130c\CapaDatos\obj\Debug\net6.0\ref\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\bin\Debug\net6.0\CapaDatos.deps.json
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\bin\Debug\net6.0\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\bin\Debug\net6.0\CapaDatos.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.AssemblyReference.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.AssemblyInfoInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.AssemblyInfo.cs
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\refint\CapaDatos.dll
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\CapaDatos.pdb
+C:\Users\Lauch\OneDrive\Escritorio\Escritorio 3\Facultad 2023\Taller de Programación II\Proyecto Taller II\Taller-Celimarket\CapaDatos\obj\Debug\net6.0\ref\CapaDatos.dll

@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     "net6.0-windows7.0": {
+      "FontAwesome.Sharp/6.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -176,6 +188,21 @@
     }
   },
   "libraries": {
+    "FontAwesome.Sharp/6.3.0": {
+      "sha512": "3/Fb0N04yYK8An07oox5ISlUyNgsnWildHfoP69uqTEOsemQemRyciphMkXZOcdBupjUD+lVsRE3FqG41/dzPA==",
+      "type": "package",
+      "path": "fontawesome.sharp/6.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.sharp.6.3.0.nupkg.sha512",
+        "fontawesome.sharp.nuspec",
+        "lib/net472/FontAwesome.Sharp.dll",
+        "lib/net48/FontAwesome.Sharp.dll",
+        "lib/net6.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
+      ]
+    },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "sha512": "z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
       "type": "package",
@@ -502,27 +529,28 @@
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "CapaLogica >= 1.0.0"
+      "CapaLogica >= 1.0.0",
+      "FontAwesome.Sharp >= 6.3.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\octav\\.nuget\\packages\\": {},
+    "C:\\Users\\Lauch\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaPresentacion\\CapaPresentacion.csproj",
+      "projectUniqueName": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaPresentacion\\CapaPresentacion.csproj",
       "projectName": "CapaPresentacion",
-      "projectPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaPresentacion\\CapaPresentacion.csproj",
-      "packagesPath": "C:\\Users\\octav\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaPresentacion\\obj\\",
+      "projectPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaPresentacion\\CapaPresentacion.csproj",
+      "packagesPath": "C:\\Users\\Lauch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaPresentacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\octav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lauch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -531,15 +559,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaLogica\\CapaLogica.csproj": {
-              "projectPath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaLogica\\CapaLogica.csproj"
+            "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaLogica\\CapaLogica.csproj": {
+              "projectPath": "C:\\Users\\Lauch\\OneDrive\\Escritorio\\Escritorio 3\\Facultad 2023\\Taller de Programación II\\Proyecto Taller II\\Taller-Celimarket\\CapaLogica\\CapaLogica.csproj"
             }
           }
         }
@@ -553,6 +580,12 @@
     "frameworks": {
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "FontAwesome.Sharp": {
+            "target": "Package",
+            "version": "[6.3.0, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
