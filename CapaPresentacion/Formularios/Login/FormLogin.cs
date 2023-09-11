@@ -33,10 +33,15 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
             InitializeComponent();
         }
 
+
+        /*funcionalidades para que cuando el usuario cliquee en algunos de estos controles pueda mover toda el formulario*/
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        /*                                                                          */
+
 
         private void lblDeliMarket_Click(object sender, EventArgs e)
         {

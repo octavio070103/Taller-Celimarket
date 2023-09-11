@@ -12,11 +12,11 @@ using System.Windows.Forms;
 namespace CapaPresentacion.Formularios.Admin
 {
 
-    public partial class FrmListaUsuario : Form
+    public partial class FrmGestionarUsuario : Form
     {
         private MenuAdministrador instanciaMenuAdministrador;
 
-        public FrmListaUsuario(MenuAdministrador p_MenuAdministrador)
+        public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;

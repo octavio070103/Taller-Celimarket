@@ -41,13 +41,15 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
-            btnRespaldo = new Button();
-            btnGestionarConsultar = new Button();
+            lblCerrar = new Label();
+            picCerrarSesion = new PictureBox();
+            iconBtnBackup = new FontAwesome.Sharp.IconButton();
+            iconBtnGestionConsulta = new FontAwesome.Sharp.IconButton();
+            iconBtnGestionUsuario = new FontAwesome.Sharp.IconButton();
             btnLogout = new Button();
-            btnGestionarUsuario = new Button();
             PLogo = new Panel();
-            label2 = new Label();
-            label1 = new Label();
+            lblNombreDelUsu = new Label();
+            lblRolDelUsu = new Label();
             pictureBox1 = new PictureBox();
             picUsuario = new PictureBox();
             sidebarTime = new System.Windows.Forms.Timer(components);
@@ -60,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             PVentana.SuspendLayout();
             PMenuLat.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrarSesion).BeginInit();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
@@ -82,6 +85,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(934, 45);
             panel1.TabIndex = 5;
+            panel1.MouseDown += panel1_MouseDown;
             // 
             // pictureBox4
             // 
@@ -132,7 +136,7 @@
             lblTituloMenu.AutoSize = true;
             lblTituloMenu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTituloMenu.ForeColor = SystemColors.ControlLightLight;
-            lblTituloMenu.Location = new Point(508, 13);
+            lblTituloMenu.Location = new Point(407, 8);
             lblTituloMenu.Name = "lblTituloMenu";
             lblTituloMenu.Size = new Size(58, 25);
             lblTituloMenu.TabIndex = 15;
@@ -207,62 +211,118 @@
             PVentana.Name = "PVentana";
             PVentana.Size = new Size(934, 636);
             PVentana.TabIndex = 6;
+            PVentana.MouseDown += PVentana_MouseDown;
             // 
             // PMenuLat
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(btnRespaldo);
-            PMenuLat.Controls.Add(btnGestionarConsultar);
+            PMenuLat.Controls.Add(lblCerrar);
+            PMenuLat.Controls.Add(picCerrarSesion);
+            PMenuLat.Controls.Add(iconBtnBackup);
+            PMenuLat.Controls.Add(iconBtnGestionConsulta);
+            PMenuLat.Controls.Add(iconBtnGestionUsuario);
             PMenuLat.Controls.Add(btnLogout);
-            PMenuLat.Controls.Add(btnGestionarUsuario);
             PMenuLat.Controls.Add(PLogo);
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
             PMenuLat.MaximumSize = new Size(220, 647);
-            PMenuLat.MinimumSize = new Size(49, 647);
+            PMenuLat.MinimumSize = new Size(58, 647);
             PMenuLat.Name = "PMenuLat";
             PMenuLat.Size = new Size(220, 647);
             PMenuLat.TabIndex = 15;
+            PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
-            // btnRespaldo
+            // lblCerrar
             // 
-            btnRespaldo.BackColor = Color.FromArgb(17, 17, 27);
-            btnRespaldo.Cursor = Cursors.Hand;
-            btnRespaldo.Dock = DockStyle.Top;
-            btnRespaldo.FlatAppearance.BorderSize = 0;
-            btnRespaldo.FlatStyle = FlatStyle.Flat;
-            btnRespaldo.ForeColor = SystemColors.ControlLightLight;
-            btnRespaldo.Location = new Point(0, 246);
-            btnRespaldo.Margin = new Padding(4, 3, 4, 3);
-            btnRespaldo.Name = "btnRespaldo";
-            btnRespaldo.Padding = new Padding(12, 0, 0, 0);
-            btnRespaldo.Size = new Size(220, 54);
-            btnRespaldo.TabIndex = 11;
-            btnRespaldo.Text = "Respaldo y Restauracion";
-            btnRespaldo.TextAlign = ContentAlignment.MiddleLeft;
-            btnRespaldo.UseVisualStyleBackColor = false;
-            btnRespaldo.Click += btnRespaldo_Click;
+            lblCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblCerrar.AutoSize = true;
+            lblCerrar.Cursor = Cursors.Hand;
+            lblCerrar.ForeColor = SystemColors.Window;
+            lblCerrar.Location = new Point(45, 612);
+            lblCerrar.Name = "lblCerrar";
+            lblCerrar.Size = new Size(75, 15);
+            lblCerrar.TabIndex = 19;
+            lblCerrar.Text = "Cerrar sesión";
             // 
-            // btnGestionarConsultar
+            // picCerrarSesion
             // 
-            btnGestionarConsultar.BackColor = Color.FromArgb(17, 17, 27);
-            btnGestionarConsultar.Cursor = Cursors.Hand;
-            btnGestionarConsultar.Dock = DockStyle.Top;
-            btnGestionarConsultar.FlatAppearance.BorderSize = 0;
-            btnGestionarConsultar.FlatStyle = FlatStyle.Flat;
-            btnGestionarConsultar.ForeColor = SystemColors.ControlLightLight;
-            btnGestionarConsultar.Location = new Point(0, 194);
-            btnGestionarConsultar.Margin = new Padding(4, 3, 4, 3);
-            btnGestionarConsultar.Name = "btnGestionarConsultar";
-            btnGestionarConsultar.Padding = new Padding(12, 0, 0, 0);
-            btnGestionarConsultar.Size = new Size(220, 52);
-            btnGestionarConsultar.TabIndex = 2;
-            btnGestionarConsultar.Text = "Gestionar Consultas y Reclamos";
-            btnGestionarConsultar.TextAlign = ContentAlignment.MiddleLeft;
-            btnGestionarConsultar.UseVisualStyleBackColor = false;
-            btnGestionarConsultar.Click += btnGestionarConsultar_Click;
+            picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            picCerrarSesion.Cursor = Cursors.Hand;
+            picCerrarSesion.Image = Properties.Resources.logout__1_;
+            picCerrarSesion.Location = new Point(9, 590);
+            picCerrarSesion.Name = "picCerrarSesion";
+            picCerrarSesion.Size = new Size(30, 43);
+            picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
+            picCerrarSesion.TabIndex = 20;
+            picCerrarSesion.TabStop = false;
+            // 
+            // iconBtnBackup
+            // 
+            iconBtnBackup.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnBackup.Dock = DockStyle.Top;
+            iconBtnBackup.FlatStyle = FlatStyle.Popup;
+            iconBtnBackup.ForeColor = Color.White;
+            iconBtnBackup.IconChar = FontAwesome.Sharp.IconChar.Database;
+            iconBtnBackup.IconColor = Color.White;
+            iconBtnBackup.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnBackup.IconSize = 40;
+            iconBtnBackup.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnBackup.Location = new Point(0, 246);
+            iconBtnBackup.Name = "iconBtnBackup";
+            iconBtnBackup.Size = new Size(220, 52);
+            iconBtnBackup.TabIndex = 18;
+            iconBtnBackup.Text = "Respaldo y Restauracion";
+            iconBtnBackup.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnBackup.UseVisualStyleBackColor = false;
+            iconBtnBackup.Click += iconBtnBackup_Click;
+            iconBtnBackup.MouseEnter += iconBtnBackup_MouseEnter;
+            iconBtnBackup.MouseLeave += iconBtnBackup_MouseLeave;
+            // 
+            // iconBtnGestionConsulta
+            // 
+            iconBtnGestionConsulta.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnGestionConsulta.Dock = DockStyle.Top;
+            iconBtnGestionConsulta.FlatStyle = FlatStyle.Popup;
+            iconBtnGestionConsulta.ForeColor = Color.White;
+            iconBtnGestionConsulta.IconChar = FontAwesome.Sharp.IconChar.Message;
+            iconBtnGestionConsulta.IconColor = Color.White;
+            iconBtnGestionConsulta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnGestionConsulta.IconSize = 40;
+            iconBtnGestionConsulta.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnGestionConsulta.Location = new Point(0, 194);
+            iconBtnGestionConsulta.Name = "iconBtnGestionConsulta";
+            iconBtnGestionConsulta.Size = new Size(220, 52);
+            iconBtnGestionConsulta.TabIndex = 17;
+            iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
+            iconBtnGestionConsulta.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnGestionConsulta.UseVisualStyleBackColor = false;
+            iconBtnGestionConsulta.Click += iconBtnGestionConsulta_Click;
+            iconBtnGestionConsulta.MouseEnter += iconBtnGestionConsulta_MouseEnter;
+            iconBtnGestionConsulta.MouseLeave += iconBtnGestionConsulta_MouseLeave;
+            // 
+            // iconBtnGestionUsuario
+            // 
+            iconBtnGestionUsuario.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnGestionUsuario.Dock = DockStyle.Top;
+            iconBtnGestionUsuario.FlatStyle = FlatStyle.Popup;
+            iconBtnGestionUsuario.ForeColor = Color.White;
+            iconBtnGestionUsuario.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            iconBtnGestionUsuario.IconColor = Color.White;
+            iconBtnGestionUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnGestionUsuario.IconSize = 40;
+            iconBtnGestionUsuario.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnGestionUsuario.Location = new Point(0, 142);
+            iconBtnGestionUsuario.Name = "iconBtnGestionUsuario";
+            iconBtnGestionUsuario.Size = new Size(220, 52);
+            iconBtnGestionUsuario.TabIndex = 16;
+            iconBtnGestionUsuario.Text = "Gestionar Usuario";
+            iconBtnGestionUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnGestionUsuario.UseVisualStyleBackColor = false;
+            iconBtnGestionUsuario.Click += iconBtnGestionUsuario_Click;
+            iconBtnGestionUsuario.Leave += iconBtnGestionUsuario_Leave;
+            iconBtnGestionUsuario.MouseEnter += iconBtnGestionUsuario_MouseEnter;
             // 
             // btnLogout
             // 
@@ -283,30 +343,11 @@
             btnLogout.TextAlign = ContentAlignment.MiddleRight;
             btnLogout.UseVisualStyleBackColor = false;
             // 
-            // btnGestionarUsuario
-            // 
-            btnGestionarUsuario.BackColor = Color.FromArgb(17, 17, 27);
-            btnGestionarUsuario.Cursor = Cursors.Hand;
-            btnGestionarUsuario.Dock = DockStyle.Top;
-            btnGestionarUsuario.FlatAppearance.BorderSize = 0;
-            btnGestionarUsuario.FlatStyle = FlatStyle.Flat;
-            btnGestionarUsuario.ForeColor = SystemColors.ControlLightLight;
-            btnGestionarUsuario.Location = new Point(0, 142);
-            btnGestionarUsuario.Margin = new Padding(4, 3, 4, 3);
-            btnGestionarUsuario.Name = "btnGestionarUsuario";
-            btnGestionarUsuario.Padding = new Padding(12, 0, 0, 0);
-            btnGestionarUsuario.Size = new Size(220, 52);
-            btnGestionarUsuario.TabIndex = 0;
-            btnGestionarUsuario.Text = "Gestionar Usuarios";
-            btnGestionarUsuario.TextAlign = ContentAlignment.MiddleLeft;
-            btnGestionarUsuario.UseVisualStyleBackColor = false;
-            btnGestionarUsuario.Click += btnGestionarUsuario_Click;
-            // 
             // PLogo
             // 
             PLogo.BackColor = Color.FromArgb(9, 10, 25);
-            PLogo.Controls.Add(label2);
-            PLogo.Controls.Add(label1);
+            PLogo.Controls.Add(lblNombreDelUsu);
+            PLogo.Controls.Add(lblRolDelUsu);
             PLogo.Controls.Add(pictureBox1);
             PLogo.Controls.Add(picUsuario);
             PLogo.Dock = DockStyle.Top;
@@ -315,28 +356,29 @@
             PLogo.Name = "PLogo";
             PLogo.Size = new Size(220, 142);
             PLogo.TabIndex = 1;
+            PLogo.MouseDown += PLogo_MouseDown;
             // 
-            // label2
+            // lblNombreDelUsu
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(4, 114);
-            label2.Name = "label2";
-            label2.Size = new Size(165, 25);
-            label2.TabIndex = 17;
-            label2.Text = "nombre y apellido";
+            lblNombreDelUsu.AutoSize = true;
+            lblNombreDelUsu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreDelUsu.ForeColor = SystemColors.ControlLightLight;
+            lblNombreDelUsu.Location = new Point(4, 114);
+            lblNombreDelUsu.Name = "lblNombreDelUsu";
+            lblNombreDelUsu.Size = new Size(165, 25);
+            lblNombreDelUsu.TabIndex = 17;
+            lblNombreDelUsu.Text = "nombre y apellido";
             // 
-            // label1
+            // lblRolDelUsu
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(4, 81);
-            label1.Name = "label1";
-            label1.Size = new Size(35, 25);
-            label1.TabIndex = 16;
-            label1.Text = "rol";
+            lblRolDelUsu.AutoSize = true;
+            lblRolDelUsu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblRolDelUsu.ForeColor = SystemColors.ControlLightLight;
+            lblRolDelUsu.Location = new Point(4, 81);
+            lblRolDelUsu.Name = "lblRolDelUsu";
+            lblRolDelUsu.Size = new Size(35, 25);
+            lblRolDelUsu.TabIndex = 16;
+            lblRolDelUsu.Text = "rol";
             // 
             // pictureBox1
             // 
@@ -380,6 +422,7 @@
             Name = "MenuAdministrador";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MenuAdmin";
+            Load += MenuAdministrador_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
@@ -390,6 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             PVentana.ResumeLayout(false);
             PMenuLat.ResumeLayout(false);
+            PMenuLat.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrarSesion).EndInit();
             PLogo.ResumeLayout(false);
             PLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -411,14 +456,16 @@
         private PictureBox pictureBox4;
         private System.Windows.Forms.Timer sidebarTime;
         private Panel PMenuLat;
-        private Button btnRespaldo;
-        private Button btnGestionarConsultar;
         private Button btnLogout;
-        private Button btnGestionarUsuario;
         private Panel PLogo;
-        private Label label2;
-        private Label label1;
+        private Label lblNombreDelUsu;
+        private Label lblRolDelUsu;
         private PictureBox pictureBox1;
         private PictureBox picUsuario;
+        private FontAwesome.Sharp.IconButton iconBtnGestionUsuario;
+        private FontAwesome.Sharp.IconButton iconBtnBackup;
+        private FontAwesome.Sharp.IconButton iconBtnGestionConsulta;
+        private Label lblCerrar;
+        private PictureBox picCerrarSesion;
     }
 }

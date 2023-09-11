@@ -7,13 +7,13 @@
     <Compile Update="Formularios\Admin\FrmGestionarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Admin\FrmGestionarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Admin\FrmRespaldo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Admin\MenuAdministrador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\Admin\FrmListaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Admin\RegistrarUsuario.cs">

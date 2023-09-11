@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion.Formularios.Admin
 {
-    partial class FrmListaUsuario
+    partial class FrmGestionarUsuario
     {
         /// <summary>
         /// Required designer variable.
