@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             panel1 = new Panel();
             txtDni = new TextBox();
             txtNombre = new TextBox();
@@ -41,10 +41,10 @@
             dataGridUsuarios = new DataGridView();
             panel2 = new Panel();
             lblDatosUsuario = new Label();
-            btnAgregar = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
+            iconBtnAgregar = new FontAwesome.Sharp.IconButton();
+            iconBtnModif = new FontAwesome.Sharp.IconButton();
+            iconBtnElim = new FontAwesome.Sharp.IconButton();
+            iconBtnPermiso = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panel2.SuspendLayout();
@@ -165,14 +165,14 @@
             dataGridUsuarios.BackgroundColor = Color.White;
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Location = new Point(80, 161);
             dataGridUsuarios.Name = "dataGridUsuarios";
@@ -201,104 +201,108 @@
             lblDatosUsuario.TabIndex = 0;
             lblDatosUsuario.Text = "Datos Del Usuario";
             // 
-            // btnAgregar
+            // iconBtnAgregar
             // 
-            btnAgregar.BackColor = Color.FromArgb(19, 173, 39);
-            btnAgregar.Cursor = Cursors.Hand;
-            btnAgregar.FlatAppearance.BorderColor = Color.Black;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
-            btnAgregar.IconColor = Color.White;
-            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(80, 99);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(89, 39);
-            btnAgregar.TabIndex = 7;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
-            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAgregar.UseVisualStyleBackColor = false;
+            iconBtnAgregar.BackColor = Color.FromArgb(19, 173, 39);
+            iconBtnAgregar.Cursor = Cursors.Hand;
+            iconBtnAgregar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnAgregar.FlatStyle = FlatStyle.Flat;
+            iconBtnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnAgregar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnAgregar.IconChar = FontAwesome.Sharp.IconChar.UserPlus;
+            iconBtnAgregar.IconColor = Color.White;
+            iconBtnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnAgregar.IconSize = 30;
+            iconBtnAgregar.Location = new Point(80, 99);
+            iconBtnAgregar.Name = "iconBtnAgregar";
+            iconBtnAgregar.Size = new Size(89, 39);
+            iconBtnAgregar.TabIndex = 7;
+            iconBtnAgregar.Text = "Agregar";
+            iconBtnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnAgregar.UseVisualStyleBackColor = false;
+            iconBtnAgregar.Click += iconBtnAgregar_Click;
             // 
-            // iconButton1
+            // iconBtnModif
             // 
-            iconButton1.BackColor = Color.FromArgb(56, 182, 255);
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(192, 99);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(96, 39);
-            iconButton1.TabIndex = 8;
-            iconButton1.Text = "Modificar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnModif.BackColor = Color.FromArgb(56, 182, 255);
+            iconBtnModif.Cursor = Cursors.Hand;
+            iconBtnModif.FlatAppearance.BorderColor = Color.Black;
+            iconBtnModif.FlatStyle = FlatStyle.Flat;
+            iconBtnModif.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnModif.ForeColor = SystemColors.ControlLightLight;
+            iconBtnModif.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
+            iconBtnModif.IconColor = Color.White;
+            iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnModif.IconSize = 30;
+            iconBtnModif.Location = new Point(192, 99);
+            iconBtnModif.Name = "iconBtnModif";
+            iconBtnModif.Size = new Size(96, 39);
+            iconBtnModif.TabIndex = 8;
+            iconBtnModif.Text = "Modificar";
+            iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnModif.UseVisualStyleBackColor = false;
+            iconBtnModif.Click += iconBtnModif_Click;
             // 
-            // iconButton2
+            // iconBtnElim
             // 
-            iconButton2.BackColor = Color.FromArgb(250, 21, 21);
-            iconButton2.Cursor = Cursors.Hand;
-            iconButton2.FlatAppearance.BorderColor = Color.Black;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton2.ForeColor = SystemColors.ControlLightLight;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.UserSlash;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 30;
-            iconButton2.Location = new Point(314, 98);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(89, 39);
-            iconButton2.TabIndex = 9;
-            iconButton2.Text = "Eliminar";
-            iconButton2.TextAlign = ContentAlignment.MiddleRight;
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            iconBtnElim.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnElim.Cursor = Cursors.Hand;
+            iconBtnElim.FlatAppearance.BorderColor = Color.Black;
+            iconBtnElim.FlatStyle = FlatStyle.Flat;
+            iconBtnElim.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnElim.ForeColor = SystemColors.ControlLightLight;
+            iconBtnElim.IconChar = FontAwesome.Sharp.IconChar.UserSlash;
+            iconBtnElim.IconColor = Color.White;
+            iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnElim.IconSize = 30;
+            iconBtnElim.Location = new Point(314, 98);
+            iconBtnElim.Name = "iconBtnElim";
+            iconBtnElim.Size = new Size(89, 39);
+            iconBtnElim.TabIndex = 9;
+            iconBtnElim.Text = "Eliminar";
+            iconBtnElim.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnElim.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnElim.UseVisualStyleBackColor = false;
+            iconBtnElim.Click += iconBtnElim_Click;
             // 
-            // iconButton3
+            // iconBtnPermiso
             // 
-            iconButton3.BackColor = Color.FromArgb(216, 103, 30);
-            iconButton3.Cursor = Cursors.Hand;
-            iconButton3.FlatAppearance.BorderColor = Color.Black;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton3.ForeColor = SystemColors.ControlLightLight;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(426, 98);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(90, 39);
-            iconButton3.TabIndex = 10;
-            iconButton3.Text = "Permiso";
-            iconButton3.TextAlign = ContentAlignment.MiddleRight;
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            iconBtnPermiso.BackColor = Color.FromArgb(216, 103, 30);
+            iconBtnPermiso.Cursor = Cursors.Hand;
+            iconBtnPermiso.FlatAppearance.BorderColor = Color.Black;
+            iconBtnPermiso.FlatStyle = FlatStyle.Flat;
+            iconBtnPermiso.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnPermiso.ForeColor = SystemColors.ControlLightLight;
+            iconBtnPermiso.IconChar = FontAwesome.Sharp.IconChar.IdCard;
+            iconBtnPermiso.IconColor = Color.White;
+            iconBtnPermiso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnPermiso.IconSize = 30;
+            iconBtnPermiso.Location = new Point(426, 98);
+            iconBtnPermiso.Name = "iconBtnPermiso";
+            iconBtnPermiso.Size = new Size(90, 39);
+            iconBtnPermiso.TabIndex = 10;
+            iconBtnPermiso.Text = "Permiso";
+            iconBtnPermiso.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnPermiso.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnPermiso.UseVisualStyleBackColor = false;
+            iconBtnPermiso.Click += iconBtnPermiso_Click;
             // 
-            // FrmListaUsuario
+            // FrmGestionarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(800, 450);
-            Controls.Add(iconButton3);
-            Controls.Add(iconButton2);
-            Controls.Add(iconButton1);
-            Controls.Add(btnAgregar);
+            Controls.Add(iconBtnPermiso);
+            Controls.Add(iconBtnElim);
+            Controls.Add(iconBtnModif);
+            Controls.Add(iconBtnAgregar);
             Controls.Add(panel2);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
-            Name = "FrmListaUsuario";
+            Name = "FrmGestionarUsuario";
             Text = "Lista de Usuarios";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -322,9 +326,9 @@
         private TextBox txtNombre;
         private Panel panel2;
         private Label lblDatosUsuario;
-        private FontAwesome.Sharp.IconButton btnAgregar;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconBtnAgregar;
+        private FontAwesome.Sharp.IconButton iconBtnModif;
+        private FontAwesome.Sharp.IconButton iconBtnElim;
+        private FontAwesome.Sharp.IconButton iconBtnPermiso;
     }
 }

@@ -22,7 +22,22 @@ namespace CapaPresentacion.Formularios.Admin
             this.instanciaMenuAdministrador = p_MenuAdministrador;
         }
 
-        private void btnAgregarUsuario_Click(object sender, EventArgs e)
+        private void iconBtnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconBtnModif_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconBtnElim_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconBtnPermiso_Click(object sender, EventArgs e)
         {
 
         }
