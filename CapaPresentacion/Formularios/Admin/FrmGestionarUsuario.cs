@@ -15,6 +15,7 @@ namespace CapaPresentacion.Formularios.Admin
     public partial class FrmGestionarUsuario : Form
     {
         private MenuAdministrador instanciaMenuAdministrador;
+        private Form currentChildForm;
 
         public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador)
         {
@@ -22,14 +23,15 @@ namespace CapaPresentacion.Formularios.Admin
             this.instanciaMenuAdministrador = p_MenuAdministrador;
         }
 
+
         private void iconBtnAgregar_Click(object sender, EventArgs e)
         {
-
+            instanciaMenuAdministrador.OpenChildForm(new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
-
+            instanciaMenuAdministrador.OpenChildForm(new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnElim_Click(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnPermiso_Click(object sender, EventArgs e)
         {
-
+            instanciaMenuAdministrador.OpenChildForm(new Admin.usuario.FrmPermisoUsuario(this.instanciaMenuAdministrador));
         }
     }
 }

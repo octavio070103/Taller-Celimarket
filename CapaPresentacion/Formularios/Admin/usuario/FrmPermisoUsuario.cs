@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Formularios.Admin
+namespace CapaPresentacion.Formularios.Admin.usuario
 {
-    public partial class RegistrarUsuario : Form
+    public partial class FrmPermisoUsuario : Form
     {
         private MenuAdministrador instanciaMenuAdministrador;
-        public RegistrarUsuario(MenuAdministrador MenuAdministrador)
+        public FrmPermisoUsuario(MenuAdministrador p_menuAdministrador)
         {
             InitializeComponent();
-            this.instanciaMenuAdministrador = MenuAdministrador;
+            this.instanciaMenuAdministrador = p_menuAdministrador;
         }
     }
 }

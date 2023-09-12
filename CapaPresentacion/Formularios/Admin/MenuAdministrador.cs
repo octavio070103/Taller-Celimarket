@@ -20,7 +20,8 @@ namespace CapaPresentacion.Formularios.Admin
 
         private IconButton currentBtn;
         private Panel leftBoderBtn;
-        private Form currentChildForm;
+
+        private Form currentChildForm;//esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
 
         private Color colorFondoOriginal; // Variable para almacenar el color de fondo original
 
@@ -50,13 +51,18 @@ namespace CapaPresentacion.Formularios.Admin
 
 
         //con este metodo abro un form secundario dentro de mi form principal que es mi menu 
+
+        //Este es un método llamado OpenChildForm que toma un parámetro de tipo Form llamado childForm. El modificador internal indica que el método solo es accesible desde dentro del mismo ensamblado (assembly),
+        //lo que generalmente significa que solo puede ser utilizado dentro del proyecto actual.
         internal void OpenChildForm(Form childForm) //internal puede manejar los formularios (hijos de)
         {
+            //Estas líneas verifican si ya hay un formulario secundario abierto (currentChildForm no es nulo).
+            //Si hay un formulario secundario abierto, se cierra antes de abrir el nuevo. Esto asegura que solo haya un formulario secundario abierto a la vez en el formulario principal.
             if (currentChildForm != null)
             {
                 currentChildForm.Close();
             }
-            currentChildForm = childForm;
+            currentChildForm = childForm;//mi var de seg del form secundario abierto
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;

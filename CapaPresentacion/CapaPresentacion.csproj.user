@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Formularios\Admin\FrmEditarUsuario.cs">
+    <Compile Update="Formularios\Admin\consulta-reclamo\FrmResponderConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Admin\usuario\FrmEditarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Admin\FrmGestionarConsulta.cs">
@@ -16,7 +19,10 @@
     <Compile Update="Formularios\Admin\MenuAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Admin\RegistrarUsuario.cs">
+    <Compile Update="Formularios\Admin\usuario\FrmPermisoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\Admin\usuario\RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Gerente\GestionarClientes.cs">

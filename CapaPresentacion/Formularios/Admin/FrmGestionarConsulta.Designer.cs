@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             textBox1 = new TextBox();
             label1 = new Label();
@@ -43,10 +43,10 @@
             dataGridUsuarios = new DataGridView();
             panel2 = new Panel();
             lblDatosUsuario = new Label();
-            btnAgregar = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            btnResponder = new FontAwesome.Sharp.IconButton();
+            iconBtnMarcar = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
+            iconBtnEliminar = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panel2.SuspendLayout();
@@ -189,14 +189,14 @@
             dataGridUsuarios.BackgroundColor = Color.White;
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Location = new Point(80, 144);
             dataGridUsuarios.Name = "dataGridUsuarios";
@@ -225,46 +225,47 @@
             lblDatosUsuario.TabIndex = 0;
             lblDatosUsuario.Text = "Detalles";
             // 
-            // btnAgregar
+            // btnResponder
             // 
-            btnAgregar.BackColor = Color.FromArgb(19, 173, 39);
-            btnAgregar.Cursor = Cursors.Hand;
-            btnAgregar.FlatAppearance.BorderColor = Color.Black;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.CommentDots;
-            btnAgregar.IconColor = Color.White;
-            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(123, 99);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(103, 39);
-            btnAgregar.TabIndex = 8;
-            btnAgregar.Text = "Responder";
-            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
-            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAgregar.UseVisualStyleBackColor = false;
+            btnResponder.BackColor = Color.FromArgb(19, 173, 39);
+            btnResponder.Cursor = Cursors.Hand;
+            btnResponder.FlatAppearance.BorderColor = Color.Black;
+            btnResponder.FlatStyle = FlatStyle.Flat;
+            btnResponder.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnResponder.ForeColor = SystemColors.ControlLightLight;
+            btnResponder.IconChar = FontAwesome.Sharp.IconChar.CommentDots;
+            btnResponder.IconColor = Color.White;
+            btnResponder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnResponder.IconSize = 30;
+            btnResponder.Location = new Point(123, 99);
+            btnResponder.Name = "btnResponder";
+            btnResponder.Size = new Size(103, 39);
+            btnResponder.TabIndex = 8;
+            btnResponder.Text = "Responder";
+            btnResponder.TextAlign = ContentAlignment.MiddleRight;
+            btnResponder.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnResponder.UseVisualStyleBackColor = false;
+            btnResponder.Click += btnResponder_Click;
             // 
-            // iconButton1
+            // iconBtnMarcar
             // 
-            iconButton1.BackColor = Color.DarkGray;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpen;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(267, 99);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(83, 39);
-            iconButton1.TabIndex = 9;
-            iconButton1.Text = "Marcar Leido";
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnMarcar.BackColor = Color.DarkGray;
+            iconBtnMarcar.Cursor = Cursors.Hand;
+            iconBtnMarcar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnMarcar.FlatStyle = FlatStyle.Flat;
+            iconBtnMarcar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnMarcar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnMarcar.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpen;
+            iconBtnMarcar.IconColor = Color.White;
+            iconBtnMarcar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnMarcar.IconSize = 30;
+            iconBtnMarcar.Location = new Point(267, 99);
+            iconBtnMarcar.Name = "iconBtnMarcar";
+            iconBtnMarcar.Size = new Size(83, 39);
+            iconBtnMarcar.TabIndex = 9;
+            iconBtnMarcar.Text = "Marcar Leido";
+            iconBtnMarcar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnMarcar.UseVisualStyleBackColor = false;
             // 
             // iconButton2
             // 
@@ -286,26 +287,26 @@
             iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton2.UseVisualStyleBackColor = false;
             // 
-            // iconButton3
+            // iconBtnEliminar
             // 
-            iconButton3.BackColor = Color.FromArgb(250, 21, 21);
-            iconButton3.Cursor = Cursors.Hand;
-            iconButton3.FlatAppearance.BorderColor = Color.Black;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton3.ForeColor = SystemColors.ControlLightLight;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.Trash;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(387, 99);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(88, 39);
-            iconButton3.TabIndex = 11;
-            iconButton3.Text = "Eliminar";
-            iconButton3.TextAlign = ContentAlignment.MiddleRight;
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            iconBtnEliminar.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnEliminar.Cursor = Cursors.Hand;
+            iconBtnEliminar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnEliminar.FlatStyle = FlatStyle.Flat;
+            iconBtnEliminar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnEliminar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnEliminar.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            iconBtnEliminar.IconColor = Color.White;
+            iconBtnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnEliminar.IconSize = 30;
+            iconBtnEliminar.Location = new Point(387, 99);
+            iconBtnEliminar.Name = "iconBtnEliminar";
+            iconBtnEliminar.Size = new Size(88, 39);
+            iconBtnEliminar.TabIndex = 11;
+            iconBtnEliminar.Text = "Eliminar";
+            iconBtnEliminar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnEliminar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnEliminar.UseVisualStyleBackColor = false;
             // 
             // FrmGestionarConsulta
             // 
@@ -313,10 +314,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(800, 471);
-            Controls.Add(iconButton3);
+            Controls.Add(iconBtnEliminar);
             Controls.Add(iconButton2);
-            Controls.Add(iconButton1);
-            Controls.Add(btnAgregar);
+            Controls.Add(iconBtnMarcar);
+            Controls.Add(btnResponder);
             Controls.Add(panel2);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
@@ -346,9 +347,9 @@
         private DataGridView dataGridUsuarios;
         private Panel panel2;
         private Label lblDatosUsuario;
-        private FontAwesome.Sharp.IconButton btnAgregar;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnResponder;
+        private FontAwesome.Sharp.IconButton iconBtnMarcar;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconBtnEliminar;
     }
 }

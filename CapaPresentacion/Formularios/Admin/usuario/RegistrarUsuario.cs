@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Admin
 {
-    public partial class FrmGestionarConsulta : Form
+    public partial class RegistrarUsuario : Form
     {
         private MenuAdministrador instanciaMenuAdministrador;
-        public FrmGestionarConsulta(MenuAdministrador p_MenuAdministrador)
+        public RegistrarUsuario(MenuAdministrador p_MenuAdministrador)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
         }
 
-        private void btnResponder_Click(object sender, EventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            this.instanciaMenuAdministrador.OpenChildForm(new Admin.consulta_reclamo.FrmResponderConsulta(this.instanciaMenuAdministrador));
+
         }
     }
 }

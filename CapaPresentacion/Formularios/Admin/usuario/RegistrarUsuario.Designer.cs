@@ -32,6 +32,8 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
+            btnActualizar = new Button();
+            btnCancelar = new Button();
             pciBoxSubirImg = new PictureBox();
             comboBox1 = new ComboBox();
             contraVisible = new FontAwesome.Sharp.IconButton();
@@ -51,8 +53,6 @@
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             lblNombre = new Label();
-            btnCancelar = new Button();
-            btnActualizar = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).BeginInit();
@@ -112,6 +112,35 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 389);
             panel2.TabIndex = 2;
+            panel2.Paint += panel2_Paint;
+            // 
+            // btnActualizar
+            // 
+            btnActualizar.Anchor = AnchorStyles.Top;
+            btnActualizar.BackColor = Color.FromArgb(47, 33, 75);
+            btnActualizar.FlatStyle = FlatStyle.Popup;
+            btnActualizar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnActualizar.ForeColor = SystemColors.ButtonFace;
+            btnActualizar.Location = new Point(374, 343);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(161, 43);
+            btnActualizar.TabIndex = 65;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Anchor = AnchorStyles.Top;
+            btnCancelar.BackColor = Color.FromArgb(1, 1, 2);
+            btnCancelar.FlatStyle = FlatStyle.Popup;
+            btnCancelar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelar.ForeColor = SystemColors.ButtonFace;
+            btnCancelar.Location = new Point(151, 346);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(161, 43);
+            btnCancelar.TabIndex = 64;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // pciBoxSubirImg
             // 
@@ -301,34 +330,6 @@
             lblNombre.Size = new Size(73, 19);
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre";
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.Anchor = AnchorStyles.Top;
-            btnCancelar.BackColor = Color.FromArgb(1, 1, 2);
-            btnCancelar.FlatStyle = FlatStyle.Popup;
-            btnCancelar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.ForeColor = SystemColors.ButtonFace;
-            btnCancelar.Location = new Point(151, 346);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(161, 43);
-            btnCancelar.TabIndex = 64;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // btnActualizar
-            // 
-            btnActualizar.Anchor = AnchorStyles.Top;
-            btnActualizar.BackColor = Color.FromArgb(47, 33, 75);
-            btnActualizar.FlatStyle = FlatStyle.Popup;
-            btnActualizar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnActualizar.ForeColor = SystemColors.ButtonFace;
-            btnActualizar.Location = new Point(374, 343);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(161, 43);
-            btnActualizar.TabIndex = 65;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = false;
             // 
             // RegistrarUsuario
             // 
