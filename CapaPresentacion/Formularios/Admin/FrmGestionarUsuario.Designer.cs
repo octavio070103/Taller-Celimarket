@@ -30,6 +30,8 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            lblEstado = new Label();
+            textBox1 = new TextBox();
             txtDni = new TextBox();
             txtNombre = new TextBox();
             textBox2 = new TextBox();
@@ -53,6 +55,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(lblEstado);
+            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(txtDni);
             panel1.Controls.Add(txtNombre);
             panel1.Controls.Add(textBox2);
@@ -64,8 +68,30 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 92);
+            panel1.Size = new Size(918, 92);
             panel1.TabIndex = 0;
+            // 
+            // lblEstado
+            // 
+            lblEstado.AutoSize = true;
+            lblEstado.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEstado.ForeColor = SystemColors.ControlLightLight;
+            lblEstado.Location = new Point(668, 57);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(49, 17);
+            lblEstado.TabIndex = 13;
+            lblEstado.Text = "Estado";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox1.ForeColor = Color.Silver;
+            textBox1.Location = new Point(723, 58);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(97, 20);
+            textBox1.TabIndex = 12;
+            textBox1.Text = "Estado";
             // 
             // txtDni
             // 
@@ -151,7 +177,7 @@
             lblListaEmpleados.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblListaEmpleados.ForeColor = SystemColors.ControlLightLight;
             lblListaEmpleados.ImageAlign = ContentAlignment.TopCenter;
-            lblListaEmpleados.Location = new Point(267, 0);
+            lblListaEmpleados.Location = new Point(326, 0);
             lblListaEmpleados.Name = "lblListaEmpleados";
             lblListaEmpleados.Size = new Size(276, 45);
             lblListaEmpleados.TabIndex = 0;
@@ -174,21 +200,21 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Location = new Point(80, 161);
+            dataGridUsuarios.Location = new Point(12, 170);
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 25;
-            dataGridUsuarios.Size = new Size(427, 277);
+            dataGridUsuarios.Size = new Size(644, 359);
             dataGridUsuarios.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
             panel2.Controls.Add(lblDatosUsuario);
-            panel2.Location = new Point(550, 98);
+            panel2.Location = new Point(680, 99);
             panel2.Name = "panel2";
-            panel2.Size = new Size(238, 340);
+            panel2.Size = new Size(238, 430);
             panel2.TabIndex = 3;
             // 
             // lblDatosUsuario
@@ -294,7 +320,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(918, 571);
             Controls.Add(iconBtnPermiso);
             Controls.Add(iconBtnElim);
             Controls.Add(iconBtnModif);
@@ -304,6 +330,7 @@
             Controls.Add(panel1);
             Name = "FrmGestionarUsuario";
             Text = "Lista de Usuarios";
+            Load += FrmGestionarUsuario_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
@@ -330,5 +357,7 @@
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private FontAwesome.Sharp.IconButton iconBtnElim;
         private FontAwesome.Sharp.IconButton iconBtnPermiso;
+        private Label lblEstado;
+        private TextBox textBox1;
     }
 }

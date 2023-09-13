@@ -1,4 +1,6 @@
-﻿using Proyecto_Taller.Presentacion.Formularios.Vendedor;
+﻿using capaEntidad;
+using CapaLogica;
+using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,6 +44,16 @@ namespace CapaPresentacion.Formularios.Admin
         private void iconBtnPermiso_Click(object sender, EventArgs e)
         {
             instanciaMenuAdministrador.OpenChildForm(new Admin.usuario.FrmPermisoUsuario(this.instanciaMenuAdministrador));
+        }
+
+        private void FrmGestionarUsuario_Load(object sender, EventArgs e)
+        {
+            CL_usuario obj_CL_Usuario = new CL_usuario();
+            //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+            List<capaEntidad.usuario> listaUsuarios = obj_CL_Usuario.listarUsuarios();
+
+            // Asigna la lista de usuarios al DataGridView (como fuente de datos)
+            dataGridUsuarios.DataSource = listaUsuarios;
         }
     }
 }

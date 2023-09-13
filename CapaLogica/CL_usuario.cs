@@ -12,10 +12,18 @@ namespace CapaLogica
     {
         private CD_usuario obj_cd_usuario = new CD_usuario();
         //retorna la lista que esta en nuestra caaps de datos de ususarios
-        public List<usuario> listar()
+        public List<usuario> listarUsuarios()
         {
 
-            return obj_cd_usuario.listar();
+            return obj_cd_usuario.listarUsuarios();
         }
+
+        public usuario AutenticarUsuario(string dni, string password)
+        {
+
+            // Llamamos al método de autenticación en la capa de datos
+            return  obj_cd_usuario.AutenticarUsuario(dni, password);
+        }
+
     }
 }
