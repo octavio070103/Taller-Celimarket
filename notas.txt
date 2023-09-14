@@ -30,4 +30,6 @@ ej: private SqlConnection Conexion = new SqlConnection(ConfigurationManager.Conn
 
 
 --------------------
+yo estoy usando el metodo listar para verificar tal vez me convenga crear un metodo login para no estar trayendo todo y verificarlo en el sql solamente
+la dif con el metodo de  mauro es la forma de acceder a los datos y que el uso mdistintos nobre
 

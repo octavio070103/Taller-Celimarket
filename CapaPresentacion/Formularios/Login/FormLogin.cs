@@ -181,8 +181,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //aca va el formulario que quiero qeu se abra
-                    MenuAdministrador formAbrir = new MenuAdministrador();
+                    //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
+                    MenuAdministrador formAbrir = new MenuAdministrador(obj_usuario);
                     formAbrir.Show();
                     this.Hide();
                 }

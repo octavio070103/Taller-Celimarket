@@ -27,7 +27,11 @@ namespace CapaPresentacion.Formularios.Admin
 
         bool sidebarExpand;
 
-        public MenuAdministrador()
+        //aca decalro una var de tipo estatica pq no va a varuar su valor y es un obj de clase usuario que esta en la capa de entidad
+        private static capaEntidad.usuario usuarioActual;
+
+        //este es el constructor de mi clase menuAdministrador y le paso como parametro a ese contructor un obj de tipo Usuario
+        public MenuAdministrador(capaEntidad.usuario objUsuario)
         {
             InitializeComponent();
             colorFondoOriginal = iconBtnGestionUsuario.BackColor; // Almacena el color de fondo original
@@ -39,6 +43,9 @@ namespace CapaPresentacion.Formularios.Admin
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+
+            //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
+            usuarioActual = objUsuario;
         }
 
 
@@ -78,7 +85,7 @@ namespace CapaPresentacion.Formularios.Admin
             this.Hide();
 
             // Muestra el formulario principal (el "Home")
-            MenuAdministrador menuAdmin = new MenuAdministrador(); // Reemplaza "Form1" con el nombre real de tu formulario principal
+            MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
             menuAdmin.Show();
         }
 
@@ -182,6 +189,11 @@ namespace CapaPresentacion.Formularios.Admin
             // Agrega los controladores de eventos a los botones
             iconBtnGestionUsuario.MouseEnter += new EventHandler(iconBtnGestionUsuario_MouseEnter);
             iconBtnGestionUsuario.MouseLeave += new EventHandler(iconBtnGestionUsuario_Leave);
+
+
+            //pone los datos de uusario que se registra en el menu
+            lblNombreDelUsu.Text = usuarioActual.nombre + " " + usuarioActual.apellido;
+            lblRolDelUsu.Text = usuarioActual.apellido;
         }
 
         private void iconBtnGestionUsuario_MouseEnter(object sender, EventArgs e)

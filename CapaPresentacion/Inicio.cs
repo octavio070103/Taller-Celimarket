@@ -12,8 +12,8 @@ namespace CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MenuAdministrador form2 = new MenuAdministrador();
-            form2.Show();
+          //  MenuAdministrador form2 = new MenuAdministrador();
+          //  form2.Show();
         }
     }
 }
