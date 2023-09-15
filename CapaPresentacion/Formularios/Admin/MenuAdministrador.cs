@@ -18,14 +18,17 @@ namespace CapaPresentacion.Formularios.Admin
         private Point mouseDownLocation;
         private Size originalSize;
 
-        private IconButton currentBtn;
         private Panel leftBoderBtn;
 
-        private Form currentChildForm;//esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
+        //esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
+        private Form currentChildForm;
+        private IconButton currentBtn;
 
         private Color colorFondoOriginal; // Variable para almacenar el color de fondo original
 
         bool sidebarExpand;
+
+
 
         //aca decalro una var de tipo estatica pq no va a varuar su valor y es un obj de clase usuario que esta en la capa de entidad
         private static capaEntidad.usuario usuarioActual;
@@ -69,10 +72,13 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 currentChildForm.Close();
             }
+
+            //configuramos el form
             currentChildForm = childForm;//mi var de seg del form secundario abierto
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
+            //agrego el form al contenedor
             PVentana.Controls.Add(childForm);
             PVentana.Tag = childForm;
             childForm.BringToFront();

@@ -1,5 +1,6 @@
 ﻿using capaEntidad;
 using CapaLogica;
+using FontAwesome.Sharp;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,12 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnAgregar_Click(object sender, EventArgs e)
         {
-            instanciaMenuAdministrador.OpenChildForm(new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
+            instanciaMenuAdministrador.OpenChildForm( new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
-            instanciaMenuAdministrador.OpenChildForm(new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
+            instanciaMenuAdministrador.OpenChildForm( new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnElim_Click(object sender, EventArgs e)
