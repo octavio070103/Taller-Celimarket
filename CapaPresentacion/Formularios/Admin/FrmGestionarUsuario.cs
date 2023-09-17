@@ -29,12 +29,12 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnAgregar_Click(object sender, EventArgs e)
         {
-            instanciaMenuAdministrador.OpenChildForm( new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
+            instanciaMenuAdministrador.OpenChildForm(new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
-            instanciaMenuAdministrador.OpenChildForm( new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
+            instanciaMenuAdministrador.OpenChildForm(new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
         }
 
         private void iconBtnElim_Click(object sender, EventArgs e)
@@ -55,6 +55,25 @@ namespace CapaPresentacion.Formularios.Admin
 
             // Asigna la lista de usuarios al DataGridView (como fuente de datos)
             dataGridUsuarios.DataSource = listaUsuarios;
+
+            iconbtnGuardar.Visible = false;
+            iconBtnCancelar.Visible = false;
+        }
+
+        private void dataGridUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void iconBtnModif_Click_1(object sender, EventArgs e)
+        {
+            iconbtnGuardar.Visible = true;
+            iconBtnCancelar.Visible = true;
+            iconBtnModif.Visible = false;
         }
     }
 }

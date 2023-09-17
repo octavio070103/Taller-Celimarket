@@ -32,10 +32,11 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
+            iconBtnModif = new FontAwesome.Sharp.IconButton();
             btnActualizar = new Button();
             btnCancelar = new Button();
             pciBoxSubirImg = new PictureBox();
-            comboBox1 = new ComboBox();
+            comboRol = new ComboBox();
             contraVisible = new FontAwesome.Sharp.IconButton();
             lblPerfilUsuario = new Label();
             lblDomicilio = new Label();
@@ -44,7 +45,6 @@
             lblPassword = new Label();
             textBox5 = new TextBox();
             lblEmail = new Label();
-            textBox4 = new TextBox();
             textBox2 = new TextBox();
             lblTelefono = new Label();
             lblDni = new Label();
@@ -86,10 +86,11 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(iconBtnModif);
             panel2.Controls.Add(btnActualizar);
             panel2.Controls.Add(btnCancelar);
             panel2.Controls.Add(pciBoxSubirImg);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(comboRol);
             panel2.Controls.Add(contraVisible);
             panel2.Controls.Add(lblPerfilUsuario);
             panel2.Controls.Add(lblDomicilio);
@@ -98,7 +99,6 @@
             panel2.Controls.Add(lblPassword);
             panel2.Controls.Add(textBox5);
             panel2.Controls.Add(lblEmail);
-            panel2.Controls.Add(textBox4);
             panel2.Controls.Add(textBox2);
             panel2.Controls.Add(lblTelefono);
             panel2.Controls.Add(lblDni);
@@ -114,6 +114,28 @@
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
             // 
+            // iconBtnModif
+            // 
+            iconBtnModif.BackColor = Color.FromArgb(255, 222, 89);
+            iconBtnModif.Cursor = Cursors.Hand;
+            iconBtnModif.FlatAppearance.BorderColor = Color.Black;
+            iconBtnModif.FlatStyle = FlatStyle.Flat;
+            iconBtnModif.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnModif.ForeColor = Color.White;
+            iconBtnModif.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconBtnModif.IconColor = Color.White;
+            iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnModif.IconSize = 30;
+            iconBtnModif.ImageAlign = ContentAlignment.TopCenter;
+            iconBtnModif.Location = new Point(356, 122);
+            iconBtnModif.Name = "iconBtnModif";
+            iconBtnModif.Size = new Size(213, 33);
+            iconBtnModif.TabIndex = 66;
+            iconBtnModif.Text = "Agregar Domicilio";
+            iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnModif.UseVisualStyleBackColor = false;
+            // 
             // btnActualizar
             // 
             btnActualizar.Anchor = AnchorStyles.Top;
@@ -125,8 +147,9 @@
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(161, 43);
             btnActualizar.TabIndex = 65;
-            btnActualizar.Text = "Actualizar";
+            btnActualizar.Text = "Guardar";
             btnActualizar.UseVisualStyleBackColor = false;
+           
             // 
             // btnCancelar
             // 
@@ -152,13 +175,13 @@
             pciBoxSubirImg.TabIndex = 41;
             pciBoxSubirImg.TabStop = false;
             // 
-            // comboBox1
+            // comboRol
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(356, 238);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(213, 23);
-            comboBox1.TabIndex = 39;
+            comboRol.FormattingEnabled = true;
+            comboRol.Location = new Point(356, 180);
+            comboRol.Name = "comboRol";
+            comboRol.Size = new Size(213, 23);
+            comboRol.TabIndex = 39;
             // 
             // contraVisible
             // 
@@ -169,7 +192,7 @@
             contraVisible.IconColor = Color.Gray;
             contraVisible.IconFont = FontAwesome.Sharp.IconFont.Auto;
             contraVisible.IconSize = 26;
-            contraVisible.Location = new Point(549, 180);
+            contraVisible.Location = new Point(549, 244);
             contraVisible.Name = "contraVisible";
             contraVisible.Size = new Size(20, 20);
             contraVisible.TabIndex = 38;
@@ -209,9 +232,10 @@
             // textBox6
             // 
             textBox6.Cursor = Cursors.IBeam;
-            textBox6.Location = new Point(356, 180);
+            textBox6.Location = new Point(356, 241);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
+            textBox6.PasswordChar = '*';
             textBox6.Size = new Size(213, 23);
             textBox6.TabIndex = 13;
             // 
@@ -243,15 +267,6 @@
             lblEmail.Size = new Size(52, 19);
             lblEmail.TabIndex = 10;
             lblEmail.Text = "Email";
-            // 
-            // textBox4
-            // 
-            textBox4.Cursor = Cursors.IBeam;
-            textBox4.Location = new Point(356, 122);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(213, 23);
-            textBox4.TabIndex = 9;
             // 
             // textBox2
             // 
@@ -340,6 +355,7 @@
             Controls.Add(panel1);
             Name = "RegistrarUsuario";
             Text = "RegistrarUsuario";
+            Load += RegistrarUsuario_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -361,7 +377,6 @@
         private PictureBox pictureBox1;
         private TextBox textBox5;
         private Label lblEmail;
-        private TextBox textBox4;
         private TextBox textBox2;
         private Label lblTelefono;
         private Label lblDni;
@@ -370,10 +385,11 @@
         private TextBox textBox7;
         private TextBox textBox6;
         private Label lblPassword;
-        private ComboBox comboBox1;
+        private ComboBox comboRol;
         private FontAwesome.Sharp.IconButton contraVisible;
         private PictureBox pciBoxSubirImg;
         private Button btnCancelar;
         private Button btnActualizar;
+        private FontAwesome.Sharp.IconButton iconBtnModif;
     }
 }

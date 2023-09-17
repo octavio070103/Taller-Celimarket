@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using capaEntidad;
+using CapaLogica;
+
 namespace CapaPresentacion.Formularios.Admin
 {
     public partial class RegistrarUsuario : Form
@@ -23,5 +26,18 @@ namespace CapaPresentacion.Formularios.Admin
         {
 
         }
+
+        private void RegistrarUsuario_Load(object sender, EventArgs e)
+        {
+            List<rol> listaRol = new CL_rol().listarRol();
+
+            //va a leer todos los items dentro de la lista
+            foreach (rol item in listaRol)
+            {
+                comboRol.Items.Add(item.descripcion_rol);
+            }
+        }
+
+       
     }
 }

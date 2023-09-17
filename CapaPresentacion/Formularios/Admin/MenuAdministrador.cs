@@ -28,14 +28,33 @@ namespace CapaPresentacion.Formularios.Admin
 
         bool sidebarExpand;
 
-
-
         //aca decalro una var de tipo estatica pq no va a varuar su valor y es un obj de clase usuario que esta en la capa de entidad
         private static capaEntidad.usuario usuarioActual;
 
         //este es el constructor de mi clase menuAdministrador y le paso como parametro a ese contructor un obj de tipo Usuario
-        public MenuAdministrador(capaEntidad.usuario objUsuario)
+        public MenuAdministrador(capaEntidad.usuario objUsuario = null)
         {
+            if (objUsuario == null)
+            {
+                usuarioActual = new capaEntidad.usuario()
+                {
+                    id_usuario = 5,
+                    nombre = "prueba",
+                    apellido = "prueba",
+                    dni = "111",
+                    email = "prueba@gmail",
+                    password = "1",
+                    telefono = "378",
+
+                };
+            }
+            else
+            {
+                //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
+                usuarioActual = objUsuario;
+            }
+
+
             InitializeComponent();
             colorFondoOriginal = iconBtnGestionUsuario.BackColor; // Almacena el color de fondo original
 
@@ -47,8 +66,7 @@ namespace CapaPresentacion.Formularios.Admin
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-            //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
-            usuarioActual = objUsuario;
+
         }
 
 

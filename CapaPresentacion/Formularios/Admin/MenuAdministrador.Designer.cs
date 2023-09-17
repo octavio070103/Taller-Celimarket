@@ -83,7 +83,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(934, 45);
+            panel1.Size = new Size(1159, 45);
             panel1.TabIndex = 5;
             panel1.MouseDown += panel1_MouseDown;
             // 
@@ -92,7 +92,7 @@
             pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox4.Cursor = Cursors.Hand;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(902, 5);
+            pictureBox4.Location = new Point(1127, 5);
             pictureBox4.Margin = new Padding(4, 3, 4, 3);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(28, 24);
@@ -106,7 +106,7 @@
             picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picRestaurar.Cursor = Cursors.Hand;
             picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
-            picRestaurar.Location = new Point(874, 3);
+            picRestaurar.Location = new Point(1099, 3);
             picRestaurar.Margin = new Padding(4, 3, 4, 3);
             picRestaurar.Name = "picRestaurar";
             picRestaurar.Size = new Size(26, 28);
@@ -121,7 +121,7 @@
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.Cursor = Cursors.Hand;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(839, 14);
+            pictureBox2.Location = new Point(1064, 14);
             pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(27, 24);
@@ -136,7 +136,7 @@
             lblTituloMenu.AutoSize = true;
             lblTituloMenu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblTituloMenu.ForeColor = SystemColors.ControlLightLight;
-            lblTituloMenu.Location = new Point(407, 8);
+            lblTituloMenu.Location = new Point(519, 8);
             lblTituloMenu.Name = "lblTituloMenu";
             lblTituloMenu.Size = new Size(58, 25);
             lblTituloMenu.TabIndex = 15;
@@ -167,7 +167,7 @@
             picMinPantalla.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picMinPantalla.Cursor = Cursors.Hand;
             picMinPantalla.Image = (Image)resources.GetObject("picMinPantalla.Image");
-            picMinPantalla.Location = new Point(1573, 14);
+            picMinPantalla.Location = new Point(1798, 14);
             picMinPantalla.Margin = new Padding(4, 3, 4, 3);
             picMinPantalla.Name = "picMinPantalla";
             picMinPantalla.Size = new Size(27, 24);
@@ -179,7 +179,7 @@
             // 
             picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
             picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
-            picMaxPantalla.Location = new Point(874, 5);
+            picMaxPantalla.Location = new Point(1099, 5);
             picMaxPantalla.Margin = new Padding(4, 3, 4, 3);
             picMaxPantalla.Name = "picMaxPantalla";
             picMaxPantalla.Size = new Size(26, 27);
@@ -193,7 +193,7 @@
             picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picCerrar.Cursor = Cursors.Hand;
             picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
-            picCerrar.Location = new Point(1640, 5);
+            picCerrar.Location = new Point(1865, 5);
             picCerrar.Margin = new Padding(4, 3, 4, 3);
             picCerrar.Name = "picCerrar";
             picCerrar.Size = new Size(28, 24);
@@ -209,7 +209,7 @@
             PVentana.Location = new Point(0, 45);
             PVentana.Margin = new Padding(4, 3, 4, 3);
             PVentana.Name = "PVentana";
-            PVentana.Size = new Size(934, 636);
+            PVentana.Size = new Size(1159, 604);
             PVentana.TabIndex = 6;
             PVentana.MouseDown += PVentana_MouseDown;
             // 
@@ -415,7 +415,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(934, 681);
+            ClientSize = new Size(1159, 649);
             Controls.Add(PVentana);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;

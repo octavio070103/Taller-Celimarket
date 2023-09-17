@@ -54,9 +54,7 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                    // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
-                    Console.WriteLine("Error de conexión: " + ex.Message);
-                    lista = new List<usuario>();
+                     
                 }
             }
             return lista; // Devolvemos la lista de usuarios
@@ -118,6 +116,7 @@ namespace CapaDatos
                 {
                     // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
                     Console.WriteLine("Error de conexión: " + ex.Message);
+
                 }
             }
             return null; // Devolvemos null si no se encontró el usuario
