@@ -15,8 +15,8 @@ namespace capaEntidad
         public string email { get; set; }
         public string password { get; set; }
         public string telefono { get; set; }
-        public rol obj_id_rol { get; set; }
-        public domicilio obj_id_domicilio { get; set; }
+        public rol obj_rol { get; set; }
+        public domicilio obj_domicilio { get; set; }
         public bool estado_usuario { get; set; }
     }
 }

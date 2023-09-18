@@ -18,5 +18,15 @@ namespace CapaPresentacion.Formularios.Admin
             InitializeComponent();
             this.instanciaMenuAdministrador = MenuAdministrador;
         }
+
+        private void iconbtnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void limpiarCampos()
+        {
+            
+        }
     }
 }

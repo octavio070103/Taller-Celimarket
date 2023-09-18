@@ -30,9 +30,10 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            comboFiltroEstado = new ComboBox();
             lblEstado = new Label();
-            txtEstaFiltro = new TextBox();
             txtDniFiltro = new TextBox();
             txtNombreFiltro = new TextBox();
             txtApeFiltro = new TextBox();
@@ -51,8 +52,12 @@
             col_telefono = new DataGridViewTextBoxColumn();
             col_id_rol = new DataGridViewTextBoxColumn();
             col_Rol = new DataGridViewTextBoxColumn();
-            col_estado = new DataGridViewTextBoxColumn();
+            col_id_domicilio = new DataGridViewTextBoxColumn();
+            col_domicilio_calle = new DataGridViewTextBoxColumn();
+            col_domicilio_numero = new DataGridViewTextBoxColumn();
+            col_domicilio_prov = new DataGridViewTextBoxColumn();
             Estado_Valor = new DataGridViewTextBoxColumn();
+            col_estado = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             txtIdGuardado = new TextBox();
@@ -86,8 +91,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblEstado);
-            panel1.Controls.Add(txtEstaFiltro);
             panel1.Controls.Add(txtDniFiltro);
             panel1.Controls.Add(txtNombreFiltro);
             panel1.Controls.Add(txtApeFiltro);
@@ -102,6 +107,15 @@
             panel1.Size = new Size(1014, 92);
             panel1.TabIndex = 0;
             // 
+            // comboFiltroEstado
+            // 
+            comboFiltroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboFiltroEstado.FormattingEnabled = true;
+            comboFiltroEstado.Location = new Point(723, 56);
+            comboFiltroEstado.Name = "comboFiltroEstado";
+            comboFiltroEstado.Size = new Size(88, 23);
+            comboFiltroEstado.TabIndex = 24;
+            // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
@@ -112,17 +126,6 @@
             lblEstado.Size = new Size(49, 17);
             lblEstado.TabIndex = 13;
             lblEstado.Text = "Estado";
-            // 
-            // txtEstaFiltro
-            // 
-            txtEstaFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEstaFiltro.ForeColor = Color.Silver;
-            txtEstaFiltro.Location = new Point(723, 58);
-            txtEstaFiltro.Multiline = true;
-            txtEstaFiltro.Name = "txtEstaFiltro";
-            txtEstaFiltro.Size = new Size(97, 20);
-            txtEstaFiltro.TabIndex = 12;
-            txtEstaFiltro.Text = "Estado";
             // 
             // txtDniFiltro
             // 
@@ -218,39 +221,47 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridUsuarios.BackgroundColor = Color.White;
-            dataGridUsuarios.BorderStyle = BorderStyle.None;
-            dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.Window;
-            dataGridViewCellStyle1.Padding = new Padding(2);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
+            dataGridUsuarios.BorderStyle = BorderStyle.None;
+            dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_estado, Estado_Valor });
+            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 176);
             dataGridUsuarios.MultiSelect = false;
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
+            dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridUsuarios.Size = new Size(731, 433);
             dataGridUsuarios.TabIndex = 1;
+            dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick_1;
             // 
             // col_id_usuario
             // 
@@ -258,7 +269,7 @@
             col_id_usuario.Name = "col_id_usuario";
             col_id_usuario.ReadOnly = true;
             col_id_usuario.Visible = false;
-            col_id_usuario.Width = 73;
+            col_id_usuario.Width = 77;
             // 
             // col_dni
             // 
@@ -312,7 +323,7 @@
             col_id_rol.Name = "col_id_rol";
             col_id_rol.ReadOnly = true;
             col_id_rol.Visible = false;
-            col_id_rol.Width = 64;
+            col_id_rol.Width = 68;
             // 
             // col_Rol
             // 
@@ -321,12 +332,34 @@
             col_Rol.Name = "col_Rol";
             col_Rol.ReadOnly = true;
             // 
-            // col_estado
+            // col_id_domicilio
             // 
-            col_estado.HeaderText = "Estado";
-            col_estado.Name = "col_estado";
-            col_estado.ReadOnly = true;
-            col_estado.Width = 74;
+            col_id_domicilio.HeaderText = "id_domicilio";
+            col_id_domicilio.Name = "col_id_domicilio";
+            col_id_domicilio.ReadOnly = true;
+            col_id_domicilio.Visible = false;
+            col_id_domicilio.Width = 108;
+            // 
+            // col_domicilio_calle
+            // 
+            col_domicilio_calle.HeaderText = "Calle";
+            col_domicilio_calle.Name = "col_domicilio_calle";
+            col_domicilio_calle.ReadOnly = true;
+            col_domicilio_calle.Width = 67;
+            // 
+            // col_domicilio_numero
+            // 
+            col_domicilio_numero.HeaderText = "Numero";
+            col_domicilio_numero.Name = "col_domicilio_numero";
+            col_domicilio_numero.ReadOnly = true;
+            col_domicilio_numero.Width = 83;
+            // 
+            // col_domicilio_prov
+            // 
+            col_domicilio_prov.HeaderText = "Provincia";
+            col_domicilio_prov.Name = "col_domicilio_prov";
+            col_domicilio_prov.ReadOnly = true;
+            col_domicilio_prov.Width = 91;
             // 
             // Estado_Valor
             // 
@@ -335,6 +368,13 @@
             Estado_Valor.Name = "Estado_Valor";
             Estado_Valor.ReadOnly = true;
             Estado_Valor.Visible = false;
+            // 
+            // col_estado
+            // 
+            col_estado.HeaderText = "Estado";
+            col_estado.Name = "col_estado";
+            col_estado.ReadOnly = true;
+            col_estado.Width = 74;
             // 
             // panel2
             // 
@@ -718,7 +758,6 @@
         private FontAwesome.Sharp.IconButton iconBtnElim;
         private FontAwesome.Sharp.IconButton iconBtnPermiso;
         private Label lblEstado;
-        private TextBox txtEstaFiltro;
         private Label label4;
         private TextBox txtEmailDato;
         private Label label5;
@@ -737,6 +776,9 @@
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private FontAwesome.Sharp.IconButton iconBtnModif;
+        private TextBox txtIdGuardado;
+        private FontAwesome.Sharp.IconButton iconButton1;
+        private ComboBox comboFiltroEstado;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
         private DataGridViewTextBoxColumn col_nombre;
@@ -746,9 +788,11 @@
         private DataGridViewTextBoxColumn col_telefono;
         private DataGridViewTextBoxColumn col_id_rol;
         private DataGridViewTextBoxColumn col_Rol;
-        private DataGridViewTextBoxColumn col_estado;
+        private DataGridViewTextBoxColumn col_id_domicilio;
+        private DataGridViewTextBoxColumn col_domicilio_calle;
+        private DataGridViewTextBoxColumn col_domicilio_numero;
+        private DataGridViewTextBoxColumn col_domicilio_prov;
         private DataGridViewTextBoxColumn Estado_Valor;
-        private TextBox txtIdGuardado;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private DataGridViewTextBoxColumn col_estado;
     }
 }

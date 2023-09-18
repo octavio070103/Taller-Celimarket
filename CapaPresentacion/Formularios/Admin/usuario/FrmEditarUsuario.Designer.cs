@@ -50,8 +50,8 @@
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
             lblNombre = new Label();
-            btnActualizar = new Button();
-            btnCancelar = new Button();
+            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -270,33 +270,48 @@
             lblNombre.TabIndex = 42;
             lblNombre.Text = "Nombre";
             // 
-            // btnActualizar
+            // iconbtnGuardar
             // 
-            btnActualizar.Anchor = AnchorStyles.Top;
-            btnActualizar.BackColor = Color.FromArgb(47, 33, 75);
-            btnActualizar.FlatStyle = FlatStyle.Popup;
-            btnActualizar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnActualizar.ForeColor = SystemColors.ButtonFace;
-            btnActualizar.Location = new Point(393, 403);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(161, 43);
-            btnActualizar.TabIndex = 62;
-            btnActualizar.Text = "Actualizar";
-            btnActualizar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.BackColor = Color.FromArgb(47, 33, 75);
+            iconbtnGuardar.Cursor = Cursors.Hand;
+            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
+            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
+            iconbtnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
+            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
+            iconbtnGuardar.IconColor = Color.White;
+            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnGuardar.IconSize = 30;
+            iconbtnGuardar.Location = new Point(401, 403);
+            iconbtnGuardar.Name = "iconbtnGuardar";
+            iconbtnGuardar.Size = new Size(162, 43);
+            iconbtnGuardar.TabIndex = 64;
+            iconbtnGuardar.Text = "Guardar";
+            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
+            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
-            // btnCancelar
+            // iconBtnCancelar
             // 
-            btnCancelar.Anchor = AnchorStyles.Top;
-            btnCancelar.BackColor = Color.FromArgb(1, 1, 2);
-            btnCancelar.FlatStyle = FlatStyle.Popup;
-            btnCancelar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.ForeColor = SystemColors.ButtonFace;
-            btnCancelar.Location = new Point(188, 403);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(161, 43);
-            btnCancelar.TabIndex = 63;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.BackColor = Color.FromArgb(1, 1, 2);
+            iconBtnCancelar.Cursor = Cursors.Hand;
+            iconBtnCancelar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
+            iconBtnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCancelar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            iconBtnCancelar.IconColor = Color.White;
+            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCancelar.IconSize = 30;
+            iconBtnCancelar.Location = new Point(186, 403);
+            iconBtnCancelar.Name = "iconBtnCancelar";
+            iconBtnCancelar.Size = new Size(162, 43);
+            iconBtnCancelar.TabIndex = 65;
+            iconBtnCancelar.Text = "Cancelar";
+            iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
             // FrmEditarUsuario
             // 
@@ -304,8 +319,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(800, 450);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnActualizar);
+            Controls.Add(iconBtnCancelar);
+            Controls.Add(iconbtnGuardar);
             Controls.Add(pciBoxSubirImg);
             Controls.Add(comboBox1);
             Controls.Add(contraVisible);
@@ -359,7 +374,7 @@
         private PictureBox pictureBox1;
         private TextBox textBox1;
         private Label lblNombre;
-        private Button btnActualizar;
-        private Button btnCancelar;
+        private FontAwesome.Sharp.IconButton iconbtnGuardar;
+        private FontAwesome.Sharp.IconButton iconBtnCancelar;
     }
 }
