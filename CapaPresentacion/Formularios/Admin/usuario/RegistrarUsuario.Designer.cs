@@ -32,26 +32,27 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
-            iconBtnModif = new FontAwesome.Sharp.IconButton();
-            btnActualizar = new Button();
-            btnCancelar = new Button();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
+            iconBtnElim = new FontAwesome.Sharp.IconButton();
+            iconBtnDomicilio = new FontAwesome.Sharp.IconButton();
             pciBoxSubirImg = new PictureBox();
-            comboRol = new ComboBox();
+            comboRolUsu = new ComboBox();
             contraVisible = new FontAwesome.Sharp.IconButton();
             lblPerfilUsuario = new Label();
             lblDomicilio = new Label();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
+            txtEmailUsu = new TextBox();
+            txtPasswordUsu = new TextBox();
             lblPassword = new Label();
-            textBox5 = new TextBox();
+            txtTelefUsu = new TextBox();
             lblEmail = new Label();
-            textBox2 = new TextBox();
+            txtDniUsu = new TextBox();
             lblTelefono = new Label();
             lblDni = new Label();
-            textBox3 = new TextBox();
+            txtApelliUsu = new TextBox();
             lblApellido = new Label();
             pictureBox1 = new PictureBox();
-            textBox1 = new TextBox();
+            txtNombreUsu = new TextBox();
             lblNombre = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -86,26 +87,27 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
-            panel2.Controls.Add(iconBtnModif);
-            panel2.Controls.Add(btnActualizar);
-            panel2.Controls.Add(btnCancelar);
+            panel2.Controls.Add(iconBtnCancelar);
+            panel2.Controls.Add(iconbtnGuardar);
+            panel2.Controls.Add(iconBtnElim);
+            panel2.Controls.Add(iconBtnDomicilio);
             panel2.Controls.Add(pciBoxSubirImg);
-            panel2.Controls.Add(comboRol);
+            panel2.Controls.Add(comboRolUsu);
             panel2.Controls.Add(contraVisible);
             panel2.Controls.Add(lblPerfilUsuario);
             panel2.Controls.Add(lblDomicilio);
-            panel2.Controls.Add(textBox7);
-            panel2.Controls.Add(textBox6);
+            panel2.Controls.Add(txtEmailUsu);
+            panel2.Controls.Add(txtPasswordUsu);
             panel2.Controls.Add(lblPassword);
-            panel2.Controls.Add(textBox5);
+            panel2.Controls.Add(txtTelefUsu);
             panel2.Controls.Add(lblEmail);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(txtDniUsu);
             panel2.Controls.Add(lblTelefono);
             panel2.Controls.Add(lblDni);
-            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(txtApelliUsu);
             panel2.Controls.Add(lblApellido);
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtNombreUsu);
             panel2.Controls.Add(lblNombre);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 61);
@@ -114,56 +116,91 @@
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
             // 
-            // iconBtnModif
+            // iconBtnCancelar
             // 
-            iconBtnModif.BackColor = Color.FromArgb(255, 222, 89);
-            iconBtnModif.Cursor = Cursors.Hand;
-            iconBtnModif.FlatAppearance.BorderColor = Color.Black;
-            iconBtnModif.FlatStyle = FlatStyle.Flat;
-            iconBtnModif.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnModif.ForeColor = Color.White;
-            iconBtnModif.IconChar = FontAwesome.Sharp.IconChar.House;
-            iconBtnModif.IconColor = Color.White;
-            iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnModif.IconSize = 30;
-            iconBtnModif.ImageAlign = ContentAlignment.TopCenter;
-            iconBtnModif.Location = new Point(356, 122);
-            iconBtnModif.Name = "iconBtnModif";
-            iconBtnModif.Size = new Size(213, 33);
-            iconBtnModif.TabIndex = 66;
-            iconBtnModif.Text = "Agregar Domicilio";
-            iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnModif.UseVisualStyleBackColor = false;
+            iconBtnCancelar.BackColor = Color.FromArgb(1, 1, 2);
+            iconBtnCancelar.Cursor = Cursors.Hand;
+            iconBtnCancelar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
+            iconBtnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCancelar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            iconBtnCancelar.IconColor = Color.White;
+            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCancelar.IconSize = 30;
+            iconBtnCancelar.Location = new Point(150, 346);
+            iconBtnCancelar.Name = "iconBtnCancelar";
+            iconBtnCancelar.Size = new Size(162, 43);
+            iconBtnCancelar.TabIndex = 70;
+            iconBtnCancelar.Text = "Cancelar";
+            iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // btnActualizar
+            // iconbtnGuardar
             // 
-            btnActualizar.Anchor = AnchorStyles.Top;
-            btnActualizar.BackColor = Color.FromArgb(47, 33, 75);
-            btnActualizar.FlatStyle = FlatStyle.Popup;
-            btnActualizar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnActualizar.ForeColor = SystemColors.ButtonFace;
-            btnActualizar.Location = new Point(374, 343);
-            btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(161, 43);
-            btnActualizar.TabIndex = 65;
-            btnActualizar.Text = "Guardar";
-            btnActualizar.UseVisualStyleBackColor = false;
-           
+            iconbtnGuardar.BackColor = Color.FromArgb(47, 33, 75);
+            iconbtnGuardar.Cursor = Cursors.Hand;
+            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
+            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
+            iconbtnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
+            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
+            iconbtnGuardar.IconColor = Color.White;
+            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnGuardar.IconSize = 30;
+            iconbtnGuardar.Location = new Point(384, 343);
+            iconbtnGuardar.Name = "iconbtnGuardar";
+            iconbtnGuardar.Size = new Size(162, 43);
+            iconbtnGuardar.TabIndex = 69;
+            iconbtnGuardar.Text = "Guardar";
+            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
+            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
-            // btnCancelar
+            // iconBtnElim
             // 
-            btnCancelar.Anchor = AnchorStyles.Top;
-            btnCancelar.BackColor = Color.FromArgb(1, 1, 2);
-            btnCancelar.FlatStyle = FlatStyle.Popup;
-            btnCancelar.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnCancelar.ForeColor = SystemColors.ButtonFace;
-            btnCancelar.Location = new Point(151, 346);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(161, 43);
-            btnCancelar.TabIndex = 64;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
+            iconBtnElim.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnElim.Cursor = Cursors.Hand;
+            iconBtnElim.FlatAppearance.BorderColor = Color.Black;
+            iconBtnElim.FlatStyle = FlatStyle.Flat;
+            iconBtnElim.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnElim.ForeColor = SystemColors.ControlLightLight;
+            iconBtnElim.IconChar = FontAwesome.Sharp.IconChar.Broom;
+            iconBtnElim.IconColor = Color.White;
+            iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnElim.IconSize = 30;
+            iconBtnElim.Location = new Point(610, 283);
+            iconBtnElim.Name = "iconBtnElim";
+            iconBtnElim.Size = new Size(161, 43);
+            iconBtnElim.TabIndex = 68;
+            iconBtnElim.Text = "Limpiar";
+            iconBtnElim.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnElim.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnElim.UseVisualStyleBackColor = false;
+            // 
+            // iconBtnDomicilio
+            // 
+            iconBtnDomicilio.BackColor = Color.FromArgb(255, 222, 89);
+            iconBtnDomicilio.Cursor = Cursors.Hand;
+            iconBtnDomicilio.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDomicilio.FlatStyle = FlatStyle.Flat;
+            iconBtnDomicilio.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDomicilio.ForeColor = Color.White;
+            iconBtnDomicilio.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconBtnDomicilio.IconColor = Color.White;
+            iconBtnDomicilio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDomicilio.IconSize = 30;
+            iconBtnDomicilio.ImageAlign = ContentAlignment.TopCenter;
+            iconBtnDomicilio.Location = new Point(356, 122);
+            iconBtnDomicilio.Name = "iconBtnDomicilio";
+            iconBtnDomicilio.Size = new Size(213, 33);
+            iconBtnDomicilio.TabIndex = 66;
+            iconBtnDomicilio.Text = "Agregar Domicilio";
+            iconBtnDomicilio.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDomicilio.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDomicilio.UseVisualStyleBackColor = false;
             // 
             // pciBoxSubirImg
             // 
@@ -175,13 +212,13 @@
             pciBoxSubirImg.TabIndex = 41;
             pciBoxSubirImg.TabStop = false;
             // 
-            // comboRol
+            // comboRolUsu
             // 
-            comboRol.FormattingEnabled = true;
-            comboRol.Location = new Point(356, 180);
-            comboRol.Name = "comboRol";
-            comboRol.Size = new Size(213, 23);
-            comboRol.TabIndex = 39;
+            comboRolUsu.FormattingEnabled = true;
+            comboRolUsu.Location = new Point(356, 180);
+            comboRolUsu.Name = "comboRolUsu";
+            comboRolUsu.Size = new Size(213, 23);
+            comboRolUsu.TabIndex = 39;
             // 
             // contraVisible
             // 
@@ -220,24 +257,24 @@
             lblDomicilio.TabIndex = 15;
             lblDomicilio.Text = "Domicilio";
             // 
-            // textBox7
+            // txtEmailUsu
             // 
-            textBox7.Cursor = Cursors.IBeam;
-            textBox7.Location = new Point(99, 238);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(213, 23);
-            textBox7.TabIndex = 14;
+            txtEmailUsu.Cursor = Cursors.IBeam;
+            txtEmailUsu.Location = new Point(99, 238);
+            txtEmailUsu.Multiline = true;
+            txtEmailUsu.Name = "txtEmailUsu";
+            txtEmailUsu.Size = new Size(213, 23);
+            txtEmailUsu.TabIndex = 14;
             // 
-            // textBox6
+            // txtPasswordUsu
             // 
-            textBox6.Cursor = Cursors.IBeam;
-            textBox6.Location = new Point(356, 241);
-            textBox6.Multiline = true;
-            textBox6.Name = "textBox6";
-            textBox6.PasswordChar = '*';
-            textBox6.Size = new Size(213, 23);
-            textBox6.TabIndex = 13;
+            txtPasswordUsu.Cursor = Cursors.IBeam;
+            txtPasswordUsu.Location = new Point(356, 241);
+            txtPasswordUsu.Multiline = true;
+            txtPasswordUsu.Name = "txtPasswordUsu";
+            txtPasswordUsu.PasswordChar = '*';
+            txtPasswordUsu.Size = new Size(213, 23);
+            txtPasswordUsu.TabIndex = 13;
             // 
             // lblPassword
             // 
@@ -249,14 +286,14 @@
             lblPassword.TabIndex = 12;
             lblPassword.Text = "Contraseña";
             // 
-            // textBox5
+            // txtTelefUsu
             // 
-            textBox5.Cursor = Cursors.IBeam;
-            textBox5.Location = new Point(99, 180);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(213, 23);
-            textBox5.TabIndex = 11;
+            txtTelefUsu.Cursor = Cursors.IBeam;
+            txtTelefUsu.Location = new Point(99, 180);
+            txtTelefUsu.Multiline = true;
+            txtTelefUsu.Name = "txtTelefUsu";
+            txtTelefUsu.Size = new Size(213, 23);
+            txtTelefUsu.TabIndex = 11;
             // 
             // lblEmail
             // 
@@ -268,14 +305,14 @@
             lblEmail.TabIndex = 10;
             lblEmail.Text = "Email";
             // 
-            // textBox2
+            // txtDniUsu
             // 
-            textBox2.Cursor = Cursors.IBeam;
-            textBox2.Location = new Point(99, 122);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(213, 23);
-            textBox2.TabIndex = 8;
+            txtDniUsu.Cursor = Cursors.IBeam;
+            txtDniUsu.Location = new Point(99, 122);
+            txtDniUsu.Multiline = true;
+            txtDniUsu.Name = "txtDniUsu";
+            txtDniUsu.Size = new Size(213, 23);
+            txtDniUsu.TabIndex = 8;
             // 
             // lblTelefono
             // 
@@ -297,14 +334,14 @@
             lblDni.TabIndex = 6;
             lblDni.Text = "DNI";
             // 
-            // textBox3
+            // txtApelliUsu
             // 
-            textBox3.Cursor = Cursors.IBeam;
-            textBox3.Location = new Point(356, 65);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(213, 23);
-            textBox3.TabIndex = 5;
+            txtApelliUsu.Cursor = Cursors.IBeam;
+            txtApelliUsu.Location = new Point(356, 65);
+            txtApelliUsu.Multiline = true;
+            txtApelliUsu.Name = "txtApelliUsu";
+            txtApelliUsu.Size = new Size(213, 23);
+            txtApelliUsu.TabIndex = 5;
             // 
             // lblApellido
             // 
@@ -327,14 +364,14 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtNombreUsu
             // 
-            textBox1.Cursor = Cursors.IBeam;
-            textBox1.Location = new Point(99, 65);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(213, 23);
-            textBox1.TabIndex = 1;
+            txtNombreUsu.Cursor = Cursors.IBeam;
+            txtNombreUsu.Location = new Point(99, 65);
+            txtNombreUsu.Multiline = true;
+            txtNombreUsu.Name = "txtNombreUsu";
+            txtNombreUsu.Size = new Size(213, 23);
+            txtNombreUsu.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -371,25 +408,26 @@
         private Label lblListaEmpleados;
         private Panel panel2;
         private Label lblNombre;
-        private TextBox textBox1;
-        private TextBox textBox3;
+        private TextBox txtNombreUsu;
+        private TextBox txtApelliUsu;
         private Label lblApellido;
         private PictureBox pictureBox1;
-        private TextBox textBox5;
+        private TextBox txtTelefUsu;
         private Label lblEmail;
-        private TextBox textBox2;
+        private TextBox txtDniUsu;
         private Label lblTelefono;
         private Label lblDni;
         private Label lblPerfilUsuario;
         private Label lblDomicilio;
-        private TextBox textBox7;
-        private TextBox textBox6;
+        private TextBox txtEmailUsu;
+        private TextBox txtPasswordUsu;
         private Label lblPassword;
-        private ComboBox comboRol;
+        private ComboBox comboRolUsu;
         private FontAwesome.Sharp.IconButton contraVisible;
         private PictureBox pciBoxSubirImg;
-        private Button btnCancelar;
-        private Button btnActualizar;
-        private FontAwesome.Sharp.IconButton iconBtnModif;
+        private FontAwesome.Sharp.IconButton iconBtnDomicilio;
+        private FontAwesome.Sharp.IconButton iconBtnElim;
+        private FontAwesome.Sharp.IconButton iconbtnGuardar;
+        private FontAwesome.Sharp.IconButton iconBtnCancelar;
     }
 }

@@ -1,0 +1,20 @@
+Procedimiento almacenado
+Puedes crear un procedimiento almacenado que realice la inserción de datos. Luego, puedes llamar a este procedimiento almacenado desde tu aplicación para agregar un usuario. 
+Un procedimiento almacenado (stored procedure en inglés) es una colección de instrucciones SQL predefinidas y almacenadas en una base de datos. Estas instrucciones SQL se guardan bajo un nombre y se pueden invocar posteriormente mediante ese nombre. Los procedimientos almacenados son una parte importante de la programación de bases de datos y se utilizan para realizar varias tareas, 
+como recuperar, actualizar, insertar o eliminar datos de una base de datos.
+ventajas:Reutilización de código,Mayor seguridad,Mejor rendimiento,Mantenibilidad
+
+Uso de un procedimiento almacenado:
+Puedes crear un procedimiento almacenado que realice la inserción de datos. Luego, puedes llamar a 
+este procedimiento almacenado desde tu aplicación(en la capa de datos) para agregar un usuario recuperar, actualizar, insertar o eliminar datos de una base de datos
+----------------------------------
+Procedimientos Almacenados (Stored Procedures): Los procedimientos almacenados son fragmentos de código SQL que se almacenan en la base de datos y se utilizan para realizar operaciones específicas en la base de datos. 
+Pueden realizar una variedad de tareas, como recuperar, actualizar, insertar o eliminar datos, y pueden contener lógica personalizada para procesar datos antes o después de realizar una operación en la base de datos. Los procedimientos almacenados son especialmente útiles 
+para la reutilización de código y la ejecución eficiente de operaciones complejas en la base de datos.
+
+Restricciones CHECK: Las restricciones CHECK son reglas que se aplican a las columnas de una tabla para garantizar que los datos cumplen ciertos criterios. Por ejemplo, puedes usar una restricción CHECK para asegurarte de que el valor en
+ una columna sea mayor que cero o que un campo de fecha esté dentro de un rango específico. 
+Las restricciones CHECK se utilizan principalmente para garantizar la integridad de los datos en la base de datos y para evitar que se ingresen datos no válidos en una tabla.
+
+En resumen, los procedimientos almacenados se utilizan para definir lógica personalizada y realizar operaciones en la base de datos, mientras que las restricciones CHECK se utilizan para imponer condiciones en los datos almacenados en 
+una tabla para garantizar su integridad y validez. Son herramientas diferentes que se utilizan en situaciones diferentes dentro de una base de datos.

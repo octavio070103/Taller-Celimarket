@@ -10,6 +10,6 @@ namespace capaEntidad
     {
         public int id_rol {  get; set; }
         public string descripcion_rol {  get; set; }
-        public bool estado_rol { get; set; }
+        public int estado_rol { get; set; }
     }
 }

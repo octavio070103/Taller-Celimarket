@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             comboFiltroEstado = new ComboBox();
             lblEstado = new Label();
@@ -59,33 +60,35 @@
             Estado_Valor = new DataGridViewTextBoxColumn();
             col_estado = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            txtDomiciliodato = new TextBox();
             txtIdGuardado = new TextBox();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconBtnModif = new FontAwesome.Sharp.IconButton();
             comboEstadoDato = new ComboBox();
-            label8 = new Label();
+            lblEstadoDato = new Label();
             comboRolDato = new ComboBox();
-            label7 = new Label();
-            label4 = new Label();
+            lblDomicilioDato = new Label();
+            lblEmailDato = new Label();
             txtEmailDato = new TextBox();
-            label5 = new Label();
-            label6 = new Label();
+            lblRolDato = new Label();
+            lblTelefDato = new Label();
             txtTelefDato = new TextBox();
-            label3 = new Label();
+            lblDniDato = new Label();
             txtDniDato = new TextBox();
             txtApeDato = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
+            lblApellidoDato = new Label();
+            lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
             iconBtnAgregar = new FontAwesome.Sharp.IconButton();
             iconBtnElim = new FontAwesome.Sharp.IconButton();
             iconBtnPermiso = new FontAwesome.Sharp.IconButton();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -137,6 +140,7 @@
             txtDniFiltro.Size = new Size(97, 20);
             txtDniFiltro.TabIndex = 11;
             txtDniFiltro.Text = "DNI";
+            txtDniFiltro.KeyPress += txtDniFiltro_KeyPress;
             // 
             // txtNombreFiltro
             // 
@@ -148,6 +152,7 @@
             txtNombreFiltro.Size = new Size(97, 20);
             txtNombreFiltro.TabIndex = 10;
             txtNombreFiltro.Text = "Nombre";
+            txtNombreFiltro.KeyPress += txtNombreFiltro_KeyPress;
             // 
             // txtApeFiltro
             // 
@@ -159,6 +164,7 @@
             txtApeFiltro.Size = new Size(97, 20);
             txtApeFiltro.TabIndex = 9;
             txtApeFiltro.Text = "Apellido";
+            txtApeFiltro.KeyPress += txtApeFiltro_KeyPress;
             // 
             // lblApellido
             // 
@@ -221,26 +227,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 176);
@@ -248,14 +254,14 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -380,25 +386,25 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(iconButton1);
+            panel2.Controls.Add(txtDomiciliodato);
             panel2.Controls.Add(txtIdGuardado);
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Controls.Add(iconBtnModif);
             panel2.Controls.Add(comboEstadoDato);
-            panel2.Controls.Add(label8);
+            panel2.Controls.Add(lblEstadoDato);
             panel2.Controls.Add(comboRolDato);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label4);
+            panel2.Controls.Add(lblDomicilioDato);
+            panel2.Controls.Add(lblEmailDato);
             panel2.Controls.Add(txtEmailDato);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lblRolDato);
+            panel2.Controls.Add(lblTelefDato);
             panel2.Controls.Add(txtTelefDato);
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(lblDniDato);
             panel2.Controls.Add(txtDniDato);
             panel2.Controls.Add(txtApeDato);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(lblApellidoDato);
+            panel2.Controls.Add(lblNombreDato);
             panel2.Controls.Add(txtNombreDato);
             panel2.Controls.Add(lblDatosUsuario);
             panel2.Location = new Point(776, 92);
@@ -406,27 +412,15 @@
             panel2.Size = new Size(238, 517);
             panel2.TabIndex = 3;
             // 
-            // iconButton1
+            // txtDomiciliodato
             // 
-            iconButton1.BackColor = Color.FromArgb(255, 222, 89);
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 22;
-            iconButton1.ImageAlign = ContentAlignment.TopCenter;
-            iconButton1.Location = new Point(79, 222);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(144, 23);
-            iconButton1.TabIndex = 27;
-            iconButton1.Text = "Modificar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            txtDomiciliodato.BackColor = SystemColors.Window;
+            txtDomiciliodato.Location = new Point(79, 222);
+            txtDomiciliodato.Name = "txtDomiciliodato";
+            txtDomiciliodato.ReadOnly = true;
+            txtDomiciliodato.Size = new Size(144, 23);
+            txtDomiciliodato.TabIndex = 27;
+            txtDomiciliodato.MouseClick += txtDomiciliodato_MouseClick;
             // 
             // txtIdGuardado
             // 
@@ -456,6 +450,7 @@
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
             // iconBtnCancelar
             // 
@@ -509,16 +504,16 @@
             comboEstadoDato.Size = new Size(144, 23);
             comboEstadoDato.TabIndex = 23;
             // 
-            // label8
+            // lblEstadoDato
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.WindowText;
-            label8.Location = new Point(0, 251);
-            label8.Name = "label8";
-            label8.Size = new Size(49, 17);
-            label8.TabIndex = 22;
-            label8.Text = "Estado";
+            lblEstadoDato.AutoSize = true;
+            lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEstadoDato.ForeColor = SystemColors.WindowText;
+            lblEstadoDato.Location = new Point(0, 251);
+            lblEstadoDato.Name = "lblEstadoDato";
+            lblEstadoDato.Size = new Size(49, 17);
+            lblEstadoDato.TabIndex = 22;
+            lblEstadoDato.Text = "Estado";
             // 
             // comboRolDato
             // 
@@ -529,27 +524,27 @@
             comboRolDato.Size = new Size(144, 23);
             comboRolDato.TabIndex = 21;
             // 
-            // label7
+            // lblDomicilioDato
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = SystemColors.WindowText;
-            label7.Location = new Point(0, 222);
-            label7.Name = "label7";
-            label7.Size = new Size(68, 17);
-            label7.TabIndex = 18;
-            label7.Text = "Domicilio";
+            lblDomicilioDato.AutoSize = true;
+            lblDomicilioDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDomicilioDato.ForeColor = SystemColors.WindowText;
+            lblDomicilioDato.Location = new Point(0, 222);
+            lblDomicilioDato.Name = "lblDomicilioDato";
+            lblDomicilioDato.Size = new Size(68, 17);
+            lblDomicilioDato.TabIndex = 18;
+            lblDomicilioDato.Text = "Domicilio";
             // 
-            // label4
+            // lblEmailDato
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.ForeColor = SystemColors.WindowText;
-            label4.Location = new Point(3, 135);
-            label4.Name = "label4";
-            label4.Size = new Size(42, 17);
-            label4.TabIndex = 17;
-            label4.Text = "Email";
+            lblEmailDato.AutoSize = true;
+            lblEmailDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEmailDato.ForeColor = SystemColors.WindowText;
+            lblEmailDato.Location = new Point(3, 135);
+            lblEmailDato.Name = "lblEmailDato";
+            lblEmailDato.Size = new Size(42, 17);
+            lblEmailDato.TabIndex = 17;
+            lblEmailDato.Text = "Email";
             // 
             // txtEmailDato
             // 
@@ -558,27 +553,27 @@
             txtEmailDato.Size = new Size(144, 23);
             txtEmailDato.TabIndex = 16;
             // 
-            // label5
+            // lblRolDato
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.WindowText;
-            label5.Location = new Point(3, 193);
-            label5.Name = "label5";
-            label5.Size = new Size(28, 17);
-            label5.TabIndex = 14;
-            label5.Text = "Rol";
+            lblRolDato.AutoSize = true;
+            lblRolDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRolDato.ForeColor = SystemColors.WindowText;
+            lblRolDato.Location = new Point(3, 193);
+            lblRolDato.Name = "lblRolDato";
+            lblRolDato.Size = new Size(28, 17);
+            lblRolDato.TabIndex = 14;
+            lblRolDato.Text = "Rol";
             // 
-            // label6
+            // lblTelefDato
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.ForeColor = SystemColors.WindowText;
-            label6.Location = new Point(3, 164);
-            label6.Name = "label6";
-            label6.Size = new Size(62, 17);
-            label6.TabIndex = 13;
-            label6.Text = "Telefono";
+            lblTelefDato.AutoSize = true;
+            lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTelefDato.ForeColor = SystemColors.WindowText;
+            lblTelefDato.Location = new Point(3, 164);
+            lblTelefDato.Name = "lblTelefDato";
+            lblTelefDato.Size = new Size(62, 17);
+            lblTelefDato.TabIndex = 13;
+            lblTelefDato.Text = "Telefono";
             // 
             // txtTelefDato
             // 
@@ -587,16 +582,16 @@
             txtTelefDato.Size = new Size(144, 23);
             txtTelefDato.TabIndex = 12;
             // 
-            // label3
+            // lblDniDato
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.WindowText;
-            label3.Location = new Point(3, 48);
-            label3.Name = "label3";
-            label3.Size = new Size(32, 17);
-            label3.TabIndex = 11;
-            label3.Text = "DNI";
+            lblDniDato.AutoSize = true;
+            lblDniDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDniDato.ForeColor = SystemColors.WindowText;
+            lblDniDato.Location = new Point(3, 48);
+            lblDniDato.Name = "lblDniDato";
+            lblDniDato.Size = new Size(32, 17);
+            lblDniDato.TabIndex = 11;
+            lblDniDato.Text = "DNI";
             // 
             // txtDniDato
             // 
@@ -612,27 +607,27 @@
             txtApeDato.Size = new Size(144, 23);
             txtApeDato.TabIndex = 9;
             // 
-            // label2
+            // lblApellidoDato
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.WindowText;
-            label2.Location = new Point(3, 106);
-            label2.Name = "label2";
-            label2.Size = new Size(60, 17);
-            label2.TabIndex = 8;
-            label2.Text = "Apellido";
+            lblApellidoDato.AutoSize = true;
+            lblApellidoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblApellidoDato.ForeColor = SystemColors.WindowText;
+            lblApellidoDato.Location = new Point(3, 106);
+            lblApellidoDato.Name = "lblApellidoDato";
+            lblApellidoDato.Size = new Size(60, 17);
+            lblApellidoDato.TabIndex = 8;
+            lblApellidoDato.Text = "Apellido";
             // 
-            // label1
+            // lblNombreDato
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.WindowText;
-            label1.Location = new Point(3, 77);
-            label1.Name = "label1";
-            label1.Size = new Size(58, 17);
-            label1.TabIndex = 7;
-            label1.Text = "Nombre";
+            lblNombreDato.AutoSize = true;
+            lblNombreDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombreDato.ForeColor = SystemColors.WindowText;
+            lblNombreDato.Location = new Point(3, 77);
+            lblNombreDato.Name = "lblNombreDato";
+            lblNombreDato.Size = new Size(58, 17);
+            lblNombreDato.TabIndex = 7;
+            lblNombreDato.Text = "Nombre";
             // 
             // txtNombreDato
             // 
@@ -717,6 +712,10 @@
             iconBtnPermiso.UseVisualStyleBackColor = false;
             iconBtnPermiso.Click += iconBtnPermiso_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // FrmGestionarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -737,6 +736,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -758,26 +758,25 @@
         private FontAwesome.Sharp.IconButton iconBtnElim;
         private FontAwesome.Sharp.IconButton iconBtnPermiso;
         private Label lblEstado;
-        private Label label4;
+        private Label lblEmailDato;
         private TextBox txtEmailDato;
-        private Label label5;
-        private Label label6;
+        private Label lblRolDato;
+        private Label lblTelefDato;
         private TextBox txtTelefDato;
-        private Label label3;
+        private Label lblDniDato;
         private TextBox txtDniDato;
         private TextBox txtApeDato;
-        private Label label2;
-        private Label label1;
+        private Label lblApellidoDato;
+        private Label lblNombreDato;
         private TextBox txtNombreDato;
         private ComboBox comboEstadoDato;
-        private Label label8;
+        private Label lblEstadoDato;
         private ComboBox comboRolDato;
-        private Label label7;
+        private Label lblDomicilioDato;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private TextBox txtIdGuardado;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private ComboBox comboFiltroEstado;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
@@ -794,5 +793,7 @@
         private DataGridViewTextBoxColumn col_domicilio_prov;
         private DataGridViewTextBoxColumn Estado_Valor;
         private DataGridViewTextBoxColumn col_estado;
+        private TextBox txtDomiciliodato;
+        private ErrorProvider errorProvider1;
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CapaLogica
 {
@@ -21,7 +22,6 @@ namespace CapaLogica
 
         public usuario AutenticarUsuario(string dni, string password)
         {
-
             // Llamamos al método de autenticación en la capa de datos
             return  obj_cd_usuario.AutenticarUsuario(dni, password);
         }
@@ -29,8 +29,63 @@ namespace CapaLogica
         public usuario buscarUsuario(int id_usuario)
         {
             return obj_cd_usuario.buscarUsuario(id_usuario);
-
         }
 
+        public int registrarUsuario(usuario obj_usuario,out string mensaje)
+        {
+            //si pasa las reglas de validacion que cree que se llame al metodo registrar y sino que se retorne 0 que es como un null
+            if (validacionUsuario(obj_usuario, out mensaje))
+            {
+                return obj_cd_usuario.registrarUsuario(obj_usuario, out mensaje);//le pasamos los parametros 
+            }
+            else
+            {
+                return 0;
+            }
+          
+        }
+
+        public bool editarUsuario(usuario obj_usuario, out string mensaje)
+        {
+            return obj_cd_usuario.editarUsuario(obj_usuario, out mensaje);//le pasamos los parametros 
+        }
+
+        public bool eliminarUsuarioFisica(usuario obj_usuario, out string mensaje)
+        {
+            return obj_cd_usuario.eliminarUsuarioFisica(obj_usuario, out mensaje);//le pasamos los parametros 
+        }
+
+        /*aca pueddo crear un metodo llamado validar que me valide que no venga vacio algunos campos de la capa de presnetacion tambien ,debo de agregar mas reglas mas adelante*/
+        public bool validacionUsuario(usuario obj_usuario, out string mensaje)
+        {
+            mensaje = string.Empty;
+            bool validacion = true;
+
+            if (obj_usuario.dni == "")
+            {
+                mensaje += "es necesario el documento del usuario";
+                validacion = false;
+            }
+
+            if (obj_usuario.nombre == "")
+            {
+                mensaje += "es necesario el nombrre del usuario";
+                validacion = false;
+            }
+
+            if (obj_usuario.apellido == "")
+            {
+                mensaje += "es necesario el apellido del usuario";
+                validacion = false;
+            }
+
+            if (obj_usuario.password == "")
+            {
+                mensaje += "es necesario la contraseña del usuario";
+                validacion = false;
+            }
+
+            return validacion;
+        }
     }
 }

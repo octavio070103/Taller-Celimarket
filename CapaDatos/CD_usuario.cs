@@ -55,9 +55,10 @@ namespace CapaDatos
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
                                 telefono = dr["telefono"].ToString(),
-                                estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                              //  estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
                                 //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
-                                obj_rol=new rol()
+                                obj_rol =new rol()
                                 {
                                     id_rol = Convert.ToInt32(dr["id_rol"]),
                                     descripcion_rol = dr["descripcion_Rol"].ToString(),
@@ -126,7 +127,8 @@ namespace CapaDatos
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
                                 telefono = dr["telefono"].ToString(),
-                                estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
                                 //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
 
                             };
@@ -188,7 +190,7 @@ namespace CapaDatos
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
                                 telefono = dr["telefono"].ToString(),
-                                estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
 
                                 //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
                                 obj_rol = new rol()
@@ -218,6 +220,165 @@ namespace CapaDatos
                 }
             }
             return null; // Devolvemos null si no se encontró el usuario
+        }
+
+        public int registrarUsuario(usuario obj_usuario,out string mensaje) //mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        {
+            int id_usuario_generado = 0;
+            mensaje = string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
+
+            try
+            {
+                //le paso cadena de la clase conexion 
+                using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+                {
+                    //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                    try
+                    {
+                        //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
+                        SqlCommand cmd = new SqlCommand("SP_REGISTRARUSUARIO", Obj_conexion);
+
+                        //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
+                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@dni", obj_usuario.dni);
+                        cmd.Parameters.AddWithValue("@email", obj_usuario.email);
+                        cmd.Parameters.AddWithValue("@password", obj_usuario.password);//cambiar este por un metodo que haga el has es decir pasarle a registraUSuario la contrase;a pero con el hash aplicado
+                        cmd.Parameters.AddWithValue("@telefono", obj_usuario.telefono);
+                        cmd.Parameters.AddWithValue("@id_rol", obj_usuario.obj_rol.id_rol);
+                        cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
+                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
+                        //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
+                        cmd.Parameters.Add("@id_Usuario_resultado", SqlDbType.Int).Direction=ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar,500).Direction = ParameterDirection.Output;
+
+                        // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                        //ejcutamos nuestro comando
+                        cmd.ExecuteNonQuery();
+
+                        //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
+                        id_usuario_generado = Convert.ToInt32(cmd.Parameters["@id_Usuario_resultado"].Value);
+
+                        mensaje = cmd.Parameters["@mensaje"].Value.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                        Console.WriteLine("Error de conexión: " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                id_usuario_generado = 0;
+                mensaje= ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+            }
+            return id_usuario_generado;
+        }
+
+        public bool editarUsuario(usuario obj_usuario, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        {
+            bool respuesta = false;
+            mensaje= string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
+            try
+            {
+                //le paso cadena de la clase conexion 
+                using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+                {
+                   
+                        //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
+                        SqlCommand cmd = new SqlCommand("SP_EDITARUSUARIO", Obj_conexion);
+
+                        //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
+                        cmd.Parameters.AddWithValue("@id_usuario", obj_usuario.id_usuario);
+                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@dni", obj_usuario.dni);
+                        cmd.Parameters.AddWithValue("@email", obj_usuario.email);
+                        cmd.Parameters.AddWithValue("@password", obj_usuario.password);//cambiar este por un metodo que haga el has es decir pasarle a registraUSuario la contrase;a pero con el hash aplicado
+                        cmd.Parameters.AddWithValue("@telefono", obj_usuario.telefono);
+                        cmd.Parameters.AddWithValue("@id_rol", obj_usuario.obj_rol.id_rol);
+                        cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
+                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
+
+                        //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
+                        cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar).Direction = ParameterDirection.Output;
+
+                        // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                        //ejcutamos nuestro comando
+                        cmd.ExecuteNonQuery();
+
+                        //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
+                        respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+
+                        mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+            }
+            return respuesta;
+        }
+
+        /************************************************ELIMINAR USUARIO POR COMPLETO DE LA BASE DE DATOS BAJA FISICA*********************************************/
+
+        public bool eliminarUsuarioFisica(usuario obj_usuario, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        {
+            bool respuesta = false;
+            mensaje = string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
+            try
+            {
+                //le paso cadena de la clase conexion 
+                using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+                {
+                    //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                    try
+                    {
+                        //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
+                        SqlCommand cmd = new SqlCommand("SP_ELIMINARUSUARIO", Obj_conexion);
+
+                        //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
+                        cmd.Parameters.AddWithValue("@id_usuario", obj_usuario.id_usuario);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+
+                        //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
+                        cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar).Direction = ParameterDirection.Output;
+
+                        // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                        //ejcutamos nuestro comando
+                        cmd.ExecuteNonQuery();
+
+                        //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
+                        respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+
+                        mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+                    }
+                    catch (Exception ex)
+                    {
+                        // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                        Console.WriteLine("Error de conexión: " + ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+            }
+            return respuesta;
         }
 
     }

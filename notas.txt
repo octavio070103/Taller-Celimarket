@@ -33,3 +33,15 @@ ej: private SqlConnection Conexion = new SqlConnection(ConfigurationManager.Conn
 yo estoy usando el metodo listar para verificar tal vez me convenga crear un metodo login para no estar trayendo todo y verificarlo en el sql solamente
 la dif con el metodo de  mauro es la forma de acceder a los datos y que el uso mdistintos nobre
 
+------------------
+para cargar los combobox o las lista tengo dos formas :
+Usar el "String Collection Editor":
+
+Ventaja: Es más visual y permite editar la lista de elementos en tiempo de diseño sin necesidad de escribir código.
+Desventaja: Si la lista de perfiles cambia con el tiempo o proviene de una fuente de datos externa, deberás actualizarla manualmente en el diseñador.
+Este enfoque es adecuado cuando tienes una lista fija de elementos que rara vez cambia y que puedes definir fácilmente en tiempo de diseño.
+
+Cargar la lista manualmente en el código:
+
+Ventaja: Mayor flexibilidad si necesitas cargar dinámicamente los elementos desde una fuente de datos (por ejemplo, desde una base de datos) o si la lista puede cambiar en tiempo de ejecución.
+Desventaja: Requiere escribir código adicional y no es tan visual como el "String Collection Editor".

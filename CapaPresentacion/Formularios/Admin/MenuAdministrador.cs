@@ -105,12 +105,17 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            // Oculta el formulario actual
-            this.Hide();
+            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+            if (currentChildForm != null)
+            {
+                // cierra el formulario actual
+                currentChildForm.Close();
 
+            }
             // Muestra el formulario principal (el "Home")
             MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
             menuAdmin.Show();
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -283,5 +288,7 @@ namespace CapaPresentacion.Formularios.Admin
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+
     }
 }

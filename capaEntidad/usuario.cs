@@ -17,6 +17,6 @@ namespace capaEntidad
         public string telefono { get; set; }
         public rol obj_rol { get; set; }
         public domicilio obj_domicilio { get; set; }
-        public bool estado_usuario { get; set; }
+        public int estado_usuario { get; set; }
     }
 }

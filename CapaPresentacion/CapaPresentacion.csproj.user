@@ -22,6 +22,9 @@
     <Compile Update="Formularios\Admin\usuario\FrmPermisoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Admin\usuario\FrmRegistrarDomicilio.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Admin\usuario\RegistrarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
