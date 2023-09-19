@@ -28,13 +28,6 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             validarNumeros.soloNumeros_KeyPress(sender, e);
         }
 
-
-
-        private void frmRegistrarCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -42,10 +35,31 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string[] datosCliente = obtenerDatos();
+            string[] datosCliente;
+            borrarMensajeError();
+            validarCampos();
 
-            auxModuloCliente.agregarCliente(datosCliente);
-            this.Close();
+            if ( validarCampos() == true )
+            {
+                DialogResult pregunta = MessageBox.Show("¿Seguro que desea registrar un nuevo Cliente?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if ( pregunta == DialogResult.Yes )
+                {
+                    datosCliente = obtenerDatos();
+
+                    auxModuloCliente.agregarCliente(datosCliente);
+                    MessageBox.Show("El Cliente se registro correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Se deben completar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            //******
+
         }
 
         private string[] obtenerDatos()
@@ -61,5 +75,75 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
             return auxDatosCliente;
         }
+
+
+        private bool validarCampos()
+        {
+            bool validacion = true;
+
+            if ( txtApellido.Text == "")
+            {
+                errorProvider1.SetError( txtApellido, "Ingrese el apellido");
+                validacion = false;
+            }
+
+            if ( txtNombre.Text == "")
+            {
+                errorProvider1.SetError( txtNombre, "Ingrese el nombre");
+                validacion = false;
+            }
+
+            if( txtDni.Text == "")
+            {
+                errorProvider1.SetError( txtDni, "Ingrese el DNI");
+                validacion = false;
+            }
+
+            if( txtDomicilio.Text == "")
+            {
+                errorProvider1.SetError(txtDomicilio, "Ingrese el domicilio");
+                validacion = false;
+            }
+
+            if( txtCorreo.Text == "")
+            {
+                errorProvider1.SetError( txtCorreo, "Ingrese el correo electronico");
+                validacion = false;
+            }
+
+            if( txtTelefono.Text == "")
+            {
+                errorProvider1.SetError( txtTelefono, "Ingrese el numero de telefono");
+                validacion = false;
+            }
+
+
+            return validacion;
+        }
+
+
+        private void borrarMensajeError()
+        {
+            errorProvider1.SetError(txtApellido, "");
+            errorProvider1.SetError(txtNombre, "");
+            errorProvider1.SetError(txtDni, "");
+            errorProvider1.SetError(txtDomicilio, "");
+            errorProvider1.SetError(txtCorreo, "");
+            errorProvider1.SetError(txtTelefono, "");
+        }
+
+
+        private void soloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Auxiliares auxSoloLetras = new Auxiliares();
+            auxSoloLetras.soloLetras_KeyPress(sender, e);
+        }
+
+        private void soloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Auxiliares auxSoloNumeros = new Auxiliares();
+            auxSoloNumeros.soloNumeros_KeyPress(sender, e);
+        }
+
     }
 }

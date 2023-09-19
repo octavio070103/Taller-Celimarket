@@ -44,11 +44,14 @@
             direccion_cliente = new DataGridViewTextBoxColumn();
             correo_cliente = new DataGridViewTextBoxColumn();
             pnlInfoCliente = new Panel();
+            pnlEncabezado = new Panel();
+            lblEncabezado = new Label();
             btnModificar = new Button();
             pnlVentanaClientes.SuspendLayout();
             pnlListaClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvClientes).BeginInit();
             pnlInfoCliente.SuspendLayout();
+            pnlEncabezado.SuspendLayout();
             SuspendLayout();
             // 
             // pnlVentanaClientes
@@ -183,16 +186,38 @@
             // 
             pnlInfoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pnlInfoCliente.BackColor = Color.White;
+            pnlInfoCliente.Controls.Add(pnlEncabezado);
             pnlInfoCliente.Controls.Add(btnModificar);
-            pnlInfoCliente.Location = new Point(602, 71);
+            pnlInfoCliente.Location = new Point(602, 36);
             pnlInfoCliente.Name = "pnlInfoCliente";
-            pnlInfoCliente.Size = new Size(266, 467);
+            pnlInfoCliente.Size = new Size(266, 502);
             pnlInfoCliente.TabIndex = 1;
+            // 
+            // pnlEncabezado
+            // 
+            pnlEncabezado.BackColor = Color.LightBlue;
+            pnlEncabezado.Controls.Add(lblEncabezado);
+            pnlEncabezado.Dock = DockStyle.Top;
+            pnlEncabezado.Location = new Point(0, 0);
+            pnlEncabezado.Name = "pnlEncabezado";
+            pnlEncabezado.Size = new Size(266, 48);
+            pnlEncabezado.TabIndex = 4;
+            // 
+            // lblEncabezado
+            // 
+            lblEncabezado.AutoSize = true;
+            lblEncabezado.Font = new Font("Segoe UI", 12.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEncabezado.ForeColor = SystemColors.ActiveCaptionText;
+            lblEncabezado.Location = new Point(32, 11);
+            lblEncabezado.Name = "lblEncabezado";
+            lblEncabezado.Size = new Size(195, 23);
+            lblEncabezado.TabIndex = 0;
+            lblEncabezado.Text = "Información del cliente";
             // 
             // btnModificar
             // 
             btnModificar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnModificar.Location = new Point(14, 420);
+            btnModificar.Location = new Point(14, 455);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(98, 35);
             btnModificar.TabIndex = 3;
@@ -212,6 +237,8 @@
             pnlListaClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgvClientes).EndInit();
             pnlInfoCliente.ResumeLayout(false);
+            pnlEncabezado.ResumeLayout(false);
+            pnlEncabezado.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -234,5 +261,7 @@
         private DataGridViewTextBoxColumn telefono_cliente;
         private DataGridViewTextBoxColumn direccion_cliente;
         private DataGridViewTextBoxColumn correo_cliente;
+        private Panel pnlEncabezado;
+        private Label lblEncabezado;
     }
 }

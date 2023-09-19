@@ -36,6 +36,8 @@
             pictureBox4 = new PictureBox();
             btnMenu = new Button();
             PMenuLat = new Panel();
+            button6 = new Button();
+            button1 = new Button();
             label1 = new Label();
             picCerrarSesion = new PictureBox();
             button5 = new Button();
@@ -148,6 +150,8 @@
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
+            PMenuLat.Controls.Add(button6);
+            PMenuLat.Controls.Add(button1);
             PMenuLat.Controls.Add(label1);
             PMenuLat.Controls.Add(picCerrarSesion);
             PMenuLat.Controls.Add(button5);
@@ -159,6 +163,40 @@
             PMenuLat.Name = "PMenuLat";
             PMenuLat.Size = new Size(250, 610);
             PMenuLat.TabIndex = 2;
+            // 
+            // button6
+            // 
+            button6.BackColor = Color.FromArgb(17, 17, 27);
+            button6.Cursor = Cursors.Hand;
+            button6.Dock = DockStyle.Top;
+            button6.FlatAppearance.BorderSize = 0;
+            button6.FlatStyle = FlatStyle.Flat;
+            button6.ForeColor = SystemColors.ControlLightLight;
+            button6.Location = new Point(0, 378);
+            button6.Name = "button6";
+            button6.Padding = new Padding(10, 0, 0, 0);
+            button6.Size = new Size(250, 45);
+            button6.TabIndex = 4;
+            button6.Text = "Reportes";
+            button6.TextAlign = ContentAlignment.MiddleLeft;
+            button6.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(17, 17, 27);
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(0, 333);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(250, 45);
+            button1.TabIndex = 3;
+            button1.Text = "Consultas";
+            button1.TextAlign = ContentAlignment.MiddleLeft;
+            button1.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -197,7 +235,7 @@
             button5.Padding = new Padding(10, 0, 0, 0);
             button5.Size = new Size(250, 45);
             button5.TabIndex = 2;
-            button5.Text = "Productos";
+            button5.Text = "Ventas";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button4_Click;
@@ -324,7 +362,6 @@
             Controls.Add(PMenuLat);
             Controls.Add(panel1);
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "MenuVendedo";
             StartPosition = FormStartPosition.CenterScreen;
@@ -363,5 +400,7 @@
         private PictureBox picMaxPantalla;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private Button button1;
+        private Button button6;
     }
 }

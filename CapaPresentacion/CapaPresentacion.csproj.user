@@ -34,6 +34,9 @@
     <Compile Update="Formularios\Vendedor\formRegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Vendedor\frmSeleccionarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Vendedor\MenuVendedor.cs">
       <SubType>Form</SubType>
     </Compile>

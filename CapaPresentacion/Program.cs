@@ -1,5 +1,6 @@
 using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente;
+using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
@@ -16,7 +17,7 @@ namespace CapaPresentacion
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MenuVendedo());
+            Application.Run(new MenuVendedo() );
         }
     }
 }

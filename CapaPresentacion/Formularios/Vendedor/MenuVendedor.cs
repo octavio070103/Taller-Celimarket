@@ -90,6 +90,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void button4_Click(object sender, EventArgs e)
         {
             //**** Falta el codigo a ejecutar - borrar 
+            abrirFormularioHijo(new frmModuloVenta());
             ocultarSubmenu();
         }
 

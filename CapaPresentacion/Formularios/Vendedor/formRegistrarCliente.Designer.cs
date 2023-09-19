@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistrarCliente));
             pnlBarraClientes = new Panel();
             picMaximizar = new PictureBox();
@@ -53,6 +54,7 @@
             txtApellido = new TextBox();
             lblRegistrar = new Label();
             txtNombre = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picMaximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinimizar).BeginInit();
@@ -63,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel1.SuspendLayout();
             pnlRegistrarCliente.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pnlBarraClientes
@@ -222,7 +225,6 @@
             txtCorreo.BackColor = Color.White;
             txtCorreo.Location = new Point(276, 188);
             txtCorreo.Margin = new Padding(4, 3, 4, 3);
-            txtCorreo.Multiline = true;
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(195, 23);
             txtCorreo.TabIndex = 13;
@@ -304,7 +306,6 @@
             txtDomicilio.BackColor = Color.White;
             txtDomicilio.Location = new Point(276, 117);
             txtDomicilio.Margin = new Padding(4, 3, 4, 3);
-            txtDomicilio.Multiline = true;
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(195, 23);
             txtDomicilio.TabIndex = 6;
@@ -314,30 +315,30 @@
             txtTelefono.BackColor = Color.White;
             txtTelefono.Location = new Point(276, 254);
             txtTelefono.Margin = new Padding(4, 3, 4, 3);
-            txtTelefono.Multiline = true;
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(195, 23);
             txtTelefono.TabIndex = 5;
+            txtTelefono.KeyPress += soloNumeros_KeyPress;
             // 
             // txtDni
             // 
             txtDni.BackColor = Color.White;
             txtDni.Location = new Point(28, 248);
             txtDni.Margin = new Padding(4, 3, 4, 3);
-            txtDni.Multiline = true;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(195, 23);
             txtDni.TabIndex = 3;
+            txtDni.KeyPress += soloNumeros_KeyPress;
             // 
             // txtApellido
             // 
             txtApellido.BackColor = Color.White;
             txtApellido.Location = new Point(28, 183);
             txtApellido.Margin = new Padding(4, 3, 4, 3);
-            txtApellido.Multiline = true;
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(195, 23);
             txtApellido.TabIndex = 2;
+            txtApellido.KeyPress += soloLetras_KeyPress;
             // 
             // lblRegistrar
             // 
@@ -356,10 +357,14 @@
             txtNombre.BackColor = Color.White;
             txtNombre.Location = new Point(28, 117);
             txtNombre.Margin = new Padding(4, 3, 4, 3);
-            txtNombre.Multiline = true;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(195, 23);
             txtNombre.TabIndex = 1;
+            txtNombre.KeyPress += soloLetras_KeyPress;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // frmRegistrarCliente
             // 
@@ -372,7 +377,6 @@
             Name = "frmRegistrarCliente";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Registrar Cliente";
-            Load += frmRegistrarCliente_Load;
             pnlBarraClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picMaximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinimizar).EndInit();
@@ -384,6 +388,7 @@
             panel1.ResumeLayout(false);
             pnlRegistrarCliente.ResumeLayout(false);
             pnlRegistrarCliente.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -412,5 +417,6 @@
         private Label lblRegistrar;
         private TextBox txtNombre;
         private PictureBox picMaximizar;
+        private ErrorProvider errorProvider1;
     }
 }
