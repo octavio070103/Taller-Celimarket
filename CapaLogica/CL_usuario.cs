@@ -36,6 +36,12 @@ namespace CapaLogica
             //si pasa las reglas de validacion que cree que se llame al metodo registrar y sino que se retorne 0 que es como un null
             if (validacionUsuario(obj_usuario, out mensaje))
             {
+                /* Generar el hash de la contraseña
+                string hashContrasena = BCrypt.Net.BCrypt.HashPassword(obj_usuario.password.ToLower());
+                 obj_usuario.password = hashContrasena;
+                string hashContrasena = BCrypt.Net.BCrypt.EnhancedHashPassword(obj_usuario.password, 13);
+                obj_usuario.password = hashContrasena;*/
+
                 return obj_cd_usuario.registrarUsuario(obj_usuario, out mensaje);//le pasamos los parametros 
             }
             else
@@ -87,5 +93,7 @@ namespace CapaLogica
 
             return validacion;
         }
+
+        
     }
 }

@@ -56,3 +56,4 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.usuario.FrmPermisoUsuario.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.consulta_reclamo.FrmResponderConsulta.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Admin.usuario.FrmRegistrarDomicilio.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\bin\Debug\net6.0-windows\BCrypt.Net-Next.dll

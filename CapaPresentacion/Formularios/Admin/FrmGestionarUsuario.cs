@@ -11,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -120,7 +121,7 @@ namespace CapaPresentacion.Formularios.Admin
             //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
             if (indice >= 0)
             {
-
+                limpiartxtDato();
                 // Obtener la fila seleccionada
                 DataGridViewRow selectedRow = dataGridUsuarios.Rows[e.RowIndex];
 
@@ -201,7 +202,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
 
         private void iconbtnGuardar_Click(object sender, EventArgs e)
-        {/*
+        {
             if (validarCampos())
             {
                 // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
@@ -220,9 +221,9 @@ namespace CapaPresentacion.Formularios.Admin
                     MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " No se edito correctamente ", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                 }
-            }*/
+            }
         }
-        /*
+        
         private bool validarCampos()
         {
             bool validacion = true;
@@ -242,57 +243,88 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 // MessageBox.Show("Debe de completar todos los campos");
                 MessageBox.Show("Por favor, Rellene todos los campos para poder editar el Usuario", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                errorProvider1.SetError(lblDni, "Ingrese su DNI");
-                errorProvider1.SetError(lblNombre, "Ingrese su nombre");//El primer argumento es el control al que deseas asociar el mensaje de error..El segundo argumento es el mensaje de error que deseas mostrar.  
-                errorProvider1.SetError(lblApellido, "Ingrese su Apellido");
-                errorProvider1.SetError(lblTelefono, "Ingrese su Telefono");
+                errorProvider1.SetError(lblDniDato, "Ingrese su DNI correctamente");
+                errorProvider1.SetError(lblNombreDato, "Ingrese su nombre correctamente");//El primer argumento es el control al que deseas asociar el mensaje de error..El segundo argumento es el mensaje de error que deseas mostrar.  
+                errorProvider1.SetError(lblApellidoDato, "Ingrese su Apellido correctamente");
+                errorProvider1.SetError(lblEmailDato, "Ingrese su Email correctamente");
+                errorProvider1.SetError(lblTelefDato, "Ingrese su Telefono correctamente");
+                errorProvider1.SetError(lblDomicilioDato, "Ingrese su Domicilio correctamente");
                 return validacion = false;
             }
 
             //validar que el campos Dni solo se ingresen numeros
             if (!int.TryParse(dni, out numero))
             {
-                errorProvider1.SetError(lblDni, "Ingrese su DNI");
+                errorProvider1.SetError(lblDniDato, "Ingrese su DNI correctamente");
                 MessageBox.Show("El Dni debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
             // Validar que los campos Apellido y Nombre contengan solo letras
-            if (!EsAlfabetico(apellido))
-            {
-                errorProvider1.SetError(lblApellido, "Ingrese su apellido");
-                MessageBox.Show(" El apellido debe de contener solamente letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                validacion = false;
-            }
-
             if (!EsAlfabetico(nombre))
             {
-                errorProvider1.SetError(lblNombre, "Ingrese su nombre");
+                errorProvider1.SetError(lblNombreDato, "Ingrese su nombre");
                 MessageBox.Show(" El nombre debe de contener solamente letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
-            //validar que el campos Dni solo se ingresen numeros
-            if (!int.TryParse(telefono, out numero))
+            if (!EsAlfabetico(apellido))
             {
-                errorProvider1.SetError(lblTelefono, "Ingrese su Telefono");
-                MessageBox.Show("El Telefono debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(lblApellidoDato, "Ingrese su apellido");
+                MessageBox.Show(" El apellido debe de contener solamente letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
-            lblModificar.Text = nombreCompleto;
+            if (!validarEmail(email))
+            {
+                errorProvider1.SetError(lblEmailDato, "Ingrese su email valido formato: correo@example.com");
+                MessageBox.Show(" El email debe de seguir el formato correo@example.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
             return validacion;
+        }
+
+        // Función para verificar si una cadena contiene solo letras
+        private bool EsAlfabetico(string texto)
+        {
+            foreach (char c in texto)
+            {
+                if (!char.IsLetter(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // toma una cadena que representa un email y utiliza una expresión regular para verificar si se ajusta a un formato de email válido. 
+        // Si el email cumple con este formato, la función ValidarEmail devuelve true; de lo contrario, devuelve false.
+        public bool validarEmail(string email)
+        {
+            // Patrón de expresión regular para validar un email
+            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Utiliza la clase Regex para hacer la validación
+            return Regex.IsMatch(email, patron);
         }
 
         //limpia los mensajes de error que se muestran junto a los campos en caso de que hayan errores de validación.
         private void borrarMensajeError()
         {
-            errorProvider1.SetError(lblNombre, ""); // Limpiar mensaje de error
-            errorProvider1.SetError(lblDni, "");    // Limpiar mensaje de error
-            errorProvider1.SetError(lblApellido, ""); // Limpiar mensaje de error
-            errorProvider1.SetError(lblTelefono, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblDniDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblNombreDato, "");    // Limpiar mensaje de error
+            errorProvider1.SetError(lblApellidoDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblEmailDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblTelefDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblDomicilioDato, ""); // Limpiar mensaje de error
+        }
 
-        }*/
+        private void limpiartxtDato()
+        {
+
+        }
+
 
         }
 }

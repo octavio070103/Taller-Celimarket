@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarUsuario));
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
-            iconBtnElim = new FontAwesome.Sharp.IconButton();
+            iconBtnLimpiarDatos = new FontAwesome.Sharp.IconButton();
             iconBtnDomicilio = new FontAwesome.Sharp.IconButton();
             pciBoxSubirImg = new PictureBox();
             comboRolUsu = new ComboBox();
@@ -54,10 +55,12 @@
             pictureBox1 = new PictureBox();
             txtNombreUsu = new TextBox();
             lblNombre = new Label();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -89,7 +92,7 @@
             panel2.BackColor = Color.FromArgb(67, 68, 89);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Controls.Add(iconbtnGuardar);
-            panel2.Controls.Add(iconBtnElim);
+            panel2.Controls.Add(iconBtnLimpiarDatos);
             panel2.Controls.Add(iconBtnDomicilio);
             panel2.Controls.Add(pciBoxSubirImg);
             panel2.Controls.Add(comboRolUsu);
@@ -159,26 +162,27 @@
             iconbtnGuardar.UseVisualStyleBackColor = false;
             iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
-            // iconBtnElim
+            // iconBtnLimpiarDatos
             // 
-            iconBtnElim.BackColor = Color.FromArgb(250, 21, 21);
-            iconBtnElim.Cursor = Cursors.Hand;
-            iconBtnElim.FlatAppearance.BorderColor = Color.Black;
-            iconBtnElim.FlatStyle = FlatStyle.Flat;
-            iconBtnElim.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnElim.ForeColor = SystemColors.ControlLightLight;
-            iconBtnElim.IconChar = FontAwesome.Sharp.IconChar.Broom;
-            iconBtnElim.IconColor = Color.White;
-            iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnElim.IconSize = 30;
-            iconBtnElim.Location = new Point(610, 283);
-            iconBtnElim.Name = "iconBtnElim";
-            iconBtnElim.Size = new Size(161, 43);
-            iconBtnElim.TabIndex = 68;
-            iconBtnElim.Text = "Limpiar";
-            iconBtnElim.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnElim.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnElim.UseVisualStyleBackColor = false;
+            iconBtnLimpiarDatos.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnLimpiarDatos.Cursor = Cursors.Hand;
+            iconBtnLimpiarDatos.FlatAppearance.BorderColor = Color.Black;
+            iconBtnLimpiarDatos.FlatStyle = FlatStyle.Flat;
+            iconBtnLimpiarDatos.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnLimpiarDatos.ForeColor = SystemColors.ControlLightLight;
+            iconBtnLimpiarDatos.IconChar = FontAwesome.Sharp.IconChar.Broom;
+            iconBtnLimpiarDatos.IconColor = Color.White;
+            iconBtnLimpiarDatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnLimpiarDatos.IconSize = 30;
+            iconBtnLimpiarDatos.Location = new Point(611, 310);
+            iconBtnLimpiarDatos.Name = "iconBtnLimpiarDatos";
+            iconBtnLimpiarDatos.Size = new Size(161, 43);
+            iconBtnLimpiarDatos.TabIndex = 68;
+            iconBtnLimpiarDatos.Text = "Limpiar";
+            iconBtnLimpiarDatos.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnLimpiarDatos.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnLimpiarDatos.UseVisualStyleBackColor = false;
+            iconBtnLimpiarDatos.Click += iconBtnLimpiarDatos_Click;
             // 
             // iconBtnDomicilio
             // 
@@ -383,6 +387,10 @@
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre";
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // RegistrarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -399,6 +407,7 @@
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -426,8 +435,9 @@
         private FontAwesome.Sharp.IconButton contraVisible;
         private PictureBox pciBoxSubirImg;
         private FontAwesome.Sharp.IconButton iconBtnDomicilio;
-        private FontAwesome.Sharp.IconButton iconBtnElim;
+        private FontAwesome.Sharp.IconButton iconBtnLimpiarDatos;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
+        private ErrorProvider errorProvider1;
     }
 }
