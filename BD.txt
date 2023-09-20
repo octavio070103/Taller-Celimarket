@@ -18,3 +18,7 @@ Las restricciones CHECK se utilizan principalmente para garantizar la integridad
 
 En resumen, los procedimientos almacenados se utilizan para definir lógica personalizada y realizar operaciones en la base de datos, mientras que las restricciones CHECK se utilizan para imponer condiciones en los datos almacenados en 
 una tabla para garantizar su integridad y validez. Son herramientas diferentes que se utilizan en situaciones diferentes dentro de una base de datos.
+
+----
+una vez que ejecutas el comando CREATE PROCEDURE para crear un procedimiento almacenado en SQL Server, este se guarda en la base de datos y está disponible de manera permanente hasta que lo elimines explícitamente o realices modificaciones en él.
+ Para editar un procedimiento almacenado existente, debes utilizar la instrucción ALTER PROCEDURE para modificar su definición.

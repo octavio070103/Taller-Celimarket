@@ -10,6 +10,7 @@ using System.Collections;
 using System.Configuration;
 using capaEntidad;
 using System.Net;
+using System.Reflection.PortableExecutable;
 //librerias importante 
 
 namespace CapaDatos
@@ -117,21 +118,29 @@ namespace CapaDatos
                              //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
                              if (dr.Read())
                              {
-                                 //creo un objeto usuario y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
-                                 return new usuario
-                                 {
-                                     id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                     nombre = dr["nombre"].ToString(),
-                                     apellido = dr["apellido"].ToString(),
-                                     dni = dr["dni"].ToString(),
-                                     email = dr["email"].ToString(),
-                                     password = dr["password"].ToString(),
-                                     telefono = dr["telefono"].ToString(),
-                                     // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
-                                     estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
-                                     //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
+                            /* Obtener la contraseña cifrada almacenada en la base de datos
+                            string contrasenaCifrada = dr.GetString(dr.GetOrdinal("ContraseñaUsuario"));
+                            string hashAlmacenado = dr["password"].ToString(); // Obtener el hash almacenado en la base de datos
+                                                                  // Verificamos la contraseña proporcionada después de aplicar el hash y la sal
+                          bool contrasenaValida = BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);
 
-                                 };
+                                if (contrasenaValida) { */
+                                        //creo un objeto usuario y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
+                                        return new usuario
+                                                    {
+                                                        id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                                        nombre = dr["nombre"].ToString(),
+                                                        apellido = dr["apellido"].ToString(),
+                                                        dni = dr["dni"].ToString(),
+                                                        email = dr["email"].ToString(),
+                                                        password = dr["password"].ToString(),
+                                                        telefono = dr["telefono"].ToString(),
+                                                        // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                                        estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                                        //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
+
+                                        };
+                               // }
 
                              }
                          }// Al salir de este bloque, la conexión se cerrará automáticamente.
@@ -306,7 +315,7 @@ namespace CapaDatos
 
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                         cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
-                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar,500).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar,500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
 
                         // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -380,6 +389,12 @@ namespace CapaDatos
             }
             return respuesta;
         }
+
+        public bool eliminarUsuarioLogica(usuario obj_usuario, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        {
+           //crear el metodo de eliminar usuario debo de crear el procedimiento en la bd y usarlo aqui
+        }
+
 
     }
 }

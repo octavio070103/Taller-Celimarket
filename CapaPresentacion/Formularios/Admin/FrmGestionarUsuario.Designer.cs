@@ -60,6 +60,8 @@
             Estado_Valor = new DataGridViewTextBoxColumn();
             col_estado = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
+            lblPassword = new Label();
+            txtPasswordDato = new TextBox();
             txtDomiciliodato = new TextBox();
             txtIdGuardado = new TextBox();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
@@ -386,6 +388,8 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel2.BackColor = Color.White;
+            panel2.Controls.Add(lblPassword);
+            panel2.Controls.Add(txtPasswordDato);
             panel2.Controls.Add(txtDomiciliodato);
             panel2.Controls.Add(txtIdGuardado);
             panel2.Controls.Add(iconbtnGuardar);
@@ -412,10 +416,28 @@
             panel2.Size = new Size(238, 517);
             panel2.TabIndex = 3;
             // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPassword.ForeColor = SystemColors.WindowText;
+            lblPassword.Location = new Point(3, 164);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(41, 17);
+            lblPassword.TabIndex = 29;
+            lblPassword.Text = "Clave";
+            // 
+            // txtPasswordDato
+            // 
+            txtPasswordDato.Location = new Point(79, 158);
+            txtPasswordDato.Name = "txtPasswordDato";
+            txtPasswordDato.Size = new Size(144, 23);
+            txtPasswordDato.TabIndex = 28;
+            // 
             // txtDomiciliodato
             // 
             txtDomiciliodato.BackColor = SystemColors.Window;
-            txtDomiciliodato.Location = new Point(79, 222);
+            txtDomiciliodato.Location = new Point(79, 251);
             txtDomiciliodato.Name = "txtDomiciliodato";
             txtDomiciliodato.ReadOnly = true;
             txtDomiciliodato.Size = new Size(144, 23);
@@ -442,7 +464,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 27;
-            iconbtnGuardar.Location = new Point(21, 346);
+            iconbtnGuardar.Location = new Point(24, 369);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(202, 39);
             iconbtnGuardar.TabIndex = 25;
@@ -464,7 +486,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(21, 391);
+            iconBtnCancelar.Location = new Point(24, 414);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(202, 39);
             iconBtnCancelar.TabIndex = 11;
@@ -485,7 +507,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(21, 301);
+            iconBtnModif.Location = new Point(24, 324);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(202, 39);
             iconBtnModif.TabIndex = 24;
@@ -499,7 +521,7 @@
             // 
             comboEstadoDato.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstadoDato.FormattingEnabled = true;
-            comboEstadoDato.Location = new Point(79, 251);
+            comboEstadoDato.Location = new Point(79, 280);
             comboEstadoDato.Name = "comboEstadoDato";
             comboEstadoDato.Size = new Size(144, 23);
             comboEstadoDato.TabIndex = 23;
@@ -509,7 +531,7 @@
             lblEstadoDato.AutoSize = true;
             lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(0, 251);
+            lblEstadoDato.Location = new Point(5, 280);
             lblEstadoDato.Name = "lblEstadoDato";
             lblEstadoDato.Size = new Size(49, 17);
             lblEstadoDato.TabIndex = 22;
@@ -519,7 +541,7 @@
             // 
             comboRolDato.DropDownStyle = ComboBoxStyle.DropDownList;
             comboRolDato.FormattingEnabled = true;
-            comboRolDato.Location = new Point(79, 192);
+            comboRolDato.Location = new Point(79, 221);
             comboRolDato.Name = "comboRolDato";
             comboRolDato.Size = new Size(144, 23);
             comboRolDato.TabIndex = 21;
@@ -529,7 +551,7 @@
             lblDomicilioDato.AutoSize = true;
             lblDomicilioDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblDomicilioDato.ForeColor = SystemColors.WindowText;
-            lblDomicilioDato.Location = new Point(0, 222);
+            lblDomicilioDato.Location = new Point(5, 251);
             lblDomicilioDato.Name = "lblDomicilioDato";
             lblDomicilioDato.Size = new Size(68, 17);
             lblDomicilioDato.TabIndex = 18;
@@ -558,7 +580,7 @@
             lblRolDato.AutoSize = true;
             lblRolDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRolDato.ForeColor = SystemColors.WindowText;
-            lblRolDato.Location = new Point(3, 193);
+            lblRolDato.Location = new Point(6, 222);
             lblRolDato.Name = "lblRolDato";
             lblRolDato.Size = new Size(28, 17);
             lblRolDato.TabIndex = 14;
@@ -569,7 +591,7 @@
             lblTelefDato.AutoSize = true;
             lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(3, 164);
+            lblTelefDato.Location = new Point(3, 193);
             lblTelefDato.Name = "lblTelefDato";
             lblTelefDato.Size = new Size(62, 17);
             lblTelefDato.TabIndex = 13;
@@ -577,7 +599,7 @@
             // 
             // txtTelefDato
             // 
-            txtTelefDato.Location = new Point(79, 158);
+            txtTelefDato.Location = new Point(79, 187);
             txtTelefDato.Name = "txtTelefDato";
             txtTelefDato.Size = new Size(144, 23);
             txtTelefDato.TabIndex = 12;
@@ -795,5 +817,7 @@
         private DataGridViewTextBoxColumn col_estado;
         private TextBox txtDomiciliodato;
         private ErrorProvider errorProvider1;
+        private Label lblPassword;
+        private TextBox txtPasswordDato;
     }
 }

@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace CapaPresentacion.Formularios.Admin
 {
@@ -35,16 +36,6 @@ namespace CapaPresentacion.Formularios.Admin
             instanciaMenuAdministrador.OpenChildForm(new Admin.RegistrarUsuario(this.instanciaMenuAdministrador));
         }
 
-        private void iconBtnModif_Click(object sender, EventArgs e)
-        {
-            instanciaMenuAdministrador.OpenChildForm(new Admin.FrmEditarUsuario(this.instanciaMenuAdministrador));
-        }
-
-        private void iconBtnElim_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void iconBtnPermiso_Click(object sender, EventArgs e)
         {
             instanciaMenuAdministrador.OpenChildForm(new Admin.usuario.FrmPermisoUsuario(this.instanciaMenuAdministrador));
@@ -60,11 +51,15 @@ namespace CapaPresentacion.Formularios.Admin
             // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica
             mostrarUsuariosEnDataGridView(listaUsuarios);
 
+            txtIdGuardado.Visible = false;//oculto el id del usuario que luego uso para guardarlo y poder editar el usuario o buscarlo 
+            ReadOnlyTxtDatoUsuario(true);//configuro que el panel de datos del usuario sea en lectura uniucamente es decir le digo que se active esa propiedad
         }
 
         private void mostrarUsuariosEnDataGridView(List<capaEntidad.usuario> p_listaUsuarios)
         {
             dataGridUsuarios.Rows.Clear(); // Limpiar filas existentes
+
+            
 
             // Asigna la lista de usuarios al DataGridView (como fuente de datos)
             // dataGridUsuarios.DataSource = listaUsuarios;
@@ -88,6 +83,7 @@ namespace CapaPresentacion.Formularios.Admin
                  );
 
             }
+            dataGridUsuarios.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
             // Ocultar los botones
             iconbtnGuardar.Visible = false;
             iconBtnCancelar.Visible = false;
@@ -102,19 +98,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
         }
 
-        private void iconBtnModif_Click_1(object sender, EventArgs e)
-        {
-
-            DialogResult consulta = MessageBox.Show("¿Desea Editar los datos Del Empleado?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-            if (consulta == DialogResult.OK)
-            {
-                iconbtnGuardar.Visible = true;
-                iconBtnCancelar.Visible = true;
-                iconBtnModif.Visible = false;
-            }
-        }
-
+        //aca cargo mi panel de datos del uusario con los datos del datagrid que se selecciono
         private void dataGridUsuarios_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int indice = e.RowIndex;
@@ -127,6 +111,7 @@ namespace CapaPresentacion.Formularios.Admin
 
                 // Obtener los datos necesarios de la fila (suponiendo que la columna 0 contiene el ID)
                 int id_usuario = Convert.ToInt32(selectedRow.Cells[0].Value);
+
                 CL_usuario obj_CL_Usuario = new CL_usuario();
 
                 capaEntidad.usuario objUsuario = obj_CL_Usuario.buscarUsuario(id_usuario);
@@ -139,6 +124,7 @@ namespace CapaPresentacion.Formularios.Admin
                     txtApeDato.Text = objUsuario.apellido;
                     txtEmailDato.Text = objUsuario.email;
                     txtTelefDato.Text = objUsuario.telefono;
+                    txtPasswordDato.Text = objUsuario.password;
                     txtDomiciliodato.Text = objUsuario.obj_domicilio.calle + " " + objUsuario.obj_domicilio.numero.ToString();
 
                     //declaro mi lista que va a contener objetos de tipo rol
@@ -177,6 +163,79 @@ namespace CapaPresentacion.Formularios.Admin
 
             }
         }
+        private void iconBtnModif_Click_1(object sender, EventArgs e)
+        {
+            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
+            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
+            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text)!=0) 
+            {
+                DialogResult consulta = MessageBox.Show("¿Desea Editar los datos Del usuario?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (consulta == DialogResult.OK)
+                {
+
+                    iconbtnGuardar.Visible = true;
+                    iconBtnCancelar.Visible = true;
+                    iconBtnModif.Visible = false;
+                    ReadOnlyTxtDatoUsuario(false);//configuro el panel del usuario en modo edicion deshabilit ando la funcion ReadOnly
+                }
+                /*hago para que los text pasen de modo lectura a poder escrbirse sobre ellos */
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario para poder editarlo ", "Editar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+        private void iconBtnElim_Click(object sender, EventArgs e)
+        {
+            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
+            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
+            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
+            {
+                DialogResult consulta = MessageBox.Show("¿Desea Dar de bajo el usuario?", "Eliminar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (consulta == DialogResult.OK)
+                    {
+
+                   
+                    }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario para poder darlo baja ", "Eliminar Datos", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void ReadOnlyTxtDatoUsuario(bool valor)
+        {
+            txtDniDato.ReadOnly = valor;
+            txtNombreDato.ReadOnly = valor;
+            txtApeDato.ReadOnly = valor;
+            txtApeDato.ReadOnly= valor;
+            txtPasswordDato.ReadOnly = valor;
+            txtTelefDato.ReadOnly = valor;
+            txtEmailDato.ReadOnly = valor;
+          //faltaria hacer para los comboBox para que esten en modo lecyra tambien
+            txtDomiciliodato.ReadOnly = valor;
+        }
+
+        // Método para buscar el id_rol por la descripción del rol
+        private int ObtenerIdRolPorDescripcion(string descripcion)
+        {
+            List<rol> listaRol = new CL_rol().listarRol();
+
+            foreach (rol item in listaRol)
+            {
+                if (item.descripcion_rol == descripcion)
+                {
+                    return item.id_rol;
+                }
+            }
+
+            // Si no se encuentra la descripción, devuelve -1 para indicar un error.
+            return -1;
+        }
 
         /*este metodo llama al formualario de editar domicilio del uusario */
         private void txtDomiciliodato_MouseClick(object sender, MouseEventArgs e)
@@ -203,6 +262,10 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
+            string mensaje = string.Empty;
+            // Crear una instancia de la capa de lógica
+            CL_usuario obj_CL_Usuario = new CL_usuario();
+            
             if (validarCampos())
             {
                 // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
@@ -210,20 +273,84 @@ namespace CapaPresentacion.Formularios.Admin
                 borrarMensajeError();
 
                 ask = MessageBox.Show("Seguro que desea Editar el usuario ? ", "Confirmar insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                // Obtener la descripción del rol seleccionado en el ComboBox
+                string rolSeleccionadoDescripcion = comboRolDato.SelectedItem as string; //falta poner las valdiaciones del rol seleccionado queesta en festionar usuario
+
                 //como  Todos los msgbox devuelven un resultado lógico. podemos hacer el sig if
                 if (ask == DialogResult.Yes)
                 {
-                    //aca va la funcion de guardar el uusario editado
-                    MessageBox.Show("El cliente: " + txtNombreDato.Text + " " + txtApeDato.Text + " el usuario se edito correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " No se edito correctamente ", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    // Buscar el id_rol correspondiente a la descripción seleccionada
+                    int idRolSeleccionado = ObtenerIdRolPorDescripcion(rolSeleccionadoDescripcion);
 
+                    capaEntidad.usuario obj_Usuario = new capaEntidad.usuario()
+                    {
+                        id_usuario = Convert.ToInt32(txtIdGuardado.Text),
+                        dni = txtDniDato.Text,
+                        nombre = txtNombreDato.Text,
+                        apellido = txtApeDato.Text,
+                        email = txtEmailDato.Text,
+                        telefono = txtTelefDato.Text,
+                        password = txtPasswordDato.Text,
+                        obj_rol = new rol()
+                        {
+                            id_rol = idRolSeleccionado
+                        },
+                        obj_domicilio = new domicilio()
+                        {
+                            id_domicilio = 1//aca debo de cambiar por el domicilio creado 
+                        },
+                        estado_usuario = estadoUsuarioSeleccionado(comboEstadoDato.SelectedItem as string) //convierto de manera segura selecteditem en un tipo string con as string y sino es posible devuelve null en vez de lanar una excepcion como lo hace .Tostring
+                    };
+
+                    bool resultadoEditarUsuario = new CL_usuario().editarUsuario(obj_Usuario,out mensaje);
+
+                   if (resultadoEditarUsuario)
+                    {
+                        limpiartxtDato();
+                       
+                        MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " el usuario se edito correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        iconbtnGuardar.Visible = false;
+                        iconBtnCancelar.Visible = false;
+                        iconBtnModif.Visible = true;
+
+                        //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
+                        //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+                        List<capaEntidad.usuario> listaUsuarios = obj_CL_Usuario.listarUsuarios(); // Obtener la lista de usuarios desde la capa de lógica
+                        // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica con esto logro hacer un REFRESH EN EL DATAGRID con los datos nuevos
+                        mostrarUsuariosEnDataGridView(listaUsuarios);
+                    }
+                    else
+                    {
+                        limpiartxtDato();
+                        MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " No se edito correctamente ", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        iconbtnGuardar.Visible = false;
+                        iconBtnCancelar.Visible = false;
+                        iconBtnModif.Visible = true;
+                      //no actualizo el datgrid ya que no se edito ningun elemento
+                    }
+                    //aca muestro en caso de que haya habido algun error en el metodo resultadoEditarUsuario el error del mensaje o en caso de exito tmabien muestro el mensaje proveniente de mi proceso alamcenado
+                    if (mensaje != "")
+                    {
+                        MessageBox.Show(mensaje);
+                    }
                 }
+                
             }
         }
-        
+      
+        private int estadoUsuarioSeleccionado(string p_seleccionEstado)
+        {
+            if (p_seleccionEstado == "Activo")
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private bool validarCampos()
         {
             bool validacion = true;
@@ -264,7 +391,7 @@ namespace CapaPresentacion.Formularios.Admin
             if (!EsAlfabetico(nombre))
             {
                 errorProvider1.SetError(lblNombreDato, "Ingrese su nombre");
-                MessageBox.Show(" El nombre debe de contener solamente letras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
@@ -288,11 +415,27 @@ namespace CapaPresentacion.Formularios.Admin
         // Función para verificar si una cadena contiene solo letras
         private bool EsAlfabetico(string texto)
         {
+            bool espacioEncontrado = false;
             foreach (char c in texto)
             {
-                if (!char.IsLetter(c))
+                if (char.IsWhiteSpace(c))
                 {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
                     return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
                 }
             }
             return true;
@@ -318,13 +461,21 @@ namespace CapaPresentacion.Formularios.Admin
             errorProvider1.SetError(lblEmailDato, ""); // Limpiar mensaje de error
             errorProvider1.SetError(lblTelefDato, ""); // Limpiar mensaje de error
             errorProvider1.SetError(lblDomicilioDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblPassword, ""); // Limpiar mensaje de error
         }
 
         private void limpiartxtDato()
         {
-
+            txtIdGuardado.Text = "";
+            txtDniDato.Text = "";
+            txtNombreDato.Text = "";
+            txtApeDato.Text = "";
+            txtEmailDato.Text = "";
+            txtTelefDato.Text = "";
+            txtDomiciliodato.Text = "";
+            txtPasswordDato.Text = "";
         }
 
 
-        }
+    }
 }
