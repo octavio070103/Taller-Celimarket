@@ -60,9 +60,9 @@ namespace CapaLogica
         {
             return obj_cd_usuario.eliminarUsuarioFisica(obj_usuario, out mensaje);//le pasamos los parametros ,en out mensaje le digo que este parametro se utiliza para pasar info al emtodo y para recibir informacion desde el metodo le indico que es un paramemtro de salida
         }
-        public bool eliminarUsuarioLogica(usuario obj_usuario,out string mensaje)
+        public bool eliminarUsuarioLogico(usuario obj_usuario,out string mensaje)
         {
-            return obj_cd_usuario.eliminarUsuarioLogica(obj_usuario,out mensaje);
+            return obj_cd_usuario.eliminarUsuarioLogico(obj_usuario,out mensaje);
         }
         /*aca pueddo crear un metodo llamado validar que me valide que no venga vacio algunos campos de la capa de presnetacion tambien ,debo de agregar mas reglas mas adelante*/
         public bool validacionUsuario(usuario obj_usuario, out string mensaje)

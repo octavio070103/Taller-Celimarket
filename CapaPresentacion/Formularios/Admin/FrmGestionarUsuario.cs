@@ -59,7 +59,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
             dataGridUsuarios.Rows.Clear(); // Limpiar filas existentes
 
-            
+
 
             // Asigna la lista de usuarios al DataGridView (como fuente de datos)
             // dataGridUsuarios.DataSource = listaUsuarios;
@@ -167,7 +167,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
             //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
             //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
-            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text)!=0) 
+            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
             {
                 DialogResult consulta = MessageBox.Show("¿Desea Editar los datos Del usuario?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
@@ -190,21 +190,31 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void iconBtnElim_Click(object sender, EventArgs e)
         {
+            string mensaje = string.Empty;
+            CapaLogica.CL_usuario obj_cl_usuario = new CL_usuario();
+
             //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
             //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
             if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
             {
                 DialogResult consulta = MessageBox.Show("¿Desea Dar de bajo el usuario?", "Eliminar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (consulta == DialogResult.OK)
+                if (consulta == DialogResult.OK)
+                {
+                    capaEntidad.usuario obj_usuario = new capaEntidad.usuario
                     {
+                        id_usuario = Convert.ToInt32(txtIdGuardado.Text)
 
-                   
-                    }
+                    };
+
+
+                    obj_cl_usuario.eliminarUsuarioLogico(obj_usuario, out mensaje);
+                }
             }
             else
             {
-                MessageBox.Show("Seleccione un usuario para poder darlo baja ", "Eliminar Datos", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un usuario para poder darlo baja ", "Eliminar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
         }
 
         private void ReadOnlyTxtDatoUsuario(bool valor)
@@ -212,11 +222,11 @@ namespace CapaPresentacion.Formularios.Admin
             txtDniDato.ReadOnly = valor;
             txtNombreDato.ReadOnly = valor;
             txtApeDato.ReadOnly = valor;
-            txtApeDato.ReadOnly= valor;
+            txtApeDato.ReadOnly = valor;
             txtPasswordDato.ReadOnly = valor;
             txtTelefDato.ReadOnly = valor;
             txtEmailDato.ReadOnly = valor;
-          //faltaria hacer para los comboBox para que esten en modo lecyra tambien
+            //faltaria hacer para los comboBox para que esten en modo lecyra tambien
             txtDomiciliodato.ReadOnly = valor;
         }
 
@@ -265,7 +275,7 @@ namespace CapaPresentacion.Formularios.Admin
             string mensaje = string.Empty;
             // Crear una instancia de la capa de lógica
             CL_usuario obj_CL_Usuario = new CL_usuario();
-            
+
             if (validarCampos())
             {
                 // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
@@ -303,12 +313,12 @@ namespace CapaPresentacion.Formularios.Admin
                         estado_usuario = estadoUsuarioSeleccionado(comboEstadoDato.SelectedItem as string) //convierto de manera segura selecteditem en un tipo string con as string y sino es posible devuelve null en vez de lanar una excepcion como lo hace .Tostring
                     };
 
-                    bool resultadoEditarUsuario = new CL_usuario().editarUsuario(obj_Usuario,out mensaje);
+                    bool resultadoEditarUsuario = new CL_usuario().editarUsuario(obj_Usuario, out mensaje);
 
-                   if (resultadoEditarUsuario)
+                    if (resultadoEditarUsuario)
                     {
                         limpiartxtDato();
-                       
+
                         MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " el usuario se edito correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
@@ -327,7 +337,7 @@ namespace CapaPresentacion.Formularios.Admin
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
                         iconBtnModif.Visible = true;
-                      //no actualizo el datgrid ya que no se edito ningun elemento
+                        //no actualizo el datgrid ya que no se edito ningun elemento
                     }
                     //aca muestro en caso de que haya habido algun error en el metodo resultadoEditarUsuario el error del mensaje o en caso de exito tmabien muestro el mensaje proveniente de mi proceso alamcenado
                     if (mensaje != "")
@@ -335,10 +345,10 @@ namespace CapaPresentacion.Formularios.Admin
                         MessageBox.Show(mensaje);
                     }
                 }
-                
+
             }
         }
-      
+
         private int estadoUsuarioSeleccionado(string p_seleccionEstado)
         {
             if (p_seleccionEstado == "Activo")
