@@ -100,9 +100,9 @@
             txtPassword.Location = new Point(24, 99);
             txtPassword.Margin = new Padding(4, 3, 4, 3);
             txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "CONTRASEÑA";
             txtPassword.Size = new Size(187, 18);
             txtPassword.TabIndex = 2;
-            txtPassword.Text = "CONTRASEÑA";
             txtPassword.Enter += txtPassword_Enter;
             txtPassword.Leave += txtPassword_Leave;
             // 
@@ -115,9 +115,9 @@
             txtUsuario.Location = new Point(24, 61);
             txtUsuario.Margin = new Padding(4, 3, 4, 3);
             txtUsuario.Name = "txtUsuario";
+            txtUsuario.PlaceholderText = "USUARIO";
             txtUsuario.Size = new Size(187, 18);
             txtUsuario.TabIndex = 1;
-            txtUsuario.Text = "USUARIO";
             txtUsuario.Enter += txtUsuario_Enter;
             txtUsuario.Leave += txtUsuario_Leave;
             // 

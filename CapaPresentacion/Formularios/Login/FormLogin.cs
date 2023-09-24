@@ -168,12 +168,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
             if (validarCampos())
             {
                 borrarMensajeError();
-        
+
 
                 // Llamamos a un método de autenticación en la capa de lógica de negocios
                 CL_usuario obj_capaLogica = new CL_usuario();
                 usuario obj_usuario = obj_capaLogica.AutenticarUsuario(txtUsuario.Text, txtPassword.Text);
-                
+
                 /*Ejemplo hasta conectar a la BD autenticación y validación del usuario y contraseña*/
 
                 if (obj_usuario != null)

@@ -85,76 +85,78 @@ namespace CapaDatos
             return lista; // Devolvemos la lista de usuarios
         }
 
-       public usuario AutenticarUsuario(string dni, string password)
-         {
-                 //le paso cadena de la clase conexion 
-                 using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
-                 {
-                     //hago un capturador de errores por si tengo porblemas al coenctar con la BD
-                     try
-                     {
-                         //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
-                         //Define una cadena de consulta SQL que se utilizará para seleccionar datos de la tabla usuario en la base de datos.selecionando las colunasaz
-                         //ver que @dni y @password se defininen como marcadores de posición en lugar de valores concretos. y lego en cmd.paramereters le asigno un valor especifico o real
-                         string query = "SELECT id_usuario, nombre, apellido, dni, email, password, telefono, estado_usuario  FROM usuario WHERE dni = @dni AND password = @password";
+        public usuario AutenticarUsuario(string dni, string password)
+        {
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                    //Define una cadena de consulta SQL que se utilizará para seleccionar datos de la tabla usuario en la base de datos.selecionando las colunasaz
+                    //ver que @dni y @password se defininen como marcadores de posición en lugar de valores concretos. y lego en cmd.paramereters le asigno un valor especifico o real
+                    string query = "SELECT id_usuario, nombre, apellido, dni, email, password, telefono, estado_usuario  FROM usuario WHERE dni = @dni ";
 
-                         //creo un obj cmd de tipo sqlcommand este objeto se utiliza para ejecutar comandos SQL en la base de datos. 
-                         //Toma dos argumentos: la consulta SQL query o consulta nueva que se ejecutará y la conexión a la base de datos s decir el nuestro obj de tipo sql conenectrion que creamois llamado objConexion 
-                         SqlCommand cmd = new SqlCommand(query, Obj_conexion);
+                    //creo un obj cmd de tipo sqlcommand este objeto se utiliza para ejecutar comandos SQL en la base de datos. 
+                    //Toma dos argumentos: la consulta SQL query o consulta nueva que se ejecutará y la conexión a la base de datos s decir el nuestro obj de tipo sql conenectrion que creamois llamado objConexion 
+                    SqlCommand cmd = new SqlCommand(query, Obj_conexion);
 
-                         //agregan parámetros a la consulta SQL. Los valores de @dni y @password se asignan a los valores de dni y password proporcionados como argumentos al método.
-                         //Esto se hace para evitar la inyección de SQL y garantizar que los valores se utilicen de manera segura en la consulta.
-                         cmd.Parameters.AddWithValue("@dni", dni);
-                         cmd.Parameters.AddWithValue("@password", password);
+                    //agregan parámetros a la consulta SQL. Los valores de @dni y @password se asignan a los valores de dni y password proporcionados como argumentos al método.
+                    //Esto se hace para evitar la inyección de SQL y garantizar que los valores se utilicen de manera segura en la consulta.
+                    cmd.Parameters.AddWithValue("@dni", dni);
+                    // cmd.Parameters.AddWithValue("@password", password);
 
-                         // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.
-                         cmd.CommandType = CommandType.Text;
-                         Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+                    // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
 
-                         //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
-                         using (SqlDataReader dr = cmd.ExecuteReader())//Crea y abre un SqlDataReader llamado dr para ejecutar la consulta SQL que se definió anteriormente en cmd. Este objeto dr se utiliza para leer los resultados de la consulta.
-                         {
-                             //Este condicional verifica si hay al menos una fila de resultados en el SqlDataReader.
-                             //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
-                             if (dr.Read())
-                             {
-                            /* Obtener la contraseña cifrada almacenada en la base de datos
-                            string contrasenaCifrada = dr.GetString(dr.GetOrdinal("ContraseñaUsuario"));
+                    //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
+                    using (SqlDataReader dr = cmd.ExecuteReader())//Crea y abre un SqlDataReader llamado dr para ejecutar la consulta SQL que se definió anteriormente en cmd. Este objeto dr se utiliza para leer los resultados de la consulta.
+                    {
+                        //Este condicional verifica si hay al menos una fila de resultados en el SqlDataReader.
+                        //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
+                        if (dr.Read())
+                        {
+                            /* Obtener la contraseña cifrada almacenada en la base de datos*/
+                            // string contrasenaCifrada = dr.GetString("ContraseñaUsuario");
                             string hashAlmacenado = dr["password"].ToString(); // Obtener el hash almacenado en la base de datos
-                                                                  // Verificamos la contraseña proporcionada después de aplicar el hash y la sal
-                          bool contrasenaValida = BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);
+                                                                               // Verificamos la contraseña proporcionada después de aplicar el hash y la sal
+                            bool contrasenaValida = BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);//("hola", "$2a$11$LfnTies.qV/kGdEomUxkTeoMTN5Ik1WC0tNhD6kcQCXN0QPxt2vZC");//(password, hashAlmacenado);
 
-                                if (contrasenaValida) { */
-                                        //creo un objeto usuario y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
-                                        return new usuario
-                                                    {
-                                                        id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                                        nombre = dr["nombre"].ToString(),
-                                                        apellido = dr["apellido"].ToString(),
-                                                        dni = dr["dni"].ToString(),
-                                                        email = dr["email"].ToString(),
-                                                        password = dr["password"].ToString(),
-                                                        telefono = dr["telefono"].ToString(),
-                                                        // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
-                                                        estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
-                                                        //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
+                            if (contrasenaValida)
+                            {
+                                //creo un objeto usuario y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
+                                return new usuario
+                                {
+                                    id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                    nombre = dr["nombre"].ToString(),
+                                    apellido = dr["apellido"].ToString(),
+                                    dni = dr["dni"].ToString(),
+                                    email = dr["email"].ToString(),
+                                    password = dr["password"].ToString(),
+                                    telefono = dr["telefono"].ToString(),
+                                    // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                    estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                    //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
 
-                                        };
-                               // }
+                                };
+                            }
 
-                             }
-                         }// Al salir de este bloque, la conexión se cerrará automáticamente.
+                        }
+                    }// Al salir de este bloque, la conexión se cerrará automáticamente.
 
-                     }
-                     catch (Exception ex)
-                     {
-                         // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
-                         Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                    Console.WriteLine("Error de conexión: " + ex.Message);
 
-                     }
-                 }
-                 return null; // Devolvemos null si no se encontró el usuario
-     }
+                }
+            }
+            return null; // Devolvemos null si no se encontró el usuario
+        }
+
 
         public usuario buscarUsuario(int id_usuario)
         {
@@ -231,7 +233,7 @@ namespace CapaDatos
             return null; // Devolvemos null si no se encontró el usuario
         }
 
-        public int registrarUsuario(usuario obj_usuario,out string mensaje) //mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        public int registrarUsuario(usuario obj_usuario, out string mensaje) //mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
         {
             int id_usuario_generado = 0;
             mensaje = string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
@@ -258,8 +260,8 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
                         cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
-                        cmd.Parameters.Add("@id_Usuario_resultado", SqlDbType.Int).Direction=ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
-                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar,500).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@id_Usuario_resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
                         // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -283,10 +285,12 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 id_usuario_generado = 0;
-                mensaje= ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+                mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
             }
             return id_usuario_generado;
         }
+
+
 
         public bool editarUsuario(usuario obj_usuario, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
         {

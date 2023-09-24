@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarUsuario));
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            lblRolFiltro = new Label();
+            comboFiltroRol = new ComboBox();
+            iconbtnClean = new FontAwesome.Sharp.IconButton();
             comboFiltroEstado = new ComboBox();
             lblEstado = new Label();
             txtDniFiltro = new TextBox();
@@ -98,6 +101,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(lblRolFiltro);
+            panel1.Controls.Add(comboFiltroRol);
+            panel1.Controls.Add(iconbtnClean);
             panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblEstado);
             panel1.Controls.Add(txtDniFiltro);
@@ -114,21 +120,67 @@
             panel1.Size = new Size(1014, 92);
             panel1.TabIndex = 0;
             // 
+            // lblRolFiltro
+            // 
+            lblRolFiltro.AutoSize = true;
+            lblRolFiltro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRolFiltro.ForeColor = SystemColors.ControlLightLight;
+            lblRolFiltro.Location = new Point(776, 59);
+            lblRolFiltro.Name = "lblRolFiltro";
+            lblRolFiltro.Size = new Size(28, 17);
+            lblRolFiltro.TabIndex = 27;
+            lblRolFiltro.Text = "Rol";
+            // 
+            // comboFiltroRol
+            // 
+            comboFiltroRol.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboFiltroRol.FlatStyle = FlatStyle.Popup;
+            comboFiltroRol.FormattingEnabled = true;
+            comboFiltroRol.Location = new Point(810, 57);
+            comboFiltroRol.Name = "comboFiltroRol";
+            comboFiltroRol.Size = new Size(88, 23);
+            comboFiltroRol.TabIndex = 26;
+            comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
+            // 
+            // iconbtnClean
+            // 
+            iconbtnClean.BackColor = Color.FromArgb(255, 50, 50);
+            iconbtnClean.BackgroundImage = (Image)resources.GetObject("iconbtnClean.BackgroundImage");
+            iconbtnClean.BackgroundImageLayout = ImageLayout.Stretch;
+            iconbtnClean.Cursor = Cursors.Hand;
+            iconbtnClean.FlatAppearance.BorderColor = Color.Black;
+            iconbtnClean.FlatStyle = FlatStyle.Flat;
+            iconbtnClean.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnClean.ForeColor = SystemColors.ControlLightLight;
+            iconbtnClean.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconbtnClean.IconColor = Color.White;
+            iconbtnClean.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnClean.IconSize = 30;
+            iconbtnClean.Location = new Point(932, 59);
+            iconbtnClean.Name = "iconbtnClean";
+            iconbtnClean.Size = new Size(25, 23);
+            iconbtnClean.TabIndex = 25;
+            iconbtnClean.TextAlign = ContentAlignment.MiddleRight;
+            iconbtnClean.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconbtnClean.UseVisualStyleBackColor = false;
+            // 
             // comboFiltroEstado
             // 
             comboFiltroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboFiltroEstado.FlatStyle = FlatStyle.Popup;
             comboFiltroEstado.FormattingEnabled = true;
-            comboFiltroEstado.Location = new Point(723, 56);
+            comboFiltroEstado.Location = new Point(671, 57);
             comboFiltroEstado.Name = "comboFiltroEstado";
             comboFiltroEstado.Size = new Size(88, 23);
             comboFiltroEstado.TabIndex = 24;
+            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
             lblEstado.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstado.ForeColor = SystemColors.ControlLightLight;
-            lblEstado.Location = new Point(668, 57);
+            lblEstado.Location = new Point(616, 58);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(49, 17);
             lblEstado.TabIndex = 13;
@@ -138,36 +190,39 @@
             // 
             txtDniFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtDniFiltro.ForeColor = Color.Silver;
-            txtDniFiltro.Location = new Point(211, 58);
+            txtDniFiltro.Location = new Point(159, 59);
             txtDniFiltro.Multiline = true;
             txtDniFiltro.Name = "txtDniFiltro";
+            txtDniFiltro.PlaceholderText = "DNI";
             txtDniFiltro.Size = new Size(97, 20);
             txtDniFiltro.TabIndex = 11;
-            txtDniFiltro.Text = "DNI";
+            txtDniFiltro.TextChanged += txtDniFiltro_TextChanged;
             txtDniFiltro.KeyPress += txtDniFiltro_KeyPress;
             // 
             // txtNombreFiltro
             // 
             txtNombreFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNombreFiltro.ForeColor = Color.Silver;
-            txtNombreFiltro.Location = new Point(378, 59);
+            txtNombreFiltro.Location = new Point(326, 60);
             txtNombreFiltro.Multiline = true;
             txtNombreFiltro.Name = "txtNombreFiltro";
+            txtNombreFiltro.PlaceholderText = "Nombre";
             txtNombreFiltro.Size = new Size(97, 20);
             txtNombreFiltro.TabIndex = 10;
-            txtNombreFiltro.Text = "Nombre";
+            txtNombreFiltro.TextChanged += txtNombreFiltro_TextChanged;
             txtNombreFiltro.KeyPress += txtNombreFiltro_KeyPress;
             // 
             // txtApeFiltro
             // 
             txtApeFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtApeFiltro.ForeColor = Color.Silver;
-            txtApeFiltro.Location = new Point(550, 58);
+            txtApeFiltro.Location = new Point(498, 59);
             txtApeFiltro.Multiline = true;
             txtApeFiltro.Name = "txtApeFiltro";
+            txtApeFiltro.PlaceholderText = "Apellido";
             txtApeFiltro.Size = new Size(97, 20);
             txtApeFiltro.TabIndex = 9;
-            txtApeFiltro.Text = "Apellido";
+            txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
             txtApeFiltro.KeyPress += txtApeFiltro_KeyPress;
             // 
             // lblApellido
@@ -175,7 +230,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblApellido.ForeColor = SystemColors.ControlLightLight;
-            lblApellido.Location = new Point(484, 59);
+            lblApellido.Location = new Point(432, 60);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(60, 17);
             lblApellido.TabIndex = 8;
@@ -186,7 +241,7 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = SystemColors.ControlLightLight;
-            lblNombre.Location = new Point(314, 59);
+            lblNombre.Location = new Point(262, 60);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(58, 17);
             lblNombre.TabIndex = 6;
@@ -197,7 +252,7 @@
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblDni.ForeColor = SystemColors.ControlLightLight;
-            lblDni.Location = new Point(171, 59);
+            lblDni.Location = new Point(119, 60);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(36, 17);
             lblDni.TabIndex = 4;
@@ -208,7 +263,7 @@
             lblFiltrar.AutoSize = true;
             lblFiltrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblFiltrar.ForeColor = SystemColors.ControlLightLight;
-            lblFiltrar.Location = new Point(80, 51);
+            lblFiltrar.Location = new Point(28, 52);
             lblFiltrar.Name = "lblFiltrar";
             lblFiltrar.Size = new Size(71, 25);
             lblFiltrar.TabIndex = 1;
@@ -231,26 +286,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle13.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle13.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle14.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = Color.White;
-            dataGridViewCellStyle14.Padding = new Padding(2);
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle14.SelectionForeColor = Color.White;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 176);
@@ -258,14 +313,14 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -522,6 +577,7 @@
             // comboEstadoDato
             // 
             comboEstadoDato.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboEstadoDato.FlatStyle = FlatStyle.Popup;
             comboEstadoDato.FormattingEnabled = true;
             comboEstadoDato.Location = new Point(79, 280);
             comboEstadoDato.Name = "comboEstadoDato";
@@ -542,6 +598,7 @@
             // comboRolDato
             // 
             comboRolDato.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboRolDato.FlatStyle = FlatStyle.Popup;
             comboRolDato.FormattingEnabled = true;
             comboRolDato.Location = new Point(79, 221);
             comboRolDato.Name = "comboRolDato";
@@ -846,5 +903,8 @@
         private Label lblPassword;
         private TextBox txtPasswordDato;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconbtnClean;
+        private ComboBox comboFiltroRol;
+        private Label lblRolFiltro;
     }
 }

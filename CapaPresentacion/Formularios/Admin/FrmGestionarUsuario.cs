@@ -28,6 +28,14 @@ namespace CapaPresentacion.Formularios.Admin
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
+
+            //sucribo un manejador de eventos(textBoxFiltro) a mi evento (TextCganged) para textbox de filtrado
+            txtDniFiltro.TextChanged += txtDniFiltro_TextChanged;//El += se utiliza para agregar un manejador de eventos adicional a los que ya puedan estar suscritos al evento, en lugar de reemplazarlos.
+            txtNombreFiltro.TextChanged += txtNombreFiltro_TextChanged;
+            txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
+            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
+            comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
+          
         }
 
 
@@ -53,6 +61,13 @@ namespace CapaPresentacion.Formularios.Admin
 
             txtIdGuardado.Visible = false;//oculto el id del usuario que luego uso para guardarlo y poder editar el usuario o buscarlo 
             ReadOnlyTxtDatoUsuario(true);//configuro que el panel de datos del usuario sea en lectura uniucamente es decir le digo que se active esa propiedad
+
+            //cargo el comoboBox del filtrado dle estadi al cargar el formulario
+            comboFiltroEstado.Items.Add("Activo");
+            comboFiltroEstado.Items.Add("No activo");
+
+            //cargo el comoboBox de lso roles dewl filtrado
+            listarRolesCombo(comboFiltroRol);
         }
 
         private void mostrarUsuariosEnDataGridView(List<capaEntidad.usuario> p_listaUsuarios)
@@ -89,15 +104,6 @@ namespace CapaPresentacion.Formularios.Admin
             iconBtnCancelar.Visible = false;
         }
 
-        private void dataGridUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         //aca cargo mi panel de datos del uusario con los datos del datagrid que se selecciono
         private void dataGridUsuarios_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -127,13 +133,8 @@ namespace CapaPresentacion.Formularios.Admin
                     txtPasswordDato.Text = objUsuario.password;
                     txtDomiciliodato.Text = objUsuario.obj_domicilio.calle + " " + objUsuario.obj_domicilio.numero.ToString();
 
-                    //declaro mi lista que va a contener objetos de tipo rol
-                    List<rol> listaRol = new CL_rol().listarRol();
-                    //va a leer todos los items dentro de la lista y Rellena el ComboBox con los roles
-                    foreach (rol item in listaRol)
-                    {
-                        comboRolDato.Items.Add(item.descripcion_rol);
-                    }
+
+                    List<rol> listaRol = listarRolesCombo(comboRolDato);//este metodo lista los roles en el comboBox que le paso como parametro y lo guardo en una var de tipo lista rol y asi puedo buscar el indiice del rol leugo 
 
                     //buscamos el índice del rol del usuario en la lista de roles utilizando FindIndex(traigo el 1er elemenot que cumple la condicion) y una expresión lambda(Las expresiones lambda permiten definir funciones pequeñas y simples en línea, sin la necesidad de declarar un método completo.) que compara el id_rol
                     int indiceRol = listaRol.FindIndex(r => r.id_rol == objUsuario.obj_rol.id_rol);//a parte r => ... significa que estás definiendo un parámetro r que representa cada elemento de la lista (rol) y, a continuación, especificas una condición. En este caso, la condición es que el id_rol del elemento r sea igual al id_rol del rol asociado al usuario (objUsuario.obj_rol.id_rol).
@@ -216,7 +217,18 @@ namespace CapaPresentacion.Formularios.Admin
             }
 
         }
+        public List<rol> listarRolesCombo(ComboBox p_combo)
+        {
+            //declaro mi lista que va a contener objetos de tipo rol
+            List<rol> listaRol = new CL_rol().listarRol();
+            //va a leer todos los items dentro de la lista y Rellena el ComboBox con los roles
+            foreach (rol item in listaRol)
+            {
+                p_combo.Items.Add(item.descripcion_rol);
+            }
+            return listaRol;
 
+        }
         private void ReadOnlyTxtDatoUsuario(bool valor)
         {
             txtDniDato.ReadOnly = valor;
@@ -486,6 +498,67 @@ namespace CapaPresentacion.Formularios.Admin
             txtPasswordDato.Text = "";
         }
 
+        //en este evento se actualizara el friltro del dataGrid de usuarios cada vez que se cambie el texto del mi textBox
+        private void txtDniFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtDniFiltro.Text;
+            string atributo = "dni";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
 
+        private void txtNombreFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtNombreFiltro.Text;
+            string atributo = "nombre";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
+
+        private void txtApeFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtApeFiltro.Text;
+            string atributo = "apellido";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
+
+        private void comboFiltroEstado_TextChanged(object sender, EventArgs e)
+        {
+            
+
+            if (comboEstadoDato.SelectedIndex == 1)
+            {
+                string filtro = "0";
+                string atributo = "estado";
+                // Filtra los datos en el DataGridView
+                FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+            }
+            else
+            {
+                string filtro = "1";
+                string atributo = "estado";
+                // Filtra los datos en el DataGridView
+                FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+            }
+        }
+        private void comboFiltroRol_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FiltrarDataGridView(string filtro, string atributo)
+        {
+            // Crear una instancia de la capa de lógica
+            CL_usuario obj_CL_Usuario = new CL_usuario();
+            //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+            List<capaEntidad.usuario> listaUsuarioFiltrado = obj_CL_Usuario.listarUsuarioFiltrados(filtro,atributo); // Obtener la lista de usuarios desde la capa de lógica
+
+            // Actualiza el DataGridView
+            mostrarUsuariosEnDataGridView(listaUsuarioFiltrado);
+
+        }
+
+       
     }
 }

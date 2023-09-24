@@ -20,6 +20,28 @@ namespace CapaLogica
       
         }
 
+        //para listar los usuarios filtrados reutilizamo el metodo listarUsuario utilizando el meotodo where le pasamos la condicion de busqueda que en este caso es que 
+        // no sea nulo el ttxBox que me viene con el dato del filtro y que si ese usuario que se esta por listar en su atributo  es igual al texto del filtro
+        public List<usuario> listarUsuarioFiltrados(string p_txtFIltro ,string atributo)
+        {
+
+            return obj_cd_usuario.listarUsuarios()//retorna la lista que esta en nuestra caaps de datos de ususarios pero le paso una operacion where la cual me permitre filtrar los usuarios dependiendo del filtro escrito
+                 
+                .Where(usuario =>
+                      (string.IsNullOrEmpty(p_txtFIltro))|
+                      (atributo == "dni" && usuario?.dni?.ToLower()?.Contains(p_txtFIltro) == true)||                   //cuando el usuario ingresa un valor nulo o vacío en el filtro, obtendrás todos los elementos sin filtrar. Si el usuario ingresa un valor válido en el filtro, obtendrás solo los elementos que cumplan con ese filtro.
+                      (atributo == "nombre" && usuario?.nombre?.ToLower()?.Contains(p_txtFIltro) == true) ||
+                      (atributo == "apellido" && usuario?.apellido?.ToLower()?.Contains(p_txtFIltro) == true) 
+                      //(atributo == "rol" && usuario?.obj_rol.descripcion_rol == p_txtFIltro) 
+                    //  (p_txtFIltro == "Estado del usuario" || usuario?.estado_usuario == Convert.ToInt32(p_txtFIltro)) 
+                      )
+                .ToList(); //aca decimos que si el txt del filtro es null o vacia significa que no se ha proporcionado un filtro por lo que nose aplica ningun filtro en la busqueda ,esto me permite obtener la lista de usuarios sin filtros cuando el txt es null o vacio
+             
+            // aca convierto el conenitdo del atributo en minuscula y con el ? es un operador seguro el cual si es nulo no se evaluara mas 
+            //luego con cotanins lo que hago es verficiar el contenido del atributo dni que contenga la cadena de texto especificada o igual valor a el filtro que le paso como parametro
+
+
+        }
         public usuario AutenticarUsuario(string dni, string password)
         {
             // Llamamos al método de autenticación en la capa de datos
@@ -31,16 +53,16 @@ namespace CapaLogica
             return obj_cd_usuario.buscarUsuario(id_usuario);
         }
 
-        public int registrarUsuario(usuario obj_usuario,out string mensaje)
+        public int registrarUsuario(usuario obj_usuario, out string mensaje)
         {
             //si pasa las reglas de validacion que cree que se llame al metodo registrar y sino que se retorne 0 que es como un null
             if (validacionUsuario(obj_usuario, out mensaje))
             {
-                /* Generar el hash de la contraseña
-                string hashContrasena = BCrypt.Net.BCrypt.HashPassword(obj_usuario.password);
-                 obj_usuario.password = hashContrasena;
-               string hashContrasena = BCrypt.Net.BCrypt.EnhancedHashPassword(obj_usuario.password, 13);
-                obj_usuario.password = hashContrasena;*/
+                /* Generar el hash de la contraseña*/
+                 obj_usuario.password = BCrypt.Net.BCrypt.HashPassword(obj_usuario.password);
+                // obj_usuario.password = hashContrasena;
+                /* string hashContrasena = BCrypt.Net.BCrypt.EnhancedHashPassword(obj_usuario.password, 13);
+                  obj_usuario.password = hashContrasena;*/
 
                 return obj_cd_usuario.registrarUsuario(obj_usuario, out mensaje);//le pasamos los parametros 
             }
@@ -48,8 +70,9 @@ namespace CapaLogica
             {
                 return 0;
             }
-          
+
         }
+
 
         public bool editarUsuario(usuario obj_usuario, out string mensaje)
         {
