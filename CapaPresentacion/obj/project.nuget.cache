@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oYOZDCEUJXPXpG5ArsUBBdQp2YsDwxKnmusqPIZCv/NRVhc4NspEtl4xed3KpTSB07JgJ+HF4hVc4MqYyyqeig==",
+  "dgSpecHash": "FWqpjGasE/GkRDq+DY5rBYv9csrsAmppi3YqHmF4Yj80CpZ1kpubZPYRCAYr3peIq16QY16u/WKBDU38FEaneg==",
   "success": true,
   "projectFilePath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaPresentacion\\CapaPresentacion.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,11 @@
     "C:\\Users\\octav\\.nuget\\packages\\system.security.cryptography.protecteddata\\7.0.0\\system.security.cryptography.protecteddata.7.0.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\system.security.permissions\\7.0.0\\system.security.permissions.7.0.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\octav\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+    "C:\\Users\\octav\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.22\\microsoft.windowsdesktop.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.22\\microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.22\\microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.22\\microsoft.netcore.app.host.win-x64.6.0.22.nupkg.sha512"
   ],
   "logs": []
 }

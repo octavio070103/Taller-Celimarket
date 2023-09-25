@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "KMsou8M5Id5ppjfV0VhKW6qpbFo4jrW0v8kNCZswRr5EM+9pPPIsmwMN2oIvhQ3hXFGaUxKQXysjWuZbJ92AjQ==",
+  "dgSpecHash": "W2B3QtSRqs8oC4TOCfUgpKikfwX5FWl2Vebxj8fenJqjZ8cio2qqYlpGXkJfWm8b7FE0rWufA/NIJjo306vCPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\capaEntidad\\capaEntidad.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.22\\microsoft.windowsdesktop.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.22\\microsoft.netcore.app.ref.6.0.22.nupkg.sha512",
+    "C:\\Users\\octav\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.22\\microsoft.aspnetcore.app.ref.6.0.22.nupkg.sha512"
+  ],
   "logs": []
 }
