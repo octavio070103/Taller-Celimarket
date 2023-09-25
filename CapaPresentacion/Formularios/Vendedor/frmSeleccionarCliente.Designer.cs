@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeleccionarCliente));
             pnlBarraClientes = new Panel();
+            picMinCliente = new PictureBox();
+            picMaxCliente = new PictureBox();
+            picCerrar = new PictureBox();
             picMaximizar = new PictureBox();
             picMinimizar = new PictureBox();
             picCerrarVentana = new PictureBox();
@@ -38,14 +41,23 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             pnlRegistrarCliente = new Panel();
-            btnGuardar = new Button();
+            comboBox1 = new ComboBox();
+            lblFiltrarCliente = new Label();
+            dtgvSelecClientes = new DataGridView();
+            id_cliente = new DataGridViewTextBoxColumn();
+            dni_cliente = new DataGridViewTextBoxColumn();
+            apellido_cliente = new DataGridViewTextBoxColumn();
+            nombre_cliente = new DataGridViewTextBoxColumn();
+            telefono_cliente = new DataGridViewTextBoxColumn();
+            direccion_cliente = new DataGridViewTextBoxColumn();
+            btnSeleccionar = new Button();
             lblBuscarCliente = new Label();
             lblSeleccionar = new Label();
             txtNombre = new TextBox();
-            dataGridView1 = new DataGridView();
-            lblFiltrarCliente = new Label();
-            comboBox1 = new ComboBox();
             pnlBarraClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picMinCliente).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxCliente).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMaximizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrarVentana).BeginInit();
@@ -54,12 +66,15 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             pnlRegistrarCliente.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvSelecClientes).BeginInit();
             SuspendLayout();
             // 
             // pnlBarraClientes
             // 
             pnlBarraClientes.BackColor = Color.FromArgb(1, 1, 2);
+            pnlBarraClientes.Controls.Add(picMinCliente);
+            pnlBarraClientes.Controls.Add(picMaxCliente);
+            pnlBarraClientes.Controls.Add(picCerrar);
             pnlBarraClientes.Controls.Add(picMaximizar);
             pnlBarraClientes.Controls.Add(picMinimizar);
             pnlBarraClientes.Controls.Add(picCerrarVentana);
@@ -72,6 +87,44 @@
             pnlBarraClientes.Name = "pnlBarraClientes";
             pnlBarraClientes.Size = new Size(620, 33);
             pnlBarraClientes.TabIndex = 2;
+            // 
+            // picMinCliente
+            // 
+            picMinCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picMinCliente.Cursor = Cursors.Hand;
+            picMinCliente.Image = (Image)resources.GetObject("picMinCliente.Image");
+            picMinCliente.Location = new Point(527, 12);
+            picMinCliente.Name = "picMinCliente";
+            picMinCliente.Size = new Size(23, 21);
+            picMinCliente.SizeMode = PictureBoxSizeMode.Zoom;
+            picMinCliente.TabIndex = 25;
+            picMinCliente.TabStop = false;
+            // 
+            // picMaxCliente
+            // 
+            picMaxCliente.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picMaxCliente.BackColor = Color.FromArgb(1, 1, 2);
+            picMaxCliente.Cursor = Cursors.Hand;
+            picMaxCliente.Image = (Image)resources.GetObject("picMaxCliente.Image");
+            picMaxCliente.Location = new Point(556, 4);
+            picMaxCliente.Name = "picMaxCliente";
+            picMaxCliente.Size = new Size(22, 23);
+            picMaxCliente.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaxCliente.TabIndex = 24;
+            picMaxCliente.TabStop = false;
+            // 
+            // picCerrar
+            // 
+            picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picCerrar.Cursor = Cursors.Hand;
+            picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
+            picCerrar.Location = new Point(584, 6);
+            picCerrar.Name = "picCerrar";
+            picCerrar.Size = new Size(24, 21);
+            picCerrar.SizeMode = PictureBoxSizeMode.Zoom;
+            picCerrar.TabIndex = 24;
+            picCerrar.TabStop = false;
+            picCerrar.Click += picCerrar_Click;
             // 
             // picMaximizar
             // 
@@ -165,8 +218,8 @@
             pnlRegistrarCliente.BackColor = Color.SteelBlue;
             pnlRegistrarCliente.Controls.Add(comboBox1);
             pnlRegistrarCliente.Controls.Add(lblFiltrarCliente);
-            pnlRegistrarCliente.Controls.Add(dataGridView1);
-            pnlRegistrarCliente.Controls.Add(btnGuardar);
+            pnlRegistrarCliente.Controls.Add(dtgvSelecClientes);
+            pnlRegistrarCliente.Controls.Add(btnSeleccionar);
             pnlRegistrarCliente.Controls.Add(lblBuscarCliente);
             pnlRegistrarCliente.Controls.Add(lblSeleccionar);
             pnlRegistrarCliente.Controls.Add(txtNombre);
@@ -176,19 +229,84 @@
             pnlRegistrarCliente.Size = new Size(620, 429);
             pnlRegistrarCliente.TabIndex = 4;
             // 
-            // btnGuardar
+            // comboBox1
             // 
-            btnGuardar.BackColor = Color.FromArgb(56, 182, 255);
-            btnGuardar.FlatAppearance.BorderSize = 0;
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(28, 377);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(138, 40);
-            btnGuardar.TabIndex = 14;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(478, 71);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(114, 23);
+            comboBox1.TabIndex = 17;
+            // 
+            // lblFiltrarCliente
+            // 
+            lblFiltrarCliente.AutoSize = true;
+            lblFiltrarCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFiltrarCliente.ForeColor = SystemColors.HighlightText;
+            lblFiltrarCliente.Location = new Point(421, 71);
+            lblFiltrarCliente.Name = "lblFiltrarCliente";
+            lblFiltrarCliente.Size = new Size(51, 21);
+            lblFiltrarCliente.TabIndex = 16;
+            lblFiltrarCliente.Text = "Filtrar";
+            lblFiltrarCliente.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dtgvSelecClientes
+            // 
+            dtgvSelecClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvSelecClientes.Columns.AddRange(new DataGridViewColumn[] { id_cliente, dni_cliente, apellido_cliente, nombre_cliente, telefono_cliente, direccion_cliente });
+            dtgvSelecClientes.Location = new Point(28, 108);
+            dtgvSelecClientes.Name = "dtgvSelecClientes";
+            dtgvSelecClientes.RowTemplate.Height = 25;
+            dtgvSelecClientes.Size = new Size(564, 248);
+            dtgvSelecClientes.TabIndex = 15;
+//            dtgvSelecClientes.SelectionChanged += obtenerDatosCliente;
+            // 
+            // id_cliente
+            // 
+            id_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            id_cliente.HeaderText = "ID";
+            id_cliente.Name = "id_cliente";
+            id_cliente.Width = 43;
+            // 
+            // dni_cliente
+            // 
+            dni_cliente.HeaderText = "DNI";
+            dni_cliente.Name = "dni_cliente";
+            // 
+            // apellido_cliente
+            // 
+            apellido_cliente.HeaderText = "Apellido";
+            apellido_cliente.Name = "apellido_cliente";
+            // 
+            // nombre_cliente
+            // 
+            nombre_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre_cliente.HeaderText = "Nombre";
+            nombre_cliente.Name = "nombre_cliente";
+            // 
+            // telefono_cliente
+            // 
+            telefono_cliente.HeaderText = "Telefono";
+            telefono_cliente.Name = "telefono_cliente";
+            // 
+            // direccion_cliente
+            // 
+            direccion_cliente.HeaderText = "Direccion";
+            direccion_cliente.Name = "direccion_cliente";
+            // 
+            // btnSeleccionar
+            // 
+            btnSeleccionar.BackColor = Color.FromArgb(56, 182, 255);
+            btnSeleccionar.FlatAppearance.BorderSize = 0;
+            btnSeleccionar.FlatStyle = FlatStyle.Flat;
+            btnSeleccionar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSeleccionar.ForeColor = Color.White;
+            btnSeleccionar.Location = new Point(28, 377);
+            btnSeleccionar.Name = "btnSeleccionar";
+            btnSeleccionar.Size = new Size(138, 40);
+            btnSeleccionar.TabIndex = 14;
+            btnSeleccionar.Text = "Seleccionar";
+            btnSeleccionar.UseVisualStyleBackColor = false;
+            btnSeleccionar.Click += btnSeleccionar_Click;
             // 
             // lblBuscarCliente
             // 
@@ -223,35 +341,6 @@
             txtNombre.Size = new Size(174, 23);
             txtNombre.TabIndex = 1;
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(28, 108);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(564, 248);
-            dataGridView1.TabIndex = 15;
-            // 
-            // lblFiltrarCliente
-            // 
-            lblFiltrarCliente.AutoSize = true;
-            lblFiltrarCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFiltrarCliente.ForeColor = SystemColors.HighlightText;
-            lblFiltrarCliente.Location = new Point(421, 71);
-            lblFiltrarCliente.Name = "lblFiltrarCliente";
-            lblFiltrarCliente.Size = new Size(51, 21);
-            lblFiltrarCliente.TabIndex = 16;
-            lblFiltrarCliente.Text = "Filtrar";
-            lblFiltrarCliente.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(478, 71);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(114, 23);
-            comboBox1.TabIndex = 17;
-            // 
             // frmSeleccionarCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -260,8 +349,12 @@
             Controls.Add(pnlRegistrarCliente);
             Controls.Add(pnlBarraClientes);
             Name = "frmSeleccionarCliente";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "frmSeleccionarCliente";
             pnlBarraClientes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picMinCliente).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxCliente).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMaximizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinimizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCerrarVentana).EndInit();
@@ -271,7 +364,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             pnlRegistrarCliente.ResumeLayout(false);
             pnlRegistrarCliente.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvSelecClientes).EndInit();
             ResumeLayout(false);
         }
 
@@ -286,12 +379,21 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private Panel pnlRegistrarCliente;
-        private Button btnGuardar;
+        private Button btnSeleccionar;
         private Label lblBuscarCliente;
         private Label lblSeleccionar;
         private TextBox txtNombre;
         private Label lblFiltrarCliente;
-        private DataGridView dataGridView1;
+        private DataGridView dtgvSelecClientes;
         private ComboBox comboBox1;
+        private PictureBox picCerrar;
+        private PictureBox picMaxCliente;
+        private PictureBox picMinCliente;
+        private DataGridViewTextBoxColumn id_cliente;
+        private DataGridViewTextBoxColumn dni_cliente;
+        private DataGridViewTextBoxColumn apellido_cliente;
+        private DataGridViewTextBoxColumn nombre_cliente;
+        private DataGridViewTextBoxColumn telefono_cliente;
+        private DataGridViewTextBoxColumn direccion_cliente;
     }
 }

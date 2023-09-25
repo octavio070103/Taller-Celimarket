@@ -39,11 +39,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             borrarMensajeError();
             validarCampos();
 
-            if ( validarCampos() == true )
+            if (validarCampos() == true)
             {
                 DialogResult pregunta = MessageBox.Show("¿Seguro que desea registrar un nuevo Cliente?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
 
-                if ( pregunta == DialogResult.Yes )
+                if (pregunta == DialogResult.Yes)
                 {
                     datosCliente = obtenerDatos();
 
@@ -81,39 +81,39 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             bool validacion = true;
 
-            if ( txtApellido.Text == "")
+            if (txtApellido.Text == "")
             {
-                errorProvider1.SetError( txtApellido, "Ingrese el apellido");
+                errorProvider1.SetError(txtApellido, "Ingrese el apellido");
                 validacion = false;
             }
 
-            if ( txtNombre.Text == "")
+            if (txtNombre.Text == "")
             {
-                errorProvider1.SetError( txtNombre, "Ingrese el nombre");
+                errorProvider1.SetError(txtNombre, "Ingrese el nombre");
                 validacion = false;
             }
 
-            if( txtDni.Text == "")
+            if (txtDni.Text == "")
             {
-                errorProvider1.SetError( txtDni, "Ingrese el DNI");
+                errorProvider1.SetError(txtDni, "Ingrese el DNI");
                 validacion = false;
             }
 
-            if( txtDomicilio.Text == "")
+            if (txtDomicilio.Text == "")
             {
                 errorProvider1.SetError(txtDomicilio, "Ingrese el domicilio");
                 validacion = false;
             }
 
-            if( txtCorreo.Text == "")
+            if (txtCorreo.Text == "")
             {
-                errorProvider1.SetError( txtCorreo, "Ingrese el correo electronico");
+                errorProvider1.SetError(txtCorreo, "Ingrese el correo electronico");
                 validacion = false;
             }
 
-            if( txtTelefono.Text == "")
+            if (txtTelefono.Text == "")
             {
-                errorProvider1.SetError( txtTelefono, "Ingrese el numero de telefono");
+                errorProvider1.SetError(txtTelefono, "Ingrese el numero de telefono");
                 validacion = false;
             }
 

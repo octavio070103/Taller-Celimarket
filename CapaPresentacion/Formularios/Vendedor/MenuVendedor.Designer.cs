@@ -37,16 +37,13 @@
             btnMenu = new Button();
             PMenuLat = new Panel();
             button6 = new Button();
-            button1 = new Button();
+            btnRegistrarConsultas = new Button();
             label1 = new Label();
             picCerrarSesion = new PictureBox();
             button5 = new Button();
-            PSubmenu1 = new Panel();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
             btnAbrirClientes = new Button();
             PLogo = new Panel();
+            pictureBox1 = new PictureBox();
             picUsuario = new PictureBox();
             PVentana = new Panel();
             panel1.SuspendLayout();
@@ -56,8 +53,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             PMenuLat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).BeginInit();
-            PSubmenu1.SuspendLayout();
             PLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
             SuspendLayout();
             // 
@@ -145,17 +142,17 @@
             btnMenu.Text = "Menu Principal";
             btnMenu.TextAlign = ContentAlignment.MiddleRight;
             btnMenu.UseVisualStyleBackColor = false;
+            btnMenu.Click += btnMenu_Click;
             // 
             // PMenuLat
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
             PMenuLat.Controls.Add(button6);
-            PMenuLat.Controls.Add(button1);
+            PMenuLat.Controls.Add(btnRegistrarConsultas);
             PMenuLat.Controls.Add(label1);
             PMenuLat.Controls.Add(picCerrarSesion);
             PMenuLat.Controls.Add(button5);
-            PMenuLat.Controls.Add(PSubmenu1);
             PMenuLat.Controls.Add(btnAbrirClientes);
             PMenuLat.Controls.Add(PLogo);
             PMenuLat.Dock = DockStyle.Left;
@@ -172,7 +169,7 @@
             button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
             button6.ForeColor = SystemColors.ControlLightLight;
-            button6.Location = new Point(0, 378);
+            button6.Location = new Point(0, 258);
             button6.Name = "button6";
             button6.Padding = new Padding(10, 0, 0, 0);
             button6.Size = new Size(250, 45);
@@ -181,22 +178,23 @@
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnRegistrarConsultas
             // 
-            button1.BackColor = Color.FromArgb(17, 17, 27);
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(0, 333);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(250, 45);
-            button1.TabIndex = 3;
-            button1.Text = "Consultas";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
+            btnRegistrarConsultas.BackColor = Color.FromArgb(17, 17, 27);
+            btnRegistrarConsultas.Cursor = Cursors.Hand;
+            btnRegistrarConsultas.Dock = DockStyle.Top;
+            btnRegistrarConsultas.FlatAppearance.BorderSize = 0;
+            btnRegistrarConsultas.FlatStyle = FlatStyle.Flat;
+            btnRegistrarConsultas.ForeColor = SystemColors.ControlLightLight;
+            btnRegistrarConsultas.Location = new Point(0, 213);
+            btnRegistrarConsultas.Name = "btnRegistrarConsultas";
+            btnRegistrarConsultas.Padding = new Padding(10, 0, 0, 0);
+            btnRegistrarConsultas.Size = new Size(250, 45);
+            btnRegistrarConsultas.TabIndex = 3;
+            btnRegistrarConsultas.Text = "Consultas";
+            btnRegistrarConsultas.TextAlign = ContentAlignment.MiddleLeft;
+            btnRegistrarConsultas.UseVisualStyleBackColor = false;
+            btnRegistrarConsultas.Click += btnRegistrarConsultas_Click;
             // 
             // label1
             // 
@@ -230,7 +228,7 @@
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
             button5.ForeColor = SystemColors.ControlLightLight;
-            button5.Location = new Point(0, 288);
+            button5.Location = new Point(0, 168);
             button5.Name = "button5";
             button5.Padding = new Padding(10, 0, 0, 0);
             button5.Size = new Size(250, 45);
@@ -239,72 +237,6 @@
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button4_Click;
-            // 
-            // PSubmenu1
-            // 
-            PSubmenu1.BackColor = Color.BlanchedAlmond;
-            PSubmenu1.Controls.Add(button4);
-            PSubmenu1.Controls.Add(button3);
-            PSubmenu1.Controls.Add(button2);
-            PSubmenu1.Dock = DockStyle.Top;
-            PSubmenu1.Location = new Point(0, 168);
-            PSubmenu1.Name = "PSubmenu1";
-            PSubmenu1.Size = new Size(250, 120);
-            PSubmenu1.TabIndex = 1;
-            // 
-            // button4
-            // 
-            button4.BackColor = Color.FromArgb(67, 68, 89);
-            button4.Cursor = Cursors.Hand;
-            button4.Dock = DockStyle.Top;
-            button4.FlatAppearance.BorderSize = 0;
-            button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = SystemColors.HighlightText;
-            button4.Location = new Point(0, 80);
-            button4.Name = "button4";
-            button4.Padding = new Padding(35, 0, 0, 0);
-            button4.Size = new Size(250, 40);
-            button4.TabIndex = 2;
-            button4.Text = "button4";
-            button4.TextAlign = ContentAlignment.MiddleLeft;
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.FromArgb(67, 68, 89);
-            button3.Cursor = Cursors.Hand;
-            button3.Dock = DockStyle.Top;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = SystemColors.HighlightText;
-            button3.Location = new Point(0, 40);
-            button3.Name = "button3";
-            button3.Padding = new Padding(35, 0, 0, 0);
-            button3.Size = new Size(250, 40);
-            button3.TabIndex = 1;
-            button3.Text = "Gestionar clientes";
-            button3.TextAlign = ContentAlignment.MiddleLeft;
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.FromArgb(67, 68, 89);
-            button2.Cursor = Cursors.Hand;
-            button2.Dock = DockStyle.Top;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.HighlightText;
-            button2.Location = new Point(0, 0);
-            button2.Name = "button2";
-            button2.Padding = new Padding(35, 0, 0, 0);
-            button2.Size = new Size(250, 40);
-            button2.TabIndex = 1;
-            button2.Text = "Registrar cliente";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
             // 
             // btnAbrirClientes
             // 
@@ -327,6 +259,7 @@
             // PLogo
             // 
             PLogo.BackColor = Color.FromArgb(9, 10, 25);
+            PLogo.Controls.Add(pictureBox1);
             PLogo.Controls.Add(picUsuario);
             PLogo.Dock = DockStyle.Top;
             PLogo.Location = new Point(0, 0);
@@ -334,10 +267,20 @@
             PLogo.Size = new Size(250, 123);
             PLogo.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = CapaPresentacion.Properties.Resources.menu_burger;
+            pictureBox1.Location = new Point(10, 15);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(31, 28);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            // 
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(12, 17);
+            picUsuario.Location = new Point(160, 15);
             picUsuario.Name = "picUsuario";
             picUsuario.Size = new Size(84, 84);
             picUsuario.SizeMode = PictureBoxSizeMode.Zoom;
@@ -362,6 +305,7 @@
             Controls.Add(PMenuLat);
             Controls.Add(panel1);
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "MenuVendedo";
             StartPosition = FormStartPosition.CenterScreen;
@@ -375,8 +319,8 @@
             PMenuLat.ResumeLayout(false);
             PMenuLat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).EndInit();
-            PSubmenu1.ResumeLayout(false);
             PLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).EndInit();
             ResumeLayout(false);
         }
@@ -385,10 +329,6 @@
         private Panel panel1;
         private Panel PMenuLat;
         private Button button5;
-        private Panel PSubmenu1;
-        private Button button4;
-        private Button button3;
-        private Button button2;
         private Button btnAbrirClientes;
         private Panel PLogo;
         private Panel PVentana;
@@ -400,7 +340,8 @@
         private PictureBox picMaxPantalla;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private Button button1;
+        private Button btnRegistrarConsultas;
         private Button button6;
+        private PictureBox pictureBox1;
     }
 }

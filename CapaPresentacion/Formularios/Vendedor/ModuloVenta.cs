@@ -12,9 +12,49 @@ namespace CapaPresentacion.Formularios.Vendedor
 {
     public partial class frmModuloVenta : Form
     {
+        private Form formularioActivo = null;
+
         public frmModuloVenta()
         {
             InitializeComponent();
+        }
+
+
+        private void abrirFormularioHijo(Form formHijo)
+        {
+            //**** Este metodo abrira el formulario indicado por cada boton ****
+
+            if (formularioActivo == null) // cambiar por !=
+            {
+
+                formularioActivo = formHijo;
+                formHijo.TopLevel = false;
+                formHijo.FormBorderStyle = FormBorderStyle.None;
+                pnlModuloVenta.Controls.Add(formHijo);
+                pnlModuloVenta.Tag = formHijo;
+
+                formHijo.Location = new Point((pnlModuloVenta.Width - formHijo.Width) / 2,
+                         (pnlModuloVenta.Height - formHijo.Height) / 2);
+
+                formHijo.BringToFront();
+                formHijo.Show();
+            }
+            else
+            {
+                formularioActivo.Close();
+                formularioActivo = formHijo;
+                formHijo.TopLevel = false;
+                formHijo.FormBorderStyle = FormBorderStyle.None;
+                pnlModuloVenta.Controls.Add(formHijo);
+                pnlModuloVenta.Tag = formHijo;
+
+                formHijo.Location = new Point((pnlModuloVenta.Width - formHijo.Width) / 2,
+                (pnlModuloVenta.Height - formHijo.Height) / 2);
+
+                formHijo.BringToFront();
+                formHijo.Show();
+            }
+
         }
 
 
@@ -178,6 +218,17 @@ namespace CapaPresentacion.Formularios.Vendedor
             return validacion;
         }
 
+        private void btnElegirCliente_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo(new frmSeleccionarCliente(this));
+        }
+
+
+        public void seleccionarCliente(string[] pDatosCliente)
+        {
+            txtIdCliente.Text = pDatosCliente[0];
+            txtCliente.Text = pDatosCliente[1];
+        }
 
     }
 }

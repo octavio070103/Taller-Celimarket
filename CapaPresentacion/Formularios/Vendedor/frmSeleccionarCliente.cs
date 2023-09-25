@@ -12,9 +12,40 @@ namespace CapaPresentacion.Formularios.Vendedor
 {
     public partial class frmSeleccionarCliente : Form
     {
-        public frmSeleccionarCliente()
+
+        frmModuloVenta auxModuloVenta;
+
+        public frmSeleccionarCliente(frmModuloVenta pModuloVenta)
         {
             InitializeComponent();
+            this.auxModuloVenta = pModuloVenta;
         }
+
+        private void picCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            string[] auxDatosCliente = new string[2];
+
+            DataGridViewRow filaSeleccionada = new DataGridViewRow();
+
+            if (dtgvSelecClientes.Rows.Count > 0)
+            {
+
+                filaSeleccionada = dtgvSelecClientes.CurrentRow;
+
+                auxDatosCliente[0] = filaSeleccionada.Cells["id_cliente"].Value.ToString();
+                auxDatosCliente[1] = filaSeleccionada.Cells["apellido_cliente"].Value.ToString()
+                                    + " " + filaSeleccionada.Cells["nombre_cliente"].Value.ToString(); ;
+
+                auxModuloVenta.seleccionarCliente(auxDatosCliente);
+                this.Close();
+            }
+
+        }
+
     }
 }

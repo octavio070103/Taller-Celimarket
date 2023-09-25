@@ -22,41 +22,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void personalizarDiseno()
         {
             //**** Este metodo oculta los SUBMENUS del menu lateral al iniciar ***
-            PSubmenu1.Visible = false;
+            //PSubmenu1.Visible = false;
             //*** Hacer para cada submenu - borrar
         }
-
-        private void ocultarSubmenu()
-        {
-            //**** Este metodo oculta los SUBMENUS del menu lateral ****
-
-            if (PSubmenu1.Visible == true)
-            {
-                PSubmenu1.Visible = false;
-            }
-
-            //*** Hacer para cada submenu - borrar
-        }
-
-        private void mostrarSubmenu(Panel subMenu)
-        {
-            //**** Este metodo permite mostrar un ocultar un determinado submenu al tocar un boton ****
-
-            if (subMenu.Visible == false)
-            {
-                ocultarSubmenu();       //**** Si el submenu no se ve, oculta los demas submenus
-                subMenu.Visible = true; //**** Muestra el submenu indicado
-
-            }
-            else
-            {
-                subMenu.Visible = false; //**** Oculta el submenu al tocar el boton
-            }
-        }
-
-
-
-
 
         private void PMenuLat_Paint(object sender, PaintEventArgs e)
         {
@@ -71,27 +39,18 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             //mostrarSubmenu(PSubmenu1);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //*** Modificar si es necesario - hacer para cada evento - borrar
-
-            //**** Falta el codigo a ejecutar - borrar 
-            //abrirFormularioHijo(new frmRegistrarCliente());
-            ocultarSubmenu();
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             //**** Falta el codigo a ejecutar - borrar 
             abrirFormularioHijo(new FormPrueba());
-            ocultarSubmenu();
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //**** Falta el codigo a ejecutar - borrar 
+            //**** Falta el codigo a ejecutar
             abrirFormularioHijo(new frmModuloVenta());
-            ocultarSubmenu();
+
         }
 
 
@@ -159,6 +118,20 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void picMinPantalla_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnRegistrarConsultas_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo(new frmModuloConsultas());
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            if (formularioActivo != null)
+            {
+                formularioActivo.Close();
+            }
+
         }
     }
 }

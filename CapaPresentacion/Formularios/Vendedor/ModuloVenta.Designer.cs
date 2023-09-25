@@ -48,13 +48,14 @@
             categoria_producto_carrito = new DataGridViewTextBoxColumn();
             pnlListaProductos = new Panel();
             panel1 = new Panel();
+            txtIdCliente = new TextBox();
             btnQuitarCarrito = new Button();
             txtCantidad = new TextBox();
             picFotoProducto = new PictureBox();
             lblDatos = new Label();
             txtPrecio = new TextBox();
             cboMetodoPago = new ComboBox();
-            button4 = new Button();
+            btnElegirCliente = new Button();
             txtCliente = new TextBox();
             txtCategoria = new TextBox();
             dateTimePicker1 = new DateTimePicker();
@@ -286,13 +287,14 @@
             // 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(txtIdCliente);
             panel1.Controls.Add(btnQuitarCarrito);
             panel1.Controls.Add(txtCantidad);
             panel1.Controls.Add(picFotoProducto);
             panel1.Controls.Add(lblDatos);
             panel1.Controls.Add(txtPrecio);
             panel1.Controls.Add(cboMetodoPago);
-            panel1.Controls.Add(button4);
+            panel1.Controls.Add(btnElegirCliente);
             panel1.Controls.Add(txtCliente);
             panel1.Controls.Add(txtCategoria);
             panel1.Controls.Add(dateTimePicker1);
@@ -310,6 +312,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(513, 278);
             panel1.TabIndex = 30;
+            // 
+            // txtIdCliente
+            // 
+            txtIdCliente.Anchor = AnchorStyles.None;
+            txtIdCliente.Location = new Point(63, 179);
+            txtIdCliente.Name = "txtIdCliente";
+            txtIdCliente.Size = new Size(43, 23);
+            txtIdCliente.TabIndex = 31;
+            txtIdCliente.KeyPress += desactivarModificacion_KeyPress;
             // 
             // btnQuitarCarrito
             // 
@@ -373,24 +384,26 @@
             cboMetodoPago.TabIndex = 26;
             cboMetodoPago.TextChanged += cboMetodoPago_TextChanged;
             // 
-            // button4
+            // btnElegirCliente
             // 
-            button4.Anchor = AnchorStyles.None;
-            button4.Location = new Point(370, 179);
-            button4.Name = "button4";
-            button4.Size = new Size(26, 23);
-            button4.TabIndex = 25;
-            button4.Text = "...";
-            button4.UseVisualStyleBackColor = true;
+            btnElegirCliente.Anchor = AnchorStyles.None;
+            btnElegirCliente.Location = new Point(370, 179);
+            btnElegirCliente.Name = "btnElegirCliente";
+            btnElegirCliente.Size = new Size(26, 23);
+            btnElegirCliente.TabIndex = 25;
+            btnElegirCliente.Text = "...";
+            btnElegirCliente.UseVisualStyleBackColor = true;
+            btnElegirCliente.Click += btnElegirCliente_Click;
             // 
             // txtCliente
             // 
             txtCliente.Anchor = AnchorStyles.None;
-            txtCliente.Location = new Point(70, 179);
+            txtCliente.Location = new Point(112, 179);
             txtCliente.Name = "txtCliente";
-            txtCliente.Size = new Size(294, 23);
+            txtCliente.Size = new Size(252, 23);
             txtCliente.TabIndex = 24;
             txtCliente.TextChanged += txtCliente_TextChanged;
+            txtCliente.KeyPress += desactivarModificacion_KeyPress;
             // 
             // txtCategoria
             // 
@@ -552,6 +565,7 @@
             // 
             // nombre_producto
             // 
+            nombre_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nombre_producto.HeaderText = "Nombre";
             nombre_producto.Name = "nombre_producto";
             // 
@@ -655,7 +669,7 @@
         private Label lblCantidad;
         private TextBox txtNombre;
         private DateTimePicker dateTimePicker1;
-        private Button button4;
+        private Button btnElegirCliente;
         private TextBox txtCliente;
         private TextBox txtCategoria;
         private Label lblDatos;
@@ -664,11 +678,6 @@
         private TextBox txtPrecio;
         private Panel panel1;
         private Button btnQuitarCarrito;
-        private DataGridViewTextBoxColumn id_producto;
-        private DataGridViewTextBoxColumn nombre_producto;
-        private DataGridViewTextBoxColumn categoria_producto;
-        private DataGridViewTextBoxColumn precio_producto;
-        private DataGridViewTextBoxColumn stock_producto;
         private DataGridViewTextBoxColumn nombre_producto_carrito;
         private DataGridViewTextBoxColumn cantidad_producto_carrito;
         private DataGridViewTextBoxColumn precio_producto_carrito;
@@ -677,5 +686,11 @@
         private Label lblClienteCarrito;
         private Label lblModificarCliente;
         private Label lblModificarMetodo;
+        private TextBox txtIdCliente;
+        private DataGridViewTextBoxColumn id_producto;
+        private DataGridViewTextBoxColumn nombre_producto;
+        private DataGridViewTextBoxColumn categoria_producto;
+        private DataGridViewTextBoxColumn precio_producto;
+        private DataGridViewTextBoxColumn stock_producto;
     }
 }

@@ -70,5 +70,18 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+        private void dtgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgvClientes.Rows.Count > 0)
+            {
+                txtDniCliente.Text = dtgvClientes.CurrentRow.Cells[0].Value.ToString();
+                txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[1].Value.ToString();
+                txtNombreCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
+                txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[3].Value.ToString();
+                txtDireccionCliente.Text = dtgvClientes.CurrentRow.Cells[4].Value.ToString();
+                txtCorreoCliente.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
+
+            }
+        }
     }
 }
