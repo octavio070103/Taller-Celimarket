@@ -10,6 +10,6 @@ namespace capaEntidad
     {
         public int id_categoria {  get; set; }
         public string desripcion_categoria { get; set; } 
-        public bool estado_categoria { get; set; }
+        public int estado_categoria { get; set; }
     }
 }

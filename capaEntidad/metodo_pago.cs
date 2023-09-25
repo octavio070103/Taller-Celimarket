@@ -10,6 +10,6 @@ namespace capaEntidad
     {
         public int id_metodo_pago {  get; set; }
         public string descripcion_metodo_pago { get; set; }
-
+        public int estado_metodo_pago { get; set; }
     }
 }

@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Formularios\Admin\usuario\permiso\" />
     <Folder Include="Formularios\Inicio\" />
     <Folder Include="Formularios\Menu\" />
     <Folder Include="Fotos\Admin\" />

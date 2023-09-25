@@ -17,6 +17,7 @@ using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using CapaLogica;
 using capaEntidad;
 using CapaDatos;
+using CapaPresentacion.Formularios.Admin;
 
 namespace Proyecto_Taller.Presentacion.Formularios.Login
 {
@@ -32,10 +33,15 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
             InitializeComponent();
         }
 
+
+        /*funcionalidades para que cuando el usuario cliquee en algunos de estos controles pueda mover toda el formulario*/
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+        /*                                                                          */
+
 
         private void lblDeliMarket_Click(object sender, EventArgs e)
         {
@@ -162,10 +168,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
             if (validarCampos())
             {
                 borrarMensajeError();
-                List<usuario>TEST = new CL_usuario().listar();
 
-               usuario obj_usuario = new CD_usuario().listar().Where(u => u.dni == txtUsuario.Text && u.password == txtPassword.Text).FirstOrDefault();
 
+                // Llamamos a un método de autenticación en la capa de lógica de negocios
+                CL_usuario obj_capaLogica = new CL_usuario();
+                usuario obj_usuario = obj_capaLogica.AutenticarUsuario(txtUsuario.Text, txtPassword.Text);
 
                 /*Ejemplo hasta conectar a la BD autenticación y validación del usuario y contraseña*/
 
@@ -173,9 +180,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                 {
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
-                    //aca va el formulario que quiero qeu se abra
-                    MenuGerente formAbrir = new MenuGerente();
+
+                    //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
+                    MenuAdministrador formAbrir = new MenuAdministrador(obj_usuario);
                     formAbrir.Show();
                     this.Hide();
                 }

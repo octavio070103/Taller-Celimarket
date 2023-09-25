@@ -14,6 +14,7 @@ namespace capaEntidad
         public int numero { get; set; }
         public string localidad { get; set; }
         public string provincia { get; set; }
-        public bool estado_domicilio { get; set; }
+        public string descripcion {  get; set; }
+        public int estado_domicilio { get; set; }
     }
 }

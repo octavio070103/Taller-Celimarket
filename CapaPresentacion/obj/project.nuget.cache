@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FWqpjGasE/GkRDq+DY5rBYv9csrsAmppi3YqHmF4Yj80CpZ1kpubZPYRCAYr3peIq16QY16u/WKBDU38FEaneg==",
+  "dgSpecHash": "a6T1p0DGBlJWL40ZydCdDnHOT7tT2NxSeDXeWCoNKK2dsl5sfnre9OmM3XO3Ojz1Y5lasuVegWmXJkd7BXjzCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaPresentacion\\CapaPresentacion.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\octav\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

@@ -1,3 +1,4 @@
+using CapaPresentacion.Formularios.Admin;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
 namespace CapaPresentacion
@@ -11,8 +12,8 @@ namespace CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MenuAdmin form2 = new MenuAdmin();
-            form2.Show();
+          //  MenuAdministrador form2 = new MenuAdministrador();
+          //  form2.Show();
         }
     }
 }

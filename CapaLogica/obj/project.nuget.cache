@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vvZ2FT/x9+NoDTn8v3IiPs+viLBgRtBC7gf2gm/iHhHfNBHRwQbJKyQDHn+LH/sabhYKehX0sNqknZD3/rNlHw==",
+  "dgSpecHash": "m6ArGSMdlm3yhwHdJ5p3d0ZvNf+DZBl7/M5TCyoNRF9h8mEvLesIbwR68yfmW6iBhVt/SpU5W+GsCB4/l1q9sw==",
   "success": true,
   "projectFilePath": "C:\\Users\\octav\\source\\repos\\Proyecto-CeliMarket\\CapaLogica\\CapaLogica.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\octav\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\octav\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
