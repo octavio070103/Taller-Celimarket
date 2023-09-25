@@ -39,12 +39,18 @@ namespace CapaPresentacion.Formularios.Admin
                 usuarioActual = new capaEntidad.usuario()
                 {
                     id_usuario = 5,
-                    nombre = "prueba",
-                    apellido = "prueba",
-                    dni = "111",
                     email = "prueba@gmail",
                     password = "1",
-                    telefono = "378",
+                    estado_usuario = 1,
+                    obj_persona = new persona()
+                    {
+                        id_persona = 5,
+                        dni = "111",
+                        nombre = "prueba",
+                        apellido = "prueba",
+                        fecha_nacimiento = new DateTime(2003, 7, 1), // Año, mes, día 
+                        telefono = "33"
+                    },
 
                 };
             }
@@ -221,8 +227,8 @@ namespace CapaPresentacion.Formularios.Admin
 
 
             //pone los datos de uusario que se registra en el menu
-            lblNombreDelUsu.Text = usuarioActual.nombre + " " + usuarioActual.apellido;
-            lblRolDelUsu.Text = usuarioActual.apellido;
+            lblNombreDelUsu.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
+            lblRolDelUsu.Text = usuarioActual.obj_persona.apellido;
         }
 
         private void iconBtnGestionUsuario_MouseEnter(object sender, EventArgs e)

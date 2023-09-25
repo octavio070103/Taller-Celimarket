@@ -33,6 +33,8 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
+            dateTimePickerNacimiento = new DateTimePicker();
+            lblFechaNacimiento = new Label();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnLimpiarDatos = new FontAwesome.Sharp.IconButton();
@@ -90,6 +92,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(dateTimePickerNacimiento);
+            panel2.Controls.Add(lblFechaNacimiento);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnLimpiarDatos);
@@ -118,6 +122,26 @@
             panel2.Size = new Size(800, 389);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
+            // 
+            // dateTimePickerNacimiento
+            // 
+            dateTimePickerNacimiento.Format = DateTimePickerFormat.Short;
+            dateTimePickerNacimiento.Location = new Point(99, 286);
+            dateTimePickerNacimiento.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            dateTimePickerNacimiento.Name = "dateTimePickerNacimiento";
+            dateTimePickerNacimiento.Size = new Size(200, 23);
+            dateTimePickerNacimiento.TabIndex = 73;
+            dateTimePickerNacimiento.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            // 
+            // lblFechaNacimiento
+            // 
+            lblFechaNacimiento.AutoSize = true;
+            lblFechaNacimiento.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFechaNacimiento.Location = new Point(99, 264);
+            lblFechaNacimiento.Name = "lblFechaNacimiento";
+            lblFechaNacimiento.Size = new Size(178, 19);
+            lblFechaNacimiento.TabIndex = 72;
+            lblFechaNacimiento.Text = "Fecha de Nacimiento";
             // 
             // iconBtnCancelar
             // 
@@ -205,16 +229,18 @@
             iconBtnDomicilio.TextAlign = ContentAlignment.MiddleRight;
             iconBtnDomicilio.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnDomicilio.UseVisualStyleBackColor = false;
+            iconBtnDomicilio.Click += iconBtnDomicilio_Click;
             // 
             // pciBoxSubirImg
             // 
             pciBoxSubirImg.Image = (Image)resources.GetObject("pciBoxSubirImg.Image");
-            pciBoxSubirImg.Location = new Point(301, 283);
+            pciBoxSubirImg.Location = new Point(710, 228);
             pciBoxSubirImg.Name = "pciBoxSubirImg";
             pciBoxSubirImg.Size = new Size(62, 55);
             pciBoxSubirImg.SizeMode = PictureBoxSizeMode.StretchImage;
             pciBoxSubirImg.TabIndex = 41;
             pciBoxSubirImg.TabStop = false;
+            pciBoxSubirImg.Visible = false;
             // 
             // comboRolUsu
             // 
@@ -439,5 +465,7 @@
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private ErrorProvider errorProvider1;
+        private Label lblFechaNacimiento;
+        private DateTimePicker dateTimePickerNacimiento;
     }
 }

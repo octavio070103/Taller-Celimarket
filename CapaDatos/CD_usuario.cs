@@ -31,8 +31,12 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT u.id_usuario, u.nombre, u.apellido, u.dni, u.email,u.password,u.telefono,u.estado_usuario, r.id_rol, r.descripcion_rol,d.id_domicilio,d.calle,d.numero,d.provincia");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("SELECT u.id_usuario, u.email,u.password,u.fecha_registro,u.estado_usuario," +
+                        "p.id_persona,p.dni,p.nombre,p.apellido,p.fecha_nacimiento,p.telefono," +
+                        "r.id_rol, r.descripcion_rol," +
+                        "d.id_domicilio,d.calle,d.numero,d.provincia");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM usuario u");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN domicilio d On u.id_domicilio=d.id_domicilio;");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
 
@@ -49,15 +53,23 @@ namespace CapaDatos
                             //a mi lista de usuario le estoy agregrando un usaurio
                             lista.Add(new usuario
                             {
-                                id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                nombre = dr["nombre"].ToString(),
-                                apellido = dr["apellido"].ToString(),
-                                dni = dr["dni"].ToString(),
+                                id_usuario = Convert.ToInt32(dr["id_usuario"]),                              
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
-                                telefono = dr["telefono"].ToString(),
-                              //  estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
-                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
+
+                                 estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                
+                                 //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
+                                 obj_persona = new persona()
+                                 {
+                                     id_persona= Convert.ToInt32(dr["id_persona"]),
+                                     dni = dr["dni"].ToString(),
+                                     nombre = dr["nombre"].ToString(),
+                                     apellido = dr["apellido"].ToString(),
+                                     fecha_nacimiento = dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento")),
+                                     telefono = dr["telefono"].ToString()
+                                 },
                                 //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
                                 obj_rol =new rol()
                                 {
@@ -79,12 +91,15 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                     
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
                 }
             }
             return lista; // Devolvemos la lista de usuarios
         }
 
+
+
+        //revisar
         public usuario AutenticarUsuario(string dni, string password)
         {
             //le paso cadena de la clase conexion 
@@ -94,14 +109,23 @@ namespace CapaDatos
                 try
                 {
                     //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
                     //Define una cadena de consulta SQL que se utilizará para seleccionar datos de la tabla usuario en la base de datos.selecionando las colunasaz
                     //ver que @dni y @password se defininen como marcadores de posición en lugar de valores concretos. y lego en cmd.paramereters le asigno un valor especifico o real
-                    string query = "SELECT id_usuario, nombre, apellido, dni, email, password, telefono, estado_usuario  FROM usuario WHERE dni = @dni ";
+                    //string query = "SELECT id_usuario, nombre, apellido, dni, email, password, telefono, estado_usuario  FROM usuario WHERE dni = @dni ";
+
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
+                    query.AppendLine("SELECT u.id_usuario, u.nombre, u.apellido, u.dni, u.email,u.password,u.telefono,u.estado_usuario, r.id_rol, r.descripcion_rol,d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM usuario  u WHERE dni = @dni");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
+                    query.AppendLine("INNER JOIN domicilio d On u.id_domicilio=d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+                    query.AppendLine("WHERE id_usuario = @id_usuario; ");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
 
                     //creo un obj cmd de tipo sqlcommand este objeto se utiliza para ejecutar comandos SQL en la base de datos. 
                     //Toma dos argumentos: la consulta SQL query o consulta nueva que se ejecutará y la conexión a la base de datos s decir el nuestro obj de tipo sql conenectrion que creamois llamado objConexion 
-                    SqlCommand cmd = new SqlCommand(query, Obj_conexion);
+                   // SqlCommand cmd = new SqlCommand(query, Obj_conexion);
 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
                     //agregan parámetros a la consulta SQL. Los valores de @dni y @password se asignan a los valores de dni y password proporcionados como argumentos al método.
                     //Esto se hace para evitar la inyección de SQL y garantizar que los valores se utilicen de manera segura en la consulta.
                     cmd.Parameters.AddWithValue("@dni", dni);
@@ -130,14 +154,37 @@ namespace CapaDatos
                                 return new usuario
                                 {
                                     id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                    nombre = dr["nombre"].ToString(),
-                                    apellido = dr["apellido"].ToString(),
-                                    dni = dr["dni"].ToString(),
                                     email = dr["email"].ToString(),
                                     password = dr["password"].ToString(),
-                                    telefono = dr["telefono"].ToString(),
-                                    // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
+                                    fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
+
                                     estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+
+                                    //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
+                                    obj_persona = new persona()
+                                    {
+                                        id_persona = Convert.ToInt32(dr["id_persona"]),
+                                        dni = dr["dni"].ToString(),
+                                        nombre = dr["nombre"].ToString(),
+                                        apellido = dr["apellido"].ToString(),
+                                        fecha_nacimiento = dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento")),
+                                        telefono = dr["telefono"].ToString()
+                                    },
+                                    //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
+                                    obj_rol = new rol()
+                                    {
+                                        id_rol = Convert.ToInt32(dr["id_rol"]),
+                                        descripcion_rol = dr["descripcion_Rol"].ToString(),
+                                    },
+
+                                    obj_domicilio = new domicilio()
+                                    {
+                                        id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
+                                        calle = dr["calle"].ToString(),
+                                        numero = Convert.ToInt32(dr["numero"]),
+                                        provincia = dr["provincia"].ToString()
+                                    }
+                                    // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
                                     //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
 
                                 };
@@ -157,7 +204,6 @@ namespace CapaDatos
             return null; // Devolvemos null si no se encontró el usuario
         }
 
-
         public usuario buscarUsuario(int id_usuario)
         {
             //le paso cadena de la clase conexion 
@@ -169,12 +215,16 @@ namespace CapaDatos
                     //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
                     StringBuilder query = new StringBuilder();
 
-                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT u.id_usuario, u.nombre, u.apellido, u.dni, u.email,u.password,u.telefono,u.estado_usuario, r.id_rol, r.descripcion_rol,d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio,p para persona y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
+                    query.AppendLine("SELECT u.id_usuario,u.email,u.password,u.fecha_registro,u.estado_usuario," +
+                        "p.id_persona,p.dni,p.nombre, p.apellido,p.fecha_nacimiento,p.telefono," +
+                        "r.id_rol, r.descripcion_rol," +
+                        "d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM usuario u");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN domicilio d On u.id_domicilio=d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
-                    query.AppendLine("WHERE id_usuario = @id_usuario; ");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+                    query.AppendLine("WHERE id_usuario = @id_usuario; ");//esta consulta se utiliza para filtrar(buscar) la fila en la tabla usuario  y solo realice esas operacion en aquel registro que su campo id_uusario coinidice con el parametro @id_usuario
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
@@ -195,14 +245,22 @@ namespace CapaDatos
                             return new usuario
                             {
                                 id_usuario = Convert.ToInt32(dr["id_usuario"]),
-                                nombre = dr["nombre"].ToString(),
-                                apellido = dr["apellido"].ToString(),
-                                dni = dr["dni"].ToString(),
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
-                                telefono = dr["telefono"].ToString(),
+                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
+
                                 estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
 
+                                //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
+                                obj_persona = new persona()
+                                {
+                                    id_persona = Convert.ToInt32(dr["id_persona"]),
+                                    dni = dr["dni"].ToString(),
+                                    nombre = dr["nombre"].ToString(),
+                                    apellido = dr["apellido"].ToString(),
+                                    fecha_nacimiento = dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento")),
+                                    telefono = dr["telefono"].ToString()
+                                },
                                 //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
                                 obj_rol = new rol()
                                 {
@@ -246,19 +304,21 @@ namespace CapaDatos
                     //hago un capturador de errores por si tengo porblemas al coenctar con la BD
                     try
                     {
+                        
                         //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
                         SqlCommand cmd = new SqlCommand("SP_REGISTRARUSUARIO", Obj_conexion);
 
                         //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
-                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@dni", obj_usuario.dni);
+                        cmd.Parameters.AddWithValue("@dni", obj_usuario.obj_persona.dni);
+                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.obj_persona.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.obj_persona.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@fecha_nacimiento", obj_usuario.obj_persona.fecha_nacimiento);
+                        cmd.Parameters.AddWithValue("@telefono",obj_usuario.obj_persona.telefono);
                         cmd.Parameters.AddWithValue("@email", obj_usuario.email);
                         cmd.Parameters.AddWithValue("@password", obj_usuario.password);//cambiar este por un metodo que haga el has es decir pasarle a registraUSuario la contrase;a pero con el hash aplicado
-                        cmd.Parameters.AddWithValue("@telefono", obj_usuario.telefono);
+                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
                         cmd.Parameters.AddWithValue("@id_rol", obj_usuario.obj_rol.id_rol);
                         cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
-                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                         cmd.Parameters.Add("@id_Usuario_resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
                         cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -273,7 +333,8 @@ namespace CapaDatos
                         //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
                         id_usuario_generado = Convert.ToInt32(cmd.Parameters["@id_Usuario_resultado"].Value);
 
-                        mensaje = cmd.Parameters["@mensaje"].Value.ToString();
+                        mensaje = cmd.Parameters["@mensaje"].Value.ToString(); 
+                        
                     }
                     catch (Exception ex)
                     {
@@ -301,21 +362,23 @@ namespace CapaDatos
                 //le paso cadena de la clase conexion 
                 using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
                 {
+                    
                    
                         //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
                         SqlCommand cmd = new SqlCommand("SP_EDITARUSUARIO", Obj_conexion);
 
                         //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
                         cmd.Parameters.AddWithValue("@id_usuario", obj_usuario.id_usuario);
-                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@dni", obj_usuario.dni);
+                        cmd.Parameters.AddWithValue("@dni", obj_usuario.obj_persona.dni);
+                        cmd.Parameters.AddWithValue("@nombre", obj_usuario.obj_persona.nombre);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@apellido", obj_usuario.obj_persona.apellido);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@fecha_nacimiento", obj_usuario.obj_persona.fecha_nacimiento);
+                        cmd.Parameters.AddWithValue("@telefono", obj_usuario.obj_persona.telefono);
                         cmd.Parameters.AddWithValue("@email", obj_usuario.email);
                         cmd.Parameters.AddWithValue("@password", obj_usuario.password);//cambiar este por un metodo que haga el has es decir pasarle a registraUSuario la contrase;a pero con el hash aplicado
-                        cmd.Parameters.AddWithValue("@telefono", obj_usuario.telefono);
+                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
                         cmd.Parameters.AddWithValue("@id_rol", obj_usuario.obj_rol.id_rol);
                         cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
-                        cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
 
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                         cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
@@ -437,6 +500,49 @@ namespace CapaDatos
             }
             return respuesta;
 
+        }
+
+        public bool darDeAltaUsuario(usuario obj_usuario, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        {
+            bool respuesta = false;
+            mensaje = string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
+            try
+            {
+                //le paso cadena de la clase conexion 
+                using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+                {
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand("SP_DARALTAUSUARIO", Obj_conexion);
+
+                    //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
+                    cmd.Parameters.AddWithValue("@id_usuario", obj_usuario.id_usuario);
+
+
+                    //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                    cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
+
+                    // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                    //ejcutamos nuestro comando
+                    cmd.ExecuteNonQuery();
+
+                    //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
+                    respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+
+                    mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+            }
+            return respuesta;
         }
 
 

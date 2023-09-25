@@ -35,7 +35,7 @@ namespace CapaPresentacion.Formularios.Admin
             txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
             comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
-          
+
         }
 
 
@@ -81,19 +81,18 @@ namespace CapaPresentacion.Formularios.Admin
 
             foreach (capaEntidad.usuario item in p_listaUsuarios)
             {
-                // Determinar el estado del usuario
-                string estado = item.estado_usuario == 1 ? "Activo" : "No activo";
 
                 // Agregar una fila al DataGridView con los datos del usuario
                 dataGridUsuarios.Rows.Add(
                     new object[]
                     { //items del usuario
-                      item.id_usuario, item.dni,item.nombre,item.apellido,item.email,item.password,item.telefono,
+                      item.id_usuario, item.obj_persona.dni,item.obj_persona.nombre,item.obj_persona.apellido,item.email,item.password,item.obj_persona.telefono,
                        //item rol
                        item.obj_rol.id_rol,item.obj_rol.descripcion_rol,
                        item.obj_domicilio.id_domicilio,item.obj_domicilio.calle,item.obj_domicilio.numero,item.obj_domicilio.provincia,
                       // item.estado_usuario==true ? 1 : 0,item.estado_usuario==true ? "Activo" : "NO activo"
-                       item.estado_usuario,estado
+                       item.estado_usuario,
+                       item.estado_usuario == 1 ? "Activo" : "No activo" // Determinar el estado del usuario si es 1=activo
                       }
                  );
 
@@ -125,11 +124,12 @@ namespace CapaPresentacion.Formularios.Admin
                 if (objUsuario != null)
                 {
                     txtIdGuardado.Text = objUsuario.id_usuario.ToString();
-                    txtDniDato.Text = objUsuario.dni.ToString();
-                    txtNombreDato.Text = objUsuario.nombre;
-                    txtApeDato.Text = objUsuario.apellido;
+                    txtDniDato.Text = objUsuario.obj_persona.dni.ToString();
+                    txtNombreDato.Text = objUsuario.obj_persona.nombre;
+                    txtApeDato.Text = objUsuario.obj_persona.apellido;
+                    dateTimePickerNacimientoDato.Value = objUsuario.obj_persona.fecha_nacimiento;
                     txtEmailDato.Text = objUsuario.email;
-                    txtTelefDato.Text = objUsuario.telefono;
+                    txtTelefDato.Text = objUsuario.obj_persona.telefono;
                     txtPasswordDato.Text = objUsuario.password;
                     txtDomiciliodato.Text = objUsuario.obj_domicilio.calle + " " + objUsuario.obj_domicilio.numero.ToString();
 
@@ -151,11 +151,22 @@ namespace CapaPresentacion.Formularios.Admin
                     if (objUsuario.estado_usuario == 1)
                     {
                         comboEstadoDato.SelectedIndex = 0;
+
+                        //me permitira determinar que boton mostrarse si el de dar de alta o el de dar de baja depnediendo del estado del usuario que se seleccion
+                        iconBtnElim.Visible = true;
+                        iconBtnAlta.Visible = false;
                     }
                     else
                     {
                         comboEstadoDato.SelectedIndex = 1;
+                        //me permitira determinar que boton mostrarse si el de dar de alta o el de dar de baja depnediendo del estado del usuario que se seleccion
+                        iconBtnElim.Visible = false;
+                        iconBtnAlta.Visible = true;
                     }
+
+
+
+
                 }
                 else
                 {
@@ -180,7 +191,7 @@ namespace CapaPresentacion.Formularios.Admin
                     iconBtnModif.Visible = false;
                     ReadOnlyTxtDatoUsuario(false);//configuro el panel del usuario en modo edicion deshabilit ando la funcion ReadOnly
                 }
-                /*hago para que los text pasen de modo lectura a poder escrbirse sobre ellos */
+                //hago para que los text pasen de modo lectura a poder escrbirse sobre ellos 
             }
             else
             {
@@ -198,8 +209,8 @@ namespace CapaPresentacion.Formularios.Admin
             //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
             if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
             {
-                DialogResult consulta = MessageBox.Show("¿Desea Dar de bajo el usuario?", "Eliminar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (consulta == DialogResult.OK)
+                DialogResult consulta = MessageBox.Show("¿Desea Dar de bajo el usuario?", "Eliminar Datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (consulta == DialogResult.Yes)
                 {
                     capaEntidad.usuario obj_usuario = new capaEntidad.usuario
                     {
@@ -209,13 +220,21 @@ namespace CapaPresentacion.Formularios.Admin
 
 
                     obj_cl_usuario.eliminarUsuarioLogico(obj_usuario, out mensaje);
+
+                    //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                    FrmGestionarUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione un usuario para poder darlo baja ", "Eliminar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un usuario para poder darlo de baja ", "Eliminar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //aca muestro en caso de que haya habido algun error en el metodo DarDeBaja o en caso de exito tmabien muestro el mensaje proveniente de mi procedimiento alamcenado
+            if (mensaje != "")
+            {
+                MessageBox.Show(mensaje);
+            }
         }
         public List<rol> listarRolesCombo(ComboBox p_combo)
         {
@@ -229,6 +248,44 @@ namespace CapaPresentacion.Formularios.Admin
             return listaRol;
 
         }
+
+        /************************************** DAR DE ALTA UN USUARIO **********************************************/
+        private void iconBtnAlta_Click(object sender, EventArgs e)
+        {
+
+            string mensaje = string.Empty;
+            CapaLogica.CL_usuario obj_cl_usuario = new CL_usuario();
+
+            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
+            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
+            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
+            {
+                DialogResult consulta = MessageBox.Show("¿Desea Dar de Alta el usuario?", "Dar de Alta Datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (consulta == DialogResult.Yes)
+                {
+                    capaEntidad.usuario obj_usuario = new capaEntidad.usuario
+                    {
+                        id_usuario = Convert.ToInt32(txtIdGuardado.Text)
+
+                    };
+
+
+                    obj_cl_usuario.darDeAltaUsuario(obj_usuario, out mensaje);
+                }
+                //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                FrmGestionarUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario para poder darlo de Alta ", "Eliminar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //aca muestro en caso de que haya habido algun error en el metodo darDeAlta o en caso de exito tmabien muestro el mensaje proveniente de mi procedimiento alamcenado
+            if (mensaje != "")
+            {
+                MessageBox.Show(mensaje);
+            }
+        }
         private void ReadOnlyTxtDatoUsuario(bool valor)
         {
             txtDniDato.ReadOnly = valor;
@@ -238,8 +295,12 @@ namespace CapaPresentacion.Formularios.Admin
             txtPasswordDato.ReadOnly = valor;
             txtTelefDato.ReadOnly = valor;
             txtEmailDato.ReadOnly = valor;
-            //faltaria hacer para los comboBox para que esten en modo lecyra tambien
             txtDomiciliodato.ReadOnly = valor;
+
+            //usamos la propeidad enable para que parezca esatr en modo lectura y evitar cambios por parte del usuario,como esta propiedad usa el valor contrario al readOnly para ponerse en modo lectura le agrgamos el ! operador de negacion esto cambiara el valor y asi podremos hacer uso de esa propeidad
+            dateTimePickerNacimientoDato.Enabled = !valor;
+            comboEstadoDato.Enabled = !valor;
+            comboRolDato.Enabled = !valor;
         }
 
         // Método para buscar el id_rol por la descripción del rol
@@ -308,21 +369,28 @@ namespace CapaPresentacion.Formularios.Admin
                     capaEntidad.usuario obj_Usuario = new capaEntidad.usuario()
                     {
                         id_usuario = Convert.ToInt32(txtIdGuardado.Text),
-                        dni = txtDniDato.Text,
-                        nombre = txtNombreDato.Text,
-                        apellido = txtApeDato.Text,
                         email = txtEmailDato.Text,
-                        telefono = txtTelefDato.Text,
                         password = txtPasswordDato.Text,
+                        estado_usuario = estadoUsuarioSeleccionado(comboEstadoDato.SelectedItem as string), //convierto de manera segura selecteditem en un tipo string con as string y sino es posible devuelve null en vez de lanar una excepcion como lo hace .Tostring
+                        obj_persona = new persona()
+                        {
+                            dni = txtDniDato.Text,
+                            nombre = txtNombreDato.Text,
+                            apellido = txtApeDato.Text,
+                            fecha_nacimiento = dateTimePickerNacimientoDato.Value, // Año, mes, día 
+                            telefono = txtTelefDato.Text
+                        },
                         obj_rol = new rol()
                         {
                             id_rol = idRolSeleccionado
+
                         },
                         obj_domicilio = new domicilio()
                         {
                             id_domicilio = 1//aca debo de cambiar por el domicilio creado 
-                        },
-                        estado_usuario = estadoUsuarioSeleccionado(comboEstadoDato.SelectedItem as string) //convierto de manera segura selecteditem en un tipo string con as string y sino es posible devuelve null en vez de lanar una excepcion como lo hace .Tostring
+                        }
+
+
                     };
 
                     bool resultadoEditarUsuario = new CL_usuario().editarUsuario(obj_Usuario, out mensaje);
@@ -504,7 +572,7 @@ namespace CapaPresentacion.Formularios.Admin
             string filtro = txtDniFiltro.Text;
             string atributo = "dni";
             // Filtra los datos en el DataGridView
-            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+            FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
 
         private void txtNombreFiltro_TextChanged(object sender, EventArgs e)
@@ -512,7 +580,7 @@ namespace CapaPresentacion.Formularios.Admin
             string filtro = txtNombreFiltro.Text;
             string atributo = "nombre";
             // Filtra los datos en el DataGridView
-            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+            FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
 
         private void txtApeFiltro_TextChanged(object sender, EventArgs e)
@@ -520,12 +588,12 @@ namespace CapaPresentacion.Formularios.Admin
             string filtro = txtApeFiltro.Text;
             string atributo = "apellido";
             // Filtra los datos en el DataGridView
-            FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+            FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
 
         private void comboFiltroEstado_TextChanged(object sender, EventArgs e)
         {
-            
+
 
             if (comboEstadoDato.SelectedIndex == 1)
             {
@@ -539,7 +607,7 @@ namespace CapaPresentacion.Formularios.Admin
                 string filtro = "1";
                 string atributo = "estado";
                 // Filtra los datos en el DataGridView
-                FiltrarDataGridView(filtro,atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+                FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
             }
         }
         private void comboFiltroRol_TextChanged(object sender, EventArgs e)
@@ -552,7 +620,7 @@ namespace CapaPresentacion.Formularios.Admin
             // Crear una instancia de la capa de lógica
             CL_usuario obj_CL_Usuario = new CL_usuario();
             //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
-            List<capaEntidad.usuario> listaUsuarioFiltrado = obj_CL_Usuario.listarUsuarioFiltrados(filtro,atributo); // Obtener la lista de usuarios desde la capa de lógica
+            List<capaEntidad.usuario> listaUsuarioFiltrado = obj_CL_Usuario.listarUsuarioFiltrados(filtro, atributo); // Obtener la lista de usuarios desde la capa de lógica
 
             // Actualiza el DataGridView
             mostrarUsuariosEnDataGridView(listaUsuarioFiltrado);

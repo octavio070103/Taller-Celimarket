@@ -9,12 +9,10 @@ namespace capaEntidad
     public class cliente
     {
         public int id_cliente {  get; set; }
-        public string nombre {  get; set; }
-        public string apellido { get; set; }
-        public int dni {  get; set; }
-        public int telefono { get; set; }
-        public string direccion {  get; set; }
-        public bool estado { get; set; }
+        public DateTime fecha_registro { get; set; }
+        public bool estado_cliente { get; set; }
+
+        public persona obj_persona { get; set; }
 
     }
 }

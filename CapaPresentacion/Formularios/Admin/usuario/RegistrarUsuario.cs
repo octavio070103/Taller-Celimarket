@@ -37,6 +37,10 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 comboRolUsu.Items.Add(item.descripcion_rol);
             }
+
+            //configuro el datatime de la fecha de nacimiento para que el maximo de fecha que me deje de poner sea la fecha en la que se ejecuta el programa
+            dateTimePickerNacimiento.MaxDate = DateTime.Now;
+
         }
 
         private void iconbtnGuardar_Click(object sender, EventArgs e)
@@ -53,36 +57,42 @@ namespace CapaPresentacion.Formularios.Admin
 
                 if (idRolSeleccionado != -1)
                 {
-                    if (validarCampos()) 
+                    if (validarCampos())
                     {
-                            capaEntidad.usuario obj_usuario = new capaEntidad.usuario() //creo mi objeto obj_usuario que es de tipo usuario y con las llaves indiico que le pasare los valores a sus respetctivos atributos
+                        capaEntidad.usuario obj_usuario = new capaEntidad.usuario() //creo mi objeto obj_usuario que es de tipo usuario y con las llaves indiico que le pasare los valores a sus respetctivos atributos
+                        {
+
+                            email = txtEmailUsu.Text,
+                            password = txtPasswordUsu.Text,
+                            estado_usuario = 1,
+                            obj_persona = new persona()
                             {
+                                dni = txtDniUsu.Text,
                                 nombre = txtNombreUsu.Text,
                                 apellido = txtApelliUsu.Text,
-                                dni = txtDniUsu.Text,
-                                email = txtEmailUsu.Text,
-                                password = txtPasswordUsu.Text,
-                                telefono = txtTelefUsu.Text,
-                                obj_rol = new rol()
-                                {
-                                    id_rol = idRolSeleccionado
-
-                                },
-                                obj_domicilio = new domicilio()
-                                {
-                                    id_domicilio = 1//aca debo de cambiar por el domicilio creado 
-                                },
-                                estado_usuario = 1
-
-                            };
-
-                            int id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
-                            if (mensaje != "")
+                                fecha_nacimiento = dateTimePickerNacimiento.Value, // Año, mes, día 
+                                telefono = txtTelefUsu.Text
+                            },
+                            obj_rol = new rol()
                             {
-                                MessageBox.Show(mensaje);
+                                id_rol = idRolSeleccionado
+
+                            },
+                            obj_domicilio = new domicilio()
+                            {
+                                id_domicilio = 1//aca debo de cambiar por el domicilio creado 
                             }
+
+
+                        };
+
+                        int id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
+                        if (mensaje != "")
+                        {
+                            MessageBox.Show(mensaje);
+                        }
                     }
-  
+
                 }
                 else
                 {
@@ -221,6 +231,11 @@ namespace CapaPresentacion.Formularios.Admin
             txtTelefUsu.Clear();
             txtEmailUsu.Clear();
             txtPasswordUsu.Clear();
+
+        }
+
+        private void iconBtnDomicilio_Click(object sender, EventArgs e)
+        {
 
         }
     }
