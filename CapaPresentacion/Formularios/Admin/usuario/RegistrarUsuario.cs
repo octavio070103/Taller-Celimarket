@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 using capaEntidad;
 using CapaLogica;
+using CapaPresentacion.Formularios.Admin.usuario;
 
 namespace CapaPresentacion.Formularios.Admin
 {
@@ -40,7 +41,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             //configuro el datatime de la fecha de nacimiento para que el maximo de fecha que me deje de poner sea la fecha en la que se ejecuta el programa
             dateTimePickerNacimiento.MaxDate = DateTime.Now;
-
+            //dateTimePickerNacimiento.Value = DateTime.UtcNow;//configuro para que el valor inicial del datetime sea el de la fecha de hoy
         }
 
         private void iconbtnGuardar_Click(object sender, EventArgs e)
@@ -78,9 +79,10 @@ namespace CapaPresentacion.Formularios.Admin
                                 id_rol = idRolSeleccionado
 
                             },
+
                             obj_domicilio = new domicilio()
                             {
-                                id_domicilio = 1//aca debo de cambiar por el domicilio creado 
+                                id_domicilio = 1
                             }
 
 
@@ -181,6 +183,14 @@ namespace CapaPresentacion.Formularios.Admin
                 validacion = false;
             }
 
+            //valido que el id_generado del domicilio sea = 0 ya que esto significa que se genero un domicilio ,ya que sino se genero correctamente ese id=0
+            /*
+            if ( (Convert.ToInt32(txtIdDomRegistrado.Text)) == 0)
+            {
+                errorProvider1.SetError(lblEmail, "Vuelva a ingresar su domicilio ,ocurrio un error");
+                MessageBox.Show(" Debe de rellenar todos los campos del domicilio y de manera precisa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }*/
             return validacion;
         }
 
@@ -236,7 +246,10 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnDomicilio_Click(object sender, EventArgs e)
         {
+            FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio();
 
+            frmRegistrarDomicilio.Show();
+            txtIdDomRegistrado.Text = frmRegistrarDomicilio.id_domicilio_registrado.ToString();
         }
     }
 }

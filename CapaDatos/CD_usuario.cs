@@ -319,6 +319,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@estado_usuario", obj_usuario.estado_usuario);
                         cmd.Parameters.AddWithValue("@id_rol", obj_usuario.obj_rol.id_rol);
                         cmd.Parameters.AddWithValue("@id_domicilio", obj_usuario.obj_domicilio.id_domicilio);
+
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                         cmd.Parameters.Add("@id_Usuario_resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
                         cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

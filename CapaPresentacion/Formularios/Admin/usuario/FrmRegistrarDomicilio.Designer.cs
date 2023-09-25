@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            label1 = new Label();
+            lblDescripcion = new Label();
+            txtDescripcion = new TextBox();
+            txtLocalidadDomi = new TextBox();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnLimpiarDatos = new FontAwesome.Sharp.IconButton();
-            txtTelefUsu = new TextBox();
-            txtDniUsu = new TextBox();
+            txtProvDomi = new TextBox();
+            txtNumDomi = new TextBox();
             lblProvincia = new Label();
             lblNumero = new Label();
-            txtApelliUsu = new TextBox();
+            txtCodPostalDomi = new TextBox();
             lblCodPostal = new Label();
-            txtNombreUsu = new TextBox();
+            txtCalleDomi = new TextBox();
             lblCalle = new Label();
             panel1 = new Panel();
             lblRegistrarDomi = new Label();
-            lblDescripcion = new Label();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -52,43 +53,64 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(lblDescripcion);
-            panel2.Controls.Add(textBox2);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtDescripcion);
+            panel2.Controls.Add(txtLocalidadDomi);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnLimpiarDatos);
-            panel2.Controls.Add(txtTelefUsu);
-            panel2.Controls.Add(txtDniUsu);
+            panel2.Controls.Add(txtProvDomi);
+            panel2.Controls.Add(txtNumDomi);
             panel2.Controls.Add(lblProvincia);
             panel2.Controls.Add(lblNumero);
-            panel2.Controls.Add(txtApelliUsu);
+            panel2.Controls.Add(txtCodPostalDomi);
             panel2.Controls.Add(lblCodPostal);
-            panel2.Controls.Add(txtNombreUsu);
+            panel2.Controls.Add(txtCalleDomi);
             panel2.Controls.Add(lblCalle);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 61);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 389);
+            panel2.Size = new Size(1014, 572);
             panel2.TabIndex = 4;
             // 
-            // textBox2
+            // label1
             // 
-            textBox2.Cursor = Cursors.IBeam;
-            textBox2.Location = new Point(98, 238);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(471, 84);
-            textBox2.TabIndex = 75;
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(356, 100);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 19);
+            label1.TabIndex = 77;
+            label1.Text = "Localidad";
             // 
-            // textBox1
+            // lblDescripcion
             // 
-            textBox1.Cursor = Cursors.IBeam;
-            textBox1.Location = new Point(356, 122);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(213, 23);
-            textBox1.TabIndex = 74;
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDescripcion.Location = new Point(99, 216);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new Size(182, 19);
+            lblDescripcion.TabIndex = 76;
+            lblDescripcion.Text = "Descripcion(opcional)";
+            // 
+            // txtDescripcion
+            // 
+            txtDescripcion.Cursor = Cursors.IBeam;
+            txtDescripcion.Location = new Point(98, 238);
+            txtDescripcion.Multiline = true;
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(471, 84);
+            txtDescripcion.TabIndex = 75;
+            // 
+            // txtLocalidadDomi
+            // 
+            txtLocalidadDomi.Cursor = Cursors.IBeam;
+            txtLocalidadDomi.Location = new Point(356, 122);
+            txtLocalidadDomi.Multiline = true;
+            txtLocalidadDomi.Name = "txtLocalidadDomi";
+            txtLocalidadDomi.Size = new Size(213, 23);
+            txtLocalidadDomi.TabIndex = 74;
             // 
             // iconBtnCancelar
             // 
@@ -131,6 +153,7 @@
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
             // iconBtnLimpiarDatos
             // 
@@ -153,23 +176,23 @@
             iconBtnLimpiarDatos.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnLimpiarDatos.UseVisualStyleBackColor = false;
             // 
-            // txtTelefUsu
+            // txtProvDomi
             // 
-            txtTelefUsu.Cursor = Cursors.IBeam;
-            txtTelefUsu.Location = new Point(99, 180);
-            txtTelefUsu.Multiline = true;
-            txtTelefUsu.Name = "txtTelefUsu";
-            txtTelefUsu.Size = new Size(213, 23);
-            txtTelefUsu.TabIndex = 11;
+            txtProvDomi.Cursor = Cursors.IBeam;
+            txtProvDomi.Location = new Point(99, 180);
+            txtProvDomi.Multiline = true;
+            txtProvDomi.Name = "txtProvDomi";
+            txtProvDomi.Size = new Size(213, 23);
+            txtProvDomi.TabIndex = 11;
             // 
-            // txtDniUsu
+            // txtNumDomi
             // 
-            txtDniUsu.Cursor = Cursors.IBeam;
-            txtDniUsu.Location = new Point(99, 122);
-            txtDniUsu.Multiline = true;
-            txtDniUsu.Name = "txtDniUsu";
-            txtDniUsu.Size = new Size(213, 23);
-            txtDniUsu.TabIndex = 8;
+            txtNumDomi.Cursor = Cursors.IBeam;
+            txtNumDomi.Location = new Point(99, 122);
+            txtNumDomi.Multiline = true;
+            txtNumDomi.Name = "txtNumDomi";
+            txtNumDomi.Size = new Size(213, 23);
+            txtNumDomi.TabIndex = 8;
             // 
             // lblProvincia
             // 
@@ -191,14 +214,14 @@
             lblNumero.TabIndex = 6;
             lblNumero.Text = "Numero";
             // 
-            // txtApelliUsu
+            // txtCodPostalDomi
             // 
-            txtApelliUsu.Cursor = Cursors.IBeam;
-            txtApelliUsu.Location = new Point(356, 65);
-            txtApelliUsu.Multiline = true;
-            txtApelliUsu.Name = "txtApelliUsu";
-            txtApelliUsu.Size = new Size(213, 23);
-            txtApelliUsu.TabIndex = 5;
+            txtCodPostalDomi.Cursor = Cursors.IBeam;
+            txtCodPostalDomi.Location = new Point(356, 65);
+            txtCodPostalDomi.Multiline = true;
+            txtCodPostalDomi.Name = "txtCodPostalDomi";
+            txtCodPostalDomi.Size = new Size(213, 23);
+            txtCodPostalDomi.TabIndex = 5;
             // 
             // lblCodPostal
             // 
@@ -210,14 +233,14 @@
             lblCodPostal.TabIndex = 4;
             lblCodPostal.Text = "Codigo Postal";
             // 
-            // txtNombreUsu
+            // txtCalleDomi
             // 
-            txtNombreUsu.Cursor = Cursors.IBeam;
-            txtNombreUsu.Location = new Point(99, 65);
-            txtNombreUsu.Multiline = true;
-            txtNombreUsu.Name = "txtNombreUsu";
-            txtNombreUsu.Size = new Size(213, 23);
-            txtNombreUsu.TabIndex = 1;
+            txtCalleDomi.Cursor = Cursors.IBeam;
+            txtCalleDomi.Location = new Point(99, 65);
+            txtCalleDomi.Multiline = true;
+            txtCalleDomi.Name = "txtCalleDomi";
+            txtCalleDomi.Size = new Size(213, 23);
+            txtCalleDomi.TabIndex = 1;
             // 
             // lblCalle
             // 
@@ -236,7 +259,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 61);
+            panel1.Size = new Size(1014, 61);
             panel1.TabIndex = 3;
             // 
             // lblRegistrarDomi
@@ -246,28 +269,18 @@
             lblRegistrarDomi.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistrarDomi.ForeColor = SystemColors.ControlLightLight;
             lblRegistrarDomi.ImageAlign = ContentAlignment.TopCenter;
-            lblRegistrarDomi.Location = new Point(233, 9);
+            lblRegistrarDomi.Location = new Point(340, 9);
             lblRegistrarDomi.Name = "lblRegistrarDomi";
             lblRegistrarDomi.Size = new Size(308, 45);
             lblRegistrarDomi.TabIndex = 0;
             lblRegistrarDomi.Text = "Registrar Domicilio";
             lblRegistrarDomi.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // lblDescripcion
-            // 
-            lblDescripcion.AutoSize = true;
-            lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(99, 216);
-            lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(182, 19);
-            lblDescripcion.TabIndex = 76;
-            lblDescripcion.Text = "Descripcion(opcional)";
-            // 
             // FrmRegistrarDomicilio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1014, 633);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FrmRegistrarDomicilio";
@@ -296,20 +309,21 @@
         private TextBox txtEmailUsu;
         private TextBox txtPasswordUsu;
         private Label lblPassword;
-        private TextBox txtTelefUsu;
+        private TextBox txtProvDomi;
         private Label lblEmail;
-        private TextBox txtDniUsu;
+        private TextBox txtNumDomi;
         private Label lblProvincia;
         private Label lblNumero;
-        private TextBox txtApelliUsu;
+        private TextBox txtCodPostalDomi;
         private Label lblCodPostal;
         private PictureBox pictureBox1;
-        private TextBox txtNombreUsu;
+        private TextBox txtCalleDomi;
         private Label lblCalle;
         private Panel panel1;
         private Label lblRegistrarDomi;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtDescripcion;
+        private TextBox txtLocalidadDomi;
         private Label lblDescripcion;
+        private Label label1;
     }
 }

@@ -240,7 +240,7 @@
             lblCerrar.AutoSize = true;
             lblCerrar.Cursor = Cursors.Hand;
             lblCerrar.ForeColor = SystemColors.Window;
-            lblCerrar.Location = new Point(45, 612);
+            lblCerrar.Location = new Point(48, 580);
             lblCerrar.Name = "lblCerrar";
             lblCerrar.Size = new Size(75, 15);
             lblCerrar.TabIndex = 19;
@@ -251,7 +251,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = Properties.Resources.logout__1_;
-            picCerrarSesion.Location = new Point(9, 590);
+            picCerrarSesion.Location = new Point(12, 558);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(30, 43);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;

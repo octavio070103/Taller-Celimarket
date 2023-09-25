@@ -33,6 +33,7 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
+            txtIdDomRegistrado = new TextBox();
             dateTimePickerNacimiento = new DateTimePicker();
             lblFechaNacimiento = new Label();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
@@ -92,6 +93,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(txtIdDomRegistrado);
             panel2.Controls.Add(dateTimePickerNacimiento);
             panel2.Controls.Add(lblFechaNacimiento);
             panel2.Controls.Add(iconBtnCancelar);
@@ -122,6 +124,16 @@
             panel2.Size = new Size(800, 389);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
+            // 
+            // txtIdDomRegistrado
+            // 
+            txtIdDomRegistrado.Cursor = Cursors.IBeam;
+            txtIdDomRegistrado.Location = new Point(356, 122);
+            txtIdDomRegistrado.Multiline = true;
+            txtIdDomRegistrado.Name = "txtIdDomRegistrado";
+            txtIdDomRegistrado.Size = new Size(213, 23);
+            txtIdDomRegistrado.TabIndex = 74;
+            txtIdDomRegistrado.Visible = false;
             // 
             // dateTimePickerNacimiento
             // 
@@ -467,5 +479,6 @@
         private ErrorProvider errorProvider1;
         private Label lblFechaNacimiento;
         private DateTimePicker dateTimePickerNacimiento;
+        private TextBox txtIdDomRegistrado;
     }
 }

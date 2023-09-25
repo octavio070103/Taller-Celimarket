@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             panel1 = new Panel();
             lblRolFiltro = new Label();
             comboFiltroRol = new ComboBox();
@@ -63,7 +63,7 @@
             col_domicilio_prov = new DataGridViewTextBoxColumn();
             Estado_Valor = new DataGridViewTextBoxColumn();
             col_estado = new DataGridViewTextBoxColumn();
-            panel2 = new Panel();
+            panelDatosUsuario = new Panel();
             lblFechaNac = new Label();
             dateTimePickerNacimientoDato = new DateTimePicker();
             lblPassword = new Label();
@@ -96,7 +96,7 @@
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
-            panel2.SuspendLayout();
+            panelDatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -288,26 +288,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle10.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle11.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.White;
+            dataGridViewCellStyle11.Padding = new Padding(2);
+            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle11.SelectionForeColor = Color.White;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 176);
@@ -315,14 +315,14 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -443,39 +443,39 @@
             col_estado.ReadOnly = true;
             col_estado.Width = 74;
             // 
-            // panel2
+            // panelDatosUsuario
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(lblFechaNac);
-            panel2.Controls.Add(dateTimePickerNacimientoDato);
-            panel2.Controls.Add(lblPassword);
-            panel2.Controls.Add(txtPasswordDato);
-            panel2.Controls.Add(txtDomiciliodato);
-            panel2.Controls.Add(txtIdGuardado);
-            panel2.Controls.Add(iconbtnGuardar);
-            panel2.Controls.Add(iconBtnCancelar);
-            panel2.Controls.Add(iconBtnModif);
-            panel2.Controls.Add(comboEstadoDato);
-            panel2.Controls.Add(lblEstadoDato);
-            panel2.Controls.Add(comboRolDato);
-            panel2.Controls.Add(lblDomicilioDato);
-            panel2.Controls.Add(lblEmailDato);
-            panel2.Controls.Add(txtEmailDato);
-            panel2.Controls.Add(lblRolDato);
-            panel2.Controls.Add(lblTelefDato);
-            panel2.Controls.Add(txtTelefDato);
-            panel2.Controls.Add(lblDniDato);
-            panel2.Controls.Add(txtDniDato);
-            panel2.Controls.Add(txtApeDato);
-            panel2.Controls.Add(lblApellidoDato);
-            panel2.Controls.Add(lblNombreDato);
-            panel2.Controls.Add(txtNombreDato);
-            panel2.Controls.Add(lblDatosUsuario);
-            panel2.Location = new Point(776, 92);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(238, 517);
-            panel2.TabIndex = 3;
+            panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panelDatosUsuario.BackColor = Color.White;
+            panelDatosUsuario.Controls.Add(lblFechaNac);
+            panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
+            panelDatosUsuario.Controls.Add(lblPassword);
+            panelDatosUsuario.Controls.Add(txtPasswordDato);
+            panelDatosUsuario.Controls.Add(txtDomiciliodato);
+            panelDatosUsuario.Controls.Add(txtIdGuardado);
+            panelDatosUsuario.Controls.Add(iconbtnGuardar);
+            panelDatosUsuario.Controls.Add(iconBtnCancelar);
+            panelDatosUsuario.Controls.Add(iconBtnModif);
+            panelDatosUsuario.Controls.Add(comboEstadoDato);
+            panelDatosUsuario.Controls.Add(lblEstadoDato);
+            panelDatosUsuario.Controls.Add(comboRolDato);
+            panelDatosUsuario.Controls.Add(lblDomicilioDato);
+            panelDatosUsuario.Controls.Add(lblEmailDato);
+            panelDatosUsuario.Controls.Add(txtEmailDato);
+            panelDatosUsuario.Controls.Add(lblRolDato);
+            panelDatosUsuario.Controls.Add(lblTelefDato);
+            panelDatosUsuario.Controls.Add(txtTelefDato);
+            panelDatosUsuario.Controls.Add(lblDniDato);
+            panelDatosUsuario.Controls.Add(txtDniDato);
+            panelDatosUsuario.Controls.Add(txtApeDato);
+            panelDatosUsuario.Controls.Add(lblApellidoDato);
+            panelDatosUsuario.Controls.Add(lblNombreDato);
+            panelDatosUsuario.Controls.Add(txtNombreDato);
+            panelDatosUsuario.Controls.Add(lblDatosUsuario);
+            panelDatosUsuario.Location = new Point(776, 92);
+            panelDatosUsuario.Name = "panelDatosUsuario";
+            panelDatosUsuario.Size = new Size(238, 517);
+            panelDatosUsuario.TabIndex = 3;
             // 
             // lblFechaNac
             // 
@@ -542,15 +542,15 @@
             iconbtnGuardar.FlatStyle = FlatStyle.Flat;
             iconbtnGuardar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
-            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.Bookmark;
+            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconbtnGuardar.IconSize = 27;
-            iconbtnGuardar.Location = new Point(24, 396);
+            iconbtnGuardar.IconSize = 36;
+            iconbtnGuardar.Location = new Point(24, 408);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(202, 39);
             iconbtnGuardar.TabIndex = 25;
-            iconbtnGuardar.Text = "Guardar";
+            iconbtnGuardar.Text = "Confirmar";
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
@@ -568,7 +568,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(24, 441);
+            iconBtnCancelar.Location = new Point(24, 453);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(202, 39);
             iconBtnCancelar.TabIndex = 11;
@@ -589,7 +589,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(24, 351);
+            iconBtnModif.Location = new Point(24, 363);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(202, 39);
             iconBtnModif.TabIndex = 24;
@@ -856,7 +856,7 @@
             Controls.Add(iconBtnPermiso);
             Controls.Add(iconBtnElim);
             Controls.Add(iconBtnAgregar);
-            Controls.Add(panel2);
+            Controls.Add(panelDatosUsuario);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
             Name = "FrmGestionarUsuario";
@@ -865,8 +865,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            panelDatosUsuario.ResumeLayout(false);
+            panelDatosUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
@@ -883,7 +883,7 @@
         private Label lblNombre;
         private TextBox txtDniFiltro;
         private TextBox txtNombreFiltro;
-        private Panel panel2;
+        private Panel panelDatosUsuario;
         private Label lblDatosUsuario;
         private FontAwesome.Sharp.IconButton iconBtnAgregar;
         private FontAwesome.Sharp.IconButton iconBtnElim;
