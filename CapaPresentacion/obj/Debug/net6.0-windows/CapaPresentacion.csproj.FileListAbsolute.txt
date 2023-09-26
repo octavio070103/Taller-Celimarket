@@ -124,5 +124,5 @@ C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Vendedor.frmSeleccionarCliente.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Vendedor.frmModuloCliente.resources
 C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Vendedor.frmModuloVenta.resources
-C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.informes_de_operacion.FrmOperacionesRealizadas.resources
-C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.informes_de_operacion.frmHistorialOperaciones.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.informes_de_operacion.frmHistorialOp.resources
+C:\Users\octav\source\repos\Proyecto-CeliMarket\CapaPresentacion\obj\Debug\net6.0-windows\CapaPresentacion.Formularios.Gerente.informes_de_operacion.FrmOpRealizada.resources
