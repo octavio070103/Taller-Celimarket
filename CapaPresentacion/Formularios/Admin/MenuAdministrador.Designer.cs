@@ -397,7 +397,7 @@
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(103, 0);
+            picUsuario.Location = new Point(118, 0);
             picUsuario.Margin = new Padding(4, 3, 4, 3);
             picUsuario.Name = "picUsuario";
             picUsuario.Size = new Size(98, 97);
@@ -419,6 +419,7 @@
             Controls.Add(PVentana);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
+            MinimumSize = new Size(1159, 649);
             Name = "MenuAdministrador";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MenuAdmin";

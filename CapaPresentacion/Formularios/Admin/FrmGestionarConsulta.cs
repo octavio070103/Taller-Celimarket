@@ -22,7 +22,9 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void btnResponder_Click(object sender, EventArgs e)
         {
-            this.instanciaMenuAdministrador.OpenChildForm( new Admin.consulta_reclamo.FrmResponderConsulta(this.instanciaMenuAdministrador));
+            this.instanciaMenuAdministrador.OpenChildForm(new Admin.consulta_reclamo.FrmResponderConsulta(this.instanciaMenuAdministrador));
         }
+
+
     }
 }

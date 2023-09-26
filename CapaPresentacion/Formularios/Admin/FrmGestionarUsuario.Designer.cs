@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             lblRolFiltro = new Label();
             comboFiltroRol = new ComboBox();
@@ -119,7 +119,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1014, 92);
+            panel1.Size = new Size(822, 92);
             panel1.TabIndex = 0;
             // 
             // lblRolFiltro
@@ -127,7 +127,7 @@
             lblRolFiltro.AutoSize = true;
             lblRolFiltro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblRolFiltro.ForeColor = SystemColors.ControlLightLight;
-            lblRolFiltro.Location = new Point(776, 59);
+            lblRolFiltro.Location = new Point(638, 64);
             lblRolFiltro.Name = "lblRolFiltro";
             lblRolFiltro.Size = new Size(28, 17);
             lblRolFiltro.TabIndex = 27;
@@ -138,7 +138,7 @@
             comboFiltroRol.DropDownStyle = ComboBoxStyle.DropDownList;
             comboFiltroRol.FlatStyle = FlatStyle.Popup;
             comboFiltroRol.FormattingEnabled = true;
-            comboFiltroRol.Location = new Point(810, 57);
+            comboFiltroRol.Location = new Point(672, 62);
             comboFiltroRol.Name = "comboFiltroRol";
             comboFiltroRol.Size = new Size(88, 23);
             comboFiltroRol.TabIndex = 26;
@@ -158,7 +158,7 @@
             iconbtnClean.IconColor = Color.White;
             iconbtnClean.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnClean.IconSize = 30;
-            iconbtnClean.Location = new Point(932, 59);
+            iconbtnClean.Location = new Point(782, 62);
             iconbtnClean.Name = "iconbtnClean";
             iconbtnClean.Size = new Size(25, 23);
             iconbtnClean.TabIndex = 25;
@@ -171,7 +171,7 @@
             comboFiltroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
             comboFiltroEstado.FlatStyle = FlatStyle.Popup;
             comboFiltroEstado.FormattingEnabled = true;
-            comboFiltroEstado.Location = new Point(671, 57);
+            comboFiltroEstado.Location = new Point(536, 62);
             comboFiltroEstado.Name = "comboFiltroEstado";
             comboFiltroEstado.Size = new Size(88, 23);
             comboFiltroEstado.TabIndex = 24;
@@ -182,7 +182,7 @@
             lblEstado.AutoSize = true;
             lblEstado.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstado.ForeColor = SystemColors.ControlLightLight;
-            lblEstado.Location = new Point(616, 58);
+            lblEstado.Location = new Point(481, 65);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(49, 17);
             lblEstado.TabIndex = 13;
@@ -192,7 +192,7 @@
             // 
             txtDniFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtDniFiltro.ForeColor = Color.Silver;
-            txtDniFiltro.Location = new Point(159, 59);
+            txtDniFiltro.Location = new Point(48, 64);
             txtDniFiltro.Multiline = true;
             txtDniFiltro.Name = "txtDniFiltro";
             txtDniFiltro.PlaceholderText = "DNI";
@@ -205,7 +205,7 @@
             // 
             txtNombreFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtNombreFiltro.ForeColor = Color.Silver;
-            txtNombreFiltro.Location = new Point(326, 60);
+            txtNombreFiltro.Location = new Point(211, 64);
             txtNombreFiltro.Multiline = true;
             txtNombreFiltro.Name = "txtNombreFiltro";
             txtNombreFiltro.PlaceholderText = "Nombre";
@@ -218,7 +218,7 @@
             // 
             txtApeFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtApeFiltro.ForeColor = Color.Silver;
-            txtApeFiltro.Location = new Point(498, 59);
+            txtApeFiltro.Location = new Point(372, 64);
             txtApeFiltro.Multiline = true;
             txtApeFiltro.Name = "txtApeFiltro";
             txtApeFiltro.PlaceholderText = "Apellido";
@@ -232,7 +232,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblApellido.ForeColor = SystemColors.ControlLightLight;
-            lblApellido.Location = new Point(432, 60);
+            lblApellido.Location = new Point(316, 65);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(60, 17);
             lblApellido.TabIndex = 8;
@@ -243,7 +243,7 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombre.ForeColor = SystemColors.ControlLightLight;
-            lblNombre.Location = new Point(262, 60);
+            lblNombre.Location = new Point(151, 65);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(58, 17);
             lblNombre.TabIndex = 6;
@@ -254,7 +254,7 @@
             lblDni.AutoSize = true;
             lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblDni.ForeColor = SystemColors.ControlLightLight;
-            lblDni.Location = new Point(119, 60);
+            lblDni.Location = new Point(17, 66);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(36, 17);
             lblDni.TabIndex = 4;
@@ -265,7 +265,7 @@
             lblFiltrar.AutoSize = true;
             lblFiltrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblFiltrar.ForeColor = SystemColors.ControlLightLight;
-            lblFiltrar.Location = new Point(28, 52);
+            lblFiltrar.Location = new Point(3, 35);
             lblFiltrar.Name = "lblFiltrar";
             lblFiltrar.Size = new Size(71, 25);
             lblFiltrar.TabIndex = 1;
@@ -273,12 +273,12 @@
             // 
             // lblListaEmpleados
             // 
-            lblListaEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblListaEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblListaEmpleados.AutoSize = true;
             lblListaEmpleados.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblListaEmpleados.ForeColor = SystemColors.ControlLightLight;
             lblListaEmpleados.ImageAlign = ContentAlignment.TopCenter;
-            lblListaEmpleados.Location = new Point(372, 0);
+            lblListaEmpleados.Location = new Point(278, 0);
             lblListaEmpleados.Name = "lblListaEmpleados";
             lblListaEmpleados.Size = new Size(276, 45);
             lblListaEmpleados.TabIndex = 0;
@@ -288,26 +288,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle11.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.Padding = new Padding(2);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle11.SelectionForeColor = Color.White;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 176);
@@ -315,18 +315,18 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(731, 433);
+            dataGridUsuarios.Size = new Size(554, 363);
             dataGridUsuarios.TabIndex = 1;
             dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick_1;
             // 
@@ -472,9 +472,9 @@
             panelDatosUsuario.Controls.Add(lblNombreDato);
             panelDatosUsuario.Controls.Add(txtNombreDato);
             panelDatosUsuario.Controls.Add(lblDatosUsuario);
-            panelDatosUsuario.Location = new Point(776, 92);
+            panelDatosUsuario.Location = new Point(584, 92);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 517);
+            panelDatosUsuario.Size = new Size(238, 447);
             panelDatosUsuario.TabIndex = 3;
             // 
             // lblFechaNac
@@ -546,7 +546,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(24, 408);
+            iconbtnGuardar.Location = new Point(24, 336);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(202, 39);
             iconbtnGuardar.TabIndex = 25;
@@ -568,7 +568,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(24, 453);
+            iconBtnCancelar.Location = new Point(24, 381);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(202, 39);
             iconBtnCancelar.TabIndex = 11;
@@ -589,7 +589,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(24, 363);
+            iconBtnModif.Location = new Point(24, 336);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(202, 39);
             iconBtnModif.TabIndex = 24;
@@ -836,9 +836,9 @@
             iconBtnAlta.IconColor = Color.White;
             iconBtnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAlta.IconSize = 30;
-            iconBtnAlta.Location = new Point(211, 98);
+            iconBtnAlta.Location = new Point(211, 100);
             iconBtnAlta.Name = "iconBtnAlta";
-            iconBtnAlta.Size = new Size(89, 39);
+            iconBtnAlta.Size = new Size(89, 38);
             iconBtnAlta.TabIndex = 11;
             iconBtnAlta.Text = "Dar Alta";
             iconBtnAlta.TextAlign = ContentAlignment.MiddleRight;
@@ -851,7 +851,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
-            ClientSize = new Size(1014, 633);
+            ClientSize = new Size(822, 565);
             Controls.Add(iconBtnAlta);
             Controls.Add(iconBtnPermiso);
             Controls.Add(iconBtnElim);
@@ -859,6 +859,7 @@
             Controls.Add(panelDatosUsuario);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
+            MinimumSize = new Size(838, 604);
             Name = "FrmGestionarUsuario";
             Text = "Lista de Usuarios";
             Load += FrmGestionarUsuario_Load;
