@@ -227,10 +227,10 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(220, 647);
-            PMenuLat.MinimumSize = new Size(58, 647);
+            PMenuLat.MaximumSize = new Size(220, 604);
+            PMenuLat.MinimumSize = new Size(58, 604);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(220, 647);
+            PMenuLat.Size = new Size(220, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
@@ -240,7 +240,7 @@
             lblCerrar.AutoSize = true;
             lblCerrar.Cursor = Cursors.Hand;
             lblCerrar.ForeColor = SystemColors.Window;
-            lblCerrar.Location = new Point(48, 580);
+            lblCerrar.Location = new Point(48, 537);
             lblCerrar.Name = "lblCerrar";
             lblCerrar.Size = new Size(75, 15);
             lblCerrar.TabIndex = 19;
@@ -251,7 +251,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = Properties.Resources.logout__1_;
-            picCerrarSesion.Location = new Point(12, 558);
+            picCerrarSesion.Location = new Point(12, 515);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(30, 43);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -333,7 +333,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = SystemColors.ControlLightLight;
-            btnLogout.Location = new Point(4, 15389);
+            btnLogout.Location = new Point(4, 15346);
             btnLogout.Margin = new Padding(4, 3, 4, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(12, 0, 0, 0);
@@ -361,22 +361,22 @@
             // lblNombreDelUsu
             // 
             lblNombreDelUsu.AutoSize = true;
-            lblNombreDelUsu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreDelUsu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreDelUsu.ForeColor = SystemColors.ControlLightLight;
             lblNombreDelUsu.Location = new Point(4, 114);
             lblNombreDelUsu.Name = "lblNombreDelUsu";
-            lblNombreDelUsu.Size = new Size(165, 25);
+            lblNombreDelUsu.Size = new Size(150, 21);
             lblNombreDelUsu.TabIndex = 17;
             lblNombreDelUsu.Text = "nombre y apellido";
             // 
             // lblRolDelUsu
             // 
             lblRolDelUsu.AutoSize = true;
-            lblRolDelUsu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblRolDelUsu.ForeColor = SystemColors.ControlLightLight;
+            lblRolDelUsu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRolDelUsu.ForeColor = Color.Red;
             lblRolDelUsu.Location = new Point(4, 81);
             lblRolDelUsu.Name = "lblRolDelUsu";
-            lblRolDelUsu.Size = new Size(35, 25);
+            lblRolDelUsu.Size = new Size(31, 21);
             lblRolDelUsu.TabIndex = 16;
             lblRolDelUsu.Text = "rol";
             // 

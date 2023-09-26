@@ -30,81 +30,123 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuGerente));
-            panel1 = new Panel();
+            sidebarTime = new System.Windows.Forms.Timer(components);
+            panelBarraSuperior = new Panel();
+            pictureBox4 = new PictureBox();
             picRestaurar = new PictureBox();
+            pictureBox2 = new PictureBox();
+            lblTituloMenu = new Label();
             btnMenu = new Button();
-            picMaxPantalla = new PictureBox();
             picMinPantalla = new PictureBox();
+            picMaxPantalla = new PictureBox();
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
-            subMenuPromocion = new Panel();
-            btnDescuentos = new Button();
-            btnPromociones = new Button();
-            btnPromocionDescuento = new Button();
-            submenuPersonal = new Panel();
-            btnReportePersonal = new Button();
-            btnGestionPersonal = new Button();
-            btnCuentas = new Button();
-            btnPersonal = new Button();
-            submenuVentas = new Panel();
-            btnReportes = new Button();
-            btnGastos = new Button();
-            btnIngresos = new Button();
-            btnInfomeVenta = new Button();
-            btnVentas = new Button();
+            iconBtnCaja = new FontAwesome.Sharp.IconButton();
+            iconBtnOperaciones = new FontAwesome.Sharp.IconButton();
+            lblCerrar = new Label();
+            picCerrarSesion = new PictureBox();
+            iconBtnEstadisticas = new FontAwesome.Sharp.IconButton();
+            iconBtnVentas = new FontAwesome.Sharp.IconButton();
+            iconBtnPersonal = new FontAwesome.Sharp.IconButton();
             btnLogout = new Button();
-            PSubmenu1 = new Panel();
-            btnCerrarCaja = new Button();
-            btnInfoCaja = new Button();
-            btnCaja = new Button();
             PLogo = new Panel();
+            lblNombreDelUsu = new Label();
+            lblRolDelUsu = new Label();
+            pictureMenuHambur = new PictureBox();
             picUsuario = new PictureBox();
-            pictureBox2 = new PictureBox();
-            sidebarTime = new System.Windows.Forms.Timer(components);
-            panel1.SuspendLayout();
+            panelBarraSuperior.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             PVentana.SuspendLayout();
             PMenuLat.SuspendLayout();
-            subMenuPromocion.SuspendLayout();
-            submenuPersonal.SuspendLayout();
-            submenuVentas.SuspendLayout();
-            PSubmenu1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrarSesion).BeginInit();
             PLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // sidebarTime
             // 
-            panel1.BackColor = Color.FromArgb(1, 1, 2);
-            panel1.Controls.Add(picRestaurar);
-            panel1.Controls.Add(btnMenu);
-            panel1.Controls.Add(picMaxPantalla);
-            panel1.Controls.Add(picMinPantalla);
-            panel1.Controls.Add(picCerrar);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(934, 39);
-            panel1.TabIndex = 0;
+            sidebarTime.Interval = 10;
+            sidebarTime.Tick += sidebarTime_Tick;
+            // 
+            // panelBarraSuperior
+            // 
+            panelBarraSuperior.BackColor = Color.FromArgb(1, 1, 2);
+            panelBarraSuperior.Controls.Add(pictureBox4);
+            panelBarraSuperior.Controls.Add(picRestaurar);
+            panelBarraSuperior.Controls.Add(pictureBox2);
+            panelBarraSuperior.Controls.Add(lblTituloMenu);
+            panelBarraSuperior.Controls.Add(btnMenu);
+            panelBarraSuperior.Controls.Add(picMinPantalla);
+            panelBarraSuperior.Controls.Add(picMaxPantalla);
+            panelBarraSuperior.Controls.Add(picCerrar);
+            panelBarraSuperior.Dock = DockStyle.Top;
+            panelBarraSuperior.Location = new Point(0, 0);
+            panelBarraSuperior.Margin = new Padding(4, 3, 4, 3);
+            panelBarraSuperior.Name = "panelBarraSuperior";
+            panelBarraSuperior.Size = new Size(1159, 45);
+            panelBarraSuperior.TabIndex = 6;
+            panelBarraSuperior.MouseDown += panelBarraSuperior_MouseDown;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox4.Cursor = Cursors.Hand;
+            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
+            pictureBox4.Location = new Point(2086, 5);
+            pictureBox4.Margin = new Padding(4, 3, 4, 3);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(28, 24);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 16;
+            pictureBox4.TabStop = false;
             // 
             // picRestaurar
             // 
             picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picRestaurar.Cursor = Cursors.Hand;
             picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
-            picRestaurar.Location = new Point(882, 4);
+            picRestaurar.Location = new Point(1099, 5);
+            picRestaurar.Margin = new Padding(4, 3, 4, 3);
             picRestaurar.Name = "picRestaurar";
-            picRestaurar.Size = new Size(22, 24);
+            picRestaurar.Size = new Size(26, 28);
             picRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
             picRestaurar.TabIndex = 0;
             picRestaurar.TabStop = false;
             picRestaurar.Visible = false;
             picRestaurar.Click += picRestaurar_Click;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox2.Cursor = Cursors.Hand;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(2023, 14);
+            pictureBox2.Margin = new Padding(4, 3, 4, 3);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(27, 24);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 16;
+            pictureBox2.TabStop = false;
+            // 
+            // lblTituloMenu
+            // 
+            lblTituloMenu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblTituloMenu.AutoSize = true;
+            lblTituloMenu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTituloMenu.ForeColor = SystemColors.ControlLightLight;
+            lblTituloMenu.Location = new Point(519, 8);
+            lblTituloMenu.Name = "lblTituloMenu";
+            lblTituloMenu.Size = new Size(58, 25);
+            lblTituloMenu.TabIndex = 15;
+            lblTituloMenu.Text = "Inicio";
+            lblTituloMenu.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnMenu
             // 
@@ -113,49 +155,55 @@
             btnMenu.BackgroundImageLayout = ImageLayout.None;
             btnMenu.FlatAppearance.BorderSize = 0;
             btnMenu.FlatStyle = FlatStyle.Flat;
+            btnMenu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenu.ForeColor = SystemColors.ControlLightLight;
-            btnMenu.Location = new Point(3, 3);
+            btnMenu.Location = new Point(4, 2);
+            btnMenu.Margin = new Padding(4, 3, 4, 3);
             btnMenu.Name = "btnMenu";
-            btnMenu.Padding = new Padding(10, 0, 0, 0);
-            btnMenu.Size = new Size(141, 35);
+            btnMenu.Padding = new Padding(12, 0, 0, 0);
+            btnMenu.Size = new Size(123, 40);
             btnMenu.TabIndex = 14;
             btnMenu.Text = "Menu Principal";
             btnMenu.TextAlign = ContentAlignment.MiddleRight;
             btnMenu.UseVisualStyleBackColor = false;
-            // 
-            // picMaxPantalla
-            // 
-            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
-            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
-            picMaxPantalla.Location = new Point(882, 4);
-            picMaxPantalla.Name = "picMaxPantalla";
-            picMaxPantalla.Size = new Size(22, 23);
-            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
-            picMaxPantalla.TabIndex = 8;
-            picMaxPantalla.TabStop = false;
-            picMaxPantalla.Click += picMaxPantalla_Click_1;
+            btnMenu.Click += btnMenu_Click;
             // 
             // picMinPantalla
             // 
             picMinPantalla.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picMinPantalla.Cursor = Cursors.Hand;
             picMinPantalla.Image = (Image)resources.GetObject("picMinPantalla.Image");
-            picMinPantalla.Location = new Point(853, 12);
+            picMinPantalla.Location = new Point(1064, 14);
+            picMinPantalla.Margin = new Padding(4, 3, 4, 3);
             picMinPantalla.Name = "picMinPantalla";
-            picMinPantalla.Size = new Size(23, 21);
+            picMinPantalla.Size = new Size(27, 24);
             picMinPantalla.SizeMode = PictureBoxSizeMode.Zoom;
             picMinPantalla.TabIndex = 1;
             picMinPantalla.TabStop = false;
             picMinPantalla.Click += picMinPantalla_Click;
+            // 
+            // picMaxPantalla
+            // 
+            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
+            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
+            picMaxPantalla.Location = new Point(1099, 5);
+            picMaxPantalla.Margin = new Padding(4, 3, 4, 3);
+            picMaxPantalla.Name = "picMaxPantalla";
+            picMaxPantalla.Size = new Size(26, 27);
+            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaxPantalla.TabIndex = 8;
+            picMaxPantalla.TabStop = false;
+            picMaxPantalla.Click += picMaxPantalla_Click;
             // 
             // picCerrar
             // 
             picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             picCerrar.Cursor = Cursors.Hand;
             picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
-            picCerrar.Location = new Point(910, 4);
+            picCerrar.Location = new Point(1127, 5);
+            picCerrar.Margin = new Padding(4, 3, 4, 3);
             picCerrar.Name = "picCerrar";
-            picCerrar.Size = new Size(24, 21);
+            picCerrar.Size = new Size(28, 24);
             picCerrar.SizeMode = PictureBoxSizeMode.Zoom;
             picCerrar.TabIndex = 0;
             picCerrar.TabStop = false;
@@ -163,286 +211,181 @@
             // 
             // PVentana
             // 
-            PVentana.BackColor = Color.FromArgb(52, 53, 68);
+            PVentana.BackColor = Color.FromArgb(67, 68, 89);
             PVentana.Controls.Add(PMenuLat);
             PVentana.Dock = DockStyle.Fill;
-            PVentana.Location = new Point(0, 39);
+            PVentana.Location = new Point(0, 45);
+            PVentana.Margin = new Padding(4, 3, 4, 3);
             PVentana.Name = "PVentana";
-            PVentana.Size = new Size(934, 561);
-            PVentana.TabIndex = 3;
+            PVentana.Size = new Size(1159, 604);
+            PVentana.TabIndex = 7;
+            PVentana.MouseDown += PVentana_MouseDown;
             // 
             // PMenuLat
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(subMenuPromocion);
-            PMenuLat.Controls.Add(btnPromocionDescuento);
-            PMenuLat.Controls.Add(submenuPersonal);
-            PMenuLat.Controls.Add(btnPersonal);
-            PMenuLat.Controls.Add(submenuVentas);
-            PMenuLat.Controls.Add(btnVentas);
+            PMenuLat.Controls.Add(iconBtnCaja);
+            PMenuLat.Controls.Add(iconBtnOperaciones);
+            PMenuLat.Controls.Add(lblCerrar);
+            PMenuLat.Controls.Add(picCerrarSesion);
+            PMenuLat.Controls.Add(iconBtnEstadisticas);
+            PMenuLat.Controls.Add(iconBtnVentas);
+            PMenuLat.Controls.Add(iconBtnPersonal);
             PMenuLat.Controls.Add(btnLogout);
-            PMenuLat.Controls.Add(PSubmenu1);
-            PMenuLat.Controls.Add(btnCaja);
             PMenuLat.Controls.Add(PLogo);
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
-            PMenuLat.MaximumSize = new Size(251, 561);
-            PMenuLat.MinimumSize = new Size(51, 561);
+            PMenuLat.Margin = new Padding(4, 3, 4, 3);
+            PMenuLat.MaximumSize = new Size(220, 604);
+            PMenuLat.MinimumSize = new Size(58, 604);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(251, 561);
+            PMenuLat.Size = new Size(220, 604);
             PMenuLat.TabIndex = 15;
+            PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
-            // subMenuPromocion
+            // iconBtnCaja
             // 
-            subMenuPromocion.BackColor = Color.BlanchedAlmond;
-            subMenuPromocion.Controls.Add(btnDescuentos);
-            subMenuPromocion.Controls.Add(btnPromociones);
-            subMenuPromocion.Dock = DockStyle.Top;
-            subMenuPromocion.Location = new Point(0, 675);
-            subMenuPromocion.Name = "subMenuPromocion";
-            subMenuPromocion.Size = new Size(234, 80);
-            subMenuPromocion.TabIndex = 15;
+            iconBtnCaja.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnCaja.BackgroundImage = (Image)resources.GetObject("iconBtnCaja.BackgroundImage");
+            iconBtnCaja.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCaja.Dock = DockStyle.Top;
+            iconBtnCaja.FlatStyle = FlatStyle.Popup;
+            iconBtnCaja.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnCaja.ForeColor = Color.White;
+            iconBtnCaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCaja.IconColor = Color.White;
+            iconBtnCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCaja.IconSize = 40;
+            iconBtnCaja.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnCaja.Location = new Point(0, 350);
+            iconBtnCaja.Name = "iconBtnCaja";
+            iconBtnCaja.Size = new Size(220, 52);
+            iconBtnCaja.TabIndex = 22;
+            iconBtnCaja.Text = "Caja";
+            iconBtnCaja.UseVisualStyleBackColor = false;
+            iconBtnCaja.Click += iconBtnCaja_Click;
+            iconBtnCaja.Leave += iconBtnCaja_Leave;
+            iconBtnCaja.MouseEnter += iconBtnCaja_MouseEnter;
             // 
-            // btnDescuentos
+            // iconBtnOperaciones
             // 
-            btnDescuentos.BackColor = Color.FromArgb(67, 68, 89);
-            btnDescuentos.Cursor = Cursors.Hand;
-            btnDescuentos.Dock = DockStyle.Top;
-            btnDescuentos.FlatAppearance.BorderSize = 0;
-            btnDescuentos.FlatStyle = FlatStyle.Flat;
-            btnDescuentos.ForeColor = SystemColors.HighlightText;
-            btnDescuentos.Location = new Point(0, 40);
-            btnDescuentos.Name = "btnDescuentos";
-            btnDescuentos.Padding = new Padding(35, 0, 0, 0);
-            btnDescuentos.Size = new Size(234, 40);
-            btnDescuentos.TabIndex = 1;
-            btnDescuentos.Text = "Gestionar Descuentos";
-            btnDescuentos.TextAlign = ContentAlignment.MiddleLeft;
-            btnDescuentos.UseVisualStyleBackColor = false;
-            btnDescuentos.Click += btnDescuentos_Click_1;
+            iconBtnOperaciones.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnOperaciones.BackgroundImage = (Image)resources.GetObject("iconBtnOperaciones.BackgroundImage");
+            iconBtnOperaciones.BackgroundImageLayout = ImageLayout.None;
+            iconBtnOperaciones.Dock = DockStyle.Top;
+            iconBtnOperaciones.FlatStyle = FlatStyle.Popup;
+            iconBtnOperaciones.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnOperaciones.ForeColor = Color.White;
+            iconBtnOperaciones.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnOperaciones.IconColor = Color.White;
+            iconBtnOperaciones.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnOperaciones.IconSize = 40;
+            iconBtnOperaciones.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnOperaciones.Location = new Point(0, 298);
+            iconBtnOperaciones.Name = "iconBtnOperaciones";
+            iconBtnOperaciones.Size = new Size(220, 52);
+            iconBtnOperaciones.TabIndex = 21;
+            iconBtnOperaciones.Text = "Operaciones";
+            iconBtnOperaciones.UseVisualStyleBackColor = false;
+            iconBtnOperaciones.Click += iconBtnOperaciones_Click;
+            iconBtnOperaciones.Leave += iconBtnOperaciones_Leave;
+            iconBtnOperaciones.MouseEnter += iconBtnOperaciones_MouseEnter;
             // 
-            // btnPromociones
+            // lblCerrar
             // 
-            btnPromociones.BackColor = Color.FromArgb(67, 68, 89);
-            btnPromociones.Cursor = Cursors.Hand;
-            btnPromociones.Dock = DockStyle.Top;
-            btnPromociones.FlatAppearance.BorderSize = 0;
-            btnPromociones.FlatStyle = FlatStyle.Flat;
-            btnPromociones.ForeColor = SystemColors.HighlightText;
-            btnPromociones.Location = new Point(0, 0);
-            btnPromociones.Name = "btnPromociones";
-            btnPromociones.Padding = new Padding(35, 0, 0, 0);
-            btnPromociones.Size = new Size(234, 40);
-            btnPromociones.TabIndex = 1;
-            btnPromociones.Text = "Gestionar Promociones";
-            btnPromociones.TextAlign = ContentAlignment.MiddleLeft;
-            btnPromociones.UseVisualStyleBackColor = false;
-            btnPromociones.Click += btnPromociones_Click_1;
+            lblCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblCerrar.AutoSize = true;
+            lblCerrar.Cursor = Cursors.Hand;
+            lblCerrar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCerrar.ForeColor = SystemColors.Window;
+            lblCerrar.Location = new Point(48, 537);
+            lblCerrar.Name = "lblCerrar";
+            lblCerrar.Size = new Size(75, 15);
+            lblCerrar.TabIndex = 19;
+            lblCerrar.Text = "Cerrar sesión";
             // 
-            // btnPromocionDescuento
+            // picCerrarSesion
             // 
-            btnPromocionDescuento.BackColor = Color.FromArgb(17, 17, 27);
-            btnPromocionDescuento.Cursor = Cursors.Hand;
-            btnPromocionDescuento.Dock = DockStyle.Top;
-            btnPromocionDescuento.FlatAppearance.BorderSize = 0;
-            btnPromocionDescuento.FlatStyle = FlatStyle.Flat;
-            btnPromocionDescuento.ForeColor = SystemColors.ControlLightLight;
-            btnPromocionDescuento.Location = new Point(0, 630);
-            btnPromocionDescuento.Name = "btnPromocionDescuento";
-            btnPromocionDescuento.Padding = new Padding(10, 0, 0, 0);
-            btnPromocionDescuento.Size = new Size(234, 45);
-            btnPromocionDescuento.TabIndex = 14;
-            btnPromocionDescuento.Text = "Promocion y Descuento";
-            btnPromocionDescuento.TextAlign = ContentAlignment.MiddleLeft;
-            btnPromocionDescuento.UseVisualStyleBackColor = false;
-            btnPromocionDescuento.Click += btnPromocionDescuento_Click_1;
+            picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            picCerrarSesion.Cursor = Cursors.Hand;
+            picCerrarSesion.Image = CapaPresentacion.Properties.Resources.logout__1_;
+            picCerrarSesion.Location = new Point(12, 515);
+            picCerrarSesion.Name = "picCerrarSesion";
+            picCerrarSesion.Size = new Size(30, 43);
+            picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
+            picCerrarSesion.TabIndex = 20;
+            picCerrarSesion.TabStop = false;
             // 
-            // submenuPersonal
+            // iconBtnEstadisticas
             // 
-            submenuPersonal.BackColor = Color.BlanchedAlmond;
-            submenuPersonal.Controls.Add(btnReportePersonal);
-            submenuPersonal.Controls.Add(btnGestionPersonal);
-            submenuPersonal.Controls.Add(btnCuentas);
-            submenuPersonal.Dock = DockStyle.Top;
-            submenuPersonal.Location = new Point(0, 507);
-            submenuPersonal.Name = "submenuPersonal";
-            submenuPersonal.Size = new Size(234, 123);
-            submenuPersonal.TabIndex = 12;
+            iconBtnEstadisticas.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnEstadisticas.BackgroundImage = (Image)resources.GetObject("iconBtnEstadisticas.BackgroundImage");
+            iconBtnEstadisticas.BackgroundImageLayout = ImageLayout.None;
+            iconBtnEstadisticas.Dock = DockStyle.Top;
+            iconBtnEstadisticas.FlatStyle = FlatStyle.Popup;
+            iconBtnEstadisticas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnEstadisticas.ForeColor = Color.White;
+            iconBtnEstadisticas.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnEstadisticas.IconColor = Color.White;
+            iconBtnEstadisticas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnEstadisticas.IconSize = 40;
+            iconBtnEstadisticas.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnEstadisticas.Location = new Point(0, 246);
+            iconBtnEstadisticas.Name = "iconBtnEstadisticas";
+            iconBtnEstadisticas.Size = new Size(220, 52);
+            iconBtnEstadisticas.TabIndex = 18;
+            iconBtnEstadisticas.Text = "Estadisticas";
+            iconBtnEstadisticas.UseVisualStyleBackColor = false;
+            iconBtnEstadisticas.Click += iconBtnEstadisticas_Click;
+            iconBtnEstadisticas.Leave += iconBtnEstadisticas_Leave;
+            iconBtnEstadisticas.MouseEnter += iconBtnEstadisticas_MouseEnter;
             // 
-            // btnReportePersonal
+            // iconBtnVentas
             // 
-            btnReportePersonal.BackColor = Color.FromArgb(67, 68, 89);
-            btnReportePersonal.Cursor = Cursors.Hand;
-            btnReportePersonal.Dock = DockStyle.Top;
-            btnReportePersonal.FlatAppearance.BorderSize = 0;
-            btnReportePersonal.FlatStyle = FlatStyle.Flat;
-            btnReportePersonal.ForeColor = SystemColors.HighlightText;
-            btnReportePersonal.Location = new Point(0, 80);
-            btnReportePersonal.Name = "btnReportePersonal";
-            btnReportePersonal.Padding = new Padding(35, 0, 0, 0);
-            btnReportePersonal.Size = new Size(234, 45);
-            btnReportePersonal.TabIndex = 2;
-            btnReportePersonal.Text = "Generar Reporte de Personal";
-            btnReportePersonal.TextAlign = ContentAlignment.MiddleLeft;
-            btnReportePersonal.UseVisualStyleBackColor = false;
+            iconBtnVentas.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnVentas.BackgroundImage = (Image)resources.GetObject("iconBtnVentas.BackgroundImage");
+            iconBtnVentas.BackgroundImageLayout = ImageLayout.None;
+            iconBtnVentas.Dock = DockStyle.Top;
+            iconBtnVentas.FlatStyle = FlatStyle.Popup;
+            iconBtnVentas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnVentas.ForeColor = Color.White;
+            iconBtnVentas.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnVentas.IconColor = Color.White;
+            iconBtnVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnVentas.IconSize = 40;
+            iconBtnVentas.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnVentas.Location = new Point(0, 194);
+            iconBtnVentas.Name = "iconBtnVentas";
+            iconBtnVentas.Size = new Size(220, 52);
+            iconBtnVentas.TabIndex = 17;
+            iconBtnVentas.Text = "Ventas";
+            iconBtnVentas.UseVisualStyleBackColor = false;
+            iconBtnVentas.Click += iconBtnVentas_Click;
+            iconBtnVentas.Leave += iconBtnVentas_Leave;
+            iconBtnVentas.MouseEnter += iconBtnVentas_MouseEnter;
             // 
-            // btnGestionPersonal
+            // iconBtnPersonal
             // 
-            btnGestionPersonal.BackColor = Color.FromArgb(67, 68, 89);
-            btnGestionPersonal.Cursor = Cursors.Hand;
-            btnGestionPersonal.Dock = DockStyle.Top;
-            btnGestionPersonal.FlatAppearance.BorderSize = 0;
-            btnGestionPersonal.FlatStyle = FlatStyle.Flat;
-            btnGestionPersonal.ForeColor = SystemColors.HighlightText;
-            btnGestionPersonal.Location = new Point(0, 40);
-            btnGestionPersonal.Name = "btnGestionPersonal";
-            btnGestionPersonal.Padding = new Padding(35, 0, 0, 0);
-            btnGestionPersonal.Size = new Size(234, 40);
-            btnGestionPersonal.TabIndex = 1;
-            btnGestionPersonal.Text = "Gestionar Personal";
-            btnGestionPersonal.TextAlign = ContentAlignment.MiddleLeft;
-            btnGestionPersonal.UseVisualStyleBackColor = false;
-            btnGestionPersonal.Click += btnGestionPersonal_Click;
-            // 
-            // btnCuentas
-            // 
-            btnCuentas.BackColor = Color.FromArgb(67, 68, 89);
-            btnCuentas.Cursor = Cursors.Hand;
-            btnCuentas.Dock = DockStyle.Top;
-            btnCuentas.FlatAppearance.BorderSize = 0;
-            btnCuentas.FlatStyle = FlatStyle.Flat;
-            btnCuentas.ForeColor = SystemColors.HighlightText;
-            btnCuentas.Location = new Point(0, 0);
-            btnCuentas.Name = "btnCuentas";
-            btnCuentas.Padding = new Padding(35, 0, 0, 0);
-            btnCuentas.Size = new Size(234, 40);
-            btnCuentas.TabIndex = 1;
-            btnCuentas.Text = "Administrar Cuentas";
-            btnCuentas.TextAlign = ContentAlignment.MiddleLeft;
-            btnCuentas.UseVisualStyleBackColor = false;
-            btnCuentas.Click += btnCuentas_Click;
-            // 
-            // btnPersonal
-            // 
-            btnPersonal.BackColor = Color.FromArgb(17, 17, 27);
-            btnPersonal.Cursor = Cursors.Hand;
-            btnPersonal.Dock = DockStyle.Top;
-            btnPersonal.FlatAppearance.BorderSize = 0;
-            btnPersonal.FlatStyle = FlatStyle.Flat;
-            btnPersonal.ForeColor = SystemColors.ControlLightLight;
-            btnPersonal.Location = new Point(0, 462);
-            btnPersonal.Name = "btnPersonal";
-            btnPersonal.Padding = new Padding(10, 0, 0, 0);
-            btnPersonal.Size = new Size(234, 45);
-            btnPersonal.TabIndex = 11;
-            btnPersonal.Text = "Personal";
-            btnPersonal.TextAlign = ContentAlignment.MiddleLeft;
-            btnPersonal.UseVisualStyleBackColor = false;
-            btnPersonal.Click += btnPersonal_Click;
-            // 
-            // submenuVentas
-            // 
-            submenuVentas.BackColor = Color.BlanchedAlmond;
-            submenuVentas.Controls.Add(btnReportes);
-            submenuVentas.Controls.Add(btnGastos);
-            submenuVentas.Controls.Add(btnIngresos);
-            submenuVentas.Controls.Add(btnInfomeVenta);
-            submenuVentas.Dock = DockStyle.Top;
-            submenuVentas.Location = new Point(0, 289);
-            submenuVentas.Name = "submenuVentas";
-            submenuVentas.Size = new Size(234, 173);
-            submenuVentas.TabIndex = 8;
-            // 
-            // btnReportes
-            // 
-            btnReportes.BackColor = Color.FromArgb(67, 68, 89);
-            btnReportes.Cursor = Cursors.Hand;
-            btnReportes.Dock = DockStyle.Top;
-            btnReportes.FlatAppearance.BorderSize = 0;
-            btnReportes.FlatStyle = FlatStyle.Flat;
-            btnReportes.ForeColor = SystemColors.HighlightText;
-            btnReportes.Location = new Point(0, 131);
-            btnReportes.Name = "btnReportes";
-            btnReportes.Padding = new Padding(35, 0, 0, 0);
-            btnReportes.Size = new Size(234, 42);
-            btnReportes.TabIndex = 3;
-            btnReportes.Text = "Reporte Financieros";
-            btnReportes.TextAlign = ContentAlignment.MiddleLeft;
-            btnReportes.UseVisualStyleBackColor = false;
-            btnReportes.Click += btnReportes_Click;
-            // 
-            // btnGastos
-            // 
-            btnGastos.BackColor = Color.FromArgb(67, 68, 89);
-            btnGastos.Cursor = Cursors.Hand;
-            btnGastos.Dock = DockStyle.Top;
-            btnGastos.FlatAppearance.BorderSize = 0;
-            btnGastos.FlatStyle = FlatStyle.Flat;
-            btnGastos.ForeColor = SystemColors.HighlightText;
-            btnGastos.Location = new Point(0, 91);
-            btnGastos.Name = "btnGastos";
-            btnGastos.Padding = new Padding(35, 0, 0, 0);
-            btnGastos.Size = new Size(234, 40);
-            btnGastos.TabIndex = 2;
-            btnGastos.Text = "Gastos";
-            btnGastos.TextAlign = ContentAlignment.MiddleLeft;
-            btnGastos.UseVisualStyleBackColor = false;
-            btnGastos.Click += btnGastos_Click;
-            // 
-            // btnIngresos
-            // 
-            btnIngresos.BackColor = Color.FromArgb(67, 68, 89);
-            btnIngresos.Cursor = Cursors.Hand;
-            btnIngresos.Dock = DockStyle.Top;
-            btnIngresos.FlatAppearance.BorderSize = 0;
-            btnIngresos.FlatStyle = FlatStyle.Flat;
-            btnIngresos.ForeColor = SystemColors.HighlightText;
-            btnIngresos.Location = new Point(0, 40);
-            btnIngresos.Name = "btnIngresos";
-            btnIngresos.Padding = new Padding(35, 0, 0, 0);
-            btnIngresos.Size = new Size(234, 51);
-            btnIngresos.TabIndex = 1;
-            btnIngresos.Text = "Generar  Resumen de ingresos";
-            btnIngresos.TextAlign = ContentAlignment.MiddleLeft;
-            btnIngresos.UseVisualStyleBackColor = false;
-            btnIngresos.Click += btnIngresos_Click;
-            // 
-            // btnInfomeVenta
-            // 
-            btnInfomeVenta.BackColor = Color.FromArgb(67, 68, 89);
-            btnInfomeVenta.Cursor = Cursors.Hand;
-            btnInfomeVenta.Dock = DockStyle.Top;
-            btnInfomeVenta.FlatAppearance.BorderSize = 0;
-            btnInfomeVenta.FlatStyle = FlatStyle.Flat;
-            btnInfomeVenta.ForeColor = SystemColors.HighlightText;
-            btnInfomeVenta.Location = new Point(0, 0);
-            btnInfomeVenta.Name = "btnInfomeVenta";
-            btnInfomeVenta.Padding = new Padding(35, 0, 0, 0);
-            btnInfomeVenta.Size = new Size(234, 40);
-            btnInfomeVenta.TabIndex = 1;
-            btnInfomeVenta.Text = "Generar Informe de Venta";
-            btnInfomeVenta.TextAlign = ContentAlignment.MiddleLeft;
-            btnInfomeVenta.UseVisualStyleBackColor = false;
-            btnInfomeVenta.Click += btnInfomeVenta_Click;
-            // 
-            // btnVentas
-            // 
-            btnVentas.BackColor = Color.FromArgb(17, 17, 27);
-            btnVentas.Cursor = Cursors.Hand;
-            btnVentas.Dock = DockStyle.Top;
-            btnVentas.FlatAppearance.BorderSize = 0;
-            btnVentas.FlatStyle = FlatStyle.Flat;
-            btnVentas.ForeColor = SystemColors.ControlLightLight;
-            btnVentas.Location = new Point(0, 244);
-            btnVentas.Name = "btnVentas";
-            btnVentas.Padding = new Padding(10, 0, 0, 0);
-            btnVentas.Size = new Size(234, 45);
-            btnVentas.TabIndex = 2;
-            btnVentas.Text = "Ventas";
-            btnVentas.TextAlign = ContentAlignment.MiddleLeft;
-            btnVentas.UseVisualStyleBackColor = false;
-            btnVentas.Click += btnVentas_Click;
+            iconBtnPersonal.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnPersonal.Dock = DockStyle.Top;
+            iconBtnPersonal.FlatStyle = FlatStyle.Popup;
+            iconBtnPersonal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnPersonal.ForeColor = Color.White;
+            iconBtnPersonal.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            iconBtnPersonal.IconColor = Color.White;
+            iconBtnPersonal.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnPersonal.IconSize = 40;
+            iconBtnPersonal.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnPersonal.Location = new Point(0, 142);
+            iconBtnPersonal.Name = "iconBtnPersonal";
+            iconBtnPersonal.Size = new Size(220, 52);
+            iconBtnPersonal.TabIndex = 16;
+            iconBtnPersonal.Text = "Personal";
+            iconBtnPersonal.UseVisualStyleBackColor = false;
+            iconBtnPersonal.Click += iconBtnPersonal_Click;
+            iconBtnPersonal.Leave += iconBtnPersonal_Leave;
+            iconBtnPersonal.MouseEnter += iconBtnPersonal_MouseEnter;
             // 
             // btnLogout
             // 
@@ -453,181 +396,136 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = SystemColors.ControlLightLight;
-            btnLogout.Location = new Point(3, 1958);
+            btnLogout.Location = new Point(4, 15794);
+            btnLogout.Margin = new Padding(4, 3, 4, 3);
             btnLogout.Name = "btnLogout";
-            btnLogout.Padding = new Padding(10, 0, 0, 0);
-            btnLogout.Size = new Size(91, 37);
+            btnLogout.Padding = new Padding(12, 0, 0, 0);
+            btnLogout.Size = new Size(106, 43);
             btnLogout.TabIndex = 7;
             btnLogout.Text = "Log out";
             btnLogout.TextAlign = ContentAlignment.MiddleRight;
             btnLogout.UseVisualStyleBackColor = false;
             // 
-            // PSubmenu1
-            // 
-            PSubmenu1.BackColor = Color.BlanchedAlmond;
-            PSubmenu1.Controls.Add(btnCerrarCaja);
-            PSubmenu1.Controls.Add(btnInfoCaja);
-            PSubmenu1.Dock = DockStyle.Top;
-            PSubmenu1.Location = new Point(0, 168);
-            PSubmenu1.Name = "PSubmenu1";
-            PSubmenu1.Size = new Size(234, 76);
-            PSubmenu1.TabIndex = 1;
-            // 
-            // btnCerrarCaja
-            // 
-            btnCerrarCaja.BackColor = Color.FromArgb(67, 68, 89);
-            btnCerrarCaja.Cursor = Cursors.Hand;
-            btnCerrarCaja.Dock = DockStyle.Top;
-            btnCerrarCaja.FlatAppearance.BorderSize = 0;
-            btnCerrarCaja.FlatStyle = FlatStyle.Flat;
-            btnCerrarCaja.ForeColor = SystemColors.HighlightText;
-            btnCerrarCaja.Location = new Point(0, 40);
-            btnCerrarCaja.Name = "btnCerrarCaja";
-            btnCerrarCaja.Padding = new Padding(35, 0, 0, 0);
-            btnCerrarCaja.Size = new Size(234, 40);
-            btnCerrarCaja.TabIndex = 1;
-            btnCerrarCaja.Text = "Cierre de Caja";
-            btnCerrarCaja.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarCaja.UseVisualStyleBackColor = false;
-            btnCerrarCaja.Click += btnCerrarCaja_Click;
-            // 
-            // btnInfoCaja
-            // 
-            btnInfoCaja.BackColor = Color.FromArgb(67, 68, 89);
-            btnInfoCaja.Cursor = Cursors.Hand;
-            btnInfoCaja.Dock = DockStyle.Top;
-            btnInfoCaja.FlatAppearance.BorderSize = 0;
-            btnInfoCaja.FlatStyle = FlatStyle.Flat;
-            btnInfoCaja.ForeColor = SystemColors.HighlightText;
-            btnInfoCaja.Location = new Point(0, 0);
-            btnInfoCaja.Name = "btnInfoCaja";
-            btnInfoCaja.Padding = new Padding(35, 0, 0, 0);
-            btnInfoCaja.Size = new Size(234, 40);
-            btnInfoCaja.TabIndex = 1;
-            btnInfoCaja.Text = "Informacion de Caja";
-            btnInfoCaja.TextAlign = ContentAlignment.MiddleLeft;
-            btnInfoCaja.UseVisualStyleBackColor = false;
-            btnInfoCaja.Click += btnInfoCaja_Click;
-            // 
-            // btnCaja
-            // 
-            btnCaja.BackColor = Color.FromArgb(17, 17, 27);
-            btnCaja.Cursor = Cursors.Hand;
-            btnCaja.Dock = DockStyle.Top;
-            btnCaja.FlatAppearance.BorderSize = 0;
-            btnCaja.FlatStyle = FlatStyle.Flat;
-            btnCaja.ForeColor = SystemColors.ControlLightLight;
-            btnCaja.Location = new Point(0, 123);
-            btnCaja.Name = "btnCaja";
-            btnCaja.Padding = new Padding(10, 0, 0, 0);
-            btnCaja.Size = new Size(234, 45);
-            btnCaja.TabIndex = 0;
-            btnCaja.Text = "Caja";
-            btnCaja.TextAlign = ContentAlignment.MiddleLeft;
-            btnCaja.UseVisualStyleBackColor = false;
-            btnCaja.Click += btnCaja_Click;
-            // 
             // PLogo
             // 
             PLogo.BackColor = Color.FromArgb(9, 10, 25);
+            PLogo.Controls.Add(lblNombreDelUsu);
+            PLogo.Controls.Add(lblRolDelUsu);
+            PLogo.Controls.Add(pictureMenuHambur);
             PLogo.Controls.Add(picUsuario);
-            PLogo.Controls.Add(pictureBox2);
             PLogo.Dock = DockStyle.Top;
             PLogo.Location = new Point(0, 0);
+            PLogo.Margin = new Padding(4, 3, 4, 3);
             PLogo.Name = "PLogo";
-            PLogo.Size = new Size(234, 123);
+            PLogo.Size = new Size(220, 142);
             PLogo.TabIndex = 1;
+            PLogo.MouseDown += PLogo_MouseDown;
+            // 
+            // lblNombreDelUsu
+            // 
+            lblNombreDelUsu.AutoSize = true;
+            lblNombreDelUsu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombreDelUsu.ForeColor = SystemColors.ControlLightLight;
+            lblNombreDelUsu.Location = new Point(4, 119);
+            lblNombreDelUsu.Name = "lblNombreDelUsu";
+            lblNombreDelUsu.Size = new Size(150, 21);
+            lblNombreDelUsu.TabIndex = 19;
+            lblNombreDelUsu.Text = "nombre y apellido";
+            // 
+            // lblRolDelUsu
+            // 
+            lblRolDelUsu.AutoSize = true;
+            lblRolDelUsu.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRolDelUsu.ForeColor = Color.Red;
+            lblRolDelUsu.Location = new Point(4, 86);
+            lblRolDelUsu.Name = "lblRolDelUsu";
+            lblRolDelUsu.Size = new Size(31, 21);
+            lblRolDelUsu.TabIndex = 18;
+            lblRolDelUsu.Text = "rol";
+            // 
+            // pictureMenuHambur
+            // 
+            pictureMenuHambur.BackColor = Color.FromArgb(9, 10, 25);
+            pictureMenuHambur.Cursor = Cursors.Hand;
+            pictureMenuHambur.Image = (Image)resources.GetObject("pictureMenuHambur.Image");
+            pictureMenuHambur.Location = new Point(9, 0);
+            pictureMenuHambur.Margin = new Padding(4, 3, 4, 3);
+            pictureMenuHambur.Name = "pictureMenuHambur";
+            pictureMenuHambur.Size = new Size(30, 31);
+            pictureMenuHambur.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureMenuHambur.TabIndex = 15;
+            pictureMenuHambur.TabStop = false;
+            pictureMenuHambur.Click += pictureMenuHambur_Click;
             // 
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(146, 0);
+            picUsuario.Location = new Point(103, 0);
+            picUsuario.Margin = new Padding(4, 3, 4, 3);
             picUsuario.Name = "picUsuario";
-            picUsuario.Size = new Size(84, 84);
+            picUsuario.Size = new Size(98, 97);
             picUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             picUsuario.TabIndex = 0;
             picUsuario.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.FromArgb(9, 10, 25);
-            pictureBox2.Cursor = Cursors.Hand;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(26, 27);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 14;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
-            // 
-            // sidebarTime
-            // 
-            sidebarTime.Interval = 10;
-            sidebarTime.Tick += sidebarTime_Tick;
             // 
             // MenuGerente
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(934, 600);
+            ClientSize = new Size(1159, 649);
             Controls.Add(PVentana);
-            Controls.Add(panel1);
+            Controls.Add(panelBarraSuperior);
             Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             Name = "MenuGerente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
-            panel1.ResumeLayout(false);
+            Load += MenuGerente_Load;
+            panelBarraSuperior.ResumeLayout(false);
+            panelBarraSuperior.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             PVentana.ResumeLayout(false);
             PMenuLat.ResumeLayout(false);
-            subMenuPromocion.ResumeLayout(false);
-            submenuPersonal.ResumeLayout(false);
-            submenuVentas.ResumeLayout(false);
-            PSubmenu1.ResumeLayout(false);
+            PMenuLat.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrarSesion).EndInit();
             PLogo.ResumeLayout(false);
+            PLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).EndInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private PictureBox picCerrar;
-        private PictureBox picRestaurar;
-        private PictureBox picMaxPantalla;
-        private Button btnMenu;
-        private Button btnVentas;
-        private Panel PSubmenu1;
-        private Button btnCerrarCaja;
-        private Button btnInfoCaja;
-        private Button btnCaja;
-        private Button btnLogout;
-        private Panel panel1;
-        private Panel PVentana;
-        private Panel submenuVentas;
-        private Button btnIngresos;
-        private Button btnInfomeVenta;
-        private Button btnGastos;
-        private Panel submenuPersonal;
-        private Button btnReportePersonal;
-        private Button btnGestionPersonal;
-        private Button btnCuentas;
-        private Button btnPersonal;
-        private Button btnReportes;
-        private Panel subMenuPromocion;
-        private Button btnDescuentos;
-        private Button btnPromociones;
-        private Button btnPromocionDescuento;
-        private Panel PLogo;
-        private PictureBox picUsuario;
-        private PictureBox pictureBox2;
         private System.Windows.Forms.Timer sidebarTime;
+        private Panel panelBarraSuperior;
+        private PictureBox pictureBox4;
+        private PictureBox picRestaurar;
+        private PictureBox pictureBox2;
+        private Label lblTituloMenu;
+        private Button btnMenu;
         private PictureBox picMinPantalla;
+        private PictureBox picMaxPantalla;
+        private PictureBox picCerrar;
+        private Panel PVentana;
         private Panel PMenuLat;
+        private Label lblCerrar;
+        private PictureBox picCerrarSesion;
+        private FontAwesome.Sharp.IconButton iconBtnEstadisticas;
+        private FontAwesome.Sharp.IconButton iconBtnVentas;
+        private FontAwesome.Sharp.IconButton iconBtnPersonal;
+        private Button btnLogout;
+        private Panel PLogo;
+        private PictureBox pictureMenuHambur;
+        private PictureBox picUsuario;
+        private FontAwesome.Sharp.IconButton iconBtnCaja;
+        private FontAwesome.Sharp.IconButton iconBtnOperaciones;
+        private Label lblNombreDelUsu;
+        private Label lblRolDelUsu;
     }
 }
