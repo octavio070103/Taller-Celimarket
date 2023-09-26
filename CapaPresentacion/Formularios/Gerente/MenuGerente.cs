@@ -1,5 +1,6 @@
 ﻿using capaEntidad;
 using CapaPresentacion.Formularios.Admin;
+using CapaPresentacion.Formularios.Gerente.informes_de_operacion;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -249,7 +250,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)
         {
-            //  OpenChildForm(new Admin.FrmGestionarUsuario(this));
+              OpenChildForm(new FrmOperacionesRealizadas(this));
         }
 
         private void iconBtnCaja_Click(object sender, EventArgs e)

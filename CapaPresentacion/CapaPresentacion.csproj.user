@@ -31,6 +31,9 @@
     <Compile Update="Formularios\Gerente\GestionarClientes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Gerente\informes_de_operacion\frmHistorialOperaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Gerente\informes_de_operacion\FrmOperacionesRealizadas.cs">
       <SubType>Form</SubType>
     </Compile>

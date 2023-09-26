@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Taller.Presentacion.Formularios.Vendedor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace CapaPresentacion.Formularios.Gerente.informes_de_operacion
 {
     public partial class FrmOperacionesRealizadas : Form
     {
-        public FrmOperacionesRealizadas()
+        private MenuGerente instanciaMenuGerente;
+        public FrmOperacionesRealizadas(MenuGerente p_menuGerente)
         {
             InitializeComponent();
+            IconBtnExportar.Visible = false;
+            this.instanciaMenuGerente= p_menuGerente;
         }
     }
 }
