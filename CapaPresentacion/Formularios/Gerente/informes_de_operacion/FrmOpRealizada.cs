@@ -21,6 +21,9 @@ namespace CapaPresentacion.Formularios.Gerente.informes_de_operacion
             this.instanciaMenuGerente = p_menuGerente;
         }
 
-
+        private void iconBtnAlta_Click(object sender, EventArgs e)
+        {
+            instanciaMenuGerente.OpenChildForm(new frmHistorialOp(this.instanciaMenuGerente));
+        }
     }
 }

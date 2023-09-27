@@ -40,6 +40,9 @@
     <Compile Update="Formularios\Gerente\MenuGerente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\Gerente\personal\FrmGestionarPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Login\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

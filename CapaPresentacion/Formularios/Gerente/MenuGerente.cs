@@ -24,6 +24,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         //esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
         private Form currentChildForm;
+
         private IconButton currentBtn;
 
         private Color colorFondoOriginal; // Variable para almacenar el color de fondo original

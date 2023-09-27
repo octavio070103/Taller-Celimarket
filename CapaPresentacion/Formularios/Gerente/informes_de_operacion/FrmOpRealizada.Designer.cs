@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOpRealizada));
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
             IconBtnExportar = new FontAwesome.Sharp.IconButton();
             panelDatosUsuario = new Panel();
@@ -55,21 +55,6 @@
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
             dataGridUsuarios = new DataGridView();
-            col_cod_operacion = new DataGridViewTextBoxColumn();
-            col_dni = new DataGridViewTextBoxColumn();
-            col_nombre = new DataGridViewTextBoxColumn();
-            col_apellido = new DataGridViewTextBoxColumn();
-            col_email = new DataGridViewTextBoxColumn();
-            col_password = new DataGridViewTextBoxColumn();
-            col_telefono = new DataGridViewTextBoxColumn();
-            col_id_rol = new DataGridViewTextBoxColumn();
-            col_Rol = new DataGridViewTextBoxColumn();
-            col_id_domicilio = new DataGridViewTextBoxColumn();
-            col_domicilio_calle = new DataGridViewTextBoxColumn();
-            col_domicilio_numero = new DataGridViewTextBoxColumn();
-            col_domicilio_prov = new DataGridViewTextBoxColumn();
-            Estado_Valor = new DataGridViewTextBoxColumn();
-            col_estado = new DataGridViewTextBoxColumn();
             panel1 = new Panel();
             textBox2 = new TextBox();
             textBox1 = new TextBox();
@@ -78,8 +63,8 @@
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
+            label3 = new Label();
             label5 = new Label();
             lblOperacionRealizadas = new Label();
             iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -113,6 +98,7 @@
             iconBtnAlta.TextAlign = ContentAlignment.MiddleRight;
             iconBtnAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnAlta.UseVisualStyleBackColor = false;
+            iconBtnAlta.Click += iconBtnAlta_Click;
             // 
             // IconBtnExportar
             // 
@@ -374,158 +360,45 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle10.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle11.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.White;
-            dataGridViewCellStyle11.Padding = new Padding(2);
-            dataGridViewCellStyle11.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle11.SelectionForeColor = Color.White;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_cod_operacion, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 189);
             dataGridUsuarios.MultiSelect = false;
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridUsuarios.Size = new Size(554, 363);
             dataGridUsuarios.TabIndex = 13;
-            // 
-            // col_cod_operacion
-            // 
-            col_cod_operacion.HeaderText = "Id_usuario";
-            col_cod_operacion.Name = "col_cod_operacion";
-            col_cod_operacion.ReadOnly = true;
-            col_cod_operacion.Width = 96;
-            // 
-            // col_dni
-            // 
-            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_dni.HeaderText = "DNI";
-            col_dni.Name = "col_dni";
-            col_dni.ReadOnly = true;
-            col_dni.Width = 130;
-            // 
-            // col_nombre
-            // 
-            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_nombre.HeaderText = "Nombre";
-            col_nombre.Name = "col_nombre";
-            col_nombre.ReadOnly = true;
-            // 
-            // col_apellido
-            // 
-            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_apellido.HeaderText = "Apellido";
-            col_apellido.Name = "col_apellido";
-            col_apellido.ReadOnly = true;
-            // 
-            // col_email
-            // 
-            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_email.HeaderText = "Email";
-            col_email.Name = "col_email";
-            col_email.ReadOnly = true;
-            col_email.Width = 130;
-            // 
-            // col_password
-            // 
-            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_password.HeaderText = "Password";
-            col_password.Name = "col_password";
-            col_password.ReadOnly = true;
-            col_password.Visible = false;
-            col_password.Width = 87;
-            // 
-            // col_telefono
-            // 
-            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_telefono.HeaderText = "Telefono";
-            col_telefono.Name = "col_telefono";
-            col_telefono.ReadOnly = true;
-            // 
-            // col_id_rol
-            // 
-            col_id_rol.HeaderText = "id_rol";
-            col_id_rol.Name = "col_id_rol";
-            col_id_rol.ReadOnly = true;
-            col_id_rol.Visible = false;
-            col_id_rol.Width = 68;
-            // 
-            // col_Rol
-            // 
-            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_Rol.HeaderText = "Rol";
-            col_Rol.Name = "col_Rol";
-            col_Rol.ReadOnly = true;
-            // 
-            // col_id_domicilio
-            // 
-            col_id_domicilio.HeaderText = "id_domicilio";
-            col_id_domicilio.Name = "col_id_domicilio";
-            col_id_domicilio.ReadOnly = true;
-            col_id_domicilio.Visible = false;
-            col_id_domicilio.Width = 108;
-            // 
-            // col_domicilio_calle
-            // 
-            col_domicilio_calle.HeaderText = "Calle";
-            col_domicilio_calle.Name = "col_domicilio_calle";
-            col_domicilio_calle.ReadOnly = true;
-            col_domicilio_calle.Width = 67;
-            // 
-            // col_domicilio_numero
-            // 
-            col_domicilio_numero.HeaderText = "Numero";
-            col_domicilio_numero.Name = "col_domicilio_numero";
-            col_domicilio_numero.ReadOnly = true;
-            col_domicilio_numero.Width = 83;
-            // 
-            // col_domicilio_prov
-            // 
-            col_domicilio_prov.HeaderText = "Provincia";
-            col_domicilio_prov.Name = "col_domicilio_prov";
-            col_domicilio_prov.ReadOnly = true;
-            col_domicilio_prov.Width = 91;
-            // 
-            // Estado_Valor
-            // 
-            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Estado_Valor.HeaderText = "Estado Valor";
-            Estado_Valor.Name = "Estado_Valor";
-            Estado_Valor.ReadOnly = true;
-            Estado_Valor.Visible = false;
-            // 
-            // col_estado
-            // 
-            col_estado.HeaderText = "Estado";
-            col_estado.Name = "col_estado";
-            col_estado.ReadOnly = true;
-            col_estado.Width = 74;
             // 
             // panel1
             // 
@@ -633,17 +506,6 @@
             label2.TabIndex = 34;
             label2.Text = "Usuario";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(245, 56);
-            label3.Name = "label3";
-            label3.Size = new Size(67, 17);
-            label3.TabIndex = 33;
-            label3.Text = "Vendedor";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -654,6 +516,17 @@
             label4.Size = new Size(43, 17);
             label4.TabIndex = 32;
             label4.Text = "Fecha";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.ForeColor = SystemColors.ControlLightLight;
+            label3.Location = new Point(245, 56);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 17);
+            label3.TabIndex = 33;
+            label3.Text = "Vendedor";
             // 
             // label5
             // 
@@ -772,7 +645,7 @@
             iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton5.UseVisualStyleBackColor = false;
             // 
-            // FrmOperacionesRealizadas
+            // FrmOpRealizada
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -787,8 +660,8 @@
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
-            Name = "FrmOperacionesRealizadas";
-            Text = "Operaciones Realizadas";
+            Name = "FrmOpRealizada";
+            Text = "Operaciones ";
             panelDatosUsuario.ResumeLayout(false);
             panelDatosUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
@@ -834,21 +707,6 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private DataGridViewTextBoxColumn col_cod_operacion;
-        private DataGridViewTextBoxColumn col_dni;
-        private DataGridViewTextBoxColumn col_nombre;
-        private DataGridViewTextBoxColumn col_apellido;
-        private DataGridViewTextBoxColumn col_email;
-        private DataGridViewTextBoxColumn col_password;
-        private DataGridViewTextBoxColumn col_telefono;
-        private DataGridViewTextBoxColumn col_id_rol;
-        private DataGridViewTextBoxColumn col_Rol;
-        private DataGridViewTextBoxColumn col_id_domicilio;
-        private DataGridViewTextBoxColumn col_domicilio_calle;
-        private DataGridViewTextBoxColumn col_domicilio_numero;
-        private DataGridViewTextBoxColumn col_domicilio_prov;
-        private DataGridViewTextBoxColumn Estado_Valor;
-        private DataGridViewTextBoxColumn col_estado;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton4;

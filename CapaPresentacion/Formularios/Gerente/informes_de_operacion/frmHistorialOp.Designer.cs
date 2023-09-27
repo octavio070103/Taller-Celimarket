@@ -50,21 +50,6 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
             dataGridUsuarios = new DataGridView();
-            col_cod_operacion = new DataGridViewTextBoxColumn();
-            col_dni = new DataGridViewTextBoxColumn();
-            col_nombre = new DataGridViewTextBoxColumn();
-            col_apellido = new DataGridViewTextBoxColumn();
-            col_email = new DataGridViewTextBoxColumn();
-            col_password = new DataGridViewTextBoxColumn();
-            col_telefono = new DataGridViewTextBoxColumn();
-            col_id_rol = new DataGridViewTextBoxColumn();
-            col_Rol = new DataGridViewTextBoxColumn();
-            col_id_domicilio = new DataGridViewTextBoxColumn();
-            col_domicilio_calle = new DataGridViewTextBoxColumn();
-            col_domicilio_numero = new DataGridViewTextBoxColumn();
-            col_domicilio_prov = new DataGridViewTextBoxColumn();
-            Estado_Valor = new DataGridViewTextBoxColumn();
-            col_estado = new DataGridViewTextBoxColumn();
             panelDatosUsuario = new Panel();
             lblFecha = new Label();
             dateTimePickerNacimientoDato = new DateTimePicker();
@@ -72,8 +57,6 @@
             txtPasswordDato = new TextBox();
             txtDomiciliodato = new TextBox();
             IconBtnExportar = new FontAwesome.Sharp.IconButton();
-            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
-            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             comboEstadoDato = new ComboBox();
             lblEstadoDato = new Label();
             lblDomicilioDato = new Label();
@@ -86,6 +69,15 @@
             lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
+            textBox1 = new TextBox();
+            label1 = new Label();
+            col_num_transaccion = new DataGridViewTextBoxColumn();
+            col_tipo_transaccion = new DataGridViewTextBoxColumn();
+            col_metod_pago = new DataGridViewTextBoxColumn();
+            col_productos = new DataGridViewTextBoxColumn();
+            col_fecha = new DataGridViewTextBoxColumn();
+            col_vendedor = new DataGridViewTextBoxColumn();
+            col_cliente = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -383,7 +375,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_cod_operacion, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
+            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_num_transaccion, col_tipo_transaccion, col_metod_pago, col_productos, col_fecha, col_vendedor, col_cliente });
             dataGridUsuarios.Location = new Point(10, 189);
             dataGridUsuarios.MultiSelect = false;
             dataGridUsuarios.Name = "dataGridUsuarios";
@@ -403,130 +395,18 @@
             dataGridUsuarios.Size = new Size(554, 363);
             dataGridUsuarios.TabIndex = 52;
             // 
-            // col_cod_operacion
-            // 
-            col_cod_operacion.HeaderText = "Id_usuario";
-            col_cod_operacion.Name = "col_cod_operacion";
-            col_cod_operacion.ReadOnly = true;
-            col_cod_operacion.Width = 96;
-            // 
-            // col_dni
-            // 
-            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_dni.HeaderText = "DNI";
-            col_dni.Name = "col_dni";
-            col_dni.ReadOnly = true;
-            col_dni.Width = 130;
-            // 
-            // col_nombre
-            // 
-            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_nombre.HeaderText = "Nombre";
-            col_nombre.Name = "col_nombre";
-            col_nombre.ReadOnly = true;
-            // 
-            // col_apellido
-            // 
-            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_apellido.HeaderText = "Apellido";
-            col_apellido.Name = "col_apellido";
-            col_apellido.ReadOnly = true;
-            // 
-            // col_email
-            // 
-            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_email.HeaderText = "Email";
-            col_email.Name = "col_email";
-            col_email.ReadOnly = true;
-            col_email.Width = 130;
-            // 
-            // col_password
-            // 
-            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_password.HeaderText = "Password";
-            col_password.Name = "col_password";
-            col_password.ReadOnly = true;
-            col_password.Visible = false;
-            col_password.Width = 87;
-            // 
-            // col_telefono
-            // 
-            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_telefono.HeaderText = "Telefono";
-            col_telefono.Name = "col_telefono";
-            col_telefono.ReadOnly = true;
-            // 
-            // col_id_rol
-            // 
-            col_id_rol.HeaderText = "id_rol";
-            col_id_rol.Name = "col_id_rol";
-            col_id_rol.ReadOnly = true;
-            col_id_rol.Visible = false;
-            col_id_rol.Width = 68;
-            // 
-            // col_Rol
-            // 
-            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_Rol.HeaderText = "Rol";
-            col_Rol.Name = "col_Rol";
-            col_Rol.ReadOnly = true;
-            // 
-            // col_id_domicilio
-            // 
-            col_id_domicilio.HeaderText = "id_domicilio";
-            col_id_domicilio.Name = "col_id_domicilio";
-            col_id_domicilio.ReadOnly = true;
-            col_id_domicilio.Visible = false;
-            col_id_domicilio.Width = 108;
-            // 
-            // col_domicilio_calle
-            // 
-            col_domicilio_calle.HeaderText = "Calle";
-            col_domicilio_calle.Name = "col_domicilio_calle";
-            col_domicilio_calle.ReadOnly = true;
-            col_domicilio_calle.Width = 67;
-            // 
-            // col_domicilio_numero
-            // 
-            col_domicilio_numero.HeaderText = "Numero";
-            col_domicilio_numero.Name = "col_domicilio_numero";
-            col_domicilio_numero.ReadOnly = true;
-            col_domicilio_numero.Width = 83;
-            // 
-            // col_domicilio_prov
-            // 
-            col_domicilio_prov.HeaderText = "Provincia";
-            col_domicilio_prov.Name = "col_domicilio_prov";
-            col_domicilio_prov.ReadOnly = true;
-            col_domicilio_prov.Width = 91;
-            // 
-            // Estado_Valor
-            // 
-            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Estado_Valor.HeaderText = "Estado Valor";
-            Estado_Valor.Name = "Estado_Valor";
-            Estado_Valor.ReadOnly = true;
-            Estado_Valor.Visible = false;
-            // 
-            // col_estado
-            // 
-            col_estado.HeaderText = "Estado";
-            col_estado.Name = "col_estado";
-            col_estado.ReadOnly = true;
-            col_estado.Width = 74;
-            // 
             // panelDatosUsuario
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelDatosUsuario.BackColor = Color.White;
+            panelDatosUsuario.Controls.Add(label1);
+            panelDatosUsuario.Controls.Add(textBox1);
             panelDatosUsuario.Controls.Add(lblFecha);
             panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
             panelDatosUsuario.Controls.Add(lblPassword);
             panelDatosUsuario.Controls.Add(txtPasswordDato);
             panelDatosUsuario.Controls.Add(txtDomiciliodato);
             panelDatosUsuario.Controls.Add(IconBtnExportar);
-            panelDatosUsuario.Controls.Add(iconbtnGuardar);
-            panelDatosUsuario.Controls.Add(iconBtnCancelar);
             panelDatosUsuario.Controls.Add(comboEstadoDato);
             panelDatosUsuario.Controls.Add(lblEstadoDato);
             panelDatosUsuario.Controls.Add(lblDomicilioDato);
@@ -541,7 +421,7 @@
             panelDatosUsuario.Controls.Add(lblDatosUsuario);
             panelDatosUsuario.Location = new Point(582, 105);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(240, 447);
+            panelDatosUsuario.Size = new Size(240, 458);
             panelDatosUsuario.TabIndex = 58;
             // 
             // lblFecha
@@ -586,7 +466,7 @@
             // txtDomiciliodato
             // 
             txtDomiciliodato.BackColor = SystemColors.Window;
-            txtDomiciliodato.Location = new Point(79, 207);
+            txtDomiciliodato.Location = new Point(84, 323);
             txtDomiciliodato.Name = "txtDomiciliodato";
             txtDomiciliodato.ReadOnly = true;
             txtDomiciliodato.Size = new Size(144, 23);
@@ -606,7 +486,7 @@
             IconBtnExportar.IconColor = Color.White;
             IconBtnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             IconBtnExportar.IconSize = 30;
-            IconBtnExportar.Location = new Point(67, 405);
+            IconBtnExportar.Location = new Point(67, 408);
             IconBtnExportar.Name = "IconBtnExportar";
             IconBtnExportar.Size = new Size(114, 39);
             IconBtnExportar.TabIndex = 17;
@@ -615,54 +495,12 @@
             IconBtnExportar.TextImageRelation = TextImageRelation.ImageBeforeText;
             IconBtnExportar.UseVisualStyleBackColor = false;
             // 
-            // iconbtnGuardar
-            // 
-            iconbtnGuardar.BackColor = Color.FromArgb(56, 182, 255);
-            iconbtnGuardar.Cursor = Cursors.Hand;
-            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
-            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
-            iconbtnGuardar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
-            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            iconbtnGuardar.IconColor = Color.White;
-            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(21, 318);
-            iconbtnGuardar.Name = "iconbtnGuardar";
-            iconbtnGuardar.Size = new Size(202, 39);
-            iconbtnGuardar.TabIndex = 25;
-            iconbtnGuardar.Text = "Aprobado";
-            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
-            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconbtnGuardar.UseVisualStyleBackColor = false;
-            // 
-            // iconBtnCancelar
-            // 
-            iconBtnCancelar.BackColor = Color.FromArgb(250, 21, 21);
-            iconBtnCancelar.Cursor = Cursors.Hand;
-            iconBtnCancelar.FlatAppearance.BorderColor = Color.Black;
-            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
-            iconBtnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnCancelar.ForeColor = SystemColors.ControlLightLight;
-            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            iconBtnCancelar.IconColor = Color.White;
-            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(21, 363);
-            iconBtnCancelar.Name = "iconBtnCancelar";
-            iconBtnCancelar.Size = new Size(202, 39);
-            iconBtnCancelar.TabIndex = 11;
-            iconBtnCancelar.Text = "Irregular";
-            iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnCancelar.UseVisualStyleBackColor = false;
-            // 
             // comboEstadoDato
             // 
             comboEstadoDato.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstadoDato.FlatStyle = FlatStyle.Popup;
             comboEstadoDato.FormattingEnabled = true;
-            comboEstadoDato.Location = new Point(79, 236);
+            comboEstadoDato.Location = new Point(84, 352);
             comboEstadoDato.Name = "comboEstadoDato";
             comboEstadoDato.Size = new Size(144, 23);
             comboEstadoDato.TabIndex = 23;
@@ -672,7 +510,7 @@
             lblEstadoDato.AutoSize = true;
             lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(3, 242);
+            lblEstadoDato.Location = new Point(8, 358);
             lblEstadoDato.Name = "lblEstadoDato";
             lblEstadoDato.Size = new Size(49, 17);
             lblEstadoDato.TabIndex = 22;
@@ -683,7 +521,7 @@
             lblDomicilioDato.AutoSize = true;
             lblDomicilioDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblDomicilioDato.ForeColor = SystemColors.WindowText;
-            lblDomicilioDato.Location = new Point(5, 213);
+            lblDomicilioDato.Location = new Point(10, 329);
             lblDomicilioDato.Name = "lblDomicilioDato";
             lblDomicilioDato.Size = new Size(39, 17);
             lblDomicilioDato.TabIndex = 18;
@@ -712,7 +550,7 @@
             lblTelefDato.AutoSize = true;
             lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(3, 184);
+            lblTelefDato.Location = new Point(8, 300);
             lblTelefDato.Name = "lblTelefDato";
             lblTelefDato.Size = new Size(61, 17);
             lblTelefDato.TabIndex = 13;
@@ -720,7 +558,7 @@
             // 
             // txtTelefDato
             // 
-            txtTelefDato.Location = new Point(79, 178);
+            txtTelefDato.Location = new Point(84, 294);
             txtTelefDato.Name = "txtTelefDato";
             txtTelefDato.Size = new Size(144, 23);
             txtTelefDato.TabIndex = 12;
@@ -772,7 +610,79 @@
             lblDatosUsuario.Text = "Detalles De La Operacion";
             lblDatosUsuario.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // frmHistorialOperaciones
+            // textBox1
+            // 
+            textBox1.Location = new Point(84, 201);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(144, 87);
+            textBox1.TabIndex = 76;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.WindowText;
+            label1.Location = new Point(3, 181);
+            label1.Name = "label1";
+            label1.Size = new Size(140, 17);
+            label1.TabIndex = 77;
+            label1.Text = "Listado De Productos";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // col_num_transaccion
+            // 
+            col_num_transaccion.HeaderText = "Numero Transaccion";
+            col_num_transaccion.Name = "col_num_transaccion";
+            col_num_transaccion.ReadOnly = true;
+            col_num_transaccion.Width = 145;
+            // 
+            // col_tipo_transaccion
+            // 
+            col_tipo_transaccion.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_tipo_transaccion.HeaderText = "Tipo ";
+            col_tipo_transaccion.Name = "col_tipo_transaccion";
+            col_tipo_transaccion.ReadOnly = true;
+            // 
+            // col_metod_pago
+            // 
+            col_metod_pago.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_metod_pago.HeaderText = "Metodo de Pago";
+            col_metod_pago.Name = "col_metod_pago";
+            col_metod_pago.ReadOnly = true;
+            col_metod_pago.Width = 87;
+            // 
+            // col_productos
+            // 
+            col_productos.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_productos.HeaderText = "Productos";
+            col_productos.Name = "col_productos";
+            col_productos.ReadOnly = true;
+            // 
+            // col_fecha
+            // 
+            col_fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_fecha.HeaderText = "Fecha ";
+            col_fecha.Name = "col_fecha";
+            col_fecha.ReadOnly = true;
+            col_fecha.Width = 130;
+            // 
+            // col_vendedor
+            // 
+            col_vendedor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_vendedor.HeaderText = "vendedor";
+            col_vendedor.Name = "col_vendedor";
+            col_vendedor.ReadOnly = true;
+            // 
+            // col_cliente
+            // 
+            col_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_cliente.HeaderText = "Cliente";
+            col_cliente.Name = "col_cliente";
+            col_cliente.ReadOnly = true;
+            col_cliente.Width = 130;
+            // 
+            // frmHistorialOp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -787,8 +697,8 @@
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
-            Name = "frmHistorialOperaciones";
-            Text = "Historial de Registros De Operaciones";
+            Name = "frmHistorialOp";
+            Text = "Operaciones";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
@@ -817,21 +727,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconBtnAlta;
         private DataGridView dataGridUsuarios;
-        private DataGridViewTextBoxColumn col_cod_operacion;
-        private DataGridViewTextBoxColumn col_dni;
-        private DataGridViewTextBoxColumn col_nombre;
-        private DataGridViewTextBoxColumn col_apellido;
-        private DataGridViewTextBoxColumn col_email;
-        private DataGridViewTextBoxColumn col_password;
-        private DataGridViewTextBoxColumn col_telefono;
-        private DataGridViewTextBoxColumn col_id_rol;
-        private DataGridViewTextBoxColumn col_Rol;
-        private DataGridViewTextBoxColumn col_id_domicilio;
-        private DataGridViewTextBoxColumn col_domicilio_calle;
-        private DataGridViewTextBoxColumn col_domicilio_numero;
-        private DataGridViewTextBoxColumn col_domicilio_prov;
-        private DataGridViewTextBoxColumn Estado_Valor;
-        private DataGridViewTextBoxColumn col_estado;
         private Panel panelDatosUsuario;
         private Label lblFecha;
         private DateTimePicker dateTimePickerNacimientoDato;
@@ -839,8 +734,6 @@
         private TextBox txtPasswordDato;
         private TextBox txtDomiciliodato;
         private FontAwesome.Sharp.IconButton IconBtnExportar;
-        private FontAwesome.Sharp.IconButton iconbtnGuardar;
-        private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private ComboBox comboEstadoDato;
         private Label lblEstadoDato;
         private Label lblDomicilioDato;
@@ -853,5 +746,14 @@
         private Label lblNombreDato;
         private TextBox txtNombreDato;
         private Label lblDatosUsuario;
+        private Label label1;
+        private TextBox textBox1;
+        private DataGridViewTextBoxColumn col_num_transaccion;
+        private DataGridViewTextBoxColumn col_tipo_transaccion;
+        private DataGridViewTextBoxColumn col_metod_pago;
+        private DataGridViewTextBoxColumn col_productos;
+        private DataGridViewTextBoxColumn col_fecha;
+        private DataGridViewTextBoxColumn col_vendedor;
+        private DataGridViewTextBoxColumn col_cliente;
     }
 }
