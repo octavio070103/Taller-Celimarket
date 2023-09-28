@@ -176,7 +176,7 @@
         7CBEb7g4amIOyzYkWwjS69Wj8APss8vZQ1gBr/EUR+3rPwiCH8O/NknDowt2AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="iconButton2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconBtnDevolucion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAXeSURBVFhHvVZ9TJVVHOZ+cC8fly8nFylATBFEUFb4wZSURCHQxERm
@@ -207,7 +207,7 @@
         ZXLFKP0H7Zb/0IbFsjmZqCLOEWxs/gVMiYz9PETvSgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="iconButton3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconBtnPago.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAXgSURBVFhHvVdtTFNXGL73tqV8lY8qfhVWBwjLFgybzkWmzukwRMZQ
@@ -238,7 +238,7 @@
         ThpSqUeayeh1TrnI9D/07At+LmofCpL0P6hkUixlAMBzAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="iconButton4.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconBtnCompras.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAZISURBVFhHvZd5TBVXFMZZCyiRouUP8AGyL1aEgoIshVAV44IlYBEl
@@ -271,7 +271,7 @@
         1LM/sS9ISelvszOg3XTWzJIAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="iconButton5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconBtnVenta.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCRoSOi9k+8AuAAAErElEQVRYR9WXa0yTZxTHy+RSWgoF

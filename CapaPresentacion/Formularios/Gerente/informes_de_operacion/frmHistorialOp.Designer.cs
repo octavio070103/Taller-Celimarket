@@ -48,8 +48,15 @@
             iconButton4 = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconBtnAlta = new FontAwesome.Sharp.IconButton();
+            iconBtnHistorial = new FontAwesome.Sharp.IconButton();
             dataGridUsuarios = new DataGridView();
+            col_num_transaccion = new DataGridViewTextBoxColumn();
+            col_tipo_transaccion = new DataGridViewTextBoxColumn();
+            col_metod_pago = new DataGridViewTextBoxColumn();
+            col_productos = new DataGridViewTextBoxColumn();
+            col_fecha = new DataGridViewTextBoxColumn();
+            col_vendedor = new DataGridViewTextBoxColumn();
+            col_cliente = new DataGridViewTextBoxColumn();
             panelDatosUsuario = new Panel();
             lblFecha = new Label();
             dateTimePickerNacimientoDato = new DateTimePicker();
@@ -69,15 +76,6 @@
             lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            col_num_transaccion = new DataGridViewTextBoxColumn();
-            col_tipo_transaccion = new DataGridViewTextBoxColumn();
-            col_metod_pago = new DataGridViewTextBoxColumn();
-            col_productos = new DataGridViewTextBoxColumn();
-            col_fecha = new DataGridViewTextBoxColumn();
-            col_vendedor = new DataGridViewTextBoxColumn();
-            col_cliente = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -328,28 +326,28 @@
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
-            // iconBtnAlta
+            // iconBtnHistorial
             // 
-            iconBtnAlta.BackColor = Color.Goldenrod;
-            iconBtnAlta.BackgroundImage = (Image)resources.GetObject("iconBtnAlta.BackgroundImage");
-            iconBtnAlta.BackgroundImageLayout = ImageLayout.None;
-            iconBtnAlta.Cursor = Cursors.Hand;
-            iconBtnAlta.FlatAppearance.BorderColor = Color.Black;
-            iconBtnAlta.FlatStyle = FlatStyle.Flat;
-            iconBtnAlta.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnAlta.ForeColor = SystemColors.ControlLightLight;
-            iconBtnAlta.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnAlta.IconColor = Color.White;
-            iconBtnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAlta.IconSize = 30;
-            iconBtnAlta.Location = new Point(442, 97);
-            iconBtnAlta.Name = "iconBtnAlta";
-            iconBtnAlta.Size = new Size(99, 38);
-            iconBtnAlta.TabIndex = 53;
-            iconBtnAlta.Text = "Historial";
-            iconBtnAlta.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnAlta.UseVisualStyleBackColor = false;
+            iconBtnHistorial.BackColor = Color.Goldenrod;
+            iconBtnHistorial.BackgroundImage = (Image)resources.GetObject("iconBtnHistorial.BackgroundImage");
+            iconBtnHistorial.BackgroundImageLayout = ImageLayout.None;
+            iconBtnHistorial.Cursor = Cursors.Hand;
+            iconBtnHistorial.FlatAppearance.BorderColor = Color.Black;
+            iconBtnHistorial.FlatStyle = FlatStyle.Flat;
+            iconBtnHistorial.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnHistorial.ForeColor = SystemColors.ControlLightLight;
+            iconBtnHistorial.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnHistorial.IconColor = Color.White;
+            iconBtnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnHistorial.IconSize = 30;
+            iconBtnHistorial.Location = new Point(442, 97);
+            iconBtnHistorial.Name = "iconBtnHistorial";
+            iconBtnHistorial.Size = new Size(99, 38);
+            iconBtnHistorial.TabIndex = 53;
+            iconBtnHistorial.Text = "Historial";
+            iconBtnHistorial.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnHistorial.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnHistorial.UseVisualStyleBackColor = false;
             // 
             // dataGridUsuarios
             // 
@@ -395,12 +393,62 @@
             dataGridUsuarios.Size = new Size(554, 363);
             dataGridUsuarios.TabIndex = 52;
             // 
+            // col_num_transaccion
+            // 
+            col_num_transaccion.HeaderText = "Numero Transaccion";
+            col_num_transaccion.Name = "col_num_transaccion";
+            col_num_transaccion.ReadOnly = true;
+            col_num_transaccion.Width = 145;
+            // 
+            // col_tipo_transaccion
+            // 
+            col_tipo_transaccion.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_tipo_transaccion.HeaderText = "Tipo ";
+            col_tipo_transaccion.Name = "col_tipo_transaccion";
+            col_tipo_transaccion.ReadOnly = true;
+            // 
+            // col_metod_pago
+            // 
+            col_metod_pago.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_metod_pago.HeaderText = "Metodo de Pago";
+            col_metod_pago.Name = "col_metod_pago";
+            col_metod_pago.ReadOnly = true;
+            col_metod_pago.Width = 87;
+            // 
+            // col_productos
+            // 
+            col_productos.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_productos.HeaderText = "Productos";
+            col_productos.Name = "col_productos";
+            col_productos.ReadOnly = true;
+            // 
+            // col_fecha
+            // 
+            col_fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_fecha.HeaderText = "Fecha ";
+            col_fecha.Name = "col_fecha";
+            col_fecha.ReadOnly = true;
+            col_fecha.Width = 130;
+            // 
+            // col_vendedor
+            // 
+            col_vendedor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_vendedor.HeaderText = "vendedor";
+            col_vendedor.Name = "col_vendedor";
+            col_vendedor.ReadOnly = true;
+            // 
+            // col_cliente
+            // 
+            col_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_cliente.HeaderText = "Cliente";
+            col_cliente.Name = "col_cliente";
+            col_cliente.ReadOnly = true;
+            col_cliente.Width = 130;
+            // 
             // panelDatosUsuario
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelDatosUsuario.BackColor = Color.White;
-            panelDatosUsuario.Controls.Add(label1);
-            panelDatosUsuario.Controls.Add(textBox1);
             panelDatosUsuario.Controls.Add(lblFecha);
             panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
             panelDatosUsuario.Controls.Add(lblPassword);
@@ -610,78 +658,6 @@
             lblDatosUsuario.Text = "Detalles De La Operacion";
             lblDatosUsuario.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(84, 201);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(144, 87);
-            textBox1.TabIndex = 76;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.WindowText;
-            label1.Location = new Point(3, 181);
-            label1.Name = "label1";
-            label1.Size = new Size(140, 17);
-            label1.TabIndex = 77;
-            label1.Text = "Listado De Productos";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // col_num_transaccion
-            // 
-            col_num_transaccion.HeaderText = "Numero Transaccion";
-            col_num_transaccion.Name = "col_num_transaccion";
-            col_num_transaccion.ReadOnly = true;
-            col_num_transaccion.Width = 145;
-            // 
-            // col_tipo_transaccion
-            // 
-            col_tipo_transaccion.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_tipo_transaccion.HeaderText = "Tipo ";
-            col_tipo_transaccion.Name = "col_tipo_transaccion";
-            col_tipo_transaccion.ReadOnly = true;
-            // 
-            // col_metod_pago
-            // 
-            col_metod_pago.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_metod_pago.HeaderText = "Metodo de Pago";
-            col_metod_pago.Name = "col_metod_pago";
-            col_metod_pago.ReadOnly = true;
-            col_metod_pago.Width = 87;
-            // 
-            // col_productos
-            // 
-            col_productos.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_productos.HeaderText = "Productos";
-            col_productos.Name = "col_productos";
-            col_productos.ReadOnly = true;
-            // 
-            // col_fecha
-            // 
-            col_fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_fecha.HeaderText = "Fecha ";
-            col_fecha.Name = "col_fecha";
-            col_fecha.ReadOnly = true;
-            col_fecha.Width = 130;
-            // 
-            // col_vendedor
-            // 
-            col_vendedor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_vendedor.HeaderText = "vendedor";
-            col_vendedor.Name = "col_vendedor";
-            col_vendedor.ReadOnly = true;
-            // 
-            // col_cliente
-            // 
-            col_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_cliente.HeaderText = "Cliente";
-            col_cliente.Name = "col_cliente";
-            col_cliente.ReadOnly = true;
-            col_cliente.Width = 130;
-            // 
             // frmHistorialOp
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -693,7 +669,7 @@
             Controls.Add(iconButton4);
             Controls.Add(iconButton3);
             Controls.Add(iconButton1);
-            Controls.Add(iconBtnAlta);
+            Controls.Add(iconBtnHistorial);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
@@ -725,7 +701,7 @@
         private FontAwesome.Sharp.IconButton iconButton4;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconBtnAlta;
+        private FontAwesome.Sharp.IconButton iconBtnHistorial;
         private DataGridView dataGridUsuarios;
         private Panel panelDatosUsuario;
         private Label lblFecha;
@@ -746,8 +722,6 @@
         private Label lblNombreDato;
         private TextBox txtNombreDato;
         private Label lblDatosUsuario;
-        private Label label1;
-        private TextBox textBox1;
         private DataGridViewTextBoxColumn col_num_transaccion;
         private DataGridViewTextBoxColumn col_tipo_transaccion;
         private DataGridViewTextBoxColumn col_metod_pago;

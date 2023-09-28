@@ -36,6 +36,8 @@ namespace CapaPresentacion.Formularios.Admin
             comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
 
+            panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al inicio sino selecciono ningun usuario para editar,estara oculto
+
         }
 
 
@@ -110,6 +112,8 @@ namespace CapaPresentacion.Formularios.Admin
             //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
             if (indice >= 0)
             {
+                mostrarDetallesUsuario();
+
                 limpiartxtDato();
                 // Obtener la fila seleccionada
                 DataGridViewRow selectedRow = dataGridUsuarios.Rows[e.RowIndex];
@@ -175,6 +179,22 @@ namespace CapaPresentacion.Formularios.Admin
 
             }
         }
+        //si el usuario selecciona una fila para editar se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
+        private void mostrarDetallesUsuario()
+        {
+            panelDatosUsuario.Visible = true;
+            // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
+            dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
+            dataGridUsuarios.Size = new System.Drawing.Size(690, 349); // ancho y alto en píxeles
+
+            iconBtnAgregar.Location = new System.Drawing.Point(80, 99);
+            iconBtnAlta.Location = new System.Drawing.Point(211, 99);
+            iconBtnElim.Location = new System.Drawing.Point(211, 99);
+            iconBtnPermiso.Location = new System.Drawing.Point(341, 99);
+
+        }
+
+
         private void iconBtnModif_Click_1(object sender, EventArgs e)
         {
             //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if

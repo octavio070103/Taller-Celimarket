@@ -326,7 +326,7 @@
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(554, 363);
+            dataGridUsuarios.Size = new Size(795, 349);
             dataGridUsuarios.TabIndex = 1;
             dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick_1;
             // 
@@ -764,7 +764,7 @@
             iconBtnAgregar.IconColor = Color.White;
             iconBtnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAgregar.IconSize = 30;
-            iconBtnAgregar.Location = new Point(80, 99);
+            iconBtnAgregar.Location = new Point(230, 101);
             iconBtnAgregar.Name = "iconBtnAgregar";
             iconBtnAgregar.Size = new Size(89, 39);
             iconBtnAgregar.TabIndex = 7;
@@ -786,7 +786,7 @@
             iconBtnElim.IconColor = Color.White;
             iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnElim.IconSize = 30;
-            iconBtnElim.Location = new Point(211, 99);
+            iconBtnElim.Location = new Point(361, 101);
             iconBtnElim.Name = "iconBtnElim";
             iconBtnElim.Size = new Size(89, 39);
             iconBtnElim.TabIndex = 9;
@@ -808,7 +808,7 @@
             iconBtnPermiso.IconColor = Color.White;
             iconBtnPermiso.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnPermiso.IconSize = 30;
-            iconBtnPermiso.Location = new Point(341, 99);
+            iconBtnPermiso.Location = new Point(491, 101);
             iconBtnPermiso.Name = "iconBtnPermiso";
             iconBtnPermiso.Size = new Size(90, 39);
             iconBtnPermiso.TabIndex = 10;
@@ -836,7 +836,7 @@
             iconBtnAlta.IconColor = Color.White;
             iconBtnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAlta.IconSize = 30;
-            iconBtnAlta.Location = new Point(211, 100);
+            iconBtnAlta.Location = new Point(361, 102);
             iconBtnAlta.Name = "iconBtnAlta";
             iconBtnAlta.Size = new Size(89, 38);
             iconBtnAlta.TabIndex = 11;

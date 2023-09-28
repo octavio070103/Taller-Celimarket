@@ -227,10 +227,10 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(220, 604);
-            PMenuLat.MinimumSize = new Size(58, 604);
+            PMenuLat.MaximumSize = new Size(186, 604);
+            PMenuLat.MinimumSize = new Size(40, 604);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(220, 604);
+            PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
@@ -240,7 +240,7 @@
             lblCerrar.AutoSize = true;
             lblCerrar.Cursor = Cursors.Hand;
             lblCerrar.ForeColor = SystemColors.Window;
-            lblCerrar.Location = new Point(48, 537);
+            lblCerrar.Location = new Point(36, 537);
             lblCerrar.Name = "lblCerrar";
             lblCerrar.Size = new Size(75, 15);
             lblCerrar.TabIndex = 19;
@@ -251,7 +251,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = Properties.Resources.logout__1_;
-            picCerrarSesion.Location = new Point(12, 515);
+            picCerrarSesion.Location = new Point(5, 509);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(30, 43);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -271,7 +271,7 @@
             iconBtnBackup.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnBackup.Location = new Point(0, 246);
             iconBtnBackup.Name = "iconBtnBackup";
-            iconBtnBackup.Size = new Size(220, 52);
+            iconBtnBackup.Size = new Size(186, 52);
             iconBtnBackup.TabIndex = 18;
             iconBtnBackup.Text = "Respaldo y Restauracion";
             iconBtnBackup.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -293,7 +293,7 @@
             iconBtnGestionConsulta.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnGestionConsulta.Location = new Point(0, 194);
             iconBtnGestionConsulta.Name = "iconBtnGestionConsulta";
-            iconBtnGestionConsulta.Size = new Size(220, 52);
+            iconBtnGestionConsulta.Size = new Size(186, 52);
             iconBtnGestionConsulta.TabIndex = 17;
             iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
             iconBtnGestionConsulta.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -315,7 +315,7 @@
             iconBtnGestionUsuario.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnGestionUsuario.Location = new Point(0, 142);
             iconBtnGestionUsuario.Name = "iconBtnGestionUsuario";
-            iconBtnGestionUsuario.Size = new Size(220, 52);
+            iconBtnGestionUsuario.Size = new Size(186, 52);
             iconBtnGestionUsuario.TabIndex = 16;
             iconBtnGestionUsuario.Text = "Gestionar Usuario";
             iconBtnGestionUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -354,7 +354,7 @@
             PLogo.Location = new Point(0, 0);
             PLogo.Margin = new Padding(4, 3, 4, 3);
             PLogo.Name = "PLogo";
-            PLogo.Size = new Size(220, 142);
+            PLogo.Size = new Size(186, 142);
             PLogo.TabIndex = 1;
             PLogo.MouseDown += PLogo_MouseDown;
             // 
@@ -385,7 +385,7 @@
             pictureBox1.BackColor = Color.FromArgb(9, 10, 25);
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(9, 0);
+            pictureBox1.Location = new Point(0, 0);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(30, 31);
@@ -397,10 +397,10 @@
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(118, 0);
+            picUsuario.Location = new Point(117, 0);
             picUsuario.Margin = new Padding(4, 3, 4, 3);
             picUsuario.Name = "picUsuario";
-            picUsuario.Size = new Size(98, 97);
+            picUsuario.Size = new Size(68, 78);
             picUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             picUsuario.TabIndex = 0;
             picUsuario.TabStop = false;

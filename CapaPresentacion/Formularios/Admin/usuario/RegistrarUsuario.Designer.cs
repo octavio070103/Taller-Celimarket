@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarUsuario));
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
@@ -40,7 +39,6 @@
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnLimpiarDatos = new FontAwesome.Sharp.IconButton();
             iconBtnDomicilio = new FontAwesome.Sharp.IconButton();
-            pciBoxSubirImg = new PictureBox();
             comboRolUsu = new ComboBox();
             contraVisible = new FontAwesome.Sharp.IconButton();
             lblPerfilUsuario = new Label();
@@ -55,14 +53,11 @@
             lblDni = new Label();
             txtApelliUsu = new TextBox();
             lblApellido = new Label();
-            pictureBox1 = new PictureBox();
             txtNombreUsu = new TextBox();
             lblNombre = new Label();
             errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -100,7 +95,6 @@
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnLimpiarDatos);
             panel2.Controls.Add(iconBtnDomicilio);
-            panel2.Controls.Add(pciBoxSubirImg);
             panel2.Controls.Add(comboRolUsu);
             panel2.Controls.Add(contraVisible);
             panel2.Controls.Add(lblPerfilUsuario);
@@ -115,7 +109,6 @@
             panel2.Controls.Add(lblDni);
             panel2.Controls.Add(txtApelliUsu);
             panel2.Controls.Add(lblApellido);
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(txtNombreUsu);
             panel2.Controls.Add(lblNombre);
             panel2.Dock = DockStyle.Fill;
@@ -242,17 +235,6 @@
             iconBtnDomicilio.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnDomicilio.UseVisualStyleBackColor = false;
             iconBtnDomicilio.Click += iconBtnDomicilio_Click;
-            // 
-            // pciBoxSubirImg
-            // 
-            pciBoxSubirImg.Image = (Image)resources.GetObject("pciBoxSubirImg.Image");
-            pciBoxSubirImg.Location = new Point(710, 228);
-            pciBoxSubirImg.Name = "pciBoxSubirImg";
-            pciBoxSubirImg.Size = new Size(62, 55);
-            pciBoxSubirImg.SizeMode = PictureBoxSizeMode.StretchImage;
-            pciBoxSubirImg.TabIndex = 41;
-            pciBoxSubirImg.TabStop = false;
-            pciBoxSubirImg.Visible = false;
             // 
             // comboRolUsu
             // 
@@ -395,17 +377,6 @@
             lblApellido.TabIndex = 4;
             lblApellido.Text = "Apellido";
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(660, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(128, 119);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
             // txtNombreUsu
             // 
             txtNombreUsu.Cursor = Cursors.IBeam;
@@ -443,8 +414,6 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pciBoxSubirImg).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
@@ -458,7 +427,6 @@
         private TextBox txtNombreUsu;
         private TextBox txtApelliUsu;
         private Label lblApellido;
-        private PictureBox pictureBox1;
         private TextBox txtTelefUsu;
         private Label lblEmail;
         private TextBox txtDniUsu;
@@ -471,7 +439,6 @@
         private Label lblPassword;
         private ComboBox comboRolUsu;
         private FontAwesome.Sharp.IconButton contraVisible;
-        private PictureBox pciBoxSubirImg;
         private FontAwesome.Sharp.IconButton iconBtnDomicilio;
         private FontAwesome.Sharp.IconButton iconBtnLimpiarDatos;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;

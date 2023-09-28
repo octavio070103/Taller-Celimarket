@@ -20,5 +20,7 @@ namespace CapaPresentacion.Formularios.Gerente.informes_de_operacion
 
             instanciaMenuGerente = p_gerente;
         }
+
+
     }
 }

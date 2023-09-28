@@ -1,6 +1,8 @@
 ﻿using capaEntidad;
 using CapaPresentacion.Formularios.Admin;
+using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Gerente.informes_de_operacion;
+using CapaPresentacion.Formularios.Gerente.personal;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -236,7 +238,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         /*metodos para abrir el formulario hijo presionando su respectivo boton */
         private void iconBtnPersonal_Click(object sender, EventArgs e)
         {
-            //   OpenChildForm(new Admin.FrmGestionarUsuario(this));
+               OpenChildForm(new FrmGestionarPersonal(this));
         }
 
         private void iconBtnVentas_Click(object sender, EventArgs e)
@@ -251,12 +253,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)
         {
-              OpenChildForm(new FrmOpRealizada(this));
+            OpenChildForm(new FrmOpRealizada(this));
         }
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            //  OpenChildForm(new Admin.FrmGestionarUsuario(this));
+            //OpenChildForm(new FrmAperturaCaja(this));
         }
 
 

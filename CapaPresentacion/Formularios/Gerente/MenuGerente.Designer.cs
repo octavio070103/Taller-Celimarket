@@ -223,7 +223,6 @@
             // 
             // PMenuLat
             // 
-            PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
             PMenuLat.Controls.Add(iconBtnCaja);
             PMenuLat.Controls.Add(iconBtnOperaciones);
@@ -237,10 +236,10 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(220, 604);
-            PMenuLat.MinimumSize = new Size(58, 604);
+            PMenuLat.MaximumSize = new Size(186, 604);
+            PMenuLat.MinimumSize = new Size(40, 604);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(220, 604);
+            PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
@@ -260,7 +259,7 @@
             iconBtnCaja.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnCaja.Location = new Point(0, 350);
             iconBtnCaja.Name = "iconBtnCaja";
-            iconBtnCaja.Size = new Size(220, 52);
+            iconBtnCaja.Size = new Size(186, 52);
             iconBtnCaja.TabIndex = 22;
             iconBtnCaja.Text = "Caja";
             iconBtnCaja.UseVisualStyleBackColor = false;
@@ -284,7 +283,7 @@
             iconBtnOperaciones.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnOperaciones.Location = new Point(0, 298);
             iconBtnOperaciones.Name = "iconBtnOperaciones";
-            iconBtnOperaciones.Size = new Size(220, 52);
+            iconBtnOperaciones.Size = new Size(186, 52);
             iconBtnOperaciones.TabIndex = 21;
             iconBtnOperaciones.Text = "Operaciones";
             iconBtnOperaciones.UseVisualStyleBackColor = false;
@@ -299,7 +298,7 @@
             lblCerrar.Cursor = Cursors.Hand;
             lblCerrar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             lblCerrar.ForeColor = SystemColors.Window;
-            lblCerrar.Location = new Point(48, 537);
+            lblCerrar.Location = new Point(36, 537);
             lblCerrar.Name = "lblCerrar";
             lblCerrar.Size = new Size(75, 15);
             lblCerrar.TabIndex = 19;
@@ -310,7 +309,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = CapaPresentacion.Properties.Resources.logout__1_;
-            picCerrarSesion.Location = new Point(12, 515);
+            picCerrarSesion.Location = new Point(0, 509);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(30, 43);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -333,7 +332,7 @@
             iconBtnEstadisticas.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnEstadisticas.Location = new Point(0, 246);
             iconBtnEstadisticas.Name = "iconBtnEstadisticas";
-            iconBtnEstadisticas.Size = new Size(220, 52);
+            iconBtnEstadisticas.Size = new Size(186, 52);
             iconBtnEstadisticas.TabIndex = 18;
             iconBtnEstadisticas.Text = "Estadisticas";
             iconBtnEstadisticas.UseVisualStyleBackColor = false;
@@ -357,7 +356,7 @@
             iconBtnVentas.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnVentas.Location = new Point(0, 194);
             iconBtnVentas.Name = "iconBtnVentas";
-            iconBtnVentas.Size = new Size(220, 52);
+            iconBtnVentas.Size = new Size(186, 52);
             iconBtnVentas.TabIndex = 17;
             iconBtnVentas.Text = "Ventas";
             iconBtnVentas.UseVisualStyleBackColor = false;
@@ -379,7 +378,7 @@
             iconBtnPersonal.ImageAlign = ContentAlignment.MiddleLeft;
             iconBtnPersonal.Location = new Point(0, 142);
             iconBtnPersonal.Name = "iconBtnPersonal";
-            iconBtnPersonal.Size = new Size(220, 52);
+            iconBtnPersonal.Size = new Size(186, 52);
             iconBtnPersonal.TabIndex = 16;
             iconBtnPersonal.Text = "Personal";
             iconBtnPersonal.UseVisualStyleBackColor = false;
@@ -417,7 +416,7 @@
             PLogo.Location = new Point(0, 0);
             PLogo.Margin = new Padding(4, 3, 4, 3);
             PLogo.Name = "PLogo";
-            PLogo.Size = new Size(220, 142);
+            PLogo.Size = new Size(186, 142);
             PLogo.TabIndex = 1;
             PLogo.MouseDown += PLogo_MouseDown;
             // 
@@ -448,7 +447,7 @@
             pictureMenuHambur.BackColor = Color.FromArgb(9, 10, 25);
             pictureMenuHambur.Cursor = Cursors.Hand;
             pictureMenuHambur.Image = (Image)resources.GetObject("pictureMenuHambur.Image");
-            pictureMenuHambur.Location = new Point(9, 0);
+            pictureMenuHambur.Location = new Point(5, 3);
             pictureMenuHambur.Margin = new Padding(4, 3, 4, 3);
             pictureMenuHambur.Name = "pictureMenuHambur";
             pictureMenuHambur.Size = new Size(30, 31);
@@ -463,7 +462,7 @@
             picUsuario.Location = new Point(118, 0);
             picUsuario.Margin = new Padding(4, 3, 4, 3);
             picUsuario.Name = "picUsuario";
-            picUsuario.Size = new Size(98, 97);
+            picUsuario.Size = new Size(68, 78);
             picUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             picUsuario.TabIndex = 0;
             picUsuario.TabStop = false;
@@ -472,6 +471,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 16F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(1159, 649);
             Controls.Add(PVentana);
             Controls.Add(panelBarraSuperior);
