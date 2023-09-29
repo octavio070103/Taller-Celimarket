@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             dateTimePicker1 = new DateTimePicker();
@@ -42,27 +43,6 @@
             label4 = new Label();
             lblOperacionRealizadas = new Label();
             dataGridUsuarios = new DataGridView();
-            panelDatosUsuario = new Panel();
-            lblFechaNac = new Label();
-            dateTimePickerNacimientoDato = new DateTimePicker();
-            txtDomiciliodato = new TextBox();
-            txtIdGuardado = new TextBox();
-            comboEstadoDato = new ComboBox();
-            lblEstadoDato = new Label();
-            comboRolDato = new ComboBox();
-            lblDomicilioDato = new Label();
-            lblEmailDato = new Label();
-            txtEmailDato = new TextBox();
-            lblRolDato = new Label();
-            lblTelefDato = new Label();
-            txtTelefDato = new TextBox();
-            lblDniDato = new Label();
-            txtDniDato = new TextBox();
-            txtApeDato = new TextBox();
-            lblApellidoDato = new Label();
-            lblNombreDato = new Label();
-            txtNombreDato = new TextBox();
-            lblDatosUsuario = new Label();
             estado_actividad_login = new DataGridViewTextBoxColumn();
             id_usuario_actividad = new DataGridViewTextBoxColumn();
             id_usuario = new DataGridViewTextBoxColumn();
@@ -74,13 +54,11 @@
             email_usuario = new DataGridViewTextBoxColumn();
             rol_usuario = new DataGridViewTextBoxColumn();
             exportar_actividad = new DataGridViewTextBoxColumn();
-            comboBox1 = new ComboBox();
             iconBtnCompras = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton4 = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
-            panelDatosUsuario.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -100,6 +78,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 13;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(369, 57);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 39;
             // 
             // textBox1
             // 
@@ -242,229 +228,9 @@
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(806, 360);
+            dataGridUsuarios.Size = new Size(768, 360);
             dataGridUsuarios.TabIndex = 14;
             dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick;
-            // 
-            // panelDatosUsuario
-            // 
-            panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panelDatosUsuario.BackColor = Color.White;
-            panelDatosUsuario.Controls.Add(lblFechaNac);
-            panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
-            panelDatosUsuario.Controls.Add(txtDomiciliodato);
-            panelDatosUsuario.Controls.Add(txtIdGuardado);
-            panelDatosUsuario.Controls.Add(comboEstadoDato);
-            panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Controls.Add(comboRolDato);
-            panelDatosUsuario.Controls.Add(lblDomicilioDato);
-            panelDatosUsuario.Controls.Add(lblEmailDato);
-            panelDatosUsuario.Controls.Add(txtEmailDato);
-            panelDatosUsuario.Controls.Add(lblRolDato);
-            panelDatosUsuario.Controls.Add(lblTelefDato);
-            panelDatosUsuario.Controls.Add(txtTelefDato);
-            panelDatosUsuario.Controls.Add(lblDniDato);
-            panelDatosUsuario.Controls.Add(txtDniDato);
-            panelDatosUsuario.Controls.Add(txtApeDato);
-            panelDatosUsuario.Controls.Add(lblApellidoDato);
-            panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(txtNombreDato);
-            panelDatosUsuario.Controls.Add(lblDatosUsuario);
-            panelDatosUsuario.Location = new Point(584, 92);
-            panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 303);
-            panelDatosUsuario.TabIndex = 16;
-            // 
-            // lblFechaNac
-            // 
-            lblFechaNac.AutoSize = true;
-            lblFechaNac.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFechaNac.ForeColor = SystemColors.WindowText;
-            lblFechaNac.Location = new Point(3, 132);
-            lblFechaNac.Name = "lblFechaNac";
-            lblFechaNac.Size = new Size(71, 15);
-            lblFechaNac.TabIndex = 75;
-            lblFechaNac.Text = "Nacimiento";
-            // 
-            // dateTimePickerNacimientoDato
-            // 
-            dateTimePickerNacimientoDato.Format = DateTimePickerFormat.Short;
-            dateTimePickerNacimientoDato.Location = new Point(79, 127);
-            dateTimePickerNacimientoDato.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
-            dateTimePickerNacimientoDato.Name = "dateTimePickerNacimientoDato";
-            dateTimePickerNacimientoDato.Size = new Size(144, 23);
-            dateTimePickerNacimientoDato.TabIndex = 74;
-            dateTimePickerNacimientoDato.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
-            // 
-            // txtDomiciliodato
-            // 
-            txtDomiciliodato.BackColor = SystemColors.Window;
-            txtDomiciliodato.Location = new Point(79, 249);
-            txtDomiciliodato.Name = "txtDomiciliodato";
-            txtDomiciliodato.ReadOnly = true;
-            txtDomiciliodato.Size = new Size(144, 23);
-            txtDomiciliodato.TabIndex = 27;
-            // 
-            // txtIdGuardado
-            // 
-            txtIdGuardado.Location = new Point(3, 18);
-            txtIdGuardado.Name = "txtIdGuardado";
-            txtIdGuardado.Size = new Size(26, 23);
-            txtIdGuardado.TabIndex = 26;
-            txtIdGuardado.Text = "0";
-            // 
-            // comboEstadoDato
-            // 
-            comboEstadoDato.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboEstadoDato.FlatStyle = FlatStyle.Popup;
-            comboEstadoDato.FormattingEnabled = true;
-            comboEstadoDato.Location = new Point(79, 278);
-            comboEstadoDato.Name = "comboEstadoDato";
-            comboEstadoDato.Size = new Size(144, 23);
-            comboEstadoDato.TabIndex = 23;
-            // 
-            // lblEstadoDato
-            // 
-            lblEstadoDato.AutoSize = true;
-            lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(5, 278);
-            lblEstadoDato.Name = "lblEstadoDato";
-            lblEstadoDato.Size = new Size(49, 17);
-            lblEstadoDato.TabIndex = 22;
-            lblEstadoDato.Text = "Estado";
-            // 
-            // comboRolDato
-            // 
-            comboRolDato.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboRolDato.FlatStyle = FlatStyle.Popup;
-            comboRolDato.FormattingEnabled = true;
-            comboRolDato.Location = new Point(79, 219);
-            comboRolDato.Name = "comboRolDato";
-            comboRolDato.Size = new Size(144, 23);
-            comboRolDato.TabIndex = 21;
-            // 
-            // lblDomicilioDato
-            // 
-            lblDomicilioDato.AutoSize = true;
-            lblDomicilioDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDomicilioDato.ForeColor = SystemColors.WindowText;
-            lblDomicilioDato.Location = new Point(5, 249);
-            lblDomicilioDato.Name = "lblDomicilioDato";
-            lblDomicilioDato.Size = new Size(68, 17);
-            lblDomicilioDato.TabIndex = 18;
-            lblDomicilioDato.Text = "Domicilio";
-            // 
-            // lblEmailDato
-            // 
-            lblEmailDato.AutoSize = true;
-            lblEmailDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmailDato.ForeColor = SystemColors.WindowText;
-            lblEmailDato.Location = new Point(3, 162);
-            lblEmailDato.Name = "lblEmailDato";
-            lblEmailDato.Size = new Size(42, 17);
-            lblEmailDato.TabIndex = 17;
-            lblEmailDato.Text = "Email";
-            // 
-            // txtEmailDato
-            // 
-            txtEmailDato.Location = new Point(79, 156);
-            txtEmailDato.Name = "txtEmailDato";
-            txtEmailDato.Size = new Size(144, 23);
-            txtEmailDato.TabIndex = 16;
-            // 
-            // lblRolDato
-            // 
-            lblRolDato.AutoSize = true;
-            lblRolDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblRolDato.ForeColor = SystemColors.WindowText;
-            lblRolDato.Location = new Point(6, 249);
-            lblRolDato.Name = "lblRolDato";
-            lblRolDato.Size = new Size(28, 17);
-            lblRolDato.TabIndex = 14;
-            lblRolDato.Text = "Rol";
-            // 
-            // lblTelefDato
-            // 
-            lblTelefDato.AutoSize = true;
-            lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(3, 191);
-            lblTelefDato.Name = "lblTelefDato";
-            lblTelefDato.Size = new Size(62, 17);
-            lblTelefDato.TabIndex = 13;
-            lblTelefDato.Text = "Telefono";
-            // 
-            // txtTelefDato
-            // 
-            txtTelefDato.Location = new Point(79, 185);
-            txtTelefDato.Name = "txtTelefDato";
-            txtTelefDato.Size = new Size(144, 23);
-            txtTelefDato.TabIndex = 12;
-            // 
-            // lblDniDato
-            // 
-            lblDniDato.AutoSize = true;
-            lblDniDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDniDato.ForeColor = SystemColors.WindowText;
-            lblDniDato.Location = new Point(3, 48);
-            lblDniDato.Name = "lblDniDato";
-            lblDniDato.Size = new Size(32, 17);
-            lblDniDato.TabIndex = 11;
-            lblDniDato.Text = "DNI";
-            // 
-            // txtDniDato
-            // 
-            txtDniDato.Location = new Point(79, 42);
-            txtDniDato.Name = "txtDniDato";
-            txtDniDato.Size = new Size(144, 23);
-            txtDniDato.TabIndex = 10;
-            // 
-            // txtApeDato
-            // 
-            txtApeDato.Location = new Point(79, 100);
-            txtApeDato.Name = "txtApeDato";
-            txtApeDato.Size = new Size(144, 23);
-            txtApeDato.TabIndex = 9;
-            // 
-            // lblApellidoDato
-            // 
-            lblApellidoDato.AutoSize = true;
-            lblApellidoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblApellidoDato.ForeColor = SystemColors.WindowText;
-            lblApellidoDato.Location = new Point(3, 106);
-            lblApellidoDato.Name = "lblApellidoDato";
-            lblApellidoDato.Size = new Size(60, 17);
-            lblApellidoDato.TabIndex = 8;
-            lblApellidoDato.Text = "Apellido";
-            // 
-            // lblNombreDato
-            // 
-            lblNombreDato.AutoSize = true;
-            lblNombreDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombreDato.ForeColor = SystemColors.WindowText;
-            lblNombreDato.Location = new Point(3, 77);
-            lblNombreDato.Name = "lblNombreDato";
-            lblNombreDato.Size = new Size(58, 17);
-            lblNombreDato.TabIndex = 7;
-            lblNombreDato.Text = "Nombre";
-            // 
-            // txtNombreDato
-            // 
-            txtNombreDato.Location = new Point(79, 71);
-            txtNombreDato.Name = "txtNombreDato";
-            txtNombreDato.Size = new Size(144, 23);
-            txtNombreDato.TabIndex = 1;
-            // 
-            // lblDatosUsuario
-            // 
-            lblDatosUsuario.AutoSize = true;
-            lblDatosUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatosUsuario.Location = new Point(46, 9);
-            lblDatosUsuario.Name = "lblDatosUsuario";
-            lblDatosUsuario.Size = new Size(180, 30);
-            lblDatosUsuario.TabIndex = 0;
-            lblDatosUsuario.Text = "Datos Del Usuario";
             // 
             // estado_actividad_login
             // 
@@ -512,10 +278,10 @@
             // 
             // nombre_persona
             // 
-            nombre_persona.HeaderText = "Persona";
+            nombre_persona.HeaderText = "Nombre";
             nombre_persona.Name = "nombre_persona";
             nombre_persona.ReadOnly = true;
-            nombre_persona.Width = 83;
+            nombre_persona.Width = 84;
             // 
             // apellido_persona
             // 
@@ -545,14 +311,6 @@
             exportar_actividad.Name = "exportar_actividad";
             exportar_actividad.ReadOnly = true;
             exportar_actividad.Width = 87;
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(369, 57);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 39;
             // 
             // iconBtnCompras
             // 
@@ -591,7 +349,7 @@
             iconButton3.IconColor = Color.White;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(342, 98);
+            iconButton3.Location = new Point(345, 98);
             iconButton3.Name = "iconButton3";
             iconButton3.Size = new Size(111, 38);
             iconButton3.TabIndex = 24;
@@ -614,7 +372,7 @@
             iconButton4.IconColor = Color.White;
             iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton4.IconSize = 30;
-            iconButton4.Location = new Point(216, 101);
+            iconButton4.Location = new Point(215, 98);
             iconButton4.Name = "iconButton4";
             iconButton4.Size = new Size(99, 38);
             iconButton4.TabIndex = 25;
@@ -629,7 +387,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
-            Controls.Add(panelDatosUsuario);
             Controls.Add(iconButton4);
             Controls.Add(iconButton3);
             Controls.Add(iconBtnCompras);
@@ -637,12 +394,10 @@
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
             Name = "FrmGestionarPersonal";
-            Text = "Gestionar Personal";
+            Text = "=";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
-            panelDatosUsuario.ResumeLayout(false);
-            panelDatosUsuario.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -658,27 +413,10 @@
         private Label label4;
         private Label lblOperacionRealizadas;
         private DataGridView dataGridUsuarios;
-        private Panel panelDatosUsuario;
-        private Label lblFechaNac;
-        private DateTimePicker dateTimePickerNacimientoDato;
-        private TextBox txtDomiciliodato;
-        private TextBox txtIdGuardado;
-        private ComboBox comboEstadoDato;
-        private Label lblEstadoDato;
-        private ComboBox comboRolDato;
-        private Label lblDomicilioDato;
-        private Label lblEmailDato;
-        private TextBox txtEmailDato;
-        private Label lblRolDato;
-        private Label lblTelefDato;
-        private TextBox txtTelefDato;
-        private Label lblDniDato;
-        private TextBox txtDniDato;
-        private TextBox txtApeDato;
-        private Label lblApellidoDato;
-        private Label lblNombreDato;
-        private TextBox txtNombreDato;
-        private Label lblDatosUsuario;
+        private ComboBox comboBox1;
+        private FontAwesome.Sharp.IconButton iconBtnCompras;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton4;
         private DataGridViewTextBoxColumn estado_actividad_login;
         private DataGridViewTextBoxColumn id_usuario_actividad;
         private DataGridViewTextBoxColumn id_usuario;
@@ -690,9 +428,5 @@
         private DataGridViewTextBoxColumn email_usuario;
         private DataGridViewTextBoxColumn rol_usuario;
         private DataGridViewTextBoxColumn exportar_actividad;
-        private ComboBox comboBox1;
-        private FontAwesome.Sharp.IconButton iconBtnCompras;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }

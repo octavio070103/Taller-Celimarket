@@ -17,7 +17,7 @@ namespace CapaPresentacion.Formularios.Gerente.personal
         public FrmGestionarPersonal(MenuGerente p_menuGerente)
         {
             InitializeComponent();
-            panelDatosUsuario.Visible = false;
+
 
             obj_InstanciaMenuGerente = p_menuGerente;
 
@@ -29,19 +29,19 @@ namespace CapaPresentacion.Formularios.Gerente.personal
             //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
             if (indice >= 0)
             {
-                mostrarDetallesUsuario();
+                mostrarVentajaEmergente();
                 // Obtener la fila seleccionada
                 //DataGridViewRow selectedRow = dataGridUsuarios.Rows[e.RowIndex];
 
             }
         }
 
-        private void mostrarDetallesUsuario()
+        //creo y muestor el formulario de deatlle de actividad de ese cliente,que contiene graficos y su actividad dentro de la plataforma
+        private void mostrarVentajaEmergente()
         {
-            panelDatosUsuario.Visible = true;
-            // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
-            dataGridUsuarios.Size = new System.Drawing.Size(600, 447); // ancho y alto en píxeles
-            dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
+            FrmDetallesActividadUsuario frmDetalleUsuario = new FrmDetallesActividadUsuario();
+            frmDetalleUsuario.Location=new Point(700, 100);
+            frmDetalleUsuario.ShowDialog();
 
 
         }

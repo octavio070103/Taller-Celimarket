@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuGerente));
             sidebarTime = new System.Windows.Forms.Timer(components);
             panelBarraSuperior = new Panel();
-            pictureBox4 = new PictureBox();
             picRestaurar = new PictureBox();
             pictureBox2 = new PictureBox();
             lblTituloMenu = new Label();
@@ -56,7 +55,6 @@
             pictureMenuHambur = new PictureBox();
             picUsuario = new PictureBox();
             panelBarraSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
@@ -78,7 +76,6 @@
             // panelBarraSuperior
             // 
             panelBarraSuperior.BackColor = Color.FromArgb(1, 1, 2);
-            panelBarraSuperior.Controls.Add(pictureBox4);
             panelBarraSuperior.Controls.Add(picRestaurar);
             panelBarraSuperior.Controls.Add(pictureBox2);
             panelBarraSuperior.Controls.Add(lblTituloMenu);
@@ -93,19 +90,6 @@
             panelBarraSuperior.Size = new Size(1159, 45);
             panelBarraSuperior.TabIndex = 6;
             panelBarraSuperior.MouseDown += panelBarraSuperior_MouseDown;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox4.Cursor = Cursors.Hand;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(2086, 5);
-            pictureBox4.Margin = new Padding(4, 3, 4, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(28, 24);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 16;
-            pictureBox4.TabStop = false;
             // 
             // picRestaurar
             // 
@@ -484,7 +468,6 @@
             Load += MenuGerente_Load;
             panelBarraSuperior.ResumeLayout(false);
             panelBarraSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).EndInit();
@@ -504,7 +487,6 @@
         #endregion
         private System.Windows.Forms.Timer sidebarTime;
         private Panel panelBarraSuperior;
-        private PictureBox pictureBox4;
         private PictureBox picRestaurar;
         private PictureBox pictureBox2;
         private Label lblTituloMenu;

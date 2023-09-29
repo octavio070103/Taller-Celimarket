@@ -238,7 +238,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         /*metodos para abrir el formulario hijo presionando su respectivo boton */
         private void iconBtnPersonal_Click(object sender, EventArgs e)
         {
-               OpenChildForm(new FrmGestionarPersonal(this));
+            OpenChildForm(new FrmGestionarPersonal(this));
         }
 
         private void iconBtnVentas_Click(object sender, EventArgs e)
