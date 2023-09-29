@@ -1,6 +1,7 @@
 ﻿using capaEntidad;
 using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente.caja;
+using CapaPresentacion.Formularios.Gerente.gestion_ventas;
 using CapaPresentacion.Formularios.Gerente.informes_de_operacion;
 using CapaPresentacion.Formularios.Gerente.personal;
 using FontAwesome.Sharp;
@@ -248,7 +249,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnEstadisticas_Click(object sender, EventArgs e)
         {
-            //  OpenChildForm(new Admin.FrmGestionarUsuario(this));
+              OpenChildForm(new ModuloEstadisticas());
         }
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)
