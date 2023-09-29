@@ -74,6 +74,9 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             if (dtgvClientes.Rows.Count > 0)
             {
+                btnEliminar.Enabled = true;
+                btnModificar.Enabled = true;
+
                 txtDniCliente.Text = dtgvClientes.CurrentRow.Cells[0].Value.ToString();
                 txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[1].Value.ToString();
                 txtNombreCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
@@ -83,5 +86,126 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (dtgvClientes.Rows.Count > 0)
+            {
+                DialogResult pregunta = MessageBox.Show("Esta a punto de eliminar a un cliente del registro, ¿Desea continuar?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if (pregunta == DialogResult.Yes)
+                {
+                    eliminarCliente();
+                }
+            }
+
+        }
+
+
+        private void eliminarCliente()
+        {
+            dtgvClientes.Rows.Remove(dtgvClientes.CurrentRow);
+            limpiarCampos();
+        }
+
+        private void limpiarCampos()
+        {
+            txtDniCliente.Text = "";
+            txtApellidoCliente.Text = "";
+            txtNombreCliente.Text = "";
+            txtTelefonoCliente.Text = "";
+            txtDireccionCliente.Text = "";
+            txtCorreoCliente.Text = "";
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dtgvClientes.Rows.Count > 0)
+            {
+                if ( validarCampos() == true )
+                {
+                    DialogResult pregunta = MessageBox.Show("Esta a punto de modificar este registro, ¿Desea continuar?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if(pregunta == DialogResult.Yes)
+                    {
+                        dtgvClientes.CurrentRow.Cells[0].Value = txtDniCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[1].Value = txtApellidoCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[2].Value = txtNombreCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[3].Value = txtTelefonoCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[4].Value = txtDireccionCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[5].Value = txtCorreoCliente.Text;
+
+                        limpiarCampos();
+                        borrarMensajeError();
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                }
+
+
+            }
+        }
+
+
+        private bool validarCampos()
+        {
+            bool validacion = true;
+
+            if (txtApellidoCliente.Text == "")
+            {
+                errorProvider1.SetError(txtApellidoCliente , "Ingrese el apellido");
+                validacion = false;
+            }
+
+            if (txtNombreCliente.Text == "")
+            {
+                errorProvider1.SetError(txtNombreCliente, "Ingrese el nombre");
+                validacion = false;
+            }
+
+            if (txtDniCliente.Text == "")
+            {
+                errorProvider1.SetError(txtDniCliente, "Ingrese el DNI");
+                validacion = false;
+            }
+
+            if (txtDireccionCliente.Text == "")
+            {
+                errorProvider1.SetError(txtDireccionCliente, "Ingrese el domicilio");
+                validacion = false;
+            }
+
+            if (txtCorreoCliente.Text == "")
+            {
+                errorProvider1.SetError(txtCorreoCliente, "Ingrese el correo electronico");
+                validacion = false;
+            }
+
+            if (txtTelefonoCliente.Text == "")
+            {
+                errorProvider1.SetError(txtTelefonoCliente, "Ingrese el numero de telefono");
+                validacion = false;
+            }
+
+
+            return validacion;
+        }
+
+
+        private void borrarMensajeError()
+        {
+            errorProvider1.SetError(txtApellidoCliente, "");
+            errorProvider1.SetError(txtNombreCliente, "");
+            errorProvider1.SetError(txtDniCliente, "");
+            errorProvider1.SetError(txtDireccionCliente, "");
+            errorProvider1.SetError(txtCorreoCliente, "");
+            errorProvider1.SetError(txtTelefonoCliente, "");
+        }
+
     }
 }
