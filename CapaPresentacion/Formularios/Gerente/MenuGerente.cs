@@ -1,4 +1,5 @@
 ﻿using capaEntidad;
+using CapaPresentacion;
 using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Gerente.gestion_ventas;
@@ -69,6 +70,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
                 usuarioActual = objUsuario;
             }
+
+            //abro el formualrio de inicio
+          //  OpenChildForm(new FrmDashboardInicio(this));
 
             colorFondoOriginal = iconBtnPersonal.BackColor; // Almacena el color de fondo original
 
@@ -249,7 +253,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnEstadisticas_Click(object sender, EventArgs e)
         {
-              OpenChildForm(new ModuloEstadisticas());
+              OpenChildForm(new ModuloEstadisticas(this));
         }
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)

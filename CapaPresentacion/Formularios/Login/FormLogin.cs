@@ -181,10 +181,32 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                     // Usuario autenticado con éxito
                     MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
-                    MenuAdministrador formAbrir = new MenuAdministrador(obj_usuario);
-                    formAbrir.Show();
-                    this.Hide();
+                    switch (obj_usuario.obj_rol.id_rol)
+                    {
+                        case 1:
+                            //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
+                            MenuAdministrador formAbrir = new MenuAdministrador(obj_usuario);
+                            formAbrir.Show();
+                            this.Hide();
+                            break;
+                        case 2:
+                            //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
+                            MenuGerente formAbrirGerente = new MenuGerente(obj_usuario);
+                            formAbrirGerente.Show();
+                            this.Hide();
+                            break;
+                        case 3:
+                            //aes el formulario que quiero qeu se abra y le paso el usuario actual como parametro
+                            MenuVendedo formAbrirVendedor = new MenuVendedo(obj_usuario);
+                            formAbrirVendedor.Show();
+                            this.Hide();
+                            break;
+                        default:
+                            Console.WriteLine("Opción no reconocida");
+                            break;
+                    }
+
+                   
                 }
                 else
                 {

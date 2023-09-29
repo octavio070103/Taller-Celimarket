@@ -13,10 +13,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 {
     public partial class MenuVendedo : Form
     {
-        public MenuVendedo()
+       
+        public MenuVendedo(capaEntidad.usuario objUsuario = null)
         {
             InitializeComponent();
             personalizarDiseno();
+            
         }
 
         private void personalizarDiseno()

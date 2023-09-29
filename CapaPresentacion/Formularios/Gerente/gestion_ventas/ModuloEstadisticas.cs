@@ -10,14 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
 namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 {
     public partial class ModuloEstadisticas : Form
     {
-        public ModuloEstadisticas()
+        private MenuGerente instanciaMenuGerente;
+        public ModuloEstadisticas(MenuGerente p_gerente)
         {
             InitializeComponent();
+            MenuGerente gerente = p_gerente;
         }
 
         private void ModuloEstadisticas_Load(object sender, EventArgs e)
