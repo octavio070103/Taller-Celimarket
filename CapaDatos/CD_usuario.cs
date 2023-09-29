@@ -114,13 +114,18 @@ namespace CapaDatos
                     //ver que @dni y @password se defininen como marcadores de posición en lugar de valores concretos. y lego en cmd.paramereters le asigno un valor especifico o real
                     //string query = "SELECT id_usuario, nombre, apellido, dni, email, password, telefono, estado_usuario  FROM usuario WHERE dni = @dni ";
 
-                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT u.id_usuario, u.nombre, u.apellido, u.dni, u.email,u.password,u.telefono,u.estado_usuario, r.id_rol, r.descripcion_rol,d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
-                    query.AppendLine("FROM usuario  u WHERE dni = @dni");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio,p para persona y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
+                    query.AppendLine("SELECT u.id_usuario,u.email,u.password,u.fecha_registro,u.estado_usuario," +
+                        "p.id_persona,p.dni,p.nombre, p.apellido,p.fecha_nacimiento,p.telefono," +
+                        "r.id_rol, r.descripcion_rol," +
+                        "d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM usuario u WHERE dni=@dni");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN domicilio d On u.id_domicilio=d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
-                    query.AppendLine("WHERE id_usuario = @id_usuario; ");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+                 //   query.AppendLine("WHERE id_usuario = @id_usuario; ");//esta consulta se utiliza para filtrar(buscar) la fila en la tabla usuario  y solo realice esas operacion en aquel registro que su campo id_uusario coinidice con el parametro @id_usuario
 
+                    
                     //creo un obj cmd de tipo sqlcommand este objeto se utiliza para ejecutar comandos SQL en la base de datos. 
                     //Toma dos argumentos: la consulta SQL query o consulta nueva que se ejecutará y la conexión a la base de datos s decir el nuestro obj de tipo sql conenectrion que creamois llamado objConexion 
                    // SqlCommand cmd = new SqlCommand(query, Obj_conexion);

@@ -258,7 +258,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new FrmAperturaCaja(this));
+            OpenChildForm(new FrmAperturaCaja(this));
         }
 
 

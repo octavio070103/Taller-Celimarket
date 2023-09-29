@@ -76,7 +76,7 @@ namespace CapaPresentacion.Formularios.Admin
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
 
-
+            OpenChildForm(new FrmDashboardInicio(this));
         }
 
 

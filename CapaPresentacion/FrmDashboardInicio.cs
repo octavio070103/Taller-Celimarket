@@ -5,10 +5,11 @@ namespace CapaPresentacion
 {
     public partial class FrmDashboardInicio : Form
     {
-        public FrmDashboardInicio()
+        private MenuAdministrador instancia_menuAdministrador;
+        public FrmDashboardInicio(MenuAdministrador p_menuAdministrador)
         {
             InitializeComponent();
-
+            this.instancia_menuAdministrador = p_menuAdministrador;
         }
 
         private void FrmDashboardInicio_Load(object sender, EventArgs e)
