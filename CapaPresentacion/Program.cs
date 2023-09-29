@@ -16,7 +16,9 @@ namespace CapaPresentacion
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new formLogin());//formulario que inicia ,test gitignore
+            
+            Application.Run(new MenuGerente());//formulario que inicia ,test gitignore
+
         }
     }
 }

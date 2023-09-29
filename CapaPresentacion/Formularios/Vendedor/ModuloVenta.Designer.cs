@@ -325,13 +325,17 @@
             // btnQuitarCarrito
             // 
             btnQuitarCarrito.Anchor = AnchorStyles.None;
+            btnQuitarCarrito.BackColor = Color.Red;
             btnQuitarCarrito.Enabled = false;
+            btnQuitarCarrito.FlatStyle = FlatStyle.Flat;
+            btnQuitarCarrito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnQuitarCarrito.ForeColor = SystemColors.ControlLightLight;
             btnQuitarCarrito.Location = new Point(270, 232);
             btnQuitarCarrito.Name = "btnQuitarCarrito";
             btnQuitarCarrito.Size = new Size(96, 37);
             btnQuitarCarrito.TabIndex = 30;
             btnQuitarCarrito.Text = "QUITAR";
-            btnQuitarCarrito.UseVisualStyleBackColor = true;
+            btnQuitarCarrito.UseVisualStyleBackColor = false;
             btnQuitarCarrito.Click += btnQuitarCarrito_Click;
             // 
             // txtCantidad
@@ -513,24 +517,34 @@
             // btnAgregar
             // 
             btnAgregar.Anchor = AnchorStyles.None;
+            btnAgregar.BackColor = Color.FromArgb(128, 128, 255);
+            btnAgregar.FlatAppearance.BorderSize = 0;
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAgregar.ForeColor = SystemColors.ControlLightLight;
             btnAgregar.Location = new Point(10, 232);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(152, 37);
             btnAgregar.TabIndex = 11;
             btnAgregar.Text = "AGREGAR AL CARRITO";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnModificar
             // 
             btnModificar.Anchor = AnchorStyles.None;
+            btnModificar.BackColor = Color.OrangeRed;
             btnModificar.Enabled = false;
+            btnModificar.FlatAppearance.BorderSize = 0;
+            btnModificar.FlatStyle = FlatStyle.Flat;
+            btnModificar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModificar.ForeColor = SystemColors.ControlLightLight;
             btnModificar.Location = new Point(168, 232);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(96, 37);
             btnModificar.TabIndex = 12;
             btnModificar.Text = "MODIFICAR";
-            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnModificar_Click;
             // 
             // lblListaProductos

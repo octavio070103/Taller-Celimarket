@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             pnlVentanaClientes = new Panel();
             lblFiltro = new Label();
             cboFiltroClientes = new ComboBox();
@@ -59,11 +60,13 @@
             pnlEncabezado = new Panel();
             lblEncabezado = new Label();
             btnModificar = new Button();
+            errorProvider1 = new ErrorProvider(components);
             pnlVentanaClientes.SuspendLayout();
             pnlListaClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvClientes).BeginInit();
             pnlInfoCliente.SuspendLayout();
             pnlEncabezado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pnlVentanaClientes
@@ -135,12 +138,14 @@
             // btnEliminar
             // 
             btnEliminar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnEliminar.Enabled = false;
             btnEliminar.Location = new Point(129, 420);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(98, 35);
             btnEliminar.TabIndex = 2;
             btnEliminar.Text = "ELIMINAR";
             btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnAgregar
             // 
@@ -155,6 +160,7 @@
             // 
             // dtgvClientes
             // 
+            dtgvClientes.AllowUserToAddRows = false;
             dtgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvClientes.Columns.AddRange(new DataGridViewColumn[] { dni_cliente, apellido_cliente, nombre_cliente, telefono_cliente, direccion_cliente, correo_cliente });
@@ -344,12 +350,18 @@
             // btnModificar
             // 
             btnModificar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnModificar.Enabled = false;
             btnModificar.Location = new Point(14, 455);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(98, 35);
             btnModificar.TabIndex = 3;
             btnModificar.Text = "MODIFICAR";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // frmModuloCliente
             // 
@@ -367,6 +379,7 @@
             pnlInfoCliente.PerformLayout();
             pnlEncabezado.ResumeLayout(false);
             pnlEncabezado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -403,5 +416,6 @@
         private Label lblTelefonoCliente;
         private TextBox txtCorreoCliente;
         private Label lblCorreoCliente;
+        private ErrorProvider errorProvider1;
     }
 }
