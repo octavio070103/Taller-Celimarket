@@ -11,15 +11,18 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Gerente.caja
 {
-    public partial class FrmAperturaCaja : Form
+    public partial class FrmAdministrarCaja : Form
     {
-        private MenuGerente instancia_menuGerente;
-        public FrmAperturaCaja(MenuGerente p_menuGerente)
+        private MenuGerente instancia_gerente;
+        public FrmAdministrarCaja(MenuGerente p_menuGerente)
         {
             InitializeComponent();
-            instancia_menuGerente = p_menuGerente;
+            instancia_gerente = p_menuGerente;
         }
 
-
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            instancia_gerente.OpenChildForm(new FrmAperturaCaja(instancia_gerente));
+        }
     }
 }

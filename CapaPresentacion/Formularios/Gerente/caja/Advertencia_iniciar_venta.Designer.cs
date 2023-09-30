@@ -32,25 +32,27 @@
             label1 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            iconBtnAceptar = new FontAwesome.Sharp.IconButton();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(48, 103);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 103);
             label1.Name = "label1";
-            label1.Size = new Size(164, 15);
+            label1.Size = new Size(242, 21);
             label1.TabIndex = 0;
             label1.Text = "Para Iniciar la Venta tiene que ";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(48, 131);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(12, 131);
             label2.Name = "label2";
-            label2.Size = new Size(166, 15);
+            label2.Size = new Size(243, 21);
             label2.TabIndex = 1;
             label2.Text = "Realizar la Apertura De La Caja";
             // 
@@ -64,24 +66,27 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // iconBtnAceptar
+            // iconButton1
             // 
-            iconBtnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnAceptar.IconColor = Color.Black;
-            iconBtnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAceptar.Location = new Point(89, 164);
-            iconBtnAceptar.Name = "iconBtnAceptar";
-            iconBtnAceptar.Size = new Size(75, 23);
-            iconBtnAceptar.TabIndex = 3;
-            iconBtnAceptar.Text = "Aceptar";
-            iconBtnAceptar.UseVisualStyleBackColor = true;
+            iconButton1.BackColor = Color.FromArgb(0, 74, 221);
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.ForeColor = Color.White;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconButton1.IconColor = Color.Black;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton1.Location = new Point(89, 176);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(75, 23);
+            iconButton1.TabIndex = 8;
+            iconButton1.Text = "Aceptar";
+            iconButton1.UseVisualStyleBackColor = false;
             // 
             // Advertencia_iniciar_venta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(260, 224);
-            Controls.Add(iconBtnAceptar);
+            Controls.Add(iconButton1);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -98,6 +103,6 @@
         private Label label1;
         private Label label2;
         private PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton iconBtnAceptar;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }

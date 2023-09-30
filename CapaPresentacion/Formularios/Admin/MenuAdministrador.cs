@@ -214,6 +214,16 @@ namespace CapaPresentacion.Formularios.Admin
         {
             OpenChildForm(new Admin.FrmRespaldo(this));
         }
+        private void iconBtnAdminAcceso_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Admin.administrar_acceso.FrmAdministrarAcceso(this));
+        }
+
+        private void iconBtnDashBoard_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new FrmDashboardInicio(this));
+        }
+
 
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {

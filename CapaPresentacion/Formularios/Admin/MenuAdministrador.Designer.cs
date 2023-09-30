@@ -41,6 +41,8 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
+            iconBtnAdminAcceso = new FontAwesome.Sharp.IconButton();
+            iconBtnDashBoard = new FontAwesome.Sharp.IconButton();
             lblCerrar = new Label();
             picCerrarSesion = new PictureBox();
             iconBtnBackup = new FontAwesome.Sharp.IconButton();
@@ -217,6 +219,8 @@
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
+            PMenuLat.Controls.Add(iconBtnAdminAcceso);
+            PMenuLat.Controls.Add(iconBtnDashBoard);
             PMenuLat.Controls.Add(lblCerrar);
             PMenuLat.Controls.Add(picCerrarSesion);
             PMenuLat.Controls.Add(iconBtnBackup);
@@ -234,13 +238,57 @@
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
+            // iconBtnAdminAcceso
+            // 
+            iconBtnAdminAcceso.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnAdminAcceso.BackgroundImage = (Image)resources.GetObject("iconBtnAdminAcceso.BackgroundImage");
+            iconBtnAdminAcceso.BackgroundImageLayout = ImageLayout.None;
+            iconBtnAdminAcceso.Dock = DockStyle.Top;
+            iconBtnAdminAcceso.FlatStyle = FlatStyle.Popup;
+            iconBtnAdminAcceso.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnAdminAcceso.ForeColor = Color.White;
+            iconBtnAdminAcceso.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnAdminAcceso.IconColor = Color.White;
+            iconBtnAdminAcceso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnAdminAcceso.IconSize = 40;
+            iconBtnAdminAcceso.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnAdminAcceso.Location = new Point(0, 350);
+            iconBtnAdminAcceso.Name = "iconBtnAdminAcceso";
+            iconBtnAdminAcceso.Size = new Size(186, 52);
+            iconBtnAdminAcceso.TabIndex = 22;
+            iconBtnAdminAcceso.Text = "Administrar Acceso";
+            iconBtnAdminAcceso.UseVisualStyleBackColor = false;
+            iconBtnAdminAcceso.Click += iconBtnAdminAcceso_Click;
+            // 
+            // iconBtnDashBoard
+            // 
+            iconBtnDashBoard.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnDashBoard.BackgroundImage = (Image)resources.GetObject("iconBtnDashBoard.BackgroundImage");
+            iconBtnDashBoard.BackgroundImageLayout = ImageLayout.None;
+            iconBtnDashBoard.Dock = DockStyle.Top;
+            iconBtnDashBoard.FlatStyle = FlatStyle.Popup;
+            iconBtnDashBoard.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnDashBoard.ForeColor = Color.White;
+            iconBtnDashBoard.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnDashBoard.IconColor = Color.White;
+            iconBtnDashBoard.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDashBoard.IconSize = 40;
+            iconBtnDashBoard.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnDashBoard.Location = new Point(0, 298);
+            iconBtnDashBoard.Name = "iconBtnDashBoard";
+            iconBtnDashBoard.Size = new Size(186, 52);
+            iconBtnDashBoard.TabIndex = 21;
+            iconBtnDashBoard.Text = "DashBoard";
+            iconBtnDashBoard.UseVisualStyleBackColor = false;
+            iconBtnDashBoard.Click += iconBtnDashBoard_Click;
+            // 
             // lblCerrar
             // 
             lblCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblCerrar.AutoSize = true;
             lblCerrar.Cursor = Cursors.Hand;
             lblCerrar.ForeColor = SystemColors.Window;
-            lblCerrar.Location = new Point(36, 537);
+            lblCerrar.Location = new Point(36, 605);
             lblCerrar.Name = "lblCerrar";
             lblCerrar.Size = new Size(75, 15);
             lblCerrar.TabIndex = 19;
@@ -251,7 +299,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = Properties.Resources.logout__1_;
-            picCerrarSesion.Location = new Point(5, 509);
+            picCerrarSesion.Location = new Point(5, 577);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(30, 43);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -333,7 +381,7 @@
             btnLogout.FlatAppearance.BorderSize = 0;
             btnLogout.FlatStyle = FlatStyle.Flat;
             btnLogout.ForeColor = SystemColors.ControlLightLight;
-            btnLogout.Location = new Point(4, 15346);
+            btnLogout.Location = new Point(4, 15414);
             btnLogout.Margin = new Padding(4, 3, 4, 3);
             btnLogout.Name = "btnLogout";
             btnLogout.Padding = new Padding(12, 0, 0, 0);
@@ -468,5 +516,7 @@
         private FontAwesome.Sharp.IconButton iconBtnGestionConsulta;
         private Label lblCerrar;
         private PictureBox picCerrarSesion;
+        private FontAwesome.Sharp.IconButton iconBtnDashBoard;
+        private FontAwesome.Sharp.IconButton iconBtnAdminAcceso;
     }
 }

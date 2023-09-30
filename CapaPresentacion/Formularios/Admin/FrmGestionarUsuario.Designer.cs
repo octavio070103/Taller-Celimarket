@@ -135,7 +135,6 @@
             // 
             // comboFiltroRol
             // 
-            comboFiltroRol.DropDownStyle = ComboBoxStyle.DropDownList;
             comboFiltroRol.FlatStyle = FlatStyle.Popup;
             comboFiltroRol.FormattingEnabled = true;
             comboFiltroRol.Location = new Point(672, 62);
@@ -601,13 +600,13 @@
             // 
             // comboEstadoDato
             // 
-            comboEstadoDato.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEstadoDato.FlatStyle = FlatStyle.Popup;
             comboEstadoDato.FormattingEnabled = true;
             comboEstadoDato.Location = new Point(79, 307);
             comboEstadoDato.Name = "comboEstadoDato";
             comboEstadoDato.Size = new Size(144, 23);
             comboEstadoDato.TabIndex = 23;
+            comboEstadoDato.Text = "Seleccione un Estado";
             // 
             // lblEstadoDato
             // 
@@ -622,13 +621,13 @@
             // 
             // comboRolDato
             // 
-            comboRolDato.DropDownStyle = ComboBoxStyle.DropDownList;
             comboRolDato.FlatStyle = FlatStyle.Popup;
             comboRolDato.FormattingEnabled = true;
             comboRolDato.Location = new Point(79, 248);
             comboRolDato.Name = "comboRolDato";
             comboRolDato.Size = new Size(144, 23);
             comboRolDato.TabIndex = 21;
+            comboRolDato.Text = "Seleccione un Rol";
             // 
             // lblDomicilioDato
             // 

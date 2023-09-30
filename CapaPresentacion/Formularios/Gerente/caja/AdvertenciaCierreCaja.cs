@@ -1,5 +1,4 @@
-﻿using Proyecto_Taller.Presentacion.Formularios.Vendedor;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,15 +10,11 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Gerente.caja
 {
-    public partial class FrmAperturaCaja : Form
+    public partial class AdvertenciaCierreCaja : Form
     {
-        private MenuGerente instancia_menuGerente;
-        public FrmAperturaCaja(MenuGerente p_menuGerente)
+        public AdvertenciaCierreCaja()
         {
             InitializeComponent();
-            instancia_menuGerente = p_menuGerente;
         }
-
-
     }
 }

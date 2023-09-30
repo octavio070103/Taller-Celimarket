@@ -72,7 +72,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             }
 
             //abro el formualrio de inicio
-          //  OpenChildForm(new FrmDashboardInicio(this));
+            //  OpenChildForm(new FrmDashboardInicio(this));
 
             colorFondoOriginal = iconBtnPersonal.BackColor; // Almacena el color de fondo original
 
@@ -253,7 +253,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnEstadisticas_Click(object sender, EventArgs e)
         {
-              OpenChildForm(new ModuloEstadisticas(this));
+            OpenChildForm(new ModuloEstadisticas(this));
         }
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)
@@ -263,7 +263,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmAperturaCaja(this));
+            OpenChildForm(new FrmAdministrarCaja(this));
         }
 
 

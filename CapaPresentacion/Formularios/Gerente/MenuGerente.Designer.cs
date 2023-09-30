@@ -245,7 +245,7 @@
             iconBtnCaja.Name = "iconBtnCaja";
             iconBtnCaja.Size = new Size(186, 52);
             iconBtnCaja.TabIndex = 22;
-            iconBtnCaja.Text = "Caja";
+            iconBtnCaja.Text = "Punto de Venta";
             iconBtnCaja.UseVisualStyleBackColor = false;
             iconBtnCaja.Click += iconBtnCaja_Click;
             iconBtnCaja.Leave += iconBtnCaja_Leave;
