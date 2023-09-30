@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarConsulta));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            txtApeFiltro = new TextBox();
+            txtTipoFiltro = new TextBox();
+            txtUsuarioFiltro = new TextBox();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             dateTimePicker1 = new DateTimePicker();
@@ -64,18 +63,18 @@
             col_domicilio_prov = new DataGridViewTextBoxColumn();
             Estado_Valor = new DataGridViewTextBoxColumn();
             col_estado = new DataGridViewTextBoxColumn();
-            panelDatosUsuario = new Panel();
-            dateTimePickerNacimientoDato = new DateTimePicker();
+            panelDatosConsulta = new Panel();
+            dateTimePickerEnvioDato = new DateTimePicker();
             lblFecha = new Label();
             lblAsunto = new Label();
-            txtPasswordDato = new TextBox();
-            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
+            txtAsuntoDato = new TextBox();
+            iconbtnLeido = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             comboEstadoDato = new ComboBox();
             lblMotivo = new Label();
-            txtTelefDato = new TextBox();
+            txtMotivoDato = new TextBox();
             lblEstadoDato = new Label();
-            comboRolDato = new ComboBox();
+            comboTipoConsulta = new ComboBox();
             lblEmailDato = new Label();
             txtEmailDato = new TextBox();
             lblTipoDato = new Label();
@@ -87,17 +86,20 @@
             txtNombreDato = new TextBox();
             lblDatosConsulta = new Label();
             iconBtnNoLeido = new FontAwesome.Sharp.IconButton();
+            panel2 = new Panel();
+            comboFiltroRol = new ComboBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
-            panelDatosUsuario.SuspendLayout();
+            panelDatosConsulta.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
-            panel1.Controls.Add(textBox2);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(txtApeFiltro);
+            panel1.Controls.Add(comboFiltroRol);
+            panel1.Controls.Add(txtTipoFiltro);
+            panel1.Controls.Add(txtUsuarioFiltro);
             panel1.Controls.Add(iconbtnClean);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(dateTimePicker1);
@@ -112,38 +114,27 @@
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 1;
             // 
-            // textBox2
+            // txtTipoFiltro
             // 
-            textBox2.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.ForeColor = Color.Silver;
-            textBox2.Location = new Point(661, 58);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Estado";
-            textBox2.Size = new Size(97, 20);
-            textBox2.TabIndex = 29;
+            txtTipoFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTipoFiltro.ForeColor = Color.Silver;
+            txtTipoFiltro.Location = new Point(347, 59);
+            txtTipoFiltro.Multiline = true;
+            txtTipoFiltro.Name = "txtTipoFiltro";
+            txtTipoFiltro.PlaceholderText = "Tipo";
+            txtTipoFiltro.Size = new Size(97, 20);
+            txtTipoFiltro.TabIndex = 28;
             // 
-            // textBox1
+            // txtUsuarioFiltro
             // 
-            textBox1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.Silver;
-            textBox1.Location = new Point(347, 59);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Tipo";
-            textBox1.Size = new Size(97, 20);
-            textBox1.TabIndex = 28;
-            // 
-            // txtApeFiltro
-            // 
-            txtApeFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtApeFiltro.ForeColor = Color.Silver;
-            txtApeFiltro.Location = new Point(513, 58);
-            txtApeFiltro.Multiline = true;
-            txtApeFiltro.Name = "txtApeFiltro";
-            txtApeFiltro.PlaceholderText = "Dni";
-            txtApeFiltro.Size = new Size(97, 20);
-            txtApeFiltro.TabIndex = 27;
+            txtUsuarioFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuarioFiltro.ForeColor = Color.Silver;
+            txtUsuarioFiltro.Location = new Point(513, 58);
+            txtUsuarioFiltro.Multiline = true;
+            txtUsuarioFiltro.Name = "txtUsuarioFiltro";
+            txtUsuarioFiltro.PlaceholderText = "Dni";
+            txtUsuarioFiltro.Size = new Size(97, 20);
+            txtUsuarioFiltro.TabIndex = 27;
             // 
             // iconbtnClean
             // 
@@ -166,6 +157,7 @@
             iconbtnClean.TextAlign = ContentAlignment.MiddleRight;
             iconbtnClean.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnClean.UseVisualStyleBackColor = false;
+            iconbtnClean.Click += iconbtnClean_Click;
             // 
             // label1
             // 
@@ -300,7 +292,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 30;
-            iconButton2.Location = new Point(209, 517);
+            iconButton2.Location = new Point(220, 3);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(235, 36);
             iconButton2.TabIndex = 10;
@@ -332,26 +324,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle7.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = Color.White;
+            dataGridViewCellStyle8.Padding = new Padding(2);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle8.SelectionForeColor = Color.White;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridUsuarios.Location = new Point(12, 158);
@@ -359,19 +351,20 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(539, 342);
+            dataGridUsuarios.Size = new Size(795, 353);
             dataGridUsuarios.TabIndex = 12;
+            dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick;
             // 
             // col_id_usuario
             // 
@@ -486,45 +479,45 @@
             col_estado.ReadOnly = true;
             col_estado.Width = 74;
             // 
-            // panelDatosUsuario
+            // panelDatosConsulta
             // 
-            panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panelDatosUsuario.BackColor = Color.White;
-            panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
-            panelDatosUsuario.Controls.Add(lblFecha);
-            panelDatosUsuario.Controls.Add(lblAsunto);
-            panelDatosUsuario.Controls.Add(txtPasswordDato);
-            panelDatosUsuario.Controls.Add(iconbtnGuardar);
-            panelDatosUsuario.Controls.Add(iconBtnCancelar);
-            panelDatosUsuario.Controls.Add(comboEstadoDato);
-            panelDatosUsuario.Controls.Add(lblMotivo);
-            panelDatosUsuario.Controls.Add(txtTelefDato);
-            panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Controls.Add(comboRolDato);
-            panelDatosUsuario.Controls.Add(lblEmailDato);
-            panelDatosUsuario.Controls.Add(txtEmailDato);
-            panelDatosUsuario.Controls.Add(lblTipoDato);
-            panelDatosUsuario.Controls.Add(lblDniDato);
-            panelDatosUsuario.Controls.Add(txtDniDato);
-            panelDatosUsuario.Controls.Add(txtApeDato);
-            panelDatosUsuario.Controls.Add(lblApellidoDato);
-            panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(txtNombreDato);
-            panelDatosUsuario.Controls.Add(lblDatosConsulta);
-            panelDatosUsuario.Location = new Point(584, 92);
-            panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 461);
-            panelDatosUsuario.TabIndex = 13;
+            panelDatosConsulta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panelDatosConsulta.BackColor = Color.White;
+            panelDatosConsulta.Controls.Add(dateTimePickerEnvioDato);
+            panelDatosConsulta.Controls.Add(lblFecha);
+            panelDatosConsulta.Controls.Add(lblAsunto);
+            panelDatosConsulta.Controls.Add(txtAsuntoDato);
+            panelDatosConsulta.Controls.Add(iconbtnLeido);
+            panelDatosConsulta.Controls.Add(iconBtnCancelar);
+            panelDatosConsulta.Controls.Add(comboEstadoDato);
+            panelDatosConsulta.Controls.Add(lblMotivo);
+            panelDatosConsulta.Controls.Add(txtMotivoDato);
+            panelDatosConsulta.Controls.Add(lblEstadoDato);
+            panelDatosConsulta.Controls.Add(comboTipoConsulta);
+            panelDatosConsulta.Controls.Add(lblEmailDato);
+            panelDatosConsulta.Controls.Add(txtEmailDato);
+            panelDatosConsulta.Controls.Add(lblTipoDato);
+            panelDatosConsulta.Controls.Add(lblDniDato);
+            panelDatosConsulta.Controls.Add(txtDniDato);
+            panelDatosConsulta.Controls.Add(txtApeDato);
+            panelDatosConsulta.Controls.Add(lblApellidoDato);
+            panelDatosConsulta.Controls.Add(lblNombreDato);
+            panelDatosConsulta.Controls.Add(txtNombreDato);
+            panelDatosConsulta.Controls.Add(lblDatosConsulta);
+            panelDatosConsulta.Location = new Point(584, 92);
+            panelDatosConsulta.Name = "panelDatosConsulta";
+            panelDatosConsulta.Size = new Size(238, 423);
+            panelDatosConsulta.TabIndex = 13;
             // 
-            // dateTimePickerNacimientoDato
+            // dateTimePickerEnvioDato
             // 
-            dateTimePickerNacimientoDato.Format = DateTimePickerFormat.Short;
-            dateTimePickerNacimientoDato.Location = new Point(120, 178);
-            dateTimePickerNacimientoDato.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
-            dateTimePickerNacimientoDato.Name = "dateTimePickerNacimientoDato";
-            dateTimePickerNacimientoDato.Size = new Size(106, 23);
-            dateTimePickerNacimientoDato.TabIndex = 75;
-            dateTimePickerNacimientoDato.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            dateTimePickerEnvioDato.Format = DateTimePickerFormat.Short;
+            dateTimePickerEnvioDato.Location = new Point(120, 178);
+            dateTimePickerEnvioDato.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            dateTimePickerEnvioDato.Name = "dateTimePickerEnvioDato";
+            dateTimePickerEnvioDato.Size = new Size(106, 23);
+            dateTimePickerEnvioDato.TabIndex = 75;
+            dateTimePickerEnvioDato.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
             // 
             // lblFecha
             // 
@@ -548,33 +541,33 @@
             lblAsunto.TabIndex = 29;
             lblAsunto.Text = "Asunto";
             // 
-            // txtPasswordDato
+            // txtAsuntoDato
             // 
-            txtPasswordDato.Location = new Point(82, 149);
-            txtPasswordDato.Name = "txtPasswordDato";
-            txtPasswordDato.Size = new Size(144, 23);
-            txtPasswordDato.TabIndex = 28;
+            txtAsuntoDato.Location = new Point(82, 149);
+            txtAsuntoDato.Name = "txtAsuntoDato";
+            txtAsuntoDato.Size = new Size(144, 23);
+            txtAsuntoDato.TabIndex = 28;
             // 
-            // iconbtnGuardar
+            // iconbtnLeido
             // 
-            iconbtnGuardar.BackColor = Color.FromArgb(56, 182, 255);
-            iconbtnGuardar.Cursor = Cursors.Hand;
-            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
-            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
-            iconbtnGuardar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
-            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            iconbtnGuardar.IconColor = Color.White;
-            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(27, 344);
-            iconbtnGuardar.Name = "iconbtnGuardar";
-            iconbtnGuardar.Size = new Size(202, 39);
-            iconbtnGuardar.TabIndex = 25;
-            iconbtnGuardar.Text = "Confirmar";
-            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
-            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnLeido.BackColor = Color.FromArgb(56, 182, 255);
+            iconbtnLeido.Cursor = Cursors.Hand;
+            iconbtnLeido.FlatAppearance.BorderColor = Color.Black;
+            iconbtnLeido.FlatStyle = FlatStyle.Flat;
+            iconbtnLeido.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnLeido.ForeColor = SystemColors.ControlLightLight;
+            iconbtnLeido.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            iconbtnLeido.IconColor = Color.White;
+            iconbtnLeido.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnLeido.IconSize = 36;
+            iconbtnLeido.Location = new Point(27, 344);
+            iconbtnLeido.Name = "iconbtnLeido";
+            iconbtnLeido.Size = new Size(202, 39);
+            iconbtnLeido.TabIndex = 25;
+            iconbtnLeido.Text = "Marcar como Leido";
+            iconbtnLeido.TextAlign = ContentAlignment.MiddleRight;
+            iconbtnLeido.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconbtnLeido.UseVisualStyleBackColor = false;
             // 
             // iconBtnCancelar
             // 
@@ -618,13 +611,13 @@
             lblMotivo.TabIndex = 13;
             lblMotivo.Text = "Motivo";
             // 
-            // txtTelefDato
+            // txtMotivoDato
             // 
-            txtTelefDato.Location = new Point(85, 265);
-            txtTelefDato.Multiline = true;
-            txtTelefDato.Name = "txtTelefDato";
-            txtTelefDato.Size = new Size(144, 73);
-            txtTelefDato.TabIndex = 12;
+            txtMotivoDato.Location = new Point(85, 265);
+            txtMotivoDato.Multiline = true;
+            txtMotivoDato.Name = "txtMotivoDato";
+            txtMotivoDato.Size = new Size(144, 73);
+            txtMotivoDato.TabIndex = 12;
             // 
             // lblEstadoDato
             // 
@@ -637,15 +630,15 @@
             lblEstadoDato.TabIndex = 22;
             lblEstadoDato.Text = "Estado";
             // 
-            // comboRolDato
+            // comboTipoConsulta
             // 
-            comboRolDato.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboRolDato.FlatStyle = FlatStyle.Popup;
-            comboRolDato.FormattingEnabled = true;
-            comboRolDato.Location = new Point(82, 207);
-            comboRolDato.Name = "comboRolDato";
-            comboRolDato.Size = new Size(144, 23);
-            comboRolDato.TabIndex = 21;
+            comboTipoConsulta.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboTipoConsulta.FlatStyle = FlatStyle.Popup;
+            comboTipoConsulta.FormattingEnabled = true;
+            comboTipoConsulta.Location = new Point(82, 207);
+            comboTipoConsulta.Name = "comboTipoConsulta";
+            comboTipoConsulta.Size = new Size(144, 23);
+            comboTipoConsulta.TabIndex = 21;
             // 
             // lblEmailDato
             // 
@@ -760,17 +753,35 @@
             iconBtnNoLeido.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnNoLeido.UseVisualStyleBackColor = false;
             // 
+            // panel2
+            // 
+            panel2.Controls.Add(iconButton2);
+            panel2.Dock = DockStyle.Bottom;
+            panel2.Location = new Point(0, 521);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(822, 44);
+            panel2.TabIndex = 15;
+            // 
+            // comboFiltroRol
+            // 
+            comboFiltroRol.FlatStyle = FlatStyle.Popup;
+            comboFiltroRol.FormattingEnabled = true;
+            comboFiltroRol.Location = new Point(666, 57);
+            comboFiltroRol.Name = "comboFiltroRol";
+            comboFiltroRol.Size = new Size(97, 23);
+            comboFiltroRol.TabIndex = 29;
+            // 
             // FrmGestionarConsulta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(panel2);
             Controls.Add(iconBtnNoLeido);
-            Controls.Add(panelDatosUsuario);
+            Controls.Add(panelDatosConsulta);
             Controls.Add(dataGridUsuarios);
             Controls.Add(iconBtnEliminar);
-            Controls.Add(iconButton2);
             Controls.Add(iconBtnMarcar);
             Controls.Add(btnResponder);
             Controls.Add(panel1);
@@ -780,8 +791,9 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
-            panelDatosUsuario.ResumeLayout(false);
-            panelDatosUsuario.PerformLayout();
+            panelDatosConsulta.ResumeLayout(false);
+            panelDatosConsulta.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -800,9 +812,8 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconBtnEliminar;
         private FontAwesome.Sharp.IconButton iconbtnClean;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private TextBox txtApeFiltro;
+        private TextBox txtTipoFiltro;
+        private TextBox txtUsuarioFiltro;
         private DataGridView dataGridUsuarios;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
@@ -819,22 +830,22 @@
         private DataGridViewTextBoxColumn col_domicilio_prov;
         private DataGridViewTextBoxColumn Estado_Valor;
         private DataGridViewTextBoxColumn col_estado;
-        private Panel panelDatosUsuario;
+        private Panel panelDatosConsulta;
         private Label lblFechaNac;
         private Label lblAsunto;
-        private TextBox txtPasswordDato;
+        private TextBox txtAsuntoDato;
         private TextBox txtDomiciliodato;
-        private FontAwesome.Sharp.IconButton iconbtnGuardar;
+        private FontAwesome.Sharp.IconButton iconbtnLeido;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private ComboBox comboEstadoDato;
         private Label lblEstadoDato;
-        private ComboBox comboRolDato;
+        private ComboBox comboTipoConsulta;
         private Label lblDomicilioDato;
         private Label lblEmailDato;
         private TextBox txtEmailDato;
         private Label lblTipoDato;
         private Label lblMotivo;
-        private TextBox txtTelefDato;
+        private TextBox txtMotivoDato;
         private Label lblDniDato;
         private TextBox txtDniDato;
         private TextBox txtApeDato;
@@ -844,7 +855,9 @@
         private Label lblDatosConsulta;
         private FontAwesome.Sharp.IconButton iconBtnNoLeido;
         private Label lblFecha;
-        private DateTimePicker dateTimePickerNacimientoDato;
+        private DateTimePicker dateTimePickerEnvioDato;
         private TextBox textBox3;
+        private Panel panel2;
+        private ComboBox comboFiltroRol;
     }
 }

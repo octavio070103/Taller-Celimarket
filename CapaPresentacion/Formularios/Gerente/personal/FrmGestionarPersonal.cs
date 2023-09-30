@@ -40,10 +40,16 @@ namespace CapaPresentacion.Formularios.Gerente.personal
         private void mostrarVentajaEmergente()
         {
             FrmDetallesActividadUsuario frmDetalleUsuario = new FrmDetallesActividadUsuario();
-            frmDetalleUsuario.Location=new Point(700, 100);
+            frmDetalleUsuario.Location = new Point(700, 100);
             frmDetalleUsuario.ShowDialog();
 
 
+        }
+
+        private void iconBtnClean_Click(object sender, EventArgs e)
+        {
+            txtUsuarioFiltro.Text = "";
+            //falta para los combobox
         }
 
     }

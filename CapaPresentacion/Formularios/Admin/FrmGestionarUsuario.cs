@@ -179,6 +179,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             }
         }
+
         //si el usuario selecciona una fila para editar se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
         private void mostrarDetallesUsuario()
         {
@@ -644,6 +645,15 @@ namespace CapaPresentacion.Formularios.Admin
 
             // Actualiza el DataGridView
             mostrarUsuariosEnDataGridView(listaUsuarioFiltrado);
+
+        }
+
+        //funcionalidad par alimpair el filtro
+        private void iconbtnClean_Click(object sender, EventArgs e)
+        {
+            txtDniFiltro.Text = "";
+            txtNombreFiltro.Text = "";
+            txtApeFiltro.Text = "";
 
         }
 

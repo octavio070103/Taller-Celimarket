@@ -65,7 +65,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(822, 92);
+            panel1.Size = new Size(822, 65);
             panel1.TabIndex = 1;
             // 
             // lblListaEmpleados
@@ -87,7 +87,7 @@
             lblFiltrar.AutoSize = true;
             lblFiltrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblFiltrar.ForeColor = SystemColors.ControlLightLight;
-            lblFiltrar.Location = new Point(19, 132);
+            lblFiltrar.Location = new Point(19, 105);
             lblFiltrar.Name = "lblFiltrar";
             lblFiltrar.Size = new Size(201, 25);
             lblFiltrar.TabIndex = 2;
@@ -98,7 +98,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlLightLight;
-            label1.Location = new Point(19, 179);
+            label1.Location = new Point(19, 152);
             label1.Name = "label1";
             label1.Size = new Size(273, 25);
             label1.TabIndex = 6;
@@ -107,7 +107,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(322, 134);
+            comboBox1.Location = new Point(322, 107);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(209, 23);
             comboBox1.TabIndex = 12;
@@ -115,7 +115,7 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(322, 179);
+            comboBox2.Location = new Point(322, 152);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(209, 23);
             comboBox2.TabIndex = 13;
@@ -132,7 +132,7 @@
             btnAgregar.IconColor = Color.White;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(72, 256);
+            btnAgregar.Location = new Point(72, 229);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(166, 39);
             btnAgregar.TabIndex = 14;
@@ -153,7 +153,7 @@
             iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(298, 256);
+            iconButton1.Location = new Point(298, 229);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(166, 39);
             iconButton1.TabIndex = 15;
@@ -183,7 +183,7 @@
             panelDatosUsuario.Controls.Add(lblNombreDato);
             panelDatosUsuario.Controls.Add(txtNombreDato);
             panelDatosUsuario.Controls.Add(lblDatoDelaBD);
-            panelDatosUsuario.Location = new Point(565, 98);
+            panelDatosUsuario.Location = new Point(565, 71);
             panelDatosUsuario.Name = "panelDatosUsuario";
             panelDatosUsuario.Size = new Size(257, 455);
             panelDatosUsuario.TabIndex = 17;

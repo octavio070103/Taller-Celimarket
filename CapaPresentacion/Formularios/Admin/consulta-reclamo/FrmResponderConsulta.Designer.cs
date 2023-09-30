@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmResponderConsulta));
             panel1 = new Panel();
             picRestaurar = new PictureBox();
@@ -55,6 +56,7 @@
             iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
             iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            toolTipReConsulta = new ToolTip(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
@@ -276,6 +278,7 @@
             panel6.Controls.Add(iconPictureBox3);
             panel6.Controls.Add(iconPictureBox2);
             panel6.Controls.Add(iconButton1);
+            panel6.Cursor = Cursors.Hand;
             panel6.Dock = DockStyle.Bottom;
             panel6.Location = new Point(0, 459);
             panel6.Name = "panel6";
@@ -297,6 +300,7 @@
             iconPictureBox8.Size = new Size(23, 23);
             iconPictureBox8.TabIndex = 16;
             iconPictureBox8.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox8, "Eliminar Borrador");
             // 
             // iconPictureBox5
             // 
@@ -308,11 +312,12 @@
             iconPictureBox5.IconColor = SystemColors.ControlText;
             iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox5.IconSize = 23;
-            iconPictureBox5.Location = new Point(281, 22);
+            iconPictureBox5.Location = new Point(249, 22);
             iconPictureBox5.Name = "iconPictureBox5";
             iconPictureBox5.Size = new Size(23, 23);
             iconPictureBox5.TabIndex = 15;
             iconPictureBox5.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox5, "Insertar Archivos de Google Drive");
             // 
             // iconPictureBox6
             // 
@@ -324,11 +329,12 @@
             iconPictureBox6.IconColor = SystemColors.ControlText;
             iconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPictureBox6.IconSize = 23;
-            iconPictureBox6.Location = new Point(249, 22);
+            iconPictureBox6.Location = new Point(281, 22);
             iconPictureBox6.Name = "iconPictureBox6";
             iconPictureBox6.Size = new Size(23, 23);
             iconPictureBox6.TabIndex = 14;
             iconPictureBox6.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox6, "Imprimir");
             // 
             // iconPictureBox7
             // 
@@ -345,6 +351,7 @@
             iconPictureBox7.Size = new Size(23, 23);
             iconPictureBox7.TabIndex = 13;
             iconPictureBox7.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox7, "Insertar Imagenes");
             // 
             // iconPictureBox4
             // 
@@ -361,6 +368,7 @@
             iconPictureBox4.Size = new Size(23, 23);
             iconPictureBox4.TabIndex = 12;
             iconPictureBox4.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox4, "Insertar Vinculos");
             // 
             // iconPictureBox3
             // 
@@ -377,12 +385,14 @@
             iconPictureBox3.Size = new Size(23, 23);
             iconPictureBox3.TabIndex = 11;
             iconPictureBox3.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox3, "Adjuntar Archivos");
             // 
             // iconPictureBox2
             // 
             iconPictureBox2.BackColor = SystemColors.Control;
             iconPictureBox2.BackgroundImage = (Image)resources.GetObject("iconPictureBox2.BackgroundImage");
             iconPictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPictureBox2.Cursor = Cursors.Hand;
             iconPictureBox2.ForeColor = SystemColors.ControlText;
             iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.None;
             iconPictureBox2.IconColor = SystemColors.ControlText;
@@ -393,6 +403,7 @@
             iconPictureBox2.Size = new Size(23, 23);
             iconPictureBox2.TabIndex = 10;
             iconPictureBox2.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPictureBox2, "Opciones de Formato");
             // 
             // iconButton1
             // 
@@ -476,5 +487,6 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox8;
         private TextBox textBox2;
+        private ToolTip toolTipReConsulta;
     }
 }

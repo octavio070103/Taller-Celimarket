@@ -164,6 +164,7 @@
             iconbtnClean.TextAlign = ContentAlignment.MiddleRight;
             iconbtnClean.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnClean.UseVisualStyleBackColor = false;
+            iconbtnClean.Click += iconbtnClean_Click;
             // 
             // comboFiltroEstado
             // 

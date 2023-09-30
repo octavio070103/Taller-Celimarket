@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarPersonal));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            dateTimePicker1 = new DateTimePicker();
+            comboTipoActFiltro = new ComboBox();
+            txtUsuarioFiltro = new TextBox();
+            iconBtnClean = new FontAwesome.Sharp.IconButton();
+            dateTimePickActUsuFiltro = new DateTimePicker();
             label2 = new Label();
             label3 = new Label();
             label5 = new Label();
@@ -64,10 +64,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
-            panel1.Controls.Add(comboBox1);
-            panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(iconButton1);
-            panel1.Controls.Add(dateTimePicker1);
+            panel1.Controls.Add(comboTipoActFiltro);
+            panel1.Controls.Add(txtUsuarioFiltro);
+            panel1.Controls.Add(iconBtnClean);
+            panel1.Controls.Add(dateTimePickActUsuFiltro);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label5);
@@ -79,55 +79,56 @@
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 13;
             // 
-            // comboBox1
+            // comboTipoActFiltro
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(369, 57);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(121, 23);
-            comboBox1.TabIndex = 39;
+            comboTipoActFiltro.FormattingEnabled = true;
+            comboTipoActFiltro.Location = new Point(369, 57);
+            comboTipoActFiltro.Name = "comboTipoActFiltro";
+            comboTipoActFiltro.Size = new Size(121, 23);
+            comboTipoActFiltro.TabIndex = 39;
             // 
-            // textBox1
+            // txtUsuarioFiltro
             // 
-            textBox1.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.ForeColor = Color.Silver;
-            textBox1.Location = new Point(147, 60);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Dni";
-            textBox1.Size = new Size(97, 20);
-            textBox1.TabIndex = 38;
+            txtUsuarioFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuarioFiltro.ForeColor = Color.Silver;
+            txtUsuarioFiltro.Location = new Point(147, 60);
+            txtUsuarioFiltro.Multiline = true;
+            txtUsuarioFiltro.Name = "txtUsuarioFiltro";
+            txtUsuarioFiltro.PlaceholderText = "Dni";
+            txtUsuarioFiltro.Size = new Size(97, 20);
+            txtUsuarioFiltro.TabIndex = 38;
             // 
-            // iconButton1
+            // iconBtnClean
             // 
-            iconButton1.BackColor = Color.FromArgb(255, 50, 50);
-            iconButton1.BackgroundImage = (Image)resources.GetObject("iconButton1.BackgroundImage");
-            iconButton1.BackgroundImageLayout = ImageLayout.Stretch;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(647, 59);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(25, 23);
-            iconButton1.TabIndex = 36;
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnClean.BackColor = Color.FromArgb(255, 50, 50);
+            iconBtnClean.BackgroundImage = (Image)resources.GetObject("iconBtnClean.BackgroundImage");
+            iconBtnClean.BackgroundImageLayout = ImageLayout.Stretch;
+            iconBtnClean.Cursor = Cursors.Hand;
+            iconBtnClean.FlatAppearance.BorderColor = Color.Black;
+            iconBtnClean.FlatStyle = FlatStyle.Flat;
+            iconBtnClean.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnClean.ForeColor = SystemColors.ControlLightLight;
+            iconBtnClean.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnClean.IconColor = Color.White;
+            iconBtnClean.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnClean.IconSize = 30;
+            iconBtnClean.Location = new Point(647, 59);
+            iconBtnClean.Name = "iconBtnClean";
+            iconBtnClean.Size = new Size(25, 23);
+            iconBtnClean.TabIndex = 36;
+            iconBtnClean.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnClean.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnClean.UseVisualStyleBackColor = false;
+            iconBtnClean.Click += iconBtnClean_Click;
             // 
-            // dateTimePicker1
+            // dateTimePickActUsuFiltro
             // 
-            dateTimePicker1.CalendarFont = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(545, 57);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(88, 23);
-            dateTimePicker1.TabIndex = 31;
+            dateTimePickActUsuFiltro.CalendarFont = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickActUsuFiltro.Format = DateTimePickerFormat.Short;
+            dateTimePickActUsuFiltro.Location = new Point(545, 57);
+            dateTimePickActUsuFiltro.Name = "dateTimePickActUsuFiltro";
+            dateTimePickActUsuFiltro.Size = new Size(88, 23);
+            dateTimePickActUsuFiltro.TabIndex = 31;
             // 
             // label2
             // 
@@ -190,26 +191,26 @@
             // dataGridUsuarios
             // 
             dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridUsuarios.BorderStyle = BorderStyle.None;
             dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { estado_actividad_login, id_usuario_actividad, id_usuario, nombre_actividad, fecha_usuario_actividad, dni_persona, nombre_persona, apellido_persona, email_usuario, rol_usuario, exportar_actividad });
             dataGridUsuarios.Location = new Point(16, 166);
@@ -217,14 +218,14 @@
             dataGridUsuarios.Name = "dataGridUsuarios";
             dataGridUsuarios.ReadOnly = true;
             dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridUsuarios.RowHeadersVisible = false;
             dataGridUsuarios.RowTemplate.Height = 28;
             dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -404,16 +405,16 @@
         #endregion
 
         private Panel panel1;
-        private TextBox textBox1;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private DateTimePicker dateTimePicker1;
+        private TextBox txtUsuarioFiltro;
+        private FontAwesome.Sharp.IconButton iconBtnClean;
+        private DateTimePicker dateTimePickActUsuFiltro;
         private Label label2;
         private Label label3;
         private Label label5;
         private Label label4;
         private Label lblOperacionRealizadas;
         private DataGridView dataGridUsuarios;
-        private ComboBox comboBox1;
+        private ComboBox comboTipoActFiltro;
         private FontAwesome.Sharp.IconButton iconBtnCompras;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton4;
