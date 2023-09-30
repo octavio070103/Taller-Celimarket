@@ -177,7 +177,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void picCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void picMaxPantalla_Click(object sender, EventArgs e)

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Gerente.caja
 {
-    public partial class AdvertenciaCierreCaja : Form
+    public partial class AdvertenciaAbrirCaja : Form
     {
-        public AdvertenciaCierreCaja()
+        public AdvertenciaAbrirCaja()
         {
             InitializeComponent();
         }
@@ -21,15 +21,6 @@ namespace CapaPresentacion.Formularios.Gerente.caja
         {
             // Establece el resultado de DialogResult como OK para indicar que el usuario eligió "Aceptar".
             this.DialogResult = DialogResult.OK;
-
-            // Cierra la ventana emergente.
-            this.Close();
-        }
-
-        private void iconBtnCancelar_Click(object sender, EventArgs e)
-        {
-            // Establece el resultado de DialogResult como Cancel para indicar que el usuario eligió "Cancelar".
-            this.DialogResult = DialogResult.Cancel;
 
             // Cierra la ventana emergente.
             this.Close();

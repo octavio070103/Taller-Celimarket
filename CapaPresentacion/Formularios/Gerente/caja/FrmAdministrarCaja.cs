@@ -22,7 +22,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
 
         private void iconButton1_Click(object sender, EventArgs e)
         {
-            instancia_gerente.OpenChildForm(new FrmAperturaCaja(instancia_gerente));
+            instancia_gerente.OpenChildForm(new FrmApertYCierreCaja(instancia_gerente));
         }
     }
 }

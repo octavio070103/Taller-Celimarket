@@ -1,4 +1,6 @@
-﻿using FontAwesome.Sharp;
+﻿using CapaPresentacion.Formularios.Admin.consulta_reclamo;
+using CapaPresentacion.Formularios.Gerente.caja;
+using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +24,8 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void btnResponder_Click(object sender, EventArgs e)
         {
-            this.instanciaMenuAdministrador.OpenChildForm(new Admin.consulta_reclamo.FrmResponderConsulta(this.instanciaMenuAdministrador));
+            FrmResponderConsulta ventanaEmergREspConsul = new FrmResponderConsulta();
+            ventanaEmergREspConsul.ShowDialog();
         }
 
 

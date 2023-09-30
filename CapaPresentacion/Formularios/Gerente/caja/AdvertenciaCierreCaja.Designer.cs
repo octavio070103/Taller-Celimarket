@@ -38,7 +38,7 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -56,6 +56,7 @@
             iconBtnAceptar.TabIndex = 7;
             iconBtnAceptar.Text = "Aceptar";
             iconBtnAceptar.UseVisualStyleBackColor = false;
+            iconBtnAceptar.Click += iconBtnAceptar_Click;
             // 
             // pictureBox1
             // 
@@ -134,27 +135,28 @@
             label7.TabIndex = 12;
             label7.Text = "label7";
             // 
-            // iconButton1
+            // iconBtnCancelar
             // 
-            iconButton1.BackColor = Color.FromArgb(209, 29, 29);
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(138, 234);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(75, 23);
-            iconButton1.TabIndex = 13;
-            iconButton1.Text = "Cancelar";
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnCancelar.BackColor = Color.FromArgb(209, 29, 29);
+            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
+            iconBtnCancelar.ForeColor = Color.White;
+            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCancelar.IconColor = Color.Black;
+            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCancelar.Location = new Point(138, 234);
+            iconBtnCancelar.Name = "iconBtnCancelar";
+            iconBtnCancelar.Size = new Size(75, 23);
+            iconBtnCancelar.TabIndex = 13;
+            iconBtnCancelar.Text = "Cancelar";
+            iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // AdvertenciaCierreCaja
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(282, 269);
-            Controls.Add(iconButton1);
+            Controls.Add(iconBtnCancelar);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -166,6 +168,7 @@
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "AdvertenciaCierreCaja";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AdvertenciaCierreCaja";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -183,6 +186,6 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconBtnCancelar;
     }
 }

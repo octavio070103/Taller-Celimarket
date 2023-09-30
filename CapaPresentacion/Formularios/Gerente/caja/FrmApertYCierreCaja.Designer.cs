@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion.Formularios.Gerente.caja
 {
-    partial class FrmAperturaCaja
+    partial class FrmApertYCierreCaja
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAperturaCaja));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmApertYCierreCaja));
             panel1 = new Panel();
             lblListaConsultas = new Label();
             tabControl1 = new TabControl();
@@ -43,7 +43,7 @@
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
             label1 = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            iconBtnAbrirCaja = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
             label2 = new Label();
             textBox2 = new TextBox();
@@ -56,7 +56,7 @@
             label6 = new Label();
             tabPageCerrarCaja = new TabPage();
             panel4 = new Panel();
-            iconButton6 = new FontAwesome.Sharp.IconButton();
+            iconBtnImprimir = new FontAwesome.Sharp.IconButton();
             label20 = new Label();
             label19 = new Label();
             label18 = new Label();
@@ -83,8 +83,8 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             label8 = new Label();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
+            iconBtnRegresar = new FontAwesome.Sharp.IconButton();
+            iconBtnCerrarCaja = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
             label7 = new Label();
             panel1.SuspendLayout();
@@ -151,7 +151,7 @@
             panel2.Controls.Add(dataGridView1);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(iconButton1);
-            panel2.Controls.Add(iconButton4);
+            panel2.Controls.Add(iconBtnAbrirCaja);
             panel2.Controls.Add(textBox1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(textBox2);
@@ -241,28 +241,29 @@
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
-            // iconButton4
+            // iconBtnAbrirCaja
             // 
-            iconButton4.BackColor = Color.LightGreen;
-            iconButton4.BackgroundImage = (Image)resources.GetObject("iconButton4.BackgroundImage");
-            iconButton4.BackgroundImageLayout = ImageLayout.None;
-            iconButton4.Cursor = Cursors.Hand;
-            iconButton4.FlatAppearance.BorderColor = Color.Black;
-            iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton4.ForeColor = Color.Black;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.White;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.IconSize = 30;
-            iconButton4.Location = new Point(44, 353);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(105, 38);
-            iconButton4.TabIndex = 13;
-            iconButton4.Text = "Abrir Caja";
-            iconButton4.TextAlign = ContentAlignment.MiddleRight;
-            iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton4.UseVisualStyleBackColor = false;
+            iconBtnAbrirCaja.BackColor = Color.LightGreen;
+            iconBtnAbrirCaja.BackgroundImage = (Image)resources.GetObject("iconBtnAbrirCaja.BackgroundImage");
+            iconBtnAbrirCaja.BackgroundImageLayout = ImageLayout.None;
+            iconBtnAbrirCaja.Cursor = Cursors.Hand;
+            iconBtnAbrirCaja.FlatAppearance.BorderColor = Color.Black;
+            iconBtnAbrirCaja.FlatStyle = FlatStyle.Flat;
+            iconBtnAbrirCaja.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnAbrirCaja.ForeColor = Color.Black;
+            iconBtnAbrirCaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnAbrirCaja.IconColor = Color.White;
+            iconBtnAbrirCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnAbrirCaja.IconSize = 30;
+            iconBtnAbrirCaja.Location = new Point(44, 353);
+            iconBtnAbrirCaja.Name = "iconBtnAbrirCaja";
+            iconBtnAbrirCaja.Size = new Size(105, 38);
+            iconBtnAbrirCaja.TabIndex = 13;
+            iconBtnAbrirCaja.Text = "Abrir Caja";
+            iconBtnAbrirCaja.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnAbrirCaja.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnAbrirCaja.UseVisualStyleBackColor = false;
+            iconBtnAbrirCaja.Click += iconBtnAbrirCaja_Click;
             // 
             // textBox1
             // 
@@ -367,7 +368,7 @@
             // panel4
             // 
             panel4.BackColor = Color.Gainsboro;
-            panel4.Controls.Add(iconButton6);
+            panel4.Controls.Add(iconBtnImprimir);
             panel4.Controls.Add(label20);
             panel4.Controls.Add(label19);
             panel4.Controls.Add(label18);
@@ -386,36 +387,36 @@
             panel4.Controls.Add(label14);
             panel4.Controls.Add(dataGridView2);
             panel4.Controls.Add(label8);
-            panel4.Controls.Add(iconButton2);
-            panel4.Controls.Add(iconButton3);
+            panel4.Controls.Add(iconBtnRegresar);
+            panel4.Controls.Add(iconBtnCerrarCaja);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(3, 53);
             panel4.Name = "panel4";
             panel4.Size = new Size(825, 523);
             panel4.TabIndex = 4;
             // 
-            // iconButton6
+            // iconBtnImprimir
             // 
-            iconButton6.BackColor = SystemColors.ControlDark;
-            iconButton6.BackgroundImage = (Image)resources.GetObject("iconButton6.BackgroundImage");
-            iconButton6.BackgroundImageLayout = ImageLayout.None;
-            iconButton6.Cursor = Cursors.Hand;
-            iconButton6.FlatAppearance.BorderColor = Color.Black;
-            iconButton6.FlatStyle = FlatStyle.Flat;
-            iconButton6.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton6.ForeColor = Color.Black;
-            iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton6.IconColor = Color.White;
-            iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton6.IconSize = 30;
-            iconButton6.Location = new Point(566, 445);
-            iconButton6.Name = "iconButton6";
-            iconButton6.Size = new Size(105, 38);
-            iconButton6.TabIndex = 33;
-            iconButton6.Text = "Imprimir";
-            iconButton6.TextAlign = ContentAlignment.MiddleRight;
-            iconButton6.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton6.UseVisualStyleBackColor = false;
+            iconBtnImprimir.BackColor = SystemColors.ControlDark;
+            iconBtnImprimir.BackgroundImage = (Image)resources.GetObject("iconBtnImprimir.BackgroundImage");
+            iconBtnImprimir.BackgroundImageLayout = ImageLayout.None;
+            iconBtnImprimir.Cursor = Cursors.Hand;
+            iconBtnImprimir.FlatAppearance.BorderColor = Color.Black;
+            iconBtnImprimir.FlatStyle = FlatStyle.Flat;
+            iconBtnImprimir.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnImprimir.ForeColor = Color.Black;
+            iconBtnImprimir.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnImprimir.IconColor = Color.White;
+            iconBtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnImprimir.IconSize = 30;
+            iconBtnImprimir.Location = new Point(566, 445);
+            iconBtnImprimir.Name = "iconBtnImprimir";
+            iconBtnImprimir.Size = new Size(105, 38);
+            iconBtnImprimir.TabIndex = 33;
+            iconBtnImprimir.Text = "Imprimir";
+            iconBtnImprimir.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnImprimir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnImprimir.UseVisualStyleBackColor = false;
             // 
             // label20
             // 
@@ -639,51 +640,52 @@
             label8.TabIndex = 15;
             label8.Text = "Detalle de Movimientos Del Dia";
             // 
-            // iconButton2
+            // iconBtnRegresar
             // 
-            iconButton2.BackColor = Color.Orange;
-            iconButton2.BackgroundImage = (Image)resources.GetObject("iconButton2.BackgroundImage");
-            iconButton2.BackgroundImageLayout = ImageLayout.None;
-            iconButton2.Cursor = Cursors.Hand;
-            iconButton2.FlatAppearance.BorderColor = Color.Black;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton2.ForeColor = Color.Black;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 30;
-            iconButton2.Location = new Point(210, 445);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(105, 38);
-            iconButton2.TabIndex = 14;
-            iconButton2.Text = "Regresar";
-            iconButton2.TextAlign = ContentAlignment.MiddleRight;
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            iconBtnRegresar.BackColor = Color.Orange;
+            iconBtnRegresar.BackgroundImage = (Image)resources.GetObject("iconBtnRegresar.BackgroundImage");
+            iconBtnRegresar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnRegresar.Cursor = Cursors.Hand;
+            iconBtnRegresar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnRegresar.FlatStyle = FlatStyle.Flat;
+            iconBtnRegresar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnRegresar.ForeColor = Color.Black;
+            iconBtnRegresar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnRegresar.IconColor = Color.White;
+            iconBtnRegresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnRegresar.IconSize = 30;
+            iconBtnRegresar.Location = new Point(210, 445);
+            iconBtnRegresar.Name = "iconBtnRegresar";
+            iconBtnRegresar.Size = new Size(105, 38);
+            iconBtnRegresar.TabIndex = 14;
+            iconBtnRegresar.Text = "Regresar";
+            iconBtnRegresar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnRegresar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnRegresar.UseVisualStyleBackColor = false;
             // 
-            // iconButton3
+            // iconBtnCerrarCaja
             // 
-            iconButton3.BackColor = Color.LightGreen;
-            iconButton3.BackgroundImage = (Image)resources.GetObject("iconButton3.BackgroundImage");
-            iconButton3.BackgroundImageLayout = ImageLayout.None;
-            iconButton3.Cursor = Cursors.Hand;
-            iconButton3.FlatAppearance.BorderColor = Color.Black;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton3.ForeColor = Color.Black;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(75, 445);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(105, 38);
-            iconButton3.TabIndex = 13;
-            iconButton3.Text = "Cerrar Caja";
-            iconButton3.TextAlign = ContentAlignment.MiddleRight;
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            iconBtnCerrarCaja.BackColor = Color.LightGreen;
+            iconBtnCerrarCaja.BackgroundImage = (Image)resources.GetObject("iconBtnCerrarCaja.BackgroundImage");
+            iconBtnCerrarCaja.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCerrarCaja.Cursor = Cursors.Hand;
+            iconBtnCerrarCaja.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCerrarCaja.FlatStyle = FlatStyle.Flat;
+            iconBtnCerrarCaja.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCerrarCaja.ForeColor = Color.Black;
+            iconBtnCerrarCaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCerrarCaja.IconColor = Color.White;
+            iconBtnCerrarCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCerrarCaja.IconSize = 30;
+            iconBtnCerrarCaja.Location = new Point(75, 445);
+            iconBtnCerrarCaja.Name = "iconBtnCerrarCaja";
+            iconBtnCerrarCaja.Size = new Size(105, 38);
+            iconBtnCerrarCaja.TabIndex = 13;
+            iconBtnCerrarCaja.Text = "Cerrar Caja";
+            iconBtnCerrarCaja.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCerrarCaja.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCerrarCaja.UseVisualStyleBackColor = false;
+            iconBtnCerrarCaja.Click += iconBtnCerrarCaja_Click;
             // 
             // panel3
             // 
@@ -709,7 +711,7 @@
             label7.Text = "Cierre de Caja";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // FrmAperturaCaja
+            // FrmApertYCierreCaja
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -717,8 +719,8 @@
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.None;
             MinimumSize = new Size(838, 604);
-            Name = "FrmAperturaCaja";
-            Text = "FrmAperturaCaja";
+            Name = "FrmApertYCierreCaja";
+            Text = "Administrar Caja";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
@@ -755,7 +757,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private Label label1;
         private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconBtnAbrirCaja;
         private TextBox textBox1;
         private Label label2;
         private TextBox textBox2;
@@ -779,8 +781,8 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Label label8;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconBtnRegresar;
+        private FontAwesome.Sharp.IconButton iconBtnCerrarCaja;
         private FontAwesome.Sharp.IconButton iconButton5;
         private Label label11;
         private TextBox textBox5;
@@ -795,6 +797,6 @@
         private Label label15;
         private Label label13;
         private Label label12;
-        private FontAwesome.Sharp.IconButton iconButton6;
+        private FontAwesome.Sharp.IconButton iconBtnImprimir;
     }
 }
