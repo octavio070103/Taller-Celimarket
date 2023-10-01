@@ -407,6 +407,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "RegistrarUsuario";
             Text = "RegistrarUsuario";
             Load += RegistrarUsuario_Load;

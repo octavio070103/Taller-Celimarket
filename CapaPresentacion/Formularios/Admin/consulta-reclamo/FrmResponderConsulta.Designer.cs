@@ -38,7 +38,8 @@
             picCerrar = new PictureBox();
             panel3 = new Panel();
             label4 = new Label();
-            label5 = new Label();
+            txtTituloRespuesta = new TextBox();
+            lblTituloRespuesta = new Label();
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             textBox1 = new TextBox();
@@ -46,17 +47,18 @@
             panel4 = new Panel();
             panel5 = new Panel();
             panel7 = new Panel();
-            textBox2 = new TextBox();
+            txtCuerpoRespuesta = new TextBox();
             panel6 = new Panel();
-            iconPictureBox8 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox5 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox6 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox7 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox4 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox3 = new FontAwesome.Sharp.IconPictureBox();
-            iconPictureBox2 = new FontAwesome.Sharp.IconPictureBox();
+            iconPicTash = new FontAwesome.Sharp.IconPictureBox();
+            iconPicDrive = new FontAwesome.Sharp.IconPictureBox();
+            iconPicImprimir = new FontAwesome.Sharp.IconPictureBox();
+            iconPicImg = new FontAwesome.Sharp.IconPictureBox();
+            iconPicLink = new FontAwesome.Sharp.IconPictureBox();
+            iconPicAdjArchiv = new FontAwesome.Sharp.IconPictureBox();
+            iconPicOpcFormato = new FontAwesome.Sharp.IconPictureBox();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             toolTipReConsulta = new ToolTip(components);
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
@@ -68,13 +70,14 @@
             panel5.SuspendLayout();
             panel7.SuspendLayout();
             panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox8).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox5).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox7).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicTash).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicDrive).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicImprimir).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicImg).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicLink).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicAdjArchiv).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicOpcFormato).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -159,7 +162,8 @@
             panel3.BackColor = Color.WhiteSmoke;
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(label4);
-            panel3.Controls.Add(label5);
+            panel3.Controls.Add(txtTituloRespuesta);
+            panel3.Controls.Add(lblTituloRespuesta);
             panel3.Location = new Point(0, 71);
             panel3.Name = "panel3";
             panel3.Size = new Size(514, 28);
@@ -169,21 +173,28 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(167, 5);
+            label4.Location = new Point(171, 5);
             label4.Name = "label4";
-            label4.Size = new Size(177, 17);
+            label4.Size = new Size(139, 17);
             label4.TabIndex = 2;
-            label4.Text = "label del titulo que responde";
+            label4.Text = " titulo de la respuesta ";
             // 
-            // label5
+            // txtTituloRespuesta
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(12, 5);
-            label5.Name = "label5";
-            label5.Size = new Size(149, 17);
-            label5.TabIndex = 1;
-            label5.Text = "Titulo de la Respuesta:";
+            txtTituloRespuesta.Location = new Point(171, 2);
+            txtTituloRespuesta.Name = "txtTituloRespuesta";
+            txtTituloRespuesta.Size = new Size(132, 23);
+            txtTituloRespuesta.TabIndex = 3;
+            // 
+            // lblTituloRespuesta
+            // 
+            lblTituloRespuesta.AutoSize = true;
+            lblTituloRespuesta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTituloRespuesta.Location = new Point(12, 5);
+            lblTituloRespuesta.Name = "lblTituloRespuesta";
+            lblTituloRespuesta.Size = new Size(149, 17);
+            lblTituloRespuesta.TabIndex = 1;
+            lblTituloRespuesta.Text = "Titulo de la Respuesta:";
             // 
             // panel2
             // 
@@ -252,31 +263,31 @@
             // 
             // panel7
             // 
-            panel7.Controls.Add(textBox2);
+            panel7.Controls.Add(txtCuerpoRespuesta);
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
             panel7.Size = new Size(514, 459);
             panel7.TabIndex = 1;
             // 
-            // textBox2
+            // txtCuerpoRespuesta
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(0, 0);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(514, 459);
-            textBox2.TabIndex = 0;
+            txtCuerpoRespuesta.Dock = DockStyle.Fill;
+            txtCuerpoRespuesta.Location = new Point(0, 0);
+            txtCuerpoRespuesta.Multiline = true;
+            txtCuerpoRespuesta.Name = "txtCuerpoRespuesta";
+            txtCuerpoRespuesta.Size = new Size(514, 459);
+            txtCuerpoRespuesta.TabIndex = 0;
             // 
             // panel6
             // 
-            panel6.Controls.Add(iconPictureBox8);
-            panel6.Controls.Add(iconPictureBox5);
-            panel6.Controls.Add(iconPictureBox6);
-            panel6.Controls.Add(iconPictureBox7);
-            panel6.Controls.Add(iconPictureBox4);
-            panel6.Controls.Add(iconPictureBox3);
-            panel6.Controls.Add(iconPictureBox2);
+            panel6.Controls.Add(iconPicTash);
+            panel6.Controls.Add(iconPicDrive);
+            panel6.Controls.Add(iconPicImprimir);
+            panel6.Controls.Add(iconPicImg);
+            panel6.Controls.Add(iconPicLink);
+            panel6.Controls.Add(iconPicAdjArchiv);
+            panel6.Controls.Add(iconPicOpcFormato);
             panel6.Controls.Add(iconButton1);
             panel6.Cursor = Cursors.Hand;
             panel6.Dock = DockStyle.Bottom;
@@ -285,125 +296,125 @@
             panel6.Size = new Size(514, 66);
             panel6.TabIndex = 0;
             // 
-            // iconPictureBox8
+            // iconPicTash
             // 
-            iconPictureBox8.BackColor = SystemColors.Control;
-            iconPictureBox8.BackgroundImage = (Image)resources.GetObject("iconPictureBox8.BackgroundImage");
-            iconPictureBox8.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox8.ForeColor = SystemColors.ControlText;
-            iconPictureBox8.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox8.IconColor = SystemColors.ControlText;
-            iconPictureBox8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox8.IconSize = 23;
-            iconPictureBox8.Location = new Point(479, 22);
-            iconPictureBox8.Name = "iconPictureBox8";
-            iconPictureBox8.Size = new Size(23, 23);
-            iconPictureBox8.TabIndex = 16;
-            iconPictureBox8.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox8, "Eliminar Borrador");
+            iconPicTash.BackColor = SystemColors.Control;
+            iconPicTash.BackgroundImage = (Image)resources.GetObject("iconPicTash.BackgroundImage");
+            iconPicTash.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicTash.ForeColor = SystemColors.ControlText;
+            iconPicTash.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicTash.IconColor = SystemColors.ControlText;
+            iconPicTash.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicTash.IconSize = 23;
+            iconPicTash.Location = new Point(479, 22);
+            iconPicTash.Name = "iconPicTash";
+            iconPicTash.Size = new Size(23, 23);
+            iconPicTash.TabIndex = 16;
+            iconPicTash.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicTash, "Eliminar Borrador");
             // 
-            // iconPictureBox5
+            // iconPicDrive
             // 
-            iconPictureBox5.BackColor = SystemColors.Control;
-            iconPictureBox5.BackgroundImage = (Image)resources.GetObject("iconPictureBox5.BackgroundImage");
-            iconPictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox5.ForeColor = SystemColors.ControlText;
-            iconPictureBox5.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox5.IconColor = SystemColors.ControlText;
-            iconPictureBox5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox5.IconSize = 23;
-            iconPictureBox5.Location = new Point(249, 22);
-            iconPictureBox5.Name = "iconPictureBox5";
-            iconPictureBox5.Size = new Size(23, 23);
-            iconPictureBox5.TabIndex = 15;
-            iconPictureBox5.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox5, "Insertar Archivos de Google Drive");
+            iconPicDrive.BackColor = SystemColors.Control;
+            iconPicDrive.BackgroundImage = (Image)resources.GetObject("iconPicDrive.BackgroundImage");
+            iconPicDrive.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicDrive.ForeColor = SystemColors.ControlText;
+            iconPicDrive.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicDrive.IconColor = SystemColors.ControlText;
+            iconPicDrive.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicDrive.IconSize = 23;
+            iconPicDrive.Location = new Point(249, 22);
+            iconPicDrive.Name = "iconPicDrive";
+            iconPicDrive.Size = new Size(23, 23);
+            iconPicDrive.TabIndex = 15;
+            iconPicDrive.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicDrive, "Insertar Archivos de Google Drive");
             // 
-            // iconPictureBox6
+            // iconPicImprimir
             // 
-            iconPictureBox6.BackColor = SystemColors.Control;
-            iconPictureBox6.BackgroundImage = (Image)resources.GetObject("iconPictureBox6.BackgroundImage");
-            iconPictureBox6.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox6.ForeColor = SystemColors.ControlText;
-            iconPictureBox6.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox6.IconColor = SystemColors.ControlText;
-            iconPictureBox6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox6.IconSize = 23;
-            iconPictureBox6.Location = new Point(281, 22);
-            iconPictureBox6.Name = "iconPictureBox6";
-            iconPictureBox6.Size = new Size(23, 23);
-            iconPictureBox6.TabIndex = 14;
-            iconPictureBox6.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox6, "Imprimir");
+            iconPicImprimir.BackColor = SystemColors.Control;
+            iconPicImprimir.BackgroundImage = (Image)resources.GetObject("iconPicImprimir.BackgroundImage");
+            iconPicImprimir.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicImprimir.ForeColor = SystemColors.ControlText;
+            iconPicImprimir.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicImprimir.IconColor = SystemColors.ControlText;
+            iconPicImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicImprimir.IconSize = 23;
+            iconPicImprimir.Location = new Point(281, 22);
+            iconPicImprimir.Name = "iconPicImprimir";
+            iconPicImprimir.Size = new Size(23, 23);
+            iconPicImprimir.TabIndex = 14;
+            iconPicImprimir.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicImprimir, "Imprimir");
             // 
-            // iconPictureBox7
+            // iconPicImg
             // 
-            iconPictureBox7.BackColor = SystemColors.Control;
-            iconPictureBox7.BackgroundImage = (Image)resources.GetObject("iconPictureBox7.BackgroundImage");
-            iconPictureBox7.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox7.ForeColor = SystemColors.ControlText;
-            iconPictureBox7.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox7.IconColor = SystemColors.ControlText;
-            iconPictureBox7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox7.IconSize = 23;
-            iconPictureBox7.Location = new Point(217, 22);
-            iconPictureBox7.Name = "iconPictureBox7";
-            iconPictureBox7.Size = new Size(23, 23);
-            iconPictureBox7.TabIndex = 13;
-            iconPictureBox7.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox7, "Insertar Imagenes");
+            iconPicImg.BackColor = SystemColors.Control;
+            iconPicImg.BackgroundImage = (Image)resources.GetObject("iconPicImg.BackgroundImage");
+            iconPicImg.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicImg.ForeColor = SystemColors.ControlText;
+            iconPicImg.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicImg.IconColor = SystemColors.ControlText;
+            iconPicImg.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicImg.IconSize = 23;
+            iconPicImg.Location = new Point(217, 22);
+            iconPicImg.Name = "iconPicImg";
+            iconPicImg.Size = new Size(23, 23);
+            iconPicImg.TabIndex = 13;
+            iconPicImg.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicImg, "Insertar Imagenes");
             // 
-            // iconPictureBox4
+            // iconPicLink
             // 
-            iconPictureBox4.BackColor = SystemColors.Control;
-            iconPictureBox4.BackgroundImage = (Image)resources.GetObject("iconPictureBox4.BackgroundImage");
-            iconPictureBox4.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox4.ForeColor = SystemColors.ControlText;
-            iconPictureBox4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox4.IconColor = SystemColors.ControlText;
-            iconPictureBox4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox4.IconSize = 23;
-            iconPictureBox4.Location = new Point(186, 22);
-            iconPictureBox4.Name = "iconPictureBox4";
-            iconPictureBox4.Size = new Size(23, 23);
-            iconPictureBox4.TabIndex = 12;
-            iconPictureBox4.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox4, "Insertar Vinculos");
+            iconPicLink.BackColor = SystemColors.Control;
+            iconPicLink.BackgroundImage = (Image)resources.GetObject("iconPicLink.BackgroundImage");
+            iconPicLink.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicLink.ForeColor = SystemColors.ControlText;
+            iconPicLink.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicLink.IconColor = SystemColors.ControlText;
+            iconPicLink.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicLink.IconSize = 23;
+            iconPicLink.Location = new Point(186, 22);
+            iconPicLink.Name = "iconPicLink";
+            iconPicLink.Size = new Size(23, 23);
+            iconPicLink.TabIndex = 12;
+            iconPicLink.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicLink, "Insertar Vinculos");
             // 
-            // iconPictureBox3
+            // iconPicAdjArchiv
             // 
-            iconPictureBox3.BackColor = SystemColors.Control;
-            iconPictureBox3.BackgroundImage = (Image)resources.GetObject("iconPictureBox3.BackgroundImage");
-            iconPictureBox3.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox3.ForeColor = SystemColors.ControlText;
-            iconPictureBox3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox3.IconColor = SystemColors.ControlText;
-            iconPictureBox3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox3.IconSize = 23;
-            iconPictureBox3.Location = new Point(154, 22);
-            iconPictureBox3.Name = "iconPictureBox3";
-            iconPictureBox3.Size = new Size(23, 23);
-            iconPictureBox3.TabIndex = 11;
-            iconPictureBox3.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox3, "Adjuntar Archivos");
+            iconPicAdjArchiv.BackColor = SystemColors.Control;
+            iconPicAdjArchiv.BackgroundImage = (Image)resources.GetObject("iconPicAdjArchiv.BackgroundImage");
+            iconPicAdjArchiv.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicAdjArchiv.ForeColor = SystemColors.ControlText;
+            iconPicAdjArchiv.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicAdjArchiv.IconColor = SystemColors.ControlText;
+            iconPicAdjArchiv.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicAdjArchiv.IconSize = 23;
+            iconPicAdjArchiv.Location = new Point(154, 22);
+            iconPicAdjArchiv.Name = "iconPicAdjArchiv";
+            iconPicAdjArchiv.Size = new Size(23, 23);
+            iconPicAdjArchiv.TabIndex = 11;
+            iconPicAdjArchiv.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicAdjArchiv, "Adjuntar Archivos");
             // 
-            // iconPictureBox2
+            // iconPicOpcFormato
             // 
-            iconPictureBox2.BackColor = SystemColors.Control;
-            iconPictureBox2.BackgroundImage = (Image)resources.GetObject("iconPictureBox2.BackgroundImage");
-            iconPictureBox2.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPictureBox2.Cursor = Cursors.Hand;
-            iconPictureBox2.ForeColor = SystemColors.ControlText;
-            iconPictureBox2.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPictureBox2.IconColor = SystemColors.ControlText;
-            iconPictureBox2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPictureBox2.IconSize = 23;
-            iconPictureBox2.Location = new Point(122, 22);
-            iconPictureBox2.Name = "iconPictureBox2";
-            iconPictureBox2.Size = new Size(23, 23);
-            iconPictureBox2.TabIndex = 10;
-            iconPictureBox2.TabStop = false;
-            toolTipReConsulta.SetToolTip(iconPictureBox2, "Opciones de Formato");
+            iconPicOpcFormato.BackColor = SystemColors.Control;
+            iconPicOpcFormato.BackgroundImage = (Image)resources.GetObject("iconPicOpcFormato.BackgroundImage");
+            iconPicOpcFormato.BackgroundImageLayout = ImageLayout.Zoom;
+            iconPicOpcFormato.Cursor = Cursors.Hand;
+            iconPicOpcFormato.ForeColor = SystemColors.ControlText;
+            iconPicOpcFormato.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconPicOpcFormato.IconColor = SystemColors.ControlText;
+            iconPicOpcFormato.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconPicOpcFormato.IconSize = 23;
+            iconPicOpcFormato.Location = new Point(122, 22);
+            iconPicOpcFormato.Name = "iconPicOpcFormato";
+            iconPicOpcFormato.Size = new Size(23, 23);
+            iconPicOpcFormato.TabIndex = 10;
+            iconPicOpcFormato.TabStop = false;
+            toolTipReConsulta.SetToolTip(iconPicOpcFormato, "Opciones de Formato");
             // 
             // iconButton1
             // 
@@ -420,6 +431,11 @@
             iconButton1.TabIndex = 9;
             iconButton1.Text = "Enviar";
             iconButton1.UseVisualStyleBackColor = false;
+            iconButton1.Click += iconButton1_Click;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FrmResponderConsulta
             // 
@@ -449,13 +465,14 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox8).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox5).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox7).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)iconPictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicTash).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicDrive).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicImprimir).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicImg).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicLink).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicAdjArchiv).EndInit();
+            ((System.ComponentModel.ISupportInitialize)iconPicOpcFormato).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -466,7 +483,7 @@
         private Label label1;
         private Panel panel3;
         private Label label4;
-        private Label label5;
+        private Label lblTituloRespuesta;
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private TextBox textBox1;
@@ -479,14 +496,16 @@
         private PictureBox picRestaurar;
         private PictureBox picMinPantalla;
         private PictureBox picCerrar;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox5;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox6;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox7;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox4;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox3;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox2;
-        private FontAwesome.Sharp.IconPictureBox iconPictureBox8;
-        private TextBox textBox2;
+        private FontAwesome.Sharp.IconPictureBox iconPicDrive;
+        private FontAwesome.Sharp.IconPictureBox iconPicImprimir;
+        private FontAwesome.Sharp.IconPictureBox iconPicImg;
+        private FontAwesome.Sharp.IconPictureBox iconPicLink;
+        private FontAwesome.Sharp.IconPictureBox iconPicAdjArchiv;
+        private FontAwesome.Sharp.IconPictureBox iconPicOpcFormato;
+        private FontAwesome.Sharp.IconPictureBox iconPicTash;
+        private TextBox txtCuerpoRespuesta;
         private ToolTip toolTipReConsulta;
+        private TextBox txtTituloRespuesta;
+        private ErrorProvider errorProvider1;
     }
 }

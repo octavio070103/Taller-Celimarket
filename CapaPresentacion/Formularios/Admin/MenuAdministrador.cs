@@ -1,5 +1,6 @@
 ﻿using capaEntidad;
 using FontAwesome.Sharp;
+using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -165,11 +166,12 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnBackup.Text = "";
                 iconBtnGestionConsulta.Text = "";
                 iconBtnGestionUsuario.Text = "";
+                iconBtnSesion.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
                 picUsuario.Visible = false;
-                lblCerrar.Visible = false;
+
 
                 if (PMenuLat.Width == PMenuLat.MinimumSize.Width)
                 {
@@ -185,11 +187,12 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnBackup.Text = "Respaldo y Restauracion";
                 iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
                 iconBtnGestionUsuario.Text = "Gestionar Usuario";
+                iconBtnSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
                 lblRolDelUsu.Visible = true;
                 picUsuario.Visible = true;
-                lblCerrar.Visible = true;
+
 
                 if (PMenuLat.Width == PMenuLat.MaximumSize.Width)
                 {
@@ -309,6 +312,21 @@ namespace CapaPresentacion.Formularios.Admin
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void iconBtnSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult salida = MessageBox.Show("Esta seguro que desea salir de la Aplicacion", "Salir", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            if (salida == DialogResult.OK)
+            {
+                // Redirigir al usuario a la pantalla de inicio de sesión o la página principal.
+                // Puedes utilizar un formulario diferente para la pantalla de inicio de sesión.
+                formLogin loginForm = new formLogin();
+                loginForm.Show();
 
+                // Cerrar el formulario actual (formulario principal) después de redirigir.
+                this.Close();
+            }
+        }
+
+       
     }
 }

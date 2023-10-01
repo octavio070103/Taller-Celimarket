@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel2 = new Panel();
-            label1 = new Label();
+            lblLocalidad = new Label();
             lblDescripcion = new Label();
             txtDescripcion = new TextBox();
             txtLocalidadDomi = new TextBox();
@@ -46,14 +47,16 @@
             lblCalle = new Label();
             panel1 = new Panel();
             lblRegistrarDomi = new Label();
+            errorProviderDomicilio = new ErrorProvider(components);
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDomicilio).BeginInit();
             SuspendLayout();
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(lblLocalidad);
             panel2.Controls.Add(lblDescripcion);
             panel2.Controls.Add(txtDescripcion);
             panel2.Controls.Add(txtLocalidadDomi);
@@ -74,15 +77,15 @@
             panel2.Size = new Size(595, 421);
             panel2.TabIndex = 4;
             // 
-            // label1
+            // lblLocalidad
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(356, 100);
-            label1.Name = "label1";
-            label1.Size = new Size(88, 19);
-            label1.TabIndex = 77;
-            label1.Text = "Localidad";
+            lblLocalidad.AutoSize = true;
+            lblLocalidad.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblLocalidad.Location = new Point(356, 100);
+            lblLocalidad.Name = "lblLocalidad";
+            lblLocalidad.Size = new Size(88, 19);
+            lblLocalidad.TabIndex = 77;
+            lblLocalidad.Text = "Localidad";
             // 
             // lblDescripcion
             // 
@@ -276,6 +279,10 @@
             lblRegistrarDomi.Text = "Registrar Domicilio";
             lblRegistrarDomi.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // errorProviderDomicilio
+            // 
+            errorProviderDomicilio.ContainerControl = this;
+            // 
             // FrmRegistrarDomicilio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -290,6 +297,7 @@
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProviderDomicilio).EndInit();
             ResumeLayout(false);
         }
 
@@ -325,6 +333,7 @@
         private TextBox txtDescripcion;
         private TextBox txtLocalidadDomi;
         private Label lblDescripcion;
-        private Label label1;
+        private Label lblLocalidad;
+        private ErrorProvider errorProviderDomicilio;
     }
 }

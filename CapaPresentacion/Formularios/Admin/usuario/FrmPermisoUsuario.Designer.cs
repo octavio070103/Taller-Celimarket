@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPermisoUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
             txtEmpleado = new TextBox();
@@ -63,6 +63,8 @@
             Estado_Valor = new DataGridViewTextBoxColumn();
             col_estado = new DataGridViewTextBoxColumn();
             panelDatosUsuario = new Panel();
+            dateTimePickerNacimientoDato = new DateTimePicker();
+            label1 = new Label();
             lblPassword = new Label();
             txtPasswordDato = new TextBox();
             txtDomiciliodato = new TextBox();
@@ -82,8 +84,6 @@
             lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
-            label1 = new Label();
-            dateTimePickerNacimientoDato = new DateTimePicker();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -213,11 +213,11 @@
             lblPermisoUsu.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblPermisoUsu.ForeColor = SystemColors.ControlLightLight;
             lblPermisoUsu.ImageAlign = ContentAlignment.TopCenter;
-            lblPermisoUsu.Location = new Point(176, 0);
+            lblPermisoUsu.Location = new Point(235, 0);
             lblPermisoUsu.Name = "lblPermisoUsu";
-            lblPermisoUsu.Size = new Size(282, 45);
+            lblPermisoUsu.Size = new Size(529, 45);
             lblPermisoUsu.TabIndex = 0;
-            lblPermisoUsu.Text = "Lista De Permisos";
+            lblPermisoUsu.Text = "Lista De Permisos De Los Usuarios";
             lblPermisoUsu.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // iconBtnAprobar
@@ -307,26 +307,26 @@
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle13.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle13.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle13.ForeColor = Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle13.SelectionForeColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle14.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = Color.White;
-            dataGridViewCellStyle14.Padding = new Padding(2);
-            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle14.SelectionForeColor = Color.White;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
             dataGridView1.Location = new Point(12, 176);
@@ -334,14 +334,14 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowTemplate.Height = 28;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -489,6 +489,27 @@
             panelDatosUsuario.Name = "panelDatosUsuario";
             panelDatosUsuario.Size = new Size(238, 517);
             panelDatosUsuario.TabIndex = 16;
+            // 
+            // dateTimePickerNacimientoDato
+            // 
+            dateTimePickerNacimientoDato.Format = DateTimePickerFormat.Short;
+            dateTimePickerNacimientoDato.Location = new Point(79, 357);
+            dateTimePickerNacimientoDato.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            dateTimePickerNacimientoDato.Name = "dateTimePickerNacimientoDato";
+            dateTimePickerNacimientoDato.Size = new Size(144, 23);
+            dateTimePickerNacimientoDato.TabIndex = 75;
+            dateTimePickerNacimientoDato.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.WindowText;
+            label1.Location = new Point(6, 337);
+            label1.Name = "label1";
+            label1.Size = new Size(107, 17);
+            label1.TabIndex = 30;
+            label1.Text = "Fecha Solicitada";
             // 
             // lblPassword
             // 
@@ -667,27 +688,6 @@
             lblDatosUsuario.Size = new Size(180, 30);
             lblDatosUsuario.TabIndex = 0;
             lblDatosUsuario.Text = "Datos Del Usuario";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.WindowText;
-            label1.Location = new Point(6, 337);
-            label1.Name = "label1";
-            label1.Size = new Size(107, 17);
-            label1.TabIndex = 30;
-            label1.Text = "Fecha Solicitada";
-            // 
-            // dateTimePickerNacimientoDato
-            // 
-            dateTimePickerNacimientoDato.Format = DateTimePickerFormat.Short;
-            dateTimePickerNacimientoDato.Location = new Point(79, 357);
-            dateTimePickerNacimientoDato.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
-            dateTimePickerNacimientoDato.Name = "dateTimePickerNacimientoDato";
-            dateTimePickerNacimientoDato.Size = new Size(144, 23);
-            dateTimePickerNacimientoDato.TabIndex = 75;
-            dateTimePickerNacimientoDato.Value = new DateTime(2023, 9, 24, 0, 0, 0, 0);
             // 
             // FrmPermisoUsuario
             // 

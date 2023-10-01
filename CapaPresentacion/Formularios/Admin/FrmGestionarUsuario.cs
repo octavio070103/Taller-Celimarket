@@ -487,7 +487,7 @@ namespace CapaPresentacion.Formularios.Admin
                 errorProvider1.SetError(lblEmailDato, "Ingrese su Email correctamente");
                 errorProvider1.SetError(lblTelefDato, "Ingrese su Telefono correctamente");
                 errorProvider1.SetError(lblDomicilioDato, "Ingrese su Domicilio correctamente");
-                return validacion = false;
+                validacion = false;
             }
 
             //validar que el campos Dni solo se ingresen numeros
@@ -523,7 +523,7 @@ namespace CapaPresentacion.Formularios.Admin
             return validacion;
         }
 
-        // Función para verificar si una cadena contiene solo letras
+        // Función para verificar si una cadena contiene solo letras y un sol oespacio por palabra
         private bool EsAlfabetico(string texto)
         {
             bool espacioEncontrado = false;

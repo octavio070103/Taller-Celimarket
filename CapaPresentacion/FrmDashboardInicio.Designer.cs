@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboardInicio));
             panel1 = new Panel();
             lblDashInicio = new Label();
@@ -121,16 +121,17 @@
             // chartVentas
             // 
             chartVentas.BackColor = Color.FromArgb(34, 41, 53);
-            chartArea4.Name = "ChartArea1";
-            chartVentas.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            chartVentas.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            chartVentas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartVentas.Legends.Add(legend1);
             chartVentas.Location = new Point(0, 60);
             chartVentas.Name = "chartVentas";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            chartVentas.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartVentas.Series.Add(series1);
             chartVentas.Size = new Size(430, 182);
             chartVentas.TabIndex = 15;
             chartVentas.Text = "chart1";
@@ -138,16 +139,17 @@
             // chartStockProductoCateogria
             // 
             chartStockProductoCateogria.BackColor = Color.FromArgb(34, 41, 53);
-            chartArea5.Name = "ChartArea1";
-            chartStockProductoCateogria.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            chartStockProductoCateogria.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            chartStockProductoCateogria.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartStockProductoCateogria.Legends.Add(legend2);
             chartStockProductoCateogria.Location = new Point(0, 248);
             chartStockProductoCateogria.Name = "chartStockProductoCateogria";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            chartStockProductoCateogria.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartStockProductoCateogria.Series.Add(series2);
             chartStockProductoCateogria.Size = new Size(430, 203);
             chartStockProductoCateogria.TabIndex = 16;
             chartStockProductoCateogria.Text = "chart2";
@@ -156,18 +158,18 @@
             // 
             chart3.BackColor = Color.FromArgb(34, 41, 53);
             chart3.BorderlineColor = Color.FromArgb(34, 41, 53);
-            chartArea6.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            chart3.Legends.Add(legend6);
+            chartArea3.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chart3.Legends.Add(legend3);
             chart3.Location = new Point(436, 248);
             chart3.Name = "chart3";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series6.LabelBackColor = Color.White;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            chart3.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.LabelBackColor = Color.White;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chart3.Series.Add(series3);
             chart3.Size = new Size(364, 203);
             chart3.TabIndex = 17;
             chart3.Text = "chartTopProductos";
@@ -338,8 +340,8 @@
             // 
             panelTotalCaja.BackColor = Color.FromArgb(34, 41, 53);
             panelTotalCaja.Controls.Add(label10);
-            panelTotalCaja.Controls.Add(label11);
             panelTotalCaja.Controls.Add(iconButton5);
+            panelTotalCaja.Controls.Add(label11);
             panelTotalCaja.Location = new Point(554, 188);
             panelTotalCaja.Name = "panelTotalCaja";
             panelTotalCaja.Size = new Size(120, 54);
@@ -446,8 +448,8 @@
             // 
             panelGastos.BackColor = Color.FromArgb(34, 41, 53);
             panelGastos.Controls.Add(label6);
-            panelGastos.Controls.Add(label7);
             panelGastos.Controls.Add(iconButton3);
+            panelGastos.Controls.Add(label7);
             panelGastos.Location = new Point(554, 60);
             panelGastos.Name = "panelGastos";
             panelGastos.Size = new Size(120, 58);
@@ -608,8 +610,8 @@
             // 
             panelStockDisponible.BackColor = Color.FromArgb(34, 41, 53);
             panelStockDisponible.Controls.Add(label1);
-            panelStockDisponible.Controls.Add(label3);
             panelStockDisponible.Controls.Add(iconButton1);
+            panelStockDisponible.Controls.Add(label3);
             panelStockDisponible.Location = new Point(436, 124);
             panelStockDisponible.Name = "panelStockDisponible";
             panelStockDisponible.Size = new Size(112, 58);

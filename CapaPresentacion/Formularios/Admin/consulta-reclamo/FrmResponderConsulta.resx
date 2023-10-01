@@ -335,7 +335,10 @@
         KPRtoMrPl6VOuoH+CCreA6zrx/SSpD8XyZIJKjkxzQAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="iconPictureBox8.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <metadata name="toolTipReConsulta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="iconPicTash.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PMjMjv7EdAAABl0lEQVQ4T42TPSxDURzFXyNCxUcY
@@ -348,10 +351,7 @@
         OVatuBWpVKoZ4wx8gOA3/gfyCq7rNlW6HOcLhOMDvTN+tZcAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="toolTipReConsulta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="iconPictureBox5.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicDrive.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PMAXeM0YGAAABfElEQVQ4T7WTPyiEcRjHz59ESGzq
@@ -364,7 +364,7 @@
         vmLQPVwVSQAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="iconPictureBox6.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicImprimir.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PLiUxHFkRAAABLElEQVQ4T82TzU7CUBCFu3BNNBIT
@@ -375,7 +375,7 @@
         jRnuf66vM+uNtlryaxmV4LCH+NQEDtWD6yfXAsd//8pbYjA3OfC8Fe534I9lgFqiAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="iconPictureBox7.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicImg.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PLQ/BisMEAAABMUlEQVQ4T62TvUoDQRSFF8QyWvgK
@@ -387,7 +387,7 @@
         RK5CYII=
 </value>
   </data>
-  <data name="iconPictureBox4.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicLink.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PKyVMa61UAAAA60lEQVQ4T+2RvQ3CMBSELdFAwQRA
@@ -397,7 +397,7 @@
         6UJ/XN5gTZfwTJrfYhqgPKPv+wvFfKEJmENOs6beuRVkzBNVco9+MNJNPgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="iconPictureBox3.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicAdjArchiv.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PKQA1WRuRAAAAzklEQVQ4T7WSsQ3CMBBFLcEAUNJD
@@ -407,7 +407,7 @@
         O5aHkDEfmP6NrdT0YxcAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="iconPictureBox2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="iconPicOpcFormato.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCR4PKAlVnpJ0AAABDklEQVQ4T62TTUrDUBSFi3UBUqfi
@@ -418,4 +418,10 @@
         p1wZ9f5xQNxaAseJ4JIba0ilAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="toolTipReConsulta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>168, 17</value>
+  </metadata>
 </root>
