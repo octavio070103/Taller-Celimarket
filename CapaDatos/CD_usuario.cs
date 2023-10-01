@@ -234,6 +234,7 @@ namespace CapaDatos
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    //le paso un valor al paraemtro @id_usuario para realizar la consulta
                     cmd.Parameters.AddWithValue("@id_usuario", id_usuario);
  
                     // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.

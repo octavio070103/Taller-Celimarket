@@ -57,16 +57,16 @@
             iconButton6 = new FontAwesome.Sharp.IconButton();
             panelTotalCaja = new Panel();
             label10 = new Label();
-            label11 = new Label();
             iconButton5 = new FontAwesome.Sharp.IconButton();
+            label11 = new Label();
             panelCantPromociones = new Panel();
             label8 = new Label();
             label9 = new Label();
             iconButton4 = new FontAwesome.Sharp.IconButton();
             panelGastos = new Panel();
             label6 = new Label();
-            label7 = new Label();
             iconButton3 = new FontAwesome.Sharp.IconButton();
+            label7 = new Label();
             panelCantidadProductos = new Panel();
             label4 = new Label();
             label5 = new Label();
@@ -77,8 +77,8 @@
             iconBtnRechazar = new FontAwesome.Sharp.IconButton();
             panelStockDisponible = new Panel();
             label1 = new Label();
-            label3 = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
+            label3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chartVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartStockProductoCateogria).BeginInit();
@@ -357,16 +357,6 @@
             label10.TabIndex = 19;
             label10.Text = "valor";
             // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.ForeColor = Color.White;
-            label11.Location = new Point(57, 0);
-            label11.Name = "label11";
-            label11.Size = new Size(30, 15);
-            label11.TabIndex = 18;
-            label11.Text = "Caja";
-            // 
             // iconButton5
             // 
             iconButton5.BackColor = Color.FromArgb(34, 41, 53);
@@ -389,6 +379,16 @@
             iconButton5.TextAlign = ContentAlignment.MiddleRight;
             iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton5.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(57, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(30, 15);
+            label11.TabIndex = 18;
+            label11.Text = "Caja";
             // 
             // panelCantPromociones
             // 
@@ -465,16 +465,6 @@
             label6.TabIndex = 19;
             label6.Text = "valor";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(54, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(42, 15);
-            label7.TabIndex = 18;
-            label7.Text = "Gastos";
-            // 
             // iconButton3
             // 
             iconButton3.BackColor = Color.FromArgb(34, 41, 53);
@@ -497,6 +487,16 @@
             iconButton3.TextAlign = ContentAlignment.MiddleRight;
             iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton3.UseVisualStyleBackColor = false;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(54, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 15);
+            label7.TabIndex = 18;
+            label7.Text = "Gastos";
             // 
             // panelCantidadProductos
             // 
@@ -627,16 +627,6 @@
             label1.TabIndex = 17;
             label1.Text = "valor";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(54, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 16;
-            label3.Text = "Stock ";
-            // 
             // iconButton1
             // 
             iconButton1.BackColor = Color.FromArgb(34, 41, 53);
@@ -660,6 +650,16 @@
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(54, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(39, 15);
+            label3.TabIndex = 16;
+            label3.Text = "Stock ";
+            // 
             // FrmDashboardInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -680,6 +680,7 @@
             Controls.Add(chartVentas);
             Controls.Add(panel1);
             ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmDashboardInicio";
             Text = "Form1";
             Load += FrmDashboardInicio_Load;

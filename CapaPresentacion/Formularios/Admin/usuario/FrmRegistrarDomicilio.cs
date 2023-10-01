@@ -26,28 +26,33 @@ namespace CapaPresentacion.Formularios.Admin.usuario
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;// creo mi varibale para pdoer retorna el mensaje proveniente de mi capa de datos del proc almac
-
-            capaEntidad.domicilio obj_domicilio = new capaEntidad.domicilio()
+            if (validarCampos())
             {
-                calle = txtCalleDomi.Text,
-                codigo_postal = Convert.ToInt32(txtCodPostalDomi.Text),
-                numero = Convert.ToInt32(txtNumDomi.Text),
-                localidad = txtLocalidadDomi.Text,
-                provincia = txtProvDomi.Text,
-                descripcion = txtDescripcion.Text,
-                estado_domicilio = 1
-            };
+                borrarMensajeError();//borro los erroProvider de lso label
 
-            id_domicilio_registrado = new CL_domicilio().registrarDomicilio(obj_domicilio, out mensaje);
-            if (mensaje != "")
-            {
-                MessageBox.Show(mensaje);
+                capaEntidad.domicilio obj_domicilio = new capaEntidad.domicilio()
+                {
+                    calle = txtCalleDomi.Text,
+                    codigo_postal = Convert.ToInt32(txtCodPostalDomi.Text),
+                    numero = Convert.ToInt32(txtNumDomi.Text),
+                    localidad = txtLocalidadDomi.Text,
+                    provincia = txtProvDomi.Text,
+                    descripcion = txtDescripcion.Text,
+                    estado_domicilio = 1
+                };
+
+                id_domicilio_registrado = new CL_domicilio().registrarDomicilio(obj_domicilio, out mensaje);
+                if (mensaje != "")
+                {
+                    MessageBox.Show(mensaje);
+                }
+                // Establece el resultado como OK y luego cierra el formulario
+                this.DialogResult = DialogResult.OK;
+
+                // Cierra el formulario
+                this.Close();
             }
-            // Establece el resultado como OK y luego cierra el formulario
-            this.DialogResult = DialogResult.OK;
-
-            // Cierra el formulario
-            this.Close();
+           
 
         }
 
@@ -76,7 +81,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
 
             //vaidaciones individuales
 
-            //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita
+            //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita 
             if (!EsAlfabetico(calleDomi))
             {
                 errorProviderDomicilio.SetError(lblCalle, "Ingrese su Calle");
@@ -103,7 +108,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita
             if (!EsAlfabetico(provinciaDomi))
             {
-                errorProviderDomicilio.SetError(lblCalle, "Ingrese su Provincia");
+                errorProviderDomicilio.SetError(lblProvincia, "Ingrese su Provincia");
                 MessageBox.Show(" El nombre de la Provincia debe de contener solo letras , y un espacio por palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
@@ -111,7 +116,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita
             if (!EsAlfabetico(localidadDomi))
             {
-                errorProviderDomicilio.SetError(lblCalle, "Ingrese su Localidad");
+                errorProviderDomicilio.SetError(lblLocalidad, "Ingrese su Localidad");
                 MessageBox.Show(" El nombre de la Localidad debe de contener solo letras , y un espacio por palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
@@ -121,7 +126,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             {
                 if (!EsAlfabetico(descripDomi))
                 {
-                    errorProviderDomicilio.SetError(lblCalle, "Ingrese su Calle");
+                    errorProviderDomicilio.SetError(lblDescripcion, "Ingrese su Calle");
                     MessageBox.Show(" El nombre de la calle debe de contener solo letras , y un espacio por palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     validacion = false;
                 }
@@ -159,6 +164,14 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             return true;
         }
 
+        private void borrarMensajeError()
+        {
+            errorProviderDomicilio.SetError(lblCalle, "");
+            errorProviderDomicilio.SetError(lblCodPostal, "");
+            errorProviderDomicilio.SetError(lblNumero, "");
+            errorProviderDomicilio.SetError(lblLocalidad, "");
+            errorProviderDomicilio.SetError(lblProvincia, "");
 
+        }
     }
 }

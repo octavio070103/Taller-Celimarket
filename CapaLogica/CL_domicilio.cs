@@ -18,5 +18,9 @@ namespace CapaLogica
             return obj_cd_domicilio.registrarDomicilio(obj_domicilio,out mensaje);
         }
 
+        public domicilio buscarDomicilioID(int id_domicilio)
+        {
+            return obj_cd_domicilio.buscarDomicilioID(id_domicilio);
+        }
     }
 }

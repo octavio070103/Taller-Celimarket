@@ -392,6 +392,7 @@
             txtDomRegistrado.Location = new Point(356, 122);
             txtDomRegistrado.Multiline = true;
             txtDomRegistrado.Name = "txtDomRegistrado";
+            txtDomRegistrado.ReadOnly = true;
             txtDomRegistrado.Size = new Size(213, 23);
             txtDomRegistrado.TabIndex = 74;
             txtDomRegistrado.Visible = false;

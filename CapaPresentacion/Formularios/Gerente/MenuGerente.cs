@@ -209,7 +209,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
                 picUsuario.Visible = false;
-              
+
 
                 if (PMenuLat.Width == PMenuLat.MinimumSize.Width)
                 {
@@ -232,7 +232,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 lblNombreDelUsu.Visible = true;//oculto el boton
                 lblRolDelUsu.Visible = true;
                 picUsuario.Visible = true;
-                
+
 
                 if (PMenuLat.Width == PMenuLat.MaximumSize.Width)
                 {

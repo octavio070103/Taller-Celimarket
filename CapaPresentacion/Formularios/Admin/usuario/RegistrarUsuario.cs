@@ -63,6 +63,8 @@ namespace CapaPresentacion.Formularios.Admin
                 {
                     if (validarCampos())
                     {
+                        borrarMensajeError();//borro los erroProvider de lso label
+
                         capaEntidad.usuario obj_usuario = new capaEntidad.usuario() //creo mi objeto obj_usuario que es de tipo usuario y con las llaves indiico que le pasare los valores a sus respetctivos atributos
                         {
 
@@ -263,8 +265,25 @@ namespace CapaPresentacion.Formularios.Admin
                 txtDomRegistrado.Visible = true;
                 iconBtnDomicilio.Visible = false;
             }
-            //aca puedo agregar un metodo de buscar domiclio(por el id) y que me triaga el nombre y la calle del domiclio que agrego el usuario y asi poder cargarlo aca 
-            txtDomRegistrado.Text = "";
+
+          //metodo para traer los dtos del domicilio que recien se inserto en la base de datos 
+            CL_domicilio obj_CL_domicilio = new CL_domicilio();
+            domicilio obj_domicilio = new domicilio(); //creo un obj de tipo domicilio apra guardar el resutado del buscar domiclio y poder acceder a sus atributos
+
+            obj_domicilio= obj_CL_domicilio.buscarDomicilioID(id_Domicilio_Generado);
+            if (obj_domicilio != null)
+            {
+                txtDomRegistrado.Text = obj_domicilio.calle + " " +obj_domicilio.numero;
+            }
+            else
+            {
+                MessageBox.Show(" No se encontro el domicilio insertado,vuelva a insertar ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                //hago viisible el btn y oculto el tx  que contienen el domcilio 
+                txtDomRegistrado.Visible = false;
+                iconBtnDomicilio.Visible = true;
+            }
+           
         }
     }
 }
