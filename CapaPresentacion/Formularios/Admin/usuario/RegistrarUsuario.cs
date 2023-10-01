@@ -18,10 +18,13 @@ namespace CapaPresentacion.Formularios.Admin
     public partial class RegistrarUsuario : Form
     {
         private MenuAdministrador instanciaMenuAdministrador;
+        private int id_Domicilio_Generado; // Variable para almacenar el id_domicilio_registrado
+
         public RegistrarUsuario(MenuAdministrador p_MenuAdministrador)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -82,7 +85,7 @@ namespace CapaPresentacion.Formularios.Admin
 
                             obj_domicilio = new domicilio()
                             {
-                                id_domicilio = 1
+                                id_domicilio = id_Domicilio_Generado,
                             }
 
 
@@ -246,10 +249,22 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnDomicilio_Click(object sender, EventArgs e)
         {
+
+
             FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio();
 
-            frmRegistrarDomicilio.Show();
-            txtIdDomRegistrado.Text = frmRegistrarDomicilio.id_domicilio_registrado.ToString();
+            // Abre el formulario secundario de manera modal,hago esto para esperar que el form se cierre para pdoer acceder a el y traer el id_generado sino si uso show el cod que sigue se sigue ejecutando si esperar a que se cierre el formualrio 
+            if (frmRegistrarDomicilio.ShowDialog() == DialogResult.OK) //ShowDialog() abrirá el formulario secundario de manera modal, lo que significa que el código en el formulario principal esperará hasta que se cierre el formulario secundario antes de continuar.
+            {
+                // Obtén el id_domicilio_registrado del formulario secundario después de que se haya cerrado
+                id_Domicilio_Generado = frmRegistrarDomicilio.id_domicilio_registrado;
+
+                //hago viisible y coulto txt box que contienen el domcilio y el otro el btn de agrgsr lo oculto
+                txtDomRegistrado.Visible = true;
+                iconBtnDomicilio.Visible = false;
+            }
+            //aca puedo agregar un metodo de buscar domiclio(por el id) y que me triaga el nombre y la calle del domiclio que agrego el usuario y asi poder cargarlo aca 
+            txtDomRegistrado.Text = "";
         }
     }
 }

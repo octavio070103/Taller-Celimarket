@@ -71,7 +71,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 61);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1014, 572);
+            panel2.Size = new Size(595, 421);
             panel2.TabIndex = 4;
             // 
             // label1
@@ -126,7 +126,7 @@
             iconBtnCancelar.IconSize = 30;
             iconBtnCancelar.Location = new Point(150, 346);
             iconBtnCancelar.Name = "iconBtnCancelar";
-            iconBtnCancelar.Size = new Size(162, 43);
+            iconBtnCancelar.Size = new Size(116, 43);
             iconBtnCancelar.TabIndex = 70;
             iconBtnCancelar.Text = "Cancelar";
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
@@ -145,9 +145,9 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 30;
-            iconbtnGuardar.Location = new Point(384, 343);
+            iconbtnGuardar.Location = new Point(292, 346);
             iconbtnGuardar.Name = "iconbtnGuardar";
-            iconbtnGuardar.Size = new Size(162, 43);
+            iconbtnGuardar.Size = new Size(115, 43);
             iconbtnGuardar.TabIndex = 69;
             iconbtnGuardar.Text = "Guardar";
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
@@ -167,9 +167,9 @@
             iconBtnLimpiarDatos.IconColor = Color.White;
             iconBtnLimpiarDatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnLimpiarDatos.IconSize = 30;
-            iconBtnLimpiarDatos.Location = new Point(611, 310);
+            iconBtnLimpiarDatos.Location = new Point(442, 348);
             iconBtnLimpiarDatos.Name = "iconBtnLimpiarDatos";
-            iconBtnLimpiarDatos.Size = new Size(161, 43);
+            iconBtnLimpiarDatos.Size = new Size(86, 43);
             iconBtnLimpiarDatos.TabIndex = 68;
             iconBtnLimpiarDatos.Text = "Limpiar";
             iconBtnLimpiarDatos.TextAlign = ContentAlignment.MiddleRight;
@@ -259,7 +259,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1014, 61);
+            panel1.Size = new Size(595, 61);
             panel1.TabIndex = 3;
             // 
             // lblRegistrarDomi
@@ -269,7 +269,7 @@
             lblRegistrarDomi.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistrarDomi.ForeColor = SystemColors.ControlLightLight;
             lblRegistrarDomi.ImageAlign = ContentAlignment.TopCenter;
-            lblRegistrarDomi.Location = new Point(340, 9);
+            lblRegistrarDomi.Location = new Point(130, 9);
             lblRegistrarDomi.Name = "lblRegistrarDomi";
             lblRegistrarDomi.Size = new Size(308, 45);
             lblRegistrarDomi.TabIndex = 0;
@@ -280,9 +280,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1014, 633);
+            ClientSize = new Size(595, 482);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmRegistrarDomicilio";
             Text = "FrmRegistrarDomicilio";
             panel2.ResumeLayout(false);

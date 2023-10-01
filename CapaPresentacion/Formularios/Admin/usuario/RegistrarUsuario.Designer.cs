@@ -32,13 +32,11 @@
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             panel2 = new Panel();
-            txtIdDomRegistrado = new TextBox();
             dateTimePickerNacimiento = new DateTimePicker();
             lblFechaNacimiento = new Label();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnLimpiarDatos = new FontAwesome.Sharp.IconButton();
-            iconBtnDomicilio = new FontAwesome.Sharp.IconButton();
             comboRolUsu = new ComboBox();
             contraVisible = new FontAwesome.Sharp.IconButton();
             lblPerfilUsuario = new Label();
@@ -55,6 +53,8 @@
             lblApellido = new Label();
             txtNombreUsu = new TextBox();
             lblNombre = new Label();
+            iconBtnDomicilio = new FontAwesome.Sharp.IconButton();
+            txtDomRegistrado = new TextBox();
             errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -88,13 +88,11 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
-            panel2.Controls.Add(txtIdDomRegistrado);
             panel2.Controls.Add(dateTimePickerNacimiento);
             panel2.Controls.Add(lblFechaNacimiento);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnLimpiarDatos);
-            panel2.Controls.Add(iconBtnDomicilio);
             panel2.Controls.Add(comboRolUsu);
             panel2.Controls.Add(contraVisible);
             panel2.Controls.Add(lblPerfilUsuario);
@@ -111,22 +109,14 @@
             panel2.Controls.Add(lblApellido);
             panel2.Controls.Add(txtNombreUsu);
             panel2.Controls.Add(lblNombre);
+            panel2.Controls.Add(iconBtnDomicilio);
+            panel2.Controls.Add(txtDomRegistrado);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 61);
             panel2.Name = "panel2";
             panel2.Size = new Size(800, 389);
             panel2.TabIndex = 2;
             panel2.Paint += panel2_Paint;
-            // 
-            // txtIdDomRegistrado
-            // 
-            txtIdDomRegistrado.Cursor = Cursors.IBeam;
-            txtIdDomRegistrado.Location = new Point(356, 122);
-            txtIdDomRegistrado.Multiline = true;
-            txtIdDomRegistrado.Name = "txtIdDomRegistrado";
-            txtIdDomRegistrado.Size = new Size(213, 23);
-            txtIdDomRegistrado.TabIndex = 74;
-            txtIdDomRegistrado.Visible = false;
             // 
             // dateTimePickerNacimiento
             // 
@@ -203,38 +193,15 @@
             iconBtnLimpiarDatos.IconColor = Color.White;
             iconBtnLimpiarDatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnLimpiarDatos.IconSize = 30;
-            iconBtnLimpiarDatos.Location = new Point(611, 310);
+            iconBtnLimpiarDatos.Location = new Point(617, 298);
             iconBtnLimpiarDatos.Name = "iconBtnLimpiarDatos";
-            iconBtnLimpiarDatos.Size = new Size(161, 43);
+            iconBtnLimpiarDatos.Size = new Size(87, 43);
             iconBtnLimpiarDatos.TabIndex = 68;
             iconBtnLimpiarDatos.Text = "Limpiar";
             iconBtnLimpiarDatos.TextAlign = ContentAlignment.MiddleRight;
             iconBtnLimpiarDatos.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnLimpiarDatos.UseVisualStyleBackColor = false;
             iconBtnLimpiarDatos.Click += iconBtnLimpiarDatos_Click;
-            // 
-            // iconBtnDomicilio
-            // 
-            iconBtnDomicilio.BackColor = Color.FromArgb(255, 222, 89);
-            iconBtnDomicilio.Cursor = Cursors.Hand;
-            iconBtnDomicilio.FlatAppearance.BorderColor = Color.Black;
-            iconBtnDomicilio.FlatStyle = FlatStyle.Flat;
-            iconBtnDomicilio.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnDomicilio.ForeColor = Color.White;
-            iconBtnDomicilio.IconChar = FontAwesome.Sharp.IconChar.House;
-            iconBtnDomicilio.IconColor = Color.White;
-            iconBtnDomicilio.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnDomicilio.IconSize = 30;
-            iconBtnDomicilio.ImageAlign = ContentAlignment.TopCenter;
-            iconBtnDomicilio.Location = new Point(356, 122);
-            iconBtnDomicilio.Name = "iconBtnDomicilio";
-            iconBtnDomicilio.Size = new Size(213, 33);
-            iconBtnDomicilio.TabIndex = 66;
-            iconBtnDomicilio.Text = "Agregar Domicilio";
-            iconBtnDomicilio.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnDomicilio.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnDomicilio.UseVisualStyleBackColor = false;
-            iconBtnDomicilio.Click += iconBtnDomicilio_Click;
             // 
             // comboRolUsu
             // 
@@ -275,7 +242,7 @@
             // 
             lblDomicilio.AutoSize = true;
             lblDomicilio.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDomicilio.Location = new Point(356, 100);
+            lblDomicilio.Location = new Point(356, 94);
             lblDomicilio.Name = "lblDomicilio";
             lblDomicilio.Size = new Size(82, 19);
             lblDomicilio.TabIndex = 15;
@@ -396,6 +363,39 @@
             lblNombre.TabIndex = 0;
             lblNombre.Text = "Nombre";
             // 
+            // iconBtnDomicilio
+            // 
+            iconBtnDomicilio.BackColor = Color.FromArgb(255, 222, 89);
+            iconBtnDomicilio.Cursor = Cursors.Hand;
+            iconBtnDomicilio.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDomicilio.FlatStyle = FlatStyle.Flat;
+            iconBtnDomicilio.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDomicilio.ForeColor = Color.White;
+            iconBtnDomicilio.IconChar = FontAwesome.Sharp.IconChar.House;
+            iconBtnDomicilio.IconColor = Color.White;
+            iconBtnDomicilio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDomicilio.IconSize = 30;
+            iconBtnDomicilio.ImageAlign = ContentAlignment.TopCenter;
+            iconBtnDomicilio.Location = new Point(356, 116);
+            iconBtnDomicilio.Name = "iconBtnDomicilio";
+            iconBtnDomicilio.Size = new Size(213, 33);
+            iconBtnDomicilio.TabIndex = 66;
+            iconBtnDomicilio.Text = "Agregar Domicilio";
+            iconBtnDomicilio.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDomicilio.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDomicilio.UseVisualStyleBackColor = false;
+            iconBtnDomicilio.Click += iconBtnDomicilio_Click;
+            // 
+            // txtDomRegistrado
+            // 
+            txtDomRegistrado.Cursor = Cursors.IBeam;
+            txtDomRegistrado.Location = new Point(356, 122);
+            txtDomRegistrado.Multiline = true;
+            txtDomRegistrado.Name = "txtDomRegistrado";
+            txtDomRegistrado.Size = new Size(213, 23);
+            txtDomRegistrado.TabIndex = 74;
+            txtDomRegistrado.Visible = false;
+            // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
@@ -446,6 +446,6 @@
         private ErrorProvider errorProvider1;
         private Label lblFechaNacimiento;
         private DateTimePicker dateTimePickerNacimiento;
-        private TextBox txtIdDomRegistrado;
+        private TextBox txtDomRegistrado;
     }
 }

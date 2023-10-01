@@ -11,9 +11,13 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Admin.usuario
 {
+  
+
     public partial class FrmRegistrarDomicilio : Form
     {
-        public int id_domicilio_registrado;
+       
+
+        public  int id_domicilio_registrado;
         public FrmRegistrarDomicilio()
         {
             InitializeComponent();
@@ -31,16 +35,20 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 localidad = txtLocalidadDomi.Text,
                 provincia = txtProvDomi.Text,
                 descripcion = txtDescripcion.Text,
-                estado_domicilio=1
+                estado_domicilio = 1
             };
 
-             id_domicilio_registrado = new CL_domicilio().registrarDomicilio(obj_domicilio, out mensaje);
+            id_domicilio_registrado = new CL_domicilio().registrarDomicilio(obj_domicilio, out mensaje);
             if (mensaje != "")
             {
                 MessageBox.Show(mensaje);
             }
+            // Establece el resultado como OK y luego cierra el formulario
+            this.DialogResult = DialogResult.OK;
 
-           
+            // Cierra el formulario
+            this.Close();
+
         }
     }
 }
