@@ -266,24 +266,24 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnDomicilio.Visible = false;
             }
 
-          //metodo para traer los dtos del domicilio que recien se inserto en la base de datos 
+            //metodo para traer los dtos del domicilio que recien se inserto en la base de datos 
             CL_domicilio obj_CL_domicilio = new CL_domicilio();
             domicilio obj_domicilio = new domicilio(); //creo un obj de tipo domicilio apra guardar el resutado del buscar domiclio y poder acceder a sus atributos
 
-            obj_domicilio= obj_CL_domicilio.buscarDomicilioID(id_Domicilio_Generado);
+            obj_domicilio = obj_CL_domicilio.buscarDomicilioID(id_Domicilio_Generado);
             if (obj_domicilio != null)
             {
-                txtDomRegistrado.Text = obj_domicilio.calle + " " +obj_domicilio.numero;
+                txtDomRegistrado.Text = obj_domicilio.calle + " " + obj_domicilio.numero;
             }
             else
             {
                 MessageBox.Show(" No se encontro el domicilio insertado,vuelva a insertar ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
                 //hago viisible el btn y oculto el tx  que contienen el domcilio 
                 txtDomRegistrado.Visible = false;
                 iconBtnDomicilio.Visible = true;
             }
-           
+
         }
     }
 }

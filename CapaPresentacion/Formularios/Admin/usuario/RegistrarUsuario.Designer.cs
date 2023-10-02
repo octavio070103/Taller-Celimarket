@@ -150,7 +150,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(150, 346);
+            iconBtnCancelar.Location = new Point(150, 343);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(162, 43);
             iconBtnCancelar.TabIndex = 70;
