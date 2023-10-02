@@ -54,9 +54,9 @@
             email_usuario = new DataGridViewTextBoxColumn();
             rol_usuario = new DataGridViewTextBoxColumn();
             exportar_actividad = new DataGridViewTextBoxColumn();
-            iconBtnCompras = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            iconBtnExpRegistro = new FontAwesome.Sharp.IconButton();
+            iconBtnResumActiv = new FontAwesome.Sharp.IconButton();
+            iconBtnElimRegistros = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             SuspendLayout();
@@ -313,74 +313,75 @@
             exportar_actividad.ReadOnly = true;
             exportar_actividad.Width = 87;
             // 
-            // iconBtnCompras
+            // iconBtnExpRegistro
             // 
-            iconBtnCompras.BackColor = Color.Orange;
-            iconBtnCompras.BackgroundImage = (Image)resources.GetObject("iconBtnCompras.BackgroundImage");
-            iconBtnCompras.BackgroundImageLayout = ImageLayout.None;
-            iconBtnCompras.Cursor = Cursors.Hand;
-            iconBtnCompras.FlatAppearance.BorderColor = Color.Black;
-            iconBtnCompras.FlatStyle = FlatStyle.Flat;
-            iconBtnCompras.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnCompras.ForeColor = SystemColors.ControlLightLight;
-            iconBtnCompras.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnCompras.IconColor = Color.White;
-            iconBtnCompras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnCompras.IconSize = 30;
-            iconBtnCompras.Location = new Point(95, 98);
-            iconBtnCompras.Name = "iconBtnCompras";
-            iconBtnCompras.Size = new Size(99, 38);
-            iconBtnCompras.TabIndex = 22;
-            iconBtnCompras.Text = "Exportar Registros";
-            iconBtnCompras.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnCompras.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnCompras.UseVisualStyleBackColor = false;
+            iconBtnExpRegistro.BackColor = Color.Orange;
+            iconBtnExpRegistro.BackgroundImage = (Image)resources.GetObject("iconBtnExpRegistro.BackgroundImage");
+            iconBtnExpRegistro.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExpRegistro.Cursor = Cursors.Hand;
+            iconBtnExpRegistro.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExpRegistro.FlatStyle = FlatStyle.Flat;
+            iconBtnExpRegistro.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnExpRegistro.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExpRegistro.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExpRegistro.IconColor = Color.White;
+            iconBtnExpRegistro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExpRegistro.IconSize = 30;
+            iconBtnExpRegistro.Location = new Point(95, 98);
+            iconBtnExpRegistro.Name = "iconBtnExpRegistro";
+            iconBtnExpRegistro.Size = new Size(99, 38);
+            iconBtnExpRegistro.TabIndex = 22;
+            iconBtnExpRegistro.Text = "Exportar Registros";
+            iconBtnExpRegistro.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExpRegistro.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExpRegistro.UseVisualStyleBackColor = false;
             // 
-            // iconButton3
+            // iconBtnResumActiv
             // 
-            iconButton3.BackColor = Color.Orange;
-            iconButton3.BackgroundImage = (Image)resources.GetObject("iconButton3.BackgroundImage");
-            iconButton3.BackgroundImageLayout = ImageLayout.None;
-            iconButton3.Cursor = Cursors.Hand;
-            iconButton3.FlatAppearance.BorderColor = Color.Black;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton3.ForeColor = SystemColors.ControlLightLight;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(345, 98);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(111, 38);
-            iconButton3.TabIndex = 24;
-            iconButton3.Text = "Resumen de Actividad";
-            iconButton3.TextAlign = ContentAlignment.MiddleRight;
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            iconBtnResumActiv.BackColor = Color.Orange;
+            iconBtnResumActiv.BackgroundImage = (Image)resources.GetObject("iconBtnResumActiv.BackgroundImage");
+            iconBtnResumActiv.BackgroundImageLayout = ImageLayout.None;
+            iconBtnResumActiv.Cursor = Cursors.Hand;
+            iconBtnResumActiv.FlatAppearance.BorderColor = Color.Black;
+            iconBtnResumActiv.FlatStyle = FlatStyle.Flat;
+            iconBtnResumActiv.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnResumActiv.ForeColor = SystemColors.ControlLightLight;
+            iconBtnResumActiv.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnResumActiv.IconColor = Color.White;
+            iconBtnResumActiv.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnResumActiv.IconSize = 30;
+            iconBtnResumActiv.Location = new Point(345, 98);
+            iconBtnResumActiv.Name = "iconBtnResumActiv";
+            iconBtnResumActiv.Size = new Size(111, 38);
+            iconBtnResumActiv.TabIndex = 24;
+            iconBtnResumActiv.Text = "Resumen de Actividad";
+            iconBtnResumActiv.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnResumActiv.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnResumActiv.UseVisualStyleBackColor = false;
+            iconBtnResumActiv.Click += iconBtnResumActiv_Click;
             // 
-            // iconButton4
+            // iconBtnElimRegistros
             // 
-            iconButton4.BackColor = Color.Orange;
-            iconButton4.BackgroundImage = (Image)resources.GetObject("iconButton4.BackgroundImage");
-            iconButton4.BackgroundImageLayout = ImageLayout.None;
-            iconButton4.Cursor = Cursors.Hand;
-            iconButton4.FlatAppearance.BorderColor = Color.Black;
-            iconButton4.FlatStyle = FlatStyle.Flat;
-            iconButton4.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton4.ForeColor = SystemColors.ControlLightLight;
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.White;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.IconSize = 30;
-            iconButton4.Location = new Point(215, 98);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(99, 38);
-            iconButton4.TabIndex = 25;
-            iconButton4.Text = "Eliminar Registros";
-            iconButton4.TextAlign = ContentAlignment.MiddleRight;
-            iconButton4.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton4.UseVisualStyleBackColor = false;
+            iconBtnElimRegistros.BackColor = Color.Orange;
+            iconBtnElimRegistros.BackgroundImage = (Image)resources.GetObject("iconBtnElimRegistros.BackgroundImage");
+            iconBtnElimRegistros.BackgroundImageLayout = ImageLayout.None;
+            iconBtnElimRegistros.Cursor = Cursors.Hand;
+            iconBtnElimRegistros.FlatAppearance.BorderColor = Color.Black;
+            iconBtnElimRegistros.FlatStyle = FlatStyle.Flat;
+            iconBtnElimRegistros.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnElimRegistros.ForeColor = SystemColors.ControlLightLight;
+            iconBtnElimRegistros.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnElimRegistros.IconColor = Color.White;
+            iconBtnElimRegistros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnElimRegistros.IconSize = 30;
+            iconBtnElimRegistros.Location = new Point(215, 98);
+            iconBtnElimRegistros.Name = "iconBtnElimRegistros";
+            iconBtnElimRegistros.Size = new Size(99, 38);
+            iconBtnElimRegistros.TabIndex = 25;
+            iconBtnElimRegistros.Text = "Eliminar Registros";
+            iconBtnElimRegistros.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnElimRegistros.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnElimRegistros.UseVisualStyleBackColor = false;
             // 
             // FrmGestionarPersonal
             // 
@@ -388,9 +389,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
-            Controls.Add(iconButton4);
-            Controls.Add(iconButton3);
-            Controls.Add(iconBtnCompras);
+            Controls.Add(iconBtnElimRegistros);
+            Controls.Add(iconBtnResumActiv);
+            Controls.Add(iconBtnExpRegistro);
             Controls.Add(dataGridUsuarios);
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
@@ -415,9 +416,9 @@
         private Label lblOperacionRealizadas;
         private DataGridView dataGridUsuarios;
         private ComboBox comboTipoActFiltro;
-        private FontAwesome.Sharp.IconButton iconBtnCompras;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton iconBtnExpRegistro;
+        private FontAwesome.Sharp.IconButton iconBtnResumActiv;
+        private FontAwesome.Sharp.IconButton iconBtnElimRegistros;
         private DataGridViewTextBoxColumn estado_actividad_login;
         private DataGridViewTextBoxColumn id_usuario_actividad;
         private DataGridViewTextBoxColumn id_usuario;

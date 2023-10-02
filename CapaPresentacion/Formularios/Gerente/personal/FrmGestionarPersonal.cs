@@ -52,5 +52,9 @@ namespace CapaPresentacion.Formularios.Gerente.personal
             //falta para los combobox
         }
 
+        private void iconBtnResumActiv_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

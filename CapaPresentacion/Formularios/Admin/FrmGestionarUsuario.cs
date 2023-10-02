@@ -127,6 +127,8 @@ namespace CapaPresentacion.Formularios.Admin
 
                 if (objUsuario != null)
                 {
+                    //ver como puedo meter esto dentro de un emtood llamado verdetalles o algo asi entonces cuando el usuario edita puedo volver  allamr a ese mtodo y que los datos quee dito se actualicen si tenenr que volver a seleccioan rel usuario en el data para que pase
+
                     txtIdGuardado.Text = objUsuario.id_usuario.ToString();
                     txtDniDato.Text = objUsuario.obj_persona.dni.ToString();
                     txtNombreDato.Text = objUsuario.obj_persona.nombre;
@@ -428,6 +430,7 @@ namespace CapaPresentacion.Formularios.Admin
                         //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
                         //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
                         List<capaEntidad.usuario> listaUsuarios = obj_CL_Usuario.listarUsuarios(); // Obtener la lista de usuarios desde la capa de lógica
+                        
                         // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica con esto logro hacer un REFRESH EN EL DATAGRID con los datos nuevos
                         mostrarUsuariosEnDataGridView(listaUsuarios);
                     }
