@@ -28,55 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEstadisticas));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             pnlModuloEstadis = new Panel();
             pnlContenedor = new Panel();
-            panel4 = new Panel();
-            pictureBox1 = new PictureBox();
+            pnlProductos = new Panel();
+            lblNroProdu = new Label();
+            picProductos = new PictureBox();
+            lblProductos = new Label();
+            pnlEmpleados = new Panel();
+            lblNroEmpleados = new Label();
+            picEmpleados = new PictureBox();
+            lblEmpleados = new Label();
+            pnlProveedores = new Panel();
+            lblNroProve = new Label();
+            picProveedores = new PictureBox();
+            lblProveedores = new Label();
+            pnlClientes = new Panel();
+            lblNroClientes = new Label();
+            picClientes = new PictureBox();
+            lblClientes = new Label();
+            pnlRecaudado = new Panel();
+            label1 = new Label();
+            lblTotalRecau = new Label();
+            picRecaudado = new PictureBox();
+            lblRecaudado = new Label();
+            pnlNroVentas = new Panel();
+            lblCantVentas = new Label();
+            lblNroVentas = new Label();
+            picNroVentas = new PictureBox();
             chartCategoriasVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartProductosVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlEncabezadoEsta = new Panel();
             label11 = new Label();
-            panel7 = new Panel();
-            pictureBox2 = new PictureBox();
-            panel3 = new Panel();
-            pictureBox3 = new PictureBox();
-            panel1 = new Panel();
-            pictureBox4 = new PictureBox();
-            panel6 = new Panel();
-            pictureBox5 = new PictureBox();
-            panel2 = new Panel();
-            pictureBox6 = new PictureBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
             pnlModuloEstadis.SuspendLayout();
             pnlContenedor.SuspendLayout();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pnlProductos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picProductos).BeginInit();
+            pnlEmpleados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picEmpleados).BeginInit();
+            pnlProveedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picProveedores).BeginInit();
+            pnlClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picClientes).BeginInit();
+            pnlRecaudado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecaudado).BeginInit();
+            pnlNroVentas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picNroVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartCategoriasVen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartProductosVen).BeginInit();
             pnlEncabezadoEsta.SuspendLayout();
-            panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
-            panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             SuspendLayout();
             // 
             // pnlModuloEstadis
@@ -94,87 +102,332 @@
             // 
             pnlContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             pnlContenedor.BackColor = Color.DimGray;
-            pnlContenedor.Controls.Add(panel2);
-            pnlContenedor.Controls.Add(panel6);
-            pnlContenedor.Controls.Add(panel1);
-            pnlContenedor.Controls.Add(panel3);
-            pnlContenedor.Controls.Add(panel7);
-            pnlContenedor.Controls.Add(panel4);
+            pnlContenedor.Controls.Add(pnlProductos);
+            pnlContenedor.Controls.Add(pnlEmpleados);
+            pnlContenedor.Controls.Add(pnlProveedores);
+            pnlContenedor.Controls.Add(pnlClientes);
+            pnlContenedor.Controls.Add(pnlRecaudado);
+            pnlContenedor.Controls.Add(pnlNroVentas);
             pnlContenedor.Controls.Add(chartCategoriasVen);
             pnlContenedor.Controls.Add(chartProductosVen);
             pnlContenedor.Location = new Point(12, 77);
             pnlContenedor.Name = "pnlContenedor";
-            pnlContenedor.Size = new Size(798, 476);
+            pnlContenedor.Size = new Size(800, 476);
             pnlContenedor.TabIndex = 3;
             // 
-            // panel4
+            // pnlProductos
             // 
-            panel4.BackColor = Color.White;
-            panel4.Controls.Add(label1);
-            panel4.Controls.Add(pictureBox1);
-            panel4.Location = new Point(413, 5);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(191, 71);
-            panel4.TabIndex = 4;
+            pnlProductos.BackColor = Color.White;
+            pnlProductos.Controls.Add(lblNroProdu);
+            pnlProductos.Controls.Add(picProductos);
+            pnlProductos.Controls.Add(lblProductos);
+            pnlProductos.Location = new Point(598, 158);
+            pnlProductos.Name = "pnlProductos";
+            pnlProductos.Size = new Size(188, 56);
+            pnlProductos.TabIndex = 6;
             // 
-            // pictureBox1
+            // lblNroProdu
             // 
-            pictureBox1.BackColor = Color.Black;
-            pictureBox1.Location = new Point(3, 5);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(65, 59);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            lblNroProdu.AutoSize = true;
+            lblNroProdu.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNroProdu.Location = new Point(69, 30);
+            lblNroProdu.Name = "lblNroProdu";
+            lblNroProdu.Size = new Size(37, 20);
+            lblNroProdu.TabIndex = 7;
+            lblNroProdu.Text = "xxxx";
+            lblNroProdu.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // picProductos
+            // 
+            picProductos.BackColor = Color.White;
+            picProductos.Image = (Image)resources.GetObject("picProductos.Image");
+            picProductos.Location = new Point(7, 6);
+            picProductos.Name = "picProductos";
+            picProductos.Size = new Size(56, 44);
+            picProductos.SizeMode = PictureBoxSizeMode.Zoom;
+            picProductos.TabIndex = 6;
+            picProductos.TabStop = false;
+            // 
+            // lblProductos
+            // 
+            lblProductos.AutoSize = true;
+            lblProductos.Location = new Point(69, 6);
+            lblProductos.Name = "lblProductos";
+            lblProductos.Size = new Size(106, 15);
+            lblProductos.TabIndex = 4;
+            lblProductos.Text = "Nro. de Productos:";
+            // 
+            // pnlEmpleados
+            // 
+            pnlEmpleados.BackColor = Color.White;
+            pnlEmpleados.Controls.Add(lblNroEmpleados);
+            pnlEmpleados.Controls.Add(picEmpleados);
+            pnlEmpleados.Controls.Add(lblEmpleados);
+            pnlEmpleados.Location = new Point(598, 89);
+            pnlEmpleados.Name = "pnlEmpleados";
+            pnlEmpleados.Size = new Size(188, 56);
+            pnlEmpleados.TabIndex = 6;
+            // 
+            // lblNroEmpleados
+            // 
+            lblNroEmpleados.AutoSize = true;
+            lblNroEmpleados.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNroEmpleados.Location = new Point(69, 29);
+            lblNroEmpleados.Name = "lblNroEmpleados";
+            lblNroEmpleados.Size = new Size(37, 20);
+            lblNroEmpleados.TabIndex = 5;
+            lblNroEmpleados.Text = "xxxx";
+            lblNroEmpleados.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // picEmpleados
+            // 
+            picEmpleados.BackColor = Color.White;
+            picEmpleados.Image = (Image)resources.GetObject("picEmpleados.Image");
+            picEmpleados.Location = new Point(7, 5);
+            picEmpleados.Name = "picEmpleados";
+            picEmpleados.Size = new Size(56, 44);
+            picEmpleados.SizeMode = PictureBoxSizeMode.Zoom;
+            picEmpleados.TabIndex = 5;
+            picEmpleados.TabStop = false;
+            // 
+            // lblEmpleados
+            // 
+            lblEmpleados.AutoSize = true;
+            lblEmpleados.Location = new Point(69, 5);
+            lblEmpleados.Name = "lblEmpleados";
+            lblEmpleados.Size = new Size(110, 15);
+            lblEmpleados.TabIndex = 3;
+            lblEmpleados.Text = "Nro. de Empleados:";
+            // 
+            // pnlProveedores
+            // 
+            pnlProveedores.BackColor = Color.White;
+            pnlProveedores.Controls.Add(lblNroProve);
+            pnlProveedores.Controls.Add(picProveedores);
+            pnlProveedores.Controls.Add(lblProveedores);
+            pnlProveedores.Location = new Point(404, 159);
+            pnlProveedores.Name = "pnlProveedores";
+            pnlProveedores.Size = new Size(188, 56);
+            pnlProveedores.TabIndex = 5;
+            // 
+            // lblNroProve
+            // 
+            lblNroProve.AutoSize = true;
+            lblNroProve.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNroProve.Location = new Point(65, 29);
+            lblNroProve.Name = "lblNroProve";
+            lblNroProve.Size = new Size(37, 20);
+            lblNroProve.TabIndex = 6;
+            lblNroProve.Text = "xxxx";
+            lblNroProve.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // picProveedores
+            // 
+            picProveedores.BackColor = Color.White;
+            picProveedores.Image = (Image)resources.GetObject("picProveedores.Image");
+            picProveedores.Location = new Point(3, 5);
+            picProveedores.Name = "picProveedores";
+            picProveedores.Size = new Size(56, 44);
+            picProveedores.SizeMode = PictureBoxSizeMode.Zoom;
+            picProveedores.TabIndex = 4;
+            picProveedores.TabStop = false;
+            // 
+            // lblProveedores
+            // 
+            lblProveedores.AutoSize = true;
+            lblProveedores.Location = new Point(65, 5);
+            lblProveedores.Name = "lblProveedores";
+            lblProveedores.Size = new Size(117, 15);
+            lblProveedores.TabIndex = 3;
+            lblProveedores.Text = "Nro. de Proveedores:";
+            // 
+            // pnlClientes
+            // 
+            pnlClientes.BackColor = Color.White;
+            pnlClientes.Controls.Add(lblNroClientes);
+            pnlClientes.Controls.Add(picClientes);
+            pnlClientes.Controls.Add(lblClientes);
+            pnlClientes.Location = new Point(404, 89);
+            pnlClientes.Name = "pnlClientes";
+            pnlClientes.Size = new Size(188, 56);
+            pnlClientes.TabIndex = 5;
+            // 
+            // lblNroClientes
+            // 
+            lblNroClientes.AutoSize = true;
+            lblNroClientes.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNroClientes.Location = new Point(65, 29);
+            lblNroClientes.Name = "lblNroClientes";
+            lblNroClientes.Size = new Size(37, 20);
+            lblNroClientes.TabIndex = 4;
+            lblNroClientes.Text = "xxxx";
+            lblNroClientes.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // picClientes
+            // 
+            picClientes.BackColor = Color.White;
+            picClientes.Image = (Image)resources.GetObject("picClientes.Image");
+            picClientes.Location = new Point(3, 5);
+            picClientes.Name = "picClientes";
+            picClientes.Size = new Size(56, 44);
+            picClientes.SizeMode = PictureBoxSizeMode.Zoom;
+            picClientes.TabIndex = 2;
+            picClientes.TabStop = false;
+            // 
+            // lblClientes
+            // 
+            lblClientes.AutoSize = true;
+            lblClientes.Location = new Point(65, 5);
+            lblClientes.Name = "lblClientes";
+            lblClientes.Size = new Size(94, 15);
+            lblClientes.TabIndex = 2;
+            lblClientes.Text = "Nro. de Clientes:";
+            // 
+            // pnlRecaudado
+            // 
+            pnlRecaudado.BackColor = Color.White;
+            pnlRecaudado.Controls.Add(label1);
+            pnlRecaudado.Controls.Add(lblTotalRecau);
+            pnlRecaudado.Controls.Add(picRecaudado);
+            pnlRecaudado.Controls.Add(lblRecaudado);
+            pnlRecaudado.Location = new Point(598, 19);
+            pnlRecaudado.Name = "pnlRecaudado";
+            pnlRecaudado.Size = new Size(188, 56);
+            pnlRecaudado.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(69, 27);
+            label1.Name = "label1";
+            label1.Size = new Size(17, 20);
+            label1.TabIndex = 4;
+            label1.Text = "$";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lblTotalRecau
+            // 
+            lblTotalRecau.AutoSize = true;
+            lblTotalRecau.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTotalRecau.Location = new Point(83, 27);
+            lblTotalRecau.Name = "lblTotalRecau";
+            lblTotalRecau.Size = new Size(37, 20);
+            lblTotalRecau.TabIndex = 3;
+            lblTotalRecau.Text = "xxxx";
+            lblTotalRecau.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // picRecaudado
+            // 
+            picRecaudado.BackColor = Color.White;
+            picRecaudado.Image = (Image)resources.GetObject("picRecaudado.Image");
+            picRecaudado.Location = new Point(7, 3);
+            picRecaudado.Name = "picRecaudado";
+            picRecaudado.Size = new Size(56, 44);
+            picRecaudado.SizeMode = PictureBoxSizeMode.Zoom;
+            picRecaudado.TabIndex = 2;
+            picRecaudado.TabStop = false;
+            // 
+            // lblRecaudado
+            // 
+            lblRecaudado.AutoSize = true;
+            lblRecaudado.Location = new Point(69, 5);
+            lblRecaudado.Name = "lblRecaudado";
+            lblRecaudado.Size = new Size(94, 15);
+            lblRecaudado.TabIndex = 2;
+            lblRecaudado.Text = "Total recaudado:";
+            // 
+            // pnlNroVentas
+            // 
+            pnlNroVentas.BackColor = Color.White;
+            pnlNroVentas.Controls.Add(lblCantVentas);
+            pnlNroVentas.Controls.Add(lblNroVentas);
+            pnlNroVentas.Controls.Add(picNroVentas);
+            pnlNroVentas.Location = new Point(404, 19);
+            pnlNroVentas.Name = "pnlNroVentas";
+            pnlNroVentas.Size = new Size(188, 56);
+            pnlNroVentas.TabIndex = 4;
+            // 
+            // lblCantVentas
+            // 
+            lblCantVentas.AutoSize = true;
+            lblCantVentas.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCantVentas.Location = new Point(65, 27);
+            lblCantVentas.Name = "lblCantVentas";
+            lblCantVentas.Size = new Size(37, 20);
+            lblCantVentas.TabIndex = 2;
+            lblCantVentas.Text = "xxxx";
+            lblCantVentas.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lblNroVentas
+            // 
+            lblNroVentas.AutoSize = true;
+            lblNroVentas.Location = new Point(65, 5);
+            lblNroVentas.Name = "lblNroVentas";
+            lblNroVentas.Size = new Size(86, 15);
+            lblNroVentas.TabIndex = 1;
+            lblNroVentas.Text = "Nro. de Ventas:";
+            // 
+            // picNroVentas
+            // 
+            picNroVentas.BackColor = Color.White;
+            picNroVentas.Image = (Image)resources.GetObject("picNroVentas.Image");
+            picNroVentas.Location = new Point(3, 5);
+            picNroVentas.Name = "picNroVentas";
+            picNroVentas.Size = new Size(56, 44);
+            picNroVentas.SizeMode = PictureBoxSizeMode.Zoom;
+            picNroVentas.TabIndex = 0;
+            picNroVentas.TabStop = false;
             // 
             // chartCategoriasVen
             // 
             chartCategoriasVen.Anchor = AnchorStyles.Bottom;
-            chartArea7.Name = "ChartArea1";
-            chartCategoriasVen.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            chartCategoriasVen.Legends.Add(legend7);
-            chartCategoriasVen.Location = new Point(413, 236);
+            chartArea1.Name = "ChartArea1";
+            chartCategoriasVen.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartCategoriasVen.Legends.Add(legend1);
+            chartCategoriasVen.Location = new Point(404, 236);
             chartCategoriasVen.Name = "chartCategoriasVen";
             chartCategoriasVen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series7.IsValueShownAsLabel = true;
-            series7.LabelForeColor = Color.White;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            chartCategoriasVen.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartCategoriasVen.Series.Add(series1);
             chartCategoriasVen.Size = new Size(382, 237);
             chartCategoriasVen.TabIndex = 1;
             chartCategoriasVen.Text = "chart1";
-            title7.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title7.Name = "Title1";
-            title7.Text = "Categorias más vendidas";
-            chartCategoriasVen.Titles.Add(title7);
+            title1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title1.Name = "Title1";
+            title1.Text = "Categorias más vendidas";
+            chartCategoriasVen.Titles.Add(title1);
             // 
             // chartProductosVen
             // 
             chartProductosVen.Anchor = AnchorStyles.Bottom;
-            chartArea8.Name = "ChartArea1";
-            chartProductosVen.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            chartProductosVen.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            chartProductosVen.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartProductosVen.Legends.Add(legend2);
             chartProductosVen.Location = new Point(12, 236);
             chartProductosVen.Name = "chartProductosVen";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series8.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            series8.IsValueShownAsLabel = true;
-            series8.LabelForeColor = Color.White;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            chartProductosVen.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = Color.White;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartProductosVen.Series.Add(series2);
             chartProductosVen.Size = new Size(382, 237);
             chartProductosVen.TabIndex = 2;
             chartProductosVen.Text = "chart2";
-            title8.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title8.Name = "Title1";
-            title8.Text = "Productos mas vendidos";
-            chartProductosVen.Titles.Add(title8);
+            title2.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title2.Name = "Title1";
+            title2.Text = "Productos mas vendidos";
+            chartProductosVen.Titles.Add(title2);
             // 
             // pnlEncabezadoEsta
             // 
@@ -200,155 +453,6 @@
             label11.Text = "Estadísticas de ventas";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // panel7
-            // 
-            panel7.BackColor = Color.White;
-            panel7.Controls.Add(label2);
-            panel7.Controls.Add(pictureBox2);
-            panel7.Location = new Point(607, 5);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(188, 71);
-            panel7.TabIndex = 5;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Black;
-            pictureBox2.Location = new Point(7, 5);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(65, 59);
-            pictureBox2.TabIndex = 0;
-            pictureBox2.TabStop = false;
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.White;
-            panel3.Controls.Add(label3);
-            panel3.Controls.Add(pictureBox3);
-            panel3.Location = new Point(413, 82);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(191, 71);
-            panel3.TabIndex = 5;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackColor = Color.Black;
-            pictureBox3.Location = new Point(3, 5);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(65, 59);
-            pictureBox3.TabIndex = 0;
-            pictureBox3.TabStop = false;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(pictureBox4);
-            panel1.Location = new Point(413, 159);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(191, 71);
-            panel1.TabIndex = 5;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.Black;
-            pictureBox4.Location = new Point(3, 5);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(65, 59);
-            pictureBox4.TabIndex = 0;
-            pictureBox4.TabStop = false;
-            // 
-            // panel6
-            // 
-            panel6.BackColor = Color.White;
-            panel6.Controls.Add(label4);
-            panel6.Controls.Add(pictureBox5);
-            panel6.Location = new Point(607, 82);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(188, 71);
-            panel6.TabIndex = 6;
-            // 
-            // pictureBox5
-            // 
-            pictureBox5.BackColor = Color.Black;
-            pictureBox5.Location = new Point(7, 5);
-            pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(65, 59);
-            pictureBox5.TabIndex = 0;
-            pictureBox5.TabStop = false;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.White;
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(pictureBox6);
-            panel2.Location = new Point(607, 159);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(188, 71);
-            panel2.TabIndex = 6;
-            // 
-            // pictureBox6
-            // 
-            pictureBox6.BackColor = Color.Black;
-            pictureBox6.Location = new Point(7, 5);
-            pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(65, 59);
-            pictureBox6.TabIndex = 0;
-            pictureBox6.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(74, 5);
-            label1.Name = "label1";
-            label1.Size = new Size(86, 15);
-            label1.TabIndex = 1;
-            label1.Text = "Nro. de Ventas:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(78, 5);
-            label2.Name = "label2";
-            label2.Size = new Size(94, 15);
-            label2.TabIndex = 2;
-            label2.Text = "Total recaudado:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(74, 5);
-            label3.Name = "label3";
-            label3.Size = new Size(94, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Nro. de Clientes:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(75, 5);
-            label4.Name = "label4";
-            label4.Size = new Size(110, 15);
-            label4.TabIndex = 3;
-            label4.Text = "Nro. de Empleados:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(71, 5);
-            label5.Name = "label5";
-            label5.Size = new Size(117, 15);
-            label5.TabIndex = 3;
-            label5.Text = "Nro. de Proveedores:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(75, 5);
-            label6.Name = "label6";
-            label6.Size = new Size(106, 15);
-            label6.TabIndex = 4;
-            label6.Text = "Nro. de Productos:";
-            // 
             // ModuloEstadisticas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -360,28 +464,28 @@
             Load += ModuloEstadisticas_Load;
             pnlModuloEstadis.ResumeLayout(false);
             pnlContenedor.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            pnlProductos.ResumeLayout(false);
+            pnlProductos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picProductos).EndInit();
+            pnlEmpleados.ResumeLayout(false);
+            pnlEmpleados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picEmpleados).EndInit();
+            pnlProveedores.ResumeLayout(false);
+            pnlProveedores.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picProveedores).EndInit();
+            pnlClientes.ResumeLayout(false);
+            pnlClientes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picClientes).EndInit();
+            pnlRecaudado.ResumeLayout(false);
+            pnlRecaudado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecaudado).EndInit();
+            pnlNroVentas.ResumeLayout(false);
+            pnlNroVentas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picNroVentas).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartCategoriasVen).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartProductosVen).EndInit();
             pnlEncabezadoEsta.ResumeLayout(false);
             pnlEncabezadoEsta.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ResumeLayout(false);
         }
 
@@ -393,23 +497,30 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartProductosVen;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCategoriasVen;
         private Panel pnlContenedor;
-        private Panel panel4;
-        private PictureBox pictureBox1;
-        private Panel panel2;
-        private PictureBox pictureBox6;
-        private Panel panel6;
-        private PictureBox pictureBox5;
-        private Panel panel1;
-        private PictureBox pictureBox4;
-        private Panel panel3;
-        private PictureBox pictureBox3;
-        private Panel panel7;
-        private PictureBox pictureBox2;
+        private Panel pnlNroVentas;
+        private PictureBox picNroVentas;
+        private Panel pnlProductos;
+        private Panel pnlEmpleados;
+        private Panel pnlProveedores;
+        private Panel pnlClientes;
+        private Panel pnlRecaudado;
+        private Label lblNroVentas;
+        private Label lblProductos;
+        private Label lblEmpleados;
+        private Label lblProveedores;
+        private Label lblClientes;
+        private Label lblRecaudado;
+        private PictureBox picProveedores;
+        private PictureBox picClientes;
+        private PictureBox picProductos;
+        private PictureBox picEmpleados;
+        private PictureBox picRecaudado;
+        private Label lblCantVentas;
+        private Label lblTotalRecau;
+        private Label lblNroProdu;
+        private Label lblNroEmpleados;
+        private Label lblNroProve;
+        private Label lblNroClientes;
         private Label label1;
-        private Label label6;
-        private Label label4;
-        private Label label5;
-        private Label label3;
-        private Label label2;
     }
 }

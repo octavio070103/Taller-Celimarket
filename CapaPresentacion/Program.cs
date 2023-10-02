@@ -17,7 +17,7 @@ namespace CapaPresentacion
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             
-            Application.Run(new formLogin());//formulario que inicia ,test gitignore
+            Application.Run(new MenuVendedo());//formulario que inicia ,test gitignore
 
         }
     }

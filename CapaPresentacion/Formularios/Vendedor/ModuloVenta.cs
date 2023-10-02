@@ -230,5 +230,9 @@ namespace CapaPresentacion.Formularios.Vendedor
             txtCliente.Text = pDatosCliente[1];
         }
 
+        private void btnPagar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

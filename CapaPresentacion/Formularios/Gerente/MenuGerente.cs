@@ -250,12 +250,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnVentas_Click(object sender, EventArgs e)
         {
-            //  OpenChildForm(new Admin.FrmGestionarUsuario(this));
+            OpenChildForm(new ModuloRegistroGeren());
         }
 
         private void iconBtnEstadisticas_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new ModuloEstadisticas(this));
+            OpenChildForm(new ModuloEstadisticas());
         }
 
         private void iconBtnOperaciones_Click(object sender, EventArgs e)

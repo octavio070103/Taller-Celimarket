@@ -1,4 +1,6 @@
-﻿using CapaPresentacion.Formularios.Vendedor;
+﻿using capaEntidad;
+using CapaPresentacion.Formularios.Vendedor;
+using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,12 +15,43 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 {
     public partial class MenuVendedo : Form
     {
-       
+        private static capaEntidad.usuario usuarioActual;
+
         public MenuVendedo(capaEntidad.usuario objUsuario = null)
         {
             InitializeComponent();
             personalizarDiseno();
-            
+
+            if (objUsuario == null)
+            {
+                usuarioActual = new capaEntidad.usuario()
+                {
+                    id_usuario = 5,
+                    email = "prueba@gmail",
+                    password = "1",
+                    estado_usuario = 1,
+                    obj_persona = new persona()
+                    {
+                        id_persona = 5,
+                        dni = "111",
+                        nombre = "prueba",
+                        apellido = "prueba",
+                        fecha_nacimiento = new DateTime(2003, 7, 1), // Año, mes, día 
+                        telefono = "33"
+                    },
+                    obj_rol = new rol()
+                    {
+                        id_rol = 6,
+                        descripcion_rol = "Vendedor"
+                    }
+                };
+            }
+            else
+            {
+                //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
+                usuarioActual = objUsuario;
+            }
+
         }
 
         private void personalizarDiseno()
@@ -38,6 +71,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             //*** Modificar si es necesario - borrar
             abrirFormularioHijo(new frmModuloCliente());
+            lblTituloMenu.Text = btnAbrirClientes.Text;
             //mostrarSubmenu(PSubmenu1);
         }
 
@@ -52,7 +86,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             //**** Falta el codigo a ejecutar
             abrirFormularioHijo(new frmModuloVenta());
-
+            lblTituloMenu.Text = button5.Text;
         }
 
 
@@ -90,7 +124,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void MenuVendedo_Load(object sender, EventArgs e)
         {
-
+            lblRolUsuario.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
+            lblNombreUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
         }
 
         private void PVentana_Paint(object sender, PaintEventArgs e)
@@ -125,6 +160,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void btnRegistrarConsultas_Click(object sender, EventArgs e)
         {
             abrirFormularioHijo(new frmModuloConsultas());
+            lblTituloMenu.Text = btnRegistrarConsultas.Text;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -134,6 +170,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 formularioActivo.Close();
             }
 
+        }
+
+        private void btnRegistroVen_Click(object sender, EventArgs e)
+        {
+            abrirFormularioHijo( new ModuloRegistroGeren());
         }
     }
 }
