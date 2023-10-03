@@ -261,7 +261,16 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void btnPagar_Click(object sender, EventArgs e)
         {
-
+            if ( dtgvListaCompra.Rows.Count > 0 )
+            {
+                string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text, 
+                                             lblCalculoTotal.Text };
+                abrirFormularioHijo( new frmResumenVenta( dtgvListaCompra, auxDatosResumen ) );
+            }
+            else
+            {
+                MessageBox.Show("No hay productos agregados al carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
