@@ -175,11 +175,18 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //txtNombre.Text = dtgvListaCompra.CurrentRow.Cells[0].Value.ToString();
-            dtgvListaCompra.CurrentRow.Cells[1].Value = txtCantidad.Text;
-            //dtgvListaCompra.CurrentRow.Cells[2].Value = txtPrecio.Text;
-            //dtgvListaCompra.CurrentRow.Cells[3].Value = txtCategoria.Text;
-            limpiarCampos();
+
+            if (validarCampos() == true)
+            {
+                dtgvListaCompra.CurrentRow.Cells[1].Value = txtCantidad.Text;
+                limpiarCampos();
+
+            }
+            else
+            {
+                MessageBox.Show("Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)

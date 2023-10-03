@@ -1,5 +1,6 @@
 using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente;
+using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
