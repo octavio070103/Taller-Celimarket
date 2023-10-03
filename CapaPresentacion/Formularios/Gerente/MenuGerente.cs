@@ -84,6 +84,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+      
+            btnMenu.Visible = false; //oculto el boton del menu para que el usuairo al momento de iniciar no pueda verlo
+            
         }
 
         private void MenuGerente_Load(object sender, EventArgs e)
@@ -130,6 +133,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         //lo que generalmente significa que solo puede ser utilizado dentro del proyecto actual.
         internal void OpenChildForm(Form childForm) //internal puede manejar los formularios (hijos de)
         {
+            btnMenu.Visible = true; // ver como soluciono el tema del boton por ahora lo que encontre es de ocultarlo al momento del inicio y luego cuando abre un form secundario lo muestro
+
             //Estas líneas verifican si ya hay un formulario secundario abierto (currentChildForm no es nulo).
             //Si hay un formulario secundario abierto, se cierra antes de abrir el nuevo. Esto asegura que solo haya un formulario secundario abierto a la vez en el formulario principal.
             if (currentChildForm != null)
@@ -152,16 +157,19 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
-            if (currentChildForm != null)
-            {
-                // cierra el formulario actual
-                currentChildForm.Close();
+            
+                //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+                if (currentChildForm != null)
+                {
+                    // cierra el formulario actual
+                    currentChildForm.Close();
 
-            }
-            // Muestra el formulario principal (el "Home")
-            MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-            menuGerente.Show();
+                }
+                // Muestra el formulario principal (el "Home")
+                MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+                menuGerente.Show();
+            
+           
         }
 
         private void picMinPantalla_Click(object sender, EventArgs e)
@@ -178,7 +186,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void picCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void picMaxPantalla_Click(object sender, EventArgs e)

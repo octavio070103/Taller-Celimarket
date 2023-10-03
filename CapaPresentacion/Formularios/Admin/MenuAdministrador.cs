@@ -58,6 +58,7 @@ namespace CapaPresentacion.Formularios.Admin
                         descripcion_rol = "administrador"
                     }
                 };
+            
             }
             else
             {
@@ -116,16 +117,20 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
-            if (currentChildForm != null)
-            {
-                // cierra el formulario actual
-                currentChildForm.Close();
+            
+                //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+                if (currentChildForm != null)
+                {
+                    // cierra el formulario actual
+                    currentChildForm.Close();
 
-            }
-            // Muestra el formulario principal (el "Home")
-            MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-            menuAdmin.Show();
+                }
+                // Muestra el formulario principal (el "Home")
+                MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+                menuAdmin.Show();
+
+           
+           
 
         }
 
