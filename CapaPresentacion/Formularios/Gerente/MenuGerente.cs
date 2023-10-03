@@ -163,11 +163,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 {
                     // cierra el formulario actual
                     currentChildForm.Close();
-
+                
                 }
                 // Muestra el formulario principal (el "Home")
-                MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-                menuGerente.Show();
+                //MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+                // menuGerente.Show();
             
            
         }
