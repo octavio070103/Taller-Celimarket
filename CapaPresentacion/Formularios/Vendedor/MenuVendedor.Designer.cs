@@ -225,6 +225,7 @@
             lblCerrarSesion.Size = new Size(93, 17);
             lblCerrarSesion.TabIndex = 0;
             lblCerrarSesion.Text = "Cerrar sesión";
+            lblCerrarSesion.Click += lblCerrarSesion_Click;
             // 
             // picCerrarSesion
             // 
@@ -237,6 +238,7 @@
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
             picCerrarSesion.TabIndex = 0;
             picCerrarSesion.TabStop = false;
+            picCerrarSesion.Click += picCerrarSesion_Click;
             // 
             // button5
             // 

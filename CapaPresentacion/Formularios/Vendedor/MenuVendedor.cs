@@ -174,7 +174,26 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnRegistroVen_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo( new ModuloRegistroGeren());
+            abrirFormularioHijo(new ModuloRegistroGeren());
+        }
+
+        private void lblCerrarSesion_Click(object sender, EventArgs e)
+        {
+            DialogResult salida = MessageBox.Show("¿Esta seguro que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
+            if (salida == DialogResult.OK)
+            {
+                // Redirige al usuario a la pantalla de inicio de sesión.
+                formLogin loginForm = new formLogin();
+                loginForm.Show();
+
+                // Cierra el formulario actual.
+                this.Close();
+            }
+        }
+
+        private void picCerrarSesion_Click(object sender, EventArgs e)
+        {
+            lblCerrarSesion_Click(sender, e);
         }
     }
 }
