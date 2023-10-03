@@ -124,14 +124,10 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void MenuVendedo_Load(object sender, EventArgs e)
         {
-            lblRolUsuario.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
-            lblNombreUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblNombreUsuario.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
         }
 
-        private void PVentana_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void picCerrar_Click(object sender, EventArgs e)
         {

@@ -175,7 +175,7 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 39);
             PMenuLat.Name = "PMenuLat";
-            PMenuLat.Size = new Size(250, 610);
+            PMenuLat.Size = new Size(221, 610);
             PMenuLat.TabIndex = 2;
             // 
             // btnRegistroVen
@@ -183,16 +183,16 @@
             btnRegistroVen.BackColor = Color.FromArgb(17, 17, 27);
             btnRegistroVen.Cursor = Cursors.Hand;
             btnRegistroVen.Dock = DockStyle.Top;
-            btnRegistroVen.FlatAppearance.BorderSize = 0;
-            btnRegistroVen.FlatStyle = FlatStyle.Flat;
+            btnRegistroVen.FlatStyle = FlatStyle.Popup;
             btnRegistroVen.ForeColor = SystemColors.ControlLightLight;
+            btnRegistroVen.Image = (Image)resources.GetObject("btnRegistroVen.Image");
+            btnRegistroVen.ImageAlign = ContentAlignment.MiddleLeft;
             btnRegistroVen.Location = new Point(0, 268);
             btnRegistroVen.Name = "btnRegistroVen";
             btnRegistroVen.Padding = new Padding(10, 0, 0, 0);
-            btnRegistroVen.Size = new Size(250, 45);
+            btnRegistroVen.Size = new Size(221, 45);
             btnRegistroVen.TabIndex = 4;
             btnRegistroVen.Text = "Registro de ventas";
-            btnRegistroVen.TextAlign = ContentAlignment.MiddleLeft;
             btnRegistroVen.UseVisualStyleBackColor = false;
             btnRegistroVen.Click += btnRegistroVen_Click;
             // 
@@ -201,16 +201,16 @@
             btnRegistrarConsultas.BackColor = Color.FromArgb(17, 17, 27);
             btnRegistrarConsultas.Cursor = Cursors.Hand;
             btnRegistrarConsultas.Dock = DockStyle.Top;
-            btnRegistrarConsultas.FlatAppearance.BorderSize = 0;
-            btnRegistrarConsultas.FlatStyle = FlatStyle.Flat;
+            btnRegistrarConsultas.FlatStyle = FlatStyle.Popup;
             btnRegistrarConsultas.ForeColor = SystemColors.ControlLightLight;
+            btnRegistrarConsultas.Image = (Image)resources.GetObject("btnRegistrarConsultas.Image");
+            btnRegistrarConsultas.ImageAlign = ContentAlignment.MiddleLeft;
             btnRegistrarConsultas.Location = new Point(0, 223);
             btnRegistrarConsultas.Name = "btnRegistrarConsultas";
             btnRegistrarConsultas.Padding = new Padding(10, 0, 0, 0);
-            btnRegistrarConsultas.Size = new Size(250, 45);
+            btnRegistrarConsultas.Size = new Size(221, 45);
             btnRegistrarConsultas.TabIndex = 3;
             btnRegistrarConsultas.Text = "Consultas";
-            btnRegistrarConsultas.TextAlign = ContentAlignment.MiddleLeft;
             btnRegistrarConsultas.UseVisualStyleBackColor = false;
             btnRegistrarConsultas.Click += btnRegistrarConsultas_Click;
             // 
@@ -220,7 +220,7 @@
             lblCerrarSesion.AutoSize = true;
             lblCerrarSesion.Cursor = Cursors.Hand;
             lblCerrarSesion.ForeColor = SystemColors.Window;
-            lblCerrarSesion.Location = new Point(38, 581);
+            lblCerrarSesion.Location = new Point(38, 583);
             lblCerrarSesion.Name = "lblCerrarSesion";
             lblCerrarSesion.Size = new Size(93, 17);
             lblCerrarSesion.TabIndex = 0;
@@ -232,7 +232,7 @@
             picCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             picCerrarSesion.Cursor = Cursors.Hand;
             picCerrarSesion.Image = (Image)resources.GetObject("picCerrarSesion.Image");
-            picCerrarSesion.Location = new Point(10, 581);
+            picCerrarSesion.Location = new Point(10, 583);
             picCerrarSesion.Name = "picCerrarSesion";
             picCerrarSesion.Size = new Size(22, 22);
             picCerrarSesion.SizeMode = PictureBoxSizeMode.Zoom;
@@ -245,16 +245,16 @@
             button5.BackColor = Color.FromArgb(17, 17, 27);
             button5.Cursor = Cursors.Hand;
             button5.Dock = DockStyle.Top;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
+            button5.FlatStyle = FlatStyle.Popup;
             button5.ForeColor = SystemColors.ControlLightLight;
+            button5.Image = (Image)resources.GetObject("button5.Image");
+            button5.ImageAlign = ContentAlignment.MiddleLeft;
             button5.Location = new Point(0, 178);
             button5.Name = "button5";
             button5.Padding = new Padding(10, 0, 0, 0);
-            button5.Size = new Size(250, 45);
+            button5.Size = new Size(221, 45);
             button5.TabIndex = 2;
             button5.Text = "Ventas";
-            button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = false;
             button5.Click += button4_Click;
             // 
@@ -263,16 +263,16 @@
             btnAbrirClientes.BackColor = Color.FromArgb(17, 17, 27);
             btnAbrirClientes.Cursor = Cursors.Hand;
             btnAbrirClientes.Dock = DockStyle.Top;
-            btnAbrirClientes.FlatAppearance.BorderSize = 0;
-            btnAbrirClientes.FlatStyle = FlatStyle.Flat;
+            btnAbrirClientes.FlatStyle = FlatStyle.Popup;
             btnAbrirClientes.ForeColor = SystemColors.ControlLightLight;
+            btnAbrirClientes.Image = (Image)resources.GetObject("btnAbrirClientes.Image");
+            btnAbrirClientes.ImageAlign = ContentAlignment.MiddleLeft;
             btnAbrirClientes.Location = new Point(0, 133);
             btnAbrirClientes.Name = "btnAbrirClientes";
             btnAbrirClientes.Padding = new Padding(10, 0, 0, 0);
-            btnAbrirClientes.Size = new Size(250, 45);
+            btnAbrirClientes.Size = new Size(221, 45);
             btnAbrirClientes.TabIndex = 0;
             btnAbrirClientes.Text = "Clientes";
-            btnAbrirClientes.TextAlign = ContentAlignment.MiddleLeft;
             btnAbrirClientes.UseVisualStyleBackColor = false;
             btnAbrirClientes.Click += btnAbrirClientes_Click;
             // 
@@ -286,7 +286,7 @@
             PLogo.Dock = DockStyle.Top;
             PLogo.Location = new Point(0, 0);
             PLogo.Name = "PLogo";
-            PLogo.Size = new Size(250, 133);
+            PLogo.Size = new Size(221, 133);
             PLogo.TabIndex = 1;
             // 
             // lblNombreUsuario
@@ -324,9 +324,9 @@
             // picUsuario
             // 
             picUsuario.Image = (Image)resources.GetObject("picUsuario.Image");
-            picUsuario.Location = new Point(160, 15);
+            picUsuario.Location = new Point(136, 3);
             picUsuario.Name = "picUsuario";
-            picUsuario.Size = new Size(84, 84);
+            picUsuario.Size = new Size(79, 80);
             picUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             picUsuario.TabIndex = 0;
             picUsuario.TabStop = false;
@@ -335,9 +335,9 @@
             // 
             PVentana.BackColor = Color.FromArgb(52, 53, 68);
             PVentana.Dock = DockStyle.Fill;
-            PVentana.Location = new Point(250, 39);
+            PVentana.Location = new Point(221, 39);
             PVentana.Name = "PVentana";
-            PVentana.Size = new Size(909, 610);
+            PVentana.Size = new Size(938, 610);
             PVentana.TabIndex = 3;
             // 
             // MenuVendedo
