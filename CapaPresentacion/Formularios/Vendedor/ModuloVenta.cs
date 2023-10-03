@@ -114,7 +114,12 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             if (validarCampos() == true)
             {
-                dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text);
+                float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
+
+                dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal);
+                //
+                calcularTotal();
+
                 limpiarCampos();
 
             }
@@ -133,7 +138,6 @@ namespace CapaPresentacion.Formularios.Vendedor
             txtCantidad.Text = "";
             txtPrecio.Text = "";
         }
-
 
 
         private void dtgvListaCompra_SelectionChanged(object sender, EventArgs e)
@@ -179,6 +183,12 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (validarCampos() == true)
             {
                 dtgvListaCompra.CurrentRow.Cells[1].Value = txtCantidad.Text;
+
+                //
+                float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
+                dtgvListaCompra.CurrentRow.Cells["subtotal_producto_carrito"].Value = subtotal;
+                calcularTotal();
+
                 limpiarCampos();
 
             }
@@ -186,7 +196,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             {
                 MessageBox.Show("Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)
@@ -206,7 +216,19 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void btnQuitarCarrito_Click(object sender, EventArgs e)
         {
-            dtgvListaCompra.Rows.Remove(dtgvListaCompra.CurrentRow);
+            if ( dtgvListaCompra.Rows.Count > 0)
+            {
+                dtgvListaCompra.Rows.Remove(dtgvListaCompra.CurrentRow);
+
+            }
+            else
+            {
+                MessageBox.Show("No se ha seleccionado ningun producto del carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            //
+            calcularTotal();
+
             limpiarCampos();
         }
 
@@ -241,5 +263,27 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
 
         }
+
+
+        private void calcularTotal()
+        {
+            int i = 0;
+            float total = 0;
+
+            if (dtgvListaCompra.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dtgvListaCompra.Rows)
+                {
+                    total = total + float.Parse(fila.Cells["subtotal_producto_carrito"].Value.ToString());
+
+                    lblCalculoTotal.Text = "$" + Convert.ToString(total);
+                }
+            }
+            else
+            {
+                lblCalculoTotal.Text = "$0";
+            }
+        }
+
     }
 }

@@ -39,6 +39,7 @@
             lblMetodoCarrito = new Label();
             lblClienteCarrito = new Label();
             pnlTotal = new Panel();
+            lblCalculoTotal = new Label();
             lblTotal = new Label();
             pnlEncabezado = new Panel();
             lblCarrito = new Label();
@@ -48,6 +49,7 @@
             cantidad_producto_carrito = new DataGridViewTextBoxColumn();
             precio_producto_carrito = new DataGridViewTextBoxColumn();
             categoria_producto_carrito = new DataGridViewTextBoxColumn();
+            subtotal_producto_carrito = new DataGridViewTextBoxColumn();
             pnlListaProductos = new Panel();
             panel1 = new Panel();
             txtIdCliente = new TextBox();
@@ -178,11 +180,22 @@
             // 
             pnlTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlTotal.BorderStyle = BorderStyle.FixedSingle;
+            pnlTotal.Controls.Add(lblCalculoTotal);
             pnlTotal.Controls.Add(lblTotal);
             pnlTotal.Location = new Point(16, 412);
             pnlTotal.Name = "pnlTotal";
             pnlTotal.Size = new Size(215, 25);
             pnlTotal.TabIndex = 16;
+            // 
+            // lblCalculoTotal
+            // 
+            lblCalculoTotal.AutoSize = true;
+            lblCalculoTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCalculoTotal.Location = new Point(148, 0);
+            lblCalculoTotal.Name = "lblCalculoTotal";
+            lblCalculoTotal.Size = new Size(28, 21);
+            lblCalculoTotal.TabIndex = 16;
+            lblCalculoTotal.Text = "$0";
             // 
             // lblTotal
             // 
@@ -253,10 +266,11 @@
             dtgvListaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dtgvListaCompra.ColumnHeadersHeight = 30;
             dtgvListaCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgvListaCompra.Columns.AddRange(new DataGridViewColumn[] { nombre_producto_carrito, cantidad_producto_carrito, precio_producto_carrito, categoria_producto_carrito });
+            dtgvListaCompra.Columns.AddRange(new DataGridViewColumn[] { nombre_producto_carrito, cantidad_producto_carrito, precio_producto_carrito, categoria_producto_carrito, subtotal_producto_carrito });
             dtgvListaCompra.EnableHeadersVisualStyles = false;
             dtgvListaCompra.Location = new Point(0, 40);
             dtgvListaCompra.Name = "dtgvListaCompra";
+            dtgvListaCompra.ReadOnly = true;
             dtgvListaCompra.RowTemplate.Height = 25;
             dtgvListaCompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListaCompra.Size = new Size(243, 261);
@@ -268,12 +282,14 @@
             // 
             nombre_producto_carrito.HeaderText = "Nombre";
             nombre_producto_carrito.Name = "nombre_producto_carrito";
+            nombre_producto_carrito.ReadOnly = true;
             // 
             // cantidad_producto_carrito
             // 
             cantidad_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             cantidad_producto_carrito.HeaderText = "Cant.";
             cantidad_producto_carrito.Name = "cantidad_producto_carrito";
+            cantidad_producto_carrito.ReadOnly = true;
             cantidad_producto_carrito.Width = 65;
             // 
             // precio_producto_carrito
@@ -281,12 +297,20 @@
             precio_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             precio_producto_carrito.HeaderText = "Precio U.";
             precio_producto_carrito.Name = "precio_producto_carrito";
+            precio_producto_carrito.ReadOnly = true;
             precio_producto_carrito.Width = 87;
             // 
             // categoria_producto_carrito
             // 
             categoria_producto_carrito.HeaderText = "Categoria";
             categoria_producto_carrito.Name = "categoria_producto_carrito";
+            categoria_producto_carrito.ReadOnly = true;
+            // 
+            // subtotal_producto_carrito
+            // 
+            subtotal_producto_carrito.HeaderText = "Subtotal";
+            subtotal_producto_carrito.Name = "subtotal_producto_carrito";
+            subtotal_producto_carrito.ReadOnly = true;
             // 
             // pnlListaProductos
             // 
@@ -719,10 +743,6 @@
         private TextBox txtPrecio;
         private Panel panel1;
         private Button btnQuitarCarrito;
-        private DataGridViewTextBoxColumn nombre_producto_carrito;
-        private DataGridViewTextBoxColumn cantidad_producto_carrito;
-        private DataGridViewTextBoxColumn precio_producto_carrito;
-        private DataGridViewTextBoxColumn categoria_producto_carrito;
         private Label lblMetodoCarrito;
         private Label lblClienteCarrito;
         private Label lblModificarCliente;
@@ -733,5 +753,11 @@
         private DataGridViewTextBoxColumn categoria_producto;
         private DataGridViewTextBoxColumn precio_producto;
         private DataGridViewTextBoxColumn stock_producto;
+        private DataGridViewTextBoxColumn nombre_producto_carrito;
+        private DataGridViewTextBoxColumn cantidad_producto_carrito;
+        private DataGridViewTextBoxColumn precio_producto_carrito;
+        private DataGridViewTextBoxColumn categoria_producto_carrito;
+        private DataGridViewTextBoxColumn subtotal_producto_carrito;
+        private Label lblCalculoTotal;
     }
 }
