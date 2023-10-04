@@ -39,6 +39,7 @@ namespace CapaPresentacion.Formularios.Vendedor
 
                 for (int i = 0; i < fila.Cells.Count; i++)
                 {
+                    // Recorre cada celda de la fila y lo asigna a las celdas de la fila a agregar
                     auxFilaAgregar.Cells[i].Value = fila.Cells[i].Value;
                 }
 

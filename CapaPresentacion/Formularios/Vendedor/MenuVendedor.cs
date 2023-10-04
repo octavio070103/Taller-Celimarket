@@ -16,14 +16,22 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
     public partial class MenuVendedo : Form
     {
         private static capaEntidad.usuario usuarioActual;
+        private Form formularioActivo = null;
 
         public MenuVendedo(capaEntidad.usuario objUsuario = null)
         {
             InitializeComponent();
             personalizarDiseno();
 
+            /** Permite personalizar los campos de Nombre de usuario y Rol cuando el usuario inicia sesion.
+             */
+
             if (objUsuario == null)
             {
+                /** Si el usuario es nulo, se crea un usuario por default. Esto permite realizar 
+                 * prueba de funcionamiento.
+                 */
+
                 usuarioActual = new capaEntidad.usuario()
                 {
                     id_usuario = 5,
@@ -48,7 +56,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             }
             else
             {
-                //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
+                /** Entrara aqui en caso de que un usuario registrado sea quien inicie sesión.
+                 */
                 usuarioActual = objUsuario;
             }
 
@@ -58,30 +67,20 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             //**** Este metodo oculta los SUBMENUS del menu lateral al iniciar ***
             //PSubmenu1.Visible = false;
-            //*** Hacer para cada submenu - borrar
-        }
-
-        private void PMenuLat_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
 
+        /** Permite abrir el modulo dedicado al registro, eliminacion y modificacion de clientes.
+         */
         private void btnAbrirClientes_Click(object sender, EventArgs e)
         {
-            //*** Modificar si es necesario - borrar
             abrirFormularioHijo(new frmModuloCliente());
             lblTituloMenu.Text = btnAbrirClientes.Text;
-            //mostrarSubmenu(PSubmenu1);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //**** Falta el codigo a ejecutar - borrar 
-            abrirFormularioHijo(new FormPrueba());
 
-        }
-
+        /** Permite abrir el modulo dedicado a las ventas del dia a dia.
+         */
         private void button4_Click(object sender, EventArgs e)
         {
             //**** Falta el codigo a ejecutar
@@ -90,13 +89,15 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         }
 
 
-        private Form formularioActivo = null;
+        /** Permite abrir un formulario dentro del menu del vendedor.
+        */
         private void abrirFormularioHijo(Form formHijo)
         {
             //**** Este metodo abrira el formulario indicado por cada boton ****
 
-            if (formularioActivo == null) // cambiar por !=
+            if (formularioActivo == null)
             {
+                //** Se le indican las propiedades que debe tomar el form al ejecutarse
 
                 formularioActivo = formHijo;
                 formHijo.TopLevel = false;
@@ -122,6 +123,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         }
 
+
+        /** Permite cargar los label de rol y nombre de acuerdo al usuario del vendedor
+         */
         private void MenuVendedo_Load(object sender, EventArgs e)
         {
             lblRolUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
@@ -134,6 +138,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             Application.Exit();
         }
 
+
+        /** Permite maximizar la pantalla de la aplicacion
+         */
         private void picMaxPantalla_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
@@ -153,12 +160,17 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             this.WindowState = FormWindowState.Minimized;
         }
 
+
+        /** Permite acceder al modulo de registro de consultas
+         */
         private void btnRegistrarConsultas_Click(object sender, EventArgs e)
         {
             abrirFormularioHijo(new frmModuloConsultas());
             lblTituloMenu.Text = btnRegistrarConsultas.Text;
         }
 
+        /** Permite volver al menu principal
+         */
         private void btnMenu_Click(object sender, EventArgs e)
         {
             if (formularioActivo != null)
@@ -168,11 +180,16 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         }
 
+        /** Permite acceder al modulo de registro de ventas del dia del vendedor
+         */
         private void btnRegistroVen_Click(object sender, EventArgs e)
         {
             abrirFormularioHijo(new ModuloRegistroGeren());
         }
 
+
+        /** Permite al usuario cerrar sesion
+         */
         private void lblCerrarSesion_Click(object sender, EventArgs e)
         {
             DialogResult salida = MessageBox.Show("¿Esta seguro que desea cerrar sesión?", "Cerrar sesión", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);

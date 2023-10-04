@@ -57,7 +57,8 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
-
+        /** Permite validar que solo se ingresen caracteres de letras
+        */
         private void soloLetras_KeyPress(object sender, KeyPressEventArgs e)
         {
             Auxiliares auxLetras = new Auxiliares();
@@ -70,11 +71,18 @@ namespace CapaPresentacion.Formularios.Vendedor
             auxNumeros.soloNumeros_KeyPress(sender, e);
         }
 
+
+        /** Evita que se modifiquen campos no permitidos.
+         */
         private void desactivarModificacion_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
 
+
+        /** Permite rellenar los campos de texto automaticamente al seleccionar un producto
+         * de la lista de productos disponibles
+         */
         private void dtgvProductos_SelectionChanged(object sender, EventArgs e)
         {
             btnQuitarCarrito.Enabled = false;
@@ -98,6 +106,10 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
+
+        /** Permite rellenar los campos de texto automaticamente al seleccionar un producto
+        * de la lista de productos disponibles
+        */
         private void dtgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgvProductos.Rows.Count > 0)
@@ -109,6 +121,9 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
+
+        /** Permite agregar productos al carrito de compras
+        */
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
@@ -117,7 +132,8 @@ namespace CapaPresentacion.Formularios.Vendedor
                 float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
 
                 dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal);
-                //
+                
+                // *** Calcula el total a pagar del carrito de compras
                 calcularTotal();
 
                 limpiarCampos();
@@ -131,6 +147,10 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+
+        /** Permite limpiar los campos de texto
+        */
+
         private void limpiarCampos()
         {
             txtNombre.Text = "";
@@ -139,7 +159,8 @@ namespace CapaPresentacion.Formularios.Vendedor
             txtPrecio.Text = "";
         }
 
-
+        /** Permite rellenar los campos de texto al seleccionar una fila de la lista del carrito de compras
+         */
         private void dtgvListaCompra_SelectionChanged(object sender, EventArgs e)
         {
             btnAgregar.Enabled = false;
@@ -162,6 +183,8 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
+        /** Permite rellenar los campos de texto al seleccionar una fila del carrito
+        */
         private void dtgvListaCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dtgvListaCompra.Rows.Count > 0)
@@ -177,6 +200,9 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
+
+        /** Permite modificar la cantidad de cada producto del carrito de compras
+        */
         private void btnModificar_Click(object sender, EventArgs e)
         {
 
@@ -199,11 +225,17 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+
+        /** Modifica el label del cliente para indicar quien es quien realiza la compra
+        */
         private void txtCliente_TextChanged(object sender, EventArgs e)
         {
             lblModificarCliente.Text = txtCliente.Text;
         }
 
+
+        /** Modifica el label de metodo de pago para indicar el metodo de pago
+        */
         private void cboMetodoPago_TextChanged(object sender, EventArgs e)
         {
             lblModificarMetodo.Text = cboMetodoPago.Text;
@@ -214,6 +246,9 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+
+        /** Permite eliminar productos de la lista del carrito de compras
+        */
         private void btnQuitarCarrito_Click(object sender, EventArgs e)
         {
             if ( dtgvListaCompra.Rows.Count > 0)
@@ -232,7 +267,8 @@ namespace CapaPresentacion.Formularios.Vendedor
             limpiarCampos();
         }
 
-
+        /** Permite validar que los campos de texto no esten vacios
+        */
         private bool validarCampos()
         {
             bool validacion = true;
@@ -247,22 +283,32 @@ namespace CapaPresentacion.Formularios.Vendedor
             return validacion;
         }
 
+
+        /** Abre el formulario necesario para elegir el cliente dentro de la lista de clientes
+        */
         private void btnElegirCliente_Click(object sender, EventArgs e)
         {
             abrirFormularioHijo(new frmSeleccionarCliente(this));
         }
 
 
+        /** Rellena los campos de texto indicando qué clientes esta comprando
+        */
         public void seleccionarCliente(string[] pDatosCliente)
         {
             txtIdCliente.Text = pDatosCliente[0];
             txtCliente.Text = pDatosCliente[1];
         }
 
+
+        /** Permite abrir el formulario para ver el resumen de la venta
+        */
         private void btnPagar_Click(object sender, EventArgs e)
         {
             if ( dtgvListaCompra.Rows.Count > 0 )
             {
+                // **** Se rellenan los datos del resumen de venta para pasarlos como parametro
+
                 string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text, 
                                              lblCalculoTotal.Text };
                 abrirFormularioHijo( new frmResumenVenta( dtgvListaCompra, auxDatosResumen ) );
@@ -274,6 +320,8 @@ namespace CapaPresentacion.Formularios.Vendedor
         }
 
 
+        /** Calcula el total a pagar de la lista de compra
+         */
         private void calcularTotal()
         {
             int i = 0;
