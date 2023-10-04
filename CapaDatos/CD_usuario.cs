@@ -48,7 +48,7 @@ namespace CapaDatos
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         //aca se lectura a la consulta que realize con qeury
-                        while (dr.Read())
+                        while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
                         {
                             //a mi lista de usuario le estoy agregrando un usaurio
                             lista.Add(new usuario
@@ -146,7 +146,7 @@ namespace CapaDatos
                     {
                         //Este condicional verifica si hay al menos una fila de resultados en el SqlDataReader.
                         //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
-                        if (dr.Read())
+                        if (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay
                         {
                             /* Obtener la contraseña cifrada almacenada en la base de datos*/
                             // string contrasenaCifrada = dr.GetString("ContraseñaUsuario");

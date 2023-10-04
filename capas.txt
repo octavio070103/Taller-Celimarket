@@ -8,7 +8,8 @@ Ejecutar consultas SQL o realizar llamadas a servicios para obtener o modificar 
 Mapear los resultados de las consultas a objetos que el resto del sistema pueda entender (si se utiliza un ORM).
 
 -la capa de negocio implementa la lógica del negocio:
-La capa de diseño, también conocida como capa de negocio o capa de lógica de negocio, es donde se implementa la lógica y el flujo de trabajo del sistema. Aquí se toman las decisiones relacionadas con la operación y la manipulación de los datos. Esta capa no se preocupa por cómo se muestran los datos ni por cómo se almacenan, sino más bien por cómo se procesan. 
+La capa de diseño, también conocida como capa de negocio o capa de lógica de negocio, es donde se implementa la lógica y el flujo de trabajo del sistema. Aquí se toman las decisiones relacionadas con la operación 
+y la manipulación de los datos. Esta capa no se preocupa por cómo se muestran los datos ni por cómo se almacenan, sino más bien por cómo se procesan. 
 
 Algunas de sus funciones clave son:
 Validar datos antes de que sean almacenados o procesados.
