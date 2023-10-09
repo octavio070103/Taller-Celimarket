@@ -28,18 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboardInicio));
-            panel1 = new Panel();
-            lblDashInicio = new Label();
             chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartStockProductoCateogria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -79,7 +77,8 @@
             label1 = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             label3 = new Label();
-            panel1.SuspendLayout();
+            panel1 = new Panel();
+            lblDashInicio = new Label();
             ((System.ComponentModel.ISupportInitialize)chartVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartStockProductoCateogria).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chart3).BeginInit();
@@ -92,46 +91,23 @@
             panelCantidadProductos.SuspendLayout();
             panelTotalVentas.SuspendLayout();
             panelStockDisponible.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.FromArgb(47, 33, 75);
-            panel1.Controls.Add(lblDashInicio);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(800, 54);
-            panel1.TabIndex = 14;
-            // 
-            // lblDashInicio
-            // 
-            lblDashInicio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblDashInicio.AutoSize = true;
-            lblDashInicio.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDashInicio.ForeColor = SystemColors.ControlLightLight;
-            lblDashInicio.ImageAlign = ContentAlignment.TopCenter;
-            lblDashInicio.Location = new Point(137, 9);
-            lblDashInicio.Name = "lblDashInicio";
-            lblDashInicio.Size = new Size(223, 45);
-            lblDashInicio.TabIndex = 0;
-            lblDashInicio.Text = "DASHBOARD";
-            lblDashInicio.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // chartVentas
             // 
             chartVentas.BackColor = Color.FromArgb(34, 41, 53);
-            chartArea1.Name = "ChartArea1";
-            chartVentas.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartVentas.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            chartVentas.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            chartVentas.Legends.Add(legend4);
             chartVentas.Location = new Point(0, 60);
             chartVentas.Name = "chartVentas";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartVentas.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            chartVentas.Series.Add(series4);
             chartVentas.Size = new Size(430, 182);
             chartVentas.TabIndex = 15;
             chartVentas.Text = "chart1";
@@ -139,17 +115,17 @@
             // chartStockProductoCateogria
             // 
             chartStockProductoCateogria.BackColor = Color.FromArgb(34, 41, 53);
-            chartArea2.Name = "ChartArea1";
-            chartStockProductoCateogria.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartStockProductoCateogria.Legends.Add(legend2);
+            chartArea5.Name = "ChartArea1";
+            chartStockProductoCateogria.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            chartStockProductoCateogria.Legends.Add(legend5);
             chartStockProductoCateogria.Location = new Point(0, 248);
             chartStockProductoCateogria.Name = "chartStockProductoCateogria";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartStockProductoCateogria.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            chartStockProductoCateogria.Series.Add(series5);
             chartStockProductoCateogria.Size = new Size(430, 203);
             chartStockProductoCateogria.TabIndex = 16;
             chartStockProductoCateogria.Text = "chart2";
@@ -158,18 +134,18 @@
             // 
             chart3.BackColor = Color.FromArgb(34, 41, 53);
             chart3.BorderlineColor = Color.FromArgb(34, 41, 53);
-            chartArea3.Name = "ChartArea1";
-            chart3.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            chart3.Legends.Add(legend3);
+            chartArea6.Name = "ChartArea1";
+            chart3.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            chart3.Legends.Add(legend6);
             chart3.Location = new Point(436, 248);
             chart3.Name = "chart3";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.LabelBackColor = Color.White;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            chart3.Series.Add(series3);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series6.LabelBackColor = Color.White;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            chart3.Series.Add(series6);
             chart3.Size = new Size(364, 203);
             chart3.TabIndex = 17;
             chart3.Text = "chartTopProductos";
@@ -660,6 +636,29 @@
             label3.TabIndex = 16;
             label3.Text = "Stock ";
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(lblDashInicio);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 54);
+            panel1.TabIndex = 14;
+            // 
+            // lblDashInicio
+            // 
+            lblDashInicio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblDashInicio.AutoSize = true;
+            lblDashInicio.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDashInicio.ForeColor = SystemColors.ControlLightLight;
+            lblDashInicio.ImageAlign = ContentAlignment.TopCenter;
+            lblDashInicio.Location = new Point(329, 0);
+            lblDashInicio.Name = "lblDashInicio";
+            lblDashInicio.Size = new Size(0, 45);
+            lblDashInicio.TabIndex = 0;
+            lblDashInicio.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FrmDashboardInicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -682,10 +681,8 @@
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmDashboardInicio";
-            Text = "Form1";
+            Text = "DASHBOARD";
             Load += FrmDashboardInicio_Load;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)chartVentas).EndInit();
             ((System.ComponentModel.ISupportInitialize)chartStockProductoCateogria).EndInit();
             ((System.ComponentModel.ISupportInitialize)chart3).EndInit();
@@ -707,13 +704,12 @@
             panelTotalVentas.PerformLayout();
             panelStockDisponible.ResumeLayout(false);
             panelStockDisponible.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel panel1;
-        private Label lblDashInicio;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartVentas;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartStockProductoCateogria;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
@@ -753,5 +749,7 @@
         private Label label1;
         private Label label3;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private Panel panel1;
+        private Label lblDashInicio;
     }
 }

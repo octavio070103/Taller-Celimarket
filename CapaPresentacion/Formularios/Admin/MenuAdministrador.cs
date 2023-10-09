@@ -58,7 +58,7 @@ namespace CapaPresentacion.Formularios.Admin
                         descripcion_rol = "administrador"
                     }
                 };
-            
+
             }
             else
             {
@@ -117,20 +117,20 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            
-                //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
-                if (currentChildForm != null)
-                {
-                    // cierra el formulario actual
-                    currentChildForm.Close();
 
-                }
-                // Muestra el formulario principal (el "Home")
-                MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-                menuAdmin.Show();
+            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+            if (currentChildForm != null)
+            {
+                // cierra el formulario actual
+                currentChildForm.Close();
 
-           
-           
+            }
+            // Muestra el formulario principal (el "Home")
+            MenuAdministrador menuAdmin = new MenuAdministrador(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+            menuAdmin.Show();
+
+
+
 
         }
 
@@ -171,7 +171,9 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnBackup.Text = "";
                 iconBtnGestionConsulta.Text = "";
                 iconBtnGestionUsuario.Text = "";
-                iconBtnSesion.Text = "";
+                BtnCerrarSesion.Text = "";
+                iconBtnAdminAcceso.Text = "";
+                iconBtnDashBoard.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
@@ -192,7 +194,9 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnBackup.Text = "Respaldo y Restauracion";
                 iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
                 iconBtnGestionUsuario.Text = "Gestionar Usuario";
-                iconBtnSesion.Text = "Cerrar Sesion";
+                iconBtnAdminAcceso.Text = "Administrar Acceso";
+                iconBtnDashBoard.Text = "DashBoard";
+                BtnCerrarSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
                 lblRolDelUsu.Visible = true;
@@ -317,7 +321,7 @@ namespace CapaPresentacion.Formularios.Admin
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void iconBtnSesion_Click(object sender, EventArgs e)
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
             DialogResult salida = MessageBox.Show("Esta seguro que desea salir de la Aplicacion", "Salir", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
             if (salida == DialogResult.OK)
@@ -331,7 +335,5 @@ namespace CapaPresentacion.Formularios.Admin
                 this.Close();
             }
         }
-
-       
     }
 }

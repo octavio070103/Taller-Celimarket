@@ -627,7 +627,25 @@
         B/jeCFD+ABwmHfTeCFD+W8mD/HEEKH8ADpcu+nEELFL+v/vd/wNSHlY/GrynLAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="iconPicSesion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnProducto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
+        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCgEOAzrSJlklAAACx0lEQVRYR+2XXYgNYRjHWXbtBflY
+        tGoVVrTrZktICRtJcoHSqm1LiKK0oVyRC0m5FflO7rCJ7C0ulNS6kijrI1ZE2UWsjzJ+/znPHDNz3jkz
+        B+OGf/3Oed/neebM/7zzzDvnDPnT8jxvP3yEt8Y3mGXp/MXJZGCbTTW/+U8aOAlrjQfw1w3oWx8zXsL/
+        HshmgMIJEFy7rDTb4b6Y/5aBxfAEguuXxi3YY4fr+CaLxQ0cgFoLJYsiGbhk01RRuxN8A7yvg6ewBUb4
+        BYjxZDgK96Dewm5R8EsGYC48gkZL+WI+FG7ActgEd2C4pUtFcgN8hWAbTeMTHIFrsMo+JiLiLdALc+Ai
+        dFgqKhIT4RnoOo41amAklLgm1giqfwF9FnaK/CTQ57dCt4WjInEBdsFWeANa0pVwBlqsrChiV2Aj7IDr
+        Fk4UNVp+mei10E8RbAN1r75VHzRYyinyy6AHqkCr9BBSbzVqquG1TQsiMB60lM0wGhZYyinyOuF9mGch
+        xdZDavNS4zSgpe8G1ybj4jCctsN9MR8Gd2G+hZwi7zTwBVybTBJ6uLh6Qv2zz6a+mNdC0NBCPaD+0rgq
+        KOr3BxlFvXNrJdYJRQOM2yFoZhePoT5PA5eh1aYlIncC2vI0cBXOwcEEdFu252lA2+9zxWBzDDV9F0yP
+        GGC8HXY7mGollRjQA+g21FmoKGLaR17BEk3CBvaCa7lmWIlqUg3wru1cj/UaP+kQOW3LPRqEDYyB8G0T
+        MMpKVJPFwBr4AK7uDzMYN6DGcBV2WUlWA9qwzoLry4QZiBjIIuqzGjhu43GwEBpgNsyEJsv1F15MjE/B
+        +RDVliqKWKUGplhOJ+8ANeAKy5UYWARLQxS2y5CIVWSgnKiJGsgi6rMa0DasR3Y5PudlYDXoB8u0MuhW
+        9ZvwO7h+7yWhv9vvYjGhv+SDNn4PUrwmzIDneYd+AG7QVxto+uA3AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="BtnCerrarSesion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
         MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCB0OEyl8VbHtAAAB0klEQVRYR+2XTysFURiHb1d2yp8i
