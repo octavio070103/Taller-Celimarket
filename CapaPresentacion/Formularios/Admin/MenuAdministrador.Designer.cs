@@ -41,12 +41,13 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
+            btnAdministrarAcceso = new Button();
+            BtnProducto = new Button();
+            BtnDashBoard = new Button();
+            BtnBackup = new Button();
+            BtnGestionConsulta = new Button();
+            btnGestionUsuario = new Button();
             BtnCerrarSesion = new Button();
-            iconBtnAdminAcceso = new FontAwesome.Sharp.IconButton();
-            iconBtnDashBoard = new FontAwesome.Sharp.IconButton();
-            iconBtnBackup = new FontAwesome.Sharp.IconButton();
-            iconBtnGestionConsulta = new FontAwesome.Sharp.IconButton();
-            iconBtnGestionUsuario = new FontAwesome.Sharp.IconButton();
             btnLogout = new Button();
             PLogo = new Panel();
             lblNombreDelUsu = new Label();
@@ -54,7 +55,7 @@
             pictureBox1 = new PictureBox();
             picUsuario = new PictureBox();
             sidebarTime = new System.Windows.Forms.Timer(components);
-            BtnProducto = new Button();
+            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
@@ -217,13 +218,14 @@
             // PMenuLat
             // 
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
+            PMenuLat.Controls.Add(button1);
+            PMenuLat.Controls.Add(btnAdministrarAcceso);
             PMenuLat.Controls.Add(BtnProducto);
+            PMenuLat.Controls.Add(BtnDashBoard);
+            PMenuLat.Controls.Add(BtnBackup);
+            PMenuLat.Controls.Add(BtnGestionConsulta);
+            PMenuLat.Controls.Add(btnGestionUsuario);
             PMenuLat.Controls.Add(BtnCerrarSesion);
-            PMenuLat.Controls.Add(iconBtnAdminAcceso);
-            PMenuLat.Controls.Add(iconBtnDashBoard);
-            PMenuLat.Controls.Add(iconBtnBackup);
-            PMenuLat.Controls.Add(iconBtnGestionConsulta);
-            PMenuLat.Controls.Add(iconBtnGestionUsuario);
             PMenuLat.Controls.Add(btnLogout);
             PMenuLat.Controls.Add(PLogo);
             PMenuLat.Dock = DockStyle.Left;
@@ -235,6 +237,130 @@
             PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
+            // 
+            // btnAdministrarAcceso
+            // 
+            btnAdministrarAcceso.BackColor = Color.FromArgb(17, 17, 27);
+            btnAdministrarAcceso.Cursor = Cursors.Hand;
+            btnAdministrarAcceso.Dock = DockStyle.Top;
+            btnAdministrarAcceso.FlatStyle = FlatStyle.Popup;
+            btnAdministrarAcceso.ForeColor = SystemColors.ControlLightLight;
+            btnAdministrarAcceso.Image = (Image)resources.GetObject("btnAdministrarAcceso.Image");
+            btnAdministrarAcceso.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAdministrarAcceso.Location = new Point(0, 367);
+            btnAdministrarAcceso.Name = "btnAdministrarAcceso";
+            btnAdministrarAcceso.Padding = new Padding(10, 0, 0, 0);
+            btnAdministrarAcceso.Size = new Size(186, 45);
+            btnAdministrarAcceso.TabIndex = 32;
+            btnAdministrarAcceso.Text = "   Administrar Acceso";
+            btnAdministrarAcceso.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAdministrarAcceso.UseVisualStyleBackColor = false;
+            btnAdministrarAcceso.Click += btnAdministrarAcceso_Click;
+            btnAdministrarAcceso.MouseEnter += btnAdministrarAcceso_MouseEnter;
+            btnAdministrarAcceso.MouseLeave += btnAdministrarAcceso_MouseLeave;
+            // 
+            // BtnProducto
+            // 
+            BtnProducto.BackColor = Color.FromArgb(17, 17, 27);
+            BtnProducto.Cursor = Cursors.Hand;
+            BtnProducto.Dock = DockStyle.Top;
+            BtnProducto.FlatStyle = FlatStyle.Popup;
+            BtnProducto.ForeColor = SystemColors.ControlLightLight;
+            BtnProducto.Image = (Image)resources.GetObject("BtnProducto.Image");
+            BtnProducto.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnProducto.Location = new Point(0, 322);
+            BtnProducto.Name = "BtnProducto";
+            BtnProducto.Padding = new Padding(10, 0, 0, 0);
+            BtnProducto.Size = new Size(186, 45);
+            BtnProducto.TabIndex = 31;
+            BtnProducto.Text = "Producto";
+            BtnProducto.UseVisualStyleBackColor = false;
+            BtnProducto.Click += BtnProducto_Click;
+            BtnProducto.MouseEnter += BtnProducto_MouseEnter;
+            BtnProducto.MouseLeave += BtnProducto_MouseLeave;
+            // 
+            // BtnDashBoard
+            // 
+            BtnDashBoard.BackColor = Color.FromArgb(17, 17, 27);
+            BtnDashBoard.Cursor = Cursors.Hand;
+            BtnDashBoard.Dock = DockStyle.Top;
+            BtnDashBoard.FlatStyle = FlatStyle.Popup;
+            BtnDashBoard.ForeColor = SystemColors.ControlLightLight;
+            BtnDashBoard.Image = (Image)resources.GetObject("BtnDashBoard.Image");
+            BtnDashBoard.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnDashBoard.Location = new Point(0, 277);
+            BtnDashBoard.Name = "BtnDashBoard";
+            BtnDashBoard.Padding = new Padding(10, 0, 0, 0);
+            BtnDashBoard.Size = new Size(186, 45);
+            BtnDashBoard.TabIndex = 30;
+            BtnDashBoard.Text = "DashBoard";
+            BtnDashBoard.UseVisualStyleBackColor = false;
+            BtnDashBoard.Click += BtnDashBoard_Click;
+            BtnDashBoard.MouseEnter += BtnDashBoard_MouseEnter;
+            BtnDashBoard.MouseLeave += BtnDashBoard_MouseLeave;
+            // 
+            // BtnBackup
+            // 
+            BtnBackup.BackColor = Color.FromArgb(17, 17, 27);
+            BtnBackup.Cursor = Cursors.Hand;
+            BtnBackup.Dock = DockStyle.Top;
+            BtnBackup.FlatStyle = FlatStyle.Popup;
+            BtnBackup.ForeColor = SystemColors.ControlLightLight;
+            BtnBackup.Image = (Image)resources.GetObject("BtnBackup.Image");
+            BtnBackup.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnBackup.Location = new Point(0, 232);
+            BtnBackup.Name = "BtnBackup";
+            BtnBackup.Padding = new Padding(10, 0, 0, 0);
+            BtnBackup.Size = new Size(186, 45);
+            BtnBackup.TabIndex = 29;
+            BtnBackup.Text = "Respaldo y Restauracion";
+            BtnBackup.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnBackup.UseVisualStyleBackColor = false;
+            BtnBackup.Click += BtnBackup_Click;
+            BtnBackup.MouseEnter += BtnBackup_MouseEnter;
+            BtnBackup.MouseLeave += BtnBackup_MouseLeave;
+            // 
+            // BtnGestionConsulta
+            // 
+            BtnGestionConsulta.BackColor = Color.FromArgb(17, 17, 27);
+            BtnGestionConsulta.Cursor = Cursors.Hand;
+            BtnGestionConsulta.Dock = DockStyle.Top;
+            BtnGestionConsulta.FlatStyle = FlatStyle.Popup;
+            BtnGestionConsulta.ForeColor = SystemColors.ControlLightLight;
+            BtnGestionConsulta.Image = (Image)resources.GetObject("BtnGestionConsulta.Image");
+            BtnGestionConsulta.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnGestionConsulta.Location = new Point(0, 187);
+            BtnGestionConsulta.Name = "BtnGestionConsulta";
+            BtnGestionConsulta.Padding = new Padding(10, 0, 0, 0);
+            BtnGestionConsulta.Size = new Size(186, 45);
+            BtnGestionConsulta.TabIndex = 28;
+            BtnGestionConsulta.Text = "  Gestionar Consultas y Reclamos";
+            BtnGestionConsulta.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnGestionConsulta.UseVisualStyleBackColor = false;
+            BtnGestionConsulta.Click += BtnGestionConsulta_Click;
+            BtnGestionConsulta.MouseEnter += BtnGestionConsulta_MouseEnter;
+            BtnGestionConsulta.MouseLeave += BtnGestionConsulta_MouseLeave;
+            // 
+            // btnGestionUsuario
+            // 
+            btnGestionUsuario.BackColor = Color.FromArgb(17, 17, 27);
+            btnGestionUsuario.Cursor = Cursors.Hand;
+            btnGestionUsuario.Dock = DockStyle.Top;
+            btnGestionUsuario.FlatStyle = FlatStyle.Popup;
+            btnGestionUsuario.ForeColor = SystemColors.ControlLightLight;
+            btnGestionUsuario.Image = (Image)resources.GetObject("btnGestionUsuario.Image");
+            btnGestionUsuario.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGestionUsuario.Location = new Point(0, 142);
+            btnGestionUsuario.Name = "btnGestionUsuario";
+            btnGestionUsuario.Padding = new Padding(10, 0, 0, 0);
+            btnGestionUsuario.Size = new Size(186, 45);
+            btnGestionUsuario.TabIndex = 27;
+            btnGestionUsuario.Text = "  Gestionar Usuario";
+            btnGestionUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGestionUsuario.UseVisualStyleBackColor = false;
+            btnGestionUsuario.Click += btnGestionUsuario_Click;
+            btnGestionUsuario.MouseEnter += btnGestionUsuario_MouseEnter;
+            btnGestionUsuario.MouseLeave += btnGestionUsuario_MouseLeave;
             // 
             // BtnCerrarSesion
             // 
@@ -253,116 +379,6 @@
             BtnCerrarSesion.Text = "Cerrar Sesion";
             BtnCerrarSesion.UseVisualStyleBackColor = false;
             BtnCerrarSesion.Click += BtnCerrarSesion_Click;
-            // 
-            // iconBtnAdminAcceso
-            // 
-            iconBtnAdminAcceso.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnAdminAcceso.BackgroundImage = (Image)resources.GetObject("iconBtnAdminAcceso.BackgroundImage");
-            iconBtnAdminAcceso.BackgroundImageLayout = ImageLayout.None;
-            iconBtnAdminAcceso.Dock = DockStyle.Top;
-            iconBtnAdminAcceso.FlatStyle = FlatStyle.Popup;
-            iconBtnAdminAcceso.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            iconBtnAdminAcceso.ForeColor = Color.White;
-            iconBtnAdminAcceso.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnAdminAcceso.IconColor = Color.White;
-            iconBtnAdminAcceso.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAdminAcceso.IconSize = 40;
-            iconBtnAdminAcceso.ImageAlign = ContentAlignment.MiddleLeft;
-            iconBtnAdminAcceso.Location = new Point(0, 350);
-            iconBtnAdminAcceso.Name = "iconBtnAdminAcceso";
-            iconBtnAdminAcceso.Size = new Size(186, 52);
-            iconBtnAdminAcceso.TabIndex = 22;
-            iconBtnAdminAcceso.Text = "Administrar Acceso";
-            iconBtnAdminAcceso.UseVisualStyleBackColor = false;
-            iconBtnAdminAcceso.Click += iconBtnAdminAcceso_Click;
-            // 
-            // iconBtnDashBoard
-            // 
-            iconBtnDashBoard.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnDashBoard.BackgroundImage = (Image)resources.GetObject("iconBtnDashBoard.BackgroundImage");
-            iconBtnDashBoard.BackgroundImageLayout = ImageLayout.None;
-            iconBtnDashBoard.Dock = DockStyle.Top;
-            iconBtnDashBoard.FlatStyle = FlatStyle.Popup;
-            iconBtnDashBoard.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            iconBtnDashBoard.ForeColor = Color.White;
-            iconBtnDashBoard.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnDashBoard.IconColor = Color.White;
-            iconBtnDashBoard.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnDashBoard.IconSize = 40;
-            iconBtnDashBoard.ImageAlign = ContentAlignment.MiddleLeft;
-            iconBtnDashBoard.Location = new Point(0, 298);
-            iconBtnDashBoard.Name = "iconBtnDashBoard";
-            iconBtnDashBoard.Size = new Size(186, 52);
-            iconBtnDashBoard.TabIndex = 21;
-            iconBtnDashBoard.Text = "DashBoard";
-            iconBtnDashBoard.UseVisualStyleBackColor = false;
-            iconBtnDashBoard.Click += iconBtnDashBoard_Click;
-            // 
-            // iconBtnBackup
-            // 
-            iconBtnBackup.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnBackup.Dock = DockStyle.Top;
-            iconBtnBackup.FlatStyle = FlatStyle.Popup;
-            iconBtnBackup.ForeColor = Color.White;
-            iconBtnBackup.IconChar = FontAwesome.Sharp.IconChar.Database;
-            iconBtnBackup.IconColor = Color.White;
-            iconBtnBackup.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnBackup.IconSize = 40;
-            iconBtnBackup.ImageAlign = ContentAlignment.MiddleLeft;
-            iconBtnBackup.Location = new Point(0, 246);
-            iconBtnBackup.Name = "iconBtnBackup";
-            iconBtnBackup.Size = new Size(186, 52);
-            iconBtnBackup.TabIndex = 18;
-            iconBtnBackup.Text = "Respaldo y Restauracion";
-            iconBtnBackup.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnBackup.UseVisualStyleBackColor = false;
-            iconBtnBackup.Click += iconBtnBackup_Click;
-            iconBtnBackup.MouseEnter += iconBtnBackup_MouseEnter;
-            iconBtnBackup.MouseLeave += iconBtnBackup_MouseLeave;
-            // 
-            // iconBtnGestionConsulta
-            // 
-            iconBtnGestionConsulta.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnGestionConsulta.Dock = DockStyle.Top;
-            iconBtnGestionConsulta.FlatStyle = FlatStyle.Popup;
-            iconBtnGestionConsulta.ForeColor = Color.White;
-            iconBtnGestionConsulta.IconChar = FontAwesome.Sharp.IconChar.Message;
-            iconBtnGestionConsulta.IconColor = Color.White;
-            iconBtnGestionConsulta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnGestionConsulta.IconSize = 40;
-            iconBtnGestionConsulta.ImageAlign = ContentAlignment.MiddleLeft;
-            iconBtnGestionConsulta.Location = new Point(0, 194);
-            iconBtnGestionConsulta.Name = "iconBtnGestionConsulta";
-            iconBtnGestionConsulta.Size = new Size(186, 52);
-            iconBtnGestionConsulta.TabIndex = 17;
-            iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
-            iconBtnGestionConsulta.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnGestionConsulta.UseVisualStyleBackColor = false;
-            iconBtnGestionConsulta.Click += iconBtnGestionConsulta_Click;
-            iconBtnGestionConsulta.MouseEnter += iconBtnGestionConsulta_MouseEnter;
-            iconBtnGestionConsulta.MouseLeave += iconBtnGestionConsulta_MouseLeave;
-            // 
-            // iconBtnGestionUsuario
-            // 
-            iconBtnGestionUsuario.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnGestionUsuario.Dock = DockStyle.Top;
-            iconBtnGestionUsuario.FlatStyle = FlatStyle.Popup;
-            iconBtnGestionUsuario.ForeColor = Color.White;
-            iconBtnGestionUsuario.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            iconBtnGestionUsuario.IconColor = Color.White;
-            iconBtnGestionUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnGestionUsuario.IconSize = 40;
-            iconBtnGestionUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            iconBtnGestionUsuario.Location = new Point(0, 142);
-            iconBtnGestionUsuario.Name = "iconBtnGestionUsuario";
-            iconBtnGestionUsuario.Size = new Size(186, 52);
-            iconBtnGestionUsuario.TabIndex = 16;
-            iconBtnGestionUsuario.Text = "Gestionar Usuario";
-            iconBtnGestionUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnGestionUsuario.UseVisualStyleBackColor = false;
-            iconBtnGestionUsuario.Click += iconBtnGestionUsuario_Click;
-            iconBtnGestionUsuario.Leave += iconBtnGestionUsuario_Leave;
-            iconBtnGestionUsuario.MouseEnter += iconBtnGestionUsuario_MouseEnter;
             // 
             // btnLogout
             // 
@@ -450,21 +466,23 @@
             sidebarTime.Interval = 10;
             sidebarTime.Tick += sidebarTime_Tick;
             // 
-            // BtnProducto
+            // button1
             // 
-            BtnProducto.BackColor = Color.FromArgb(17, 17, 27);
-            BtnProducto.Cursor = Cursors.Hand;
-            BtnProducto.FlatStyle = FlatStyle.Popup;
-            BtnProducto.ForeColor = SystemColors.ControlLightLight;
-            BtnProducto.Image = (Image)resources.GetObject("BtnProducto.Image");
-            BtnProducto.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnProducto.Location = new Point(0, 498);
-            BtnProducto.Name = "BtnProducto";
-            BtnProducto.Padding = new Padding(10, 0, 0, 0);
-            BtnProducto.Size = new Size(186, 52);
-            BtnProducto.TabIndex = 26;
-            BtnProducto.Text = "Producto";
-            BtnProducto.UseVisualStyleBackColor = false;
+            button1.BackColor = Color.FromArgb(17, 17, 27);
+            button1.Cursor = Cursors.Hand;
+            button1.Dock = DockStyle.Top;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 412);
+            button1.Name = "button1";
+            button1.Padding = new Padding(10, 0, 0, 0);
+            button1.Size = new Size(186, 45);
+            button1.TabIndex = 33;
+            button1.Text = "   Categoria";
+            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button1.UseVisualStyleBackColor = false;
             // 
             // MenuAdministrador
             // 
@@ -517,12 +535,13 @@
         private Label lblRolDelUsu;
         private PictureBox pictureBox1;
         private PictureBox picUsuario;
-        private FontAwesome.Sharp.IconButton iconBtnGestionUsuario;
-        private FontAwesome.Sharp.IconButton iconBtnBackup;
-        private FontAwesome.Sharp.IconButton iconBtnGestionConsulta;
-        private FontAwesome.Sharp.IconButton iconBtnDashBoard;
-        private FontAwesome.Sharp.IconButton iconBtnAdminAcceso;
         private Button BtnCerrarSesion;
+        private Button BtnDashBoard;
+        private Button BtnBackup;
+        private Button BtnGestionConsulta;
+        private Button btnGestionUsuario;
         private Button BtnProducto;
+        private Button btnAdministrarAcceso;
+        private Button button1;
     }
 }

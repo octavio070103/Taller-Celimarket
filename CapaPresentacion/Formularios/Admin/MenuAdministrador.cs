@@ -68,7 +68,7 @@ namespace CapaPresentacion.Formularios.Admin
 
 
             InitializeComponent();
-            colorFondoOriginal = iconBtnGestionUsuario.BackColor; // Almacena el color de fondo original
+            colorFondoOriginal = PMenuLat.BackColor; // Almacena el color de fondo original del panel lateral donde estan los botones
 
             leftBoderBtn = new Panel();
             leftBoderBtn.Size = new Size(7, 60);
@@ -168,12 +168,13 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 PMenuLat.Width -= 10;
                 /*elimino el texto que tienen los btoones para evitar que se sobreponga es etexto con el boton al reducir o minimizar el menu */
-                iconBtnBackup.Text = "";
-                iconBtnGestionConsulta.Text = "";
-                iconBtnGestionUsuario.Text = "";
+                BtnBackup.Text = "";
+                BtnGestionConsulta.Text = "";
+                btnGestionUsuario.Text = "";
                 BtnCerrarSesion.Text = "";
-                iconBtnAdminAcceso.Text = "";
-                iconBtnDashBoard.Text = "";
+                btnAdministrarAcceso.Text = "";
+                BtnDashBoard.Text = "";
+                BtnProducto.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
@@ -191,11 +192,12 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 PMenuLat.Width += 10;
                 /*agregi el texto que tienen los btoones para evitar que se sobreponga es etexto con el boton al maximizar el menu */
-                iconBtnBackup.Text = "Respaldo y Restauracion";
-                iconBtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
-                iconBtnGestionUsuario.Text = "Gestionar Usuario";
-                iconBtnAdminAcceso.Text = "Administrar Acceso";
-                iconBtnDashBoard.Text = "DashBoard";
+                BtnBackup.Text = "Respaldo y Restauracion";
+                BtnGestionConsulta.Text = "Gestionar Consultas y Reclamos";
+                btnGestionUsuario.Text = "Gestionar Usuario";
+                btnAdministrarAcceso.Text = "Administrar Acceso";
+                BtnDashBoard.Text = "DashBoard";
+                BtnProducto.Text = "Producto";
                 BtnCerrarSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
@@ -210,87 +212,133 @@ namespace CapaPresentacion.Formularios.Admin
                 }
             }
         }
-
-        private void iconBtnGestionUsuario_Click(object sender, EventArgs e)
+        private void btnGestionUsuario_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Admin.FrmGestionarUsuario(this));
-
         }
 
-        private void iconBtnGestionConsulta_Click(object sender, EventArgs e)
+        private void BtnGestionConsulta_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Admin.FrmGestionarConsulta(this));
         }
 
-        private void iconBtnBackup_Click(object sender, EventArgs e)
+        private void BtnBackup_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Admin.FrmRespaldo(this));
         }
-        private void iconBtnAdminAcceso_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Admin.administrar_acceso.FrmAdministrarAcceso(this));
-        }
 
-        private void iconBtnDashBoard_Click(object sender, EventArgs e)
+        private void BtnDashBoard_Click(object sender, EventArgs e)
         {
             OpenChildForm(new FrmDashboardInicio(this));
         }
 
+        private void BtnProducto_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Producto.FrmGestionarProducto(this));
+        }
+
+        private void btnAdministrarAcceso_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Admin.administrar_acceso.FrmAdministrarAcceso(this));
+        }
 
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {
             // Agrega los controladores de eventos a los botones
-            iconBtnGestionUsuario.MouseEnter += new EventHandler(iconBtnGestionUsuario_MouseEnter);
-            iconBtnGestionUsuario.MouseLeave += new EventHandler(iconBtnGestionUsuario_Leave);
+            btnGestionUsuario.MouseEnter += new EventHandler(btnGestionUsuario_MouseEnter);
+            btnGestionUsuario.MouseLeave += new EventHandler(btnGestionUsuario_MouseLeave);
 
             // Agrega los controladores de eventos a los botones
-            iconBtnGestionUsuario.MouseEnter += new EventHandler(iconBtnGestionUsuario_MouseEnter);
-            iconBtnGestionUsuario.MouseLeave += new EventHandler(iconBtnGestionUsuario_Leave);
+            BtnGestionConsulta.MouseEnter += new EventHandler(BtnGestionConsulta_MouseEnter);
+            BtnGestionConsulta.MouseLeave += new EventHandler(BtnGestionConsulta_MouseLeave);
 
             // Agrega los controladores de eventos a los botones
-            iconBtnGestionUsuario.MouseEnter += new EventHandler(iconBtnGestionUsuario_MouseEnter);
-            iconBtnGestionUsuario.MouseLeave += new EventHandler(iconBtnGestionUsuario_Leave);
+            BtnBackup.MouseEnter += new EventHandler(BtnBackup_MouseEnter);
+            BtnBackup.MouseLeave += new EventHandler(BtnBackup_MouseLeave);
 
+            // Agrega los controladores de eventos a los botones
+            BtnDashBoard.MouseEnter += new EventHandler(BtnDashBoard_MouseEnter);
+            BtnDashBoard.MouseLeave += new EventHandler(BtnDashBoard_MouseLeave);
+
+            // Agrega los controladores de eventos a los botones
+            BtnProducto.MouseEnter += new EventHandler(BtnProducto_MouseEnter);
+            BtnProducto.MouseLeave += new EventHandler(BtnProducto_MouseLeave);
+
+            // Agrega los controladores de eventos a los botones
+            btnAdministrarAcceso.MouseEnter += new EventHandler(btnAdministrarAcceso_MouseEnter);
+            btnAdministrarAcceso.MouseLeave += new EventHandler(btnAdministrarAcceso_MouseLeave);
 
             //pone los datos de uusario que se registra en el menu
             lblNombreDelUsu.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
             lblRolDelUsu.Text = usuarioActual.obj_rol.descripcion_rol;
         }
 
-        private void iconBtnGestionUsuario_MouseEnter(object sender, EventArgs e)
+
+        private void btnGestionUsuario_MouseEnter(object sender, EventArgs e)
         {
             // Cambia el color de fondo cuando el mouse entra en el botón
-            iconBtnGestionUsuario.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+            btnGestionUsuario.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
         }
-
-
-        private void iconBtnGestionUsuario_Leave(object sender, EventArgs e)
-        {// Cambia el color de fondo cuando el mouse sale del botón
-            iconBtnGestionUsuario.BackColor = colorFondoOriginal;
-        }
-
-        private void iconBtnGestionConsulta_MouseEnter(object sender, EventArgs e)
-        {
-            // Cambia el color de fondo cuando el mouse entra en el botón
-            iconBtnGestionConsulta.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
-        }
-
-        private void iconBtnGestionConsulta_MouseLeave(object sender, EventArgs e)
+        private void btnGestionUsuario_MouseLeave(object sender, EventArgs e)
         {
             // Cambia el color de fondo cuando el mouse sale del botón
-            iconBtnGestionConsulta.BackColor = colorFondoOriginal;
+            btnGestionUsuario.BackColor = colorFondoOriginal;
         }
 
-        private void iconBtnBackup_MouseEnter(object sender, EventArgs e)
+        private void BtnGestionConsulta_MouseEnter(object sender, EventArgs e)
         {
             // Cambia el color de fondo cuando el mouse entra en el botón
-            iconBtnBackup.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+            BtnGestionConsulta.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
         }
-
-        private void iconBtnBackup_MouseLeave(object sender, EventArgs e)
+        private void BtnGestionConsulta_MouseLeave(object sender, EventArgs e)
         {
             // Cambia el color de fondo cuando el mouse sale del botón
-            iconBtnBackup.BackColor = colorFondoOriginal;
+            BtnGestionConsulta.BackColor = colorFondoOriginal;
+        }
+
+        private void BtnBackup_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse entra en el botón
+            BtnBackup.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+        }
+        private void BtnBackup_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse sale del botón
+            BtnBackup.BackColor = colorFondoOriginal;
+        }
+
+        private void BtnDashBoard_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse entra en el botón
+            BtnDashBoard.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+        }
+        private void BtnDashBoard_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse sale del botón
+            BtnDashBoard.BackColor = colorFondoOriginal;
+        }
+
+        private void BtnProducto_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse entra en el botón
+            BtnProducto.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+        }
+        private void BtnProducto_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse sale del botón
+            BtnProducto.BackColor = colorFondoOriginal;
+        }
+
+        private void btnAdministrarAcceso_MouseEnter(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse entra en el botón
+            btnAdministrarAcceso.BackColor = System.Drawing.Color.DarkGray;// Cambia el color al color de resaltado
+        }
+
+        private void btnAdministrarAcceso_MouseLeave(object sender, EventArgs e)
+        {
+            // Cambia el color de fondo cuando el mouse sale del botón
+            btnAdministrarAcceso.BackColor = colorFondoOriginal;
         }
 
         /*funcionalidades para que cuando el usuario cliquee en algunos de estos controles pueda mover toda el formulario*/
@@ -335,5 +383,10 @@ namespace CapaPresentacion.Formularios.Admin
                 this.Close();
             }
         }
+
+
+
+
+
     }
 }

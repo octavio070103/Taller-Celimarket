@@ -78,7 +78,7 @@ namespace CapaPresentacion.Formularios.Admin.administrar_acceso
 
         private void comboEstadoFiltro_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void txtFuncionalidadFiltro_TextChanged(object sender, EventArgs e)

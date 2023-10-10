@@ -64,7 +64,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTitulo.Location = new Point(229, 9);
+            lblTitulo.Location = new Point(274, 9);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(307, 37);
             lblTitulo.TabIndex = 0;
@@ -88,7 +88,7 @@
             // checkTodosFiltro
             // 
             checkTodosFiltro.AutoSize = true;
-            checkTodosFiltro.Location = new Point(525, 72);
+            checkTodosFiltro.Location = new Point(570, 72);
             checkTodosFiltro.Name = "checkTodosFiltro";
             checkTodosFiltro.Size = new Size(97, 19);
             checkTodosFiltro.TabIndex = 39;
@@ -98,7 +98,7 @@
             // comboEstadoFiltro
             // 
             comboEstadoFiltro.FormattingEnabled = true;
-            comboEstadoFiltro.Location = new Point(253, 70);
+            comboEstadoFiltro.Location = new Point(298, 70);
             comboEstadoFiltro.Name = "comboEstadoFiltro";
             comboEstadoFiltro.Size = new Size(238, 23);
             comboEstadoFiltro.TabIndex = 38;
@@ -108,7 +108,7 @@
             // 
             txtFuncionalidadFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtFuncionalidadFiltro.ForeColor = Color.Silver;
-            txtFuncionalidadFiltro.Location = new Point(12, 70);
+            txtFuncionalidadFiltro.Location = new Point(57, 70);
             txtFuncionalidadFiltro.Multiline = true;
             txtFuncionalidadFiltro.Name = "txtFuncionalidadFiltro";
             txtFuncionalidadFiltro.PlaceholderText = "Nombre";
@@ -121,7 +121,7 @@
             lblEstadoFiltro.AutoSize = true;
             lblEstadoFiltro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstadoFiltro.ForeColor = SystemColors.ControlLightLight;
-            lblEstadoFiltro.Location = new Point(253, 53);
+            lblEstadoFiltro.Location = new Point(298, 53);
             lblEstadoFiltro.Name = "lblEstadoFiltro";
             lblEstadoFiltro.Size = new Size(49, 17);
             lblEstadoFiltro.TabIndex = 34;
@@ -132,7 +132,7 @@
             lblFuncionalidadFiltro.AutoSize = true;
             lblFuncionalidadFiltro.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblFuncionalidadFiltro.ForeColor = SystemColors.ControlLightLight;
-            lblFuncionalidadFiltro.Location = new Point(12, 53);
+            lblFuncionalidadFiltro.Location = new Point(57, 53);
             lblFuncionalidadFiltro.Name = "lblFuncionalidadFiltro";
             lblFuncionalidadFiltro.Size = new Size(95, 17);
             lblFuncionalidadFiltro.TabIndex = 31;
@@ -155,7 +155,7 @@
             // label3
             // 
             label3.BorderStyle = BorderStyle.FixedSingle;
-            label3.Location = new Point(23, 284);
+            label3.Location = new Point(33, 281);
             label3.Name = "label3";
             label3.Size = new Size(743, 10);
             label3.TabIndex = 6;
@@ -164,7 +164,7 @@
             // 
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn3, dataGridViewCheckBoxColumn3 });
-            dataGridView4.Location = new Point(577, 3);
+            dataGridView4.Location = new Point(587, 0);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.RowTemplate.Height = 25;
             dataGridView4.Size = new Size(189, 278);
@@ -187,7 +187,7 @@
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, dataGridViewCheckBoxColumn2 });
-            dataGridView3.Location = new Point(392, 3);
+            dataGridView3.Location = new Point(402, 0);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowTemplate.Height = 25;
             dataGridView3.Size = new Size(189, 278);
@@ -210,7 +210,7 @@
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewCheckBoxColumn1 });
-            dataGridView2.Location = new Point(208, 3);
+            dataGridView2.Location = new Point(218, 0);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowTemplate.Height = 25;
             dataGridView2.Size = new Size(189, 278);
@@ -233,7 +233,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { colum_Visualizar, column_check });
-            dataGridView1.Location = new Point(23, 3);
+            dataGridView1.Location = new Point(33, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(189, 278);
