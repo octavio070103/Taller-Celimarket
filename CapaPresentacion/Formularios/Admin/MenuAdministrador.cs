@@ -243,7 +243,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Admin.Categoria.FrmGestionarCategorias(this));
+
         }
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {
@@ -387,6 +387,6 @@ namespace CapaPresentacion.Formularios.Admin
             }
         }
 
-        
+
     }
 }

@@ -17,7 +17,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         public FrmGestionarCategorias(MenuAdministrador p_menuAdmin)
         {
             InitializeComponent();
-            obj_intancia_menuAdmin = p_menuAdmin;
+           this.obj_intancia_menuAdmin = p_menuAdmin;
         }
         private void FrmGestionarCategorias_Load(object sender, EventArgs e)
         {
@@ -65,6 +65,9 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             formCatego.Show();
         }
 
-
+        private void iconBtnProducto_Click(object sender, EventArgs e)
+        {
+            this.obj_intancia_menuAdmin.OpenChildForm(new Producto.FrmGestionarProducto(this.obj_intancia_menuAdmin));
+        }
     }
 }

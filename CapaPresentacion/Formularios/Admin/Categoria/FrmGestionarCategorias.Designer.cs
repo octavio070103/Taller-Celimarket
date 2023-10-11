@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
             panel1 = new Panel();
             lblListaCategoria = new Label();
             panel2 = new Panel();
@@ -55,6 +55,7 @@
             col_id_categoria = new DataGridViewTextBoxColumn();
             col_nombre_categ = new DataGridViewTextBoxColumn();
             col_descrip_categ = new DataGridViewTextBoxColumn();
+            iconBtnProducto = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
@@ -88,6 +89,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(iconBtnProducto);
             panel2.Controls.Add(iconButton3);
             panel2.Controls.Add(iconButton1);
             panel2.Controls.Add(iconBtnAgregarCateg);
@@ -113,7 +115,7 @@
             iconButton3.IconColor = Color.White;
             iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(340, 8);
+            iconButton3.Location = new Point(278, 6);
             iconButton3.Name = "iconButton3";
             iconButton3.Size = new Size(109, 38);
             iconButton3.TabIndex = 21;
@@ -136,7 +138,7 @@
             iconButton1.IconColor = Color.White;
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(340, 8);
+            iconButton1.Location = new Point(278, 6);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(89, 38);
             iconButton1.TabIndex = 20;
@@ -159,7 +161,7 @@
             iconBtnAgregarCateg.IconColor = Color.White;
             iconBtnAgregarCateg.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAgregarCateg.IconSize = 30;
-            iconBtnAgregarCateg.Location = new Point(209, 8);
+            iconBtnAgregarCateg.Location = new Point(147, 6);
             iconBtnAgregarCateg.Name = "iconBtnAgregarCateg";
             iconBtnAgregarCateg.Size = new Size(89, 39);
             iconBtnAgregarCateg.TabIndex = 18;
@@ -406,6 +408,30 @@
             col_descrip_categ.Name = "col_descrip_categ";
             col_descrip_categ.ReadOnly = true;
             // 
+            // iconBtnProducto
+            // 
+            iconBtnProducto.BackColor = Color.Navy;
+            iconBtnProducto.BackgroundImage = (Image)resources.GetObject("iconBtnProducto.BackgroundImage");
+            iconBtnProducto.BackgroundImageLayout = ImageLayout.None;
+            iconBtnProducto.Cursor = Cursors.Hand;
+            iconBtnProducto.FlatAppearance.BorderColor = Color.Black;
+            iconBtnProducto.FlatStyle = FlatStyle.Flat;
+            iconBtnProducto.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnProducto.ForeColor = SystemColors.ControlLightLight;
+            iconBtnProducto.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnProducto.IconColor = Color.White;
+            iconBtnProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnProducto.IconSize = 30;
+            iconBtnProducto.Location = new Point(431, 6);
+            iconBtnProducto.Name = "iconBtnProducto";
+            iconBtnProducto.Size = new Size(103, 39);
+            iconBtnProducto.TabIndex = 22;
+            iconBtnProducto.Text = "Productos";
+            iconBtnProducto.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnProducto.UseVisualStyleBackColor = false;
+            iconBtnProducto.Click += iconBtnProducto_Click;
+            // 
             // FrmGestionarCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -450,5 +476,6 @@
         private DataGridViewTextBoxColumn col_id_categoria;
         private DataGridViewTextBoxColumn col_nombre_categ;
         private DataGridViewTextBoxColumn col_descrip_categ;
+        private FontAwesome.Sharp.IconButton iconBtnProducto;
     }
 }

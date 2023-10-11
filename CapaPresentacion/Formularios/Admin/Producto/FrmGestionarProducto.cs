@@ -28,7 +28,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
         private void iconBtnHistorial_Click(object sender, EventArgs e)
         {
-            //  instancia_menuAdmin.OpenChildForm()
+            instancia_menuAdmin.OpenChildForm(new Admin.Categoria.FrmGestionarCategorias(this.instancia_menuAdmin));
         }
     }
 }

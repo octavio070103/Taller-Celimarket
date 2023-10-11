@@ -31,9 +31,9 @@
             panel1 = new Panel();
             lblRegistrarUsuario = new Label();
             panelProductos = new Panel();
-            panel2 = new Panel();
-            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
-            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            comboBox1 = new ComboBox();
+            lblFecha = new Label();
+            dtpFecha = new DateTimePicker();
             lblDescripcion = new Label();
             lblStock = new Label();
             txtStock = new TextBox();
@@ -46,8 +46,12 @@
             lblPrecioCompra = new Label();
             txtNombre = new TextBox();
             lblNombre = new Label();
-            dtpFecha = new DateTimePicker();
-            lblFecha = new Label();
+            panel2 = new Panel();
+            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            label1 = new Label();
+            label2 = new Label();
+            comboBox2 = new ComboBox();
             panel1.SuspendLayout();
             panelProductos.SuspendLayout();
             panel2.SuspendLayout();
@@ -80,6 +84,10 @@
             // panelProductos
             // 
             panelProductos.BackColor = Color.FromArgb(67, 68, 89);
+            panelProductos.Controls.Add(label2);
+            panelProductos.Controls.Add(comboBox2);
+            panelProductos.Controls.Add(label1);
+            panelProductos.Controls.Add(comboBox1);
             panelProductos.Controls.Add(lblFecha);
             panelProductos.Controls.Add(dtpFecha);
             panelProductos.Controls.Add(lblDescripcion);
@@ -100,6 +108,146 @@
             panelProductos.Name = "panelProductos";
             panelProductos.Size = new Size(800, 389);
             panelProductos.TabIndex = 3;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(289, 88);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(210, 23);
+            comboBox1.TabIndex = 92;
+            comboBox1.Text = "Seleccione una Categoria";
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFecha.Location = new Point(37, 204);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(58, 19);
+            lblFecha.TabIndex = 91;
+            lblFecha.Text = "Fecha";
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Location = new Point(37, 224);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(200, 23);
+            dtpFecha.TabIndex = 90;
+            // 
+            // lblDescripcion
+            // 
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDescripcion.Location = new Point(37, 135);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new Size(100, 19);
+            lblDescripcion.TabIndex = 89;
+            lblDescripcion.Text = "Descripcion";
+            // 
+            // lblStock
+            // 
+            lblStock.AutoSize = true;
+            lblStock.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblStock.Location = new Point(550, 204);
+            lblStock.Name = "lblStock";
+            lblStock.Size = new Size(50, 19);
+            lblStock.TabIndex = 88;
+            lblStock.Text = "Stock";
+            // 
+            // txtStock
+            // 
+            txtStock.Cursor = Cursors.IBeam;
+            txtStock.Location = new Point(550, 226);
+            txtStock.Multiline = true;
+            txtStock.Name = "txtStock";
+            txtStock.Size = new Size(213, 23);
+            txtStock.TabIndex = 87;
+            // 
+            // txtDescripcion
+            // 
+            txtDescripcion.Cursor = Cursors.IBeam;
+            txtDescripcion.Location = new Point(37, 157);
+            txtDescripcion.Multiline = true;
+            txtDescripcion.Name = "txtDescripcion";
+            txtDescripcion.Size = new Size(213, 23);
+            txtDescripcion.TabIndex = 86;
+            // 
+            // txtMarca
+            // 
+            txtMarca.Cursor = Cursors.IBeam;
+            txtMarca.Location = new Point(287, 226);
+            txtMarca.Multiline = true;
+            txtMarca.Name = "txtMarca";
+            txtMarca.Size = new Size(213, 23);
+            txtMarca.TabIndex = 85;
+            // 
+            // txtPrecioVenta
+            // 
+            txtPrecioVenta.Cursor = Cursors.IBeam;
+            txtPrecioVenta.Location = new Point(550, 157);
+            txtPrecioVenta.Multiline = true;
+            txtPrecioVenta.Name = "txtPrecioVenta";
+            txtPrecioVenta.Size = new Size(213, 23);
+            txtPrecioVenta.TabIndex = 84;
+            // 
+            // lblMarca
+            // 
+            lblMarca.AutoSize = true;
+            lblMarca.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMarca.Location = new Point(286, 204);
+            lblMarca.Name = "lblMarca";
+            lblMarca.Size = new Size(60, 19);
+            lblMarca.TabIndex = 83;
+            lblMarca.Text = "Marca";
+            // 
+            // lblPrecioVenta
+            // 
+            lblPrecioVenta.AutoSize = true;
+            lblPrecioVenta.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPrecioVenta.Location = new Point(550, 135);
+            lblPrecioVenta.Name = "lblPrecioVenta";
+            lblPrecioVenta.Size = new Size(105, 19);
+            lblPrecioVenta.TabIndex = 82;
+            lblPrecioVenta.Text = "Precio venta";
+            // 
+            // txtPrecioCompra
+            // 
+            txtPrecioCompra.Cursor = Cursors.IBeam;
+            txtPrecioCompra.Location = new Point(286, 157);
+            txtPrecioCompra.Multiline = true;
+            txtPrecioCompra.Name = "txtPrecioCompra";
+            txtPrecioCompra.Size = new Size(213, 23);
+            txtPrecioCompra.TabIndex = 81;
+            // 
+            // lblPrecioCompra
+            // 
+            lblPrecioCompra.AutoSize = true;
+            lblPrecioCompra.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPrecioCompra.Location = new Point(286, 135);
+            lblPrecioCompra.Name = "lblPrecioCompra";
+            lblPrecioCompra.Size = new Size(124, 19);
+            lblPrecioCompra.TabIndex = 80;
+            lblPrecioCompra.Text = "Precio compra";
+            // 
+            // txtNombre
+            // 
+            txtNombre.Cursor = Cursors.IBeam;
+            txtNombre.Location = new Point(37, 88);
+            txtNombre.Multiline = true;
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(213, 23);
+            txtNombre.TabIndex = 79;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.Location = new Point(37, 66);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(73, 19);
+            lblNombre.TabIndex = 78;
+            lblNombre.Text = "Nombre";
             // 
             // panel2
             // 
@@ -154,136 +302,34 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // lblDescripcion
+            // label1
             // 
-            lblDescripcion.AutoSize = true;
-            lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(37, 135);
-            lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(100, 19);
-            lblDescripcion.TabIndex = 89;
-            lblDescripcion.Text = "Descripcion";
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(289, 66);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 19);
+            label1.TabIndex = 93;
+            label1.Text = "Categoria";
             // 
-            // lblStock
+            // label2
             // 
-            lblStock.AutoSize = true;
-            lblStock.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblStock.Location = new Point(551, 135);
-            lblStock.Name = "lblStock";
-            lblStock.Size = new Size(50, 19);
-            lblStock.TabIndex = 88;
-            lblStock.Text = "Stock";
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(550, 66);
+            label2.Name = "label2";
+            label2.Size = new Size(88, 19);
+            label2.TabIndex = 95;
+            label2.Text = "Proveedor";
             // 
-            // txtStock
+            // comboBox2
             // 
-            txtStock.Cursor = Cursors.IBeam;
-            txtStock.Location = new Point(551, 157);
-            txtStock.Multiline = true;
-            txtStock.Name = "txtStock";
-            txtStock.Size = new Size(213, 23);
-            txtStock.TabIndex = 87;
-            // 
-            // txtDescripcion
-            // 
-            txtDescripcion.Cursor = Cursors.IBeam;
-            txtDescripcion.Location = new Point(37, 157);
-            txtDescripcion.Multiline = true;
-            txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(213, 23);
-            txtDescripcion.TabIndex = 86;
-            // 
-            // txtMarca
-            // 
-            txtMarca.Cursor = Cursors.IBeam;
-            txtMarca.Location = new Point(292, 157);
-            txtMarca.Multiline = true;
-            txtMarca.Name = "txtMarca";
-            txtMarca.Size = new Size(213, 23);
-            txtMarca.TabIndex = 85;
-            // 
-            // txtPrecioVenta
-            // 
-            txtPrecioVenta.Cursor = Cursors.IBeam;
-            txtPrecioVenta.Location = new Point(551, 88);
-            txtPrecioVenta.Multiline = true;
-            txtPrecioVenta.Name = "txtPrecioVenta";
-            txtPrecioVenta.Size = new Size(213, 23);
-            txtPrecioVenta.TabIndex = 84;
-            // 
-            // lblMarca
-            // 
-            lblMarca.AutoSize = true;
-            lblMarca.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMarca.Location = new Point(291, 135);
-            lblMarca.Name = "lblMarca";
-            lblMarca.Size = new Size(60, 19);
-            lblMarca.TabIndex = 83;
-            lblMarca.Text = "Marca";
-            // 
-            // lblPrecioVenta
-            // 
-            lblPrecioVenta.AutoSize = true;
-            lblPrecioVenta.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioVenta.Location = new Point(550, 66);
-            lblPrecioVenta.Name = "lblPrecioVenta";
-            lblPrecioVenta.Size = new Size(105, 19);
-            lblPrecioVenta.TabIndex = 82;
-            lblPrecioVenta.Text = "Precio venta";
-            // 
-            // txtPrecioCompra
-            // 
-            txtPrecioCompra.Cursor = Cursors.IBeam;
-            txtPrecioCompra.Location = new Point(291, 88);
-            txtPrecioCompra.Multiline = true;
-            txtPrecioCompra.Name = "txtPrecioCompra";
-            txtPrecioCompra.Size = new Size(213, 23);
-            txtPrecioCompra.TabIndex = 81;
-            // 
-            // lblPrecioCompra
-            // 
-            lblPrecioCompra.AutoSize = true;
-            lblPrecioCompra.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioCompra.Location = new Point(291, 66);
-            lblPrecioCompra.Name = "lblPrecioCompra";
-            lblPrecioCompra.Size = new Size(124, 19);
-            lblPrecioCompra.TabIndex = 80;
-            lblPrecioCompra.Text = "Precio compra";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Cursor = Cursors.IBeam;
-            txtNombre.Location = new Point(37, 88);
-            txtNombre.Multiline = true;
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(213, 23);
-            txtNombre.TabIndex = 79;
-            // 
-            // lblNombre
-            // 
-            lblNombre.AutoSize = true;
-            lblNombre.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.Location = new Point(37, 66);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(73, 19);
-            lblNombre.TabIndex = 78;
-            lblNombre.Text = "Nombre";
-            // 
-            // dtpFecha
-            // 
-            dtpFecha.Location = new Point(37, 247);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 23);
-            dtpFecha.TabIndex = 90;
-            // 
-            // lblFecha
-            // 
-            lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFecha.Location = new Point(37, 216);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(58, 19);
-            lblFecha.TabIndex = 91;
-            lblFecha.Text = "Fecha";
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(550, 88);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(210, 23);
+            comboBox2.TabIndex = 94;
+            comboBox2.Text = "Seleccione un Proveedor";
             // 
             // FrmRegistrarProducto
             // 
@@ -325,5 +371,9 @@
         private Label lblNombre;
         private Label lblFecha;
         private DateTimePicker dtpFecha;
+        private ComboBox comboBox1;
+        private Label label1;
+        private Label label2;
+        private ComboBox comboBox2;
     }
 }
