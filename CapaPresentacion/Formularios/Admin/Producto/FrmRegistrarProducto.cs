@@ -19,5 +19,25 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             InitializeComponent();
 
         }
+
+        private void picMinimizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picRestaurar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void picMaxPantalla_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

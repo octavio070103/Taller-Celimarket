@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistrarProducto));
             panel1 = new Panel();
             lblRegistrarUsuario = new Label();
             panelProductos = new Panel();
+            label2 = new Label();
+            comboBox2 = new ComboBox();
+            label1 = new Label();
             comboBox1 = new ComboBox();
-            lblFecha = new Label();
-            dtpFecha = new DateTimePicker();
             lblDescripcion = new Label();
             lblStock = new Label();
             txtStock = new TextBox();
@@ -49,22 +51,31 @@
             panel2 = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
-            label1 = new Label();
-            label2 = new Label();
-            comboBox2 = new ComboBox();
+            picCerrar = new PictureBox();
+            picRestaurar = new PictureBox();
+            picMinimizar = new PictureBox();
+            picMaxPantalla = new PictureBox();
             panel1.SuspendLayout();
             panelProductos.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMinimizar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(17, 17, 27);
+            panel1.Controls.Add(picMaxPantalla);
+            panel1.Controls.Add(picCerrar);
+            panel1.Controls.Add(picRestaurar);
+            panel1.Controls.Add(picMinimizar);
             panel1.Controls.Add(lblRegistrarUsuario);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 61);
+            panel1.Size = new Size(512, 61);
             panel1.TabIndex = 2;
             // 
             // lblRegistrarUsuario
@@ -74,7 +85,7 @@
             lblRegistrarUsuario.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblRegistrarUsuario.ForeColor = SystemColors.ControlLightLight;
             lblRegistrarUsuario.ImageAlign = ContentAlignment.TopCenter;
-            lblRegistrarUsuario.Location = new Point(240, 0);
+            lblRegistrarUsuario.Location = new Point(92, 13);
             lblRegistrarUsuario.Name = "lblRegistrarUsuario";
             lblRegistrarUsuario.Size = new Size(305, 45);
             lblRegistrarUsuario.TabIndex = 0;
@@ -88,8 +99,6 @@
             panelProductos.Controls.Add(comboBox2);
             panelProductos.Controls.Add(label1);
             panelProductos.Controls.Add(comboBox1);
-            panelProductos.Controls.Add(lblFecha);
-            panelProductos.Controls.Add(dtpFecha);
             panelProductos.Controls.Add(lblDescripcion);
             panelProductos.Controls.Add(lblStock);
             panelProductos.Controls.Add(txtStock);
@@ -106,40 +115,52 @@
             panelProductos.Dock = DockStyle.Fill;
             panelProductos.Location = new Point(0, 61);
             panelProductos.Name = "panelProductos";
-            panelProductos.Size = new Size(800, 389);
+            panelProductos.Size = new Size(512, 389);
             panelProductos.TabIndex = 3;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(23, 17);
+            label2.Name = "label2";
+            label2.Size = new Size(88, 19);
+            label2.TabIndex = 95;
+            label2.Text = "Proveedor";
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(23, 39);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(210, 23);
+            comboBox2.TabIndex = 94;
+            comboBox2.Text = "Seleccione un Proveedor";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(276, 17);
+            label1.Name = "label1";
+            label1.Size = new Size(87, 19);
+            label1.TabIndex = 93;
+            label1.Text = "Categoria";
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(289, 88);
+            comboBox1.Location = new Point(276, 39);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(210, 23);
             comboBox1.TabIndex = 92;
             comboBox1.Text = "Seleccione una Categoria";
             // 
-            // lblFecha
-            // 
-            lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFecha.Location = new Point(37, 204);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(58, 19);
-            lblFecha.TabIndex = 91;
-            lblFecha.Text = "Fecha";
-            // 
-            // dtpFecha
-            // 
-            dtpFecha.Location = new Point(37, 224);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(200, 23);
-            dtpFecha.TabIndex = 90;
-            // 
             // lblDescripcion
             // 
             lblDescripcion.AutoSize = true;
             lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(37, 135);
+            lblDescripcion.Location = new Point(276, 87);
             lblDescripcion.Name = "lblDescripcion";
             lblDescripcion.Size = new Size(100, 19);
             lblDescripcion.TabIndex = 89;
@@ -149,7 +170,7 @@
             // 
             lblStock.AutoSize = true;
             lblStock.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblStock.Location = new Point(550, 204);
+            lblStock.Location = new Point(276, 220);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(50, 19);
             lblStock.TabIndex = 88;
@@ -158,7 +179,7 @@
             // txtStock
             // 
             txtStock.Cursor = Cursors.IBeam;
-            txtStock.Location = new Point(550, 226);
+            txtStock.Location = new Point(276, 242);
             txtStock.Multiline = true;
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(213, 23);
@@ -167,7 +188,7 @@
             // txtDescripcion
             // 
             txtDescripcion.Cursor = Cursors.IBeam;
-            txtDescripcion.Location = new Point(37, 157);
+            txtDescripcion.Location = new Point(276, 109);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(213, 23);
@@ -176,7 +197,7 @@
             // txtMarca
             // 
             txtMarca.Cursor = Cursors.IBeam;
-            txtMarca.Location = new Point(287, 226);
+            txtMarca.Location = new Point(24, 242);
             txtMarca.Multiline = true;
             txtMarca.Name = "txtMarca";
             txtMarca.Size = new Size(213, 23);
@@ -185,7 +206,7 @@
             // txtPrecioVenta
             // 
             txtPrecioVenta.Cursor = Cursors.IBeam;
-            txtPrecioVenta.Location = new Point(550, 157);
+            txtPrecioVenta.Location = new Point(24, 177);
             txtPrecioVenta.Multiline = true;
             txtPrecioVenta.Name = "txtPrecioVenta";
             txtPrecioVenta.Size = new Size(213, 23);
@@ -195,7 +216,7 @@
             // 
             lblMarca.AutoSize = true;
             lblMarca.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMarca.Location = new Point(286, 204);
+            lblMarca.Location = new Point(23, 220);
             lblMarca.Name = "lblMarca";
             lblMarca.Size = new Size(60, 19);
             lblMarca.TabIndex = 83;
@@ -205,7 +226,7 @@
             // 
             lblPrecioVenta.AutoSize = true;
             lblPrecioVenta.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioVenta.Location = new Point(550, 135);
+            lblPrecioVenta.Location = new Point(24, 155);
             lblPrecioVenta.Name = "lblPrecioVenta";
             lblPrecioVenta.Size = new Size(105, 19);
             lblPrecioVenta.TabIndex = 82;
@@ -214,7 +235,7 @@
             // txtPrecioCompra
             // 
             txtPrecioCompra.Cursor = Cursors.IBeam;
-            txtPrecioCompra.Location = new Point(286, 157);
+            txtPrecioCompra.Location = new Point(273, 177);
             txtPrecioCompra.Multiline = true;
             txtPrecioCompra.Name = "txtPrecioCompra";
             txtPrecioCompra.Size = new Size(213, 23);
@@ -224,7 +245,7 @@
             // 
             lblPrecioCompra.AutoSize = true;
             lblPrecioCompra.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioCompra.Location = new Point(286, 135);
+            lblPrecioCompra.Location = new Point(273, 155);
             lblPrecioCompra.Name = "lblPrecioCompra";
             lblPrecioCompra.Size = new Size(124, 19);
             lblPrecioCompra.TabIndex = 80;
@@ -233,7 +254,7 @@
             // txtNombre
             // 
             txtNombre.Cursor = Cursors.IBeam;
-            txtNombre.Location = new Point(37, 88);
+            txtNombre.Location = new Point(24, 109);
             txtNombre.Multiline = true;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(213, 23);
@@ -243,7 +264,7 @@
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombre.Location = new Point(37, 66);
+            lblNombre.Location = new Point(24, 87);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(73, 19);
             lblNombre.TabIndex = 78;
@@ -257,7 +278,7 @@
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 328);
             panel2.Name = "panel2";
-            panel2.Size = new Size(800, 61);
+            panel2.Size = new Size(512, 61);
             panel2.TabIndex = 75;
             // 
             // iconbtnGuardar
@@ -272,7 +293,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 30;
-            iconbtnGuardar.Location = new Point(368, 6);
+            iconbtnGuardar.Location = new Point(266, 3);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(131, 33);
             iconbtnGuardar.TabIndex = 69;
@@ -293,7 +314,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(185, 6);
+            iconBtnCancelar.Location = new Point(96, 3);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(127, 33);
             iconBtnCancelar.TabIndex = 70;
@@ -302,50 +323,82 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // picCerrar
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(289, 66);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 19);
-            label1.TabIndex = 93;
-            label1.Text = "Categoria";
+            picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picCerrar.Cursor = Cursors.Hand;
+            picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
+            picCerrar.Location = new Point(484, 3);
+            picCerrar.Margin = new Padding(4, 3, 4, 3);
+            picCerrar.Name = "picCerrar";
+            picCerrar.Size = new Size(17, 17);
+            picCerrar.SizeMode = PictureBoxSizeMode.Zoom;
+            picCerrar.TabIndex = 22;
+            picCerrar.TabStop = false;
+            picCerrar.Click += picCerrar_Click;
             // 
-            // label2
+            // picRestaurar
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(550, 66);
-            label2.Name = "label2";
-            label2.Size = new Size(88, 19);
-            label2.TabIndex = 95;
-            label2.Text = "Proveedor";
+            picRestaurar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picRestaurar.Cursor = Cursors.Hand;
+            picRestaurar.Image = (Image)resources.GetObject("picRestaurar.Image");
+            picRestaurar.Location = new Point(459, 3);
+            picRestaurar.Margin = new Padding(4, 3, 4, 3);
+            picRestaurar.Name = "picRestaurar";
+            picRestaurar.Size = new Size(17, 17);
+            picRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
+            picRestaurar.TabIndex = 21;
+            picRestaurar.TabStop = false;
+            picRestaurar.Visible = false;
+            picRestaurar.Click += picRestaurar_Click;
             // 
-            // comboBox2
+            // picMinimizar
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(550, 88);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(210, 23);
-            comboBox2.TabIndex = 94;
-            comboBox2.Text = "Seleccione un Proveedor";
+            picMinimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picMinimizar.Cursor = Cursors.Hand;
+            picMinimizar.Image = (Image)resources.GetObject("picMinimizar.Image");
+            picMinimizar.Location = new Point(436, 3);
+            picMinimizar.Margin = new Padding(4, 3, 4, 3);
+            picMinimizar.Name = "picMinimizar";
+            picMinimizar.Size = new Size(15, 17);
+            picMinimizar.SizeMode = PictureBoxSizeMode.Zoom;
+            picMinimizar.TabIndex = 23;
+            picMinimizar.TabStop = false;
+            picMinimizar.Click += picMinimizar_Click;
+            // 
+            // picMaxPantalla
+            // 
+            picMaxPantalla.BackColor = Color.FromArgb(1, 1, 2);
+            picMaxPantalla.Image = (Image)resources.GetObject("picMaxPantalla.Image");
+            picMaxPantalla.Location = new Point(459, 3);
+            picMaxPantalla.Margin = new Padding(4, 3, 4, 3);
+            picMaxPantalla.Name = "picMaxPantalla";
+            picMaxPantalla.Size = new Size(17, 17);
+            picMaxPantalla.SizeMode = PictureBoxSizeMode.Zoom;
+            picMaxPantalla.TabIndex = 24;
+            picMaxPantalla.TabStop = false;
+            picMaxPantalla.Click += picMaxPantalla_Click;
             // 
             // FrmRegistrarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(512, 450);
             Controls.Add(panelProductos);
             Controls.Add(panel1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmRegistrarProducto";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Productos";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelProductos.ResumeLayout(false);
             panelProductos.PerformLayout();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picRestaurar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMinimizar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMaxPantalla).EndInit();
             ResumeLayout(false);
         }
 
@@ -369,11 +422,13 @@
         private Label lblPrecioCompra;
         private TextBox txtNombre;
         private Label lblNombre;
-        private Label lblFecha;
-        private DateTimePicker dtpFecha;
         private ComboBox comboBox1;
         private Label label1;
         private Label label2;
         private ComboBox comboBox2;
+        private PictureBox picCerrar;
+        private PictureBox picRestaurar;
+        private PictureBox picMinimizar;
+        private PictureBox picMaxPantalla;
     }
 }
