@@ -23,7 +23,12 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         {
             FrmRegistrarProducto formularioAddProduc = new FrmRegistrarProducto();
             formularioAddProduc.Show();
-            
+
+        }
+
+        private void iconBtnHistorial_Click(object sender, EventArgs e)
+        {
+            //  instancia_menuAdmin.OpenChildForm()
         }
     }
 }

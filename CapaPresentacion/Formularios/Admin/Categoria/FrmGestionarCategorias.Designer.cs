@@ -52,6 +52,9 @@
             lblApellidoDato = new Label();
             lblEstadoDato = new Label();
             dataGridCategoria = new DataGridView();
+            col_id_categoria = new DataGridViewTextBoxColumn();
+            col_nombre_categ = new DataGridViewTextBoxColumn();
+            col_descrip_categ = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
@@ -359,7 +362,8 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridCategoria.Location = new Point(12, 83);
+            dataGridCategoria.Columns.AddRange(new DataGridViewColumn[] { col_id_categoria, col_nombre_categ, col_descrip_categ });
+            dataGridCategoria.Location = new Point(130, 90);
             dataGridCategoria.MultiSelect = false;
             dataGridCategoria.Name = "dataGridCategoria";
             dataGridCategoria.ReadOnly = true;
@@ -375,8 +379,32 @@
             dataGridCategoria.RowHeadersVisible = false;
             dataGridCategoria.RowTemplate.Height = 28;
             dataGridCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridCategoria.Size = new Size(795, 349);
+            dataGridCategoria.Size = new Size(404, 223);
             dataGridCategoria.TabIndex = 12;
+            // 
+            // col_id_categoria
+            // 
+            col_id_categoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            col_id_categoria.HeaderText = "Id_categoria";
+            col_id_categoria.MinimumWidth = 100;
+            col_id_categoria.Name = "col_id_categoria";
+            col_id_categoria.ReadOnly = true;
+            col_id_categoria.Width = 112;
+            // 
+            // col_nombre_categ
+            // 
+            col_nombre_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_nombre_categ.HeaderText = "Nombre";
+            col_nombre_categ.Name = "col_nombre_categ";
+            col_nombre_categ.ReadOnly = true;
+            // 
+            // col_descrip_categ
+            // 
+            col_descrip_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_descrip_categ.HeaderText = "Descripcion";
+            col_descrip_categ.MinimumWidth = 25;
+            col_descrip_categ.Name = "col_descrip_categ";
+            col_descrip_categ.ReadOnly = true;
             // 
             // FrmGestionarCategorias
             // 
@@ -419,5 +447,8 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconBtnAgregarCateg;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private DataGridViewTextBoxColumn col_id_categoria;
+        private DataGridViewTextBoxColumn col_nombre_categ;
+        private DataGridViewTextBoxColumn col_descrip_categ;
     }
 }

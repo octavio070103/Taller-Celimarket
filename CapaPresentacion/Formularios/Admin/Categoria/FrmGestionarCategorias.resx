@@ -137,7 +137,7 @@
   <data name="iconButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        5QAAAOUBj+WbPAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAX4SURBVFhH7ZZr
+        5AAAAOQBXaJ52AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAX4SURBVFhH7ZZr
         UFRlHIdXqw/VlHlN08bMCyByWRFYYZdd7ixCokZmIWneUlNDTcwEVxRFxDteo6lISTOtdExGKze1JjWb
         sLxl4iXznprhrcKn/3v2HGed1rJp+uZv5hlgOef9Pec95z3vmu7kTv5tMJnqEhltwWwfSYjDislVV//X
         /xcyM+/CGmnFYplDePQxzDEQ5ICAeGibeIZWKeU/dR3Tt2p0+f36Kf89pIfdR1LHdGI7lWOLuEDnzkg5
@@ -181,4 +181,13 @@
         YII=
 </value>
   </data>
+  <metadata name="col_id_categoria.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="col_nombre_categ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="col_descrip_categ.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

@@ -34,10 +34,15 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel2 = new Panel();
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
-            iconBtnHistorial = new FontAwesome.Sharp.IconButton();
+            iconBtnCategorias = new FontAwesome.Sharp.IconButton();
             iconBtnElim = new FontAwesome.Sharp.IconButton();
             iconBtnAgregar = new FontAwesome.Sharp.IconButton();
             panelDatosUsuario = new Panel();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            lblCategoriaDato = new Label();
+            textBox1 = new TextBox();
+            label1 = new Label();
             lblStock = new Label();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
@@ -48,22 +53,17 @@
             txtEmailDato = new TextBox();
             lblTelefDato = new Label();
             txtTelefDato = new TextBox();
-            lblIdDato = new Label();
             txtDniDato = new TextBox();
             txtApeDato = new TextBox();
-            lblPrecioCompraDato = new Label();
             lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
+            lblIdDato = new Label();
+            lblPrecioCompraDato = new Label();
+            label2 = new Label();
             dataGridUsuarios = new DataGridView();
             lblCatalogoProducto = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            lblCategoriaDato = new Label();
-            label2 = new Label();
-            textBox3 = new TextBox();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
@@ -74,7 +74,7 @@
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
             panel2.Controls.Add(iconBtnAlta);
-            panel2.Controls.Add(iconBtnHistorial);
+            panel2.Controls.Add(iconBtnCategorias);
             panel2.Controls.Add(iconBtnElim);
             panel2.Controls.Add(iconBtnAgregar);
             panel2.Controls.Add(panelDatosUsuario);
@@ -99,7 +99,7 @@
             iconBtnAlta.IconColor = Color.White;
             iconBtnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAlta.IconSize = 30;
-            iconBtnAlta.Location = new Point(361, 23);
+            iconBtnAlta.Location = new Point(219, 23);
             iconBtnAlta.Name = "iconBtnAlta";
             iconBtnAlta.Size = new Size(89, 38);
             iconBtnAlta.TabIndex = 17;
@@ -108,28 +108,29 @@
             iconBtnAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnAlta.UseVisualStyleBackColor = false;
             // 
-            // iconBtnHistorial
+            // iconBtnCategorias
             // 
-            iconBtnHistorial.BackColor = Color.FromArgb(216, 103, 30);
-            iconBtnHistorial.BackgroundImage = (Image)resources.GetObject("iconBtnHistorial.BackgroundImage");
-            iconBtnHistorial.BackgroundImageLayout = ImageLayout.None;
-            iconBtnHistorial.Cursor = Cursors.Hand;
-            iconBtnHistorial.FlatAppearance.BorderColor = Color.Black;
-            iconBtnHistorial.FlatStyle = FlatStyle.Flat;
-            iconBtnHistorial.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnHistorial.ForeColor = SystemColors.ControlLightLight;
-            iconBtnHistorial.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnHistorial.IconColor = Color.White;
-            iconBtnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnHistorial.IconSize = 30;
-            iconBtnHistorial.Location = new Point(491, 23);
-            iconBtnHistorial.Name = "iconBtnHistorial";
-            iconBtnHistorial.Size = new Size(90, 39);
-            iconBtnHistorial.TabIndex = 16;
-            iconBtnHistorial.Text = "Historial";
-            iconBtnHistorial.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnHistorial.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnHistorial.UseVisualStyleBackColor = false;
+            iconBtnCategorias.BackColor = Color.FromArgb(216, 103, 30);
+            iconBtnCategorias.BackgroundImage = (Image)resources.GetObject("iconBtnCategorias.BackgroundImage");
+            iconBtnCategorias.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCategorias.Cursor = Cursors.Hand;
+            iconBtnCategorias.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCategorias.FlatStyle = FlatStyle.Flat;
+            iconBtnCategorias.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCategorias.ForeColor = SystemColors.ControlLightLight;
+            iconBtnCategorias.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCategorias.IconColor = Color.White;
+            iconBtnCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCategorias.IconSize = 30;
+            iconBtnCategorias.Location = new Point(349, 23);
+            iconBtnCategorias.Name = "iconBtnCategorias";
+            iconBtnCategorias.Size = new Size(103, 39);
+            iconBtnCategorias.TabIndex = 16;
+            iconBtnCategorias.Text = "Categorias";
+            iconBtnCategorias.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCategorias.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCategorias.UseVisualStyleBackColor = false;
+            iconBtnCategorias.Click += iconBtnHistorial_Click;
             // 
             // iconBtnElim
             // 
@@ -145,7 +146,7 @@
             iconBtnElim.IconColor = Color.White;
             iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnElim.IconSize = 30;
-            iconBtnElim.Location = new Point(361, 23);
+            iconBtnElim.Location = new Point(219, 23);
             iconBtnElim.Name = "iconBtnElim";
             iconBtnElim.Size = new Size(89, 39);
             iconBtnElim.TabIndex = 15;
@@ -168,7 +169,7 @@
             iconBtnAgregar.IconColor = Color.White;
             iconBtnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAgregar.IconSize = 30;
-            iconBtnAgregar.Location = new Point(230, 23);
+            iconBtnAgregar.Location = new Point(88, 23);
             iconBtnAgregar.Name = "iconBtnAgregar";
             iconBtnAgregar.Size = new Size(89, 39);
             iconBtnAgregar.TabIndex = 14;
@@ -209,6 +210,50 @@
             panelDatosUsuario.Name = "panelDatosUsuario";
             panelDatosUsuario.Size = new Size(238, 459);
             panelDatosUsuario.TabIndex = 13;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(79, 244);
+            textBox3.Multiline = true;
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(144, 75);
+            textBox3.TabIndex = 34;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(79, 71);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(144, 23);
+            textBox2.TabIndex = 32;
+            // 
+            // lblCategoriaDato
+            // 
+            lblCategoriaDato.AutoSize = true;
+            lblCategoriaDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCategoriaDato.ForeColor = SystemColors.WindowText;
+            lblCategoriaDato.Location = new Point(3, 77);
+            lblCategoriaDato.Name = "lblCategoriaDato";
+            lblCategoriaDato.Size = new Size(67, 17);
+            lblCategoriaDato.TabIndex = 33;
+            lblCategoriaDato.Text = "Categoria";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(117, 186);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(61, 23);
+            textBox1.TabIndex = 31;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.WindowText;
+            label1.Location = new Point(2, 192);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 17);
+            label1.TabIndex = 30;
+            label1.Text = "Precio Venta";
             // 
             // lblStock
             // 
@@ -341,17 +386,6 @@
             txtTelefDato.Size = new Size(144, 23);
             txtTelefDato.TabIndex = 12;
             // 
-            // lblIdDato
-            // 
-            lblIdDato.AutoSize = true;
-            lblIdDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblIdDato.ForeColor = SystemColors.WindowText;
-            lblIdDato.Location = new Point(0, 48);
-            lblIdDato.Name = "lblIdDato";
-            lblIdDato.Size = new Size(80, 17);
-            lblIdDato.TabIndex = 11;
-            lblIdDato.Text = "Id Producto";
-            // 
             // txtDniDato
             // 
             txtDniDato.Location = new Point(79, 42);
@@ -365,17 +399,6 @@
             txtApeDato.Name = "txtApeDato";
             txtApeDato.Size = new Size(61, 23);
             txtApeDato.TabIndex = 9;
-            // 
-            // lblPrecioCompraDato
-            // 
-            lblPrecioCompraDato.AutoSize = true;
-            lblPrecioCompraDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioCompraDato.ForeColor = SystemColors.WindowText;
-            lblPrecioCompraDato.Location = new Point(2, 162);
-            lblPrecioCompraDato.Name = "lblPrecioCompraDato";
-            lblPrecioCompraDato.Size = new Size(98, 17);
-            lblPrecioCompraDato.TabIndex = 8;
-            lblPrecioCompraDato.Text = "Precio Compra";
             // 
             // lblNombreDato
             // 
@@ -404,6 +427,39 @@
             lblDatosUsuario.Size = new Size(180, 30);
             lblDatosUsuario.TabIndex = 0;
             lblDatosUsuario.Text = "Datos Del Usuario";
+            // 
+            // lblIdDato
+            // 
+            lblIdDato.AutoSize = true;
+            lblIdDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblIdDato.ForeColor = SystemColors.WindowText;
+            lblIdDato.Location = new Point(0, 48);
+            lblIdDato.Name = "lblIdDato";
+            lblIdDato.Size = new Size(80, 17);
+            lblIdDato.TabIndex = 11;
+            lblIdDato.Text = "Id Producto";
+            // 
+            // lblPrecioCompraDato
+            // 
+            lblPrecioCompraDato.AutoSize = true;
+            lblPrecioCompraDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPrecioCompraDato.ForeColor = SystemColors.WindowText;
+            lblPrecioCompraDato.Location = new Point(2, 162);
+            lblPrecioCompraDato.Name = "lblPrecioCompraDato";
+            lblPrecioCompraDato.Size = new Size(98, 17);
+            lblPrecioCompraDato.TabIndex = 8;
+            lblPrecioCompraDato.Text = "Precio Compra";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.WindowText;
+            label2.Location = new Point(0, 250);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 17);
+            label2.TabIndex = 35;
+            label2.Text = "Descripcion";
             // 
             // dataGridUsuarios
             // 
@@ -472,61 +528,6 @@
             panel1.Size = new Size(822, 64);
             panel1.TabIndex = 1;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(117, 186);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(61, 23);
-            textBox1.TabIndex = 31;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.WindowText;
-            label1.Location = new Point(2, 192);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 17);
-            label1.TabIndex = 30;
-            label1.Text = "Precio Venta";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(79, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(144, 23);
-            textBox2.TabIndex = 32;
-            // 
-            // lblCategoriaDato
-            // 
-            lblCategoriaDato.AutoSize = true;
-            lblCategoriaDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCategoriaDato.ForeColor = SystemColors.WindowText;
-            lblCategoriaDato.Location = new Point(3, 77);
-            lblCategoriaDato.Name = "lblCategoriaDato";
-            lblCategoriaDato.Size = new Size(67, 17);
-            lblCategoriaDato.TabIndex = 33;
-            lblCategoriaDato.Text = "Categoria";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.WindowText;
-            label2.Location = new Point(0, 250);
-            label2.Name = "label2";
-            label2.Size = new Size(80, 17);
-            label2.TabIndex = 35;
-            label2.Text = "Descripcion";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(79, 244);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(144, 75);
-            textBox3.TabIndex = 34;
-            // 
             // FrmGestionarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -548,7 +549,7 @@
         #endregion
         private Panel panel2;
         private FontAwesome.Sharp.IconButton iconBtnAlta;
-        private FontAwesome.Sharp.IconButton iconBtnHistorial;
+        private FontAwesome.Sharp.IconButton iconBtnCategorias;
         private FontAwesome.Sharp.IconButton iconBtnElim;
         private FontAwesome.Sharp.IconButton iconBtnAgregar;
         private Panel panelDatosUsuario;
