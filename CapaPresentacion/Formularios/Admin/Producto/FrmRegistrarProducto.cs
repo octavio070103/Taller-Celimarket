@@ -22,12 +22,14 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
         private void picMinimizar_Click(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void picRestaurar_Click(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Normal;
+            picRestaurar.Visible = false;
+            picMaxPantalla.Visible = true;
         }
 
         private void picCerrar_Click(object sender, EventArgs e)
@@ -37,7 +39,9 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
         private void picMaxPantalla_Click(object sender, EventArgs e)
         {
-
+            this.WindowState = FormWindowState.Maximized;
+            picMaxPantalla.Visible = false;
+            picRestaurar.Visible = true;
         }
     }
 }
