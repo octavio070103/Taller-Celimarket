@@ -1,7 +1,7 @@
 /*-------ABM CATEGORIA CON PROCEDIMIENTO ALMACENADOS-------*/
 
 				--PROCEDIMIENTO PARA REGISTRAR CATEGORIA
-ALTER PROC SP_REGISTRARCATEGORIA(
+CREATE PROC SP_REGISTRARCATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar la categoria
 @Nombre_categoria VARCHAR(50),
 @Estado_categoria bit,
@@ -31,7 +31,7 @@ END
 GO
 
 					--PROCEDIMIENTO PARA EDITAR O MODIFICAR UNA CATEGORIA
-ALTER PROC SP_EDITARCATEGORIA(
+CREATE PROC SP_EDITARCATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a editar la categoria
 @Id_Categoria int,
 @Nombre_categoria VARCHAR(50),
@@ -115,6 +115,7 @@ BEGIN
           
     END
 END
+GO
 
 --PROCEDIMIENTO PARA DAR DE ALTA UNA CATEGORIA
 CREATE PROC SP_DARALTACATEGORIA(
