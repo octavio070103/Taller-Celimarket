@@ -41,6 +41,7 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
+            btnCategoria = new Button();
             btnAdministrarAcceso = new Button();
             BtnProducto = new Button();
             BtnDashBoard = new Button();
@@ -55,7 +56,6 @@
             pictureBox1 = new PictureBox();
             picUsuario = new PictureBox();
             sidebarTime = new System.Windows.Forms.Timer(components);
-            button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
@@ -218,7 +218,7 @@
             // PMenuLat
             // 
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(button1);
+            PMenuLat.Controls.Add(btnCategoria);
             PMenuLat.Controls.Add(btnAdministrarAcceso);
             PMenuLat.Controls.Add(BtnProducto);
             PMenuLat.Controls.Add(BtnDashBoard);
@@ -237,6 +237,25 @@
             PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
+            // 
+            // btnCategoria
+            // 
+            btnCategoria.BackColor = Color.FromArgb(17, 17, 27);
+            btnCategoria.Cursor = Cursors.Hand;
+            btnCategoria.Dock = DockStyle.Top;
+            btnCategoria.FlatStyle = FlatStyle.Popup;
+            btnCategoria.ForeColor = SystemColors.ControlLightLight;
+            btnCategoria.Image = (Image)resources.GetObject("btnCategoria.Image");
+            btnCategoria.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCategoria.Location = new Point(0, 412);
+            btnCategoria.Name = "btnCategoria";
+            btnCategoria.Padding = new Padding(10, 0, 0, 0);
+            btnCategoria.Size = new Size(186, 45);
+            btnCategoria.TabIndex = 33;
+            btnCategoria.Text = "   Categoria";
+            btnCategoria.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCategoria.UseVisualStyleBackColor = false;
+            btnCategoria.Click += btnCategoria_Click;
             // 
             // btnAdministrarAcceso
             // 
@@ -466,24 +485,6 @@
             sidebarTime.Interval = 10;
             sidebarTime.Tick += sidebarTime_Tick;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(17, 17, 27);
-            button1.Cursor = Cursors.Hand;
-            button1.Dock = DockStyle.Top;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(0, 412);
-            button1.Name = "button1";
-            button1.Padding = new Padding(10, 0, 0, 0);
-            button1.Size = new Size(186, 45);
-            button1.TabIndex = 33;
-            button1.Text = "   Categoria";
-            button1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button1.UseVisualStyleBackColor = false;
-            // 
             // MenuAdministrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -542,6 +543,6 @@
         private Button btnGestionUsuario;
         private Button BtnProducto;
         private Button btnAdministrarAcceso;
-        private Button button1;
+        private Button btnCategoria;
     }
 }

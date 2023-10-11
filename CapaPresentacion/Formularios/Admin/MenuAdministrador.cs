@@ -241,7 +241,10 @@ namespace CapaPresentacion.Formularios.Admin
         {
             OpenChildForm(new Admin.administrar_acceso.FrmAdministrarAcceso(this));
         }
-
+        private void btnCategoria_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Admin.Categoria.FrmGestionarCategorias(this));
+        }
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {
             // Agrega los controladores de eventos a los botones
@@ -384,9 +387,6 @@ namespace CapaPresentacion.Formularios.Admin
             }
         }
 
-
-
-
-
+        
     }
 }

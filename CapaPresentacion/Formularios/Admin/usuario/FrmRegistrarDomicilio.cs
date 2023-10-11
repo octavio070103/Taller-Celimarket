@@ -52,7 +52,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 // Cierra el formulario
                 this.Close();
             }
-           
+
 
         }
 
@@ -68,15 +68,15 @@ namespace CapaPresentacion.Formularios.Admin.usuario
 
             int numero = 0; //variable que me devuelve el aprametro de salida del if para las valdiaciones de los nuemros
 
-            if (string.IsNullOrWhiteSpace(calleDomi) || string.IsNullOrWhiteSpace(codigoPostal) || string.IsNullOrWhiteSpace(numDomicilio) || string.IsNullOrWhiteSpace(localidadDomi)|| string.IsNullOrWhiteSpace(provinciaDomi)) 
+            if (string.IsNullOrWhiteSpace(calleDomi) || string.IsNullOrWhiteSpace(codigoPostal) || string.IsNullOrWhiteSpace(numDomicilio) || string.IsNullOrWhiteSpace(localidadDomi) || string.IsNullOrWhiteSpace(provinciaDomi))
             {
                 MessageBox.Show("Por favor, Rellene todos los campos para poder Registrar el Domicilio", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                errorProviderDomicilio.SetError(lblCalle,"Ingrese el nombre de su calle");
-                errorProviderDomicilio.SetError(lblCodPostal,"Ingrese un cod postal valido");
-                errorProviderDomicilio.SetError(lblNumero,"Ingrese el numero de domicilio");
-                errorProviderDomicilio.SetError(lblLocalidad,"Ingrese su localidad");
-                errorProviderDomicilio.SetError(lblProvincia,"Ingrese su provincia");
-               validacion=false;
+                errorProviderDomicilio.SetError(lblCalle, "Ingrese el nombre de su calle");
+                errorProviderDomicilio.SetError(lblCodPostal, "Ingrese un cod postal valido");
+                errorProviderDomicilio.SetError(lblNumero, "Ingrese el numero de domicilio");
+                errorProviderDomicilio.SetError(lblLocalidad, "Ingrese su localidad");
+                errorProviderDomicilio.SetError(lblProvincia, "Ingrese su provincia");
+                validacion = false;
             }
 
             //vaidaciones individuales
@@ -90,7 +90,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             }
 
             //valdiar que en el campo codigopostal solo se ingrese numero
-            if (!int.TryParse(codigoPostal,out numero))
+            if (!int.TryParse(codigoPostal, out numero))
             {
                 errorProviderDomicilio.SetError(lblCodPostal, "Ingrese en valor numerico El codigo Postal");
                 MessageBox.Show("E lCodigo postal debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,7 +122,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             }
 
             //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita, y si esa descripcion del domiclio es distinta de null ya que como es un campo opcional si meviene null no tendria que validar nada
-            if (!string.IsNullOrWhiteSpace(descripDomi)) 
+            if (!string.IsNullOrWhiteSpace(descripDomi))
             {
                 if (!EsAlfabetico(descripDomi))
                 {
@@ -131,7 +131,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                     validacion = false;
                 }
             }
-         
+
             return validacion;
         }
 
