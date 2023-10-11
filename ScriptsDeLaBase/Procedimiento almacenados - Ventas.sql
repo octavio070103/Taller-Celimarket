@@ -15,6 +15,17 @@ GO
 
 CREATE PROCEDURE SP_CategoriasMasVendidas
 AS
+	select categoria.descripcion_categoria, COUNT(categoria.id_categoria) AS CategoriaMasVendida 
+		from detalle_venta
+		inner join producto ON detalle_venta.id_producto = producto.id_producto
+		inner join categoria ON producto.id_categoria = categoria.id_categoria
+		group by producto.id_categoria, categoria.descripcion_categoria
+		order by CategoriaMasVendida DESC
+GO
+
+/* 
+ALTER PROCEDURE SP_CategoriasMasVendidas
+AS
 	select categoria.nombre_categoria, COUNT(categoria.id_categoria) AS CategoriaMasVendida 
 		from detalle_venta
 		inner join producto ON detalle_venta.id_producto = producto.id_producto
@@ -22,7 +33,7 @@ AS
 		group by producto.id_categoria, categoria.nombre_categoria
 		order by CategoriaMasVendida DESC
 GO
-
+*/
 
 ---------- DATOS DEL NEGOCIO -----------
 
