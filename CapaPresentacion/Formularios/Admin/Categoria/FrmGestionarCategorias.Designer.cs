@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
             panel1 = new Panel();
             lblListaCategoria = new Label();
             panel2 = new Panel();
+            iconBtnProducto = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton1 = new FontAwesome.Sharp.IconButton();
             iconBtnAgregarCateg = new FontAwesome.Sharp.IconButton();
@@ -55,7 +56,6 @@
             col_id_categoria = new DataGridViewTextBoxColumn();
             col_nombre_categ = new DataGridViewTextBoxColumn();
             col_descrip_categ = new DataGridViewTextBoxColumn();
-            iconBtnProducto = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
@@ -100,6 +100,30 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(822, 473);
             panel2.TabIndex = 2;
+            // 
+            // iconBtnProducto
+            // 
+            iconBtnProducto.BackColor = Color.Navy;
+            iconBtnProducto.BackgroundImage = (Image)resources.GetObject("iconBtnProducto.BackgroundImage");
+            iconBtnProducto.BackgroundImageLayout = ImageLayout.None;
+            iconBtnProducto.Cursor = Cursors.Hand;
+            iconBtnProducto.FlatAppearance.BorderColor = Color.Black;
+            iconBtnProducto.FlatStyle = FlatStyle.Flat;
+            iconBtnProducto.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnProducto.ForeColor = SystemColors.ControlLightLight;
+            iconBtnProducto.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnProducto.IconColor = Color.White;
+            iconBtnProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnProducto.IconSize = 30;
+            iconBtnProducto.Location = new Point(431, 6);
+            iconBtnProducto.Name = "iconBtnProducto";
+            iconBtnProducto.Size = new Size(103, 39);
+            iconBtnProducto.TabIndex = 22;
+            iconBtnProducto.Text = "Productos";
+            iconBtnProducto.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnProducto.UseVisualStyleBackColor = false;
+            iconBtnProducto.Click += iconBtnProducto_Click;
             // 
             // iconButton3
             // 
@@ -383,6 +407,7 @@
             dataGridCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridCategoria.Size = new Size(404, 223);
             dataGridCategoria.TabIndex = 12;
+            dataGridCategoria.CellContentClick += dataGridCategoria_CellContentClick;
             // 
             // col_id_categoria
             // 
@@ -407,30 +432,6 @@
             col_descrip_categ.MinimumWidth = 25;
             col_descrip_categ.Name = "col_descrip_categ";
             col_descrip_categ.ReadOnly = true;
-            // 
-            // iconBtnProducto
-            // 
-            iconBtnProducto.BackColor = Color.Navy;
-            iconBtnProducto.BackgroundImage = (Image)resources.GetObject("iconBtnProducto.BackgroundImage");
-            iconBtnProducto.BackgroundImageLayout = ImageLayout.None;
-            iconBtnProducto.Cursor = Cursors.Hand;
-            iconBtnProducto.FlatAppearance.BorderColor = Color.Black;
-            iconBtnProducto.FlatStyle = FlatStyle.Flat;
-            iconBtnProducto.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnProducto.ForeColor = SystemColors.ControlLightLight;
-            iconBtnProducto.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnProducto.IconColor = Color.White;
-            iconBtnProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnProducto.IconSize = 30;
-            iconBtnProducto.Location = new Point(431, 6);
-            iconBtnProducto.Name = "iconBtnProducto";
-            iconBtnProducto.Size = new Size(103, 39);
-            iconBtnProducto.TabIndex = 22;
-            iconBtnProducto.Text = "Productos";
-            iconBtnProducto.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnProducto.UseVisualStyleBackColor = false;
-            iconBtnProducto.Click += iconBtnProducto_Click;
             // 
             // FrmGestionarCategorias
             // 
