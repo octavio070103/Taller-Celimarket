@@ -39,7 +39,7 @@ namespace CapaPresentacion.Formularios.Admin
             //va a leer todos los items dentro de la lista
             foreach (rol item in listaRol)
             {
-                comboRolUsu.Items.Add(item.descripcion_rol);
+                comboRolUsu.Items.Add(item.nombre_rol);
             }
 
             //configuro el datatime de la fecha de nacimiento para que el maximo de fecha que me deje de poner sea la fecha en la que se ejecuta el programa
@@ -120,7 +120,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             foreach (rol item in listaRol)
             {
-                if (item.descripcion_rol == descripcion)
+                if (item.nombre_rol == descripcion)
                 {
                     return item.id_rol;
                 }

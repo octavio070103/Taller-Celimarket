@@ -32,7 +32,7 @@ namespace CapaLogica
                       (atributo == "dni" && usuario?.obj_persona.dni?.ToLower()?.Contains(p_txtFIltro) == true)||                   //cuando el usuario ingresa un valor nulo o vacío en el filtro, obtendrás todos los elementos sin filtrar. Si el usuario ingresa un valor válido en el filtro, obtendrás solo los elementos que cumplan con ese filtro.
                       (atributo == "nombre" && usuario?.obj_persona.nombre?.ToLower()?.Contains(p_txtFIltro) == true) ||
                       (atributo == "apellido" && usuario?.obj_persona.apellido?.ToLower()?.Contains(p_txtFIltro) == true) ||
-                      (atributo == "rol" && usuario?.obj_rol.descripcion_rol == p_txtFIltro) 
+                      (atributo == "rol" && usuario?.obj_rol.nombre_rol == p_txtFIltro) 
                     // || (p_txtFIltro == "Estado del usuario" || usuario?.estado_usuario == Convert.ToInt32(p_txtFIltro)) 
                       )
                 .ToList(); //aca decimos que si el txt del filtro es null o vacia significa que no se ha proporcionado un filtro por lo que nose aplica ningun filtro en la busqueda ,esto me permite obtener la lista de usuarios sin filtros cuando el txt es null o vacio

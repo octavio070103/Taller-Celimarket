@@ -36,8 +36,8 @@ begin
 				SET @id_persona = SCOPE_IDENTITY()
 
 				--insertar en la tabla usuario relacionando la persona que inserte anteriormente con un usuario
-				insert into usuario(email,password,fecha_registro,estado_usuario,id_persona,id_rol,id_domicilio) 
-				values(@email,@password,GETDATE(),@estado_usuario,@id_persona,@id_rol,@id_domicilio)
+				insert into usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) 
+				values(@email,@password,@estado_usuario,@id_persona,@id_rol,@id_domicilio)
 
 				set @mensaje = 'el usuario se registro correctamente'
 				set @id_Usuario_resultado = SCOPE_IDENTITY()/*si se inserto esta funcion me alamcena el id del usuario que se inserto o genero)*/
@@ -84,7 +84,7 @@ CREATE PROC SP_EDITARUSUARIO(
 		@id_domicilio int,
 		@respuesta bit output,/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso la Rpespuesta que es 1 o 0 y un mensaje de salida*/
 		@mensaje varchar(500) output
-
+		select * from domicilio
 )
 as 
 begin 

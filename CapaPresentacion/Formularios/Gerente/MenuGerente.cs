@@ -62,7 +62,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     obj_rol = new rol()
                     {
                         id_rol = 1,
-                        descripcion_rol = "administrador"
+                        nombre_rol = "administrador"
                     }
                 };
             }
@@ -114,7 +114,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
             //pone los datos de uusario que se registra en el menu
             lblNombreDelUsu.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
-            lblRolDelUsu.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolDelUsu.Text = usuarioActual.obj_rol.nombre_rol;
 
         }
 

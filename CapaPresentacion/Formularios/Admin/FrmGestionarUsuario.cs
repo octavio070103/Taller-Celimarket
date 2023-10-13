@@ -90,7 +90,7 @@ namespace CapaPresentacion.Formularios.Admin
                     { //items del usuario
                       item.id_usuario, item.obj_persona.dni,item.obj_persona.nombre,item.obj_persona.apellido,item.email,item.password,item.obj_persona.telefono,
                        //item rol
-                       item.obj_rol.id_rol,item.obj_rol.descripcion_rol,
+                       item.obj_rol.id_rol,item.obj_rol.nombre_rol,
                        item.obj_domicilio.id_domicilio,item.obj_domicilio.calle,item.obj_domicilio.numero,item.obj_domicilio.provincia,
                       // item.estado_usuario==true ? 1 : 0,item.estado_usuario==true ? "Activo" : "NO activo"
                        item.estado_usuario,
@@ -139,7 +139,7 @@ namespace CapaPresentacion.Formularios.Admin
                     txtPasswordDato.Text = objUsuario.password;
                     txtDomiciliodato.Text = objUsuario.obj_domicilio.calle + " " + objUsuario.obj_domicilio.numero.ToString();
 
-
+                    //cargo el combo box de losroles del panel de editar datos del usuario ,lo guardo en una lista de roles a esos roles para poder buscar el indice del rol que tiene ese usuario asi se selecciona ese rol como predeterminado
                     List<rol> listaRol = listarRolesCombo(comboRolDato);//este metodo lista los roles en el comboBox que le paso como parametro y lo guardo en una var de tipo lista rol y asi puedo buscar el indiice del rol leugo 
 
                     //buscamos el índice del rol del usuario en la lista de roles utilizando FindIndex(traigo el 1er elemenot que cumple la condicion) y una expresión lambda(Las expresiones lambda permiten definir funciones pequeñas y simples en línea, sin la necesidad de declarar un método completo.) que compara el id_rol
@@ -180,6 +180,7 @@ namespace CapaPresentacion.Formularios.Admin
                 }
 
             }
+           
         }
 
         //si el usuario selecciona una fila para editar se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
@@ -266,7 +267,7 @@ namespace CapaPresentacion.Formularios.Admin
             //va a leer todos los items dentro de la lista y Rellena el ComboBox con los roles
             foreach (rol item in listaRol)
             {
-                p_combo.Items.Add(item.descripcion_rol);
+                p_combo.Items.Add(item.nombre_rol);
             }
             return listaRol;
 
@@ -333,7 +334,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             foreach (rol item in listaRol)
             {
-                if (item.descripcion_rol == descripcion)
+                if (item.nombre_rol == descripcion)
                 {
                     return item.id_rol;
                 }
@@ -366,6 +367,7 @@ namespace CapaPresentacion.Formularios.Admin
 
         }
 
+        /************************************* MODIFICAR*******/
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
@@ -410,7 +412,7 @@ namespace CapaPresentacion.Formularios.Admin
                         },
                         obj_domicilio = new domicilio()
                         {
-                            id_domicilio = 1//aca debo de cambiar por el domicilio creado 
+                            id_domicilio = 2//aca debo de cambiar por el domicilio creado 
                         }
 
 
@@ -588,6 +590,9 @@ namespace CapaPresentacion.Formularios.Admin
             txtTelefDato.Text = "";
             txtDomiciliodato.Text = "";
             txtPasswordDato.Text = "";
+            // Limpiar el ComboBox Roles Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
+            comboRolDato.Items.Clear();
+            comboEstadoDato.Items.Clear();
         }
 
         //en este evento se actualizara el friltro del dataGrid de usuarios cada vez que se cambie el texto del mi textBox

@@ -50,7 +50,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     obj_rol = new rol()
                     {
                         id_rol = 6,
-                        descripcion_rol = "Vendedor"
+                        nombre_rol = "Vendedor"
                     }
                 };
             }
@@ -128,7 +128,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void MenuVendedo_Load(object sender, EventArgs e)
         {
-            lblRolUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolUsuario.Text = usuarioActual.obj_rol.nombre_rol;
             lblNombreUsuario.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
         }
 

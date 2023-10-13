@@ -27,12 +27,12 @@ namespace CapaDatos
                         SqlCommand cmd = new SqlCommand("SP_REGISTRARDOMICILIO", Obj_conexion);
 
                         //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARDOMICILIO) que defini en mi BD para registrar el domicilio y asi evitar la inyeccion de SQL
-                        cmd.Parameters.AddWithValue("@calle",obj_domicilio.calle);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@codigo_postal",obj_domicilio.codigo_postal);
+                        cmd.Parameters.AddWithValue("@codigo_postal",obj_domicilio.codigo_postal);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@localidad", obj_domicilio.localidad);
+                        cmd.Parameters.AddWithValue("@provincia", obj_domicilio.provincia);
                         cmd.Parameters.AddWithValue("@numero",obj_domicilio.numero);
-                        cmd.Parameters.AddWithValue("@localidad",obj_domicilio.localidad);
-                        cmd.Parameters.AddWithValue("@provincia",obj_domicilio.provincia);
-                        cmd.Parameters.AddWithValue("@descripcion", obj_domicilio.descripcion);
+                        cmd.Parameters.AddWithValue("@calle", obj_domicilio.calle);
+                        cmd.Parameters.AddWithValue("@descripcion_domicilio", obj_domicilio.descripcion);
                         cmd.Parameters.AddWithValue("@estado_domicilio", obj_domicilio.estado_domicilio);
 
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon

@@ -3,7 +3,8 @@
 				--PROCEDIMIENTO PARA REGISTRAR CATEGORIA
 CREATE PROC SP_REGISTRARCATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar la categoria
-@Nombre_categoria VARCHAR(50),
+@Nombre_categoria VARCHAR(200),
+@Descripcion_categoria VARCHAR(200),
 @Estado_categoria bit,
 
 --estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida*/
@@ -17,8 +18,9 @@ begin
 	IF NOT EXISTS (SELECT * FROM categoria WHERE nombre_categoria=@Nombre_categoria)
 	BEGIN 
 		--Inserto en mi tabla categoria los valores que el usuario me paso como parametro y que se valdiaron correctamente que no existe en la BD el mismo nombre_categoria
-		INSERT INTO categoria(nombre_categoria,estado_categoria) 
-		VALUES(@Nombre_categoria,@Estado_categoria)
+		INSERT INTO categoria(nombre_categoria,descripcion_categoria,estado_categoria) 
+		VALUES(@Nombre_categoria,@Descripcion_categoria,@Estado_categoria)
+
 		SET @Resultado= SCOPE_IDENTITY()-- Obtener el ID de la categoria recién insertada y lo asigno o guardo en mi parametro de salida resultado
 		SET @Mensaje= 'La categoria se registro de manera correcta'
 
@@ -34,7 +36,8 @@ GO
 CREATE PROC SP_EDITARCATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a editar la categoria
 @Id_Categoria int,
-@Nombre_categoria VARCHAR(50),
+@Nombre_categoria VARCHAR(200),
+@Descripcion_categoria VARCHAR(200),
 @Estado_categoria bit,
 
 --estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida
@@ -47,6 +50,7 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM categoria WHERE nombre_categoria=@Nombre_categoria AND id_categoria != @Id_Categoria)
 		UPDATE categoria SET
 		nombre_categoria=@Nombre_categoria,
+		descripcion_categoria=@Descripcion_categoria,
 		estado_categoria=@Estado_categoria
 		WHERE id_categoria = @Id_Categoria
 	ELSE

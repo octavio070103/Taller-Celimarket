@@ -31,10 +31,10 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT u.id_usuario, u.email,u.password,u.fecha_registro,u.estado_usuario," +
+                    query.AppendLine("SELECT u.id_usuario, u.email,u.password,u.estado_usuario,u.fecha_creacion_usuario," +
                         "p.id_persona,p.dni,p.nombre,p.apellido,p.fecha_nacimiento,p.telefono," +
-                        "r.id_rol, r.descripcion_rol," +
-                        "d.id_domicilio,d.calle,d.numero,d.provincia");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                        "r.id_rol, r.nombre_rol," +
+                        "d.id_domicilio,d.localidad,d.codigo_postal,d.provincia,d.numero,d.calle,d.descripcion_domicilio");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM usuario u");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
                     query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
@@ -56,12 +56,11 @@ namespace CapaDatos
                                 id_usuario = Convert.ToInt32(dr["id_usuario"]),                              
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
-                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
+                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_usuario")),
 
-                                 estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
-                                
-                                 //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
-                                 obj_persona = new persona()
+                                //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
+                                obj_persona = new persona()
                                  {
                                      id_persona= Convert.ToInt32(dr["id_persona"]),
                                      dni = dr["dni"].ToString(),
@@ -74,15 +73,18 @@ namespace CapaDatos
                                 obj_rol =new rol()
                                 {
                                     id_rol = Convert.ToInt32(dr["id_rol"]),
-                                    descripcion_rol = dr["descripcion_Rol"].ToString(),
+                                    nombre_rol = dr["nombre_rol"].ToString(),
                                 },
 
                                 obj_domicilio=new domicilio()
                                 {
                                     id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
+                                    codigo_postal = Convert.ToInt32(dr["codigo_postal"]),
+                                    localidad = dr["localidad"].ToString(),
+                                    provincia = dr["provincia"].ToString(),
+                                    numero = Convert.ToInt32(dr["numero"]),
                                     calle = dr["calle"].ToString(),
-                                    numero= Convert.ToInt32(dr["numero"]),
-                                    provincia = dr["provincia"].ToString()                
+                                    descripcion = dr["descripcion_domicilio"].ToString(),
                                 }
 
                             });
@@ -116,10 +118,10 @@ namespace CapaDatos
                     
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio,p para persona y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
                                    
-                    query.AppendLine("SELECT u.id_usuario, u.email, u.password, u.fecha_registro, u.estado_usuario,");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("SELECT u.id_usuario, u.email, u.password, u.estado_usuario,u.fecha_creacion_usuario,");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("p.id_persona, p.dni, p.nombre, p.apellido, p.fecha_nacimiento, p.telefono,");
-                    query.AppendLine("r.id_rol, r.descripcion_rol,");
-                    query.AppendLine("d.id_domicilio, d.calle, d.numero, d.provincia");
+                    query.AppendLine("r.id_rol, r.nombre_rol,");
+                    query.AppendLine("d.id_domicilio,d.localidad,d.provincia,d.numero,d.calle,d.descripcion_domicilio");
                     query.AppendLine("FROM usuario u"); // aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
                     query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
@@ -152,7 +154,7 @@ namespace CapaDatos
                             // string contrasenaCifrada = dr.GetString("ContraseñaUsuario");
                             string hashAlmacenado = dr["password"].ToString(); // Obtener el hash almacenado en la base de datos
                                                                                // Verificamos la contraseña proporcionada después de aplicar el hash y la sal
-                            bool contrasenaValida = BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);//("hola", "$2a$11$LfnTies.qV/kGdEomUxkTeoMTN5Ik1WC0tNhD6kcQCXN0QPxt2vZC");//(password, hashAlmacenado);
+                            bool contrasenaValida =password== hashAlmacenado; //BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);//("hola", "$2a$11$LfnTies.qV/kGdEomUxkTeoMTN5Ik1WC0tNhD6kcQCXN0QPxt2vZC");//(password, hashAlmacenado);
 
                             if (contrasenaValida)
                             {
@@ -162,9 +164,8 @@ namespace CapaDatos
                                     id_usuario = Convert.ToInt32(dr["id_usuario"]),
                                     email = dr["email"].ToString(),
                                     password = dr["password"].ToString(),
-                                    fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
-
                                     estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                    fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_usuario")),
 
                                     //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
                                     obj_persona = new persona()
@@ -180,15 +181,18 @@ namespace CapaDatos
                                     obj_rol = new rol()
                                     {
                                         id_rol = Convert.ToInt32(dr["id_rol"]),
-                                        descripcion_rol = dr["descripcion_Rol"].ToString(),
+                                        nombre_rol = dr["nombre_rol"].ToString(),
                                     },
 
                                     obj_domicilio = new domicilio()
                                     {
                                         id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
-                                        calle = dr["calle"].ToString(),
+                                        localidad = dr["localidad"].ToString(),
+                                        provincia = dr["provincia"].ToString(),
                                         numero = Convert.ToInt32(dr["numero"]),
-                                        provincia = dr["provincia"].ToString()
+                                        calle = dr["calle"].ToString(),
+                                        descripcion= dr["descripcion_domicilio"].ToString(),
+
                                     }
                                     // estado_usuario = Convert.ToBoolean(dr["estado_usuario"]),
                                     //obj_id_rol = new rol { IdRol = Convert.ToInt32(dr["rol_id"]) }
@@ -222,10 +226,10 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio,p para persona y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT u.id_usuario,u.email,u.password,u.fecha_registro,u.estado_usuario," +
-                        "p.id_persona,p.dni,p.nombre, p.apellido,p.fecha_nacimiento,p.telefono," +
-                        "r.id_rol, r.descripcion_rol," +
-                        "d.id_domicilio,d.calle,d.numero,d.provincia ");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("SELECT u.id_usuario,u.email,u.password,u.estado_usuario,u.fecha_creacion_usuario,");
+                    query.AppendLine("p.id_persona,p.dni,p.nombre, p.apellido,p.fecha_nacimiento,p.telefono,");                  
+                    query.AppendLine("r.id_rol, r.nombre_rol,");
+                    query.AppendLine("d.id_domicilio,d.codigo_postal,d.localidad,d.provincia,d.numero,d.calle,d.descripcion_domicilio");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM usuario u");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
                     query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");
                     query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
@@ -254,9 +258,8 @@ namespace CapaDatos
                                 id_usuario = Convert.ToInt32(dr["id_usuario"]),
                                 email = dr["email"].ToString(),
                                 password = dr["password"].ToString(),
-                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_registro")),
-
                                 estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_usuario")),
 
                                 //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
                                 obj_persona = new persona()
@@ -272,15 +275,18 @@ namespace CapaDatos
                                 obj_rol = new rol()
                                 {
                                     id_rol = Convert.ToInt32(dr["id_rol"]),
-                                    descripcion_rol = dr["descripcion_Rol"].ToString(),
+                                    nombre_rol = dr["nombre_rol"].ToString(),
                                 },
 
                                 obj_domicilio = new domicilio()
                                 {
                                     id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
-                                    calle = dr["calle"].ToString(),
+                                    codigo_postal = Convert.ToInt32(dr["codigo_postal"]),
+                                    localidad = dr["localidad"].ToString(),
+                                    provincia = dr["provincia"].ToString(),
                                     numero = Convert.ToInt32(dr["numero"]),
-                                    provincia = dr["provincia"].ToString()
+                                    calle = dr["calle"].ToString(),
+                                    descripcion = dr["descripcion_domicilio"].ToString(),
                                 }
 
                             };
