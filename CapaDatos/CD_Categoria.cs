@@ -30,6 +30,7 @@ namespace CapaDatos
 
                         //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARDOMICILIO) que defini en mi BD para registrar el domicilio y asi evitar la inyeccion de SQL
                         cmd.Parameters.AddWithValue("@Nombre_categoria", obj_categoria.nombre_categoria);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@Descripcion_categoria", obj_categoria.descripcion_categoria);
                         cmd.Parameters.AddWithValue("@Estado_categoria", obj_categoria.estado_categoria);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
 
 
@@ -79,7 +80,7 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT c.id_categoria,c.nombre_categoria,c.estado_categoria");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("SELECT c.id_categoria,c.nombre_categoria,c.descripcion_categoria,c.estado_categoria");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM categoria c");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
                 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
@@ -96,8 +97,9 @@ namespace CapaDatos
                             lista.Add(new categoria
                             {
                                 id_categoria = Convert.ToInt32(dr["id_categoria"]),
-                                nombre_categoria = dr["nombre_categoria"].ToString(),                     
-                                estado_categoria= Convert.ToInt32(dr["estado_categoria"]),
+                                nombre_categoria = dr["nombre_categoria"].ToString(),
+                                descripcion_categoria = dr["descripcion_categoria"].ToString(),
+                                estado_categoria = Convert.ToInt32(dr["estado_categoria"]),
 
                             });
                         }

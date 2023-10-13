@@ -56,6 +56,7 @@
             col_id_categoria = new DataGridViewTextBoxColumn();
             col_nombre_categ = new DataGridViewTextBoxColumn();
             col_descrip_categ = new DataGridViewTextBoxColumn();
+            col_estado_categoria = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
@@ -213,7 +214,7 @@
             panelDatosUsuario.Controls.Add(lblEstadoDato);
             panelDatosUsuario.Location = new Point(584, 29);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 303);
+            panelDatosUsuario.Size = new Size(238, 362);
             panelDatosUsuario.TabIndex = 13;
             // 
             // iconbtnGuardar
@@ -388,8 +389,8 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridCategoria.Columns.AddRange(new DataGridViewColumn[] { col_id_categoria, col_nombre_categ, col_descrip_categ });
-            dataGridCategoria.Location = new Point(130, 90);
+            dataGridCategoria.Columns.AddRange(new DataGridViewColumn[] { col_id_categoria, col_nombre_categ, col_descrip_categ, col_estado_categoria });
+            dataGridCategoria.Location = new Point(22, 90);
             dataGridCategoria.MultiSelect = false;
             dataGridCategoria.Name = "dataGridCategoria";
             dataGridCategoria.ReadOnly = true;
@@ -405,7 +406,7 @@
             dataGridCategoria.RowHeadersVisible = false;
             dataGridCategoria.RowTemplate.Height = 28;
             dataGridCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridCategoria.Size = new Size(404, 223);
+            dataGridCategoria.Size = new Size(556, 301);
             dataGridCategoria.TabIndex = 12;
             dataGridCategoria.CellContentClick += dataGridCategoria_CellContentClick;
             // 
@@ -420,10 +421,11 @@
             // 
             // col_nombre_categ
             // 
-            col_nombre_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_nombre_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             col_nombre_categ.HeaderText = "Nombre";
             col_nombre_categ.Name = "col_nombre_categ";
             col_nombre_categ.ReadOnly = true;
+            col_nombre_categ.Width = 84;
             // 
             // col_descrip_categ
             // 
@@ -432,6 +434,13 @@
             col_descrip_categ.MinimumWidth = 25;
             col_descrip_categ.Name = "col_descrip_categ";
             col_descrip_categ.ReadOnly = true;
+            // 
+            // col_estado_categoria
+            // 
+            col_estado_categoria.HeaderText = "Estado";
+            col_estado_categoria.Name = "col_estado_categoria";
+            col_estado_categoria.ReadOnly = true;
+            col_estado_categoria.Width = 74;
             // 
             // FrmGestionarCategorias
             // 
@@ -474,9 +483,10 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconBtnAgregarCateg;
         private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconBtnProducto;
         private DataGridViewTextBoxColumn col_id_categoria;
         private DataGridViewTextBoxColumn col_nombre_categ;
         private DataGridViewTextBoxColumn col_descrip_categ;
-        private FontAwesome.Sharp.IconButton iconBtnProducto;
+        private DataGridViewTextBoxColumn col_estado_categoria;
     }
 }

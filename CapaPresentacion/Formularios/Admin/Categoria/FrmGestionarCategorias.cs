@@ -28,9 +28,9 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             List<capaEntidad.categoria> listaCategorias = obj_CL_Categoria.listarCategorias();
             mostrarUsuariosEnDataGridView(listaCategorias);
         }
-        
+
         private void mostrarUsuariosEnDataGridView(List<capaEntidad.categoria> p_listaCategoria)
-        {/*
+        {
             dataGridCategoria.Rows.Clear(); // Limpiar filas existentes
 
             foreach (capaEntidad.categoria item in p_listaCategoria)
@@ -40,20 +40,20 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
                 dataGridCategoria.Rows.Add(
                     new object[]
                     { //items de la categoria
-                      item.id_usuario, item.obj_persona.dni,item.obj_persona.nombre,item.obj_persona.apellido,item.email,item.password,item.obj_persona.telefono,
-                      
-                       item.estado_usuario,
-                       item.estado_usuario == 1 ? "Activo" : "No activo" // Determinar el estado del usuario si es 1=activo
+                      item.id_categoria,
+                      item.nombre_categoria,
+                      item.descripcion_categoria,
+                      item.estado_categoria == 1 ? "Activo" : "No activo" // Determinar el estado del usuario si es 1=activo
                       }
                  );
 
             }
-            dataGridUsuarios.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
+            dataGridCategoria.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
             // Ocultar los botones
             iconbtnGuardar.Visible = false;
             iconBtnCancelar.Visible = false;
-        */}
-        
+        }
+
 
         private void iconBtnAgregarCateg_Click(object sender, EventArgs e)
         {

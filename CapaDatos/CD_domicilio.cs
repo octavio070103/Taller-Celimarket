@@ -78,7 +78,7 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente .Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT d.id_domicilio,d.calle,d.codigo_postal,d.numero,d.localidad,d.provincia,d.descripcion,d.estado_domicilio");
+                    query.AppendLine("SELECT d.id_domicilio,d.codigo_postal,d.localidad,d.provincia,d.numero,d.calle,d.descripcion_domicilio,d.estado_domicilio");
                     query.AppendLine("FROM domicilio d");
                     query.AppendLine("WHERE id_domicilio = @id_domicilio");
 
@@ -103,12 +103,12 @@ namespace CapaDatos
                             return new domicilio
                             {
                                 id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
-                                calle = dr["calle"].ToString(),
                                 codigo_postal = Convert.ToInt32(dr["codigo_postal"]),
-                                numero = Convert.ToInt32(dr["numero"]),
                                 localidad = dr["localidad"].ToString(),
                                 provincia = dr["provincia"].ToString(),
-                                descripcion = dr["descripcion"].ToString(),
+                                numero = Convert.ToInt32(dr["numero"]),
+                                calle = dr["calle"].ToString(),
+                                descripcion = dr["descripcion_domicilio"].ToString(),
                                 estado_domicilio = Convert.ToInt32(dr["estado_domicilio"])
                             };
                         }

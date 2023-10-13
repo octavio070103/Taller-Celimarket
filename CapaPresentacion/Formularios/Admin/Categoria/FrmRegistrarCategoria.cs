@@ -53,7 +53,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
                 capaEntidad.categoria obj_categoria = new capaEntidad.categoria()
                 {
                     nombre_categoria = txtNombreCate.Text,
-                    //agregar despues descripcion_categoria=txtDescripcionCate.Text,
+                    descripcion_categoria=txtDescripcionCate.Text,
                     estado_categoria = 1
                 };
 
