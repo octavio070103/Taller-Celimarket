@@ -212,31 +212,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
 
 
-        private void iconBtnModif_Click_1(object sender, EventArgs e)
-        {
-            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
-            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
-            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) != 0)
-            {
-                DialogResult consulta = MessageBox.Show("¿Desea Editar los datos Del usuario?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (consulta == DialogResult.OK)
-                {
-
-                    iconbtnGuardar.Visible = true;
-                    iconBtnCancelar.Visible = true;
-                    iconBtnModif.Visible = false;
-                    ReadOnlyTxtDatoUsuario(false);//configuro el panel del usuario en modo edicion deshabilit ando la funcion ReadOnly
-                }
-                //hago para que los text pasen de modo lectura a poder escrbirse sobre ellos 
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un usuario para poder editarlo ", "Editar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
+       
         private void iconBtnElim_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
@@ -382,6 +358,33 @@ namespace CapaPresentacion.Formularios.Admin
         }
 
         /************************************* MODIFICAR*******/
+        private void iconBtnModif_Click_1(object sender, EventArgs e)
+        {
+            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
+            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id se guardo
+            if (dataGridUsuarios.SelectedRows.Count > 0 && Convert.ToInt32(txtIdGuardado.Text) > 0)
+            {
+                DialogResult consulta = MessageBox.Show("¿Desea Editar los datos Del usuario?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (consulta == DialogResult.OK)
+                {
+
+                    iconbtnGuardar.Visible = true;
+                    iconBtnCancelar.Visible = true;
+                    iconBtnModif.Visible = false;
+                    ReadOnlyTxtDatoUsuario(false);//configuro el panel del usuario en modo edicion deshabilit ando la funcion ReadOnly
+                }
+                //hago para que los text pasen de modo lectura a poder escrbirse sobre ellos 
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un usuario para poder editarlo ", "Editar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
+
+        //guardar modificacion
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
@@ -392,7 +395,7 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
                 DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
-                borrarMensajeError();
+                borrarMensajeError();//borro los mensjaes de error en caso que lo haya
 
                 ask = MessageBox.Show("Seguro que desea Editar el usuario ? ", "Confirmar insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 

@@ -29,7 +29,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             // llamo al metodo Mostrar la lista de categorias en el DataGridView y le pasa la lista obtenida de la capa logica
             mostrarUsuariosEnDataGridView(listaCategorias);
 
-            ReadOnlyTxtDatoCategoria(true);//configuro que el panel de datos de la categoria sea en lectura uniucamente es decir le digo que se active esa propiedad
+            ReadOnlyCamposDatoCategoria(true);//configuro que el panel de datos de la categoria sea en lectura uniucamente es decir le digo que se active esa propiedad
         }
 
         private void mostrarUsuariosEnDataGridView(List<capaEntidad.categoria> p_listaCategoria)
@@ -104,7 +104,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
                 }
             }
         }
-        private void ReadOnlyTxtDatoCategoria(bool valor)
+        private void ReadOnlyCamposDatoCategoria(bool valor)
         {
             //el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
             txtIdDato.ReadOnly = valor;
@@ -136,10 +136,60 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             this.obj_intancia_menuAdmin.OpenChildForm(new Producto.FrmGestionarProducto(this.obj_intancia_menuAdmin));
         }
 
-
+        /************************************* MODIFICAR *************************************/
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
+            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
+            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id es distinto de 0
+            if (dataGridCategoria.SelectedRows.Count > 0 && Convert.ToInt32(txtIdDato.Text) > 0)
+            {
+                DialogResult consulta = MessageBox.Show("¿Desea Editar los datos De la categoria?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
+                if (consulta == DialogResult.OK)
+                {
+
+                    iconbtnGuardar.Visible = true;
+                    iconBtnCancelar.Visible = true;
+                    iconBtnModif.Visible = false;
+                    ReadOnlyCamposDatoCategoria(false);//configuro el panel del usuario en modo edicion deshabilit ando la funcion ReadOnly
+                }
+                //hago para que los text pasen de modo lectura a poder escrbirse sobre ellos 
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una categoria para poder editarlo ", "Editar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void iconbtnGuardar_Click(object sender, EventArgs e)
+        {
+            string mensaje = string.Empty;
+            //crear una instancia de la capa de logica de la clase CL_categoria
+            CL_Categoria obj_CL_Categoria = new CL_Categoria();
+
+            if (validarCampos())
+            {
+                // // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
+                DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
+           //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
+
+                ask = MessageBox.Show("Seguro que desea Editar la Categoria ?","Confirmar Insercion",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+
+                //como  Todos los msgbox devuelven un resultado lógico. podemos hacer el sig if
+                if (ask == DialogResult.Yes)
+                {
+
+                }
+            }
+            
+        }
+
+        private bool validarCampos()
+        {
+            bool validacion = true;
+
+
+            return validacion;
         }
     }
 }

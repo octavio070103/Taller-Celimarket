@@ -237,6 +237,7 @@
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
             // iconBtnCancelar
             // 
