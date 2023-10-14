@@ -37,6 +37,7 @@ namespace CapaPresentacion.Formularios.Admin
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
 
             panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al inicio sino selecciono ningun usuario para editar,estara oculto
+            txtIdGuardado.Visible = false;//oculto el id del usuario que luego uso para guardarlo y poder editar el usuario o buscarlo 
 
         }
 
@@ -61,7 +62,6 @@ namespace CapaPresentacion.Formularios.Admin
             // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica
             mostrarUsuariosEnDataGridView(listaUsuarios);
 
-            txtIdGuardado.Visible = false;//oculto el id del usuario que luego uso para guardarlo y poder editar el usuario o buscarlo 
             ReadOnlyTxtDatoUsuario(true);//configuro que el panel de datos del usuario sea en lectura uniucamente es decir le digo que se active esa propiedad
 
             //cargo el comoboBox del filtrado dle estadi al cargar el formulario
@@ -112,14 +112,15 @@ namespace CapaPresentacion.Formularios.Admin
             //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
             if (indice >= 0)
             {
-                mostrarDetallesUsuario();
+                DetallesUsuario(true);
 
-                limpiartxtDato();
+                limpiartxtDato();//limpio los campos del panel de datos usuario
+
                 // Obtener la fila seleccionada
-                DataGridViewRow selectedRow = dataGridUsuarios.Rows[e.RowIndex];
+                DataGridViewRow selectedRow = dataGridUsuarios.Rows[indice];
 
-                // Obtener los datos necesarios de la fila (suponiendo que la columna 0 contiene el ID)
-                int id_usuario = Convert.ToInt32(selectedRow.Cells[0].Value);
+                // Obtener los datos necesarios de la fila  obteniuendo de esa fila selecciona su id_usuario(cells [0] y el valor de este(suponiendo que la columna 0 contiene la columna ID)
+                int id_usuario = Convert.ToInt32(selectedRow.Cells[0].Value);//toma el valor alamcenadoi en la 1ra celda de la fila seleccionada y lo asigna a esa var
 
                 CL_usuario obj_CL_Usuario = new CL_usuario();
 
@@ -184,17 +185,29 @@ namespace CapaPresentacion.Formularios.Admin
         }
 
         //si el usuario selecciona una fila para editar se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
-        private void mostrarDetallesUsuario()
+        private void DetallesUsuario(bool valor)
         {
-            panelDatosUsuario.Visible = true;
-            // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
-            dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
-            dataGridUsuarios.Size = new System.Drawing.Size(690, 349); // ancho y alto en píxeles
+            //si el valor del parametro valor es true significa que se debe de mostrar el panel de datos de usuario
+            if (valor==true)
+            {
+                panelDatosUsuario.Visible = true;
+                // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
+                dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
+                dataGridUsuarios.Size = new System.Drawing.Size(690, 349); // ancho y alto en píxeles
 
-            iconBtnAgregar.Location = new System.Drawing.Point(80, 99);
-            iconBtnAlta.Location = new System.Drawing.Point(211, 99);
-            iconBtnElim.Location = new System.Drawing.Point(211, 99);
-            iconBtnPermiso.Location = new System.Drawing.Point(341, 99);
+                iconBtnAgregar.Location = new System.Drawing.Point(80, 99);
+                iconBtnAlta.Location = new System.Drawing.Point(211, 99);
+                iconBtnElim.Location = new System.Drawing.Point(211, 99);
+                iconBtnPermiso.Location = new System.Drawing.Point(341, 99);
+            }
+            else //se oculta el panel de detalles de usuario si el valor es false ya que sifnigca que se quiere ocultar el mismo 
+            {
+                panelDatosUsuario.Visible = false;
+                // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
+                dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
+                dataGridUsuarios.Size = new System.Drawing.Size(800, 349); // ancho y alto en píxeles
+            }
+            
 
         }
 
@@ -312,6 +325,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void ReadOnlyTxtDatoUsuario(bool valor)
         {
+            //el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
             txtDniDato.ReadOnly = valor;
             txtNombreDato.ReadOnly = valor;
             txtApeDato.ReadOnly = valor;
@@ -450,7 +464,9 @@ namespace CapaPresentacion.Formularios.Admin
                     {
                         MessageBox.Show(mensaje);
                     }
+                    
                 }
+                DetallesUsuario(false);//aca ocult oel panel luego de que se edito el usuario 
 
             }
         }

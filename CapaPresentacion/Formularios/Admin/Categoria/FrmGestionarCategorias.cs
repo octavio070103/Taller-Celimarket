@@ -21,12 +21,15 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         }
         private void FrmGestionarCategorias_Load(object sender, EventArgs e)
         {
+            // Crear una instancia de la capa de lógica para hacer uso de los metodos que tiene esa clase CL_categoria que esta en la capa logica
             CL_Categoria obj_CL_Categoria = new CL_Categoria();
 
+            List<capaEntidad.categoria> listaCategorias = obj_CL_Categoria.listarCategorias();// Obtener la lista de categorias desde la capa de lógica
 
-            //  dataGridCategoria.DataSource = obj_CL_Categoria.listarCategorias();
-            List<capaEntidad.categoria> listaCategorias = obj_CL_Categoria.listarCategorias();
+            // llamo al metodo Mostrar la lista de categorias en el DataGridView y le pasa la lista obtenida de la capa logica
             mostrarUsuariosEnDataGridView(listaCategorias);
+
+            ReadOnlyTxtDatoCategoria(true);//configuro que el panel de datos de la categoria sea en lectura uniucamente es decir le digo que se active esa propiedad
         }
 
         private void mostrarUsuariosEnDataGridView(List<capaEntidad.categoria> p_listaCategoria)
@@ -54,6 +57,73 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             iconBtnCancelar.Visible = false;
         }
 
+        private void dataGridCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indice = e.RowIndex; //con esta sentencia  obtengo la fila seleccionada su indice
+                                     //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
+            if (indice >= 0)
+            {
+                limpiarCamposDato(); //limpio los campos del panel de datos categoria
+
+                // Obtener la fila seleccionada
+                DataGridViewRow selectedRow = dataGridCategoria.Rows[indice];
+
+                // Obtener los datos necesarios de la fila  obteniuendo de esa fila selecciona su id_categoria(cells [0] y el valor de este(suponiendo que la columna 0 contiene la columna ID)
+                int id_categoria = Convert.ToInt32(selectedRow.Cells[0].Value);//toma el valor alamcenadoi en la 1ra celda de la fila seleccionada y lo asigna a esa var
+
+                CL_Categoria obj_CL_Categoria = new CL_Categoria();
+
+                capaEntidad.categoria obj_categoria = obj_CL_Categoria.buscarCategoriaId(id_categoria);
+
+                //si el obj_categoria que contiene la categoria que se selecciono o que se busco es != null significa que se encontro entronces entra al id para mostrar sus data en el panel de datos
+                if (obj_categoria != null)
+                {
+                    txtIdDato.Text = obj_categoria.id_categoria.ToString();
+                    txtNombreDato.Text = obj_categoria.nombre_categoria;
+                    txtDescripDato.Text = obj_categoria.descripcion_categoria;
+
+                    //cargo el comnbo estado del usuario añadimos las opciones al comboBox  y luego decimos que dependiendo del estado_usuario que tiene que se seleccione esa opcion como predeterminada
+                    comboEstadoDato.Items.Add("Activo");
+                    comboEstadoDato.Items.Add("No activo");
+                    if (obj_categoria.estado_categoria == 1)
+                    {
+                        comboEstadoDato.SelectedIndex = 0;
+
+                        //me permitira determinar que boton mostrarse si el de dar de alta o el de dar de baja depnediendo del estado del usuario que se seleccion
+                        iconBtnDarBaja.Visible = true;
+                        iconBtnDarAlta.Visible = false;
+                    }
+                    else
+                    {
+                        comboEstadoDato.SelectedIndex = 1;
+                        //me permitira determinar que boton mostrarse si el de dar de alta o el de dar de baja depnediendo del estado del usuario que se seleccion
+                        iconBtnDarBaja.Visible = false;
+                        iconBtnDarAlta.Visible = true;
+                    }
+
+                }
+            }
+        }
+        private void ReadOnlyTxtDatoCategoria(bool valor)
+        {
+            //el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
+            txtIdDato.ReadOnly = valor;
+            txtNombreDato.ReadOnly = valor;
+            txtDescripDato.ReadOnly = valor;
+
+            //usamos la propeidad enable para que parezca esatr en modo lectura(para el comoboBox) y evitar cambios por parte del usuario que intereactua o que se pueda editar dependiendo del valor,como esta propiedad usa el valor contrario al readOnly para ponerse en modo lectura le agrgamos el ! operador de negacion esto cambiara el valor y asi podremos hacer uso de esa propeidad
+            comboEstadoDato.Enabled = !valor;
+        }
+
+        private void limpiarCamposDato()
+        {
+            txtIdDato.Text = "";
+            txtNombreDato.Text = "";
+            txtDescripDato.Text = "";
+
+            // Limpiar el ComboBox Roles Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
+            comboEstadoDato.Items.Clear();
+        }
 
         private void iconBtnAgregarCateg_Click(object sender, EventArgs e)
         {
@@ -66,7 +136,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             this.obj_intancia_menuAdmin.OpenChildForm(new Producto.FrmGestionarProducto(this.obj_intancia_menuAdmin));
         }
 
-        private void dataGridCategoria_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void iconBtnModif_Click(object sender, EventArgs e)
         {
 
         }

@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             lblListaCategoria = new Label();
             panel2 = new Panel();
             iconBtnProducto = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconBtnDarBaja = new FontAwesome.Sharp.IconButton();
+            iconBtnDarAlta = new FontAwesome.Sharp.IconButton();
             iconBtnAgregarCateg = new FontAwesome.Sharp.IconButton();
             panelDatosUsuario = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconBtnModif = new FontAwesome.Sharp.IconButton();
             comboEstadoDato = new ComboBox();
-            lblDniDato = new Label();
-            txtDniDato = new TextBox();
-            txtApeDato = new TextBox();
+            lblIdCategDato = new Label();
+            txtIdDato = new TextBox();
+            txtDescripDato = new TextBox();
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
             lblNombreDato = new Label();
-            lblApellidoDato = new Label();
+            lblDescripDato = new Label();
             lblEstadoDato = new Label();
             dataGridCategoria = new DataGridView();
             col_id_categoria = new DataGridViewTextBoxColumn();
@@ -91,8 +91,8 @@
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
             panel2.Controls.Add(iconBtnProducto);
-            panel2.Controls.Add(iconButton3);
-            panel2.Controls.Add(iconButton1);
+            panel2.Controls.Add(iconBtnDarBaja);
+            panel2.Controls.Add(iconBtnDarAlta);
             panel2.Controls.Add(iconBtnAgregarCateg);
             panel2.Controls.Add(panelDatosUsuario);
             panel2.Controls.Add(dataGridCategoria);
@@ -126,51 +126,51 @@
             iconBtnProducto.UseVisualStyleBackColor = false;
             iconBtnProducto.Click += iconBtnProducto_Click;
             // 
-            // iconButton3
+            // iconBtnDarBaja
             // 
-            iconButton3.BackColor = Color.FromArgb(246, 69, 32);
-            iconButton3.BackgroundImage = (Image)resources.GetObject("iconButton3.BackgroundImage");
-            iconButton3.BackgroundImageLayout = ImageLayout.None;
-            iconButton3.Cursor = Cursors.Hand;
-            iconButton3.FlatAppearance.BorderColor = Color.Black;
-            iconButton3.FlatStyle = FlatStyle.Flat;
-            iconButton3.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton3.ForeColor = SystemColors.ControlLightLight;
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.White;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.IconSize = 30;
-            iconButton3.Location = new Point(278, 6);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(109, 38);
-            iconButton3.TabIndex = 21;
-            iconButton3.Text = "Dar De Baja";
-            iconButton3.TextAlign = ContentAlignment.MiddleRight;
-            iconButton3.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton3.UseVisualStyleBackColor = false;
+            iconBtnDarBaja.BackColor = Color.FromArgb(246, 69, 32);
+            iconBtnDarBaja.BackgroundImage = (Image)resources.GetObject("iconBtnDarBaja.BackgroundImage");
+            iconBtnDarBaja.BackgroundImageLayout = ImageLayout.None;
+            iconBtnDarBaja.Cursor = Cursors.Hand;
+            iconBtnDarBaja.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDarBaja.FlatStyle = FlatStyle.Flat;
+            iconBtnDarBaja.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDarBaja.ForeColor = SystemColors.ControlLightLight;
+            iconBtnDarBaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnDarBaja.IconColor = Color.White;
+            iconBtnDarBaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDarBaja.IconSize = 30;
+            iconBtnDarBaja.Location = new Point(278, 6);
+            iconBtnDarBaja.Name = "iconBtnDarBaja";
+            iconBtnDarBaja.Size = new Size(109, 38);
+            iconBtnDarBaja.TabIndex = 21;
+            iconBtnDarBaja.Text = "Dar De Baja";
+            iconBtnDarBaja.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDarBaja.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDarBaja.UseVisualStyleBackColor = false;
             // 
-            // iconButton1
+            // iconBtnDarAlta
             // 
-            iconButton1.BackColor = Color.Orange;
-            iconButton1.BackgroundImage = (Image)resources.GetObject("iconButton1.BackgroundImage");
-            iconButton1.BackgroundImageLayout = ImageLayout.None;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(278, 6);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(89, 38);
-            iconButton1.TabIndex = 20;
-            iconButton1.Text = "Dar Alta";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnDarAlta.BackColor = Color.Orange;
+            iconBtnDarAlta.BackgroundImage = (Image)resources.GetObject("iconBtnDarAlta.BackgroundImage");
+            iconBtnDarAlta.BackgroundImageLayout = ImageLayout.None;
+            iconBtnDarAlta.Cursor = Cursors.Hand;
+            iconBtnDarAlta.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDarAlta.FlatStyle = FlatStyle.Flat;
+            iconBtnDarAlta.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDarAlta.ForeColor = SystemColors.ControlLightLight;
+            iconBtnDarAlta.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnDarAlta.IconColor = Color.White;
+            iconBtnDarAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDarAlta.IconSize = 30;
+            iconBtnDarAlta.Location = new Point(278, 6);
+            iconBtnDarAlta.Name = "iconBtnDarAlta";
+            iconBtnDarAlta.Size = new Size(89, 38);
+            iconBtnDarAlta.TabIndex = 20;
+            iconBtnDarAlta.Text = "Dar Alta";
+            iconBtnDarAlta.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDarAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDarAlta.UseVisualStyleBackColor = false;
             // 
             // iconBtnAgregarCateg
             // 
@@ -204,13 +204,13 @@
             panelDatosUsuario.Controls.Add(iconBtnCancelar);
             panelDatosUsuario.Controls.Add(iconBtnModif);
             panelDatosUsuario.Controls.Add(comboEstadoDato);
-            panelDatosUsuario.Controls.Add(lblDniDato);
-            panelDatosUsuario.Controls.Add(txtDniDato);
-            panelDatosUsuario.Controls.Add(txtApeDato);
+            panelDatosUsuario.Controls.Add(lblIdCategDato);
+            panelDatosUsuario.Controls.Add(txtIdDato);
+            panelDatosUsuario.Controls.Add(txtDescripDato);
             panelDatosUsuario.Controls.Add(txtNombreDato);
             panelDatosUsuario.Controls.Add(lblDatosUsuario);
             panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(lblApellidoDato);
+            panelDatosUsuario.Controls.Add(lblDescripDato);
             panelDatosUsuario.Controls.Add(lblEstadoDato);
             panelDatosUsuario.Location = new Point(584, 29);
             panelDatosUsuario.Name = "panelDatosUsuario";
@@ -279,6 +279,7 @@
             iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
             iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnModif.UseVisualStyleBackColor = false;
+            iconBtnModif.Click += iconBtnModif_Click;
             // 
             // comboEstadoDato
             // 
@@ -290,30 +291,30 @@
             comboEstadoDato.TabIndex = 23;
             comboEstadoDato.Text = "Seleccione un Estado";
             // 
-            // lblDniDato
+            // lblIdCategDato
             // 
-            lblDniDato.AutoSize = true;
-            lblDniDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDniDato.ForeColor = SystemColors.WindowText;
-            lblDniDato.Location = new Point(3, 61);
-            lblDniDato.Name = "lblDniDato";
-            lblDniDato.Size = new Size(32, 17);
-            lblDniDato.TabIndex = 11;
-            lblDniDato.Text = "DNI";
+            lblIdCategDato.AutoSize = true;
+            lblIdCategDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblIdCategDato.ForeColor = SystemColors.WindowText;
+            lblIdCategDato.Location = new Point(3, 61);
+            lblIdCategDato.Name = "lblIdCategDato";
+            lblIdCategDato.Size = new Size(22, 17);
+            lblIdCategDato.TabIndex = 11;
+            lblIdCategDato.Text = "ID";
             // 
-            // txtDniDato
+            // txtIdDato
             // 
-            txtDniDato.Location = new Point(79, 55);
-            txtDniDato.Name = "txtDniDato";
-            txtDniDato.Size = new Size(144, 23);
-            txtDniDato.TabIndex = 10;
+            txtIdDato.Location = new Point(79, 55);
+            txtIdDato.Name = "txtIdDato";
+            txtIdDato.Size = new Size(144, 23);
+            txtIdDato.TabIndex = 10;
             // 
-            // txtApeDato
+            // txtDescripDato
             // 
-            txtApeDato.Location = new Point(79, 113);
-            txtApeDato.Name = "txtApeDato";
-            txtApeDato.Size = new Size(144, 23);
-            txtApeDato.TabIndex = 9;
+            txtDescripDato.Location = new Point(79, 113);
+            txtDescripDato.Name = "txtDescripDato";
+            txtDescripDato.Size = new Size(144, 23);
+            txtDescripDato.TabIndex = 9;
             // 
             // txtNombreDato
             // 
@@ -343,16 +344,16 @@
             lblNombreDato.TabIndex = 7;
             lblNombreDato.Text = "Nombre";
             // 
-            // lblApellidoDato
+            // lblDescripDato
             // 
-            lblApellidoDato.AutoSize = true;
-            lblApellidoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblApellidoDato.ForeColor = SystemColors.WindowText;
-            lblApellidoDato.Location = new Point(0, 119);
-            lblApellidoDato.Name = "lblApellidoDato";
-            lblApellidoDato.Size = new Size(80, 17);
-            lblApellidoDato.TabIndex = 8;
-            lblApellidoDato.Text = "Descripcion";
+            lblDescripDato.AutoSize = true;
+            lblDescripDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDescripDato.ForeColor = SystemColors.WindowText;
+            lblDescripDato.Location = new Point(0, 119);
+            lblDescripDato.Name = "lblDescripDato";
+            lblDescripDato.Size = new Size(80, 17);
+            lblDescripDato.TabIndex = 8;
+            lblDescripDato.Text = "Descripcion";
             // 
             // lblEstadoDato
             // 
@@ -368,26 +369,26 @@
             // dataGridCategoria
             // 
             dataGridCategoria.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridCategoria.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridCategoria.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             dataGridCategoria.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridCategoria.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridCategoria.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridCategoria.BorderStyle = BorderStyle.None;
             dataGridCategoria.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridCategoria.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dataGridCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridCategoria.Columns.AddRange(new DataGridViewColumn[] { col_id_categoria, col_nombre_categ, col_descrip_categ, col_estado_categoria });
             dataGridCategoria.Location = new Point(22, 90);
@@ -395,14 +396,14 @@
             dataGridCategoria.Name = "dataGridCategoria";
             dataGridCategoria.ReadOnly = true;
             dataGridCategoria.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridCategoria.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dataGridCategoria.RowHeadersVisible = false;
             dataGridCategoria.RowTemplate.Height = 28;
             dataGridCategoria.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -472,17 +473,17 @@
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private ComboBox comboEstadoDato;
         private Label lblEstadoDato;
-        private Label lblDniDato;
-        private TextBox txtDniDato;
-        private TextBox txtApeDato;
-        private Label lblApellidoDato;
+        private Label lblIdCategDato;
+        private TextBox txtIdDato;
+        private TextBox txtDescripDato;
+        private Label lblDescripDato;
         private Label lblNombreDato;
         private TextBox txtNombreDato;
         private Label lblDatosUsuario;
         private DataGridView dataGridCategoria;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconBtnDarAlta;
         private FontAwesome.Sharp.IconButton iconBtnAgregarCateg;
-        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconBtnDarBaja;
         private FontAwesome.Sharp.IconButton iconBtnProducto;
         private DataGridViewTextBoxColumn col_id_categoria;
         private DataGridViewTextBoxColumn col_nombre_categ;

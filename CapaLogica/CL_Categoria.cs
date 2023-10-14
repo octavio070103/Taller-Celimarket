@@ -38,6 +38,11 @@ namespace CapaLogica
             return obj_cd_categoria.darDeAltaCategoria(obj_categoria, out mensaje);
         }
 
+        public categoria buscarCategoriaId(int id_categoria)
+        {
+            return obj_cd_categoria.buscarCategoriaId(id_categoria);
+        }
+
         /*aca pueddo crear un metodo llamado validar que me valide que no venga vacio algunos campos de la capa de presnetacion tambien ,debo de agregar mas reglas mas adelante*/
 
     }

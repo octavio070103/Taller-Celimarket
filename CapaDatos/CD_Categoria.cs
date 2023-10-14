@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Win32;
 
 namespace CapaDatos
 {
@@ -244,6 +245,56 @@ namespace CapaDatos
                 mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
             }
             return respuesta;
+        }
+
+        public categoria buscarCategoriaId(int id_categoria)
+        {
+            //le paso cadena de la clase conexion , con using me garantizo la liberacion adecuada de los recursos que ya no son necesarios
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de excepeciones que peude ocurrir al momento de usar la Base de datos
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla categorias y que me realice la consulta que le especifico
+                    StringBuilder query = new StringBuilder();
+
+                    //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("SELECT c.id_categoria,c.nombre_categoria,c.descripcion_categoria,c.estado_categoria");
+                    query.AppendLine("FROM categoria c");   // aca le doy el alias u a la tabla de categoria y con from defino la fuente de datos sobre la cual se realizarán las operaciones de consulta
+                    query.AppendLine("WHERE c.id_categoria = @id_categoria;");//esta consulta se utiliza para filtrar(buscar) la fila en la tabla categoria  y solo realice esas operacion en aquel registro que su campo id_categoria coinidice con el parametro @id_categoria
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    //le paso un valor al paraemtro @id_usuario para realizar la consulta
+                    cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
+
+                    //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
+                    using (SqlDataReader dr = cmd.ExecuteReader())//Crea y abre un SqlDataReader llamado dr para ejecutar la consulta SQL que se definió anteriormente en cmd. Este objeto dr se utiliza para leer los resultados de la consulta.
+                    {
+                        //Este condicional verifica si hay al menos una fila de resultados en el SqlDataReader.
+                        //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
+                        if (dr.Read())
+                        {
+                            //creo un objeto categoria y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
+                            return new categoria
+                            {
+                                id_categoria = Convert.ToInt32(dr["id_categoria"]),
+                                nombre_categoria = dr["nombre_categoria"].ToString(),
+                                descripcion_categoria = dr["descripcion_categoria"].ToString(),
+                                estado_categoria = Convert.ToInt32(dr["estado_categoria"]),
+                            };
+                        }
+
+                    }// Al salir de este bloque, la conexión se cerrará automáticamente.
+
+                }
+                catch (Exception ex)
+                {
+                    // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                    Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+            }
+            return null; // Devolvemos null si no se encontró la categoria
         }
     }
 }

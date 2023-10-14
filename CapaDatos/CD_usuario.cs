@@ -221,8 +221,8 @@ namespace CapaDatos
             {
                 //hago un capturador de errores por si tengo porblemas al coenctar con la BD
                 try
-                { 
-                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me realice la consulta que le especifico
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio,p para persona y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
