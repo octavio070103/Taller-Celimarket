@@ -12,13 +12,20 @@ namespace CapaLogica
 {
     public class CL_Cliente
     {
-        /*private CD_Cliente objetoCD = new CD_Cliente();
+        private D_cliente objCliente = new D_cliente();
 
+        /*
         public DataTable MostrarClien()
         {
             DataTable tabla = new DataTable();
             tabla = objetoCD.MostrarCliente();
             return tabla;
         }*/
+
+        public DataTable obtenerListaClientes()
+        {
+            return objCliente.listarClientes();
+        }
+
     }
 }

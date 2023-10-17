@@ -1,4 +1,5 @@
-﻿using Proyecto_Taller.Presentacion.Formularios.Vendedor;
+﻿using CapaLogica;
+using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -123,11 +124,11 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             if (dtgvClientes.Rows.Count > 0)
             {
-                if ( validarCampos() == true )
+                if (validarCampos() == true)
                 {
                     DialogResult pregunta = MessageBox.Show("Esta a punto de modificar este registro, ¿Desea continuar?", "Confirmar modificación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if(pregunta == DialogResult.Yes)
+                    if (pregunta == DialogResult.Yes)
                     {
                         dtgvClientes.CurrentRow.Cells[0].Value = txtDniCliente.Text;
                         dtgvClientes.CurrentRow.Cells[1].Value = txtApellidoCliente.Text;
@@ -144,7 +145,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                 else
                 {
                     MessageBox.Show("Debe completar todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+
                 }
 
 
@@ -158,7 +159,7 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             if (txtApellidoCliente.Text == "")
             {
-                errorProvider1.SetError(txtApellidoCliente , "Ingrese el apellido");
+                errorProvider1.SetError(txtApellidoCliente, "Ingrese el apellido");
                 validacion = false;
             }
 
@@ -207,5 +208,28 @@ namespace CapaPresentacion.Formularios.Vendedor
             errorProvider1.SetError(txtTelefonoCliente, "");
         }
 
+
+        //******* LISTAR CLIENTES *********
+
+        public void cargarListaClientes()
+        {
+            // Instanciamos un objeto de la clase CL_Cliente para obtener los datos de los clientes
+            CL_Cliente objCliente = new CL_Cliente();
+
+            dtgvClientes.DataSource = objCliente.obtenerListaClientes();
+        }
+
+        private void frmModuloCliente_Load(object sender, EventArgs e)
+        {
+            cargarListaClientes();
+
+            dtgvClientes.Columns[0].HeaderText = "ID Cliente";
+            dtgvClientes.Columns[1].HeaderText = "DNI";
+            dtgvClientes.Columns[2].HeaderText = "Apellido";
+            dtgvClientes.Columns[3].HeaderText = "Nombre";
+            dtgvClientes.Columns[4].HeaderText = "Fecha de nacimiento";
+            dtgvClientes.Columns[5].HeaderText = "Teléfono";
+            dtgvClientes.Columns[6].HeaderText = "Fecha de registro";
+        }
     }
 }
