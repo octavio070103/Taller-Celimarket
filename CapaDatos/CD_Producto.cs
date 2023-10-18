@@ -96,8 +96,8 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@imagen_producto", obj_producto.imagen);
                     cmd.Parameters.AddWithValue("@stock_producto", obj_producto.stock_producto);
                     cmd.Parameters.AddWithValue("@estado_producto", obj_producto.estado_producto);
-                    cmd.Parameters.AddWithValue("@Id_Marca", obj_producto.obj_marca);
-                    cmd.Parameters.AddWithValue("@Id_Categoria", obj_producto.obj_categoria);
+                    cmd.Parameters.AddWithValue("@Id_Marca", obj_producto.obj_marca.id_marca);
+                    cmd.Parameters.AddWithValue("@Id_Categoria", obj_producto.obj_categoria.id_categoria);
 
                     //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                     cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm

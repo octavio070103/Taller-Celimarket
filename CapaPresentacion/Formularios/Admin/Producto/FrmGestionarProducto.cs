@@ -317,7 +317,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 MessageBox.Show(mensaje);
             }
         }
-
+        /************************************* MODIFICACION*************************************/
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
             //aca digo que si la categoria selecciono una columna en el data grid y ademas el id_cateogria que se encarga de guardar cuando se seleciono la categoria en el data grid es mayor a 0 que entre al if
@@ -363,11 +363,12 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     capaEntidad.producto obj_producto = new capaEntidad.producto()
                     {
                        Idproducto=Convert.ToInt32(txtIdProducto.Text),
+                       cod_barra_producto=112,
                        nombre_producto=txtNombreDato.Text,
                        descripcion_producto=txtDescripcionDato.Text,
-                       precio_compra= Convert.ToInt32(txtPrecioCompraDato.Text),
-                       precio_venta=Convert.ToInt32(txtPrecioVenta.Text),
-                       stock_producto=Convert.ToInt32(txtStockDato),
+                       precio_compra= Convert.ToDecimal(txtPrecioCompraDato.Text),
+                       precio_venta=Convert.ToDecimal(txtPrecioVenta.Text),
+                       stock_producto=Convert.ToInt32(txtStockDato.Text),
                        imagen="prueba.png",//cambiar por la url de la img
                         //usamos un operador ternario o condicional para obtener el valor del estado ya que como es numerico y yo anteriroemnte l oconverti a string lo debo de volver a convertir a int dependiendo de la seleccion del usuario del estado
                         estado_producto = (comboEstadoDato.SelectedItem as string == "Activo") ? 1 : 0,  // esto seria como un if pero en una sola linea estructura :result = (condición) ? valorSiCierto : valorSiFalso;
