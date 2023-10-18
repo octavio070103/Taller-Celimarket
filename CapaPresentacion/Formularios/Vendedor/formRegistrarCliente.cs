@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaEntidad;
+using CapaLogica;
 
 namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 {
@@ -35,6 +37,51 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            string mensajeResultado = "";
+
+            borrarMensajeError();
+            validarCampos();
+
+            if (validarCampos() == true)
+            {
+                DialogResult pregunta = MessageBox.Show("¿Seguro que desea registrar un nuevo Cliente?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if (pregunta == DialogResult.Yes)
+                {
+                    persona auxCliente = new persona()
+                    {
+                        dni = txtDni.Text,
+                        apellido = txtApellido.Text,
+                        nombre = txtNombre.Text,
+                        fecha_nacimiento = dtpFechaNac.Value,
+                        telefono = txtTelefono.Text
+                    };
+
+                    CL_Cliente auxComando = new CL_Cliente();
+
+                    auxComando.registrarCliente( auxCliente, out mensajeResultado);
+
+                    if ( mensajeResultado == "Se registro al cliente correctamente.")
+                    {
+                        MessageBox.Show(mensajeResultado, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Close();
+                    }
+                    else
+                    {
+                        // Si el cliente no fue registrado correctamente, se mostrara un mensaje de error
+                        MessageBox.Show(mensajeResultado, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Se deben completar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+            /* // BORRAR CUANDO YA NO SE UTILICE
             string[] datosCliente;
             borrarMensajeError();
             validarCampos();
@@ -57,7 +104,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             {
                 MessageBox.Show("Se deben completar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
+            */
             //******
 
         }
@@ -70,8 +117,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             auxDatosCliente[1] = txtApellido.Text;
             auxDatosCliente[2] = txtNombre.Text;
             auxDatosCliente[3] = txtTelefono.Text;
-            auxDatosCliente[4] = txtDomicilio.Text;
-            auxDatosCliente[5] = txtCorreo.Text;
+            //auxDatosCliente[4] = txtDomicilio.Text;
+            //auxDatosCliente[4] = txtCorreo.Text;
 
             return auxDatosCliente;
         }
@@ -99,6 +146,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 validacion = false;
             }
 
+            /*
             if (txtDomicilio.Text == "")
             {
                 errorProvider1.SetError(txtDomicilio, "Ingrese el domicilio");
@@ -109,7 +157,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             {
                 errorProvider1.SetError(txtCorreo, "Ingrese el correo electronico");
                 validacion = false;
-            }
+            }*/
 
             if (txtTelefono.Text == "")
             {
@@ -127,8 +175,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             errorProvider1.SetError(txtApellido, "");
             errorProvider1.SetError(txtNombre, "");
             errorProvider1.SetError(txtDni, "");
-            errorProvider1.SetError(txtDomicilio, "");
-            errorProvider1.SetError(txtCorreo, "");
+            //errorProvider1.SetError(txtDomicilio, "");
+            //errorProvider1.SetError(txtCorreo, "");
             errorProvider1.SetError(txtTelefono, "");
         }
 

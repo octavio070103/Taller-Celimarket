@@ -38,12 +38,6 @@
             btnEliminar = new Button();
             btnAgregar = new Button();
             dtgvClientes = new DataGridView();
-            dni_cliente = new DataGridViewTextBoxColumn();
-            apellido_cliente = new DataGridViewTextBoxColumn();
-            nombre_cliente = new DataGridViewTextBoxColumn();
-            telefono_cliente = new DataGridViewTextBoxColumn();
-            direccion_cliente = new DataGridViewTextBoxColumn();
-            correo_cliente = new DataGridViewTextBoxColumn();
             pnlInfoCliente = new Panel();
             txtCorreoCliente = new TextBox();
             lblCorreoCliente = new Label();
@@ -163,43 +157,12 @@
             dtgvClientes.AllowUserToAddRows = false;
             dtgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvClientes.Columns.AddRange(new DataGridViewColumn[] { dni_cliente, apellido_cliente, nombre_cliente, telefono_cliente, direccion_cliente, correo_cliente });
             dtgvClientes.Location = new Point(0, 0);
             dtgvClientes.Name = "dtgvClientes";
             dtgvClientes.RowTemplate.Height = 25;
             dtgvClientes.Size = new Size(555, 414);
             dtgvClientes.TabIndex = 0;
             dtgvClientes.CellContentClick += dtgvClientes_CellContentClick;
-            // 
-            // dni_cliente
-            // 
-            dni_cliente.HeaderText = "DNI";
-            dni_cliente.Name = "dni_cliente";
-            // 
-            // apellido_cliente
-            // 
-            apellido_cliente.HeaderText = "Apellido";
-            apellido_cliente.Name = "apellido_cliente";
-            // 
-            // nombre_cliente
-            // 
-            nombre_cliente.HeaderText = "Nombre";
-            nombre_cliente.Name = "nombre_cliente";
-            // 
-            // telefono_cliente
-            // 
-            telefono_cliente.HeaderText = "Teléfono";
-            telefono_cliente.Name = "telefono_cliente";
-            // 
-            // direccion_cliente
-            // 
-            direccion_cliente.HeaderText = "Dirección";
-            direccion_cliente.Name = "direccion_cliente";
-            // 
-            // correo_cliente
-            // 
-            correo_cliente.HeaderText = "Correo";
-            correo_cliente.Name = "correo_cliente";
             // 
             // pnlInfoCliente
             // 
@@ -371,6 +334,7 @@
             Controls.Add(pnlVentanaClientes);
             Name = "frmModuloCliente";
             Text = "Clientes";
+            Load += frmModuloCliente_Load;
             pnlVentanaClientes.ResumeLayout(false);
             pnlVentanaClientes.PerformLayout();
             pnlListaClientes.ResumeLayout(false);
@@ -396,12 +360,6 @@
         private TextBox txtBuscadorClientes;
         private Label lblFiltro;
         private ComboBox cboFiltroClientes;
-        private DataGridViewTextBoxColumn dni_cliente;
-        private DataGridViewTextBoxColumn apellido_cliente;
-        private DataGridViewTextBoxColumn nombre_cliente;
-        private DataGridViewTextBoxColumn telefono_cliente;
-        private DataGridViewTextBoxColumn direccion_cliente;
-        private DataGridViewTextBoxColumn correo_cliente;
         private Panel pnlEncabezado;
         private Label lblEncabezado;
         private TextBox txtApellidoCliente;
