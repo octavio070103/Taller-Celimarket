@@ -56,7 +56,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
             // Crear una instancia de la capa de lógica
             CL_usuario obj_CL_Usuario = new CL_usuario();
-            //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+            //ESCRIBO capaentidad.usuario ya que es necesario especificar de manera explícita que archivo usuario te estás refiriendo,lo HAGO calificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
             List<capaEntidad.usuario> listaUsuarios = obj_CL_Usuario.listarUsuarios(); // Obtener la lista de usuarios desde la capa de lógica
 
             // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica
@@ -171,9 +171,6 @@ namespace CapaPresentacion.Formularios.Admin
                         iconBtnAlta.Visible = true;
                     }
 
-
-
-
                 }
                 else
                 {
@@ -184,7 +181,7 @@ namespace CapaPresentacion.Formularios.Admin
            
         }
 
-        //si el usuario selecciona una fila para editar se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
+        //si el usuario selecciona una fila para ver su detalles se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
         private void DetallesUsuario(bool valor)
         {
             //si el valor del parametro valor es true significa que se debe de mostrar el panel de datos de usuario
@@ -212,7 +209,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
 
 
-       
+        /************************************* DAR DE BAJA *************************************/
         private void iconBtnElim_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
@@ -439,28 +436,26 @@ namespace CapaPresentacion.Formularios.Admin
 
                     if (resultadoEditarUsuario)
                     {
-                        limpiartxtDato();
 
-                        MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " el usuario se edito correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " se edito correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
                         iconBtnModif.Visible = true;
 
                         //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
                         //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
-                        List<capaEntidad.usuario> listaUsuarios = obj_CL_Usuario.listarUsuarios(); // Obtener la lista de usuarios desde la capa de lógica
                         
-                        // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica con esto logro hacer un REFRESH EN EL DATAGRID con los datos nuevos
-                        mostrarUsuariosEnDataGridView(listaUsuarios);
+                        limpiartxtDato();//limpio los campos del panel de datos 
                     }
                     else
                     {
-                        limpiartxtDato();
+                        
                         MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " No se edito correctamente ", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
                         iconBtnModif.Visible = true;
                         //no actualizo el datgrid ya que no se edito ningun elemento
+                        limpiartxtDato();//limpio los campos del panel de datos 
                     }
                     //aca muestro en caso de que haya habido algun error en el metodo resultadoEditarUsuario el error del mensaje o en caso de exito tmabien muestro el mensaje proveniente de mi proceso alamcenado
                     if (mensaje != "")
@@ -469,7 +464,7 @@ namespace CapaPresentacion.Formularios.Admin
                     }
                     
                 }
-                DetallesUsuario(false);//aca ocult oel panel luego de que se edito el usuario 
+                DetallesUsuario(false);//aca oculto el panel luego de que se edito el usuario 
 
             }
         }
@@ -611,7 +606,10 @@ namespace CapaPresentacion.Formularios.Admin
             txtPasswordDato.Text = "";
             // Limpiar el ComboBox Roles Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
             comboRolDato.Items.Clear();
+            comboRolDato.Text = "Seleccione un Rol"; // aca le paso el texto predeterminado que quiero que tenga el combo
+
             comboEstadoDato.Items.Clear();
+            comboEstadoDato.Text = "Seleccione un Estado"; // aca le paso el texto predeterminado que quiero que tenga el combo
         }
 
         //en este evento se actualizara el friltro del dataGrid de usuarios cada vez que se cambie el texto del mi textBox

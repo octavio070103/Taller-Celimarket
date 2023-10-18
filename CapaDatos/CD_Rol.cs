@@ -63,5 +63,40 @@ namespace CapaDatos
             return listaRol; // Devolvemos la listaRol con los obj cargados y sino se encontro nada vendra vacia
 
         }
+
+        public int obtenerIDRolSeleccionada(string nombre_rol)
+        {
+            int id_RolObtenido = 0; // Inicializa la variable a devolverque va a contener el valor del id_rol obteneido apartir del nombre del rol
+
+            using (SqlConnection obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    // Consulta SQL parametrizada
+                    string query = "SELECT r.id_rol FROM rol r WHERE r.nombre_rol = @nombre_rol";
+
+                    using (SqlCommand cmd = new SqlCommand(query, obj_conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre_rol", nombre_rol);
+                        obj_conexion.Open();
+
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                id_RolObtenido = dr.GetInt32(0); // Lee el valor del primer campo (en este caso, id_categoria)
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+            }
+
+            return id_RolObtenido;
+        }
     }
 }

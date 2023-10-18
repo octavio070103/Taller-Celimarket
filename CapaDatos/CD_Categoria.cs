@@ -37,7 +37,7 @@ namespace CapaDatos
 
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
                         cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi variable de salidad de mi procedimiento almacenado resultado me trae el id_resultado
-                        cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
 
                         // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                         cmd.CommandType = CommandType.StoredProcedure;
@@ -49,7 +49,7 @@ namespace CapaDatos
                         //asignamos el valor del id_domicilio_registrado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
                         id_categoria_registrado = Convert.ToInt32(cmd.Parameters["@Resultado"].Value);
 
-                        mensaje = cmd.Parameters["@mensaje"].Value.ToString();
+                        mensaje = cmd.Parameters["@Mensaje"].Value.ToString();
                     }
                     catch (Exception ex)
                     {
@@ -131,11 +131,12 @@ namespace CapaDatos
                     //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
                     cmd.Parameters.AddWithValue("@Id_Categoria", obj_categoria.id_categoria);
                     cmd.Parameters.AddWithValue("@Nombre_categoria", obj_categoria.nombre_categoria);
+                    cmd.Parameters.AddWithValue("@Descripcion_categoria", obj_categoria.descripcion_categoria);
                     cmd.Parameters.AddWithValue("@Estado_categoria", obj_categoria.estado_categoria);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
 
                     //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
-                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
-                    cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
+                    cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
 
                     // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -145,9 +146,9 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
-                    respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+                    respuesta = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
 
-                    mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+                    mensaje = cmd.Parameters["@Mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
 
                 }
             }
@@ -159,7 +160,7 @@ namespace CapaDatos
             return respuesta;
         }
 
-        public bool eliminarCategoriaLogico(categoria obj_categoria, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
+        public bool darBajaCategoriaLogico(categoria obj_categoria, out string mensaje)//mi obj usuario funcvionaria como un parametro de entrada y el mesnaje como uno de slida como en el procedimiento de laBD(proporciona informacion sobre la oepracion que se realiza con las var de entrada y el metodo)
         {
 
             bool respuesta = false;
@@ -178,8 +179,8 @@ namespace CapaDatos
 
 
                     //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
-                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
-                    cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
+                    cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
 
                     // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -189,9 +190,9 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
-                    respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+                    respuesta = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
 
-                    mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+                    mensaje = cmd.Parameters["@Mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
 
                 }
             }
@@ -222,8 +223,8 @@ namespace CapaDatos
 
 
                     //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
-                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
-                    cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
+                    cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                    cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
 
                     // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -233,9 +234,9 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                     //asignamos el valor del id_uusario_resultado que es un var output en mi proced. alm en mi BD en mi var id_usuario_generado y l oconvertimos en entero
-                    respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+                    respuesta = Convert.ToBoolean(cmd.Parameters["@Resultado"].Value);
 
-                    mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
+                    mensaje = cmd.Parameters["@Mensaje"].Value.ToString();//aca se guarda el msj de error que nos da el proc almacenado 
 
                 }
             }
@@ -268,6 +269,10 @@ namespace CapaDatos
                     //le paso un valor al paraemtro @id_usuario para realizar la consulta
                     cmd.Parameters.AddWithValue("@id_categoria", id_categoria);
 
+                    // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
                     //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
                     using (SqlDataReader dr = cmd.ExecuteReader())//Crea y abre un SqlDataReader llamado dr para ejecutar la consulta SQL que se definió anteriormente en cmd. Este objeto dr se utiliza para leer los resultados de la consulta.
                     {
@@ -295,6 +300,41 @@ namespace CapaDatos
                 }
             }
             return null; // Devolvemos null si no se encontró la categoria
+        }
+
+        public int obtenerIDCategoriaSeleccionada(string nombre_categoria)
+        {
+            int id_categoriaObtenido = 0; // Inicializa la variable a devolver
+
+            using (SqlConnection obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    // Consulta SQL parametrizada
+                    string query = "SELECT c.id_categoria FROM categoria c WHERE c.nombre_categoria = @nombre_categoria";
+
+                    using (SqlCommand cmd = new SqlCommand(query, obj_conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre_categoria", nombre_categoria);
+                        obj_conexion.Open();
+
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                id_categoriaObtenido = dr.GetInt32(0); // Lee el valor del primer campo (en este caso, id_categoria)
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+            }
+
+            return id_categoriaObtenido;
         }
     }
 }

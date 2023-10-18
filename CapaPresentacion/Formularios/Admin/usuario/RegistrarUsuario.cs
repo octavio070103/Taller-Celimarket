@@ -50,6 +50,7 @@ namespace CapaPresentacion.Formularios.Admin
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
+            int id_usuario_generado;
 
             // Obtener la descripción del rol seleccionado en el ComboBox
             string rolSeleccionadoDescripcion = comboRolUsu.SelectedItem as string;
@@ -93,7 +94,7 @@ namespace CapaPresentacion.Formularios.Admin
 
                         };
 
-                        int id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
+                         id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
                         if (mensaje != "")
                         {
                             MessageBox.Show(mensaje);

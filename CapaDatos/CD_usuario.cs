@@ -485,7 +485,7 @@ namespace CapaDatos
                     //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand("SP_ELIMINARUSUARIOLOGICO", Obj_conexion);
 
-                    //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARUSUARIO) que defini en mi BD para registrar el usuario y asi evitar la inyeccion de SQL
+                    //le paso los parametros que necesita mi procedimiento almacenado(SP_ELIMINARUSUARIOLOGICO) que defini en mi BD para dar de baja el usuario y asi evitar la inyeccion de SQL
                     cmd.Parameters.AddWithValue("@id_usuario", obj_usuario.id_usuario);
 
 

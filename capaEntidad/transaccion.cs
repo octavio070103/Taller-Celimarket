@@ -22,6 +22,6 @@ namespace capaEntidad
         {
             productos_transaccion = new List<producto>();
         }
-
+        public DateTime fecha_creacion_transaccion { get; set; }
     }
 }

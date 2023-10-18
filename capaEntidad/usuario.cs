@@ -17,5 +17,6 @@ namespace capaEntidad
         public persona obj_persona { get; set; }
         public rol obj_rol { get; set; }
         public domicilio obj_domicilio { get; set; }
+
     }
 }

@@ -137,10 +137,11 @@ ADD CONSTRAINT DF_domicilio_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion;
 
 CREATE TABLE producto(
 	id_producto INT IDENTITY(1,1),
+	cod_barra_producto INT NOT NULL,
 	nombre_producto VARCHAR(50) NOT NULL,
 	descripcion_producto VARCHAR(100) NOT NULL,
-	precio_compra FLOAT NOT NULL,
-	precio_venta FLOAT NOT NULL,
+	precio_compra DECIMAL(10, 2) NOT NULL,
+	precio_venta DECIMAL(10, 2) NOT NULL,
 	imagen_producto VARCHAR(100) NOT NULL,
 	stock_producto INT NOT NULL,
 	estado_producto BIT NOT NULL,
@@ -151,9 +152,11 @@ CREATE TABLE producto(
 	--CONSTRAINT
 	CONSTRAINT PK_producto PRIMARY KEY (id_producto),
 	CONSTRAINT FK_producto_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria),
-	CONSTRAINT FK_producto_Marca FOREIGN KEY(Id_Marca) REFERENCES Marca(Id_Marca)
+	CONSTRAINT FK_producto_Marca FOREIGN KEY(Id_Marca) REFERENCES Marca(Id_Marca),
+	CONSTRAINT UQ_cod_barra_producto UNIQUE(cod_barra_producto),
 
 );
+
 ALTER TABLE producto 
 ADD CONSTRAINT DF_producto_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_producto;
 

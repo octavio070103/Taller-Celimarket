@@ -27,12 +27,12 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             List<capaEntidad.categoria> listaCategorias = obj_CL_Categoria.listarCategorias();// Obtener la lista de categorias desde la capa de lógica
 
             // llamo al metodo Mostrar la lista de categorias en el DataGridView y le pasa la lista obtenida de la capa logica
-            mostrarUsuariosEnDataGridView(listaCategorias);
+            mostrarCategoriasEnDataGridView(listaCategorias);
 
             ReadOnlyCamposDatoCategoria(true);//configuro que el panel de datos de la categoria sea en lectura uniucamente es decir le digo que se active esa propiedad
         }
 
-        private void mostrarUsuariosEnDataGridView(List<capaEntidad.categoria> p_listaCategoria)
+        private void mostrarCategoriasEnDataGridView(List<capaEntidad.categoria> p_listaCategoria)
         {
             dataGridCategoria.Rows.Clear(); // Limpiar filas existentes
 
@@ -123,6 +123,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
 
             // Limpiar el ComboBox Roles Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
             comboEstadoDato.Items.Clear();
+            comboEstadoDato.Text = "Seleccione un Estado"; // aca le paso el texto predeterminado que quiero que tenga el combo
         }
 
         private void iconBtnAgregarCateg_Click(object sender, EventArgs e)
@@ -139,8 +140,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         /************************************* MODIFICAR *************************************/
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
-            //aca digo que si el usuario selecciono una columna en el data grid y ademas el txtid que se encarga de guardar el id del uusario selecionado es disitinto de 0 que entre al if
-            //esto lo hago ay que asi me aseguro de que el usuario selecciono una columna en el data grid y que ademas es un usuario valido pq su id es distinto de 0
+            //aca digo que si la categoria selecciono una columna en el data grid y ademas el id_cateogria que se encarga de guardar cuando se seleciono la categoria en el data grid es mayor a 0 que entre al if
+            //esto lo hago para asegurame de que la categoria que se selecciono  en el data grid  es validad y que ademas es un usuario valido pq su id es mayor a 0
             if (dataGridCategoria.SelectedRows.Count > 0 && Convert.ToInt32(txtIdDato.Text) > 0)
             {
                 DialogResult consulta = MessageBox.Show("¿Desea Editar los datos De la categoria?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -161,6 +162,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             }
         }
 
+        /************************************* Guardar MODIFICACION*************************************/
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
@@ -171,17 +173,58 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             {
                 // // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
                 DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
-           //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
+                                 //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
 
-                ask = MessageBox.Show("Seguro que desea Editar la Categoria ?","Confirmar Insercion",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                ask = MessageBox.Show("Seguro que desea Editar la Categoria ?", "Confirmar Insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 //como  Todos los msgbox devuelven un resultado lógico. podemos hacer el sig if
                 if (ask == DialogResult.Yes)
                 {
+                    capaEntidad.categoria obj_categoria = new capaEntidad.categoria()
+                    {
+                        id_categoria = Convert.ToInt32(txtIdDato.Text),
+                        nombre_categoria = txtNombreDato.Text,
+                        descripcion_categoria = txtDescripDato.Text,
+                        //usamos un operador ternario o condicional para obtener el valor del estado ya que como es numerico y yo anteriroemnte l oconverti a string lo debo de volver a convertir a int dependiendo de la seleccion del usuario del estado
+                        estado_categoria = (comboEstadoDato.SelectedItem as string == "Activo") ? 1 : 0  // esto seria como un if pero en una sola linea estructura :result = (condición) ? valorSiCierto : valorSiFalso;
+                    };
+                    bool resultaldoEditarCategoria = new CL_Categoria().editarCategoria(obj_categoria, out mensaje); // lamo al metodoeditar y le paso el objeto que recien cree y cargue sus atributos y una var de saldia mensaje
+
+                    if (resultaldoEditarCategoria == true)
+                    {
+                        MessageBox.Show("La categoria " + obj_categoria.nombre_categoria + " Se edito Corretamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        iconbtnGuardar.Visible = false;
+                        iconBtnCancelar.Visible = false;
+                        iconBtnModif.Visible = true;
+
+                        //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
+                        //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+                        List<capaEntidad.categoria> listaCategorias = obj_CL_Categoria.listarCategorias(); // Obtener la lista de usuarios desde la capa de lógica
+
+                        // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica con esto logro hacer un REFRESH EN EL DATAGRID con los datos nuevos
+                        mostrarCategoriasEnDataGridView(listaCategorias);
+                        limpiarCamposDato();//limpio los campos del panel de datos 
+                    }
+                    else
+                    {
+                        MessageBox.Show("La categoria " + obj_categoria.nombre_categoria + " No se edito Corretamente,Intentelo de nuevo", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        iconbtnGuardar.Visible = true;
+                        iconBtnCancelar.Visible = true;
+                        iconBtnModif.Visible = false;
+
+                        limpiarCamposDato();//limpio los campos del panel de datos 
+                    }
+
+                    //aca muestro en caso de que haya habido algun error en el metodo resultadoEditarUsuario el error del mensaje o en caso de exito tmabien muestro el mensaje proveniente de mi proceso alamcenado
+                    if (mensaje != "")
+                    {
+                        MessageBox.Show(mensaje);
+                    }
 
                 }
+
             }
-            
+
         }
 
         private bool validarCampos()
@@ -190,6 +233,92 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
 
 
             return validacion;
+        }
+        //limpia los mensajes de error que se muestran junto a los campos en caso de que hayan errores de validación.
+        private void borrarMensajeError()
+        {
+        }
+
+        /************************************* DAR DE BAJA *************************************/
+        private void iconBtnDarBaja_Click(object sender, EventArgs e)
+        {
+            string mensaje = string.Empty;
+            CL_Categoria obj_CL_Categoria = new CL_Categoria();
+
+            //aca digo que si la categoria selecciono una columna en el data grid y ademas el id_cateogria que se encarga de guardar cuando se seleciono la categoria en el data grid es mayor a 0 que entre al if
+            //esto lo hago para asegurame de que la categoria que se selecciono  en el data grid  es validad y que ademas es un usuario valido pq su id es mayor a 0
+            if (dataGridCategoria.SelectedRows.Count > 0 && Convert.ToInt32(txtIdDato.Text) > 0)
+            {
+
+                DialogResult consulta = MessageBox.Show("¿Desea Dar de baja la Categoria " + txtNombreDato.Text + "?", "Dar de Baja Datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (consulta == DialogResult.Yes)
+                {
+                    //creo un obj_categoria que va a contener el id_ de la categoria a dar de abaj
+                    capaEntidad.categoria obj_categoria = new capaEntidad.categoria
+                    {
+                        id_categoria = Convert.ToInt32(txtIdDato.Text) //aca le paso el id_categoria que necesito para poder hace uso del metodo de dar de baja categoria
+
+                    };
+
+
+                    obj_CL_Categoria.darBajaCategoriaLogico(obj_categoria, out mensaje);
+
+                    //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                    FrmGestionarCategorias_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
+                    //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una categoria para poder darlo de baja ", "Dar de Baja Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //aca muestro en caso de que haya habido algun error en el metodo DarDeBaja o en caso de exito tmabien muestro el mensaje proveniente de mi procedimiento alamcenado
+            if (mensaje != "")
+            {
+                MessageBox.Show(mensaje);
+            }
+        }
+
+        /************************************* DAR DE ALTA *************************************/
+        private void iconBtnDarAlta_Click(object sender, EventArgs e)
+        {
+            string mensaje = string.Empty;
+            CL_Categoria obj_CL_Categoria = new CL_Categoria();
+
+            //aca digo que si la categoria selecciono una columna en el data grid y ademas el id_cateogria que se encarga de guardar cuando se seleciono la categoria en el data grid es mayor a 0 que entre al if
+            //esto lo hago para asegurame de que la categoria que se selecciono  en el data grid  es validad y que ademas es un usuario valido pq su id es mayor a 0
+            if (dataGridCategoria.SelectedRows.Count > 0 && Convert.ToInt32(txtIdDato.Text) > 0)
+            {
+
+                DialogResult consulta = MessageBox.Show("¿Desea Dar de Alta la Categoria " + txtNombreDato.Text + "?", "Dar de Alta Datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (consulta == DialogResult.Yes)
+                {
+                    //creo un obj_categoria que va a contener el id_ de la categoria a dar de abaj
+                    capaEntidad.categoria obj_categoria = new capaEntidad.categoria
+                    {
+                        id_categoria = Convert.ToInt32(txtIdDato.Text) //aca le paso el id_categoria que necesito para poder hace uso del metodo de dar de baja categoria
+
+                    };
+
+
+                    obj_CL_Categoria.darDeAltaCategoria(obj_categoria, out mensaje);
+
+                    //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                    FrmGestionarCategorias_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
+                    //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una categoria para poder darlo de Alta ", "Dar de Alta Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //aca muestro en caso de que haya habido algun error en el metodo DarDeBaja o en caso de exito tmabien muestro el mensaje proveniente de mi procedimiento alamcenado
+            if (mensaje != "")
+            {
+                MessageBox.Show(mensaje);
+            }
         }
     }
 }
