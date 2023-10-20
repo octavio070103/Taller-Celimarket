@@ -269,7 +269,8 @@ CREATE TABLE permiso(
 	fecha_inicio DATE NOT NULL,
 	fecha_finalizacion DATE NOT NULL,
 	comentario_justificacion VARCHAR(200) NOT NULL,
-	estado_permiso VARCHAR(50) NOT NULL,
+	estado_aprobacion VARCHAR(20) NOT NULL,--este campo me permite saber si la solicutd de permiso fue aceptada o rechazada por el administrador  pendiente(valor por default),aprobado,rechazado
+	estado_permiso BIT NOT NULL,--1=alta,0=baja
 	id_usuario INT NOT NULL,
 	fecha_creacion_permiso DATE NOT NULL,
 
@@ -279,6 +280,10 @@ CREATE TABLE permiso(
 );
 ALTER TABLE permiso 
 ADD CONSTRAINT DF_permiso_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_permiso;
+
+--agrego un retriccion de tipo default para cuando se inserte un permiso por defecto el campo estado_aprobacion sea pendiente
+ALTER TABLE permiso
+ADD CONSTRAINT DF_estado_aprobacion DEFAULT 'pendiente' for estado_aprobacion
 
 ----------------LOTE DE INSERCIONES
 -- Categoría

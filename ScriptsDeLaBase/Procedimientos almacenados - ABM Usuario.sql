@@ -82,7 +82,8 @@ CREATE PROC SP_EDITARUSUARIO(
 		@estado_usuario bit,
 		@id_rol int,
 		@id_domicilio int,
-		@respuesta bit output,/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso la Rpespuesta que es 1 o 0 y un mensaje de salida*/
+	/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso la Rpespuesta que es 1 o 0 y un mensaje de salida*/
+		@respuesta bit output,
 		@mensaje varchar(500) output
 		
 )

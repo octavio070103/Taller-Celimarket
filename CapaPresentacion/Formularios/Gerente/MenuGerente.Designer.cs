@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuGerente));
             sidebarTime = new System.Windows.Forms.Timer(components);
             panelBarraSuperior = new Panel();
+            iconBtnPedirPermiso = new FontAwesome.Sharp.IconButton();
             picRestaurar = new PictureBox();
             pictureBox2 = new PictureBox();
             lblTituloMenu = new Label();
@@ -54,6 +55,7 @@
             lblRolDelUsu = new Label();
             pictureMenuHambur = new PictureBox();
             picUsuario = new PictureBox();
+            toolTipMenuGerente = new ToolTip(components);
             panelBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -76,6 +78,7 @@
             // panelBarraSuperior
             // 
             panelBarraSuperior.BackColor = Color.FromArgb(1, 1, 2);
+            panelBarraSuperior.Controls.Add(iconBtnPedirPermiso);
             panelBarraSuperior.Controls.Add(picRestaurar);
             panelBarraSuperior.Controls.Add(pictureBox2);
             panelBarraSuperior.Controls.Add(lblTituloMenu);
@@ -90,6 +93,31 @@
             panelBarraSuperior.Size = new Size(1159, 45);
             panelBarraSuperior.TabIndex = 6;
             panelBarraSuperior.MouseDown += panelBarraSuperior_MouseDown;
+            // 
+            // iconBtnPedirPermiso
+            // 
+            iconBtnPedirPermiso.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            iconBtnPedirPermiso.BackColor = Color.FromArgb(207, 158, 63);
+            iconBtnPedirPermiso.BackgroundImage = (Image)resources.GetObject("iconBtnPedirPermiso.BackgroundImage");
+            iconBtnPedirPermiso.BackgroundImageLayout = ImageLayout.None;
+            iconBtnPedirPermiso.Cursor = Cursors.Hand;
+            iconBtnPedirPermiso.FlatAppearance.BorderColor = Color.Black;
+            iconBtnPedirPermiso.FlatStyle = FlatStyle.Flat;
+            iconBtnPedirPermiso.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnPedirPermiso.ForeColor = SystemColors.ControlLightLight;
+            iconBtnPedirPermiso.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnPedirPermiso.IconColor = Color.White;
+            iconBtnPedirPermiso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnPedirPermiso.IconSize = 30;
+            iconBtnPedirPermiso.Location = new Point(981, 6);
+            iconBtnPedirPermiso.Name = "iconBtnPedirPermiso";
+            iconBtnPedirPermiso.Size = new Size(38, 35);
+            iconBtnPedirPermiso.TabIndex = 19;
+            iconBtnPedirPermiso.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnPedirPermiso.TextImageRelation = TextImageRelation.ImageBeforeText;
+            toolTipMenuGerente.SetToolTip(iconBtnPedirPermiso, "Pedir Permiso");
+            iconBtnPedirPermiso.UseVisualStyleBackColor = false;
+            iconBtnPedirPermiso.Click += iconBtnPedirPermiso_Click;
             // 
             // picRestaurar
             // 
@@ -518,5 +546,7 @@
         private Label lblRolDelUsu;
         private FontAwesome.Sharp.IconPictureBox iconPicSesion;
         private FontAwesome.Sharp.IconButton iconBtnSesion;
+        private FontAwesome.Sharp.IconButton iconBtnPedirPermiso;
+        private ToolTip toolTipMenuGerente;
     }
 }

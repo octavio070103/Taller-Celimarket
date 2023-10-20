@@ -4,6 +4,7 @@ using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Gerente.gestion_ventas;
 using CapaPresentacion.Formularios.Gerente.informes_de_operacion;
+using CapaPresentacion.Formularios.Gerente.permiso;
 using CapaPresentacion.Formularios.Gerente.personal;
 using FontAwesome.Sharp;
 using Proyecto_Taller.Presentacion.Formularios.Login;
@@ -84,9 +85,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-      
+
             btnMenu.Visible = false; //oculto el boton del menu para que el usuairo al momento de iniciar no pueda verlo
-            
+
         }
 
         private void MenuGerente_Load(object sender, EventArgs e)
@@ -157,19 +158,19 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            
-                //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
-                if (currentChildForm != null)
-                {
-                    // cierra el formulario actual
-                    currentChildForm.Close();
-                
-                }
-                // Muestra el formulario principal (el "Home")
-                //MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-                // menuGerente.Show();
-            
-           
+
+            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+            if (currentChildForm != null)
+            {
+                // cierra el formulario actual
+                currentChildForm.Close();
+
+            }
+            // Muestra el formulario principal (el "Home")
+            //MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+            // menuGerente.Show();
+
+
         }
 
         private void picMinPantalla_Click(object sender, EventArgs e)
@@ -373,6 +374,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 // Cerrar el formulario actual (formulario principal) después de redirigir.
                 this.Close();
             }
+        }
+
+        private void iconBtnPedirPermiso_Click(object sender, EventArgs e)
+        {
+            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso();
+            formPermiso.Show();
         }
     }
 
