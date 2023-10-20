@@ -253,7 +253,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(185, 98);
+            iconBtnModif.Location = new Point(315, 98);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(96, 39);
             iconBtnModif.TabIndex = 13;
@@ -274,7 +274,7 @@
             iconBtnRechazar.IconColor = Color.White;
             iconBtnRechazar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnRechazar.IconSize = 30;
-            iconBtnRechazar.Location = new Point(298, 98);
+            iconBtnRechazar.Location = new Point(197, 98);
             iconBtnRechazar.Name = "iconBtnRechazar";
             iconBtnRechazar.Size = new Size(101, 39);
             iconBtnRechazar.TabIndex = 14;
@@ -295,7 +295,7 @@
             iconBtnHistorial.IconColor = Color.White;
             iconBtnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnHistorial.IconSize = 30;
-            iconBtnHistorial.Location = new Point(417, 98);
+            iconBtnHistorial.Location = new Point(430, 98);
             iconBtnHistorial.Name = "iconBtnHistorial";
             iconBtnHistorial.Size = new Size(109, 39);
             iconBtnHistorial.TabIndex = 15;

@@ -33,14 +33,14 @@ ADD CONSTRAINT DF_Marca_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion;
 
 CREATE TABLE tipo_metodo_pago(
 	id_tipo_metodo_pago INT IDENTITY(1,1)NOT NULL,
-	nombre_tipo_pago VARCHAR(50) NOT NULL,
+	nombre_tipo_pago VARCHAR(50) NOT NULL, --efectivo,credito,debito,billetera virtual
 
 	CONSTRAINT PK_tipo_metodo_pago PRIMARY KEY (id_tipo_metodo_pago),
 );
 
 CREATE TABLE metodo_pago(
 	id_metodo_pago INT IDENTITY(1,1) NOT NULL,
-	nombre_metodo_pago VARCHAR(50) NOT NULL,
+	nombre_metodo_pago VARCHAR(50) NOT NULL, --visa,mastercard,mp,dinero,personal pay
 	cuota_posible INT NOT NULL, --aca pondre el numero de cuota que tiene esa tarjeta
 	recargo_por_cuota DECIMAL(10,2) NOT NULL, --este campo me va a permitir calcular el recargo que llevara sobre el precio por cuota
 	estado_metodo_pago BIT NOT NULL,
@@ -265,7 +265,6 @@ ADD CONSTRAINT DF_detalle_compra_fecha_creacion DEFAULT GETDATE() FOR fecha_crea
 
 CREATE TABLE permiso(
 	id_permiso INT IDENTITY(1,1),
-	tipo_permiso VARCHAR(100) NOT NULL,
 	fecha_inicio DATE NOT NULL,
 	fecha_finalizacion DATE NOT NULL,
 	comentario_justificacion VARCHAR(200) NOT NULL,
@@ -273,10 +272,12 @@ CREATE TABLE permiso(
 	estado_permiso BIT NOT NULL,--1=alta,0=baja
 	id_usuario INT NOT NULL,
 	fecha_creacion_permiso DATE NOT NULL,
+	id_motivo_permiso INT NOT NULL,
 
 	--CONSTRAINT
 	CONSTRAINT PK_permiso PRIMARY KEY (id_permiso),
-	CONSTRAINT FK_permiso_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+	CONSTRAINT FK_permiso_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
+	CONSTRAINT FK_permiso_Motivo_permiso FOREIGN KEY(id_motivo_permiso) REFERENCES Motivo_permiso(id_motivo_permiso)
 );
 ALTER TABLE permiso 
 ADD CONSTRAINT DF_permiso_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_permiso;

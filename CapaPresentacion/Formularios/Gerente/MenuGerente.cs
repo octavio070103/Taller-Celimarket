@@ -39,11 +39,12 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         //aca decalro una var de tipo estatica pq no va a varuar su valor y es un obj de clase usuario que esta en la capa de entidad
         private static capaEntidad.usuario usuarioActual;
-        public MenuGerente(capaEntidad.usuario objUsuario = null)
+        public MenuGerente(capaEntidad.usuario objUsuario_login)
         {
             InitializeComponent();
 
-            if (objUsuario == null)
+            //if para entrar cuando en el pogram inicio llamando al menu sin hacer el login
+            if (objUsuario_login == null)
             {
                 usuarioActual = new capaEntidad.usuario()
                 {
@@ -67,10 +68,11 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     }
                 };
             }
+            //aca es cuando si hizo login y esta cargado el objeto que le paso como parametro
             else
             {
                 //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
-                usuarioActual = objUsuario;
+                usuarioActual = objUsuario_login;
             }
 
             //abro el formualrio de inicio
@@ -378,7 +380,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnPedirPermiso_Click(object sender, EventArgs e)
         {
-            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso();
+            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
             formPermiso.Show();
         }
     }

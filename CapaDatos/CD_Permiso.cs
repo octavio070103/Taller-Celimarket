@@ -11,6 +11,52 @@ namespace CapaDatos
 {
     public class CD_Permiso
     {
+        public List<motivo_permiso> listaMotivosPermisos()
+        {
+            List<motivo_permiso> lista = new List<motivo_permiso>();
+
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
+
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
+                    query.AppendLine("SELECT m.id_motivo_permiso,m.nombre_motivo_permiso");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM Motivo_permiso m");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        //aca se lectura a la consulta que realize con qeury
+                        while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
+                        {
+                            //a mi lista de usuario le estoy agregrando un usaurio
+                            lista.Add(new motivo_permiso
+                            {
+                                id_motivo_permiso = Convert.ToInt32(dr["id_motivo_permiso"]),
+                                nombre_motivo_permiso = dr["nombre_motivo_permiso"].ToString(),
+                                
+
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return lista; // Devolvemos la lista de usuarios
+
+        }
         public int registrarPermiso(permiso obj_permiso,out string mensaje )
         {
             int id_permiso_generado = 0;
