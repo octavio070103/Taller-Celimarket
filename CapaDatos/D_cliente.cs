@@ -125,5 +125,53 @@ namespace CapaDatos
             }
         }
 
+        public void modificarDatosCliente(persona objCliente, out int resultadoEjec)
+        {
+            resultadoEjec = 0;
+            
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_EditarDatosCliente", objConexion);
+
+                    //*** PARAMETROS DE ENTRADA ***
+                    comando.Parameters.AddWithValue("@dni", objCliente.dni);
+                    comando.Parameters.AddWithValue("@nombre", objCliente.nombre);
+                    comando.Parameters.AddWithValue("@apellido", objCliente.apellido);
+                    comando.Parameters.AddWithValue("@fecha_nacimiento", objCliente.fecha_nacimiento);
+                    comando.Parameters.AddWithValue("@telefono", objCliente.telefono);
+
+
+                    //*** PARAMETROS DE SALIDA ***
+                    // Parametros para las salidas generadas por el procedimiento almacenado
+                    SqlParameter auxResultadoSalida = comando.Parameters.Add("@resultadoEjec", SqlDbType.Int);
+
+                    // Se establece que la variable 'auxResultadoSalida' es un parametro de salida que almacenara el
+                    // resultado que genere el procedimiento almacenado
+                    auxResultadoSalida.Direction = ParameterDirection.Output;
+
+                    // Se establece que el comando a ejecutar es del tipo procedimiento almacenado
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Se abre la conexion con la base de datos
+                    objConexion.Open();
+
+                    // Se ejecuta el comando
+                    comando.ExecuteNonQuery();
+
+                    // Se almacena el resultado de la ejecucion del procedimiento almacenado
+                    resultadoEjec = (int)comando.Parameters["@resultadoEjec"].Value;
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+
+            }
+        }
+
     }
 }

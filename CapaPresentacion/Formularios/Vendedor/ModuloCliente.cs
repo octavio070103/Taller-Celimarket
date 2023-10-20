@@ -78,12 +78,13 @@ namespace CapaPresentacion.Formularios.Vendedor
                 btnEliminar.Enabled = true;
                 btnModificar.Enabled = true;
 
-                txtDniCliente.Text = dtgvClientes.CurrentRow.Cells[0].Value.ToString();
-                txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[1].Value.ToString();
+                txtDniCliente.Text = dtgvClientes.CurrentRow.Cells[1].Value.ToString();
                 txtNombreCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
-                txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[3].Value.ToString();
-                txtDireccionCliente.Text = dtgvClientes.CurrentRow.Cells[4].Value.ToString();
-                txtCorreoCliente.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
+                txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[3].Value.ToString();
+                
+                txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[4].Value.ToString();
+                txtFechaNac.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
+                txtCorreoCliente.Text = dtgvClientes.CurrentRow.Cells[6].Value.ToString();
 
             }
         }
@@ -94,7 +95,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (dtgvClientes.Rows.Count > 0)
             {
                 DialogResult pregunta = MessageBox.Show("Esta a punto de eliminar a un cliente del registro, ¿Desea continuar?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-                
+
                 if (pregunta == DialogResult.Yes)
                 {
                     CL_Cliente auxCliente = new CL_Cliente();
@@ -104,7 +105,7 @@ namespace CapaPresentacion.Formularios.Vendedor
 
                     auxCliente.eliminarCliente(auxIdCliente, out resultadoEjec);
 
-                    if ( resultadoEjec == 1 )
+                    if (resultadoEjec == 1)
                     {
                         MessageBox.Show("El cliente fue eliminado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         cargarListaClientes(); // Se refresca el datagridview con los datos actualizados
@@ -121,7 +122,7 @@ namespace CapaPresentacion.Formularios.Vendedor
         }
 
 
-        private void eliminarCliente( int pIdCliente, out int resultadoEjec)
+        private void eliminarCliente(int pIdCliente, out int resultadoEjec)
         {
             resultadoEjec = 0;
 
@@ -135,7 +136,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             txtApellidoCliente.Text = "";
             txtNombreCliente.Text = "";
             txtTelefonoCliente.Text = "";
-            txtDireccionCliente.Text = "";
+            txtFechaNac.Text = "";
             txtCorreoCliente.Text = "";
         }
 
@@ -153,7 +154,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                         dtgvClientes.CurrentRow.Cells[1].Value = txtApellidoCliente.Text;
                         dtgvClientes.CurrentRow.Cells[2].Value = txtNombreCliente.Text;
                         dtgvClientes.CurrentRow.Cells[3].Value = txtTelefonoCliente.Text;
-                        dtgvClientes.CurrentRow.Cells[4].Value = txtDireccionCliente.Text;
+                        dtgvClientes.CurrentRow.Cells[4].Value = txtFechaNac.Text;
                         dtgvClientes.CurrentRow.Cells[5].Value = txtCorreoCliente.Text;
 
                         limpiarCampos();
@@ -194,9 +195,9 @@ namespace CapaPresentacion.Formularios.Vendedor
                 validacion = false;
             }
 
-            if (txtDireccionCliente.Text == "")
+            if (txtFechaNac.Text == "")
             {
-                errorProvider1.SetError(txtDireccionCliente, "Ingrese el domicilio");
+                errorProvider1.SetError(txtFechaNac, "Ingrese el domicilio");
                 validacion = false;
             }
 
@@ -222,7 +223,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             errorProvider1.SetError(txtApellidoCliente, "");
             errorProvider1.SetError(txtNombreCliente, "");
             errorProvider1.SetError(txtDniCliente, "");
-            errorProvider1.SetError(txtDireccionCliente, "");
+            errorProvider1.SetError(txtFechaNac, "");
             errorProvider1.SetError(txtCorreoCliente, "");
             errorProvider1.SetError(txtTelefonoCliente, "");
         }
