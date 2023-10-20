@@ -91,5 +91,39 @@ namespace CapaDatos
             }
 
         }
+
+        public void eliminarCliente( int idCliente, out int resultadoEjec )
+        {
+            resultadoEjec = 0;
+
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_EliminarCliente", objConexion);
+
+                    comando.Parameters.AddWithValue("@id_cliente", idCliente);
+
+                    SqlParameter auxResultadoSalida = comando.Parameters.Add("@resultadoEjec", SqlDbType.Int);
+
+                    auxResultadoSalida.Direction = ParameterDirection.Output;
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    comando.ExecuteNonQuery();
+
+                    resultadoEjec = (int)comando.Parameters["@resultadoEjec"].Value;
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+            }
+        }
+
     }
 }

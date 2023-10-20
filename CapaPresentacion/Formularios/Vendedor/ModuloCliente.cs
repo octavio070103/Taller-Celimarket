@@ -94,19 +94,38 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (dtgvClientes.Rows.Count > 0)
             {
                 DialogResult pregunta = MessageBox.Show("Esta a punto de eliminar a un cliente del registro, ¿Desea continuar?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
+                
                 if (pregunta == DialogResult.Yes)
                 {
-                    eliminarCliente();
+                    CL_Cliente auxCliente = new CL_Cliente();
+
+                    int auxIdCliente = (int)dtgvClientes.CurrentRow.Cells[0].Value;
+                    int resultadoEjec;
+
+                    auxCliente.eliminarCliente(auxIdCliente, out resultadoEjec);
+
+                    if ( resultadoEjec == 1 )
+                    {
+                        MessageBox.Show("El cliente fue eliminado correctamente.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        cargarListaClientes(); // Se refresca el datagridview con los datos actualizados
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo completar la operación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    //eliminarCliente();
                 }
             }
 
         }
 
 
-        private void eliminarCliente()
+        private void eliminarCliente( int pIdCliente, out int resultadoEjec)
         {
-            dtgvClientes.Rows.Remove(dtgvClientes.CurrentRow);
+            resultadoEjec = 0;
+
+            //dtgvClientes.Rows.Remove(dtgvClientes.CurrentRow);
             limpiarCampos();
         }
 
