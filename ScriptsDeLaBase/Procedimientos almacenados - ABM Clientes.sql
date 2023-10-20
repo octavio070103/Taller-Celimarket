@@ -1,3 +1,4 @@
+-- *** ABM CLIENTE ***
 
 -- LISTAR CLIENTES: Este procedimiento se utiliza para listar todos los clientes registrados
 
@@ -56,12 +57,6 @@ GO
 
 
 /*
---drop PROCEDURE SP_RegistrarCliente;
-
-
-SELECT * from cliente
-SELECT * from persona
-
 -- **** PROBANDO EL PROCEDIMIENTO ALMACENADO: SP_RegistrarCliente
 DECLARE  @mensaje VARCHAR(500);
 
@@ -72,3 +67,116 @@ PRINT @mensaje;
 
 */
 
+
+-- ELIMINAR CLIENTE: Este procedimiento permite eliminar de forma logica a un cliente del registro
+
+CREATE PROCEDURE SP_EliminarCliente
+(
+  @id_cliente INT,
+  @resultadoEjec INT OUTPUT
+)
+AS
+BEGIN
+    SET @resultadoEjec = 0;
+
+	IF EXISTS ( SELECT * FROM cliente WHERE cliente.id_cliente = @id_cliente)
+	  BEGIN
+	    -- Si el cliente esta registrado, lo dara de baja logicamente al actualizar su estado_cliente a 0
+	    UPDATE cliente SET estado_cliente = 0 WHERE cliente.id_cliente = @id_cliente;
+
+		-- Si se dio de baja al cliente correctamente, el resultado de la ejecucion sera igual a 1
+	    SET @resultadoEjec = 1;
+
+	  END
+END 
+
+GO
+
+
+
+-- EDITAR DATOS CLIENTE: Este procedimiento permite modificar los datos de los clientes
+
+CREATE PROCEDURE SP_EditarDatosCliente
+(
+  @id_cliente int,
+  @dni VARCHAR(8),
+  @nombre VARCHAR(50),
+  @apellido VARCHAR(50),
+  @fecha_nacimiento DATE,
+  @telefono VARCHAR(50),
+  @resultadoEjec INT OUTPUT
+)
+AS
+BEGIN
+
+  SET @resultadoEjec = 0 -- Se asigna el valor 0 al resultado de la ejecucion, en caso de que la operacion no se realice
+  -- Obtenemos el id de la persona que esta relacionada al perfil del cliente, la cual contiene todos los datos de este
+  DECLARE @aux_id_persona INT;
+
+  SELECT @aux_id_persona = id_persona FROM cliente where (cliente.id_cliente = @id_cliente)
+
+  IF(@aux_id_persona IS NOT NULL)
+
+	BEGIN
+	  -- *** Si no existe dentro de los registros una persona con el mismo DNI, y cuyo id_persona sea distinto al del cliente que se desea modificar
+	  --*** entonces se puede modificar los datos del cliente, incluyendo el DNI.
+	  IF NOT EXISTS (SELECT * FROM persona WHERE (persona.dni = @dni) AND persona.id_persona != @aux_id_persona )
+	    BEGIN 
+		  
+		  -- *** Se actualizan los datos del cliente ***
+		  UPDATE persona
+		  SET dni = @dni,
+			  nombre = @nombre,
+			  apellido = @apellido,
+			  fecha_nacimiento = @fecha_nacimiento,
+			  telefono = @telefono
+		  WHERE(id_persona = @aux_id_persona);
+
+		  -- Se asigna el valor 1 al resultado de la ejecucion indicando que la modificacion se realizo con exito
+		  SET @resultadoEjec = 1
+
+		END
+
+	END
+
+END
+GO
+
+/*
+
+SELECT * FROM cliente
+SELECT * FROM persona
+
+DECLARE @resultadoEjec INT;
+EXEC SP_EditarDatosCliente 6, '43433356', 'Lucas', 'Rodriguez', '1999-10-04', '3789404040', @resultadoEjec output;
+--EXEC SP_EditarDatosCliente 5, '434333566', 'Rodrigo', 'Sosa', '1998-04-27', '3794404042', @resultadoEjec output;
+
+PRINT @resultadoEjec
+
+GO
+
+/*** PRUEBAS */
+DECLARE @resultadoEjec INT;
+
+EXEC SP_EliminarCliente 6, @resultadoEjec;
+
+PRINT @resultadoEjec
+
+
+select * from cliente
+select * from persona
+
+*/
+
+/*
+
+ EN EL CELULAR
+FACTURA
+
+DETALLE FACTURA
+
+PRODUCTO
+
+CATEGORIA
+
+*/

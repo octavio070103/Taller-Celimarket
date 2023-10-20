@@ -35,5 +35,19 @@ namespace CapaLogica
             objCliente.registrarCliente(auxCliente, out mensaje);
         }
 
+        public void eliminarCliente( int pIdCliente, out int pResultadoEjec )
+        {
+            pResultadoEjec = 0;
+
+            objCliente.eliminarCliente(pIdCliente, out pResultadoEjec);
+        }
+
+        public void modificarDatosCliente( persona auxCliente, out int pResultadoEjec)
+        {
+            pResultadoEjec = 0;
+
+            objCliente.modificarDatosCliente( auxCliente, out pResultadoEjec);
+        }
+
     }
 }

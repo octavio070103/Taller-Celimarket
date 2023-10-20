@@ -39,10 +39,8 @@
             btnAgregar = new Button();
             dtgvClientes = new DataGridView();
             pnlInfoCliente = new Panel();
-            txtCorreoCliente = new TextBox();
-            lblCorreoCliente = new Label();
-            txtDireccionCliente = new TextBox();
-            lblDireccionCliente = new Label();
+            txtFechaNac = new TextBox();
+            lblFechaNac = new Label();
             txtTelefonoCliente = new TextBox();
             lblTelefonoCliente = new Label();
             txtNombreCliente = new TextBox();
@@ -55,6 +53,8 @@
             lblEncabezado = new Label();
             btnModificar = new Button();
             errorProvider1 = new ErrorProvider(components);
+            txtCorreoCliente = new TextBox();
+            lblCorreoCliente = new Label();
             pnlVentanaClientes.SuspendLayout();
             pnlListaClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvClientes).BeginInit();
@@ -170,8 +170,8 @@
             pnlInfoCliente.BackColor = Color.White;
             pnlInfoCliente.Controls.Add(txtCorreoCliente);
             pnlInfoCliente.Controls.Add(lblCorreoCliente);
-            pnlInfoCliente.Controls.Add(txtDireccionCliente);
-            pnlInfoCliente.Controls.Add(lblDireccionCliente);
+            pnlInfoCliente.Controls.Add(txtFechaNac);
+            pnlInfoCliente.Controls.Add(lblFechaNac);
             pnlInfoCliente.Controls.Add(txtTelefonoCliente);
             pnlInfoCliente.Controls.Add(lblTelefonoCliente);
             pnlInfoCliente.Controls.Add(txtNombreCliente);
@@ -187,39 +187,23 @@
             pnlInfoCliente.Size = new Size(266, 502);
             pnlInfoCliente.TabIndex = 1;
             // 
-            // txtCorreoCliente
+            // txtFechaNac
             // 
-            txtCorreoCliente.Location = new Point(86, 323);
-            txtCorreoCliente.Name = "txtCorreoCliente";
-            txtCorreoCliente.Size = new Size(150, 23);
-            txtCorreoCliente.TabIndex = 16;
+            txtFechaNac.Location = new Point(103, 290);
+            txtFechaNac.Name = "txtFechaNac";
+            txtFechaNac.Size = new Size(133, 23);
+            txtFechaNac.TabIndex = 14;
             // 
-            // lblCorreoCliente
+            // lblFechaNac
             // 
-            lblCorreoCliente.AutoSize = true;
-            lblCorreoCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCorreoCliente.Location = new Point(14, 322);
-            lblCorreoCliente.Name = "lblCorreoCliente";
-            lblCorreoCliente.Size = new Size(54, 20);
-            lblCorreoCliente.TabIndex = 15;
-            lblCorreoCliente.Text = "Correo";
-            // 
-            // txtDireccionCliente
-            // 
-            txtDireccionCliente.Location = new Point(86, 279);
-            txtDireccionCliente.Name = "txtDireccionCliente";
-            txtDireccionCliente.Size = new Size(150, 23);
-            txtDireccionCliente.TabIndex = 14;
-            // 
-            // lblDireccionCliente
-            // 
-            lblDireccionCliente.AutoSize = true;
-            lblDireccionCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDireccionCliente.Location = new Point(14, 278);
-            lblDireccionCliente.Name = "lblDireccionCliente";
-            lblDireccionCliente.Size = new Size(72, 20);
-            lblDireccionCliente.TabIndex = 13;
-            lblDireccionCliente.Text = "Dirección";
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.Location = new Point(14, 273);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(72, 20);
+            lblFechaNac.TabIndex = 13;
+            lblFechaNac.Text = "Fecha de ";
+            lblFechaNac.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtTelefonoCliente
             // 
@@ -240,7 +224,7 @@
             // 
             // txtNombreCliente
             // 
-            txtNombreCliente.Location = new Point(86, 187);
+            txtNombreCliente.Location = new Point(86, 139);
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.Size = new Size(150, 23);
             txtNombreCliente.TabIndex = 10;
@@ -249,7 +233,7 @@
             // 
             lblNombreCliente.AutoSize = true;
             lblNombreCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombreCliente.Location = new Point(14, 186);
+            lblNombreCliente.Location = new Point(14, 138);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(64, 20);
             lblNombreCliente.TabIndex = 9;
@@ -257,7 +241,7 @@
             // 
             // txtApellidoCliente
             // 
-            txtApellidoCliente.Location = new Point(86, 141);
+            txtApellidoCliente.Location = new Point(86, 185);
             txtApellidoCliente.Name = "txtApellidoCliente";
             txtApellidoCliente.Size = new Size(150, 23);
             txtApellidoCliente.TabIndex = 8;
@@ -266,7 +250,7 @@
             // 
             lblApellidoCliente.AutoSize = true;
             lblApellidoCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblApellidoCliente.Location = new Point(14, 140);
+            lblApellidoCliente.Location = new Point(14, 184);
             lblApellidoCliente.Name = "lblApellidoCliente";
             lblApellidoCliente.Size = new Size(66, 20);
             lblApellidoCliente.TabIndex = 7;
@@ -326,6 +310,23 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // txtCorreoCliente
+            // 
+            txtCorreoCliente.Location = new Point(86, 363);
+            txtCorreoCliente.Name = "txtCorreoCliente";
+            txtCorreoCliente.Size = new Size(150, 23);
+            txtCorreoCliente.TabIndex = 16;
+            // 
+            // lblCorreoCliente
+            // 
+            lblCorreoCliente.AutoSize = true;
+            lblCorreoCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCorreoCliente.Location = new Point(14, 293);
+            lblCorreoCliente.Name = "lblCorreoCliente";
+            lblCorreoCliente.Size = new Size(83, 20);
+            lblCorreoCliente.TabIndex = 15;
+            lblCorreoCliente.Text = "nacimiento";
+            // 
             // frmModuloCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -368,12 +369,12 @@
         private Label lblDniCliente;
         private TextBox txtNombreCliente;
         private Label lblNombreCliente;
-        private TextBox txtDireccionCliente;
-        private Label lblDireccionCliente;
+        private TextBox txtFechaNac;
+        private Label lblFechaNac;
         private TextBox txtTelefonoCliente;
         private Label lblTelefonoCliente;
+        private ErrorProvider errorProvider1;
         private TextBox txtCorreoCliente;
         private Label lblCorreoCliente;
-        private ErrorProvider errorProvider1;
     }
 }
