@@ -42,11 +42,11 @@ namespace CapaLogica
             objCliente.eliminarCliente(pIdCliente, out pResultadoEjec);
         }
 
-        public void modificarDatosCliente( persona auxCliente, out int pResultadoEjec)
+        public void modificarDatosCliente(int idCliente, persona auxCliente, out int pResultadoEjec)
         {
             pResultadoEjec = 0;
 
-            objCliente.modificarDatosCliente( auxCliente, out pResultadoEjec);
+            objCliente.modificarDatosCliente( idCliente, auxCliente, out pResultadoEjec);
         }
 
     }

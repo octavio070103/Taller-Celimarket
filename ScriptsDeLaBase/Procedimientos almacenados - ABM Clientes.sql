@@ -113,7 +113,7 @@ BEGIN
   -- Obtenemos el id de la persona que esta relacionada al perfil del cliente, la cual contiene todos los datos de este
   DECLARE @aux_id_persona INT;
 
-  SELECT @aux_id_persona = id_persona FROM cliente where (cliente.id_cliente = @id_cliente)
+  SELECT @aux_id_persona = id_persona FROM cliente WHERE (cliente.id_cliente = @id_cliente)
 
   IF(@aux_id_persona IS NOT NULL)
 

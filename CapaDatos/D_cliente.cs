@@ -125,7 +125,7 @@ namespace CapaDatos
             }
         }
 
-        public void modificarDatosCliente(persona objCliente, out int resultadoEjec)
+        public void modificarDatosCliente(int idCliente, persona objCliente, out int resultadoEjec)
         {
             resultadoEjec = 0;
             
@@ -136,6 +136,7 @@ namespace CapaDatos
                     SqlCommand comando = new SqlCommand("SP_EditarDatosCliente", objConexion);
 
                     //*** PARAMETROS DE ENTRADA ***
+                    comando.Parameters.AddWithValue("@id_cliente", idCliente);
                     comando.Parameters.AddWithValue("@dni", objCliente.dni);
                     comando.Parameters.AddWithValue("@nombre", objCliente.nombre);
                     comando.Parameters.AddWithValue("@apellido", objCliente.apellido);
