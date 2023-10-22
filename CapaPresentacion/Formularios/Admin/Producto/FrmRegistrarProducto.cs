@@ -91,9 +91,10 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     stock_producto = Convert.ToInt32(txtStock.Text),
                     imagen= "prueba.png",//cambiar por la url de la img
                     estado_producto = 1,
+
                     obj_marca = new marca()
                     {
-                        id_marca= obtenerIDMarcaSeleccionada()
+                        id_marca= obtenerIDMarcaSeleccionada() //tengo que validar esto en el metodo validar campo ya que si es =0 significa que el usuario no seleccionada
                     },
                     obj_categoria= new categoria(){
                         id_categoria=obtenerIDCategoriaSeleccionada() 
@@ -125,7 +126,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     id_CategoriaObtenido = obj_CL_Categoria.obtenerIDCategoriaSeleccionada(nombre_categoria);
                 }
             }
-            return id_CategoriaObtenido;// Opción por defecto si no se selecciono nada ningun valor en el combo box o existe ese nombre en la BD
+            return id_CategoriaObtenido;//si encontro va a retorna el id encontrado y sino retorna 0
         }
 
         //metodo que obitne el id_marca dependiendo del nombre que haya elegido el usuario dentro del comboBox y asi poder pasarle el id_marca que selecciono 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPermisoUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
             txtEmpleado = new TextBox();
@@ -43,10 +43,8 @@
             lblFiltrar = new Label();
             lblPermisoUsu = new Label();
             iconBtnAprobar = new FontAwesome.Sharp.IconButton();
-            iconBtnModif = new FontAwesome.Sharp.IconButton();
             iconBtnRechazar = new FontAwesome.Sharp.IconButton();
-            iconBtnHistorial = new FontAwesome.Sharp.IconButton();
-            dataGridView1 = new DataGridView();
+            dataGridPermisos = new DataGridView();
             col_id_usuario = new DataGridViewTextBoxColumn();
             col_dni = new DataGridViewTextBoxColumn();
             col_nombre = new DataGridViewTextBoxColumn();
@@ -85,7 +83,7 @@
             txtNombreDato = new TextBox();
             lblDatosUsuario = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridPermisos).BeginInit();
             panelDatosUsuario.SuspendLayout();
             SuspendLayout();
             // 
@@ -232,7 +230,7 @@
             iconBtnAprobar.IconColor = Color.White;
             iconBtnAprobar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnAprobar.IconSize = 30;
-            iconBtnAprobar.Location = new Point(80, 98);
+            iconBtnAprobar.Location = new Point(24, 421);
             iconBtnAprobar.Name = "iconBtnAprobar";
             iconBtnAprobar.Size = new Size(89, 39);
             iconBtnAprobar.TabIndex = 8;
@@ -240,27 +238,6 @@
             iconBtnAprobar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnAprobar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnAprobar.UseVisualStyleBackColor = false;
-            // 
-            // iconBtnModif
-            // 
-            iconBtnModif.BackColor = Color.FromArgb(56, 182, 255);
-            iconBtnModif.Cursor = Cursors.Hand;
-            iconBtnModif.FlatAppearance.BorderColor = Color.Black;
-            iconBtnModif.FlatStyle = FlatStyle.Flat;
-            iconBtnModif.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconBtnModif.ForeColor = SystemColors.ControlLightLight;
-            iconBtnModif.IconChar = FontAwesome.Sharp.IconChar.PenToSquare;
-            iconBtnModif.IconColor = Color.White;
-            iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(315, 98);
-            iconBtnModif.Name = "iconBtnModif";
-            iconBtnModif.Size = new Size(96, 39);
-            iconBtnModif.TabIndex = 13;
-            iconBtnModif.Text = "Modificar";
-            iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnModif.UseVisualStyleBackColor = false;
             // 
             // iconBtnRechazar
             // 
@@ -274,7 +251,7 @@
             iconBtnRechazar.IconColor = Color.White;
             iconBtnRechazar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnRechazar.IconSize = 30;
-            iconBtnRechazar.Location = new Point(197, 98);
+            iconBtnRechazar.Location = new Point(125, 421);
             iconBtnRechazar.Name = "iconBtnRechazar";
             iconBtnRechazar.Size = new Size(101, 39);
             iconBtnRechazar.TabIndex = 14;
@@ -283,70 +260,49 @@
             iconBtnRechazar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnRechazar.UseVisualStyleBackColor = false;
             // 
-            // iconBtnHistorial
+            // dataGridPermisos
             // 
-            iconBtnHistorial.BackColor = Color.FromArgb(216, 103, 30);
-            iconBtnHistorial.Cursor = Cursors.Hand;
-            iconBtnHistorial.FlatAppearance.BorderColor = Color.Black;
-            iconBtnHistorial.FlatStyle = FlatStyle.Flat;
-            iconBtnHistorial.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconBtnHistorial.ForeColor = SystemColors.ControlLightLight;
-            iconBtnHistorial.IconChar = FontAwesome.Sharp.IconChar.IdCard;
-            iconBtnHistorial.IconColor = Color.White;
-            iconBtnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnHistorial.IconSize = 30;
-            iconBtnHistorial.Location = new Point(430, 98);
-            iconBtnHistorial.Name = "iconBtnHistorial";
-            iconBtnHistorial.Size = new Size(109, 39);
-            iconBtnHistorial.TabIndex = 15;
-            iconBtnHistorial.Text = "Historial de Permisos ";
-            iconBtnHistorial.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnHistorial.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnHistorial.UseVisualStyleBackColor = false;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridView1.BackgroundColor = Color.FromArgb(67, 68, 89);
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.Padding = new Padding(2);
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
-            dataGridView1.Location = new Point(12, 176);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 28;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(731, 433);
-            dataGridView1.TabIndex = 2;
+            dataGridPermisos.AllowUserToAddRows = false;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridPermisos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridPermisos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridPermisos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridPermisos.BackgroundColor = Color.FromArgb(67, 68, 89);
+            dataGridPermisos.BorderStyle = BorderStyle.None;
+            dataGridPermisos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.Padding = new Padding(2);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dataGridPermisos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridPermisos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridPermisos.Columns.AddRange(new DataGridViewColumn[] { col_id_usuario, col_dni, col_nombre, col_apellido, col_email, col_password, col_telefono, col_id_rol, col_Rol, col_id_domicilio, col_domicilio_calle, col_domicilio_numero, col_domicilio_prov, Estado_Valor, col_estado });
+            dataGridPermisos.Location = new Point(23, 119);
+            dataGridPermisos.MultiSelect = false;
+            dataGridPermisos.Name = "dataGridPermisos";
+            dataGridPermisos.ReadOnly = true;
+            dataGridPermisos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridPermisos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridPermisos.RowHeadersVisible = false;
+            dataGridPermisos.RowTemplate.Height = 28;
+            dataGridPermisos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridPermisos.Size = new Size(731, 433);
+            dataGridPermisos.TabIndex = 2;
             // 
             // col_id_usuario
             // 
@@ -467,7 +423,9 @@
             panelDatosUsuario.Controls.Add(dateTimePickerNacimientoDato);
             panelDatosUsuario.Controls.Add(label1);
             panelDatosUsuario.Controls.Add(lblPassword);
+            panelDatosUsuario.Controls.Add(iconBtnRechazar);
             panelDatosUsuario.Controls.Add(txtPasswordDato);
+            panelDatosUsuario.Controls.Add(iconBtnAprobar);
             panelDatosUsuario.Controls.Add(txtDomiciliodato);
             panelDatosUsuario.Controls.Add(comboEstadoDato);
             panelDatosUsuario.Controls.Add(lblEstadoDato);
@@ -696,17 +654,14 @@
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(1014, 633);
             Controls.Add(panelDatosUsuario);
-            Controls.Add(dataGridView1);
-            Controls.Add(iconBtnHistorial);
-            Controls.Add(iconBtnRechazar);
-            Controls.Add(iconBtnModif);
-            Controls.Add(iconBtnAprobar);
+            Controls.Add(dataGridPermisos);
             Controls.Add(panel1);
             Name = "FrmPermisoUsuario";
             Text = "Permiso de Usuario";
+            Load += FrmPermisoUsuario_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridPermisos).EndInit();
             panelDatosUsuario.ResumeLayout(false);
             panelDatosUsuario.PerformLayout();
             ResumeLayout(false);
@@ -724,10 +679,8 @@
         private Label lblFiltrar;
         private Label lblPermisoUsu;
         private FontAwesome.Sharp.IconButton iconBtnAprobar;
-        private FontAwesome.Sharp.IconButton iconBtnModif;
         private FontAwesome.Sharp.IconButton iconBtnRechazar;
-        private FontAwesome.Sharp.IconButton iconBtnHistorial;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridPermisos;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
         private DataGridViewTextBoxColumn col_nombre;

@@ -1,13 +1,13 @@
 /*REGISTRAR PERMISO */
 ALTER PROCEDURE SP_REGISTRARPERMISO(
 	/*parametros de entrada (que necesitamos para registrar un permiso) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un permiso*/
-	@tipo_permiso VARCHAR(100),
 	@fecha_inicio date,
 	@fecha_finalizacion date, 
 	@comentario_justificacion VARCHAR(200),
 	@estado_aprobacion VARCHAR(20),
 	@estado_permiso BIT,
 	@id_usuario INT,
+	@id_motivo_permiso INT,
 	/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida*/
 	@id_resultado_permiso INT OUTPUT,
 	@mensaje VARCHAR(500) OUTPUT
@@ -20,7 +20,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 
 									 -- Validación de datos
      --aca valido que los datos que recibo como parametros de entrada no sean nulos si alguno es nulo entra la if y NO registro el permiso
-    IF(@tipo_permiso IS NULL OR @fecha_inicio IS NULL OR @fecha_finalizacion IS NULL OR @comentario_justificacion IS NULL OR @estado_aprobacion IS NULL OR @estado_permiso IS NULL OR @id_usuario IS NULL)
+    IF( @fecha_inicio IS NULL OR @fecha_finalizacion IS NULL OR @comentario_justificacion IS NULL OR @estado_aprobacion IS NULL OR @estado_permiso IS NULL OR @id_usuario IS NULL OR @id_motivo_permiso IS NULL)
 	BEGIN
 		SET @mensaje= 'Datos nulos no se puede Registrar el Permiso'
 	END
@@ -29,8 +29,8 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	--es decir aca me aseguro que un usuario no tenga dos permisos activos (puede tener un sol opermiso activo por usuario)
 		IF NOT EXISTS(select * from permiso where (id_usuario=@id_usuario AND estado_permiso = 1))
 		 BEGIN
-			 INSERT INTO permiso(tipo_permiso,fecha_inicio,fecha_finalizacion,comentario_justificacion,estado_permiso,id_usuario) 
-			 VALUES(@tipo_permiso,@fecha_inicio,@fecha_finalizacion,@comentario_justificacion,@estado_permiso,@id_usuario)
+			 INSERT INTO permiso(fecha_inicio,fecha_finalizacion,comentario_justificacion,estado_permiso,id_usuario,id_motivo_permiso) 
+			 VALUES(@fecha_inicio,@fecha_finalizacion,@comentario_justificacion,@estado_permiso,@id_usuario,@id_motivo_permiso)
 			 
 			 --obtener el Id del permiso recien insertado	 
 			 SET @id_resultado_permiso=SCOPE_IDENTITY()
@@ -45,13 +45,13 @@ END
 	/*EDITAR PERMISO */
 ALTER PROCEDURE SP_EDITARPERMISO(
 @id_permiso INT,
-@tipo_permiso VARCHAR(100),
 @fecha_inicio date,
 @fecha_finalizacion date, 
 @comentario_justificacion VARCHAR(200),
 @estado_aprobacion VARCHAR(20),
 @estado_permiso BIT,
 @id_usuario INT,
+@id_motivo_permiso INT,
 
 /*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida*/
 @respuesta BIT OUTPUT,
@@ -66,7 +66,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 
 												-- Validación de datos
      --aca valido que los datos que recibo como parametros de entrada no sean nulos si alguno es nulo entra la if y NO registro el permiso
-	IF(@id_permiso IS NULL OR @tipo_permiso IS NULL OR @fecha_inicio IS NULL OR @fecha_finalizacion IS NULL OR @comentario_justificacion IS NULL OR @estado_permiso IS NULL OR @id_usuario IS NULL)
+	IF(@id_permiso IS NULL OR @fecha_inicio IS NULL OR @fecha_finalizacion IS NULL OR @comentario_justificacion IS NULL OR @estado_permiso IS NULL OR @id_usuario IS NULL OR @id_motivo_permiso IS NULL)
 	 BEGIN
 		SET @mensaje='Datos Nulos No se puede Editar el Permiso'
 	 END
@@ -78,13 +78,13 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 		BEGIN
 		--actualizacion del permiso
 			UPDATE permiso SET
-			tipo_permiso=@tipo_permiso,
 			fecha_inicio=@fecha_inicio,
 			fecha_finalizacion=@fecha_finalizacion,
 			comentario_justificacion=@comentario_justificacion,
 			estado_aprobacion= @estado_aprobacion ,
 			estado_permiso=@estado_permiso,
-			id_usuario=@id_usuario
+			id_usuario=@id_usuario,
+			id_motivo_permiso=@id_motivo_permiso
 			WHERE id_permiso=@id_permiso
 
 			SET @mensaje=  'el permiso se edito correctamente'

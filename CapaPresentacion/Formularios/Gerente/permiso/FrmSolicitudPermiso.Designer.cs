@@ -34,6 +34,7 @@
             label2 = new Label();
             label1 = new Label();
             pDatosEmpleado = new Panel();
+            label4 = new Label();
             txtTelefono = new TextBox();
             txtDni = new TextBox();
             txtEmail = new TextBox();
@@ -42,17 +43,16 @@
             txtNombre = new TextBox();
             label6 = new Label();
             label8 = new Label();
-            label4 = new Label();
             txtApellido = new TextBox();
             label9 = new Label();
             label5 = new Label();
             txtRol = new TextBox();
             label7 = new Label();
             pDatosPermiso = new Panel();
-            textBox7 = new TextBox();
+            txtJustificacion = new TextBox();
             label14 = new Label();
             panel5 = new Panel();
-            comboBox1 = new ComboBox();
+            comboMotivo_permiso = new ComboBox();
             label13 = new Label();
             panel4 = new Panel();
             panel1 = new Panel();
@@ -64,13 +64,15 @@
             panel7 = new Panel();
             label17 = new Label();
             panel6 = new Panel();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimeHasta = new DateTimePicker();
             label16 = new Label();
             dateTimePickerDesde = new DateTimePicker();
             label15 = new Label();
             panel8 = new Panel();
             picCerrar = new PictureBox();
             picMinPantalla = new PictureBox();
+            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             pEncabezado.SuspendLayout();
             pSubtitulo.SuspendLayout();
             pDatosEmpleado.SuspendLayout();
@@ -153,6 +155,18 @@
             pDatosEmpleado.Size = new Size(700, 123);
             pDatosEmpleado.TabIndex = 1;
             // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Left;
+            label4.AutoSize = true;
+            label4.BorderStyle = BorderStyle.FixedSingle;
+            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(-1, 40);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 19);
+            label4.TabIndex = 3;
+            label4.Text = "Nombre               ";
+            // 
             // txtTelefono
             // 
             txtTelefono.BorderStyle = BorderStyle.FixedSingle;
@@ -234,18 +248,6 @@
             label8.TabIndex = 14;
             label8.Text = "Telefono";
             // 
-            // label4
-            // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(-1, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 19);
-            label4.TabIndex = 3;
-            label4.Text = "Nombre               ";
-            // 
             // txtApellido
             // 
             txtApellido.Anchor = AnchorStyles.Left | AnchorStyles.Right;
@@ -302,24 +304,24 @@
             // 
             pDatosPermiso.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             pDatosPermiso.BorderStyle = BorderStyle.FixedSingle;
-            pDatosPermiso.Controls.Add(textBox7);
+            pDatosPermiso.Controls.Add(txtJustificacion);
             pDatosPermiso.Controls.Add(label14);
             pDatosPermiso.Controls.Add(panel5);
             pDatosPermiso.Controls.Add(panel4);
             pDatosPermiso.Controls.Add(panel1);
-            pDatosPermiso.Location = new Point(40, 237);
+            pDatosPermiso.Location = new Point(40, 240);
             pDatosPermiso.Name = "pDatosPermiso";
             pDatosPermiso.Size = new Size(700, 209);
             pDatosPermiso.TabIndex = 2;
             // 
-            // textBox7
+            // txtJustificacion
             // 
-            textBox7.BorderStyle = BorderStyle.None;
-            textBox7.Location = new Point(213, 148);
-            textBox7.Multiline = true;
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(484, 58);
-            textBox7.TabIndex = 8;
+            txtJustificacion.BorderStyle = BorderStyle.None;
+            txtJustificacion.Location = new Point(213, 148);
+            txtJustificacion.Multiline = true;
+            txtJustificacion.Name = "txtJustificacion";
+            txtJustificacion.Size = new Size(484, 58);
+            txtJustificacion.TabIndex = 8;
             // 
             // label14
             // 
@@ -336,21 +338,21 @@
             panel5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             panel5.BackColor = Color.FromArgb(167, 210, 143);
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(comboBox1);
+            panel5.Controls.Add(comboMotivo_permiso);
             panel5.Controls.Add(label13);
             panel5.Location = new Point(0, 124);
             panel5.Name = "panel5";
             panel5.Size = new Size(212, 83);
             panel5.TabIndex = 6;
             // 
-            // comboBox1
+            // comboMotivo_permiso
             // 
-            comboBox1.FlatStyle = FlatStyle.Popup;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(20, 29);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(166, 23);
-            comboBox1.TabIndex = 7;
+            comboMotivo_permiso.FlatStyle = FlatStyle.Popup;
+            comboMotivo_permiso.FormattingEnabled = true;
+            comboMotivo_permiso.Location = new Point(20, 29);
+            comboMotivo_permiso.Name = "comboMotivo_permiso";
+            comboMotivo_permiso.Size = new Size(166, 23);
+            comboMotivo_permiso.TabIndex = 7;
             // 
             // label13
             // 
@@ -396,7 +398,7 @@
             panel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label11);
-            panel2.Location = new Point(40, 266);
+            panel2.Location = new Point(40, 269);
             panel2.Name = "panel2";
             panel2.Size = new Size(701, 23);
             panel2.TabIndex = 4;
@@ -427,7 +429,7 @@
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(panel7);
             panel3.Controls.Add(panel6);
-            panel3.Location = new Point(40, 289);
+            panel3.Location = new Point(40, 292);
             panel3.Name = "panel3";
             panel3.Size = new Size(351, 75);
             panel3.TabIndex = 4;
@@ -455,7 +457,7 @@
             // 
             panel6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel6.BackColor = Color.FromArgb(167, 210, 143);
-            panel6.Controls.Add(dateTimePicker1);
+            panel6.Controls.Add(dateTimeHasta);
             panel6.Controls.Add(label16);
             panel6.Controls.Add(dateTimePickerDesde);
             panel6.Controls.Add(label15);
@@ -464,13 +466,13 @@
             panel6.Size = new Size(349, 25);
             panel6.TabIndex = 6;
             // 
-            // dateTimePicker1
+            // dateTimeHasta
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(236, 1);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(86, 23);
-            dateTimePicker1.TabIndex = 8;
+            dateTimeHasta.Format = DateTimePickerFormat.Short;
+            dateTimeHasta.Location = new Point(236, 1);
+            dateTimeHasta.Name = "dateTimeHasta";
+            dateTimeHasta.Size = new Size(86, 23);
+            dateTimeHasta.TabIndex = 8;
             // 
             // label16
             // 
@@ -540,12 +542,57 @@
             picMinPantalla.TabStop = false;
             picMinPantalla.Click += picMinPantalla_Click;
             // 
+            // iconbtnGuardar
+            // 
+            iconbtnGuardar.BackColor = Color.FromArgb(56, 182, 255);
+            iconbtnGuardar.Cursor = Cursors.Hand;
+            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
+            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
+            iconbtnGuardar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
+            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            iconbtnGuardar.IconColor = Color.White;
+            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnGuardar.IconSize = 36;
+            iconbtnGuardar.Location = new Point(241, 453);
+            iconbtnGuardar.Name = "iconbtnGuardar";
+            iconbtnGuardar.Size = new Size(112, 39);
+            iconbtnGuardar.TabIndex = 26;
+            iconbtnGuardar.Text = "Confirmar";
+            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
+            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
+            // 
+            // iconBtnCancelar
+            // 
+            iconBtnCancelar.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnCancelar.Cursor = Cursors.Hand;
+            iconBtnCancelar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
+            iconBtnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCancelar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            iconBtnCancelar.IconColor = Color.White;
+            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCancelar.IconSize = 30;
+            iconBtnCancelar.Location = new Point(381, 453);
+            iconBtnCancelar.Name = "iconBtnCancelar";
+            iconBtnCancelar.Size = new Size(115, 39);
+            iconBtnCancelar.TabIndex = 27;
+            iconBtnCancelar.Text = "Cancelar";
+            iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCancelar.UseVisualStyleBackColor = false;
+            // 
             // FrmSolicitudPermiso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(254, 254, 254);
-            ClientSize = new Size(780, 489);
+            ClientSize = new Size(780, 495);
+            Controls.Add(iconBtnCancelar);
+            Controls.Add(iconbtnGuardar);
             Controls.Add(panel8);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -553,10 +600,11 @@
             Controls.Add(pDatosEmpleado);
             Controls.Add(pEncabezado);
             FormBorderStyle = FormBorderStyle.None;
-            MaximumSize = new Size(780, 489);
+            MaximumSize = new Size(780, 495);
             Name = "FrmSolicitudPermiso";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmSolicitudPermiso";
+            Load += FrmSolicitudPermiso_Load;
             pEncabezado.ResumeLayout(false);
             pEncabezado.PerformLayout();
             pSubtitulo.ResumeLayout(false);
@@ -615,18 +663,20 @@
         private Panel panel4;
         private Panel panel3;
         private Label label13;
-        private ComboBox comboBox1;
+        private ComboBox comboMotivo_permiso;
         private Label label14;
-        private TextBox textBox7;
+        private TextBox txtJustificacion;
         private Panel panel6;
         private Label label15;
         private Label label17;
         private Panel panel7;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimeHasta;
         private Label label16;
         private DateTimePicker dateTimePickerDesde;
         private Panel panel8;
         private PictureBox picMinPantalla;
         private PictureBox picCerrar;
+        private FontAwesome.Sharp.IconButton iconbtnGuardar;
+        private FontAwesome.Sharp.IconButton iconBtnCancelar;
     }
 }

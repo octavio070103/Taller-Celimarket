@@ -382,5 +382,9 @@ INSERT INTO proveedor(nombre,email,telefono,estado_proveedor) VALUES();
 
 --detalleVenta
 
-
-
+---motivo_permiso
+INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('vacaciones anuales');
+INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Licencia por Enfemedad');
+INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Licencia por Paternidad');
+INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Duelo');
+INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Otros Motivos');
