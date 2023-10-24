@@ -214,7 +214,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnGestionUsuario_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Admin.FrmGestionarUsuario(this));
+            OpenChildForm(new Admin.FrmGestionarUsuario(this,usuarioActual));
         }
 
         private void BtnGestionConsulta_Click(object sender, EventArgs e)

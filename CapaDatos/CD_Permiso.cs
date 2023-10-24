@@ -175,7 +175,8 @@ namespace CapaDatos
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (p para PRODUCTO,C para catgoria y m para amrca). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.(evi tando la ambigueadad)
                     query.AppendLine("SELECT p.id_permiso,p.fecha_inicio,p.fecha_finalizacion,p.comentario_justificacion,p.estado_aprobacion ,p.estado_permiso," +
-                        "u.id_usuario,"+
+                        "m.id_motivo_permiso,m.nombre_motivo_permiso," +
+                        "u.id_usuario,u.email," +
                         "r.id_rol,r.nombre_rol,"+
                        "pers.id_persona,pers.dni,pers.nombre,pers.apellido,pers.telefono," +
                        "d.id_domicilio,d.numero,d.calle");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
@@ -211,7 +212,7 @@ namespace CapaDatos
                                 obj_usuario =new usuario()
                                 {
                                     id_usuario=Convert.ToInt32(dr["id_usuario"]),
-
+                                    email= dr["email"].ToString(),
                                     //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo rol edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
                                     obj_rol = new rol()
                                     {
@@ -248,6 +249,150 @@ namespace CapaDatos
             }
             return listaPermisos; // Devolvemos la lista de productos que obtuvimos en la consulta
         }
+
+        public permiso buscarPermiso(int id_permiso)
+        {
+          
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla permiso y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
+
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (p para PRODUCTO,C para catgoria y m para amrca). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.(evi tando la ambigueadad)
+                    query.AppendLine("SELECT p.id_permiso,p.fecha_inicio,p.fecha_finalizacion,p.comentario_justificacion,p.estado_aprobacion ,p.estado_permiso," +
+                        "m.id_motivo_permiso,m.nombre_motivo_permiso," +
+                        "u.id_usuario,u.email," +
+                        "r.id_rol,r.nombre_rol," +
+                       "pers.id_persona,pers.dni,pers.nombre,pers.apellido,pers.telefono," +
+                       "d.id_domicilio,d.numero,d.calle");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM permiso p");// aca le doy el alias p a la tabla de permiso y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN Motivo_permiso m ON p.id_motivo_permiso = m.id_motivo_permiso");//le doy el alias m, y realizo el INNER JOIN entre la tabla permiso y la tabla Motivo_permiso
+                    query.AppendLine("INNER JOIN usuario u ON p.id_usuario=u.id_usuario");//le doy el alias u a usuario, y realizo el INNER JOIN entre la tabla permiso y la tabla usuario (que la usare para realizar un jopin y traer los demas datos que encesito mostrar)
+                    query.AppendLine("INNER JOIN rol r ON u.id_rol=r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
+                    query.AppendLine("INNER JOIN persona pers ON u.id_persona = pers.id_persona");//le doy el alias pers, y realizo el INNER JOIN entre la tabla usuario y la tabla persona
+                    query.AppendLine("INNER JOIN domicilio d ON u.id_domicilio= d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+                    query.AppendLine("WHERE id_permiso=@id_permiso;");
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    //le paso un valor(id_producto que traigo como parametro) al paraemtro @id_producto de m iconsulta y asi para realizar el query
+                    cmd.Parameters.AddWithValue("@id_permiso", id_permiso);
+
+                    // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                    //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        //aca se lectura a la consulta que realize con qeury
+                        while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
+                        {
+                            //a mi lista de permiso le estoy agregrando un usaurio
+                            return new permiso
+                            {
+                                id_permiso = Convert.ToInt32(dr["id_permiso"]),
+                                fecha_inicio = Convert.ToDateTime(dr["fecha_inicio"]),
+                                fecha_finalizacion = Convert.ToDateTime(dr["fecha_finalizacion"]),
+                                comentario_justificacion = dr["comentario_justificacion"].ToString(),
+                                estado_aprobacion = dr["estado_aprobacion"].ToString(),
+                                estado_permiso = Convert.ToInt32(dr["estado_permiso"]),
+
+                                //como los datos del usuario que debo de traer al momento de hacer el INNER JOIN son de tipo usuario edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_permiso
+                                obj_usuario = new usuario()
+                                {
+                                    id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                    email = dr["email"].ToString(),
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo rol edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_rol = new rol()
+                                    {
+                                        id_rol = Convert.ToInt32(dr["id_rol"]),
+                                        nombre_rol = dr["nombre_rol"].ToString(),
+                                    },
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo persona edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_persona = new persona()
+                                    {
+                                        id_persona = Convert.ToInt32(dr["id_persona"]),
+                                        dni = dr["dni"].ToString(),
+                                        nombre = dr["nombre"].ToString(),
+                                        apellido = dr["apellido"].ToString(),
+                                        telefono = dr["telefono"].ToString()
+                                    },
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo obj_domicilio edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_domicilio = new domicilio()
+                                    {
+                                        id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
+                                        numero = Convert.ToInt32(dr["numero"]),
+                                        calle = dr["calle"].ToString()
+                                    }
+
+                                },
+                                obj_motivo_permiso= new motivo_permiso()
+                                {
+                                    id_motivo_permiso= Convert.ToInt32(dr["id_motivo_permiso"]),
+                                    nombre_motivo_permiso= dr["nombre_motivo_permiso"].ToString()
+                                }
+                            };
+                        }
+                    }// Al salir de este bloque, la conexión se cerrará automáticamente.
+                }
+                catch (Exception ex)
+                {
+                    // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return null; // Devolvemos null si no se encontró el permiso con el id_permiso que proporcionarmos
+        }
+
+        /*********************************************CAMBIAR EL ESTADO DEL PERMISO A APROBADO O RECHAZADO DEPENDIENTO DEL VALOR QUE TRAE EL OBJ_PERMISO****************************/
+        public bool cambiarEstadoPermiso(permiso obj_permiso, out string mensaje)
+        {
+            bool respuesta = false;
+            mensaje = string.Empty;//aca le asigno un var a mi msj es decir setteo mis vribales que voy a usar aca
+            try
+            {
+                //le paso cadena de la clase conexion 
+                using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+                {
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand("SP_ACTUALIZARESTADO", Obj_conexion);
+
+                    //le paso los parametros que necesita mi procedimiento almacenado(SP_DARBAJAPRODUCTO) que defini en mi BD para dar de baja el producto y asi evitar la inyeccion de SQL
+                    cmd.Parameters.AddWithValue("@id_permiso", obj_permiso.id_permiso);
+                    cmd.Parameters.AddWithValue("@estado_aprobacion", obj_permiso.estado_aprobacion);
+
+                    //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
+                    cmd.Parameters.Add("@respuesta", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi var de saldad de mi proced alm
+                    cmd.Parameters.Add("@mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output; // le paso el tamnio del parametro mensaje como en mi proc lo def asi
+
+                    // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                    //ejcutamos nuestro comando
+                    cmd.ExecuteNonQuery();
+
+                    //asignamos el valor del repsuesta de mi proc almacenada que es de tipo boolean
+                    respuesta = Convert.ToBoolean(cmd.Parameters["@respuesta"].Value);
+
+                    mensaje = cmd.Parameters["@mensaje"].Value.ToString();//aca se guarda el msj de error o de exito que nos da el proc almacenado 
+
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = false;
+                mensaje = ex.Message; //aca le paso el mensaje de error que capturo el try catch esa excepcion
+            }
+            return respuesta;
+        }
+
 
         /**********************************metodos para La tabla Motivo Permiso *******************************************/
         public List<motivo_permiso> listaMotivosPermisos()

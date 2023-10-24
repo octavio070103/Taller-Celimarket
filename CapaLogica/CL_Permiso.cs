@@ -22,6 +22,15 @@ namespace CapaLogica
         {
             return obj_cd_permiso.listarPermisos();
         }
+        public permiso buscarPermiso(int id_permiso)
+        {
+            return obj_cd_permiso.buscarPermiso(id_permiso);
+        }
+
+        public bool cambiarEstadoPermiso(permiso obj_permiso, out string mensaje)
+        {
+            return obj_cd_permiso.cambiarEstadoPermiso(obj_permiso, out mensaje);
+        }
 
         /**********************************metodos para La tabla Motivo Permiso *******************************************/
         public List<motivo_permiso> listarMotivoPermiso()

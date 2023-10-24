@@ -98,13 +98,14 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	  END
 END
 
-/*DAR DE BAJA PERMISO */
-CREATE PROCEDURE DARBAJAPERMISO(
+/*ACTUALIZAR EL ESTADO DEL PERMISO */
+ALTER PROCEDURE SP_ACTUALIZARESTADO(
 	/*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
-	@id_permiso INT OUTPUT,
+	@id_permiso INT,
+	@estado_aprobacion VARCHAR(20),
 	/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida*/
 	@respuesta INT OUTPUT,
-	@mensaje VARCHAR(500)
+	@mensaje VARCHAR(500) OUTPUT
 )
 AS 
 BEGIN
@@ -114,12 +115,18 @@ BEGIN
 
 	IF NOT EXISTS(SELECT id_permiso FROM permiso  WHERE id_permiso=@id_permiso)
 		BEGIN
-			SET @mensaje='El permiso que se quiere dar de baja no existe'
+			SET @mensaje='El Permiso que se quiere actualizar el estado no existe'
 			SET @validacion=0
 		END
-	IF EXISTS(SELECT estado_permiso FROM permiso  WHERE estado_permiso=0)
+	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE estado_aprobacion='aprobado')
 		BEGIN
-			SET @mensaje='El permiso que se quiere dar de baja ya esta dado de baja NO se puede dar de baja nuevamente'
+			SET @mensaje='El permiso que se quiere Actulizar ya esta aprobado'
+			SET @validacion=0
+		END
+
+	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE estado_aprobacion='rechazado')
+		BEGIN
+		SET @mensaje='El permiso que se quiere Actulizar ya esta rechazado'
 			SET @validacion=0
 		END
 
@@ -127,9 +134,9 @@ BEGIN
 	BEGIN
 		--actualizacion del estado del permiso,lo damos de baja cambiamos a 0 el estado
 		UPDATE permiso SET
-		estado_permiso=0
+		estado_aprobacion=@estado_aprobacion
 		WHERE id_permiso=@id_permiso
-		SET @mensaje=  'el permiso se dio de baja correctamente'
+		SET @mensaje=  'el Permiso se Actulizo correctamente'
 		SET @respuesta=1/* Cambiamos la variable de respuesta a 1, lo que equivale a "true" */
 	END
 END

@@ -23,8 +23,8 @@ namespace CapaPresentacion.Formularios.Admin
     {
         private MenuAdministrador instanciaMenuAdministrador;
         private Form currentChildForm;
-
-        public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador)
+        private static capaEntidad.usuario usuarioActual;
+        public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador,capaEntidad.usuario p_usuarioActual)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
@@ -38,7 +38,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al inicio sino selecciono ningun usuario para editar,estara oculto
             txtIdGuardado.Visible = false;//oculto el id del usuario que luego uso para guardarlo y poder editar el usuario o buscarlo 
-
+            usuarioActual = p_usuarioActual;
         }
 
 
@@ -49,7 +49,7 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void iconBtnPermiso_Click(object sender, EventArgs e)
         {
-            instanciaMenuAdministrador.OpenChildForm(new Admin.usuario.FrmPermisoUsuario(this.instanciaMenuAdministrador));
+            instanciaMenuAdministrador.OpenChildForm(new Admin.usuario.FrmPermisoUsuario(this.instanciaMenuAdministrador, usuarioActual));
         }
 
         private void FrmGestionarUsuario_Load(object sender, EventArgs e)
