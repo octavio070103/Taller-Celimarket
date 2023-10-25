@@ -121,7 +121,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     instancia_FrmGestionarProducto.actualizarDataGrid();
                 }
 
-                File.Copy(fileActualPath!,fileSavePath!);
+                File.Copy(fileActualPath!, fileSavePath!);//aca guardo la coipa de la imagen en la ruta que especifique mas abajo
 
             }
         }
@@ -190,10 +190,10 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             {
                 try
                 {
-                    
+
                     nombreDeImg = Guid.NewGuid().ToString() + ".png"; //genero un nombre unico para la imgen y ke agrego la extension.png
                     string nombreActualImg = abrirImagen.SafeFileName;//almacena el nombre original del archivo seleccionado por el usuario.
-                    fileSavePath = Path.Combine("..", "..", "..", "..", "CapaPresentacion/Fotos/Admin/Producto", nombreDeImg);//construyo una ruta donde se guardara la imagen 
+                    fileSavePath = Path.Combine("..", "..", "..", "..", "CapaPresentacion/Fotos/Admin/Producto/images", nombreDeImg);//construyo una ruta donde se guardara la imagen 
 
                     // Asegurarse de que la carpeta "Images" exista
                     /*

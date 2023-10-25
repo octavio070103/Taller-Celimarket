@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRespaldo));
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             lblFiltrar = new Label();
             label1 = new Label();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
-            btnAgregar = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             panelDatosUsuario = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
@@ -54,6 +53,10 @@
             lblNombreDato = new Label();
             txtNombreDato = new TextBox();
             lblDatoDelaBD = new Label();
+            iconBtnImportar = new FontAwesome.Sharp.IconButton();
+            iconBtnRespaldar = new FontAwesome.Sharp.IconButton();
+            label2 = new Label();
+            textBox2 = new TextBox();
             panel1.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
             SuspendLayout();
@@ -119,48 +122,6 @@
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(209, 23);
             comboBox2.TabIndex = 13;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.BackColor = Color.FromArgb(19, 173, 39);
-            btnAgregar.Cursor = Cursors.Hand;
-            btnAgregar.FlatAppearance.BorderColor = Color.Black;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.Database;
-            btnAgregar.IconColor = Color.White;
-            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(72, 229);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(166, 39);
-            btnAgregar.TabIndex = 14;
-            btnAgregar.Text = "Restaurar";
-            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
-            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAgregar.UseVisualStyleBackColor = false;
-            // 
-            // iconButton1
-            // 
-            iconButton1.BackColor = Color.FromArgb(19, 173, 39);
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Database;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(298, 229);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(166, 39);
-            iconButton1.TabIndex = 15;
-            iconButton1.Text = "Respaldar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
             // 
             // panelDatosUsuario
             // 
@@ -370,15 +331,83 @@
             lblDatoDelaBD.TabIndex = 0;
             lblDatoDelaBD.Text = "Datos De La Base de datos";
             // 
+            // iconBtnImportar
+            // 
+            iconBtnImportar.BackColor = Color.Orange;
+            iconBtnImportar.BackgroundImage = (Image)resources.GetObject("iconBtnImportar.BackgroundImage");
+            iconBtnImportar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnImportar.Cursor = Cursors.Hand;
+            iconBtnImportar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnImportar.FlatStyle = FlatStyle.Flat;
+            iconBtnImportar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnImportar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnImportar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnImportar.IconColor = Color.White;
+            iconBtnImportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnImportar.IconSize = 30;
+            iconBtnImportar.Location = new Point(301, 272);
+            iconBtnImportar.Name = "iconBtnImportar";
+            iconBtnImportar.Size = new Size(123, 38);
+            iconBtnImportar.TabIndex = 18;
+            iconBtnImportar.Text = "Importar Base ";
+            iconBtnImportar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnImportar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnImportar.UseVisualStyleBackColor = false;
+            iconBtnImportar.Click += iconBtnImportar_Click;
+            // 
+            // iconBtnRespaldar
+            // 
+            iconBtnRespaldar.BackColor = Color.Orange;
+            iconBtnRespaldar.BackgroundImage = (Image)resources.GetObject("iconBtnRespaldar.BackgroundImage");
+            iconBtnRespaldar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnRespaldar.Cursor = Cursors.Hand;
+            iconBtnRespaldar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnRespaldar.FlatStyle = FlatStyle.Flat;
+            iconBtnRespaldar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnRespaldar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnRespaldar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnRespaldar.IconColor = Color.White;
+            iconBtnRespaldar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnRespaldar.IconSize = 30;
+            iconBtnRespaldar.Location = new Point(91, 272);
+            iconBtnRespaldar.Name = "iconBtnRespaldar";
+            iconBtnRespaldar.Size = new Size(129, 38);
+            iconBtnRespaldar.TabIndex = 19;
+            iconBtnRespaldar.Text = "Respaldar Base";
+            iconBtnRespaldar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnRespaldar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnRespaldar.UseVisualStyleBackColor = false;
+            iconBtnRespaldar.Click += iconBtnRespaldar_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(19, 197);
+            label2.Name = "label2";
+            label2.Size = new Size(205, 25);
+            label2.TabIndex = 20;
+            label2.Text = "Ubicacion del Archivo";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(322, 199);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(209, 23);
+            textBox2.TabIndex = 21;
+            // 
             // FrmRespaldo
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(textBox2);
+            Controls.Add(label2);
+            Controls.Add(iconBtnRespaldar);
+            Controls.Add(iconBtnImportar);
             Controls.Add(panelDatosUsuario);
-            Controls.Add(iconButton1);
-            Controls.Add(btnAgregar);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Controls.Add(label1);
@@ -386,7 +415,7 @@
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
             Name = "FrmRespaldo";
-            Text = "77";
+            Text = "Base De Datos";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelDatosUsuario.ResumeLayout(false);
@@ -403,8 +432,6 @@
         private Label label1;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
-        private FontAwesome.Sharp.IconButton btnAgregar;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panelDatosUsuario;
         private Label lblPassword;
         private TextBox txtPasswordDato;
@@ -424,5 +451,9 @@
         private DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
+        private FontAwesome.Sharp.IconButton iconBtnImportar;
+        private FontAwesome.Sharp.IconButton iconBtnRespaldar;
+        private Label label2;
+        private TextBox textBox2;
     }
 }

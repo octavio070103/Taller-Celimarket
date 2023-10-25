@@ -36,6 +36,7 @@
             picMinimizar = new PictureBox();
             lblRegistrarUsuario = new Label();
             panelProductos = new Panel();
+            lblprueba = new Label();
             label3 = new Label();
             picBoxIMGProducto = new PictureBox();
             txtCodBarra = new TextBox();
@@ -57,7 +58,6 @@
             panel2 = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
-            lblprueba = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
@@ -178,14 +178,24 @@
             panelProductos.Dock = DockStyle.Fill;
             panelProductos.Location = new Point(0, 61);
             panelProductos.Name = "panelProductos";
-            panelProductos.Size = new Size(512, 389);
+            panelProductos.Size = new Size(512, 417);
             panelProductos.TabIndex = 3;
+            // 
+            // lblprueba
+            // 
+            lblprueba.AutoSize = true;
+            lblprueba.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblprueba.Location = new Point(363, 333);
+            lblprueba.Name = "lblprueba";
+            lblprueba.Size = new Size(43, 19);
+            lblprueba.TabIndex = 100;
+            lblprueba.Text = "Ruta";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(346, 207);
+            label3.Location = new Point(344, 169);
             label3.Name = "label3";
             label3.Size = new Size(71, 19);
             label3.TabIndex = 99;
@@ -193,9 +203,14 @@
             // 
             // picBoxIMGProducto
             // 
-            picBoxIMGProducto.Location = new Point(330, 229);
+            picBoxIMGProducto.BackgroundImage = (Image)resources.GetObject("picBoxIMGProducto.BackgroundImage");
+            picBoxIMGProducto.BackgroundImageLayout = ImageLayout.Stretch;
+            picBoxIMGProducto.BorderStyle = BorderStyle.Fixed3D;
+            picBoxIMGProducto.InitialImage = null;
+            picBoxIMGProducto.Location = new Point(326, 198);
             picBoxIMGProducto.Name = "picBoxIMGProducto";
-            picBoxIMGProducto.Size = new Size(110, 96);
+            picBoxIMGProducto.Size = new Size(125, 127);
+            picBoxIMGProducto.SizeMode = PictureBoxSizeMode.StretchImage;
             picBoxIMGProducto.TabIndex = 98;
             picBoxIMGProducto.TabStop = false;
             picBoxIMGProducto.Click += picBoxIMGProducto_Click;
@@ -261,7 +276,7 @@
             // 
             lblDescripcion.AutoSize = true;
             lblDescripcion.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDescripcion.Location = new Point(17, 168);
+            lblDescripcion.Location = new Point(17, 208);
             lblDescripcion.Name = "lblDescripcion";
             lblDescripcion.Size = new Size(100, 19);
             lblDescripcion.TabIndex = 89;
@@ -271,7 +286,7 @@
             // 
             lblStock.AutoSize = true;
             lblStock.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblStock.Location = new Point(272, 162);
+            lblStock.Location = new Point(17, 160);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(50, 19);
             lblStock.TabIndex = 88;
@@ -280,7 +295,7 @@
             // txtStock
             // 
             txtStock.Cursor = Cursors.IBeam;
-            txtStock.Location = new Point(272, 181);
+            txtStock.Location = new Point(17, 179);
             txtStock.Multiline = true;
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(213, 23);
@@ -289,7 +304,7 @@
             // txtDescripcion
             // 
             txtDescripcion.Cursor = Cursors.IBeam;
-            txtDescripcion.Location = new Point(17, 190);
+            txtDescripcion.Location = new Point(17, 230);
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
             txtDescripcion.Size = new Size(213, 122);
@@ -298,7 +313,7 @@
             // txtPrecioVenta
             // 
             txtPrecioVenta.Cursor = Cursors.IBeam;
-            txtPrecioVenta.Location = new Point(17, 134);
+            txtPrecioVenta.Location = new Point(273, 131);
             txtPrecioVenta.Multiline = true;
             txtPrecioVenta.Name = "txtPrecioVenta";
             txtPrecioVenta.Size = new Size(213, 23);
@@ -308,7 +323,7 @@
             // 
             lblPrecioVenta.AutoSize = true;
             lblPrecioVenta.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioVenta.Location = new Point(17, 112);
+            lblPrecioVenta.Location = new Point(273, 109);
             lblPrecioVenta.Name = "lblPrecioVenta";
             lblPrecioVenta.Size = new Size(105, 19);
             lblPrecioVenta.TabIndex = 82;
@@ -317,7 +332,7 @@
             // txtPrecioCompra
             // 
             txtPrecioCompra.Cursor = Cursors.IBeam;
-            txtPrecioCompra.Location = new Point(272, 134);
+            txtPrecioCompra.Location = new Point(17, 131);
             txtPrecioCompra.Multiline = true;
             txtPrecioCompra.Name = "txtPrecioCompra";
             txtPrecioCompra.Size = new Size(213, 23);
@@ -327,7 +342,7 @@
             // 
             lblPrecioCompra.AutoSize = true;
             lblPrecioCompra.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioCompra.Location = new Point(272, 112);
+            lblPrecioCompra.Location = new Point(17, 109);
             lblPrecioCompra.Name = "lblPrecioCompra";
             lblPrecioCompra.Size = new Size(124, 19);
             lblPrecioCompra.TabIndex = 80;
@@ -358,7 +373,7 @@
             panel2.Controls.Add(iconbtnGuardar);
             panel2.Controls.Add(iconBtnCancelar);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 328);
+            panel2.Location = new Point(0, 356);
             panel2.Name = "panel2";
             panel2.Size = new Size(512, 61);
             panel2.TabIndex = 75;
@@ -406,21 +421,11 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // lblprueba
-            // 
-            lblprueba.AutoSize = true;
-            lblprueba.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblprueba.Location = new Point(69, 309);
-            lblprueba.Name = "lblprueba";
-            lblprueba.Size = new Size(60, 19);
-            lblprueba.TabIndex = 100;
-            lblprueba.Text = "Marca";
-            // 
             // FrmRegistrarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(512, 450);
+            ClientSize = new Size(512, 478);
             Controls.Add(panelProductos);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
