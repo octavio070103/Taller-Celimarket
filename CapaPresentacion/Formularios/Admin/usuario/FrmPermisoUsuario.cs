@@ -25,6 +25,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             InitializeComponent();
             this.instanciaMenuAdministrador = p_menuAdministrador;
             usuarioActual = p_usuarioActual;
+
         }
 
         private void FrmPermisoUsuario_Load(object sender, EventArgs e)
@@ -172,7 +173,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             if (dataGridPermisos.SelectedRows.Count > 0 && Convert.ToInt32(txtIdPermiso.Text) > 0)
             {
 
-                DialogResult consulta = MessageBox.Show("¿Desea APROBAR el Permiso del Empleado" + txtNombreEmple.Text+ "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult consulta = MessageBox.Show("¿Desea APROBAR el Permiso del Empleado " + txtNombreEmple.Text+ "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (consulta == DialogResult.Yes)
                 {
                     //creo un obj_permiso que va a contener el id_permiso de la permiso a apronar
@@ -189,7 +190,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                     FrmPermisoUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
                                                                   //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
                     capaEntidad.permiso obj_permiso = obj_CL_Permiso.buscarPermiso(Convert.ToInt32(txtIdPermiso.Text));//aca llamo al metodo buscar permiso para que me traiga el obj_permiso de la BD completo y pueda usar para enviar notifcaion del estado de su permiso
-                    EnviarNotificacionPorCorreo(obj_permiso, "Solicitud de Permiso Rechazada", mensaje);
+                    EnviarNotificacionPorCorreo(obj_permiso, "Solicitud de Permiso APROBADA", mensaje);
                 }
                 //aca muestro en caso de que haya habido algun error en el metodo DarDeBaja o en caso de exito tmabien muestro el mensaje proveniente de mi procedimiento alamcenado
                 if (mensaje != "")
@@ -216,7 +217,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             if (dataGridPermisos.SelectedRows.Count > 0 && Convert.ToInt32(txtIdPermiso.Text) > 0)
             {
 
-                DialogResult consulta = MessageBox.Show("¿Desea RECHAZAR el Permiso del Empleado" + txtNombreEmple.Text + "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult consulta = MessageBox.Show("¿Desea RECHAZAR el Permiso del Empleado " + txtNombreEmple.Text + "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (consulta == DialogResult.Yes)
                 {
                     //creo un obj_permiso que va a contener el id_permiso de la permiso a rechzador
@@ -255,23 +256,42 @@ namespace CapaPresentacion.Formularios.Admin.usuario
         {
             try
             {
-                var correo = new MailMessage();
-                correo.From = new MailAddress("tudirecciondecorreo@gmail.com");
-              //  correo.To.Add();
-                correo.Subject = asunto;
-                correo.Body = mensaje;
+                //CONFIGURAR VALORES
+                string Host = "smtp.gmail.com";
+                int Puerto = 587;
+                string Usuario = "celimarketexpress@gmail.com";
+                string Clave = "pqadyqsdvadgeqjc";//clave generada para aplicación en GMAIL
 
-                var smtp = new SmtpClient("smtp.gmail.com"); // Cambia esto al servidor SMTP que uses (por ejemplo, el servidor de tu empresa)
-                smtp.Port = 587; // Puerto SMTP (puede variar según el proveedor)
-                smtp.Credentials = new NetworkCredential("tudirecciondecorreo@gmail.com", "tucontraseña");
-                smtp.EnableSsl = true; // Habilitar SSL para conexiones seguras
+                //PROPORCIONAMOS AUTENTICACION DE GMAIL
+                SmtpClient smtp = new SmtpClient(Host, Puerto);
+                MailMessage msg = new MailMessage();
 
-                smtp.Send(correo);
+
+                //CREAMOS EL CONTENIDO DEL CORREO
+                string[] Destinatario = obj_permiso.obj_usuario.email.Split(',');
+              //  string[] DestinatarioCopia = txtCopia.Text.Split(',');
+               // string[] DestinatarioCopiaOculta = txtCopiaOculta.Text.Split(',');
+
+
+                msg.From = new MailAddress(Usuario, "SERVIDOR CORREO CELIMARKET");
+                foreach (string correo in Destinatario) if (correo != "") msg.To.Add(new MailAddress(correo));
+               // foreach (string correo in DestinatarioCopia) if (correo != "") msg.CC.Add(new MailAddress(correo)); este me sirve por si quiero una copia del correo enviarlo
+             //   foreach (string correo in DestinatarioCopiaOculta) if (correo != "") msg.Bcc.Add(new MailAddress(correo)); esto es por si quiero una coipa oculta
+              //  foreach (string adjunto in ArchivoAdjuntos) if (adjunto != "") msg.Attachments.Add(new Attachment(adjunto)); esto es por si quiero permitir que s eadjunten archivos
+                msg.Subject = asunto;
+                msg.IsBodyHtml = false;
+                msg.Body = mensaje;
+
+
+                //ENVIAMOS EL CORREO
+                smtp.Credentials = new NetworkCredential(Usuario, Clave);
+                smtp.EnableSsl = true;
+                smtp.Send(msg);
+                MessageBox.Show("Notificacion de Permiso Enviada");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al enviar correo electrónico: " + ex.Message);
-                // Aquí puedes manejar errores o registrarlos en un archivo de registro.
+                Console.WriteLine("Error al enviar el correo electrónico: " + ex.Message);
             }
 
         }

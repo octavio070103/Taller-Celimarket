@@ -118,13 +118,13 @@ BEGIN
 			SET @mensaje='El Permiso que se quiere actualizar el estado no existe'
 			SET @validacion=0
 		END
-	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE estado_aprobacion='aprobado')
+	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE id_permiso=@id_permiso AND estado_aprobacion='aprobado')
 		BEGIN
 			SET @mensaje='El permiso que se quiere Actulizar ya esta aprobado'
 			SET @validacion=0
 		END
 
-	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE estado_aprobacion='rechazado')
+	IF EXISTS(SELECT estado_aprobacion FROM permiso  WHERE id_permiso=@id_permiso AND estado_aprobacion='rechazado')
 		BEGIN
 		SET @mensaje='El permiso que se quiere Actulizar ya esta rechazado'
 			SET @validacion=0

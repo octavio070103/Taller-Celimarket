@@ -1,11 +1,14 @@
 ﻿using capaEntidad;
 using CapaLogica;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +17,16 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 {
     public partial class FrmRegistrarProducto : Form
     {
+        private FrmGestionarProducto instancia_FrmGestionarProducto; // creamos una varibale llamada instancia_FrmGestionarProducto en FrmRegistrarProducto para almacenar una referencia al formulario FrmGestionarProducto. Esto es esencial para que FrmRegistrarProducto sepa a qué formulario debe comunicarse.
+        private string? nombreDeImg; //creo una var para almacenar el nombre de mi img y luego poder validar ese campo es decir para poder guardar su valor en una var global y usarl;o a lo largo del progra
+        private string? fileSavePath;
+        private string? fileActualPath;
 
-
-        public FrmRegistrarProducto()
+        //constructor
+        public FrmRegistrarProducto(FrmGestionarProducto p_FrmGestionarProducto) // le paso como parametro un obj de tipo FrmGestionarProducto que me viene como referencia al momento de llamar a este formulario 
         {
             InitializeComponent();
-
+            this.instancia_FrmGestionarProducto = p_FrmGestionarProducto; //asigno la refencia del ormulario FrmGestionarProducto proporcionada como argumento al campo instancia_FrmGestionarProducto. Esto establece una conexión entre los dos formularios, permitiendo que FrmRegistrarProducto acceda a los miembros públicos y métodos de FrmGestionarProducto
         }
         private void FrmRegistrarProducto_Load(object sender, EventArgs e)
         {
@@ -77,7 +84,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-            int id_producto_generado ;
+            int id_producto_generado;
 
             if (validarCampos())
             {
@@ -89,15 +96,16 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     precio_compra = Convert.ToInt32(txtPrecioCompra.Text),
                     precio_venta = Convert.ToInt32(txtPrecioVenta.Text),
                     stock_producto = Convert.ToInt32(txtStock.Text),
-                    imagen= "prueba.png",//cambiar por la url de la img
+                    imagen = nombreDeImg!,//le paso la url de la img que subi al momento de registrar
                     estado_producto = 1,
 
                     obj_marca = new marca()
                     {
-                        id_marca= obtenerIDMarcaSeleccionada() //tengo que validar esto en el metodo validar campo ya que si es =0 significa que el usuario no seleccionada
+                        id_marca = obtenerIDMarcaSeleccionada() //tengo que validar esto en el metodo validar campo ya que si es =0 significa que el usuario no seleccionada
                     },
-                    obj_categoria= new categoria(){
-                        id_categoria=obtenerIDCategoriaSeleccionada() 
+                    obj_categoria = new categoria()
+                    {
+                        id_categoria = obtenerIDCategoriaSeleccionada()
                     }
                 };
 
@@ -106,6 +114,13 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 {
                     MessageBox.Show(mensaje);
                 }
+
+                if (id_producto_generado != 0)
+                {
+                    //como anteriormete extableci una referencia al formulario FrmGestionProducto puedo acceder a sus metodos y atributos publicos en este caso accedo al metodo de actulizar datagrid para que cuando se isnrete un producto lo haga
+                    instancia_FrmGestionarProducto.actualizarDataGrid();
+                }
+
             }
         }
 
@@ -155,6 +170,49 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             bool validacion = true;
 
             return validacion;
+        }
+
+        //metodo para subir y posteriormente registrar la imagen
+        private void picBoxIMGProducto_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog abrirImagen = new()
+            {
+                Filter = "Archivos de imagen (*.png) | *.png", //aca aplico el filtro de las imagenes o archivos que puede seleciconar el usuario en la ventana
+                InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), // con esto le digo qeu el cuadro de dialogo o ventana se abra en la carpeta myPictures
+                Multiselect = false, //aca hago para que seleccione una sola imagen a la vez
+                Title = "Seleccione una Imagen", //titulo de mi ventana
+            };
+
+            //si el usuario selecciono una img y dio a ok entra a este if
+            if (abrirImagen.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    
+                    nombreDeImg = Guid.NewGuid().ToString() + ".png"; //genero un nombre unico para la imgen y ke agrego la extension.png
+                    string nombreActualImg = abrirImagen.SafeFileName;//almacena el nombre original del archivo seleccionado por el usuario.
+                    fileSavePath = Path.Combine("..", "..", "..", "..", "CapaPresentacion/Fotos/Admin/Producto", nombreDeImg);//construyo una ruta donde se guardara la imagen 
+
+                    // Asegurarse de que la carpeta "Images" exista
+                    if (!Directory.Exists(fileSavePath))
+                    {
+                        Directory.CreateDirectory(fileSavePath);
+                    }
+                    string selectedImagePath = abrirImagen.FileName; // guarda la ruta completa del archivo seleccionado para su uso posterior.
+                    fileActualPath = selectedImagePath;
+
+                    // Intenta cargar la imagen desde el archivo
+                    picBoxIMGProducto.Image = Image.FromFile(fileActualPath); //Se carga la imagen seleccionada desde el archivo (fileActualPath) Esto permitirá mostrar la imagen en el formulario.
+
+                    // Mostrar la ruta del archivo en el TextBox
+                    lblprueba.Text = nombreActualImg;
+                }
+                catch (Exception ex)
+                {
+                    // Manejar la excepción aquí, puedes mostrar un mensaje de error
+                    MessageBox.Show("No se pudo agregar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

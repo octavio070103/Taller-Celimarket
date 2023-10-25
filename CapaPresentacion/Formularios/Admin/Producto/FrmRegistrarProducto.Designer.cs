@@ -57,6 +57,7 @@
             panel2 = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            lblprueba = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
@@ -154,6 +155,7 @@
             // panelProductos
             // 
             panelProductos.BackColor = Color.FromArgb(67, 68, 89);
+            panelProductos.Controls.Add(lblprueba);
             panelProductos.Controls.Add(label3);
             panelProductos.Controls.Add(picBoxIMGProducto);
             panelProductos.Controls.Add(txtCodBarra);
@@ -196,6 +198,7 @@
             picBoxIMGProducto.Size = new Size(110, 96);
             picBoxIMGProducto.TabIndex = 98;
             picBoxIMGProducto.TabStop = false;
+            picBoxIMGProducto.Click += picBoxIMGProducto_Click;
             // 
             // txtCodBarra
             // 
@@ -403,6 +406,16 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
+            // lblprueba
+            // 
+            lblprueba.AutoSize = true;
+            lblprueba.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblprueba.Location = new Point(69, 309);
+            lblprueba.Name = "lblprueba";
+            lblprueba.Size = new Size(60, 19);
+            lblprueba.TabIndex = 100;
+            lblprueba.Text = "Marca";
+            // 
             // FrmRegistrarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -412,7 +425,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmRegistrarProducto";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Productos";
             Load += FrmRegistrarProducto_Load;
             panel1.ResumeLayout(false);
@@ -458,5 +471,6 @@
         private Label label4;
         private Label label3;
         private PictureBox picBoxIMGProducto;
+        private Label lblprueba;
     }
 }

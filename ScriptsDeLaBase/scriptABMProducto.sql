@@ -1,14 +1,14 @@
 
 
 /*REGISTRAR PRODUCTO */
-CREATE PROC SP_REGISTRARPRODUCTO(
+ALTER PROC SP_REGISTRARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@nombre_producto VARCHAR(50),
 	@cod_barra_producto INT,
 	@descripcion_producto VARCHAR(100),
 	@precio_compra DECIMAL(10, 2),
 	@precio_venta DECIMAL(10, 2),
-	@imagen_producto VARCHAR(100),
+	@imagen_producto VARCHAR(200),
 	@stock_producto INT,
 	@estado_producto BIT,
 	@Id_Marca INT,
@@ -76,7 +76,7 @@ select @mensaje
 select * from producto
 
 								/*EDITAR PRODUCTO */
- CREATE PROC SP_EDITARPRODUCTO(
+ ALTER PROC SP_EDITARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_producto INT,
 	@cod_barra_producto INT,
@@ -84,7 +84,7 @@ select * from producto
 	@descripcion_producto VARCHAR(100),
 	@precio_compra DECIMAL(10, 2),
 	@precio_venta DECIMAL(10, 2),
-	@imagen_producto VARCHAR(100),
+	@imagen_producto VARCHAR(200),
 	@stock_producto INT,
 	@estado_producto BIT,
 	@Id_Marca INT,

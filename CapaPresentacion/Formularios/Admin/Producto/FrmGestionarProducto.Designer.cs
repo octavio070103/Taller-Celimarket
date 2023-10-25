@@ -33,6 +33,7 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel2 = new Panel();
+            iconBtnExcel = new FontAwesome.Sharp.IconButton();
             iconBtnMarca = new FontAwesome.Sharp.IconButton();
             panelDatosProducto = new Panel();
             txtIdProducto = new TextBox();
@@ -86,6 +87,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(iconBtnExcel);
             panel2.Controls.Add(iconBtnMarca);
             panel2.Controls.Add(panelDatosProducto);
             panel2.Controls.Add(iconBtnDarAlta);
@@ -98,6 +100,31 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(822, 501);
             panel2.TabIndex = 2;
+            // 
+            // iconBtnExcel
+            // 
+            iconBtnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            iconBtnExcel.BackColor = Color.DarkGray;
+            iconBtnExcel.BackgroundImage = (Image)resources.GetObject("iconBtnExcel.BackgroundImage");
+            iconBtnExcel.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExcel.Cursor = Cursors.Hand;
+            iconBtnExcel.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExcel.FlatStyle = FlatStyle.Flat;
+            iconBtnExcel.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnExcel.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExcel.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExcel.IconColor = Color.White;
+            iconBtnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExcel.IconSize = 30;
+            iconBtnExcel.Location = new Point(12, 465);
+            iconBtnExcel.Name = "iconBtnExcel";
+            iconBtnExcel.Size = new Size(126, 27);
+            iconBtnExcel.TabIndex = 19;
+            iconBtnExcel.Text = "Descargar Excel";
+            iconBtnExcel.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExcel.UseVisualStyleBackColor = false;
+            iconBtnExcel.Click += iconBtnExcel_Click;
             // 
             // iconBtnMarca
             // 
@@ -485,7 +512,7 @@
             dataGridProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridProducto.Columns.AddRange(new DataGridViewColumn[] { Col_IDproducto, Col_CodBarra, Col_nombre_produc, Col_Descrip_producto, Col_precio_compra, Col_precio_venta, Col_stock_produc, Col_img_producto, Col_nom_marca, Col_nom_categ, Col_estado_produc });
-            dataGridProducto.Location = new Point(12, 98);
+            dataGridProducto.Location = new Point(12, 85);
             dataGridProducto.MultiSelect = false;
             dataGridProducto.Name = "dataGridProducto";
             dataGridProducto.ReadOnly = true;
@@ -501,7 +528,7 @@
             dataGridProducto.RowHeadersVisible = false;
             dataGridProducto.RowTemplate.Height = 28;
             dataGridProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridProducto.Size = new Size(795, 291);
+            dataGridProducto.Size = new Size(795, 368);
             dataGridProducto.TabIndex = 12;
             dataGridProducto.CellContentClick += dataGridProducto_CellContentClick;
             // 
@@ -710,6 +737,7 @@
         private PictureBox picImgEditarProducts;
         private Label label3;
         private TextBox txtIdProducto;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
         private DataGridViewTextBoxColumn Col_IDproducto;
         private DataGridViewTextBoxColumn Col_CodBarra;
         private DataGridViewTextBoxColumn Col_nombre_produc;

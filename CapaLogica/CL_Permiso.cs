@@ -27,6 +27,12 @@ namespace CapaLogica
             return obj_cd_permiso.buscarPermiso(id_permiso);
         }
 
+        //aca busco el obj_permiso perteneciente a ese id_usuario
+        public permiso buscarPermisoPorIdUsuario(int id_usuario)
+        {
+            return obj_cd_permiso.buscarPermisoPorIdUsuario(id_usuario);
+        }
+
         public bool cambiarEstadoPermiso(permiso obj_permiso, out string mensaje)
         {
             return obj_cd_permiso.cambiarEstadoPermiso(obj_permiso, out mensaje);

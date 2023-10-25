@@ -253,6 +253,7 @@
             btnAdministrarAcceso.Text = "   Administrar Acceso";
             btnAdministrarAcceso.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdministrarAcceso.UseVisualStyleBackColor = false;
+            btnAdministrarAcceso.Visible = false;
             btnAdministrarAcceso.Click += btnAdministrarAcceso_Click;
             btnAdministrarAcceso.MouseEnter += btnAdministrarAcceso_MouseEnter;
             btnAdministrarAcceso.MouseLeave += btnAdministrarAcceso_MouseLeave;

@@ -1,6 +1,7 @@
 ﻿using CapaDatos;
 using capaEntidad;
 using CapaLogica;
+using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,11 +34,11 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             List<capaEntidad.producto> listaProductos = obj_CL_Producto.listarProductos(); // Obtener la lista de productos desde la capa de lógica
 
             // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica
-            mostrarUsuariosEnDataGridView(listaProductos);
+            mostrarProductosEnDataGridView(listaProductos);
 
             ReadOnlyCamposDatoProducto(true);//configuro que el panel de datos de la producto sea en lectura uniucamente es decir le digo que se active esa propiedad
         }
-        private void mostrarUsuariosEnDataGridView(List<capaEntidad.producto> p_listaProductos)
+        private void mostrarProductosEnDataGridView(List<capaEntidad.producto> p_listaProductos)
         {
             dataGridProducto.Rows.Clear(); // Limpiar filas existentes
 
@@ -221,7 +222,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
         private void iconBtnAgregar_Click(object sender, EventArgs e)
         {
-            FrmRegistrarProducto formularioAddProduc = new FrmRegistrarProducto();
+            FrmRegistrarProducto formularioAddProduc = new FrmRegistrarProducto(this);
             formularioAddProduc.Show();
 
         }
@@ -353,7 +354,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             {
                 // // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
                 DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
-              //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
+                                 //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
 
                 ask = MessageBox.Show("Seguro que desea Guardar La edicion del Producto ?", "Confirmar Insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -362,14 +363,14 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 {
                     capaEntidad.producto obj_producto = new capaEntidad.producto()
                     {
-                       Idproducto=Convert.ToInt32(txtIdProducto.Text),
-                       cod_barra_producto=112,
-                       nombre_producto=txtNombreDato.Text,
-                       descripcion_producto=txtDescripcionDato.Text,
-                       precio_compra= Convert.ToDecimal(txtPrecioCompraDato.Text),
-                       precio_venta=Convert.ToDecimal(txtPrecioVenta.Text),
-                       stock_producto=Convert.ToInt32(txtStockDato.Text),
-                       imagen="prueba.png",//cambiar por la url de la img
+                        Idproducto = Convert.ToInt32(txtIdProducto.Text),
+                        cod_barra_producto = 112,
+                        nombre_producto = txtNombreDato.Text,
+                        descripcion_producto = txtDescripcionDato.Text,
+                        precio_compra = Convert.ToDecimal(txtPrecioCompraDato.Text),
+                        precio_venta = Convert.ToDecimal(txtPrecioVenta.Text),
+                        stock_producto = Convert.ToInt32(txtStockDato.Text),
+                        imagen = "prueba.png",//cambiar por la url de la img
                         //usamos un operador ternario o condicional para obtener el valor del estado ya que como es numerico y yo anteriroemnte l oconverti a string lo debo de volver a convertir a int dependiendo de la seleccion del usuario del estado
                         estado_producto = (comboEstadoDato.SelectedItem as string == "Activo") ? 1 : 0,  // esto seria como un if pero en una sola linea estructura :result = (condición) ? valorSiCierto : valorSiFalso;
                         obj_marca = new marca()
@@ -382,16 +383,16 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                         }
                     };
 
-                    bool resultaldoEditarProducto = new CL_Producto().editarProducto(obj_producto,out mensaje); // lamo al metodoeditar y le paso el objeto que recien cree y cargue sus atributos y una var de saldia mensaje
+                    bool resultaldoEditarProducto = new CL_Producto().editarProducto(obj_producto, out mensaje); // lamo al metodoeditar y le paso el objeto que recien cree y cargue sus atributos y una var de saldia mensaje
 
                     if (resultaldoEditarProducto == true)
                     {
-                        MessageBox.Show("El producto " + obj_producto.nombre_producto+ " Se edito Corretamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("El producto " + obj_producto.nombre_producto + " Se edito Corretamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
                         iconBtnModif.Visible = true;
 
-                         //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                        //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
                         FrmGestionarProducto_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
                         //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
 
@@ -463,6 +464,80 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             bool validacion = true;
 
             return validacion;
+        }
+
+        private void iconBtnExcel_Click(object sender, EventArgs e)
+        {
+            if (dataGridProducto.Rows.Count > 0)
+            {
+                DataTable datatableExcel = new DataTable(); //aca creo un obj datatable para poder guardar el encabezado de cada columna
+
+                foreach (DataGridViewColumn columna in dataGridProducto.Columns) //aca digo que recorra las columns de mi datagrid producto
+                {
+                  
+                        datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
+                }
+
+                //recorro y inserto todas mis filas de mi datagrid producto en mi datatableexcel
+                foreach (DataGridViewRow filas in dataGridProducto.Rows) //aca digo que recorra las columns de mi datagrid producto
+                {
+                    //aca digo que se guarden en el excel solo las filas que estan visibles en ese momento ej.si aplico un filtro de que filas mostrar que solo guarden esas filas visibles unicamente en el excel
+                    if (filas.Visible)
+                    {
+                        //aca creo un nuevo objeto array y accedo a una fila y en esa fila que accedi que se guarden lso valores de cada cells o celda de cada columna , y asi haria con cada fila de mi datagridproduc
+                        datatableExcel.Rows.Add(new object[]
+                        {
+                            filas.Cells[0].Value.ToString(),
+                            filas.Cells[1].Value.ToString(),
+                            filas.Cells[2].Value.ToString(),
+                            filas.Cells[3].Value.ToString(),
+                            filas.Cells[3].Value.ToString(),
+                            filas.Cells[4].Value.ToString(),
+                            filas.Cells[5].Value.ToString(),
+                            filas.Cells[6].Value.ToString(),
+                           filas.Cells[7].Value.ToString(), 
+                            filas.Cells[8].Value.ToString(),
+                            filas.Cells[9].Value.ToString(),
+
+                        });
+                    }
+                }
+
+                //aca le pregunto al usuario en que parte quiere guardar al archivo excel a este obj lo llamare saveFile
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.FileName = string.Format("ReporteProducto{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
+                saveFile.Filter = "Excel Files | *.xlsx"; //aca estoy agregando un filtro a la ventana de donde quiero que se guarden para que al momento de mostrarse solo se muestren ese tipo de archivos con esa extension
+
+                //aca digo si en el evento showdialog de la ventana de savefile se dio al evento ok que entre al if
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //aca comienzo a manipular el nugget de excel que instale para poder crear y exportar el mismo 
+                        XLWorkbook wb = new XLWorkbook(); //aca creo el archivo excel
+                        var hoja = wb.Worksheets.Add(datatableExcel, "Informe Productos"); //aca creo una variable que sera la hoja de mi excel
+                        hoja.ColumnsUsed().AdjustToContents(); //aca le decimo que se ajuste el contenido al ancho de las columnnas que tienen contenidos unicamente
+                        wb.SaveAs(saveFile.FileName); //aca con el saveas (guardar como) guardo mi excel en la ruta que le paso como parametro que determine anteriormente en savefile.filename
+                        MessageBox.Show("Reporte Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("No se pudo Generar el Reporte, ocurrio un error", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        public void actualizarDataGrid()
+        {
+            //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+            FrmGestionarProducto_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
+            //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
+
         }
     }
 }

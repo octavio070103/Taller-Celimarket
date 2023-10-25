@@ -226,7 +226,7 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (p para PRODUCTO,C para catgoria y m para amrca). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.(evi tando la ambigueadad)
-                    query.AppendLine("SELECT p.id_producto,p.cod_barra_producto,p.nombre_producto,p.descripcion_producto,p.precio_compra,p.precio_venta,p.stock_producto,p.estado_producto,p.fecha_creacion_producto," +
+                    query.AppendLine("SELECT p.id_producto,p.cod_barra_producto,p.nombre_producto,p.descripcion_producto,p.precio_compra,p.precio_venta,p.stock_producto,p.imagen_producto,p.estado_producto,p.fecha_creacion_producto," +
                         "m.id_marca,m.nombre," +
                         "c.id_categoria,c.nombre_Categoria,c.descripcion_categoria");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("FROM producto p");// aca le doy el alias p a la tabla de producto y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
@@ -253,6 +253,7 @@ namespace CapaDatos
                                 precio_compra = Convert.ToDecimal(dr["precio_compra"]),
                                 precio_venta = Convert.ToDecimal(dr["precio_venta"]),
                                 stock_producto= Convert.ToInt32(dr["stock_producto"]),
+                                imagen = dr["imagen_producto"].ToString(),
                                 estado_producto = Convert.ToInt32(dr["estado_producto"]),
                                 fecha_creacion_producto = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_producto")),
 

@@ -55,6 +55,10 @@
             comboMotivo_permiso = new ComboBox();
             label13 = new Label();
             panel4 = new Panel();
+            panelEstadoPermiso = new Panel();
+            lblEstadoPermiso = new Label();
+            paneltituEstado = new Panel();
+            label18 = new Label();
             panel1 = new Panel();
             label10 = new Label();
             panel2 = new Panel();
@@ -79,6 +83,9 @@
             pTituloEmpleado.SuspendLayout();
             pDatosPermiso.SuspendLayout();
             panel5.SuspendLayout();
+            panel4.SuspendLayout();
+            panelEstadoPermiso.SuspendLayout();
+            paneltituEstado.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -368,10 +375,53 @@
             // 
             panel4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(panelEstadoPermiso);
+            panel4.Controls.Add(paneltituEstado);
             panel4.Location = new Point(350, 51);
             panel4.Name = "panel4";
             panel4.Size = new Size(348, 75);
             panel4.TabIndex = 5;
+            // 
+            // panelEstadoPermiso
+            // 
+            panelEstadoPermiso.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            panelEstadoPermiso.BackColor = Color.FromArgb(167, 210, 143);
+            panelEstadoPermiso.Controls.Add(lblEstadoPermiso);
+            panelEstadoPermiso.Location = new Point(-1, 28);
+            panelEstadoPermiso.Name = "panelEstadoPermiso";
+            panelEstadoPermiso.Size = new Size(349, 25);
+            panelEstadoPermiso.TabIndex = 9;
+            panelEstadoPermiso.Visible = false;
+            // 
+            // lblEstadoPermiso
+            // 
+            lblEstadoPermiso.AutoSize = true;
+            lblEstadoPermiso.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEstadoPermiso.Location = new Point(135, 3);
+            lblEstadoPermiso.Name = "lblEstadoPermiso";
+            lblEstadoPermiso.Size = new Size(78, 21);
+            lblEstadoPermiso.TabIndex = 1;
+            lblEstadoPermiso.Text = "Pendiente";
+            // 
+            // paneltituEstado
+            // 
+            paneltituEstado.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            paneltituEstado.BackColor = Color.FromArgb(167, 210, 143);
+            paneltituEstado.Controls.Add(label18);
+            paneltituEstado.Location = new Point(0, 0);
+            paneltituEstado.Name = "paneltituEstado";
+            paneltituEstado.Size = new Size(349, 18);
+            paneltituEstado.TabIndex = 8;
+            paneltituEstado.Visible = false;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(125, 2);
+            label18.Name = "label18";
+            label18.Size = new Size(103, 15);
+            label18.TabIndex = 0;
+            label18.Text = "Estado del Perniso";
             // 
             // panel1
             // 
@@ -617,6 +667,11 @@
             pDatosPermiso.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
+            panel4.ResumeLayout(false);
+            panelEstadoPermiso.ResumeLayout(false);
+            panelEstadoPermiso.PerformLayout();
+            paneltituEstado.ResumeLayout(false);
+            paneltituEstado.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -678,5 +733,9 @@
         private PictureBox picCerrar;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
+        private Panel panelEstadoPermiso;
+        private Panel paneltituEstado;
+        private Label label18;
+        private Label lblEstadoPermiso;
     }
 }

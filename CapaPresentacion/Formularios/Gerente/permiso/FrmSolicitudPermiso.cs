@@ -52,17 +52,73 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
 
         private void picCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         /***metodo para cargar los textBox del usuario que inicio sesion con sus datos de la base **/
         public void cargarDatosUsuario()
         {
+            //creo una isntancia de m icapa logica permiso
+            CL_Permiso obj_CL_Permiso = new CL_Permiso();
+
+            //aca busco el permiso de este usuario atravez de su id_usuario para que si existe que me cargue el permiso directamente y sino que pueda ingresar
+            capaEntidad.permiso obj_permiso = obj_CL_Permiso.buscarPermisoPorIdUsuario(usuarioActual.id_usuario);
+            if (obj_permiso != null)//si este usuario tiene vinculado un permiso a su id l oque hace es cargarme los datos de ese permiso
+            {
+                cargarDatosDelPermiso(obj_permiso);
+
+            }
+            else
+            { //sino lo tiene lo que hace es cargerme los datos del usuario y me permite completar el permiso para pedirlo
+                cargarDatosNuevoPermiso();
+            }
+        }
+        //si un usuario tiene vinculado un permiso ,me permite solo ver ese permiso sus datos y no poder editar el permiso ni pedir uno nuevo hasta qu este finalice o sea rechazado
+        private void cargarDatosDelPermiso(capaEntidad.permiso p_obj_permiso)
+        {
+            //hago visibole el panel que oculte
+            panelEstadoPermiso.Visible = true;
+            paneltituEstado.Visible = true;
+
+            txtNombre.Text = p_obj_permiso.obj_usuario.obj_persona.nombre;
+            txtApellido.Text = p_obj_permiso.obj_usuario.obj_persona.apellido;
+            txtEmail.Text = p_obj_permiso.obj_usuario.email;
+            txtDni.Text = p_obj_permiso.obj_usuario.obj_persona.dni;
+            txtRol.Text = p_obj_permiso.obj_usuario.obj_rol.nombre_rol;
+            txtTelefono.Text = p_obj_permiso.obj_usuario.obj_persona.telefono;
+            dateTimePickerDesde.Value = p_obj_permiso.fecha_inicio;
+            dateTimeHasta.Value = p_obj_permiso.fecha_finalizacion;
+            lblEstadoPermiso.Text = p_obj_permiso.estado_aprobacion;
+            txtJustificacion.Text = p_obj_permiso.comentario_justificacion;
+            comboMotivo_permiso.Text = p_obj_permiso.obj_motivo_permiso.nombre_motivo_permiso;
+
+            //hago para que sean solo de lectura esos campos
+            txtNombre.ReadOnly = true;
+            txtApellido.ReadOnly = true;
+            txtEmail.ReadOnly = true;
+            txtDni.ReadOnly = true;
+            txtRol.ReadOnly = true;
+            txtTelefono.ReadOnly = true;
+            txtJustificacion.ReadOnly = true;
+
+            dateTimeHasta.Enabled = false;
+            dateTimePickerDesde.Enabled = false;
+            lblEstadoPermiso.Enabled = false;
+            comboMotivo_permiso.Enabled = false;
+
+            //oculto los botoners de guardar y cancelar ya que aqui solo puedo ver es de solo lectura cuando ya exitse el permiso de este usuario
+            iconBtnCancelar.Visible = false;
+            iconBtnCancelar.Visible = false;
+        }
+
+        //si el usuario no tiene un pemriso vinculado me rellena los campos del usuario y me permite llenar lso campos del eprmiso
+        private void cargarDatosNuevoPermiso()
+        {
             txtNombre.Text = usuarioActual.obj_persona.nombre;
             txtApellido.Text = usuarioActual.obj_persona.apellido;
             txtEmail.Text = usuarioActual.email;
-            txtRol.Text = usuarioActual.obj_rol.nombre_rol;
             txtDni.Text = usuarioActual.obj_persona.dni;
+            txtRol.Text = usuarioActual.obj_rol.nombre_rol;
             txtTelefono.Text = usuarioActual.obj_persona.telefono;
             //hago para que sean solo de lectura esos campos
             txtNombre.ReadOnly = true;
@@ -71,7 +127,6 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
             txtRol.ReadOnly = true;
             txtDni.ReadOnly = true;
             txtTelefono.ReadOnly = true;
-
         }
 
 
@@ -105,7 +160,8 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
                     estado_aprobacion = "pendiente",
                     estado_permiso = 1,
                     obj_usuario = usuarioActual,//le paso el usuarioa actual
-                    obj_motivo_permiso = new motivo_permiso {
+                    obj_motivo_permiso = new motivo_permiso
+                    {
                         id_motivo_permiso = obtenerIDMotivoPermiso()//tengo que validar esto en el metodo validar campo ya que si es =0 significa que el usuario no seleccionada
                     }
                 };
