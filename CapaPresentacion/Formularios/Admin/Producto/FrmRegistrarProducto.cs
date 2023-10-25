@@ -121,6 +121,8 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     instancia_FrmGestionarProducto.actualizarDataGrid();
                 }
 
+                File.Copy(fileActualPath!,fileSavePath!);
+
             }
         }
 
@@ -194,10 +196,12 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     fileSavePath = Path.Combine("..", "..", "..", "..", "CapaPresentacion/Fotos/Admin/Producto", nombreDeImg);//construyo una ruta donde se guardara la imagen 
 
                     // Asegurarse de que la carpeta "Images" exista
+                    /*
                     if (!Directory.Exists(fileSavePath))
                     {
                         Directory.CreateDirectory(fileSavePath);
                     }
+                    */
                     string selectedImagePath = abrirImagen.FileName; // guarda la ruta completa del archivo seleccionado para su uso posterior.
                     fileActualPath = selectedImagePath;
 
@@ -210,7 +214,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 catch (Exception ex)
                 {
                     // Manejar la excepción aquí, puedes mostrar un mensaje de error
-                    MessageBox.Show("No se pudo agregar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo agregar la imagen en el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

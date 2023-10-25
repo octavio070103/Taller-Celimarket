@@ -386,7 +386,7 @@
             Controls.Add(panel1);
             MinimumSize = new Size(838, 604);
             Name = "FrmRespaldo";
-            Text = "Respaldo y Restauracion De La Base DeDa tos";
+            Text = "77";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelDatosUsuario.ResumeLayout(false);
