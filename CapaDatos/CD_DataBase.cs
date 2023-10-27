@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capaEntidad;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -24,15 +25,30 @@ namespace CapaDatos
 
                        
                         //parametros de salida que tiene este procedimiento almacenado es decir el resultado de esa operacio(mis variables aux de mis operaciones
-                        cmd.Parameters.Add("@Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;//declaro mi variable de salidad de mi procedimiento almacenado resultado me trae el id_resultado
-                        cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
-
+                        cmd.Parameters.Add("@ruta_DB_Backup", SqlDbType.VarChar,500).Direction = ParameterDirection.Output;//declaro mi variable de salidad de mi procedimiento almacenado resultado me trae el id_resultado
+                        cmd.Parameters.Add("@fecha_DB_Backup", SqlDbType.DateTime).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@tipo_Backup", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@totalTablas",SqlDbType.Int).Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add("@NombresTablas",SqlDbType.NVarChar).Direction=ParameterDirection.Output;
+                        cmd.Parameters.Add("@size_DB",SqlDbType.Int).Direction=ParameterDirection.Output;
+                       
                         // Establece el tipo de comando a CommandType.StoredProcedure, lo que significa que la consulta es una instrucción SQL Procedural.
                         cmd.CommandType = CommandType.StoredProcedure;
                         Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
 
                         //ejcutamos nuestro comando
                         cmd.ExecuteNonQuery();
+
+                        //obtenemos los valores de los parametros de salida de mi procedimiento almcenado
+                        infoDataBase obj_infoDataBase = new infoDataBase()
+                        {
+                            ruta_DB_Backup = cmd.Parameters["@ruta_DB_Backup"].Value.ToString(),
+                            fecha_DB_Backup=Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value),
+                            tipo_Backup= ,
+                            totalTablas=,
+                            NombresTablas,
+                            size_DB,
+                        };
                     }
                     catch (Exception ex)
                     {
