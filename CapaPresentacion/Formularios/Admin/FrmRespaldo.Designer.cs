@@ -33,30 +33,27 @@
             lblListaEmpleados = new Label();
             lblFiltrar = new Label();
             label1 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
             panelDatosUsuario = new Panel();
+            listBox1 = new ListBox();
+            iconBtnFolder = new FontAwesome.Sharp.IconButton();
+            txtCanTablaBD = new TextBox();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
+            txtSelectFolderPath = new TextBox();
             dateTimePicker1 = new DateTimePicker();
             lblPassword = new Label();
-            txtPasswordDato = new TextBox();
             lblEstadoDato = new Label();
-            lblEmailDato = new Label();
-            txtEmailDato = new TextBox();
             lblTelefDato = new Label();
-            txtTelefDato = new TextBox();
             lbl = new Label();
-            txtDniDato = new TextBox();
+            txtNombreBD = new TextBox();
             lblApellidoDato = new Label();
             lblNombreDato = new Label();
-            txtNombreDato = new TextBox();
+            txtTamaBD = new TextBox();
             lblDatoDelaBD = new Label();
             iconBtnImportar = new FontAwesome.Sharp.IconButton();
             iconBtnRespaldar = new FontAwesome.Sharp.IconButton();
-            label2 = new Label();
             textBox2 = new TextBox();
+            textBox3 = new TextBox();
             panel1.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
             SuspendLayout();
@@ -107,47 +104,73 @@
             label1.TabIndex = 6;
             label1.Text = "Seleccionar La Base De Datos:";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(322, 107);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(209, 23);
-            comboBox1.TabIndex = 12;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(322, 152);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(209, 23);
-            comboBox2.TabIndex = 13;
-            // 
             // panelDatosUsuario
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelDatosUsuario.BackColor = Color.White;
+            panelDatosUsuario.Controls.Add(listBox1);
+            panelDatosUsuario.Controls.Add(iconBtnFolder);
+            panelDatosUsuario.Controls.Add(txtCanTablaBD);
             panelDatosUsuario.Controls.Add(iconbtnGuardar);
             panelDatosUsuario.Controls.Add(iconBtnCancelar);
-            panelDatosUsuario.Controls.Add(textBox1);
+            panelDatosUsuario.Controls.Add(txtSelectFolderPath);
             panelDatosUsuario.Controls.Add(dateTimePicker1);
             panelDatosUsuario.Controls.Add(lblPassword);
-            panelDatosUsuario.Controls.Add(txtPasswordDato);
             panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Controls.Add(lblEmailDato);
-            panelDatosUsuario.Controls.Add(txtEmailDato);
             panelDatosUsuario.Controls.Add(lblTelefDato);
-            panelDatosUsuario.Controls.Add(txtTelefDato);
             panelDatosUsuario.Controls.Add(lbl);
-            panelDatosUsuario.Controls.Add(txtDniDato);
+            panelDatosUsuario.Controls.Add(txtNombreBD);
             panelDatosUsuario.Controls.Add(lblApellidoDato);
             panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(txtNombreDato);
+            panelDatosUsuario.Controls.Add(txtTamaBD);
             panelDatosUsuario.Controls.Add(lblDatoDelaBD);
             panelDatosUsuario.Location = new Point(565, 71);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(257, 455);
+            panelDatosUsuario.Size = new Size(257, 482);
             panelDatosUsuario.TabIndex = 17;
+            // 
+            // listBox1
+            // 
+            listBox1.Enabled = false;
+            listBox1.FormattingEnabled = true;
+            listBox1.ItemHeight = 15;
+            listBox1.Location = new Point(30, 255);
+            listBox1.Name = "listBox1";
+            listBox1.Size = new Size(204, 94);
+            listBox1.TabIndex = 20;
+            // 
+            // iconBtnFolder
+            // 
+            iconBtnFolder.BackColor = Color.Orange;
+            iconBtnFolder.BackgroundImage = (Image)resources.GetObject("iconBtnFolder.BackgroundImage");
+            iconBtnFolder.BackgroundImageLayout = ImageLayout.None;
+            iconBtnFolder.Cursor = Cursors.Hand;
+            iconBtnFolder.FlatAppearance.BorderColor = Color.Black;
+            iconBtnFolder.FlatStyle = FlatStyle.Flat;
+            iconBtnFolder.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnFolder.ForeColor = SystemColors.ControlLightLight;
+            iconBtnFolder.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnFolder.IconColor = Color.White;
+            iconBtnFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnFolder.IconSize = 30;
+            iconBtnFolder.Location = new Point(79, 131);
+            iconBtnFolder.Name = "iconBtnFolder";
+            iconBtnFolder.Size = new Size(144, 26);
+            iconBtnFolder.TabIndex = 20;
+            iconBtnFolder.Text = "Seleccione Carpeta";
+            iconBtnFolder.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnFolder.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnFolder.UseVisualStyleBackColor = false;
+            iconBtnFolder.Click += iconBtnFolder_Click;
+            // 
+            // txtCanTablaBD
+            // 
+            txtCanTablaBD.Enabled = false;
+            txtCanTablaBD.Location = new Point(130, 98);
+            txtCanTablaBD.Name = "txtCanTablaBD";
+            txtCanTablaBD.ReadOnly = true;
+            txtCanTablaBD.Size = new Size(93, 23);
+            txtCanTablaBD.TabIndex = 28;
             // 
             // iconbtnGuardar
             // 
@@ -162,7 +185,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(35, 334);
+            iconbtnGuardar.Location = new Point(35, 362);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(188, 39);
             iconbtnGuardar.TabIndex = 33;
@@ -183,7 +206,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(35, 379);
+            iconBtnCancelar.Location = new Point(35, 407);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(188, 39);
             iconBtnCancelar.TabIndex = 32;
@@ -192,19 +215,19 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtSelectFolderPath
             // 
-            textBox1.BackColor = SystemColors.Window;
-            textBox1.Location = new Point(79, 294);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(144, 23);
-            textBox1.TabIndex = 31;
+            txtSelectFolderPath.BackColor = SystemColors.Window;
+            txtSelectFolderPath.Location = new Point(81, 135);
+            txtSelectFolderPath.Name = "txtSelectFolderPath";
+            txtSelectFolderPath.Size = new Size(144, 23);
+            txtSelectFolderPath.TabIndex = 31;
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(79, 126);
+            dateTimePicker1.Location = new Point(79, 192);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(144, 23);
             dateTimePicker1.TabIndex = 30;
@@ -214,118 +237,88 @@
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblPassword.ForeColor = SystemColors.WindowText;
-            lblPassword.Location = new Point(3, 193);
+            lblPassword.Location = new Point(3, 103);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(51, 17);
+            lblPassword.Size = new Size(129, 17);
             lblPassword.TabIndex = 29;
-            lblPassword.Text = "Tablas ";
-            // 
-            // txtPasswordDato
-            // 
-            txtPasswordDato.Location = new Point(79, 187);
-            txtPasswordDato.Name = "txtPasswordDato";
-            txtPasswordDato.Size = new Size(144, 23);
-            txtPasswordDato.TabIndex = 28;
+            lblPassword.Text = "Cantidad de Tablas ";
             // 
             // lblEstadoDato
             // 
             lblEstadoDato.AutoSize = true;
             lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(5, 274);
+            lblEstadoDato.Location = new Point(3, 136);
             lblEstadoDato.Name = "lblEstadoDato";
-            lblEstadoDato.Size = new Size(167, 17);
+            lblEstadoDato.Size = new Size(80, 17);
             lblEstadoDato.TabIndex = 22;
-            lblEstadoDato.Text = "Elegir donde se Guardara ";
-            // 
-            // lblEmailDato
-            // 
-            lblEmailDato.AutoSize = true;
-            lblEmailDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmailDato.ForeColor = SystemColors.WindowText;
-            lblEmailDato.Location = new Point(3, 164);
-            lblEmailDato.Name = "lblEmailDato";
-            lblEmailDato.Size = new Size(49, 17);
-            lblEmailDato.TabIndex = 17;
-            lblEmailDato.Text = "Estado";
-            // 
-            // txtEmailDato
-            // 
-            txtEmailDato.Location = new Point(79, 158);
-            txtEmailDato.Name = "txtEmailDato";
-            txtEmailDato.Size = new Size(144, 23);
-            txtEmailDato.TabIndex = 16;
+            lblEstadoDato.Text = "Guardar En:";
             // 
             // lblTelefDato
             // 
             lblTelefDato.AutoSize = true;
             lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(3, 222);
+            lblTelefDato.Location = new Point(14, 235);
             lblTelefDato.Name = "lblTelefDato";
-            lblTelefDato.Size = new Size(125, 17);
+            lblTelefDato.Size = new Size(118, 17);
             lblTelefDato.TabIndex = 13;
-            lblTelefDato.Text = "objetos principales";
-            // 
-            // txtTelefDato
-            // 
-            txtTelefDato.Location = new Point(79, 242);
-            txtTelefDato.Name = "txtTelefDato";
-            txtTelefDato.Size = new Size(144, 23);
-            txtTelefDato.TabIndex = 12;
+            lblTelefDato.Text = "Tablas principales";
             // 
             // lbl
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbl.ForeColor = SystemColors.WindowText;
-            lbl.Location = new Point(3, 48);
+            lbl.Location = new Point(3, 42);
             lbl.Name = "lbl";
             lbl.Size = new Size(58, 17);
             lbl.TabIndex = 11;
             lbl.Text = "Nombre";
             // 
-            // txtDniDato
+            // txtNombreBD
             // 
-            txtDniDato.Location = new Point(79, 42);
-            txtDniDato.Name = "txtDniDato";
-            txtDniDato.Size = new Size(144, 23);
-            txtDniDato.TabIndex = 10;
+            txtNombreBD.Location = new Point(79, 36);
+            txtNombreBD.Name = "txtNombreBD";
+            txtNombreBD.ReadOnly = true;
+            txtNombreBD.Size = new Size(144, 23);
+            txtNombreBD.TabIndex = 10;
             // 
             // lblApellidoDato
             // 
             lblApellidoDato.AutoSize = true;
             lblApellidoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblApellidoDato.ForeColor = SystemColors.WindowText;
-            lblApellidoDato.Location = new Point(3, 106);
+            lblApellidoDato.Location = new Point(3, 170);
             lblApellidoDato.Name = "lblApellidoDato";
-            lblApellidoDato.Size = new Size(153, 17);
+            lblApellidoDato.Size = new Size(141, 17);
             lblApellidoDato.TabIndex = 8;
-            lblApellidoDato.Text = "Ultimo Respaldo Hecho";
+            lblApellidoDato.Text = "Ultimo Backup Hecho";
             // 
             // lblNombreDato
             // 
             lblNombreDato.AutoSize = true;
             lblNombreDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreDato.ForeColor = SystemColors.WindowText;
-            lblNombreDato.Location = new Point(3, 77);
+            lblNombreDato.Location = new Point(3, 71);
             lblNombreDato.Name = "lblNombreDato";
             lblNombreDato.Size = new Size(57, 17);
             lblNombreDato.TabIndex = 7;
             lblNombreDato.Text = "Tamaño";
             // 
-            // txtNombreDato
+            // txtTamaBD
             // 
-            txtNombreDato.Location = new Point(79, 71);
-            txtNombreDato.Name = "txtNombreDato";
-            txtNombreDato.Size = new Size(144, 23);
-            txtNombreDato.TabIndex = 1;
+            txtTamaBD.Location = new Point(79, 65);
+            txtTamaBD.Name = "txtTamaBD";
+            txtTamaBD.ReadOnly = true;
+            txtTamaBD.Size = new Size(144, 23);
+            txtTamaBD.TabIndex = 1;
             // 
             // lblDatoDelaBD
             // 
             lblDatoDelaBD.AutoSize = true;
             lblDatoDelaBD.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatoDelaBD.Location = new Point(0, 9);
+            lblDatoDelaBD.Location = new Point(0, 3);
             lblDatoDelaBD.Name = "lblDatoDelaBD";
             lblDatoDelaBD.Size = new Size(261, 30);
             lblDatoDelaBD.TabIndex = 0;
@@ -345,7 +338,7 @@
             iconBtnImportar.IconColor = Color.White;
             iconBtnImportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnImportar.IconSize = 30;
-            iconBtnImportar.Location = new Point(301, 272);
+            iconBtnImportar.Location = new Point(298, 197);
             iconBtnImportar.Name = "iconBtnImportar";
             iconBtnImportar.Size = new Size(123, 38);
             iconBtnImportar.TabIndex = 18;
@@ -369,7 +362,7 @@
             iconBtnRespaldar.IconColor = Color.White;
             iconBtnRespaldar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnRespaldar.IconSize = 30;
-            iconBtnRespaldar.Location = new Point(91, 272);
+            iconBtnRespaldar.Location = new Point(78, 197);
             iconBtnRespaldar.Name = "iconBtnRespaldar";
             iconBtnRespaldar.Size = new Size(129, 38);
             iconBtnRespaldar.TabIndex = 19;
@@ -379,23 +372,21 @@
             iconBtnRespaldar.UseVisualStyleBackColor = false;
             iconBtnRespaldar.Click += iconBtnRespaldar_Click;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ControlLightLight;
-            label2.Location = new Point(19, 197);
-            label2.Name = "label2";
-            label2.Size = new Size(205, 25);
-            label2.TabIndex = 20;
-            label2.Text = "Ubicacion del Archivo";
-            // 
             // textBox2
             // 
-            textBox2.Location = new Point(322, 199);
+            textBox2.Location = new Point(322, 110);
             textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
             textBox2.Size = new Size(209, 23);
-            textBox2.TabIndex = 21;
+            textBox2.TabIndex = 20;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(322, 152);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(209, 23);
+            textBox3.TabIndex = 21;
             // 
             // FrmRespaldo
             // 
@@ -403,13 +394,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(textBox3);
             Controls.Add(textBox2);
-            Controls.Add(label2);
             Controls.Add(iconBtnRespaldar);
             Controls.Add(iconBtnImportar);
             Controls.Add(panelDatosUsuario);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
             Controls.Add(label1);
             Controls.Add(lblFiltrar);
             Controls.Add(panel1);
@@ -430,30 +419,27 @@
         private Label lblListaEmpleados;
         private Label lblFiltrar;
         private Label label1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
         private Panel panelDatosUsuario;
         private Label lblPassword;
-        private TextBox txtPasswordDato;
+        private TextBox txtCanTablaBD;
         private TextBox txtIdGuardado;
         private Label lblEstadoDato;
-        private Label lblEmailDato;
-        private TextBox txtEmailDato;
         private Label lblTelefDato;
-        private TextBox txtTelefDato;
         private Label lblApellidoDato;
         private Label lblNombreDato;
-        private TextBox txtNombreDato;
+        private TextBox txtTamaBD;
         private Label lblDatoDelaBD;
         private Label lbl;
-        private TextBox txtDniDato;
-        private TextBox textBox1;
+        private TextBox txtNombreBD;
+        private TextBox txtSelectFolderPath;
         private DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private FontAwesome.Sharp.IconButton iconBtnImportar;
         private FontAwesome.Sharp.IconButton iconBtnRespaldar;
-        private Label label2;
+        private FontAwesome.Sharp.IconButton iconBtnFolder;
+        private ListBox listBox1;
         private TextBox textBox2;
+        private TextBox textBox3;
     }
 }
