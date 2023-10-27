@@ -124,7 +124,6 @@ namespace CapaDatos
                 using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
                 {
 
-
                     //creo un nuevo sqlcommand que me pide 2 cosass el procedimiento almacenado y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand("SP_EDITARCATEGORIA", Obj_conexion);
 

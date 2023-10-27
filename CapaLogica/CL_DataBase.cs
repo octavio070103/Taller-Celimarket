@@ -9,16 +9,16 @@ namespace CapaLogica
 {
     public class CL_DataBase
     {
-        private CD_DataBase backupManager = new CD_DataBase();
+        private CD_DataBase obj_CD_DataBase = new CD_DataBase();
 
-        public bool RealizarBackUp(string backupPath)
+        public bool RealizarBackUp(string nameBaseDatos, string backupPath)
         {
-            return backupManager.RealizarBackup("bd_virtualBiblio", backupPath);
+            return obj_CD_DataBase.RealizarBackup(nameBaseDatos, backupPath);
         }
 
-        public bool RealizarRestauracion(string backupPath)
+        public bool RealizarRestauracion(string nameBaseDatos, string restauracionPath)
         {
-            return backupManager.RealizarRestauracion("bd_virtualBiblio", backupPath);
+            return obj_CD_DataBase.RealizarRestauracion(nameBaseDatos, restauracionPath);
         }
 
     }

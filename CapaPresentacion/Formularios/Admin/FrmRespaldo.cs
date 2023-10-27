@@ -26,7 +26,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
             {
-                folderBrowserDialog.Description = "Selecciona la carpeta para guardar el Backup de la Base de Datos";
+                folderBrowserDialog.Description = "Selecciona la carpeta en el disco C:";
                 folderBrowserDialog.RootFolder = Environment.SpecialFolder.MyComputer; //aca le digo en que carpeta quierop que se habra
 
                 // Establecer la ruta predeterminada en C:\
@@ -54,9 +54,9 @@ namespace CapaPresentacion.Formularios.Admin
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string rutaArchivoRespaldo = openFileDialog.FileName;
-                        bool restauracionExitosa = obj_dataBase.RealizarRestauracion(rutaArchivoRespaldo);
+                        bool resultadoRestauracion = obj_dataBase.RealizarRestauracion("BD_CeliMarket", rutaArchivoRespaldo);
 
-                        if (restauracionExitosa)
+                        if (resultadoRestauracion)
                         {
                             MessageBox.Show("Restauración de la base de datos exitosa.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             
@@ -72,7 +72,7 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 MessageBox.Show("Error al restaurar la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);     
             }
-            LimpiarCampos();
+           // LimpiarCampos();
         }
 
         private void iconBtnRespaldar_Click(object sender, EventArgs e)
@@ -81,7 +81,7 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 if (!string.IsNullOrEmpty(txtSelectFolderPath.Text)) //aca pregunto que si la ruta que selecciono el usuario es distinto de null que entre al if es decir si conteien la ruta que entre al if
                 {
-                    bool resultadoBackup = obj_dataBase.RealizarBackup(txtSelectFolderPath.Text);
+                    bool resultadoBackup = obj_dataBase.RealizarBackUp("BD_CeliMarket", txtSelectFolderPath.Text);
 
                     if (resultadoBackup)
                     {
@@ -103,7 +103,7 @@ namespace CapaPresentacion.Formularios.Admin
                 MessageBox.Show("Error al intentar realizar el backup " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            LimpiarCampos();//limpio los campos al salir del metodo respaldar
+           // LimpiarCampos();//limpio los campos al salir del metodo respaldar
         }
 
 
