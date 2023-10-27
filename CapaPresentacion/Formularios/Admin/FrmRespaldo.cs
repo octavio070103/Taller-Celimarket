@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using capaEntidad;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +60,7 @@ namespace CapaPresentacion.Formularios.Admin
                         if (resultadoRestauracion)
                         {
                             MessageBox.Show("Restauración de la base de datos exitosa.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            
+
                         }
                         else
                         {
@@ -70,9 +71,9 @@ namespace CapaPresentacion.Formularios.Admin
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al restaurar la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);     
+                MessageBox.Show("Error al restaurar la base de datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           // LimpiarCampos();
+            // LimpiarCampos();
         }
 
         private void iconBtnRespaldar_Click(object sender, EventArgs e)
@@ -85,8 +86,8 @@ namespace CapaPresentacion.Formularios.Admin
 
                     if (resultadoBackup)
                     {
-                        MessageBox.Show("El Backup de la base "+txtNombreBD.Text+" se realizo con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                      
+                        MessageBox.Show("El Backup de la base " + txtNombreBD.Text + " se realizo con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }
                     else
                     {
@@ -103,9 +104,20 @@ namespace CapaPresentacion.Formularios.Admin
                 MessageBox.Show("Error al intentar realizar el backup " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           // LimpiarCampos();//limpio los campos al salir del metodo respaldar
+            // LimpiarCampos();//limpio los campos al salir del metodo respaldar
         }
 
-
+        private void FrmRespaldo_Load(object sender, EventArgs e)
+        {
+            string nameBaseDatos = "BD_CeliMarket";
+            infoDataBase obj_infoDataBase = obj_dataBase.obtenerInfoDataBase(nameBaseDatos);
+            txtNombreBD.Text = nameBaseDatos;
+            txtSeleccionServidor.Text = obj_infoDataBase.serverName.ToString();
+            txtSeleccionBase.Text = nameBaseDatos;
+            txtTamaBD.Text = obj_infoDataBase.size_DB.ToString() + "MB";
+            txtCanTablaBD.Text = obj_infoDataBase.totalTablas.ToString();
+            dateTimePicker1.Value = obj_infoDataBase.fecha_DB_Backup;
+            txtTablasPrinci.Text = obj_infoDataBase.NombresTablas.ToString();
+        }
     }
 }

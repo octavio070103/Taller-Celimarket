@@ -1,4 +1,5 @@
 ﻿using CapaDatos;
+using capaEntidad;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,9 @@ namespace CapaLogica
             return obj_CD_DataBase.RealizarRestauracion(nameBaseDatos, restauracionPath);
         }
 
+        public infoDataBase obtenerInfoDataBase(string nameBaseDatos)
+        {
+            return obj_CD_DataBase.obtenerInfoDataBase(nameBaseDatos);
+        }
     }
 }
