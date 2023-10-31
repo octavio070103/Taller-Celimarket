@@ -2,6 +2,23 @@ CREATE DATABASE BD_CeliMarket;
 
 USE BD_CeliMarket;
 
+--esta tabla va a contener los datos basicos de mi negocio para pdoer usarlo a lo largo del programa ya sea para crear facturas,informes o comprobantes
+CREATE TABLE Negocio(
+	id_negocio INT NOT NULL, --no le pongo el atributo identity ya que no es necesario como solo vamos a tener un solo registro
+	nombre_negocio VARCHAR(50) NOT NULL,
+	direccion VARCHAR(100) NOT NULL,
+	CUIT VARCHAR(50) NOT NULL,
+	logo VARBINARY(MAX) NULL, --como va a ser una imagen lo defino como varbynary ya que esto me va a permitir maneteer el logotipo del negocio directamente en la bd y no la ruta como en el caso de los productos
+	telefono VARCHAR(50) NOT NULL,
+	email_negocio VARCHAR(100) NOT NULL,
+
+	--CONSTRAINTS
+	CONSTRAINT PK_id_negocio PRIMARY KEY (id_negocio),
+		--correo
+	CONSTRAINT UQ_email_Negocio_unico UNIQUE (email_negocio),
+	CONSTRAINT CK_email_Negocio_correcto CHECK (email_negocio LIKE '%@%.%') --ACA VERFICIO QUE EL EMAIL TENGA @ Y UN . para que tenga el formato correcto de email,con LIKE verifica si un valor cumple con un patrón especificado.
+)
+
 CREATE TABLE categoria(
 	id_categoria INT IDENTITY(1,1) NOT NULL,
 	nombre_categoria VARCHAR(200)  NOT NULL,
@@ -67,7 +84,7 @@ CREATE TABLE persona(
 	fecha_creacion DATE NOT NULL, 
 
 	--CONSTRAINT
-	CONSTRAINT PK_persona PRIMARY KEY (id_persona),
+	CONSTRAINT PK_id_persona PRIMARY KEY (id_persona),
 	CONSTRAINT CK_persona_nombre_soloLetras CHECK(nombre NOT LIKE '%[^a-zA-Z]%'), --costraint para Permitir letras solamente
 	CONSTRAINT CK_persona_apellido_soloLetras CHECK(apellido NOT LIKE '%[^a-zA-Z]%'), --costraint para Permitir letras solamente,
 	--fecha
@@ -81,7 +98,7 @@ CREATE TABLE persona(
 ALTER TABLE persona 
 ADD CONSTRAINT DF_persona_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion;
 
---al proveedor lo tomamos como la empresa que provee y n ocomo una persona en si sino como una empresa
+--al proveedor lo tomamos como la empresa que provee y no como una persona en si sino como una empresa(ej coca cola,el dorado,pepsi)
 CREATE TABLE proveedor(
 	id_proveedor INT IDENTITY(1,1),
 	nombre VARCHAR(100) NOT NULL,
@@ -93,6 +110,7 @@ CREATE TABLE proveedor(
 	--CONSTRAINT
 	CONSTRAINT PK_proveedor PRIMARY KEY (id_proveedor),
 
+	 CONSTRAINT UQ_nombre_proveedor UNIQUE (nombre); --hago que el nombre del proveedor sea unico ya que como me voy a manejar como si fuera que el proveedor es la empresa no puede haber dos proveedores coca cola en mi bd por ej,
 	CONSTRAINT CK_proveedor_nombre CHECK(nombre NOT LIKE '%[^a-zA-Z]%'), --costraint para Permitir letras solamente, con NOT LIKE, por otro lado, verifica si un valor no cumple con un patrón específico. En otras palabras, se asegura de que el valor no contenga ciertos caracteres o no coincida con el patrón especificado.
 	--correo
 	CONSTRAINT UQ_Censista_correo_unico UNIQUE (email),
@@ -142,7 +160,7 @@ CREATE TABLE producto(
 	descripcion_producto VARCHAR(100) NOT NULL,
 	precio_compra DECIMAL(10, 2) NOT NULL,
 	precio_venta DECIMAL(10, 2) NOT NULL,
-	imagen_producto VARCHAR(100) NOT NULL,
+	imagen_producto VARCHAR(200) NOT NULL,
 	stock_producto INT NOT NULL,
 	estado_producto BIT NOT NULL,
 	Id_Marca INT NOT NULL,
@@ -287,6 +305,10 @@ ALTER TABLE permiso
 ADD CONSTRAINT DF_estado_aprobacion DEFAULT 'pendiente' for estado_aprobacion
 
 ----------------LOTE DE INSERCIONES
+--negocio 
+INSERT INTO Negocio (id_negocio,nombre_negocio,direccion,CUIT,telefono,email_negocio)
+VALUES(1,'CeliMarket','Puyreedon 2111','30-70717789-2','3795-058041','ventascelimarket@gmail.com')
+
 -- Categoría
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Almacen','Aqui se encuentran todas las categorias' ,1);
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Frescos', 'Aqui se encuentran Los Lacteos,Pastas y Tapas,Fiambreria' ,1);

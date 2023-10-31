@@ -387,6 +387,10 @@ namespace CapaPresentacion.Formularios.Admin
             }
         }
 
+        private void pSettings_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

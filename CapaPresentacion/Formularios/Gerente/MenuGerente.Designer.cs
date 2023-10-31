@@ -502,7 +502,7 @@
             Margin = new Padding(4);
             Name = "MenuGerente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "f";
             Load += MenuGerente_Load;
             panelBarraSuperior.ResumeLayout(false);
             panelBarraSuperior.PerformLayout();

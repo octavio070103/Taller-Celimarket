@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Formularios.Gerente.caja
+namespace CapaPresentacion.Formularios.Admin.settings
 {
-    public partial class FrmCierreDeTurno : Form
+    public partial class FrmNegocioConfiguracion : Form
     {
-        public FrmCierreDeTurno()
+        public FrmNegocioConfiguracion()
         {
             InitializeComponent();
+        }
+
+        private void FrmNegocioConfiguracion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
