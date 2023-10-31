@@ -7,16 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaEntidad;
+using CapaLogica;
+using CapaPresentacion.Formularios.Vendedor;
+using Proyecto_Taller.Presentacion.Formularios.Login;
 
 namespace CapaPresentacion.Formularios.Vendedor
 {
     public partial class frmModuloVenta : Form
     {
+        private static capaEntidad.usuario usuarioActual;
         private Form formularioActivo = null;
 
-        public frmModuloVenta()
+        public frmModuloVenta(capaEntidad.usuario objUsuario)
         {
             InitializeComponent();
+
+            /** Permite personalizar los campos de Nombre de usuario y Rol cuando el usuario inicia sesion.
+             */
+
+            usuarioActual = objUsuario;
         }
 
 
@@ -99,9 +109,9 @@ namespace CapaPresentacion.Formularios.Vendedor
 
                 // Asigna los valores de las celdas de la fila a los textbox 
 
-                txtNombre.Text = filaElegida.Cells["nombre_producto"].Value.ToString();
-                txtCategoria.Text = filaElegida.Cells["categoria_producto"].Value.ToString();
-                txtPrecio.Text = filaElegida.Cells["precio_producto"].Value.ToString();
+                txtNombre.Text = filaElegida.Cells[3].Value.ToString();
+                txtCategoria.Text = filaElegida.Cells[10].Value.ToString();
+                txtPrecio.Text = filaElegida.Cells[5].Value.ToString();
 
             }
         }
@@ -115,9 +125,9 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (dtgvProductos.Rows.Count > 0)
             {
 
-                txtNombre.Text = dtgvProductos.CurrentRow.Cells[1].Value.ToString();
-                txtCategoria.Text = dtgvProductos.CurrentRow.Cells[2].Value.ToString();
-                txtPrecio.Text = dtgvProductos.CurrentRow.Cells[3].Value.ToString(); ;
+                txtNombre.Text = dtgvProductos.CurrentRow.Cells[2].Value.ToString();
+                txtCategoria.Text = dtgvProductos.CurrentRow.Cells[10].Value.ToString();
+                txtPrecio.Text = dtgvProductos.CurrentRow.Cells[5].Value.ToString(); ;
             }
         }
 
@@ -130,9 +140,10 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (validarCampos() == true)
             {
                 float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
+                int idProducto = int.Parse(dtgvProductos.CurrentRow.Cells[0].Value.ToString());
 
-                dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal);
-                
+                dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal, idProducto);
+
                 // *** Calcula el total a pagar del carrito de compras
                 calcularTotal();
 
@@ -251,7 +262,7 @@ namespace CapaPresentacion.Formularios.Vendedor
         */
         private void btnQuitarCarrito_Click(object sender, EventArgs e)
         {
-            if ( dtgvListaCompra.Rows.Count > 0)
+            if (dtgvListaCompra.Rows.Count > 0)
             {
                 dtgvListaCompra.Rows.Remove(dtgvListaCompra.CurrentRow);
 
@@ -260,7 +271,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             {
                 MessageBox.Show("No se ha seleccionado ningun producto del carrito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             //
             calcularTotal();
 
@@ -305,13 +316,14 @@ namespace CapaPresentacion.Formularios.Vendedor
         */
         private void btnPagar_Click(object sender, EventArgs e)
         {
-            if ( dtgvListaCompra.Rows.Count > 0 )
+            if (dtgvListaCompra.Rows.Count > 0)
             {
                 // **** Se rellenan los datos del resumen de venta para pasarlos como parametro
 
-                string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text, 
-                                             lblCalculoTotal.Text };
-                abrirFormularioHijo( new frmResumenVenta( dtgvListaCompra, auxDatosResumen ) );
+                string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text,
+                                             lblCalculoTotal.Text, txtIdVendedor.Text, txtIdCliente.Text,
+                                             cboMetodoPago.SelectedValue.ToString()};
+                abrirFormularioHijo(new frmResumenVenta(dtgvListaCompra, auxDatosResumen));
             }
             else
             {
@@ -340,6 +352,51 @@ namespace CapaPresentacion.Formularios.Vendedor
             {
                 lblCalculoTotal.Text = "$0";
             }
+        }
+
+        private void frmModuloVenta_Load(object sender, EventArgs e)
+        {
+            txtIdVendedor.Text = usuarioActual.id_usuario.ToString();
+            txtNombreVendedor.Text = usuarioActual.obj_persona.apellido + " " + usuarioActual.obj_persona.nombre;
+
+            cargarListaProductos();
+            cargarMetodosPago();
+
+            // Columnas no visibles
+            dtgvProductos.Columns[0].Visible = false; // 0 - Id producto
+            dtgvProductos.Columns[3].Visible = false; // 3 - Descripcion producto
+            dtgvProductos.Columns[4].Visible = false; // 4 - Precio compra
+            dtgvProductos.Columns[7].Visible = false; // 7 - Imagen
+            dtgvProductos.Columns[9].Visible = false; // 9 - Marca
+            dtgvProductos.Columns[10].Visible = true; // 10 - Categoria
+            dtgvProductos.Columns[11].Visible = false; // 11 - Fecha creacion
+
+            // Cambio de los nombres de las columnas
+            dtgvProductos.Columns[1].HeaderText = "Codigo de barras";
+            dtgvProductos.Columns[2].HeaderText = "Nombre";
+            dtgvProductos.Columns[5].HeaderText = "Precio";
+            dtgvProductos.Columns[6].HeaderText = "Stock";
+            dtgvProductos.Columns[8].HeaderText = "Estado";
+
+
+            dtgvProductos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+        }
+
+        private void cargarListaProductos()
+        {
+            CL_Producto auxListaProd = new CL_Producto();
+            List<producto> listaProductos = auxListaProd.listarProductos();
+
+            dtgvProductos.DataSource = listaProductos;
+        }
+
+        private void cargarMetodosPago()
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            cboMetodoPago.DataSource = auxVenta.obtenerMetodosPago();
+            cboMetodoPago.DisplayMember = "nombre_tipo_pago";
+            cboMetodoPago.ValueMember = "id_tipo_metodo_pago";
         }
 
     }

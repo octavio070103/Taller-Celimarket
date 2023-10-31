@@ -134,7 +134,6 @@ CREATE TABLE domicilio(
 ALTER TABLE domicilio 
 ADD CONSTRAINT DF_domicilio_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion;
 
-
 CREATE TABLE producto(
 	id_producto INT IDENTITY(1,1),
 	cod_barra_producto INT NOT NULL,
@@ -277,7 +276,7 @@ CREATE TABLE permiso(
 	--CONSTRAINT
 	CONSTRAINT PK_permiso PRIMARY KEY (id_permiso),
 	CONSTRAINT FK_permiso_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-	CONSTRAINT FK_permiso_Motivo_permiso FOREIGN KEY(id_motivo_permiso) REFERENCES Motivo_permiso(id_motivo_permiso)
+	--CONSTRAINT FK_permiso_Motivo_permiso FOREIGN KEY(id_motivo_permiso) REFERENCES Motivo_permiso(id_motivo_permiso)
 );
 ALTER TABLE permiso 
 ADD CONSTRAINT DF_permiso_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_permiso;
@@ -364,12 +363,12 @@ INSERT INTO domicilio(codigo_postal,localidad,provincia,numero,calle,descripcion
 --cliente
 INSERT INTO cliente(estado_cliente,id_persona)VALUES(1,3);
 INSERT INTO cliente(estado_cliente,id_persona)VALUES(1,4);
-INSERT INTO cliente(estado_cliente,id_persona)VALUES(1,7);
+--INSERT INTO cliente(estado_cliente,id_persona)VALUES(1,7);
 
 --usuario
 INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) VALUES('octavio@gmail.com','123',1,2,1,2);
 
-INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) VALUES('administrador@gmail.com','123',1,7,1,2);
+--INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) VALUES('administrador@gmail.com','123',1,7,1,2);
 
 INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) VALUES('gerente@gmail.com','123',1,6,2,2);
 
@@ -388,3 +387,5 @@ INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Licencia por Enfemedad'
 INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Licencia por Paternidad');
 INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Duelo');
 INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Otros Motivos');
+
+select * from

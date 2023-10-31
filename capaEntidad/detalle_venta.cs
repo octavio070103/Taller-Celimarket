@@ -10,10 +10,11 @@ namespace capaEntidad
     {
         public int id_detalle_venta {  get; set; }
         public int cantidad_detalle_venta { get; set; }
-        public decimal precio_detalle_venta { get; set; }
-        public decimal subtotal_detalle_venta { get; set; }
-        public producto obj_id_producto { get; set; }
-        public venta obj_id_venta { get; set; }
+        public float precio_detalle_venta { get; set; }
+        public float subtotal_detalle_venta { get; set; }
+        public DateTime fecha_creacion_detalle_venta { get; set; }
+        public int id_producto { get; set; }
+        public int id_venta { get; set; }
        
       
 

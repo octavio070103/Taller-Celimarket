@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaLogica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,9 +38,9 @@ namespace CapaPresentacion.Formularios.Vendedor
 
                 filaSeleccionada = dtgvSelecClientes.CurrentRow;
 
-                auxDatosCliente[0] = filaSeleccionada.Cells["id_cliente"].Value.ToString();
-                auxDatosCliente[1] = filaSeleccionada.Cells["apellido_cliente"].Value.ToString()
-                                    + " " + filaSeleccionada.Cells["nombre_cliente"].Value.ToString(); ;
+                auxDatosCliente[0] = filaSeleccionada.Cells[0].Value.ToString();
+                auxDatosCliente[1] = filaSeleccionada.Cells[2].Value.ToString()
+                                    + " " + filaSeleccionada.Cells[3].Value.ToString(); ;
 
                 auxModuloVenta.seleccionarCliente(auxDatosCliente);
                 this.Close();
@@ -47,5 +48,25 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+
+
+        private void cargarListaClientes()
+        {
+            CL_Cliente cliente = new CL_Cliente();
+            dtgvSelecClientes.DataSource = cliente.obtenerListaClientes();
+        }
+
+        private void frmSeleccionarCliente_Load(object sender, EventArgs e)
+        {
+            cargarListaClientes();
+
+            dtgvSelecClientes.Columns[0].HeaderText = "ID Cliente";
+            dtgvSelecClientes.Columns[1].HeaderText = "DNI";
+            dtgvSelecClientes.Columns[2].HeaderText = "Apellido";
+            dtgvSelecClientes.Columns[3].HeaderText = "Nombre";
+            dtgvSelecClientes.Columns[4].HeaderText = "Fecha de nacimiento";
+            dtgvSelecClientes.Columns[5].HeaderText = "Telefono";
+            dtgvSelecClientes.Columns[6].HeaderText = "Fecha de registro";
+        }
     }
 }

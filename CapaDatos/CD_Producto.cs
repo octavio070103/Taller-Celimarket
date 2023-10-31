@@ -238,8 +238,9 @@ namespace CapaDatos
                     cmd.CommandType = CommandType.Text;
                     Obj_conexion.Open();
 
-                    using (SqlDataReader dr = cmd.ExecuteReader())
-                    {
+                    //using (){
+                    SqlDataReader dr = cmd.ExecuteReader();
+
                         //aca se lectura a la consulta que realize con qeury
                         while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
                         {
@@ -273,7 +274,7 @@ namespace CapaDatos
 
                             });
                         }
-                    }
+                    
                 }
                 catch (Exception ex)
                 {
