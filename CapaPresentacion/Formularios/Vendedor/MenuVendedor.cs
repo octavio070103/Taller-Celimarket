@@ -1,4 +1,5 @@
 ﻿using capaEntidad;
+using CapaLogica;
 using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
@@ -84,7 +85,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         private void button4_Click(object sender, EventArgs e)
         {
             //**** Falta el codigo a ejecutar
-            abrirFormularioHijo(new frmModuloVenta());
+            abrirFormularioHijo(new frmModuloVenta(usuarioActual));
             lblTituloMenu.Text = button5.Text;
         }
 
