@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPermisoUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            dateTimeFiltro = new DateTimePicker();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
-            txtEmpleado = new TextBox();
-            txtTipo = new TextBox();
-            textBox2 = new TextBox();
+            txtEmpleadoFiltro = new TextBox();
+            txtTipoPermiFiltro = new TextBox();
             lblFecha = new Label();
             lblTipo = new Label();
             lblEmpleado = new Label();
@@ -90,10 +90,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(dateTimeFiltro);
             panel1.Controls.Add(iconbtnClean);
-            panel1.Controls.Add(txtEmpleado);
-            panel1.Controls.Add(txtTipo);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(txtEmpleadoFiltro);
+            panel1.Controls.Add(txtTipoPermiFiltro);
             panel1.Controls.Add(lblFecha);
             panel1.Controls.Add(lblTipo);
             panel1.Controls.Add(lblEmpleado);
@@ -104,6 +104,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 1;
+            // 
+            // dateTimeFiltro
+            // 
+            dateTimeFiltro.Format = DateTimePickerFormat.Short;
+            dateTimeFiltro.Location = new Point(582, 58);
+            dateTimeFiltro.Name = "dateTimeFiltro";
+            dateTimeFiltro.Size = new Size(101, 23);
+            dateTimeFiltro.TabIndex = 18;
             // 
             // iconbtnClean
             // 
@@ -126,39 +134,31 @@
             iconbtnClean.TextAlign = ContentAlignment.MiddleRight;
             iconbtnClean.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnClean.UseVisualStyleBackColor = false;
+            iconbtnClean.Click += iconbtnClean_Click;
             // 
-            // txtEmpleado
+            // txtEmpleadoFiltro
             // 
-            txtEmpleado.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtEmpleado.ForeColor = Color.Silver;
-            txtEmpleado.Location = new Point(246, 58);
-            txtEmpleado.Multiline = true;
-            txtEmpleado.Name = "txtEmpleado";
-            txtEmpleado.Size = new Size(97, 20);
-            txtEmpleado.TabIndex = 11;
-            txtEmpleado.Text = "Empleado";
+            txtEmpleadoFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmpleadoFiltro.ForeColor = Color.Silver;
+            txtEmpleadoFiltro.Location = new Point(246, 58);
+            txtEmpleadoFiltro.Multiline = true;
+            txtEmpleadoFiltro.Name = "txtEmpleadoFiltro";
+            txtEmpleadoFiltro.PlaceholderText = "Dni Del Empleado";
+            txtEmpleadoFiltro.Size = new Size(111, 20);
+            txtEmpleadoFiltro.TabIndex = 11;
+            txtEmpleadoFiltro.TextChanged += txtEmpleadoFiltro_TextChanged;
             // 
-            // txtTipo
+            // txtTipoPermiFiltro
             // 
-            txtTipo.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtTipo.ForeColor = Color.Silver;
-            txtTipo.Location = new Point(405, 61);
-            txtTipo.Multiline = true;
-            txtTipo.Name = "txtTipo";
-            txtTipo.Size = new Size(102, 20);
-            txtTipo.TabIndex = 10;
-            txtTipo.Text = "Tipo de Permiso";
-            // 
-            // textBox2
-            // 
-            textBox2.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.ForeColor = Color.Silver;
-            textBox2.Location = new Point(582, 61);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(97, 20);
-            textBox2.TabIndex = 9;
-            textBox2.Text = "Fecha";
+            txtTipoPermiFiltro.Font = new Font("Century Gothic", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTipoPermiFiltro.ForeColor = Color.Silver;
+            txtTipoPermiFiltro.Location = new Point(405, 61);
+            txtTipoPermiFiltro.Multiline = true;
+            txtTipoPermiFiltro.Name = "txtTipoPermiFiltro";
+            txtTipoPermiFiltro.PlaceholderText = "Tipo de Permiso";
+            txtTipoPermiFiltro.Size = new Size(102, 20);
+            txtTipoPermiFiltro.TabIndex = 10;
+            txtTipoPermiFiltro.TextChanged += txtTipoPermiFiltro_TextChanged;
             // 
             // lblFecha
             // 
@@ -535,49 +535,49 @@
             // dataGridPermisos
             // 
             dataGridPermisos.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridPermisos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridPermisos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridPermisos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridPermisos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridPermisos.BackgroundColor = Color.FromArgb(67, 68, 89);
             dataGridPermisos.BorderStyle = BorderStyle.None;
             dataGridPermisos.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = Color.White;
-            dataGridViewCellStyle6.Padding = new Padding(2);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle6.SelectionForeColor = Color.White;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridPermisos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridPermisos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridPermisos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridPermisos.Columns.AddRange(new DataGridViewColumn[] { Col_id_permiso, Col_fecha_inicio, Col_fecha_finalizacion, Col_estado_aprobacion, Col_nombre_rol, col_id_persona, Col_Dni_Usuario, Col_Nombre_Usuario, Col_Apellido_Usuario, Col_id_domicilio, Col_estado_permiso });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridPermisos.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridPermisos.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridPermisos.Location = new Point(11, 116);
             dataGridPermisos.MultiSelect = false;
             dataGridPermisos.Name = "dataGridPermisos";
             dataGridPermisos.ReadOnly = true;
             dataGridPermisos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridPermisos.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridPermisos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridPermisos.RowHeadersVisible = false;
             dataGridPermisos.RowTemplate.Height = 28;
             dataGridPermisos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -692,8 +692,8 @@
         #endregion
 
         private Panel panel1;
-        private TextBox txtEmpleado;
-        private TextBox txtTipo;
+        private TextBox txtEmpleadoFiltro;
+        private TextBox txtTipoPermiFiltro;
         private TextBox textBox2;
         private Label lblFecha;
         private Label lblTipo;
@@ -748,5 +748,6 @@
         private DataGridViewTextBoxColumn Col_id_domicilio;
         private DataGridViewTextBoxColumn Col_estado_permiso;
         private TextBox txtIdPermiso;
+        private DateTimePicker dateTimeFiltro;
     }
 }

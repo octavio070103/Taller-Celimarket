@@ -245,6 +245,10 @@ namespace CapaPresentacion.Formularios.Admin
         {
 
         }
+        private void pSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new settings.FrmNegocioConfiguracion(this));
+        }
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {
             // Agrega los controladores de eventos a los botones
@@ -387,10 +391,7 @@ namespace CapaPresentacion.Formularios.Admin
             }
         }
 
-        private void pSettings_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
     }
 }

@@ -63,11 +63,12 @@ namespace CapaDatos
                 {
 
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("UPDATE Negocio SET nombre_negocio=@nombre_negocio ,");
-                    query.AppendLine("SET direccion =direccion_negocio,");
-                    query.AppendLine("SET CUIT =@CUIT,");
-                    query.AppendLine("SET telefono= @telefono_negocio,");
-                    query.AppendLine("SET email_negocio=@email_negocio");
+                    query.AppendLine("UPDATE Negocio SET " +
+                                     "nombre_negocio=@nombre_negocio ,");
+                    query.AppendLine("direccion =@direccion_negocio,");
+                    query.AppendLine("CUIT =@CUIT,");
+                    query.AppendLine("telefono= @telefono_negocio,");
+                    query.AppendLine("email_negocio=@email_negocio");
                     query.AppendLine("WHERE id_negocio=1");
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 

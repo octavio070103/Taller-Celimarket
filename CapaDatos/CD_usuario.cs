@@ -559,7 +559,122 @@ namespace CapaDatos
             return respuesta;
         }
 
+        //obtengo una lista de usuario que depende del tipo de filtro(atributo) y del valor que tiene el mismo (p_txtFIltro)
+        public List<usuario> listarUsuariosFIltrados(string p_txtFIltro, string atributo)
+        {
+            List<usuario> listafiltrada = new List<usuario>();
 
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
 
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (u para usuario,d para domicilio y r para rol). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
+                    query.AppendLine("SELECT u.id_usuario, u.email,u.password,u.estado_usuario,u.fecha_creacion_usuario," +
+                        "p.id_persona,p.dni,p.nombre,p.apellido,p.fecha_nacimiento,p.telefono," +
+                        "r.id_rol, r.nombre_rol," +
+                        "d.id_domicilio,d.localidad,d.codigo_postal,d.provincia,d.numero,d.calle,d.descripcion_domicilio");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM usuario u");// aca le doy el alias u a la tabla de usuario y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN persona p ON u.id_persona = p.id_persona");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
+                    query.AppendLine("INNER JOIN rol r ON u.id_rol = r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
+                    query.AppendLine("INNER JOIN domicilio d On u.id_domicilio=d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+
+                    //con este if verifico que no sea null el filtro 
+                    if (!string.IsNullOrEmpty(p_txtFIltro) && !string.IsNullOrEmpty(atributo))
+                    {
+                        // Añade la condición de filtrado según el atributo
+                        switch (atributo)
+                        {
+                            case "dni":
+                                query.Append("WHERE p.dni LIKE @filtro");
+                                break;
+                            case "nombre":
+                                query.Append("WHERE p.nombre LIKE @filtro");
+                                break;
+                            case "apellido":
+                                query.Append("WHERE p.apellido LIKE @filtro");
+                                break;
+                            case "rol_usuario":
+                                query.Append("WHERE r.id_rol = "+ p_txtFIltro);
+                                break;
+                            case "estado_usuario":
+                                    query.Append("WHERE u.estado_usuario = "+ p_txtFIltro);
+                                break;
+
+                            default:
+                                // Manejar un atributo desconocido si es necesario.
+                                break;
+                        }
+                    }
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    // creo un parametro llamado filtro y le asigno el valor por el que quiero filtrar,rodeada por símbolos %, lo que significa que la consulta buscará todas las filas en las que el valor de la columna cumple con la condición "contiene" el valor de p_txtFIltro
+                    if (!string.IsNullOrEmpty(p_txtFIltro)&& atributo != "estado_usuario" && atributo != "rol_usuario") //si el atirbuto a filtrar es el estaod o el rol que no entre al if ya que a este le paso directamente el valor del filtro
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@filtro", "%" + p_txtFIltro + "%")); //aca le paso el valor a mi parametro  @filtro que cree
+                    }
+                
+                    Obj_conexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        //aca se lectura a la consulta que realize con qeury
+                        while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
+                        {
+                            //a mi lista de usuario le estoy agregrando un usaurio
+                            listafiltrada.Add(new usuario
+                            {
+                                id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                email = dr["email"].ToString(),
+                                password = dr["password"].ToString(),
+                                estado_usuario = Convert.ToInt32(dr["estado_usuario"]),
+                                fecha_registro = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_usuario")),
+
+                                //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo persona los debo de alamcenar en ese tipo de obj persona que formara parte de mi atributo usuario
+                                obj_persona = new persona()
+                                {
+                                    id_persona = Convert.ToInt32(dr["id_persona"]),
+                                    dni = dr["dni"].ToString(),
+                                    nombre = dr["nombre"].ToString(),
+                                    apellido = dr["apellido"].ToString(),
+                                    fecha_nacimiento = dr.GetDateTime(dr.GetOrdinal("fecha_nacimiento")),
+                                    telefono = dr["telefono"].ToString()
+                                },
+                                //como los campos del rol que traigo con el INNER JOIN son de tipo rol los almaceno en ese tipo de obj que forma parte de  mi atributo de mi usuario
+                                obj_rol = new rol()
+                                {
+                                    id_rol = Convert.ToInt32(dr["id_rol"]),
+                                    nombre_rol = dr["nombre_rol"].ToString(),
+                                },
+
+                                obj_domicilio = new domicilio()
+                                {
+                                    id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
+                                    codigo_postal = Convert.ToInt32(dr["codigo_postal"]),
+                                    localidad = dr["localidad"].ToString(),
+                                    provincia = dr["provincia"].ToString(),
+                                    numero = Convert.ToInt32(dr["numero"]),
+                                    calle = dr["calle"].ToString(),
+                                    descripcion = dr["descripcion_domicilio"].ToString(),
+                                }
+
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return listafiltrada; // Devolvemos la lista de usuarios filtrados
+        }
     }
 }

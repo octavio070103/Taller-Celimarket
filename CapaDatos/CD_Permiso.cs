@@ -250,6 +250,121 @@ namespace CapaDatos
             return listaPermisos; // Devolvemos la lista de productos que obtuvimos en la consulta
         }
 
+
+        //obtengo una lista de usuario que depende del tipo de filtro(atributo) y del valor que tiene el mismo (p_txtFIltro)
+        public List<permiso> listarPermisoFiltrado(string p_txtFIltro, string atributo)
+        {
+            List<permiso> listafiltrada = new List<permiso>();
+
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla usuarios y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
+
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (p para PRODUCTO,C para catgoria y m para amrca). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.(evi tando la ambigueadad)
+                    query.AppendLine("SELECT p.id_permiso,p.fecha_inicio,p.fecha_finalizacion,p.comentario_justificacion,p.estado_aprobacion ,p.estado_permiso," +
+                        "m.id_motivo_permiso,m.nombre_motivo_permiso," +
+                        "u.id_usuario,u.email," +
+                        "r.id_rol,r.nombre_rol," +
+                       "pers.id_persona,pers.dni,pers.nombre,pers.apellido,pers.telefono," +
+                       "d.id_domicilio,d.numero,d.calle");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM permiso p");// aca le doy el alias p a la tabla de permiso y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN Motivo_permiso m ON p.id_motivo_permiso = m.id_motivo_permiso");//le doy el alias m, y realizo el INNER JOIN entre la tabla permiso y la tabla Motivo_permiso
+                    query.AppendLine("INNER JOIN usuario u ON p.id_usuario=u.id_usuario");//le doy el alias u a usuario, y realizo el INNER JOIN entre la tabla permiso y la tabla usuario (que la usare para realizar un jopin y traer los demas datos que encesito mostrar)
+                    query.AppendLine("INNER JOIN rol r ON u.id_rol=r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
+                    query.AppendLine("INNER JOIN persona pers ON u.id_persona = pers.id_persona");//le doy el alias pers, y realizo el INNER JOIN entre la tabla usuario y la tabla persona
+                    query.AppendLine("INNER JOIN domicilio d ON u.id_domicilio= d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
+
+                    //con este if verifico que no sea null el filtro 
+                    if (!string.IsNullOrEmpty(p_txtFIltro) && !string.IsNullOrEmpty(atributo))
+                    {
+                        // Añade la condición de filtrado según el atributo
+                        switch (atributo)
+                        {
+                            case "dni del empleado":
+                                query.Append("WHERE pers.dni LIKE @filtro");
+                                break;
+                            case "tipo de permiso":
+                                query.Append("WHERE m.nombre_motivo_permiso LIKE @filtro");
+                                break;                       
+                            default:
+                                // Manejar un atributo desconocido si es necesario.
+                                break;
+                        }
+                    }
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    // creo un parametro llamado filtro y le asigno el valor por el que quiero filtrar,rodeada por símbolos %, lo que significa que la consulta buscará todas las filas en las que el valor de la columna cumple con la condición "contiene" el valor de p_txtFIltro
+                    if (!string.IsNullOrEmpty(p_txtFIltro)) { 
+                        cmd.Parameters.Add(new SqlParameter("@filtro", "%" + p_txtFIltro + "%")); //aca le paso el valor a mi parametro  @filtro que cree
+                    }
+
+                    Obj_conexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        //aca se lectura a la consulta que realize con qeury
+                        while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
+                        {
+                            //a mi lista de permiso le estoy agregrando un usaurio
+                            listafiltrada.Add(new permiso
+                            {
+                                id_permiso = Convert.ToInt32(dr["id_permiso"]),
+                                fecha_inicio = Convert.ToDateTime(dr["fecha_inicio"]),
+                                fecha_finalizacion = Convert.ToDateTime(dr["fecha_finalizacion"]),
+                                comentario_justificacion = dr["comentario_justificacion"].ToString(),
+                                estado_aprobacion = dr["estado_aprobacion"].ToString(),
+                                estado_permiso = Convert.ToInt32(dr["estado_permiso"]),
+
+                                //como los datos del usuario que debo de traer al momento de hacer el INNER JOIN son de tipo usuario edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_permiso
+                                obj_usuario = new usuario()
+                                {
+                                    id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                    email = dr["email"].ToString(),
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo rol edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_rol = new rol()
+                                    {
+                                        id_rol = Convert.ToInt32(dr["id_rol"]),
+                                        nombre_rol = dr["nombre_rol"].ToString(),
+                                    },
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo persona edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_persona = new persona()
+                                    {
+                                        id_persona = Convert.ToInt32(dr["id_persona"]),
+                                        dni = dr["dni"].ToString(),
+                                        nombre = dr["nombre"].ToString(),
+                                        apellido = dr["apellido"].ToString(),
+                                        telefono = dr["telefono"].ToString()
+                                    },
+                                    //como los datos del rol que debo de traer al momento de hacer el INNER JOIN son de tipo obj_domicilio edebo de alamcenar en ese tipo de objeto donde este obj formara parte de mi obj_usuario
+                                    obj_domicilio = new domicilio()
+                                    {
+                                        id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
+                                        numero = Convert.ToInt32(dr["numero"]),
+                                        calle = dr["calle"].ToString()
+                                    }
+
+                                },
+
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return listafiltrada; // Devolvemos la lista de usuarios filtrados
+        }
+
         public permiso buscarPermiso(int id_permiso)
         {
           

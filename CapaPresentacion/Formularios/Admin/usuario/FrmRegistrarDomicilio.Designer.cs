@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistrarDomicilio));
             panel2 = new Panel();
             lblLocalidad = new Label();
             lblDescripcion = new Label();
@@ -46,10 +47,14 @@
             txtCalleDomi = new TextBox();
             lblCalle = new Label();
             panel1 = new Panel();
+            picCerrar = new PictureBox();
+            picMinimizar = new PictureBox();
             lblRegistrarDomi = new Label();
             errorProviderDomicilio = new ErrorProvider(components);
             panel2.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picMinimizar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProviderDomicilio).BeginInit();
             SuspendLayout();
             // 
@@ -257,13 +262,43 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.BackColor = Color.FromArgb(17, 17, 27);
+            panel1.Controls.Add(picCerrar);
+            panel1.Controls.Add(picMinimizar);
             panel1.Controls.Add(lblRegistrarDomi);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(595, 61);
             panel1.TabIndex = 3;
+            // 
+            // picCerrar
+            // 
+            picCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picCerrar.Cursor = Cursors.Hand;
+            picCerrar.Image = (Image)resources.GetObject("picCerrar.Image");
+            picCerrar.Location = new Point(577, 3);
+            picCerrar.Margin = new Padding(4, 3, 4, 3);
+            picCerrar.Name = "picCerrar";
+            picCerrar.Size = new Size(17, 17);
+            picCerrar.SizeMode = PictureBoxSizeMode.Zoom;
+            picCerrar.TabIndex = 26;
+            picCerrar.TabStop = false;
+            picCerrar.Click += picCerrar_Click;
+            // 
+            // picMinimizar
+            // 
+            picMinimizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            picMinimizar.Cursor = Cursors.Hand;
+            picMinimizar.Image = (Image)resources.GetObject("picMinimizar.Image");
+            picMinimizar.Location = new Point(554, 6);
+            picMinimizar.Margin = new Padding(4, 3, 4, 3);
+            picMinimizar.Name = "picMinimizar";
+            picMinimizar.Size = new Size(15, 17);
+            picMinimizar.SizeMode = PictureBoxSizeMode.Zoom;
+            picMinimizar.TabIndex = 27;
+            picMinimizar.TabStop = false;
+            picMinimizar.Click += picMinimizar_Click;
             // 
             // lblRegistrarDomi
             // 
@@ -297,6 +332,8 @@
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picMinimizar).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProviderDomicilio).EndInit();
             ResumeLayout(false);
         }
@@ -335,5 +372,7 @@
         private Label lblDescripcion;
         private Label lblLocalidad;
         private ErrorProvider errorProviderDomicilio;
+        private PictureBox picCerrar;
+        private PictureBox picMinimizar;
     }
 }

@@ -32,18 +32,18 @@
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            BtnGuardarCambios = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
-            iconBtnMarca = new FontAwesome.Sharp.IconButton();
-            textBox5 = new TextBox();
+            BtnSubirLogo = new FontAwesome.Sharp.IconButton();
+            txtDireNegocio = new TextBox();
             label7 = new Label();
-            textBox3 = new TextBox();
+            txtEmailNegocio = new TextBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            txtTelefNegocio = new TextBox();
             label6 = new Label();
-            textBox2 = new TextBox();
+            txtCUITNegocio = new TextBox();
             label4 = new Label();
-            textBox1 = new TextBox();
+            txtNombreNegocio = new TextBox();
             label3 = new Label();
             label2 = new Label();
             piclogo = new PictureBox();
@@ -75,18 +75,18 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(iconButton2);
+            panel2.Controls.Add(BtnGuardarCambios);
             panel2.Controls.Add(iconBtnCancelar);
-            panel2.Controls.Add(iconBtnMarca);
-            panel2.Controls.Add(textBox5);
+            panel2.Controls.Add(BtnSubirLogo);
+            panel2.Controls.Add(txtDireNegocio);
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(textBox3);
+            panel2.Controls.Add(txtEmailNegocio);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(textBox4);
+            panel2.Controls.Add(txtTelefNegocio);
             panel2.Controls.Add(label6);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(txtCUITNegocio);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtNombreNegocio);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(piclogo);
@@ -95,26 +95,27 @@
             panel2.Size = new Size(713, 455);
             panel2.TabIndex = 0;
             // 
-            // iconButton2
+            // BtnGuardarCambios
             // 
-            iconButton2.BackColor = Color.FromArgb(41, 166, 87);
-            iconButton2.Cursor = Cursors.Hand;
-            iconButton2.FlatAppearance.BorderColor = Color.Black;
-            iconButton2.FlatStyle = FlatStyle.Flat;
-            iconButton2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton2.ForeColor = SystemColors.ControlLightLight;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 30;
-            iconButton2.Location = new Point(17, 401);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(281, 32);
-            iconButton2.TabIndex = 72;
-            iconButton2.Text = "Cancelar Cambios";
-            iconButton2.TextAlign = ContentAlignment.MiddleRight;
-            iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton2.UseVisualStyleBackColor = false;
+            BtnGuardarCambios.BackColor = Color.FromArgb(41, 166, 87);
+            BtnGuardarCambios.Cursor = Cursors.Hand;
+            BtnGuardarCambios.FlatAppearance.BorderColor = Color.Black;
+            BtnGuardarCambios.FlatStyle = FlatStyle.Flat;
+            BtnGuardarCambios.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnGuardarCambios.ForeColor = SystemColors.ControlLightLight;
+            BtnGuardarCambios.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            BtnGuardarCambios.IconColor = Color.White;
+            BtnGuardarCambios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnGuardarCambios.IconSize = 30;
+            BtnGuardarCambios.Location = new Point(17, 401);
+            BtnGuardarCambios.Name = "BtnGuardarCambios";
+            BtnGuardarCambios.Size = new Size(281, 32);
+            BtnGuardarCambios.TabIndex = 72;
+            BtnGuardarCambios.Text = "Guardar Cambios";
+            BtnGuardarCambios.TextAlign = ContentAlignment.MiddleRight;
+            BtnGuardarCambios.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnGuardarCambios.UseVisualStyleBackColor = false;
+            BtnGuardarCambios.Click += BtnGuardarCambios_Click;
             // 
             // iconBtnCancelar
             // 
@@ -137,36 +138,37 @@
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
             // 
-            // iconBtnMarca
+            // BtnSubirLogo
             // 
-            iconBtnMarca.BackColor = Color.FromArgb(41, 166, 87);
-            iconBtnMarca.BackgroundImage = (Image)resources.GetObject("iconBtnMarca.BackgroundImage");
-            iconBtnMarca.BackgroundImageLayout = ImageLayout.None;
-            iconBtnMarca.Cursor = Cursors.Hand;
-            iconBtnMarca.FlatAppearance.BorderColor = Color.Black;
-            iconBtnMarca.FlatStyle = FlatStyle.Popup;
-            iconBtnMarca.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnMarca.ForeColor = SystemColors.ControlLightLight;
-            iconBtnMarca.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnMarca.IconColor = Color.White;
-            iconBtnMarca.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnMarca.IconSize = 30;
-            iconBtnMarca.Location = new Point(494, 294);
-            iconBtnMarca.Name = "iconBtnMarca";
-            iconBtnMarca.Size = new Size(166, 36);
-            iconBtnMarca.TabIndex = 19;
-            iconBtnMarca.Text = "Subir logo ";
-            iconBtnMarca.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnMarca.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnMarca.UseVisualStyleBackColor = false;
+            BtnSubirLogo.BackColor = Color.FromArgb(41, 166, 87);
+            BtnSubirLogo.BackgroundImage = (Image)resources.GetObject("BtnSubirLogo.BackgroundImage");
+            BtnSubirLogo.BackgroundImageLayout = ImageLayout.None;
+            BtnSubirLogo.Cursor = Cursors.Hand;
+            BtnSubirLogo.FlatAppearance.BorderColor = Color.Black;
+            BtnSubirLogo.FlatStyle = FlatStyle.Popup;
+            BtnSubirLogo.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnSubirLogo.ForeColor = SystemColors.ControlLightLight;
+            BtnSubirLogo.IconChar = FontAwesome.Sharp.IconChar.None;
+            BtnSubirLogo.IconColor = Color.White;
+            BtnSubirLogo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnSubirLogo.IconSize = 30;
+            BtnSubirLogo.Location = new Point(494, 294);
+            BtnSubirLogo.Name = "BtnSubirLogo";
+            BtnSubirLogo.Size = new Size(166, 36);
+            BtnSubirLogo.TabIndex = 19;
+            BtnSubirLogo.Text = "Subir logo ";
+            BtnSubirLogo.TextAlign = ContentAlignment.MiddleRight;
+            BtnSubirLogo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnSubirLogo.UseVisualStyleBackColor = false;
+            BtnSubirLogo.Click += BtnSubirLogo_Click;
             // 
-            // textBox5
+            // txtDireNegocio
             // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(17, 326);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(270, 23);
-            textBox5.TabIndex = 11;
+            txtDireNegocio.BorderStyle = BorderStyle.FixedSingle;
+            txtDireNegocio.Location = new Point(17, 326);
+            txtDireNegocio.Name = "txtDireNegocio";
+            txtDireNegocio.Size = new Size(270, 23);
+            txtDireNegocio.TabIndex = 11;
             // 
             // label7
             // 
@@ -178,13 +180,13 @@
             label7.TabIndex = 10;
             label7.Text = "Direccion Del Negocio";
             // 
-            // textBox3
+            // txtEmailNegocio
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(17, 260);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(270, 23);
-            textBox3.TabIndex = 9;
+            txtEmailNegocio.BorderStyle = BorderStyle.FixedSingle;
+            txtEmailNegocio.Location = new Point(17, 260);
+            txtEmailNegocio.Name = "txtEmailNegocio";
+            txtEmailNegocio.Size = new Size(270, 23);
+            txtEmailNegocio.TabIndex = 9;
             // 
             // label5
             // 
@@ -196,13 +198,13 @@
             label5.TabIndex = 8;
             label5.Text = "Email  Del Negocio";
             // 
-            // textBox4
+            // txtTelefNegocio
             // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(17, 205);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(270, 23);
-            textBox4.TabIndex = 7;
+            txtTelefNegocio.BorderStyle = BorderStyle.FixedSingle;
+            txtTelefNegocio.Location = new Point(17, 205);
+            txtTelefNegocio.Name = "txtTelefNegocio";
+            txtTelefNegocio.Size = new Size(270, 23);
+            txtTelefNegocio.TabIndex = 7;
             // 
             // label6
             // 
@@ -214,13 +216,13 @@
             label6.TabIndex = 6;
             label6.Text = "Telefono  Del Negocio";
             // 
-            // textBox2
+            // txtCUITNegocio
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(17, 144);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(270, 23);
-            textBox2.TabIndex = 5;
+            txtCUITNegocio.BorderStyle = BorderStyle.FixedSingle;
+            txtCUITNegocio.Location = new Point(17, 144);
+            txtCUITNegocio.Name = "txtCUITNegocio";
+            txtCUITNegocio.Size = new Size(270, 23);
+            txtCUITNegocio.TabIndex = 5;
             // 
             // label4
             // 
@@ -232,13 +234,13 @@
             label4.TabIndex = 4;
             label4.Text = "CUIT";
             // 
-            // textBox1
+            // txtNombreNegocio
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(17, 89);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(270, 23);
-            textBox1.TabIndex = 3;
+            txtNombreNegocio.BorderStyle = BorderStyle.FixedSingle;
+            txtNombreNegocio.Location = new Point(17, 89);
+            txtNombreNegocio.Name = "txtNombreNegocio";
+            txtNombreNegocio.Size = new Size(270, 23);
+            txtNombreNegocio.TabIndex = 3;
             // 
             // label3
             // 
@@ -266,6 +268,7 @@
             piclogo.Location = new Point(464, 83);
             piclogo.Name = "piclogo";
             piclogo.Size = new Size(218, 205);
+            piclogo.SizeMode = PictureBoxSizeMode.StretchImage;
             piclogo.TabIndex = 0;
             piclogo.TabStop = false;
             // 
@@ -294,18 +297,18 @@
         private Label label1;
         private Label label2;
         private PictureBox piclogo;
-        private TextBox textBox1;
+        private TextBox txtNombreNegocio;
         private Label label3;
-        private TextBox textBox5;
+        private TextBox txtDireNegocio;
         private Label label7;
-        private TextBox textBox3;
+        private TextBox txtEmailNegocio;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox txtTelefNegocio;
         private Label label6;
-        private TextBox textBox2;
+        private TextBox txtCUITNegocio;
         private Label label4;
-        private FontAwesome.Sharp.IconButton iconBtnMarca;
+        private FontAwesome.Sharp.IconButton BtnSubirLogo;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton BtnGuardarCambios;
     }
 }

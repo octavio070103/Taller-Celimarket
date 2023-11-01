@@ -254,7 +254,7 @@ namespace CapaPresentacion.Formularios.Admin
         {
 
 
-            FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio();
+            FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio(null); //le paso como paremtro null ya que este contructor recibe un obj_domicilio le paso null cuando es la primera vez que registro un domiclio sino le paso el domiclio a editar
 
             // Abre el formulario secundario de manera modal,hago esto para esperar que el form se cierre para pdoer acceder a el y traer el id_generado sino si uso show el cod que sigue se sigue ejecutando si esperar a que se cierre el formualrio 
             if (frmRegistrarDomicilio.ShowDialog() == DialogResult.OK) //ShowDialog() abrirá el formulario secundario de manera modal, lo que significa que el código en el formulario principal esperará hasta que se cierre el formulario secundario antes de continuar.

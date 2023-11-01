@@ -34,10 +34,10 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            comboFiltroEstado = new ComboBox();
             lblRolFiltro = new Label();
             comboFiltroRol = new ComboBox();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
-            comboFiltroEstado = new ComboBox();
             lblEstado = new Label();
             txtDniFiltro = new TextBox();
             txtNombreFiltro = new TextBox();
@@ -103,10 +103,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblRolFiltro);
             panel1.Controls.Add(comboFiltroRol);
             panel1.Controls.Add(iconbtnClean);
-            panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblEstado);
             panel1.Controls.Add(txtDniFiltro);
             panel1.Controls.Add(txtNombreFiltro);
@@ -121,6 +121,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 0;
+            // 
+            // comboFiltroEstado
+            // 
+            comboFiltroEstado.FlatStyle = FlatStyle.Popup;
+            comboFiltroEstado.FormattingEnabled = true;
+            comboFiltroEstado.Location = new Point(540, 61);
+            comboFiltroEstado.Name = "comboFiltroEstado";
+            comboFiltroEstado.Size = new Size(88, 23);
+            comboFiltroEstado.TabIndex = 28;
+            comboFiltroEstado.Text = "Filtrar Estado";
+            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged_1;
             // 
             // lblRolFiltro
             // 
@@ -141,6 +152,7 @@
             comboFiltroRol.Name = "comboFiltroRol";
             comboFiltroRol.Size = new Size(88, 23);
             comboFiltroRol.TabIndex = 26;
+            comboFiltroRol.Text = "Filtrar Rol";
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
             // 
             // iconbtnClean
@@ -166,17 +178,6 @@
             iconbtnClean.UseVisualStyleBackColor = false;
             iconbtnClean.Click += iconbtnClean_Click;
             // 
-            // comboFiltroEstado
-            // 
-            comboFiltroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboFiltroEstado.FlatStyle = FlatStyle.Popup;
-            comboFiltroEstado.FormattingEnabled = true;
-            comboFiltroEstado.Location = new Point(536, 62);
-            comboFiltroEstado.Name = "comboFiltroEstado";
-            comboFiltroEstado.Size = new Size(88, 23);
-            comboFiltroEstado.TabIndex = 24;
-            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
-            // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
@@ -195,7 +196,7 @@
             txtDniFiltro.Location = new Point(48, 64);
             txtDniFiltro.Multiline = true;
             txtDniFiltro.Name = "txtDniFiltro";
-            txtDniFiltro.PlaceholderText = "DNI";
+            txtDniFiltro.PlaceholderText = "Filtrar DNI";
             txtDniFiltro.Size = new Size(97, 20);
             txtDniFiltro.TabIndex = 11;
             txtDniFiltro.TextChanged += txtDniFiltro_TextChanged;
@@ -208,7 +209,7 @@
             txtNombreFiltro.Location = new Point(211, 64);
             txtNombreFiltro.Multiline = true;
             txtNombreFiltro.Name = "txtNombreFiltro";
-            txtNombreFiltro.PlaceholderText = "Nombre";
+            txtNombreFiltro.PlaceholderText = "FiltrarNombre";
             txtNombreFiltro.Size = new Size(97, 20);
             txtNombreFiltro.TabIndex = 10;
             txtNombreFiltro.TextChanged += txtNombreFiltro_TextChanged;
@@ -221,7 +222,7 @@
             txtApeFiltro.Location = new Point(372, 64);
             txtApeFiltro.Multiline = true;
             txtApeFiltro.Name = "txtApeFiltro";
-            txtApeFiltro.PlaceholderText = "Apellido";
+            txtApeFiltro.PlaceholderText = "Filtrar Apellido";
             txtApeFiltro.Size = new Size(97, 20);
             txtApeFiltro.TabIndex = 9;
             txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
@@ -576,6 +577,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconBtnModif
             // 
@@ -935,5 +937,6 @@
         private Label lblRolFiltro;
         private DateTimePicker dateTimePickerNacimientoDato;
         private Label lblFechaNac;
+        private ComboBox comboBox1;
     }
 }

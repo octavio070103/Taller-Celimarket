@@ -20,12 +20,15 @@ namespace CapaPresentacion.Formularios.Admin.usuario
     {
         private MenuAdministrador instanciaMenuAdministrador;
         private static capaEntidad.usuario usuarioActual;
-        public FrmPermisoUsuario(MenuAdministrador p_menuAdministrador,capaEntidad.usuario p_usuarioActual )
+        public FrmPermisoUsuario(MenuAdministrador p_menuAdministrador, capaEntidad.usuario p_usuarioActual)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_menuAdministrador;
             usuarioActual = p_usuarioActual;
 
+            //sucribo un manejador de eventos(textBoxFiltro) a mi evento (TextCganged) para textbox de filtrado
+            txtEmpleadoFiltro.TextChanged += txtEmpleadoFiltro_TextChanged;//El += se utiliza para agregar un manejador de eventos adicional a los que ya puedan estar suscritos al evento, en lugar de reemplazarlos.
+            txtTipoPermiFiltro.TextChanged += txtTipoPermiFiltro_TextChanged;
         }
 
         private void FrmPermisoUsuario_Load(object sender, EventArgs e)
@@ -39,6 +42,27 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             // llama al metodo Mostrar la lista de usuarios en el DataGridView y le pasa la lista obtenida de la capa logica
             mostrarPermisosEnDataGridView(listaPermisos);
 
+            ReadOnlyTxtDatosPermiso(true);//configuro que el panel de datos de los permiso sea de lectura uniucamente es decir le digo que se active esa propiedad y nose pueda editar el contenido de los campos
+
+        }
+
+        //configuro que el panel de datos de los permiso sea de lectura uniucamente es decir le digo que se active esa propiedad y nose pueda editar el contenido de los campos
+        public void ReadOnlyTxtDatosPermiso(bool valor)
+        {//el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
+
+            txtIdEmpleado.ReadOnly = valor;
+            txtDniEmple.ReadOnly = valor;
+            txtNombreEmple.ReadOnly = valor;
+            txtApeEmple.ReadOnly = valor;
+            txtEmailDato.ReadOnly = valor;
+            txtTelefDato.ReadOnly = valor;
+            txtRolDato.ReadOnly = valor;
+            txtDomiDato.ReadOnly = valor;
+            txtDiasSolciitados.ReadOnly = valor;
+            txtJustificacion.ReadOnly = valor;
+
+            //usamos la propeidad enable para que parezca esatr en modo lectura y evitar cambios por parte del usuario,como esta propiedad usa el valor contrario al readOnly para ponerse en modo lectura le agrgamos el ! operador de negacion esto cambiara el valor y asi podremos hacer uso de esa propeidad
+            cboTipoPermiso.Enabled = !valor;
         }
 
         private void mostrarPermisosEnDataGridView(List<capaEntidad.permiso> p_listaPermisos)
@@ -76,7 +100,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                                      //aca estoy diciendo que si la fila que se selcciono el inidice es mayor o igual a 0 es decir que en verdad es una fila qu eme guarde el indice de ese id_usuario que seleciono en el txtIDGuardado para pdoer traer de laBd ese usuario
             if (indice >= 0)
             {
-                
+
                 limpiarCamposDato(); //limpio los campos del panel de datos permiso
 
                 // Obtener la fila seleccionada
@@ -173,14 +197,14 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             if (dataGridPermisos.SelectedRows.Count > 0 && Convert.ToInt32(txtIdPermiso.Text) > 0)
             {
 
-                DialogResult consulta = MessageBox.Show("¿Desea APROBAR el Permiso del Empleado " + txtNombreEmple.Text+ "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult consulta = MessageBox.Show("¿Desea APROBAR el Permiso del Empleado " + txtNombreEmple.Text + "?", "Revisar Permiso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (consulta == DialogResult.Yes)
                 {
                     //creo un obj_permiso que va a contener el id_permiso de la permiso a apronar
                     capaEntidad.permiso obj_permiso_aprobado = new capaEntidad.permiso
                     {
                         id_permiso = Convert.ToInt32(txtIdPermiso.Text), //aca le paso el id_permiso que necesito para poder hace uso del metodo par aaprobar el permiso
-                        estado_aprobacion="aprobado"
+                        estado_aprobacion = "aprobado"
                     };
 
 
@@ -203,7 +227,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 MessageBox.Show("Seleccione una Permiso para poder Aprobarlo o rechazarlo ", "Revisar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-           
+
         }
 
         /************************RECHAZAR PERMISO*********************************************/
@@ -234,7 +258,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                     FrmPermisoUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
                                                                   //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
 
-                   capaEntidad.permiso obj_permiso = obj_CL_Permiso.buscarPermiso(Convert.ToInt32(txtIdPermiso.Text));//aca llamo al metodo buscar permiso para que me traiga el obj_permiso de la BD completo y pueda usar para enviar notifcaion del estado de su permiso
+                    capaEntidad.permiso obj_permiso = obj_CL_Permiso.buscarPermiso(Convert.ToInt32(txtIdPermiso.Text));//aca llamo al metodo buscar permiso para que me traiga el obj_permiso de la BD completo y pueda usar para enviar notifcaion del estado de su permiso
                     EnviarNotificacionPorCorreo(obj_permiso, "Solicitud de Permiso Rechazada", mensaje);
                 }
 
@@ -249,7 +273,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 MessageBox.Show("Seleccione una Permiso para poder Aprobarlo o rechazarlo ", "Revisar Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-          
+
         }
 
         public void EnviarNotificacionPorCorreo(permiso obj_permiso, string asunto, string mensaje)
@@ -269,15 +293,15 @@ namespace CapaPresentacion.Formularios.Admin.usuario
 
                 //CREAMOS EL CONTENIDO DEL CORREO
                 string[] Destinatario = obj_permiso.obj_usuario.email.Split(',');
-              //  string[] DestinatarioCopia = txtCopia.Text.Split(',');
-               // string[] DestinatarioCopiaOculta = txtCopiaOculta.Text.Split(',');
+                //  string[] DestinatarioCopia = txtCopia.Text.Split(',');
+                // string[] DestinatarioCopiaOculta = txtCopiaOculta.Text.Split(',');
 
 
                 msg.From = new MailAddress(Usuario, "SERVIDOR CORREO CELIMARKET");
                 foreach (string correo in Destinatario) if (correo != "") msg.To.Add(new MailAddress(correo));
-               // foreach (string correo in DestinatarioCopia) if (correo != "") msg.CC.Add(new MailAddress(correo)); este me sirve por si quiero una copia del correo enviarlo
-             //   foreach (string correo in DestinatarioCopiaOculta) if (correo != "") msg.Bcc.Add(new MailAddress(correo)); esto es por si quiero una coipa oculta
-              //  foreach (string adjunto in ArchivoAdjuntos) if (adjunto != "") msg.Attachments.Add(new Attachment(adjunto)); esto es por si quiero permitir que s eadjunten archivos
+                // foreach (string correo in DestinatarioCopia) if (correo != "") msg.CC.Add(new MailAddress(correo)); este me sirve por si quiero una copia del correo enviarlo
+                //   foreach (string correo in DestinatarioCopiaOculta) if (correo != "") msg.Bcc.Add(new MailAddress(correo)); esto es por si quiero una coipa oculta
+                //  foreach (string adjunto in ArchivoAdjuntos) if (adjunto != "") msg.Attachments.Add(new Attachment(adjunto)); esto es por si quiero permitir que s eadjunten archivos
                 msg.Subject = asunto;
                 msg.IsBodyHtml = false;
                 msg.Body = mensaje;
@@ -296,5 +320,40 @@ namespace CapaPresentacion.Formularios.Admin.usuario
 
         }
 
+
+        private void txtEmpleadoFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtEmpleadoFiltro.Text;
+            string atributo = "dni del empleado";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridViewPermiso(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
+
+        private void txtTipoPermiFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = txtTipoPermiFiltro.Text;
+            string atributo = "tipo de permiso";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridViewPermiso(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
+        private void FiltrarDataGridViewPermiso(string filtro, string atributo)
+        {
+            // Crear una instancia de la capa de lógica
+            CL_Permiso obj_CL_Permiso = new CL_Permiso();
+            //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+            List<capaEntidad.permiso> listaPermisoFiltrado = obj_CL_Permiso.listarPermisoFiltrado(filtro, atributo); // Obtener la lista de usuarios desde la capa de lógica
+
+            // Actualiza el DataGridView
+            mostrarPermisosEnDataGridView(listaPermisoFiltrado);
+
+        }
+
+        //Limpia el contenido de los campos del filtrado
+        private void iconbtnClean_Click(object sender, EventArgs e)
+        {
+            txtEmpleadoFiltro.Text = "";
+            txtTipoPermiFiltro.Text = "";
+            dateTimeFiltro.Value = DateTime.Now;
+        }
     }
 }

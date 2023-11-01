@@ -22,6 +22,23 @@ namespace CapaLogica
         {
             return obj_cd_permiso.listarPermisos();
         }
+
+        //listar permisos pero filtrados
+        public List<permiso> listarPermisoFiltrado(string p_txtFIltro, string atributo)
+        {
+            List<permiso> listaPermisoFiltrado = new List<permiso>();
+            //aca hago una validacion de que los valores que me llegan no sean nulos o me lleguen vacios,sino son vacio o nulos entra al if
+            if (!string.IsNullOrWhiteSpace(p_txtFIltro) && !string.IsNullOrWhiteSpace(atributo))
+            {
+                listaPermisoFiltrado = obj_cd_permiso.listarPermisoFiltrado(p_txtFIltro, atributo);
+            }
+            else//si es vacio o nulo que me lista los permisos completos sin ningun filtro aplicado
+            {
+                listaPermisoFiltrado=obj_cd_permiso.listarPermisos(); //aca no estarian filtrado estarian completos estos me ayudaria a que si el usuario ingresa vacio o un null ,no me filtre sino que me muestre la lista completa sin filtros
+            }
+
+            return listaPermisoFiltrado; //si paso el anterior if me devuvle la lista cargada sino me devuelve la lista vacia
+        }
         public permiso buscarPermiso(int id_permiso)
         {
             return obj_cd_permiso.buscarPermiso(id_permiso);
@@ -38,6 +55,7 @@ namespace CapaLogica
             return obj_cd_permiso.cambiarEstadoPermiso(obj_permiso, out mensaje);
         }
 
+       
         /**********************************metodos para La tabla Motivo Permiso *******************************************/
         public List<motivo_permiso> listarMotivoPermiso()
         {

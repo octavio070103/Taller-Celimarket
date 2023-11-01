@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace CapaPresentacion.Formularios.Admin
         private MenuAdministrador instanciaMenuAdministrador;
         private Form currentChildForm;
         private static capaEntidad.usuario usuarioActual;
-        public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador,capaEntidad.usuario p_usuarioActual)
+        public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador, capaEntidad.usuario p_usuarioActual)
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
@@ -33,7 +34,7 @@ namespace CapaPresentacion.Formularios.Admin
             txtDniFiltro.TextChanged += txtDniFiltro_TextChanged;//El += se utiliza para agregar un manejador de eventos adicional a los que ya puedan estar suscritos al evento, en lugar de reemplazarlos.
             txtNombreFiltro.TextChanged += txtNombreFiltro_TextChanged;
             txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
-            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
+            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged_1;
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
 
             panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al inicio sino selecciono ningun usuario para editar,estara oculto
@@ -178,14 +179,14 @@ namespace CapaPresentacion.Formularios.Admin
                 }
 
             }
-           
+
         }
 
         //si el usuario selecciona una fila para ver su detalles se redimensionan los paneles y se hace visible el editar,redimensiona los botones los cambia de posicion
         private void DetallesUsuario(bool valor)
         {
             //si el valor del parametro valor es true significa que se debe de mostrar el panel de datos de usuario
-            if (valor==true)
+            if (valor == true)
             {
                 panelDatosUsuario.Visible = true;
                 // Establecer el tamaño del data grid es decir lo redimienciono cuando se muestran los detalles del uusario 
@@ -204,7 +205,7 @@ namespace CapaPresentacion.Formularios.Admin
                 dataGridUsuarios.Location = new System.Drawing.Point(12, 176);
                 dataGridUsuarios.Size = new System.Drawing.Size(800, 349); // ancho y alto en píxeles
             }
-            
+
 
         }
 
@@ -334,7 +335,15 @@ namespace CapaPresentacion.Formularios.Admin
         /*este metodo llama al formualario de editar domicilio del uusario */
         private void txtDomiciliodato_MouseClick(object sender, MouseEventArgs e)
         {
-            FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio();
+            CapaLogica.CL_usuario obj_cl_usuario = new CL_usuario();
+            capaEntidad.usuario obj_usuario_editando =obj_cl_usuario.buscarUsuario(Convert.ToInt32(txtIdGuardado.Text));//aca atravez del metodo buscar usuario obtengo el usuario que se esta editando para asi obtener su id_domicilio y poder obtener su domicilio actual
+            
+            //aca usamos el metodo buscar domicilio para traer ese objeto domcilio que se quiere editar
+            CapaLogica.CL_domicilio obj_CL_domicilio = new CL_domicilio();
+            capaEntidad.domicilio obj_domicilio_editando = obj_CL_domicilio.buscarDomicilioID(obj_usuario_editando.obj_domicilio.id_domicilio); //le paso como parametro el id_domcilio del usuario que se esta editando
+
+
+            FrmRegistrarDomicilio frmRegistrarDomicilio = new FrmRegistrarDomicilio(obj_domicilio_editando);//le paso como parametro ese objeto domicilio que obtuve atravez del id_domiclio
 
             frmRegistrarDomicilio.Show();
         }
@@ -381,12 +390,37 @@ namespace CapaPresentacion.Formularios.Admin
 
         }
 
+        //cancelar el editar usuario,cancela la modificacion
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
+            ask = MessageBox.Show("Seguro que desea cancelar la edicion del usuario ? ", "Confirmar insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //como  Todos los msgbox devuelven un resultado lógico. podemos hacer el sig if
+            if (ask == DialogResult.Yes)
+            {
+                //elimino los valores de todos los campos del editar usuario
+                txtIdGuardado.Text = "";
+                txtEmailDato.Text = "";
+                txtPasswordDato.Text = "";
+                comboEstadoDato.SelectedIndex = -1;
+                txtDniDato.Text = "";
+                txtNombreDato.Text = "";
+                txtApeDato.Text = "";
+                txtTelefDato.Text = "";
+                txtDomiciliodato.Text = "";
+                panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al cancelar 
+            }
+
+        }
+
         //guardar modificacion
         private void iconbtnGuardar_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
             // Crear una instancia de la capa de lógica
             CL_usuario obj_CL_Usuario = new CL_usuario();
+
+            capaEntidad.usuario objUsuario = obj_CL_Usuario.buscarUsuario(Convert.ToInt32(txtIdGuardado.Text));//aca obtengo el usuario que se esta por gurdar la mdoficacion es decir el usuario que se esta ediatando,esto lo hago mientras tanto porque el domicilio es dificil modficar
 
             if (validarCampos())
             {
@@ -400,7 +434,7 @@ namespace CapaPresentacion.Formularios.Admin
                 string rolSeleccionadoDescripcion = comboRolDato.SelectedItem as string; //falta poner las valdiaciones del rol seleccionado queesta en festionar usuario
 
                 //como  Todos los msgbox devuelven un resultado lógico. podemos hacer el sig if
-                if (ask == DialogResult.Yes)
+                if (ask == DialogResult.Yes) //si la respuesta es si yes entra al id
                 {
                     // Buscar el id_rol correspondiente a la descripción seleccionada
                     int idRolSeleccionado = ObtenerIdRolPorDescripcion(rolSeleccionadoDescripcion);
@@ -426,7 +460,8 @@ namespace CapaPresentacion.Formularios.Admin
                         },
                         obj_domicilio = new domicilio()
                         {
-                            id_domicilio = 2//aca debo de cambiar por el domicilio creado 
+
+                            id_domicilio = objUsuario.obj_domicilio.id_domicilio//por ahora el domicilio nose debe de cambiar queda el actual solamente
                         }
 
 
@@ -444,12 +479,12 @@ namespace CapaPresentacion.Formularios.Admin
 
                         //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
                         //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
-                        
+
                         limpiartxtDato();//limpio los campos del panel de datos 
                     }
                     else
                     {
-                        
+
                         MessageBox.Show("El usuario: " + txtNombreDato.Text + " " + txtApeDato.Text + " No se edito correctamente ", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         iconbtnGuardar.Visible = false;
                         iconBtnCancelar.Visible = false;
@@ -462,7 +497,7 @@ namespace CapaPresentacion.Formularios.Admin
                     {
                         MessageBox.Show(mensaje);
                     }
-                    
+
                 }
                 DetallesUsuario(false);//aca oculto el panel luego de que se edito el usuario 
 
@@ -636,29 +671,51 @@ namespace CapaPresentacion.Formularios.Admin
             // Filtra los datos en el DataGridView
             FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
-
-        private void comboFiltroEstado_TextChanged(object sender, EventArgs e)
+        private void comboFiltroEstado_TextChanged_1(object sender, EventArgs e)
         {
+            string filtro = "";
+            string atributo = "estado_usuario";
 
+            switch (comboFiltroEstado.SelectedIndex)
+            {
+                //caso de que el usuario eleja mostrar los usuarios activos
+                case 0:
+                    filtro = "1"; FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro  
+                    break;
+                //case para mostrar los usuarios inactivos
+                case 1:
+                    filtro = "0"; FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro  
+                    break;
 
-            if (comboEstadoDato.SelectedIndex == 1)
-            {
-                string filtro = "0";
-                string atributo = "estado";
-                // Filtra los datos en el DataGridView
-                FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
-            }
-            else
-            {
-                string filtro = "1";
-                string atributo = "estado";
-                // Filtra los datos en el DataGridView
-                FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+                default: break;
             }
         }
+
         private void comboFiltroRol_TextChanged(object sender, EventArgs e)
         {
+            // Añade la condición de filtrado según el atributo
+            string filtro = "";
+            string atributo = "rol_usuario";
+            switch (comboFiltroRol.SelectedIndex)
+            {
+                case 0: //case del admin
+                    filtro = "1";
+                    FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro  
+                    break;
 
+                case 1: //case del gerente
+                    filtro = "2";
+                    FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+                    break;
+
+                case 2: //case del vendedor
+                    filtro = "3";
+                    FiltrarDataGridView(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+                    break;
+
+                default: break;
+
+            }
         }
 
         private void FiltrarDataGridView(string filtro, string atributo)
@@ -676,10 +733,17 @@ namespace CapaPresentacion.Formularios.Admin
         //funcionalidad par alimpair el filtro
         private void iconbtnClean_Click(object sender, EventArgs e)
         {
-            txtDniFiltro.Text = "";
-            txtNombreFiltro.Text = "";
-            txtApeFiltro.Text = "";
+            /*
+            //limpio todos los campos de los filtros
+            txtDniFiltro.Text = "Filtrar Dni";
+            txtNombreFiltro.Text = "Filtrar nombre";
+            txtApeFiltro.Text = "Filtrar Apellido";
+            comboFiltroEstado.Text = "Filtrar Estado";
+            comboFiltroRol.Text = "Filtrar Rol";*/ //no necesito hacer esto ya que al llmar al metodo load me ahorra tener que limpiar los campos ya que vuelven a sus valores predeterminados
 
+            //vuelvo a listar el datagrid con la lista sin filtrar 
+            //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+            FrmGestionarUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
         }
 
 
