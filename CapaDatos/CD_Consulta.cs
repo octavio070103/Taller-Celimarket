@@ -191,8 +191,13 @@ namespace CapaDatos
                                     }
 
                                 },
+                                obj_motivo_consulta = new motivo_consulta{
+                                    id_motivo_consulta= Convert.ToInt32(dr["id_motivo_consulta"]),
+                                    nombre_motivo_consulta = dr["nombre_motivo_consulta"].ToString()
 
+                                }
                             });
+
                         }
                     }
                 }
@@ -307,7 +312,12 @@ namespace CapaDatos
                                     }
 
                                 },
+                                obj_motivo_consulta = new motivo_consulta
+                                {
+                                    id_motivo_consulta = Convert.ToInt32(dr["id_motivo_consulta"]),
+                                    nombre_motivo_consulta = dr["nombre_motivo_consulta"].ToString()
 
+                                }
                             });
                         }
                     }
@@ -362,8 +372,7 @@ namespace CapaDatos
                     {
                         //aca se lectura a la consulta que realize con qeury
                         while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
-                        {
-                            
+                        {            
                             //retorno mi consulta que lo obtnego por el id
                             return new consulta
                             {
@@ -401,7 +410,12 @@ namespace CapaDatos
                                     }
 
                                 },
+                                obj_motivo_consulta = new motivo_consulta
+                                {
+                                    id_motivo_consulta = Convert.ToInt32(dr["id_motivo_consulta"]),
+                                    nombre_motivo_consulta = dr["nombre_motivo_consulta"].ToString()
 
+                                }
                             };
                         }
                     }// Al salir de este bloque, la conexión se cerrará automáticamente.
@@ -442,7 +456,7 @@ namespace CapaDatos
                     query.AppendLine("INNER JOIN rol r ON u.id_rol=r.id_rol");//le doy el alias r, y realizo el INNER JOIN entre la tabla usuario y la tabla rol
                     query.AppendLine("INNER JOIN persona pers ON u.id_persona = pers.id_persona");//le doy el alias pers, y realizo el INNER JOIN entre la tabla usuario y la tabla persona
                     query.AppendLine("INNER JOIN domicilio d ON u.id_domicilio= d.id_domicilio");//le doy el alias d, y realizo el INNER JOIN entre la tabla usuario y la tabla domicilio
-                    query.AppendLine("WHERE p.id_usuario=@id_usuario;");
+                    query.AppendLine("WHERE c.id_usuario=@id_usuario;");
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
@@ -496,7 +510,11 @@ namespace CapaDatos
                                     }
 
                                 },
-
+                                obj_motivo_consulta = new motivo_consulta
+                                {
+                                    id_motivo_consulta = Convert.ToInt32(dr["id_motivo_consulta"]),
+                                    nombre_motivo_consulta = dr["nombre_motivo_consulta"].ToString()
+                                }
                             });
                         }
                     }// Al salir de este bloque, la conexión se cerrará automáticamente.

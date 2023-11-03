@@ -1,7 +1,7 @@
 
 
 /*REGISTRAR PRODUCTO */
-ALTER PROC SP_REGISTRARPRODUCTO(
+CREATE PROC SP_REGISTRARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@nombre_producto VARCHAR(50),
 	@cod_barra_producto INT,
@@ -76,7 +76,7 @@ select @mensaje
 select * from producto
 
 								/*EDITAR PRODUCTO */
- ALTER PROC SP_EDITARPRODUCTO(
+ CREATE PROC SP_EDITARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_producto INT,
 	@cod_barra_producto INT,

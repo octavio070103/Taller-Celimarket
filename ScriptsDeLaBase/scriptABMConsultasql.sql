@@ -1,5 +1,5 @@
 /*REGISTRAR CONSULTA */
-CREATE PROCEDURE SP_REGISTRARCONSULTA(
+ALTER PROCEDURE SP_REGISTRARCONSULTA(
 	/*parametros de entrada (que necesitamos para registrar un CONSULTA) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar una consulta*/
 	@comentario_consulta VARCHAR(200),
 	@id_usuario INT,
@@ -24,7 +24,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	ELSE
 	--aca valido que para poder registrar una consulta,que se cumpla que no exista en la base de datos una consulta con en el campo comentario_consulta =a mi parametro @comentario ya que asi le impido al usuario ingresar dos veces la misma consulta que tenga el mismo comentario
 	--es decir aca me aseguro que un usuario no pueda ingresar dos consultas con el mismo comentario o consulta escrito(Contenido)
-		IF NOT EXISTS(select * from consulta where comentario_consulta=@comentario_consulta )
+		IF NOT EXISTS(select * from consulta where (comentario_consulta=@comentario_consulta AND id_motivo_consulta=@id_motivo_consulta AND estado_consulta='Leido'))
 		 BEGIN
 			 INSERT INTO consulta(comentario_consulta,id_usuario,id_motivo_consulta) 
 			 VALUES(@comentario_consulta,@id_usuario,@id_motivo_consulta)

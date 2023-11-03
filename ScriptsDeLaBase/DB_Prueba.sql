@@ -110,7 +110,7 @@ CREATE TABLE proveedor(
 	--CONSTRAINT
 	CONSTRAINT PK_proveedor PRIMARY KEY (id_proveedor),
 
-	 CONSTRAINT UQ_nombre_proveedor UNIQUE (nombre); --hago que el nombre del proveedor sea unico ya que como me voy a manejar como si fuera que el proveedor es la empresa no puede haber dos proveedores coca cola en mi bd por ej,
+	 CONSTRAINT UQ_nombre_proveedor UNIQUE (nombre), --hago que el nombre del proveedor sea unico ya que como me voy a manejar como si fuera que el proveedor es la empresa no puede haber dos proveedores coca cola en mi bd por ej,
 	CONSTRAINT CK_proveedor_nombre CHECK(nombre NOT LIKE '%[^a-zA-Z]%'), --costraint para Permitir letras solamente, con NOT LIKE, por otro lado, verifica si un valor no cumple con un patrón específico. En otras palabras, se asegura de que el valor no contenga ciertos caracteres o no coincida con el patrón especificado.
 	--correo
 	CONSTRAINT UQ_Censista_correo_unico UNIQUE (email),
@@ -434,7 +434,7 @@ INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio
 INSERT INTO usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) VALUES('vendedor@gmail.com','123',1,5,3,2);
 
 --Proveedor
-INSERT INTO proveedor(nombre,email,telefono,estado_proveedor) VALUES();
+--INSERT INTO proveedor(nombre,email,telefono,estado_proveedor) VALUES();
 
 --venta
 

@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSolicitudConsulta));
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             panel8 = new Panel();
             picCerrar = new PictureBox();
             picMinPantalla = new PictureBox();
@@ -62,8 +66,15 @@
             panel3 = new Panel();
             label2 = new Label();
             panel2 = new Panel();
-            datagridConsultas = new DataGridView();
             panelConsulAnteriores = new Panel();
+            dataGridConsultas = new DataGridView();
+            Col_id_motivo_consulta = new DataGridViewTextBoxColumn();
+            Col_motivo_consulta = new DataGridViewTextBoxColumn();
+            Col_id_consulta = new DataGridViewTextBoxColumn();
+            Col_comentario_consulta = new DataGridViewTextBoxColumn();
+            Col_estado_consulta = new DataGridViewTextBoxColumn();
+            Col_fecha_consulta = new DataGridViewTextBoxColumn();
+            Col_id_usuario = new DataGridViewTextBoxColumn();
             plTituloConsulAntes = new Panel();
             label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
@@ -75,8 +86,8 @@
             pDatosConsulta.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)datagridConsultas).BeginInit();
             panelConsulAnteriores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridConsultas).BeginInit();
             plTituloConsulAntes.SuspendLayout();
             SuspendLayout();
             // 
@@ -469,24 +480,123 @@
             panel2.Size = new Size(700, 12);
             panel2.TabIndex = 5;
             // 
-            // datagridConsultas
-            // 
-            datagridConsultas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            datagridConsultas.Location = new Point(-2, 17);
-            datagridConsultas.Name = "datagridConsultas";
-            datagridConsultas.RowTemplate.Height = 25;
-            datagridConsultas.Size = new Size(702, 116);
-            datagridConsultas.TabIndex = 33;
-            // 
             // panelConsulAnteriores
             // 
             panelConsulAnteriores.BorderStyle = BorderStyle.FixedSingle;
-            panelConsulAnteriores.Controls.Add(datagridConsultas);
+            panelConsulAnteriores.Controls.Add(dataGridConsultas);
             panelConsulAnteriores.Location = new Point(40, 354);
             panelConsulAnteriores.Name = "panelConsulAnteriores";
             panelConsulAnteriores.Size = new Size(700, 134);
             panelConsulAnteriores.TabIndex = 34;
             panelConsulAnteriores.Visible = false;
+            // 
+            // dataGridConsultas
+            // 
+            dataGridConsultas.AllowUserToAddRows = false;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridConsultas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridConsultas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridConsultas.BackgroundColor = Color.FromArgb(144, 178, 246);
+            dataGridConsultas.BorderStyle = BorderStyle.None;
+            dataGridConsultas.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.Padding = new Padding(2);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dataGridConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridConsultas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridConsultas.Columns.AddRange(new DataGridViewColumn[] { Col_id_motivo_consulta, Col_motivo_consulta, Col_id_consulta, Col_comentario_consulta, Col_estado_consulta, Col_fecha_consulta, Col_id_usuario });
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridConsultas.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridConsultas.Location = new Point(-2, 17);
+            dataGridConsultas.MultiSelect = false;
+            dataGridConsultas.Name = "dataGridConsultas";
+            dataGridConsultas.ReadOnly = true;
+            dataGridConsultas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridConsultas.RowHeadersVisible = false;
+            dataGridConsultas.RowTemplate.Height = 28;
+            dataGridConsultas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridConsultas.Size = new Size(702, 116);
+            dataGridConsultas.TabIndex = 35;
+            // 
+            // Col_id_motivo_consulta
+            // 
+            Col_id_motivo_consulta.HeaderText = "id_motivo_consulta";
+            Col_id_motivo_consulta.Name = "Col_id_motivo_consulta";
+            Col_id_motivo_consulta.ReadOnly = true;
+            Col_id_motivo_consulta.Visible = false;
+            Col_id_motivo_consulta.Width = 129;
+            // 
+            // Col_motivo_consulta
+            // 
+            Col_motivo_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Col_motivo_consulta.HeaderText = "Motivo Consulta";
+            Col_motivo_consulta.Name = "Col_motivo_consulta";
+            Col_motivo_consulta.ReadOnly = true;
+            Col_motivo_consulta.Width = 150;
+            // 
+            // Col_id_consulta
+            // 
+            Col_id_consulta.HeaderText = "id_consulta";
+            Col_id_consulta.Name = "Col_id_consulta";
+            Col_id_consulta.ReadOnly = true;
+            Col_id_consulta.Visible = false;
+            Col_id_consulta.Width = 102;
+            // 
+            // Col_comentario_consulta
+            // 
+            Col_comentario_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Col_comentario_consulta.HeaderText = "Comentario Consulta";
+            Col_comentario_consulta.Name = "Col_comentario_consulta";
+            Col_comentario_consulta.ReadOnly = true;
+            Col_comentario_consulta.Width = 290;
+            // 
+            // Col_estado_consulta
+            // 
+            Col_estado_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Col_estado_consulta.HeaderText = "Estado Consulta";
+            Col_estado_consulta.Name = "Col_estado_consulta";
+            Col_estado_consulta.ReadOnly = true;
+            Col_estado_consulta.Width = 130;
+            // 
+            // Col_fecha_consulta
+            // 
+            Col_fecha_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Col_fecha_consulta.HeaderText = "Fecha Consulta";
+            Col_fecha_consulta.Name = "Col_fecha_consulta";
+            Col_fecha_consulta.ReadOnly = true;
+            Col_fecha_consulta.Width = 130;
+            // 
+            // Col_id_usuario
+            // 
+            Col_id_usuario.HeaderText = "id_usuario";
+            Col_id_usuario.Name = "Col_id_usuario";
+            Col_id_usuario.ReadOnly = true;
+            Col_id_usuario.Visible = false;
+            Col_id_usuario.Width = 95;
             // 
             // plTituloConsulAntes
             // 
@@ -549,8 +659,8 @@
             panel5.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)datagridConsultas).EndInit();
             panelConsulAnteriores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridConsultas).EndInit();
             plTituloConsulAntes.ResumeLayout(false);
             plTituloConsulAntes.PerformLayout();
             ResumeLayout(false);
@@ -595,5 +705,14 @@
         private Panel panelConsulAnteriores;
         private Panel plTituloConsulAntes;
         private Label label11;
+        private DataGridViewTextBoxColumn Col_Id_consulta;
+        private DataGridView dataGridConsultas;
+        private DataGridViewTextBoxColumn Col_id_motivo_consulta;
+        private DataGridViewTextBoxColumn Col_motivo_consulta;
+        private DataGridViewTextBoxColumn Col_id_consulta;
+        private DataGridViewTextBoxColumn Col_comentario_consulta;
+        private DataGridViewTextBoxColumn Col_estado_consulta;
+        private DataGridViewTextBoxColumn Col_fecha_consulta;
+        private DataGridViewTextBoxColumn Col_id_usuario;
     }
 }

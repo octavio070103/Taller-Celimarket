@@ -82,6 +82,31 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
             txtTel.ReadOnly = true;
 
             //me falta aca cargar el datagrid con los form anteriores
+            CL_Consulta obj_CL_Consulta = new CL_Consulta();
+
+            cargarDataGridConsultasAnteriores(obj_CL_Consulta.buscarConsultasPorIdUsuario(usuarioActual.id_usuario)); //aca le paso la lisat de consultas anteriores de ese usuario que lo obtengo atraves del metodo buscarcosnultasidusuario que me devulve las consul anteriores
+        }
+
+        private void cargarDataGridConsultasAnteriores(List<consulta> p_listaConsultasDelUsu)
+        {
+            dataGridConsultas.Rows.Clear(); // Limpiar filas existentes
+            foreach (capaEntidad.consulta item in p_listaConsultasDelUsu)
+            {
+
+                // Agregar una fila al DataGridView con los datos del usuario
+                dataGridConsultas.Rows.Add(
+                    new object[]
+                    {  //items de motivo_consulta
+                       item.id_consulta,item.obj_motivo_consulta.nombre_motivo_consulta,
+                      //items de consulta del usuario,
+                      item.id_consulta,item.comentario_consulta,item.estado_consulta,item.fecha_consulta, //aca tambien casteo mi atributo fecha que es de tipo datetime a date
+                     item.obj_usuario.id_usuario
+                     }
+                 );
+
+            }
+            dataGridConsultas.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
+
         }
 
         private void cargarDatosPrimeraConsulta()
@@ -133,7 +158,7 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
                         id_motivo_consulta = obtenerIDMotivoConsultaSeleccionada() // tengo que validar esto en el metodo validar campo ya que si es = 0 significa que el usuario no seleccionada
                     }
                 };
-                id_consulta_generado = new CL_Consulta().registrarConsulta(obj_consulta,out mensaje);
+                id_consulta_generado = new CL_Consulta().registrarConsulta(obj_consulta, out mensaje);
                 if (mensaje != "")
                 {
                     MessageBox.Show(mensaje);

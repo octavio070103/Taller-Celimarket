@@ -1,5 +1,5 @@
 /*REGISTRAR PERMISO */
-ALTER PROCEDURE SP_REGISTRARPERMISO(
+CREATE PROCEDURE SP_REGISTRARPERMISO(
 	/*parametros de entrada (que necesitamos para registrar un permiso) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un permiso*/
 	@fecha_inicio date,
 	@fecha_finalizacion date, 
@@ -43,7 +43,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 END
 
 	/*EDITAR PERMISO */
-ALTER PROCEDURE SP_EDITARPERMISO(
+CREATE PROCEDURE SP_EDITARPERMISO(
 @id_permiso INT,
 @fecha_inicio date,
 @fecha_finalizacion date, 
@@ -99,7 +99,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 END
 
 /*ACTUALIZAR EL ESTADO DEL PERMISO */
-ALTER PROCEDURE SP_ACTUALIZARESTADO(
+CREATE PROCEDURE SP_ACTUALIZARESTADO(
 	/*parametros de entrada (que necesitamos para actulizar el estadi de un permiso) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_permiso INT,
 	@estado_aprobacion VARCHAR(20),
