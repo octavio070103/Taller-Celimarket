@@ -280,6 +280,15 @@ CREATE TABLE detalle_compra(
 ALTER TABLE detalle_compra 
 ADD CONSTRAINT DF_detalle_compra_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_detalle_compra;
 
+CREATE TABLE Motivo_permiso (
+    id_motivo_permiso int IDENTITY(1,1) NOT NULL,
+    nombre_motivo_permiso varchar(50) NOT NULL,
+
+	--CONSTRAINT
+    CONSTRAINT PK_id_motivo_permiso PRIMARY KEY  (id_motivo_permiso)
+);
+
+
 CREATE TABLE permiso(
 	id_permiso INT IDENTITY(1,1),
 	fecha_inicio DATE NOT NULL,
@@ -294,14 +303,42 @@ CREATE TABLE permiso(
 	--CONSTRAINT
 	CONSTRAINT PK_permiso PRIMARY KEY (id_permiso),
 	CONSTRAINT FK_permiso_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-	--CONSTRAINT FK_permiso_Motivo_permiso FOREIGN KEY(id_motivo_permiso) REFERENCES Motivo_permiso(id_motivo_permiso)
+	CONSTRAINT FK_permiso_Motivo_permiso FOREIGN KEY(id_motivo_permiso) REFERENCES Motivo_permiso(id_motivo_permiso)
 );
 ALTER TABLE permiso 
 ADD CONSTRAINT DF_permiso_fecha_creacion DEFAULT GETDATE() FOR fecha_creacion_permiso;
-
 --agrego un retriccion de tipo default para cuando se inserte un permiso por defecto el campo estado_aprobacion sea pendiente
 ALTER TABLE permiso
 ADD CONSTRAINT DF_estado_aprobacion DEFAULT 'pendiente' for estado_aprobacion
+
+--motivo Consulta
+CREATE TABLE Motivo_consulta (
+    id_motivo_consulta int IDENTITY(1,1) NOT NULL,
+    nombre_motivo_consulta varchar(50) NOT NULL,
+
+	--CONSTRAINT
+    CONSTRAINT PK_id_motivo_consulta PRIMARY KEY  (id_Motivo_consulta)
+)
+
+CREATE TABLE consulta(
+	id_consulta INT IDENTITY(1,1) NOT NULL,
+	comentario_consulta VARCHAR(200) NOT NULL,
+	estado_consulta VARCHAR(20) NOT NULL, --este campo me permite saber si la cosulta fue leida o no leido por el administrador  (leido,no leido)
+	fecha_consulta DATE NOT NULL,
+	id_usuario INT NOT NULL,
+	id_motivo_consulta INT NOT NULL,
+
+	--CONSTRAINT
+	CONSTRAINT PK_id_cosulta PRIMARY KEY(id_consulta),
+	CONSTRAINT FK_Consulta_Usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
+	CONSTRAINT FK_Motivo_Consulta FOREIGN KEY(id_motivo_consulta) REFERENCES Motivo_consulta(id_motivo_consulta) 
+)
+ALTER TABLE consulta
+ADD CONSTRAINT DF_fecha_Consulta DEFAULT GETDATE() FOR fecha_consulta;
+--agrego un retriccion de tipo default para cuando se inserte una cosnulta por defecto el campo estado_consulta sea no leido
+ALTER TABLE consulta
+ADD CONSTRAINT DF_estado_consulta DEFAULT 'no leido' for estado_consulta
+
 
 ----------------LOTE DE INSERCIONES
 --negocio 
@@ -410,4 +447,10 @@ INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Licencia por Paternidad
 INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Duelo');
 INSERT INTO Motivo_permiso(nombre_motivo_permiso)VALUES('Permiso por Otros Motivos');
 
-select * from
+---motivio_consulta
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Sistema');
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Particular');
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Negocio');
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Relaciones laborales');
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Beneficio');
+INSERT INTO Motivo_consulta(nombre_motivo_consulta)VALUES('Otros');

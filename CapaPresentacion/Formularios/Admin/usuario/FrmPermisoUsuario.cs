@@ -336,6 +336,14 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             // Filtra los datos en el DataGridView
             FiltrarDataGridViewPermiso(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
+      
+        private void dateTimeFiltro_CloseUp(object sender, EventArgs e)
+        {
+            string filtro = dateTimeFiltro.Value.ToString("yyyy-MM-dd");
+            string atributo = "fecha filtro";
+            // Filtra los datos en el DataGridView
+            FiltrarDataGridViewPermiso(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
+        }
         private void FiltrarDataGridViewPermiso(string filtro, string atributo)
         {
             // Crear una instancia de la capa de lógica
@@ -355,5 +363,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             txtTipoPermiFiltro.Text = "";
             dateTimeFiltro.Value = DateTime.Now;
         }
+
+
     }
 }

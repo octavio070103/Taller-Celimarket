@@ -112,6 +112,7 @@
             dateTimeFiltro.Name = "dateTimeFiltro";
             dateTimeFiltro.Size = new Size(101, 23);
             dateTimeFiltro.TabIndex = 18;
+            dateTimeFiltro.CloseUp += dateTimeFiltro_CloseUp;
             // 
             // iconbtnClean
             // 

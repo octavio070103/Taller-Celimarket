@@ -92,7 +92,7 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
             txtJustificacion.Text = p_obj_permiso.comentario_justificacion;
             comboMotivo_permiso.Text = p_obj_permiso.obj_motivo_permiso.nombre_motivo_permiso;
 
-            //hago para que sean solo de lectura esos campos
+            //hago para que sean solo de lectura esos campos  ya que no debo de permitir que pueda editar estos campos del usuario 
             txtNombre.ReadOnly = true;
             txtApellido.ReadOnly = true;
             txtEmail.ReadOnly = true;
@@ -108,7 +108,7 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
 
             //oculto los botoners de guardar y cancelar ya que aqui solo puedo ver es de solo lectura cuando ya exitse el permiso de este usuario
             iconBtnCancelar.Visible = false;
-            iconBtnCancelar.Visible = false;
+            iconbtnGuardar.Visible = false;
         }
 
         //si el usuario no tiene un pemriso vinculado me rellena los campos del usuario y me permite llenar lso campos del eprmiso
@@ -120,7 +120,7 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
             txtDni.Text = usuarioActual.obj_persona.dni;
             txtRol.Text = usuarioActual.obj_rol.nombre_rol;
             txtTelefono.Text = usuarioActual.obj_persona.telefono;
-            //hago para que sean solo de lectura esos campos
+            //hago para que sean solo de lectura esos campos ya que no debo de permitir que pueda editar estos campos del usuario 
             txtNombre.ReadOnly = true;
             txtApellido.ReadOnly = true;
             txtEmail.ReadOnly = true;

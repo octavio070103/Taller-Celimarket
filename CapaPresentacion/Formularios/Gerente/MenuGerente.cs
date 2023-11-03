@@ -42,6 +42,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         public MenuGerente(capaEntidad.usuario objUsuario_login)
         {
             InitializeComponent();
+            panelCrearPoC.Visible = false; //escondo el panel del btn pedir
 
             //if para entrar cuando en el pogram inicio llamando al menu sin hacer el login
             if (objUsuario_login == null)
@@ -377,12 +378,32 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 this.Close();
             }
         }
+        private void btnCrearF_Click(object sender, EventArgs e)
+        {
+            if (panelCrearPoC.Visible == true)
+            {
+                panelCrearPoC.Visible = false;
+            }
+            else
+            {
+                panelCrearPoC.Visible = true;
+            }
 
-        private void iconBtnPedirPermiso_Click(object sender, EventArgs e)
+        }
+
+        private void iconBtnCrearConsulta_Click(object sender, EventArgs e)
+        {
+            FrmSolicitudConsulta formConsulta = new FrmSolicitudConsulta(usuarioActual);
+            formConsulta.Show();
+        }
+
+        private void iconbtnCrearPermiso_Click(object sender, EventArgs e)
         {
             FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
             formPermiso.Show();
         }
+
+
     }
 
 }

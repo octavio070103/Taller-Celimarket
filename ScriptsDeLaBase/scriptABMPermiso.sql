@@ -65,7 +65,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	SET @mensaje=''  --Proporciona informacion sobre la oepracion
 
 												-- Validación de datos
-     --aca valido que los datos que recibo como parametros de entrada no sean nulos si alguno es nulo entra la if y NO registro el permiso
+     --aca valido que los datos que recibo como parametros de entrada no sean nulos si alguno es nulo entra la if y NO edito el permiso
 	IF(@id_permiso IS NULL OR @fecha_inicio IS NULL OR @fecha_finalizacion IS NULL OR @comentario_justificacion IS NULL OR @estado_permiso IS NULL OR @id_usuario IS NULL OR @id_motivo_permiso IS NULL)
 	 BEGIN
 		SET @mensaje='Datos Nulos No se puede Editar el Permiso'
@@ -100,7 +100,7 @@ END
 
 /*ACTUALIZAR EL ESTADO DEL PERMISO */
 ALTER PROCEDURE SP_ACTUALIZARESTADO(
-	/*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
+	/*parametros de entrada (que necesitamos para actulizar el estadi de un permiso) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_permiso INT,
 	@estado_aprobacion VARCHAR(20),
 	/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso el id y un mensaje de salida*/
