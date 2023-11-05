@@ -89,7 +89,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 END
 
 /*ACTUALIZAR EL ESTADO DE LA CONSULTA */
-CREATE PROCEDURE SP_ACTUALIZARESTADOCONSULTA(
+ALTER PROCEDURE SP_ACTUALIZARESTADOCONSULTA(
 	/*parametros de entrada (que necesitamos para actualizar el estado de una consulta) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_consulta INT,
 	@estado_consulta VARCHAR(20),
@@ -119,7 +119,7 @@ BEGIN
 	BEGIN
 		--actualizacion del estado del consulta,lo marcamos como leido
 		UPDATE consulta SET
-		estado_consulta=@estado_consulta
+		estado_consulta='Leido'
 		WHERE id_consulta=@id_consulta
 		SET @mensaje=  ' La consulta se marco como leida correctamente'
 		SET @respuesta=1/* Cambiamos la variable de respuesta a 1, lo que equivale a "true" */

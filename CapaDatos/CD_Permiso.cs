@@ -237,7 +237,11 @@ namespace CapaDatos
                                     }
                                     
                                 },
-
+                                obj_motivo_permiso = new motivo_permiso()
+                                {
+                                    id_motivo_permiso = Convert.ToInt32(dr["id_motivo_permiso"]),
+                                    nombre_motivo_permiso = dr["nombre_motivo_permiso"].ToString()
+                                }
                             });
                         }
                     }
@@ -354,7 +358,11 @@ namespace CapaDatos
                                     }
 
                                 },
-
+                                obj_motivo_permiso = new motivo_permiso()
+                                {
+                                    id_motivo_permiso = Convert.ToInt32(dr["id_motivo_permiso"]),
+                                    nombre_motivo_permiso = dr["nombre_motivo_permiso"].ToString()
+                                }
                             });
                         }
                     }

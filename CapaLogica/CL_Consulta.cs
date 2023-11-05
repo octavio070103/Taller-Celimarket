@@ -42,9 +42,9 @@ namespace CapaLogica
             return listaConsultaFiltrado; //si paso el anterior if me devuvle la lista cargada sino me devuelve la lista vacia
         }
 
-        public consulta buscarPermisoPorIdConsulta(int id_consulta)
+        public consulta buscarConsultaPorIdConsulta(int id_consulta)
         {
-            return obj_CD_Consulta.buscarPermisoPorIdConsulta(id_consulta);
+            return obj_CD_Consulta.buscarConsultaPorIdConsulta(id_consulta);
         }
 
         //busco el consulta katraves del id_usuario y selecciono las consultas echas por ese usuario ya que un usuario puede tener varias cosnultas

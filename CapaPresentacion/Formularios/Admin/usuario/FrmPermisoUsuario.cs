@@ -76,7 +76,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 dataGridPermisos.Rows.Add(
                     new object[]
                     { //items de permisos,
-                      item.id_permiso,item.fecha_inicio.Date,item.fecha_finalizacion.Date,item.estado_aprobacion, //aca tambien casteo mi atributo fecha que es de tipo datetime a date
+                      item.id_permiso,item.obj_motivo_permiso.nombre_motivo_permiso,item.fecha_inicio.Date,item.fecha_finalizacion.Date,item.estado_aprobacion, //aca tambien casteo mi atributo fecha que es de tipo datetime a date
                       // item de la tabla rol
                       item.obj_usuario.obj_rol.nombre_rol,
                       // item de la tabla persona
@@ -311,7 +311,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 smtp.Credentials = new NetworkCredential(Usuario, Clave);
                 smtp.EnableSsl = true;
                 smtp.Send(msg);
-                MessageBox.Show("Notificacion de Permiso Enviada");
+                MessageBox.Show("Notificacion de Permiso Enviada al correo");
             }
             catch (Exception ex)
             {
@@ -320,7 +320,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
 
         }
 
-
+        /******************FILTROS DE MI DATAGRID**********************/
         private void txtEmpleadoFiltro_TextChanged(object sender, EventArgs e)
         {
             string filtro = txtEmpleadoFiltro.Text;
@@ -336,7 +336,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             // Filtra los datos en el DataGridView
             FiltrarDataGridViewPermiso(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
-      
+
         private void dateTimeFiltro_CloseUp(object sender, EventArgs e)
         {
             string filtro = dateTimeFiltro.Value.ToString("yyyy-MM-dd");
@@ -348,7 +348,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
         {
             // Crear una instancia de la capa de lógica
             CL_Permiso obj_CL_Permiso = new CL_Permiso();
-            //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+            //por ewsto uso capaentidad.permiso ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
             List<capaEntidad.permiso> listaPermisoFiltrado = obj_CL_Permiso.listarPermisoFiltrado(filtro, atributo); // Obtener la lista de usuarios desde la capa de lógica
 
             // Actualiza el DataGridView
@@ -359,9 +359,9 @@ namespace CapaPresentacion.Formularios.Admin.usuario
         //Limpia el contenido de los campos del filtrado
         private void iconbtnClean_Click(object sender, EventArgs e)
         {
-            txtEmpleadoFiltro.Text = "";
-            txtTipoPermiFiltro.Text = "";
-            dateTimeFiltro.Value = DateTime.Now;
+            //vuelvo a listar el datagrid con la lista sin filtrar 
+            //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+            FrmPermisoUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
         }
 
 

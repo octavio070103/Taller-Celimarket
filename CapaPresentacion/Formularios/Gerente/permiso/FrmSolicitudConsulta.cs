@@ -99,14 +99,14 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
                     {  //items de motivo_consulta
                        item.id_consulta,item.obj_motivo_consulta.nombre_motivo_consulta,
                       //items de consulta del usuario,
-                      item.id_consulta,item.comentario_consulta,item.estado_consulta,item.fecha_consulta, //aca tambien casteo mi atributo fecha que es de tipo datetime a date
+                      item.id_consulta,item.comentario_consulta,item.fecha_consulta,item.estado_consulta, //aca tambien casteo mi atributo fecha que es de tipo datetime a date
                      item.obj_usuario.id_usuario
                      }
                  );
 
             }
             dataGridConsultas.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
-
+            
         }
 
         private void cargarDatosPrimeraConsulta()

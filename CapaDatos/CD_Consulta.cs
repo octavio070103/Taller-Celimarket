@@ -244,14 +244,20 @@ namespace CapaDatos
                         // Añade la condición de filtrado según el atributo
                         switch (atributo)
                         {
+                            case "fecha filtro":
+                                query.Append("WHERE c.fecha_consulta LIKE @filtro"); break;
                             case "dni del empleado":
                                 query.Append("WHERE pers.dni LIKE @filtro");
                                 break;
-                            case "tipo de permiso":
-                                query.Append("WHERE m.nombre_motivo_permiso LIKE @filtro");
+                            case "Motivo de la consulta":
+                                query.Append("WHERE m.nombre_motivo_consulta LIKE '" + p_txtFIltro + "'");    //cuando son combobox los valores que traigo tengo que evitar pasarle como parametro con @filtro sino mdanrle de una ya que sino me agrega los comodines y eso no quiero 
                                 break;
-                            case "fecha filtro":
-                                query.Append("WHERE p.fecha_inicio LIKE @filtro"); break;
+                            case "estado de la consulta":
+                                query.Append("WHERE c.estado_consulta LIKE '"+ p_txtFIltro+"'");    //cuando son combobox los valores que traigo tengo que evitar pasarle como parametro con @filtro sino mdanrle de una ya que sino me agrega los comodines y eso no quiero 
+                                break;
+                            case "rol del empleado":
+                                query.Append("WHERE r.nombre_rol LIKE '" + p_txtFIltro + "'");//cuando son combobox los valores que traigo tengo que evitar pasarle como parametro con @filtro sino mdanrle de una ya que sino me agrega los comodines y eso no quiero 
+                                break;
                             default:
                                 // Manejar un atributo desconocido si es necesario.
                                 break;
@@ -262,6 +268,7 @@ namespace CapaDatos
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
                     cmd.CommandType = CommandType.Text;
 
+                    //cuando son combobox los valores que traigo tengo que evitar pasarle como parametro con @filtro sino mdanrle de una ya que sino me agrega los comodines y eso no quiero 
                     // creo un parametro llamado filtro y le asigno el valor por el que quiero filtrar,rodeada por símbolos %, lo que significa que la consulta buscará todas las filas en las que el valor de la columna cumple con la condición "contiene" el valor de p_txtFIltro
                     if (!string.IsNullOrEmpty(p_txtFIltro))
                     {
@@ -331,7 +338,7 @@ namespace CapaDatos
         }
 
         //buscamos la consulta atraves del id_consulta
-        public consulta buscarPermisoPorIdConsulta(int id_consulta)
+        public consulta buscarConsultaPorIdConsulta(int id_consulta)
         {
 
             //le paso cadena de la clase conexion 
