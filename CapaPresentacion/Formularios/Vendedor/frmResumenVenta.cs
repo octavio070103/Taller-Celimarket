@@ -18,6 +18,7 @@ namespace CapaPresentacion.Formularios.Vendedor
     {
         private string[] datosResumen;
         private DataGridView listaDetalle;
+        private Form formularioActivo = null;
 
         public frmResumenVenta(DataGridView pResumen, string[] pDatosResumen)
         {
@@ -25,6 +26,38 @@ namespace CapaPresentacion.Formularios.Vendedor
             cargarResumenVenta(pResumen, pDatosResumen);
             datosResumen = pDatosResumen;
             listaDetalle = pResumen;
+        }
+
+        private void abrirFormularioHijo(Form formHijo)
+        {
+            //**** Este metodo abrira el formulario indicado por cada boton ****
+
+            if (formularioActivo == null)
+            {
+                //** Se le indican las propiedades que debe tomar el form al ejecutarse
+
+                formularioActivo = formHijo;
+                formHijo.TopLevel = false;
+                formHijo.FormBorderStyle = FormBorderStyle.None;
+                formHijo.Dock = DockStyle.Fill;
+                pnlResumen.Controls.Add(formHijo);
+                pnlResumen.Tag = formHijo;
+                formHijo.BringToFront();
+                formHijo.Show();
+            }
+            else
+            {
+                formularioActivo.Close();
+                formularioActivo = formHijo;
+                formHijo.TopLevel = false;
+                formHijo.FormBorderStyle = FormBorderStyle.None;
+                formHijo.Dock = DockStyle.Fill;
+                pnlResumen.Controls.Add(formHijo);
+                pnlResumen.Tag = formHijo;
+                formHijo.BringToFront();
+                formHijo.Show();
+            }
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -65,33 +98,22 @@ namespace CapaPresentacion.Formularios.Vendedor
             string mensajeResultado = "";
             registrarVentaCompleta(out mensajeResultado);
             MessageBox.Show(mensajeResultado);
-            
-            /*detalle_venta auxDetalle = new detalle_venta
-            {
-                cantidad_detalle_venta = 1,
-                precio_detalle_venta = 30,
-                subtotal_detalle_venta = 30,
-                id_producto = 1,
-                id_venta = 3,
-                fecha_creacion_detalle_venta = DateTime.Now,
-                
-            };
-            string mensajeResultado = "";
-            CL_Venta auxVenta = new CL_Venta();
-
-            auxVenta.registrarDetalleVenta(auxDetalle, out mensajeResultado);
-            /*string mensajeResultado = "";
-
-            registrarVentaCompleta(mensajeResultado);
-            MessageBox.Show(mensajeResultado); */
+            /*
+            frmFactura auxFatura = new frmFactura(dtgvResumen);
+            auxFatura.Show();
+            auxFatura.BringToFront();
+            this.Close();
+            /*
+            abrirFormularioHijo( new frmFactura(dtgvResumen) );
+            formularioActivo.Hide();*/
         }
 
 
         private void cargarListaDetalleVenta(List<detalle_venta> auxListaDetalle, int pIdVenta)
         {
-            foreach ( DataGridViewRow fila in listaDetalle.Rows )
+            foreach (DataGridViewRow fila in listaDetalle.Rows)
             {
-               
+
                 int auxCantidad = int.Parse(fila.Cells["cantidad_producto_carrito"].Value.ToString());
                 float auxPrecio = float.Parse(fila.Cells["precio_producto_carrito"].Value.ToString());
                 float auxSubtotal = float.Parse(fila.Cells["subtotal_producto_carrito"].Value.ToString());
@@ -110,7 +132,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                 auxListaDetalle.Add(auxDetalle);
             }
         }
-        
+
         private void registrarVentaCompleta(out string mensajeResultado)
         {
             CL_Venta auxVenta = new CL_Venta();
@@ -134,59 +156,6 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             auxVenta.registrarDetalleVenta(auxListaDetalle, out mensajeResultado);
         }
-        /*
-        private void registrarListaDetalleVenta(int idVentaRegistrada, out string mensajeResultado)
-        {
-            CL_Venta auxDetalleVenta = new CL_Venta();
-            mensajeResultado = "";
-
-            List<detalle_venta> auxListaDetalle = obtenerListaDetalleVenta(dtgvResumen, idVentaRegistrada);
-
-            foreach (detalle_venta itemDetalle in auxListaDetalle)
-            {
-                auxDetalleVenta.registrarDetalleVenta(itemDetalle, out mensajeResultado);
-            }
-        }
-
-
-        private List<detalle_venta> obtenerListaDetalleVenta(DataGridView auxListaDetalle, int auxIdVenta)
-        {
-            List<detalle_venta> listaDetalleVenta = new List<detalle_venta>();
-
-            
-            foreach (DataGridViewRow auxFila in auxListaDetalle.Rows)
-            {
-                detalle_venta auxDetalle = new detalle_venta
-                {
-                    cantidad_detalle_venta = int.Parse(auxFila.Cells["cantidad_resumen"].Value.ToString()),
-                    precio_detalle_venta = float.Parse(auxFila.Cells["precio_resumen"].Value.ToString()),
-                    subtotal_detalle_venta = float.Parse(auxFila.Cells["subtotal_resumen"].Value.ToString()),
-                    fecha_creacion_detalle_venta = DateTime.Now,
-                    id_producto = int.Parse(auxFila.Cells["id_producto_resumen"].Value.ToString()),
-                    id_venta = auxIdVenta
-                };
-
-                listaDetalleVenta.Add(auxDetalle);
-            }
-
-            /*
-            for (int i = 1; i<auxListaDetalle.Rows.Count; i++)
-            {
-                detalle_venta auxDetalle = new detalle_venta
-                {
-                    cantidad_detalle_venta = int.Parse(auxListaDetalle.Rows[i].Cells["cantidad_resumen"].Value.ToString()),
-                    precio_detalle_venta = float.Parse(auxListaDetalle.Rows[i].Cells["precio_resumen"].Value.ToString()),
-                    subtotal_detalle_venta = float.Parse(auxListaDetalle.Rows[i].Cells["subtotal_resumen"].Value.ToString()),
-                    fecha_creacion_detalle_venta = DateTime.Now,
-                    id_producto = int.Parse(auxListaDetalle.Rows[i].Cells["id_producto_resumen"].Value.ToString()),
-                    id_venta = auxIdVenta
-                };
-
-                listaDetalleVenta.Add(auxDetalle);
-            }
-
-            return listaDetalleVenta;
-        }*/
 
     }
 }

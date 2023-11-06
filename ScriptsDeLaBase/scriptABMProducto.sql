@@ -1,7 +1,7 @@
 
 
 /*REGISTRAR PRODUCTO */
-ALTER PROC SP_REGISTRARPRODUCTO(
+CREATE PROC SP_REGISTRARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@nombre_producto VARCHAR(50),
 	@cod_barra_producto INT,
@@ -61,6 +61,8 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	END
 END
 
+GO
+
  /*declaro var que voy a usar para ahcer la prueba de insertar*/
 declare @Id_Producto_Resultado int
 declare @mensaje varchar (500)
@@ -74,9 +76,9 @@ select @Id_Producto_Resultado
 select @mensaje
 
 select * from producto
-
+GO
 								/*EDITAR PRODUCTO */
- ALTER PROC SP_EDITARPRODUCTO(
+ CREATE PROCEDURE SP_EDITARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_producto INT,
 	@cod_barra_producto INT,
@@ -126,7 +128,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 		SET @mensaje = 'No se puede editar un producto Y Usar el mismo nombre y marca o el mismo código de barras que otro Producto Registrado. Debe ser único.'
 
 end
-
+GO
 								/*DAR BAJA PRODUCTO */
  CREATE PROC SP_DARBAJAPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
@@ -182,7 +184,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
     END
 
 END
-
+GO
  /*otra forma de dar de baja mas optimiada seria asi pero es un poc omenos legible 
  ALTER PROC SP_DARBAJAPRODUCTO (
     @id_producto INT,
@@ -280,3 +282,4 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
     END
 
 END
+GO

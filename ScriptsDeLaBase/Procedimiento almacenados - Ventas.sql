@@ -76,3 +76,88 @@ FROM venta
 ORDER BY venta.id_venta
 
 GO
+
+
+-- ***** LISTAR VENTAS POR VENDEDOR *****
+
+CREATE PROCEDURE SP_ListarVentasVendedor
+(
+	@id_usuario INT
+)
+AS 
+  BEGIN
+	SELECT venta.id_venta AS 'ID Venta', persona.apellido +' '+persona.nombre AS 'Cliente',
+		   venta.venta_fecha AS 'Fecha', MP.nombre_metodo_pago AS 'Metodo de pago' FROM venta
+	INNER JOIN cliente on cliente.id_cliente = venta.id_cliente
+	INNER JOIN persona on persona.id_persona = cliente.id_persona
+	INNER JOIN metodo_pago AS MP on MP.id_metodo_pago = venta.id_metodo_pago
+	WHERE venta.id_usuario = @id_usuario;
+  END
+GO
+
+--DROP PROCEDURE SP_ListarVentasVendedor
+
+-- ***** LISTAR DETALLE VENTA *****
+
+CREATE PROCEDURE SP_ListarDetalleVenta
+(
+  @id_venta INT
+)
+AS
+  BEGIN
+    SELECT P.nombre_producto AS Producto, DV.cantidad_detalle_venta AS Cantidad,
+		   DV.precio_detalle_venta AS Precio, DV.subtotal_detalle_venta AS Subtotal FROM detalle_venta AS DV
+    INNER JOIN producto AS P on P.id_producto = DV.id_producto
+	WHERE DV.id_venta = @id_venta
+  END
+GO
+
+
+-- ***** DETALLES FACTURA *****
+
+CREATE PROCEDURE SP_ObtenerDatosFactura
+(
+  @id_venta INT
+)
+AS
+  BEGIN 
+	SELECT V.id_venta AS 'Numero de factura',
+		   P.apellido +' '+P.nombre AS 'Cliente',
+		   P.dni AS 'DNI',
+		   P.telefono AS 'Telefono',
+		   V.venta_fecha AS 'Fecha', 
+		   N.nombre_negocio AS 'Nombre',
+		   N.CUIT,
+		   N.direccion AS 'Direccion'
+		   FROM venta AS V
+	INNER JOIN cliente AS C on C.id_cliente = V.id_cliente
+	INNER JOIN persona AS P on P.id_persona = C.id_persona
+	CROSS JOIN Negocio AS N
+	WHERE id_venta = @id_venta
+  END
+GO
+
+
+select * from Negocio
+/*
+SELECT P.nombre_producto, DV.cantidad_detalle_venta, DV.precio_detalle_venta,
+	   DV.subtotal_detalle_venta FROM venta AS V
+INNER JOIN detalle_venta AS DV on DV.id_venta = V.id_venta
+INNER JOIN producto AS P on P.id_producto = DV.id_producto
+WHERE V.id_venta = 5
+
+SELECT * FROM detalle_venta
+/*
+
+select venta.id_venta, producto.nombre_producto from venta -- venta.id_venta, producto.nombre_producto
+inner join detalle_venta on detalle_venta.id_venta = venta.id_venta
+inner join producto on producto.id_producto = detalle_venta.id_producto
+where venta.id_venta = 1
+
+*/
+/*
+select * from cliente
+select venta.id_venta, persona.nombre from venta
+inner join cliente on cliente.id_cliente = venta.id_cliente
+inner join persona on persona.id_persona = cliente.id_persona
+*/

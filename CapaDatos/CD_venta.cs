@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using capaEntidad;
+using System.Globalization;
 
 namespace CapaDatos
 {
@@ -39,6 +40,43 @@ namespace CapaDatos
 
             return tablaVentas;
         }
+
+
+        public DataTable listarVentasVendedor( int pIdUsuario)
+        {
+            DataTable listaVentas = new DataTable();
+
+            using ( SqlConnection objConexion = new SqlConnection(CD_conexion.cadena) )
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_ListarVentasVendedor", objConexion);
+
+                    comando.Parameters.AddWithValue("@id_usuario", pIdUsuario);
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    listaVentas.Load(dataReader);
+
+                    dataReader.Close();
+                    objConexion.Close();
+
+                }
+                catch ( Exception excepcion )
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+
+                return listaVentas;
+            }
+
+        }
+
 
         public DataTable obtenerMetodosPago()
         {
@@ -116,6 +154,56 @@ namespace CapaDatos
 
             }
 
+        }
+
+
+        public factura buscarFactura( int pIdVenta)
+        {
+            factura auxFactura = new factura();
+
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_ObtenerDatosFactura", objConexion);
+
+                    comando.Parameters.AddWithValue("@id_venta", pIdVenta);
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    if(dataReader.Read())
+                    {
+                        auxFactura = new factura
+                        {
+                            nroFactura = int.Parse(dataReader["Numero de factura"].ToString()),
+                            nombreCliente = dataReader["Cliente"].ToString(),
+                            dni = dataReader["DNI"].ToString(),
+                            telefono = dataReader["Telefono"].ToString(),
+                            fechaVenta = dataReader["Fecha"].ToString(),
+                            nombreNegocio = dataReader["Nombre"].ToString(),
+                            cuitNegocio = dataReader["CUIT"].ToString(),
+                            direccionNegocio = dataReader["Direccion"].ToString()
+                        };
+
+                    }
+
+                    dataReader.Close();
+
+                    objConexion.Close();
+
+                }            
+                catch (Exception excepcion)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
+                }
+
+            }
+
+            return auxFactura;
         }
 
     }

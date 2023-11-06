@@ -9,6 +9,7 @@ AS
 GO
 
 
+-- REGISTRAR VENTA:
 CREATE PROCEDURE SP_RegistrarVenta
 (
   @venta_fecha DATE,
@@ -29,6 +30,8 @@ AS
   END
 GO
 
+
+-- REGISTRAR DETALLE VENTA:
 CREATE PROCEDURE SP_RegistrarDetalleVenta
 (
   @cantidad_detalle_venta INT,
@@ -66,6 +69,38 @@ AS
   END
 GO
 
+
+-- GENERAR FACTURA:
+
+CREATE PROCEDURE SP_ListarFacturas
+(
+  @id_vendedor INT
+)
+AS
+  BEGIN
+    SELECT * FROM venta AS V
+	INNER JOIN cliente AS C on C.id_cliente = V.id_cliente
+	INNER JOIN persona AS P on P.id_persona = C.id_persona
+	WHERE id_venta = @id_vendedor
+  END
+GO
+
+CREATE PROCEDURE SP_BuscarDetalleFactura
+(
+	@id_venta INT
+)
+AS
+  BEGIN 
+    select * from venta AS V
+	INNER JOIN detalle_venta AS DV on DV.id_venta = V.id_venta
+
+	WHERE V.id_venta = @id_venta;
+  END
+GO
+/*
+select * from negocio
+
+
 select * from producto
 select * from marca
 select * from categoria
@@ -74,4 +109,5 @@ insert into producto(nombre_producto, descripcion_producto, precio_compra, preci
 					 estado_producto, Id_Marca, id_categoria, fecha_creacion_producto, cod_barra_producto)
 values('Harina de maiz', 'harina', 20, 30, 'x', 4, 1, 1, 1, GETDATE(), 3);
 
-select * from usuario
+select * from usuario*/
+

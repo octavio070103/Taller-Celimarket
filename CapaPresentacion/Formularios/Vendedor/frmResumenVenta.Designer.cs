@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumenVenta));
-            panel1 = new Panel();
+            pnlResumen = new Panel();
             btnCancelar = new Button();
             btnConfirmar = new Button();
             lblTotalRes = new Label();
@@ -57,7 +57,7 @@
             picMaxPantalla = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
-            panel1.SuspendLayout();
+            pnlResumen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResumen).BeginInit();
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -72,25 +72,25 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnlResumen
             // 
-            panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(btnConfirmar);
-            panel1.Controls.Add(lblTotalRes);
-            panel1.Controls.Add(lblTotal);
-            panel1.Controls.Add(lblMetodoPago);
-            panel1.Controls.Add(lblNombreCli);
-            panel1.Controls.Add(lblMetodoRes);
-            panel1.Controls.Add(lblClienteRes);
-            panel1.Controls.Add(lblResumen);
-            panel1.Controls.Add(dtgvResumen);
-            panel1.Controls.Add(pnlBarraClientes);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(702, 511);
-            panel1.TabIndex = 0;
+            pnlResumen.BackColor = Color.SteelBlue;
+            pnlResumen.Controls.Add(btnCancelar);
+            pnlResumen.Controls.Add(btnConfirmar);
+            pnlResumen.Controls.Add(lblTotalRes);
+            pnlResumen.Controls.Add(lblTotal);
+            pnlResumen.Controls.Add(lblMetodoPago);
+            pnlResumen.Controls.Add(lblNombreCli);
+            pnlResumen.Controls.Add(lblMetodoRes);
+            pnlResumen.Controls.Add(lblClienteRes);
+            pnlResumen.Controls.Add(lblResumen);
+            pnlResumen.Controls.Add(dtgvResumen);
+            pnlResumen.Controls.Add(pnlBarraClientes);
+            pnlResumen.Dock = DockStyle.Fill;
+            pnlResumen.Location = new Point(0, 0);
+            pnlResumen.Name = "pnlResumen";
+            pnlResumen.Size = new Size(702, 511);
+            pnlResumen.TabIndex = 0;
             // 
             // btnCancelar
             // 
@@ -407,11 +407,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(702, 511);
-            Controls.Add(panel1);
+            Controls.Add(pnlResumen);
             Name = "frmResumenVenta";
             Text = "frmResumenVenta";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlResumen.ResumeLayout(false);
+            pnlResumen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResumen).EndInit();
             pnlBarraClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -429,7 +429,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnlResumen;
         private Panel pnlBarraClientes;
         private PictureBox picMaximizar;
         private PictureBox picMinimizar;
