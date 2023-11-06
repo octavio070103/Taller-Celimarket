@@ -15,6 +15,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace CapaPresentacion.Formularios.Admin
 {
@@ -30,7 +31,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void FrmGestionarConsulta_Load(object sender, EventArgs e)
         {
-            DataGridDisenio.Formato(dataGridConsultas, 2); //llamo a la clase datagrid disenio 
+            DataGridDisenio.Formato(dataGridConsultas, 1); //llamo a la clase datagrid disenio que le da el formato 1 a ese data grid 
 
             // Crear una instancia de la capa de lógica para hacer uso de los metodos que tiene esa clase CL_Consulta que esta en la capa logica
             CL_Consulta obj_CL_Consulta = new CL_Consulta();
@@ -106,27 +107,28 @@ namespace CapaPresentacion.Formularios.Admin
         private void dataGridConsultas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string mensaje = string.Empty;
+            string mensajeCorreo = "La consulta fue recibida y leida";
             CL_Consulta obj_CL_Consulta = new CL_Consulta();
+            //obtenemos el id_consulta de la consulta que se selecciono para marcarla como leida es decir cambiar el estado de la consulta a leida
+            DataGridViewRow filaSeleccionada = dataGridConsultas.Rows[e.RowIndex]; //primero obtenemos la filaSeleccionada
+
+            int id_consultaSeleccionada = Convert.ToInt32((filaSeleccionada.Cells["Col_id_consulta"].Value.ToString()));//obtenemos el valor de la columna id_consulta lo convertimos a entero
+            capaEntidad.consulta obj_consulta = obj_CL_Consulta.buscarConsultaPorIdConsulta(id_consultaSeleccionada); //aca le pasamos el id_consulta que obtuivmos para poder obtener el ese registro de consulta (obj_consulta) y asi cambiar  su estado a leido
 
             //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna responder_consulta entonces que entre al if y me permita responder esa cosnulta
             if (dataGridConsultas.Columns[e.ColumnIndex].Name == "Responder_Consulta")
             {
-                FrmResponderConsulta ventanaEmergRespConsul = new FrmResponderConsulta();
+                FrmResponderConsulta ventanaEmergRespConsul = new FrmResponderConsulta(obj_consulta);
                 ventanaEmergRespConsul.ShowDialog();
             }
 
             //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna MarcarLeido entonces que entre al if y me permita marcar como leido esa consulta
             if (dataGridConsultas.Columns[e.ColumnIndex].Name == "MarcarLeido")
             {
-                //obtenemos el id_consulta de la consulta que se selecciono para marcarla como leida es decir cambiar el estado de la consulta a leida
-                DataGridViewRow filaSeleccionada = dataGridConsultas.Rows[e.RowIndex]; //primero obtenemos la filaSeleccionada
-
-                int id_consultaSeleccionada = Convert.ToInt32( (filaSeleccionada.Cells["Col_id_motivo_consulta"].Value.ToString()) );//obtenemos el valor de la columna id_consulta lo convertimos a entero
-                capaEntidad.consulta obj_consulta = obj_CL_Consulta.buscarConsultaPorIdConsulta(id_consultaSeleccionada); //aca le pasamos el id_consulta que obtuivmos para poder obtener el ese registro de consulta (obj_consulta) y asi cambiar  su estado a leido
-                bool cambiarEstadoConsulta = obj_CL_Consulta.cambiarEstadoConsulta(obj_consulta,out mensaje);
+                bool cambiarEstadoConsulta = obj_CL_Consulta.cambiarEstadoConsulta(obj_consulta, out mensaje);
                 if (cambiarEstadoConsulta)
                 {
-                    EnviarNotificacionPorCorreo(obj_consulta, "Consulta Leida por el Administrador",mensaje);
+                    EnviarNotificacionPorCorreo(obj_consulta, "Consulta Leida por el Administrador", mensajeCorreo);
                 }
             }
         }
@@ -148,7 +150,7 @@ namespace CapaPresentacion.Formularios.Admin
             // Filtra los datos en el DataGridView
             FiltrarDataGridViewConsulta(filtro, atributo);//lamo a mi metodo que filtra los uusarios del datagrid y le paso el filtro
         }
-   
+
         private void comboMotivo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string filtro = comboMotivo.SelectedItem.ToString(); //obtenemos el elemento seleccionado de este combobox
@@ -239,6 +241,75 @@ namespace CapaPresentacion.Formularios.Admin
 
         }
 
+        private void iconBtnExcel_Click(object sender, EventArgs e)
+        {
+            //aca digo que me permita imprimir el excel solo si posee alguna fila el datagrid
+            if (dataGridConsultas.Rows.Count > 0)
+            {
+                DataTable datatableExcel = new DataTable(); //aca creo un obj datatable para poder guardar el encabezado de cada columna
 
+                foreach (DataGridViewColumn columna in dataGridConsultas.Columns) //aca digo que recorra las columns de mi dataGrid Consultas
+                {
+                    if (columna.HeaderText != "Marca Como Leido" && columna.HeaderText != "Responder") { 
+                    datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
+                    }
+                }
+
+                //recorro y inserto todas mis filas de mi datagrid consulta en mi datatableexcel
+                foreach (DataGridViewRow filas in dataGridConsultas.Rows) //aca digo que recorra las columns de mi datagrid consulta
+                {
+                    //aca digo que se guarden en el excel solo las filas que estan visibles en ese momento ej.si aplico un filtro de que filas mostrar que solo guarden esas filas visibles unicamente en el excel
+                    if (filas.Visible)
+                    {
+                        //aca creo un nuevo objeto array y accedo a una fila y en esa fila que accedi que se guarden lso valores de cada cells o celda de cada columna , y asi haria con cada fila de mi datagridproduc
+                        datatableExcel.Rows.Add(new object[]
+                        {//aca guardo los valores de las columnas de esa fila que accedi puedo guardar todas las columnsa o puedo poner solo las columnas que quiero el valor pero debe de coincidir con la cabecera que guarde
+                            filas.Cells[0].Value.ToString(),
+                            filas.Cells[1].Value.ToString(),
+                            filas.Cells[2].Value.ToString(),
+                            filas.Cells[3].Value.ToString(),
+                            filas.Cells[4].Value.ToString(),
+                            filas.Cells[5].Value.ToString(),
+                            filas.Cells[6].Value.ToString(),
+                            filas.Cells[7].Value.ToString(),
+                            filas.Cells[8].Value.ToString(),
+                            filas.Cells[9].Value.ToString(),
+                            filas.Cells[10].Value.ToString(),
+                            filas.Cells[11].Value.ToString(),
+                            filas.Cells[12].Value.ToString(),
+                            
+                           
+                        });
+                    }
+                }
+
+                //aca le pregunto al usuario en que parte quiere guardar al archivo excel a este obj lo llamare saveFile
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.FileName = string.Format("ReporteConsulta{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
+                saveFile.Filter = "Excel Files | *.xlsx"; //aca estoy agregando un filtro a la ventana de donde quiero que se guarden para que al momento de mostrarse solo se muestren ese tipo de archivos con esa extension
+
+                //aca digo si en el evento showdialog de la ventana de savefile se dio al evento ok que entre al if
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //aca comienzo a manipular el nugget de excel que instale para poder crear y exportar el mismo 
+                        XLWorkbook wb = new XLWorkbook(); //aca creo el archivo excel
+                        var hoja = wb.Worksheets.Add(datatableExcel, "Informe Consultas"); //aca creo una variable que sera la hoja de mi excel
+                        hoja.ColumnsUsed().AdjustToContents(); //aca le decimo que se ajuste el contenido al ancho de las columnnas que tienen contenidos unicamente
+                        wb.SaveAs(saveFile.FileName); //aca con el saveas (guardar como) guardo mi excel en la ruta que le paso como parametro que determine anteriormente en savefile.filename
+                        MessageBox.Show("Reporte Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("No se pudo Generar el Reporte, ocurrio un error", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

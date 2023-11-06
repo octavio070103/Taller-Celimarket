@@ -46,15 +46,16 @@ CREATE PROCEDURE SP_DatosDelNegocio
 	@nroProveedores INT OUT,
 	@nroProductos INT OUT
 AS
-	set @nroVentas = ( select COUNT(id_venta) AS totalVentas FROM venta )
-	set @totalRecaudado = ( select SUM(subtotal_detalle_venta) AS totalRecaudado FROM detalle_venta )
+	set @nroVentas = ( select COUNT(id_venta) AS totalVentas FROM venta)
+	set @totalRecaudado =(SELECT ISNULL(SUM(subtotal_detalle_venta),0) AS totalRecaudado FROM detalle_venta)--La función ISNULL toma dos argumentos: el primer argumento es el valor que se evalúa y el segundo argumento es el valor que se utiliza si el primer argumento es NULL. En este caso, si SUM(subtotal_detalle_venta) es NULL, se reemplaza por 0.
 	set @nroClientes = ( select COUNT(id_cliente) AS numeroClientes FROM cliente )
 	set @nroEmpleado = ( select COUNT(id_usuario) AS numeroEmpleados FROM usuario )
 	set @nroProveedores = ( select COUNT(id_proveedor) AS numeroProveedores FROM proveedor )
 	set @nroProductos = ( select COUNT(id_producto)  AS TotalProductos FROM producto )
 GO
 
-
+FROM venta WHERE MONTH(fecha_venta) = @mes);
+@mes INT,
 --******* LISTAR TODAS LAS VENTAS ******--
 
 

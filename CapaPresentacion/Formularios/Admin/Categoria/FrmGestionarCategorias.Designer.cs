@@ -35,6 +35,7 @@
             panel1 = new Panel();
             lblListaCategoria = new Label();
             panel2 = new Panel();
+            iconBtnExcel = new FontAwesome.Sharp.IconButton();
             iconBtnProducto = new FontAwesome.Sharp.IconButton();
             iconBtnDarBaja = new FontAwesome.Sharp.IconButton();
             iconBtnDarAlta = new FontAwesome.Sharp.IconButton();
@@ -90,6 +91,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
+            panel2.Controls.Add(iconBtnExcel);
             panel2.Controls.Add(iconBtnProducto);
             panel2.Controls.Add(iconBtnDarBaja);
             panel2.Controls.Add(iconBtnDarAlta);
@@ -101,6 +103,31 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(822, 473);
             panel2.TabIndex = 2;
+            // 
+            // iconBtnExcel
+            // 
+            iconBtnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            iconBtnExcel.BackColor = Color.DarkGray;
+            iconBtnExcel.BackgroundImage = (Image)resources.GetObject("iconBtnExcel.BackgroundImage");
+            iconBtnExcel.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExcel.Cursor = Cursors.Hand;
+            iconBtnExcel.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExcel.FlatStyle = FlatStyle.Flat;
+            iconBtnExcel.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnExcel.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExcel.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExcel.IconColor = Color.White;
+            iconBtnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExcel.IconSize = 30;
+            iconBtnExcel.Location = new Point(22, 434);
+            iconBtnExcel.Name = "iconBtnExcel";
+            iconBtnExcel.Size = new Size(126, 27);
+            iconBtnExcel.TabIndex = 23;
+            iconBtnExcel.Text = "Descargar Excel";
+            iconBtnExcel.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExcel.UseVisualStyleBackColor = false;
+            iconBtnExcel.Click += iconBtnExcel_Click;
             // 
             // iconBtnProducto
             // 
@@ -425,26 +452,27 @@
             // 
             // col_nombre_categ
             // 
-            col_nombre_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            col_nombre_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_nombre_categ.HeaderText = "Nombre";
+            col_nombre_categ.MinimumWidth = 50;
             col_nombre_categ.Name = "col_nombre_categ";
             col_nombre_categ.ReadOnly = true;
-            col_nombre_categ.Width = 84;
             // 
             // col_descrip_categ
             // 
             col_descrip_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_descrip_categ.HeaderText = "Descripcion";
-            col_descrip_categ.MinimumWidth = 25;
+            col_descrip_categ.MinimumWidth = 130;
             col_descrip_categ.Name = "col_descrip_categ";
             col_descrip_categ.ReadOnly = true;
             // 
             // col_estado_categoria
             // 
+            col_estado_categoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             col_estado_categoria.HeaderText = "Estado";
+            col_estado_categoria.MinimumWidth = 50;
             col_estado_categoria.Name = "col_estado_categoria";
             col_estado_categoria.ReadOnly = true;
-            col_estado_categoria.Width = 74;
             // 
             // FrmGestionarCategorias
             // 
@@ -492,5 +520,6 @@
         private DataGridViewTextBoxColumn col_nombre_categ;
         private DataGridViewTextBoxColumn col_descrip_categ;
         private DataGridViewTextBoxColumn col_estado_categoria;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
     }
 }

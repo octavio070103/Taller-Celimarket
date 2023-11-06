@@ -28,6 +28,8 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         }
         private void FrmGestionarProducto_Load(object sender, EventArgs e)
         {
+            DataGridDisenio.Formato(dataGridProducto, 1); //llamo a la clase datagrid disenio que le da el formato 1 a ese data grid 
+
             // Crear una instancia de la capa de lógica
             CL_Producto obj_CL_Producto = new CL_Producto();
 
@@ -49,13 +51,14 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 dataGridProducto.Rows.Add(
                     new object[]
                     { //items del producto
-                      item.Idproducto,item.cod_barra_producto,item.nombre_producto,item.descripcion_producto,item.precio_compra,item.precio_venta,item.stock_producto,item.imagen,
+                      item.Idproducto,item.cod_barra_producto,item.nombre_producto,item.descripcion_producto,item.precio_compra,item.precio_venta,item.stock_producto,
                        //item de la tabla marca
                       item.obj_marca.nombre_marca,
                       // item de la tabla categoria
                        item.obj_categoria.nombre_categoria,
 
-                       item.estado_producto== 1 ? "Activo" : "No activo"
+                       item.estado_producto== 1 ? "Activo" : "No activo",
+                       item.imagen //muestor ultimo la imagen
                      }
                  );
 
@@ -468,14 +471,15 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
         private void iconBtnExcel_Click(object sender, EventArgs e)
         {
+            //aca digo que me permita imprimir el excel solo si posee alguna fila el datagrid
             if (dataGridProducto.Rows.Count > 0)
             {
                 DataTable datatableExcel = new DataTable(); //aca creo un obj datatable para poder guardar el encabezado de cada columna
 
                 foreach (DataGridViewColumn columna in dataGridProducto.Columns) //aca digo que recorra las columns de mi datagrid producto
                 {
-                  
-                        datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
+
+                    datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
                 }
 
                 //recorro y inserto todas mis filas de mi datagrid producto en mi datatableexcel
@@ -495,7 +499,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                             filas.Cells[4].Value.ToString(),
                             filas.Cells[5].Value.ToString(),
                             filas.Cells[6].Value.ToString(),
-                           filas.Cells[7].Value.ToString(), 
+                           filas.Cells[7].Value.ToString(),
                             filas.Cells[8].Value.ToString(),
                             filas.Cells[9].Value.ToString(),
 

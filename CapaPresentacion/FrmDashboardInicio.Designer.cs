@@ -31,52 +31,55 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDashboardInicio));
             chartVentas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartStockProductoCateogria = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panelNroClientes = new Panel();
-            label16 = new Label();
+            lblNroCliente = new Label();
             label17 = new Label();
             iconButton8 = new FontAwesome.Sharp.IconButton();
             panelNroEmpleados = new Panel();
-            label14 = new Label();
+            lblNroEmple = new Label();
             label15 = new Label();
             iconButton7 = new FontAwesome.Sharp.IconButton();
             panelNroProveedores = new Panel();
-            label12 = new Label();
+            lblNroProvee = new Label();
             label13 = new Label();
             iconButton6 = new FontAwesome.Sharp.IconButton();
             panelTotalCaja = new Panel();
-            label10 = new Label();
+            lblValorCaja = new Label();
             iconButton5 = new FontAwesome.Sharp.IconButton();
             label11 = new Label();
             panelCantPromociones = new Panel();
-            label8 = new Label();
+            lblNroVentas = new Label();
             label9 = new Label();
             iconButton4 = new FontAwesome.Sharp.IconButton();
             panelGastos = new Panel();
-            label6 = new Label();
+            lblValorGasto = new Label();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             label7 = new Label();
             panelCantidadProductos = new Panel();
-            label4 = new Label();
+            lblNroProduc = new Label();
             label5 = new Label();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             panelTotalVentas = new Panel();
-            label2 = new Label();
             lblTotalVentas = new Label();
+            lblTVent = new Label();
             iconBtnRechazar = new FontAwesome.Sharp.IconButton();
             panelStockDisponible = new Panel();
-            label1 = new Label();
+            lblTotalStock = new Label();
             iconButton1 = new FontAwesome.Sharp.IconButton();
-            label3 = new Label();
+            lblEstadoStock = new Label();
             panel1 = new Panel();
             lblDashInicio = new Label();
             ((System.ComponentModel.ISupportInitialize)chartVentas).BeginInit();
@@ -111,6 +114,9 @@
             chartVentas.Size = new Size(430, 182);
             chartVentas.TabIndex = 15;
             chartVentas.Text = "chart1";
+            title4.Name = "Title1";
+            title4.Text = "Ventas del Mes ";
+            chartVentas.Titles.Add(title4);
             // 
             // chartStockProductoCateogria
             // 
@@ -129,6 +135,9 @@
             chartStockProductoCateogria.Size = new Size(430, 203);
             chartStockProductoCateogria.TabIndex = 16;
             chartStockProductoCateogria.Text = "chart2";
+            title5.Name = "Title1";
+            title5.Text = "Stock Productos por categoria";
+            chartStockProductoCateogria.Titles.Add(title5);
             // 
             // chart3
             // 
@@ -149,11 +158,14 @@
             chart3.Size = new Size(364, 203);
             chart3.TabIndex = 17;
             chart3.Text = "chartTopProductos";
+            title6.Name = "Title1";
+            title6.Text = "Productos Mas Vendidos";
+            chart3.Titles.Add(title6);
             // 
             // panelNroClientes
             // 
             panelNroClientes.BackColor = Color.FromArgb(34, 41, 53);
-            panelNroClientes.Controls.Add(label16);
+            panelNroClientes.Controls.Add(lblNroCliente);
             panelNroClientes.Controls.Add(label17);
             panelNroClientes.Controls.Add(iconButton8);
             panelNroClientes.Location = new Point(680, 60);
@@ -161,15 +173,15 @@
             panelNroClientes.Size = new Size(120, 58);
             panelNroClientes.TabIndex = 20;
             // 
-            // label16
+            // lblNroCliente
             // 
-            label16.AutoSize = true;
-            label16.ForeColor = Color.White;
-            label16.Location = new Point(38, 31);
-            label16.Name = "label16";
-            label16.Size = new Size(33, 15);
-            label16.TabIndex = 19;
-            label16.Text = "valor";
+            lblNroCliente.AutoSize = true;
+            lblNroCliente.ForeColor = Color.White;
+            lblNroCliente.Location = new Point(63, 22);
+            lblNroCliente.Name = "lblNroCliente";
+            lblNroCliente.Size = new Size(33, 15);
+            lblNroCliente.TabIndex = 19;
+            lblNroCliente.Text = "valor";
             // 
             // label17
             // 
@@ -207,7 +219,7 @@
             // panelNroEmpleados
             // 
             panelNroEmpleados.BackColor = Color.FromArgb(34, 41, 53);
-            panelNroEmpleados.Controls.Add(label14);
+            panelNroEmpleados.Controls.Add(lblNroEmple);
             panelNroEmpleados.Controls.Add(label15);
             panelNroEmpleados.Controls.Add(iconButton7);
             panelNroEmpleados.Location = new Point(680, 124);
@@ -215,15 +227,15 @@
             panelNroEmpleados.Size = new Size(120, 58);
             panelNroEmpleados.TabIndex = 21;
             // 
-            // label14
+            // lblNroEmple
             // 
-            label14.AutoSize = true;
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(54, 22);
-            label14.Name = "label14";
-            label14.Size = new Size(33, 15);
-            label14.TabIndex = 19;
-            label14.Text = "valor";
+            lblNroEmple.AutoSize = true;
+            lblNroEmple.ForeColor = Color.White;
+            lblNroEmple.Location = new Point(54, 22);
+            lblNroEmple.Name = "lblNroEmple";
+            lblNroEmple.Size = new Size(33, 15);
+            lblNroEmple.TabIndex = 19;
+            lblNroEmple.Text = "valor";
             // 
             // label15
             // 
@@ -261,7 +273,7 @@
             // panelNroProveedores
             // 
             panelNroProveedores.BackColor = Color.FromArgb(34, 41, 53);
-            panelNroProveedores.Controls.Add(label12);
+            panelNroProveedores.Controls.Add(lblNroProvee);
             panelNroProveedores.Controls.Add(label13);
             panelNroProveedores.Controls.Add(iconButton6);
             panelNroProveedores.Location = new Point(680, 188);
@@ -269,15 +281,15 @@
             panelNroProveedores.Size = new Size(120, 54);
             panelNroProveedores.TabIndex = 22;
             // 
-            // label12
+            // lblNroProvee
             // 
-            label12.AutoSize = true;
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(54, 19);
-            label12.Name = "label12";
-            label12.Size = new Size(33, 15);
-            label12.TabIndex = 19;
-            label12.Text = "valor";
+            lblNroProvee.AutoSize = true;
+            lblNroProvee.ForeColor = Color.White;
+            lblNroProvee.Location = new Point(54, 19);
+            lblNroProvee.Name = "lblNroProvee";
+            lblNroProvee.Size = new Size(33, 15);
+            lblNroProvee.TabIndex = 19;
+            lblNroProvee.Text = "valor";
             // 
             // label13
             // 
@@ -315,7 +327,7 @@
             // panelTotalCaja
             // 
             panelTotalCaja.BackColor = Color.FromArgb(34, 41, 53);
-            panelTotalCaja.Controls.Add(label10);
+            panelTotalCaja.Controls.Add(lblValorCaja);
             panelTotalCaja.Controls.Add(iconButton5);
             panelTotalCaja.Controls.Add(label11);
             panelTotalCaja.Location = new Point(554, 188);
@@ -323,15 +335,15 @@
             panelTotalCaja.Size = new Size(120, 54);
             panelTotalCaja.TabIndex = 25;
             // 
-            // label10
+            // lblValorCaja
             // 
-            label10.AutoSize = true;
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(54, 19);
-            label10.Name = "label10";
-            label10.Size = new Size(33, 15);
-            label10.TabIndex = 19;
-            label10.Text = "valor";
+            lblValorCaja.AutoSize = true;
+            lblValorCaja.ForeColor = Color.White;
+            lblValorCaja.Location = new Point(54, 19);
+            lblValorCaja.Name = "lblValorCaja";
+            lblValorCaja.Size = new Size(33, 15);
+            lblValorCaja.TabIndex = 19;
+            lblValorCaja.Text = "valor";
             // 
             // iconButton5
             // 
@@ -369,7 +381,7 @@
             // panelCantPromociones
             // 
             panelCantPromociones.BackColor = Color.FromArgb(34, 41, 53);
-            panelCantPromociones.Controls.Add(label8);
+            panelCantPromociones.Controls.Add(lblNroVentas);
             panelCantPromociones.Controls.Add(label9);
             panelCantPromociones.Controls.Add(iconButton4);
             panelCantPromociones.Location = new Point(554, 124);
@@ -377,15 +389,15 @@
             panelCantPromociones.Size = new Size(120, 58);
             panelCantPromociones.TabIndex = 24;
             // 
-            // label8
+            // lblNroVentas
             // 
-            label8.AutoSize = true;
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(54, 22);
-            label8.Name = "label8";
-            label8.Size = new Size(33, 15);
-            label8.TabIndex = 19;
-            label8.Text = "valor";
+            lblNroVentas.AutoSize = true;
+            lblNroVentas.ForeColor = Color.White;
+            lblNroVentas.Location = new Point(54, 22);
+            lblNroVentas.Name = "lblNroVentas";
+            lblNroVentas.Size = new Size(33, 15);
+            lblNroVentas.TabIndex = 19;
+            lblNroVentas.Text = "valor";
             // 
             // label9
             // 
@@ -393,9 +405,9 @@
             label9.ForeColor = Color.White;
             label9.Location = new Point(42, 3);
             label9.Name = "label9";
-            label9.Size = new Size(78, 15);
+            label9.Size = new Size(53, 15);
             label9.TabIndex = 18;
-            label9.Text = "N Promocion";
+            label9.Text = "N Ventas";
             // 
             // iconButton4
             // 
@@ -423,7 +435,7 @@
             // panelGastos
             // 
             panelGastos.BackColor = Color.FromArgb(34, 41, 53);
-            panelGastos.Controls.Add(label6);
+            panelGastos.Controls.Add(lblValorGasto);
             panelGastos.Controls.Add(iconButton3);
             panelGastos.Controls.Add(label7);
             panelGastos.Location = new Point(554, 60);
@@ -431,15 +443,15 @@
             panelGastos.Size = new Size(120, 58);
             panelGastos.TabIndex = 23;
             // 
-            // label6
+            // lblValorGasto
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(54, 22);
-            label6.Name = "label6";
-            label6.Size = new Size(33, 15);
-            label6.TabIndex = 19;
-            label6.Text = "valor";
+            lblValorGasto.AutoSize = true;
+            lblValorGasto.ForeColor = Color.White;
+            lblValorGasto.Location = new Point(54, 22);
+            lblValorGasto.Name = "lblValorGasto";
+            lblValorGasto.Size = new Size(33, 15);
+            lblValorGasto.TabIndex = 19;
+            lblValorGasto.Text = "valor";
             // 
             // iconButton3
             // 
@@ -477,7 +489,7 @@
             // panelCantidadProductos
             // 
             panelCantidadProductos.BackColor = Color.FromArgb(34, 41, 53);
-            panelCantidadProductos.Controls.Add(label4);
+            panelCantidadProductos.Controls.Add(lblNroProduc);
             panelCantidadProductos.Controls.Add(label5);
             panelCantidadProductos.Controls.Add(iconButton2);
             panelCantidadProductos.Location = new Point(436, 188);
@@ -485,15 +497,15 @@
             panelCantidadProductos.Size = new Size(112, 54);
             panelCantidadProductos.TabIndex = 28;
             // 
-            // label4
+            // lblNroProduc
             // 
-            label4.AutoSize = true;
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(55, 19);
-            label4.Name = "label4";
-            label4.Size = new Size(33, 15);
-            label4.TabIndex = 19;
-            label4.Text = "valor";
+            lblNroProduc.AutoSize = true;
+            lblNroProduc.ForeColor = Color.White;
+            lblNroProduc.Location = new Point(55, 19);
+            lblNroProduc.Name = "lblNroProduc";
+            lblNroProduc.Size = new Size(33, 15);
+            lblNroProduc.TabIndex = 19;
+            lblNroProduc.Text = "valor";
             // 
             // label5
             // 
@@ -531,33 +543,33 @@
             // panelTotalVentas
             // 
             panelTotalVentas.BackColor = Color.FromArgb(34, 41, 53);
-            panelTotalVentas.Controls.Add(label2);
             panelTotalVentas.Controls.Add(lblTotalVentas);
+            panelTotalVentas.Controls.Add(lblTVent);
             panelTotalVentas.Controls.Add(iconBtnRechazar);
             panelTotalVentas.Location = new Point(436, 60);
             panelTotalVentas.Name = "panelTotalVentas";
             panelTotalVentas.Size = new Size(112, 58);
             panelTotalVentas.TabIndex = 26;
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(54, 22);
-            label2.Name = "label2";
-            label2.Size = new Size(33, 15);
-            label2.TabIndex = 17;
-            label2.Text = "valor";
-            // 
             // lblTotalVentas
             // 
             lblTotalVentas.AutoSize = true;
             lblTotalVentas.ForeColor = Color.White;
-            lblTotalVentas.Location = new Point(42, 3);
+            lblTotalVentas.Location = new Point(54, 22);
             lblTotalVentas.Name = "lblTotalVentas";
-            lblTotalVentas.Size = new Size(69, 15);
-            lblTotalVentas.TabIndex = 16;
-            lblTotalVentas.Text = "Total Ventas";
+            lblTotalVentas.Size = new Size(33, 15);
+            lblTotalVentas.TabIndex = 17;
+            lblTotalVentas.Text = "valor";
+            // 
+            // lblTVent
+            // 
+            lblTVent.AutoSize = true;
+            lblTVent.ForeColor = Color.White;
+            lblTVent.Location = new Point(42, 3);
+            lblTVent.Name = "lblTVent";
+            lblTVent.Size = new Size(69, 15);
+            lblTVent.TabIndex = 16;
+            lblTVent.Text = "Total Ventas";
             // 
             // iconBtnRechazar
             // 
@@ -585,23 +597,23 @@
             // panelStockDisponible
             // 
             panelStockDisponible.BackColor = Color.FromArgb(34, 41, 53);
-            panelStockDisponible.Controls.Add(label1);
+            panelStockDisponible.Controls.Add(lblTotalStock);
             panelStockDisponible.Controls.Add(iconButton1);
-            panelStockDisponible.Controls.Add(label3);
+            panelStockDisponible.Controls.Add(lblEstadoStock);
             panelStockDisponible.Location = new Point(436, 124);
             panelStockDisponible.Name = "panelStockDisponible";
             panelStockDisponible.Size = new Size(112, 58);
             panelStockDisponible.TabIndex = 29;
             // 
-            // label1
+            // lblTotalStock
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(54, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(33, 15);
-            label1.TabIndex = 17;
-            label1.Text = "valor";
+            lblTotalStock.AutoSize = true;
+            lblTotalStock.ForeColor = Color.White;
+            lblTotalStock.Location = new Point(54, 22);
+            lblTotalStock.Name = "lblTotalStock";
+            lblTotalStock.Size = new Size(33, 15);
+            lblTotalStock.TabIndex = 17;
+            lblTotalStock.Text = "valor";
             // 
             // iconButton1
             // 
@@ -626,15 +638,15 @@
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // lblEstadoStock
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(54, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(39, 15);
-            label3.TabIndex = 16;
-            label3.Text = "Stock ";
+            lblEstadoStock.AutoSize = true;
+            lblEstadoStock.ForeColor = Color.White;
+            lblEstadoStock.Location = new Point(34, 3);
+            lblEstadoStock.Name = "lblEstadoStock";
+            lblEstadoStock.Size = new Size(39, 15);
+            lblEstadoStock.TabIndex = 16;
+            lblEstadoStock.Text = "Stock ";
             // 
             // panel1
             // 
@@ -653,10 +665,11 @@
             lblDashInicio.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lblDashInicio.ForeColor = SystemColors.ControlLightLight;
             lblDashInicio.ImageAlign = ContentAlignment.TopCenter;
-            lblDashInicio.Location = new Point(329, 0);
+            lblDashInicio.Location = new Point(152, 0);
             lblDashInicio.Name = "lblDashInicio";
-            lblDashInicio.Size = new Size(0, 45);
+            lblDashInicio.Size = new Size(370, 45);
             lblDashInicio.TabIndex = 0;
+            lblDashInicio.Text = "Estadisticas Del Mes De";
             lblDashInicio.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmDashboardInicio
@@ -722,32 +735,32 @@
         private Panel panelCantidadProductos;
         private Panel panelTotalVentas;
         private FontAwesome.Sharp.IconButton iconBtnRechazar;
-        private Label label2;
         private Label lblTotalVentas;
-        private Label label16;
+        private Label lblTVent;
+        private Label lblNroCliente;
         private Label label17;
         private FontAwesome.Sharp.IconButton iconButton8;
-        private Label label14;
+        private Label lblNroEmple;
         private Label label15;
         private FontAwesome.Sharp.IconButton iconButton7;
-        private Label label12;
+        private Label lblNroProvee;
         private Label label13;
         private FontAwesome.Sharp.IconButton iconButton6;
-        private Label label10;
+        private Label lblValorCaja;
         private Label label11;
         private FontAwesome.Sharp.IconButton iconButton5;
-        private Label label8;
+        private Label lblNroVentas;
         private Label label9;
         private FontAwesome.Sharp.IconButton iconButton4;
-        private Label label6;
+        private Label lblValorGasto;
         private Label label7;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private Label label4;
+        private Label lblNroProduc;
         private Label label5;
         private FontAwesome.Sharp.IconButton iconButton2;
         private Panel panelStockDisponible;
-        private Label label1;
-        private Label label3;
+        private Label lblTotalStock;
+        private Label lblEstadoStock;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panel1;
         private Label lblDashInicio;

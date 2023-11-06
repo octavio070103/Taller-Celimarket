@@ -2,6 +2,7 @@
 using capaEntidad;
 using CapaLogica;
 using CapaPresentacion.Formularios.Admin.usuario;
+using ClosedXML.Excel;
 using FontAwesome.Sharp;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using System;
@@ -27,6 +28,7 @@ namespace CapaPresentacion.Formularios.Admin
         private static capaEntidad.usuario usuarioActual;
         public FrmGestionarUsuario(MenuAdministrador p_MenuAdministrador, capaEntidad.usuario p_usuarioActual)
         {
+
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
 
@@ -55,6 +57,8 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void FrmGestionarUsuario_Load(object sender, EventArgs e)
         {
+            DataGridDisenio.Formato(dataGridUsuarios, 1); //llamo a la clase datagrid disenio que le da el formato 1 a ese data grid 
+
             // Crear una instancia de la capa de lógica
             CL_usuario obj_CL_Usuario = new CL_usuario();
             //ESCRIBO capaentidad.usuario ya que es necesario especificar de manera explícita que archivo usuario te estás refiriendo,lo HAGO calificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
@@ -336,8 +340,8 @@ namespace CapaPresentacion.Formularios.Admin
         private void txtDomiciliodato_MouseClick(object sender, MouseEventArgs e)
         {
             CapaLogica.CL_usuario obj_cl_usuario = new CL_usuario();
-            capaEntidad.usuario obj_usuario_editando =obj_cl_usuario.buscarUsuario(Convert.ToInt32(txtIdGuardado.Text));//aca atravez del metodo buscar usuario obtengo el usuario que se esta editando para asi obtener su id_domicilio y poder obtener su domicilio actual
-            
+            capaEntidad.usuario obj_usuario_editando = obj_cl_usuario.buscarUsuario(Convert.ToInt32(txtIdGuardado.Text));//aca atravez del metodo buscar usuario obtengo el usuario que se esta editando para asi obtener su id_domicilio y poder obtener su domicilio actual
+
             //aca usamos el metodo buscar domicilio para traer ese objeto domcilio que se quiere editar
             CapaLogica.CL_domicilio obj_CL_domicilio = new CL_domicilio();
             capaEntidad.domicilio obj_domicilio_editando = obj_CL_domicilio.buscarDomicilioID(obj_usuario_editando.obj_domicilio.id_domicilio); //le paso como parametro el id_domcilio del usuario que se esta editando
@@ -746,6 +750,75 @@ namespace CapaPresentacion.Formularios.Admin
             FrmGestionarUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
         }
 
+        /*********exporto los datos en formato excel *******************/
+        private void iconBtnExcel_Click(object sender, EventArgs e)
+        {
+            //aca digo que me permita imprimir el excel solo si posee alguna fila el datagrid 
+            if (dataGridUsuarios.Rows.Count > 0)
+            {
+                DataTable datatableExcel = new DataTable(); //aca creo un obj datatable "datatableExcel" para poder guardar el encabezado de cada columna
 
+                foreach (DataGridViewColumn columna in dataGridUsuarios.Columns) //aca digo que recorra las columns de mi datagrid usuario
+                {
+                    //este if me permite no guardar la cabecera de columnas que no quiero por ej id_rol y id_usuario
+                    if (columna.HeaderText !="Id_usuario" && columna.HeaderText != "id_domicilio" && columna.HeaderText != "id_rol" && columna.HeaderText != "Password" )
+                    {
+                        datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
+
+                    }
+                }
+
+                //recorro y inserto todas mis filas de mi datagrid usuario en mi datatableexcel que es de tipo datatable
+                foreach (DataGridViewRow filas in dataGridUsuarios.Rows) //aca digo que recorra las columns de mi datagrid usuario
+                {
+                    //aca digo que se guarden en el excel solo las filas que estan visibles en ese momento ej.si aplico un filtro de que filas mostrar que solo guarden esas filas visibles unicamente en el excel
+                    if (filas.Visible)
+                    {
+                        //aca creo un nuevo objeto array y accedo a una fila y en esa fila que accedi que se guarden lso valores de cada cells o celda de cada columna , y asi haria con cada fila de mi datagridpwemiso
+                        datatableExcel.Rows.Add(new object[]
+                        {//aca guardo los valores de las columnas de esa fila que accedi puedo guardar todas las columnsa o puedo poner solo las columnas que quiero el valor pero debe de coincidir con la cabecera que guarde
+                            filas.Cells[1].Value.ToString(),
+                            filas.Cells[2].Value.ToString(),
+                            filas.Cells[3].Value.ToString(),
+                            filas.Cells[4].Value.ToString(),
+                            filas.Cells[5].Value.ToString(),
+                            filas.Cells[8].Value.ToString(),
+                            filas.Cells[10].Value.ToString(),
+                            filas.Cells[11].Value.ToString(),
+                            filas.Cells[12].Value.ToString(),
+                            filas.Cells[13].Value.ToString(),
+                            filas.Cells[14].Value.ToString(),
+                        });
+                    }
+                }
+
+                //aca le pregunto al usuario en que parte quiere guardar al archivo excel a este obj lo llamare saveFile
+                SaveFileDialog saveFile = new SaveFileDialog();
+                saveFile.FileName = string.Format("ReporteUsuario{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
+                saveFile.Filter = "Excel Files | *.xlsx"; //aca estoy agregando un filtro a la ventana de donde quiero que se guarden para que al momento de mostrarse solo se muestren ese tipo de archivos con esa extension
+
+                //aca digo si en el evento showdialog de la ventana de savefile se dio al evento ok que entre al if
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //aca comienzo a manipular el nugget de excel que instale para poder crear y exportar el mismo 
+                        XLWorkbook wb = new XLWorkbook(); //aca creo el archivo excel
+                        var hoja = wb.Worksheets.Add(datatableExcel, "Informe Usuario"); //aca creo una variable que sera la hoja de mi excel
+                        hoja.ColumnsUsed().AdjustToContents(); //aca le decimo que se ajuste el contenido al ancho de las columnnas que tienen contenidos unicamente
+                        wb.SaveAs(saveFile.FileName); //aca con el saveas (guardar como) guardo mi excel en la ruta que le paso como parametro que determine anteriormente en savefile.filename
+                        MessageBox.Show("Reporte Generado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("No se pudo Generar el Reporte, ocurrio un error", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
     }
 }

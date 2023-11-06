@@ -62,6 +62,10 @@
             iconBtnDarAlta = new FontAwesome.Sharp.IconButton();
             iconBtnCategorias = new FontAwesome.Sharp.IconButton();
             dataGridProducto = new DataGridView();
+            iconBtnAgregar = new FontAwesome.Sharp.IconButton();
+            iconBtnDarBaja = new FontAwesome.Sharp.IconButton();
+            lblCatalogoProducto = new Label();
+            panel1 = new Panel();
             Col_IDproducto = new DataGridViewTextBoxColumn();
             Col_CodBarra = new DataGridViewTextBoxColumn();
             Col_nombre_produc = new DataGridViewTextBoxColumn();
@@ -69,14 +73,10 @@
             Col_precio_compra = new DataGridViewTextBoxColumn();
             Col_precio_venta = new DataGridViewTextBoxColumn();
             Col_stock_produc = new DataGridViewTextBoxColumn();
-            Col_img_producto = new DataGridViewTextBoxColumn();
             Col_nom_marca = new DataGridViewTextBoxColumn();
             Col_nom_categ = new DataGridViewTextBoxColumn();
             Col_estado_produc = new DataGridViewTextBoxColumn();
-            iconBtnAgregar = new FontAwesome.Sharp.IconButton();
-            iconBtnDarBaja = new FontAwesome.Sharp.IconButton();
-            lblCatalogoProducto = new Label();
-            panel1 = new Panel();
+            Col_img_producto = new DataGridViewTextBoxColumn();
             panel2.SuspendLayout();
             panelDatosProducto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picImgEditarProducts).BeginInit();
@@ -511,7 +511,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridProducto.Columns.AddRange(new DataGridViewColumn[] { Col_IDproducto, Col_CodBarra, Col_nombre_produc, Col_Descrip_producto, Col_precio_compra, Col_precio_venta, Col_stock_produc, Col_img_producto, Col_nom_marca, Col_nom_categ, Col_estado_produc });
+            dataGridProducto.Columns.AddRange(new DataGridViewColumn[] { Col_IDproducto, Col_CodBarra, Col_nombre_produc, Col_Descrip_producto, Col_precio_compra, Col_precio_venta, Col_stock_produc, Col_nom_marca, Col_nom_categ, Col_estado_produc, Col_img_producto });
             dataGridProducto.Location = new Point(12, 85);
             dataGridProducto.MultiSelect = false;
             dataGridProducto.Name = "dataGridProducto";
@@ -531,83 +531,6 @@
             dataGridProducto.Size = new Size(795, 368);
             dataGridProducto.TabIndex = 12;
             dataGridProducto.CellContentClick += dataGridProducto_CellContentClick;
-            // 
-            // Col_IDproducto
-            // 
-            Col_IDproducto.HeaderText = "ID Producto";
-            Col_IDproducto.Name = "Col_IDproducto";
-            Col_IDproducto.ReadOnly = true;
-            Col_IDproducto.Width = 96;
-            // 
-            // Col_CodBarra
-            // 
-            Col_CodBarra.HeaderText = "Cod Barra";
-            Col_CodBarra.Name = "Col_CodBarra";
-            Col_CodBarra.ReadOnly = true;
-            Col_CodBarra.Width = 88;
-            // 
-            // Col_nombre_produc
-            // 
-            Col_nombre_produc.HeaderText = "Nombre Producto";
-            Col_nombre_produc.Name = "Col_nombre_produc";
-            Col_nombre_produc.ReadOnly = true;
-            Col_nombre_produc.Width = 128;
-            // 
-            // Col_Descrip_producto
-            // 
-            Col_Descrip_producto.HeaderText = "Descripcion Producto";
-            Col_Descrip_producto.Name = "Col_Descrip_producto";
-            Col_Descrip_producto.ReadOnly = true;
-            Col_Descrip_producto.Width = 148;
-            // 
-            // Col_precio_compra
-            // 
-            Col_precio_compra.HeaderText = "Precio Compra";
-            Col_precio_compra.Name = "Col_precio_compra";
-            Col_precio_compra.ReadOnly = true;
-            Col_precio_compra.Width = 115;
-            // 
-            // Col_precio_venta
-            // 
-            Col_precio_venta.HeaderText = "Precio Venta";
-            Col_precio_venta.Name = "Col_precio_venta";
-            Col_precio_venta.ReadOnly = true;
-            Col_precio_venta.Width = 102;
-            // 
-            // Col_stock_produc
-            // 
-            Col_stock_produc.HeaderText = "Stock";
-            Col_stock_produc.Name = "Col_stock_produc";
-            Col_stock_produc.ReadOnly = true;
-            Col_stock_produc.Width = 68;
-            // 
-            // Col_img_producto
-            // 
-            Col_img_producto.HeaderText = "Imagen";
-            Col_img_producto.Name = "Col_img_producto";
-            Col_img_producto.ReadOnly = true;
-            Col_img_producto.Width = 82;
-            // 
-            // Col_nom_marca
-            // 
-            Col_nom_marca.HeaderText = "Marca";
-            Col_nom_marca.Name = "Col_nom_marca";
-            Col_nom_marca.ReadOnly = true;
-            Col_nom_marca.Width = 75;
-            // 
-            // Col_nom_categ
-            // 
-            Col_nom_categ.HeaderText = "Categoria";
-            Col_nom_categ.Name = "Col_nom_categ";
-            Col_nom_categ.ReadOnly = true;
-            Col_nom_categ.Width = 95;
-            // 
-            // Col_estado_produc
-            // 
-            Col_estado_produc.HeaderText = "Estado ";
-            Col_estado_produc.Name = "Col_estado_produc";
-            Col_estado_produc.ReadOnly = true;
-            Col_estado_produc.Width = 77;
             // 
             // iconBtnAgregar
             // 
@@ -681,6 +604,93 @@
             panel1.Size = new Size(822, 64);
             panel1.TabIndex = 1;
             // 
+            // Col_IDproducto
+            // 
+            Col_IDproducto.HeaderText = "ID Producto";
+            Col_IDproducto.Name = "Col_IDproducto";
+            Col_IDproducto.ReadOnly = true;
+            Col_IDproducto.Width = 104;
+            // 
+            // Col_CodBarra
+            // 
+            Col_CodBarra.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_CodBarra.HeaderText = "Cod Barra";
+            Col_CodBarra.MinimumWidth = 90;
+            Col_CodBarra.Name = "Col_CodBarra";
+            Col_CodBarra.ReadOnly = true;
+            // 
+            // Col_nombre_produc
+            // 
+            Col_nombre_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nombre_produc.HeaderText = "Nombre Producto";
+            Col_nombre_produc.MinimumWidth = 100;
+            Col_nombre_produc.Name = "Col_nombre_produc";
+            Col_nombre_produc.ReadOnly = true;
+            // 
+            // Col_Descrip_producto
+            // 
+            Col_Descrip_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_Descrip_producto.HeaderText = "Descripcion Producto";
+            Col_Descrip_producto.MinimumWidth = 140;
+            Col_Descrip_producto.Name = "Col_Descrip_producto";
+            Col_Descrip_producto.ReadOnly = true;
+            // 
+            // Col_precio_compra
+            // 
+            Col_precio_compra.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_precio_compra.HeaderText = "Precio Compra";
+            Col_precio_compra.MinimumWidth = 100;
+            Col_precio_compra.Name = "Col_precio_compra";
+            Col_precio_compra.ReadOnly = true;
+            // 
+            // Col_precio_venta
+            // 
+            Col_precio_venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_precio_venta.HeaderText = "Precio Venta";
+            Col_precio_venta.MinimumWidth = 100;
+            Col_precio_venta.Name = "Col_precio_venta";
+            Col_precio_venta.ReadOnly = true;
+            // 
+            // Col_stock_produc
+            // 
+            Col_stock_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_stock_produc.HeaderText = "Stock";
+            Col_stock_produc.MinimumWidth = 50;
+            Col_stock_produc.Name = "Col_stock_produc";
+            Col_stock_produc.ReadOnly = true;
+            // 
+            // Col_nom_marca
+            // 
+            Col_nom_marca.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nom_marca.HeaderText = "Marca";
+            Col_nom_marca.MinimumWidth = 65;
+            Col_nom_marca.Name = "Col_nom_marca";
+            Col_nom_marca.ReadOnly = true;
+            // 
+            // Col_nom_categ
+            // 
+            Col_nom_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nom_categ.HeaderText = "Categoria";
+            Col_nom_categ.MinimumWidth = 80;
+            Col_nom_categ.Name = "Col_nom_categ";
+            Col_nom_categ.ReadOnly = true;
+            // 
+            // Col_estado_produc
+            // 
+            Col_estado_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_estado_produc.HeaderText = "Estado ";
+            Col_estado_produc.MinimumWidth = 70;
+            Col_estado_produc.Name = "Col_estado_produc";
+            Col_estado_produc.ReadOnly = true;
+            // 
+            // Col_img_producto
+            // 
+            Col_img_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_img_producto.HeaderText = "Imagen";
+            Col_img_producto.MinimumWidth = 70;
+            Col_img_producto.Name = "Col_img_producto";
+            Col_img_producto.ReadOnly = true;
+            // 
             // FrmGestionarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -745,9 +755,9 @@
         private DataGridViewTextBoxColumn Col_precio_compra;
         private DataGridViewTextBoxColumn Col_precio_venta;
         private DataGridViewTextBoxColumn Col_stock_produc;
-        private DataGridViewTextBoxColumn Col_img_producto;
         private DataGridViewTextBoxColumn Col_nom_marca;
         private DataGridViewTextBoxColumn Col_nom_categ;
         private DataGridViewTextBoxColumn Col_estado_produc;
+        private DataGridViewTextBoxColumn Col_img_producto;
     }
 }

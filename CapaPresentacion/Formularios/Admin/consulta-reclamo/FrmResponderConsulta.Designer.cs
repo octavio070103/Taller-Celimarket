@@ -42,12 +42,13 @@
             lblTituloRespuesta = new Label();
             panel2 = new Panel();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            textBox1 = new TextBox();
+            txtGmail = new TextBox();
             label3 = new Label();
             panel4 = new Panel();
             panel5 = new Panel();
             panel7 = new Panel();
             txtCuerpoRespuesta = new TextBox();
+            txtConsultActual = new TextBox();
             panel6 = new Panel();
             iconPicTash = new FontAwesome.Sharp.IconPictureBox();
             iconPicDrive = new FontAwesome.Sharp.IconPictureBox();
@@ -175,15 +176,14 @@
             label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(171, 5);
             label4.Name = "label4";
-            label4.Size = new Size(139, 17);
+            label4.Size = new Size(0, 17);
             label4.TabIndex = 2;
-            label4.Text = " titulo de la respuesta ";
             // 
             // txtTituloRespuesta
             // 
             txtTituloRespuesta.Location = new Point(171, 2);
             txtTituloRespuesta.Name = "txtTituloRespuesta";
-            txtTituloRespuesta.Size = new Size(132, 23);
+            txtTituloRespuesta.Size = new Size(215, 23);
             txtTituloRespuesta.TabIndex = 3;
             // 
             // lblTituloRespuesta
@@ -199,7 +199,7 @@
             // panel2
             // 
             panel2.Controls.Add(iconPictureBox1);
-            panel2.Controls.Add(textBox1);
+            panel2.Controls.Add(txtGmail);
             panel2.Location = new Point(63, 25);
             panel2.Name = "panel2";
             panel2.Size = new Size(173, 25);
@@ -221,22 +221,22 @@
             iconPictureBox1.TabIndex = 5;
             iconPictureBox1.TabStop = false;
             // 
-            // textBox1
+            // txtGmail
             // 
-            textBox1.Location = new Point(19, 0);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(154, 25);
-            textBox1.TabIndex = 5;
+            txtGmail.Location = new Point(19, 0);
+            txtGmail.Multiline = true;
+            txtGmail.Name = "txtGmail";
+            txtGmail.ReadOnly = true;
+            txtGmail.Size = new Size(154, 25);
+            txtGmail.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(23, 25);
             label3.Name = "label3";
-            label3.Size = new Size(34, 17);
+            label3.Size = new Size(35, 17);
             label3.TabIndex = 3;
             label3.Text = "Para";
             // 
@@ -264,6 +264,7 @@
             // panel7
             // 
             panel7.Controls.Add(txtCuerpoRespuesta);
+            panel7.Controls.Add(txtConsultActual);
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(0, 0);
             panel7.Name = "panel7";
@@ -273,11 +274,22 @@
             // txtCuerpoRespuesta
             // 
             txtCuerpoRespuesta.Dock = DockStyle.Fill;
-            txtCuerpoRespuesta.Location = new Point(0, 0);
+            txtCuerpoRespuesta.Location = new Point(0, 59);
             txtCuerpoRespuesta.Multiline = true;
             txtCuerpoRespuesta.Name = "txtCuerpoRespuesta";
-            txtCuerpoRespuesta.Size = new Size(514, 459);
-            txtCuerpoRespuesta.TabIndex = 0;
+            txtCuerpoRespuesta.Size = new Size(514, 400);
+            txtCuerpoRespuesta.TabIndex = 7;
+            // 
+            // txtConsultActual
+            // 
+            txtConsultActual.BorderStyle = BorderStyle.FixedSingle;
+            txtConsultActual.Dock = DockStyle.Top;
+            txtConsultActual.ForeColor = Color.FromArgb(121, 60, 121);
+            txtConsultActual.Location = new Point(0, 0);
+            txtConsultActual.Multiline = true;
+            txtConsultActual.Name = "txtConsultActual";
+            txtConsultActual.Size = new Size(514, 59);
+            txtConsultActual.TabIndex = 6;
             // 
             // panel6
             // 
@@ -486,7 +498,7 @@
         private Label lblTituloRespuesta;
         private Panel panel2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private TextBox textBox1;
+        private TextBox txtGmail;
         private Label label3;
         private Panel panel4;
         private Panel panel5;
@@ -503,9 +515,10 @@
         private FontAwesome.Sharp.IconPictureBox iconPicAdjArchiv;
         private FontAwesome.Sharp.IconPictureBox iconPicOpcFormato;
         private FontAwesome.Sharp.IconPictureBox iconPicTash;
-        private TextBox txtCuerpoRespuesta;
         private ToolTip toolTipReConsulta;
         private TextBox txtTituloRespuesta;
         private ErrorProvider errorProvider1;
+        private TextBox txtConsultActual;
+        private TextBox txtCuerpoRespuesta;
     }
 }

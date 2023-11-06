@@ -94,6 +94,7 @@
             iconBtnPermiso = new FontAwesome.Sharp.IconButton();
             errorProvider1 = new ErrorProvider(components);
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
+            iconBtnExcel = new FontAwesome.Sharp.IconButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -848,12 +849,38 @@
             iconBtnAlta.UseVisualStyleBackColor = false;
             iconBtnAlta.Click += iconBtnAlta_Click;
             // 
+            // iconBtnExcel
+            // 
+            iconBtnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            iconBtnExcel.BackColor = Color.DarkGray;
+            iconBtnExcel.BackgroundImage = (Image)resources.GetObject("iconBtnExcel.BackgroundImage");
+            iconBtnExcel.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExcel.Cursor = Cursors.Hand;
+            iconBtnExcel.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExcel.FlatStyle = FlatStyle.Flat;
+            iconBtnExcel.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnExcel.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExcel.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExcel.IconColor = Color.White;
+            iconBtnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExcel.IconSize = 30;
+            iconBtnExcel.Location = new Point(12, 531);
+            iconBtnExcel.Name = "iconBtnExcel";
+            iconBtnExcel.Size = new Size(126, 27);
+            iconBtnExcel.TabIndex = 20;
+            iconBtnExcel.Text = "Descargar Excel";
+            iconBtnExcel.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExcel.UseVisualStyleBackColor = false;
+            iconBtnExcel.Click += iconBtnExcel_Click;
+            // 
             // FrmGestionarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(iconBtnExcel);
             Controls.Add(iconBtnAlta);
             Controls.Add(iconBtnPermiso);
             Controls.Add(iconBtnElim);
@@ -938,5 +965,6 @@
         private DateTimePicker dateTimePickerNacimientoDato;
         private Label lblFechaNac;
         private ComboBox comboBox1;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
     }
 }

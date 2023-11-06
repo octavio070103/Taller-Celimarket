@@ -1,9 +1,12 @@
-﻿using System;
+﻿using capaEntidad;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,10 +16,14 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
 {
     public partial class FrmResponderConsulta : Form
     {
-
-        public FrmResponderConsulta()
+        private static capaEntidad.consulta consultaActual;
+        public FrmResponderConsulta(consulta p_obj_consulta)
         {
             InitializeComponent();
+            consultaActual = p_obj_consulta; //aca le asigno a mi atributo consultaActual el valor p_objcosnulta que me llega como parametro
+            txtGmail.Text = consultaActual.obj_usuario.email;
+            txtTituloRespuesta.Text = "Respuesta a la consulta sobre " + consultaActual.obj_motivo_consulta.nombre_motivo_consulta;
+            txtConsultActual.Text = "El " + consultaActual.fecha_consulta.ToString("dd-MM-yyyy") + ", " + consultaActual.obj_usuario.obj_persona.nombre + " " + consultaActual.obj_usuario.obj_persona.apellido + "(" + consultaActual.obj_usuario.email + ") escribio: \n" + consultaActual.comentario_consulta;
 
         }
 
@@ -46,6 +53,72 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
             this.Close();
         }
 
+
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            if (validarRespuesta())
+            {
+                // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
+                DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
+                borrarMensajeError();
+                ask = MessageBox.Show("Confirmacion de envio del mensaje ? ", "Confirmar Envio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (ask == DialogResult.Yes)
+                {
+                    string asunto = "La consulta que habias hecho "+txtConsultActual.Text +"\nRespuesta a la consulta: " +txtCuerpoRespuesta.Text;
+                    EnviarNotificacionPorCorreo(consultaActual, txtTituloRespuesta.Text, asunto);
+                    //aca tendria que poner el metodo para enviar ese respuesta y que se guarde en al base de datos
+                }
+
+            }
+
+        }
+        /******************************* Responder Consulta **************************/
+        public void EnviarNotificacionPorCorreo(consulta obj_consulta, string asunto, string mensaje)
+        {
+            try
+            {
+                //CONFIGURAR VALORES
+                string Host = "smtp.gmail.com";
+                int Puerto = 587;
+                string Usuario = "celimarketexpress@gmail.com";
+                string Clave = "pqadyqsdvadgeqjc";//clave generada para aplicación en GMAIL
+
+                //PROPORCIONAMOS AUTENTICACION DE GMAIL
+                SmtpClient smtp = new SmtpClient(Host, Puerto);
+                MailMessage msg = new MailMessage();
+
+
+                //CREAMOS EL CONTENIDO DEL CORREO
+                string[] Destinatario = obj_consulta.obj_usuario.email.Split(',');
+                //  string[] DestinatarioCopia = txtCopia.Text.Split(',');
+                // string[] DestinatarioCopiaOculta = txtCopiaOculta.Text.Split(',');
+
+
+                msg.From = new MailAddress(Usuario, "SERVIDOR CORREO CELIMARKET");
+                foreach (string correo in Destinatario) if (correo != "") msg.To.Add(new MailAddress(correo));
+                // foreach (string correo in DestinatarioCopia) if (correo != "") msg.CC.Add(new MailAddress(correo)); este me sirve por si quiero una copia del correo enviarlo
+                //   foreach (string correo in DestinatarioCopiaOculta) if (correo != "") msg.Bcc.Add(new MailAddress(correo)); esto es por si quiero una coipa oculta
+                //  foreach (string adjunto in ArchivoAdjuntos) if (adjunto != "") msg.Attachments.Add(new Attachment(adjunto)); esto es por si quiero permitir que s eadjunten archivos
+                msg.Subject = asunto;
+                msg.IsBodyHtml = false;
+                msg.Body = mensaje;
+
+
+                //ENVIAMOS EL CORREO
+                smtp.Credentials = new NetworkCredential(Usuario, Clave);
+                smtp.EnableSsl = true;
+                smtp.Send(msg);
+                MessageBox.Show("Notificacion de Consulta Enviada al correo");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al enviar el correo electrónico: " + ex.Message);
+            }
+
+        }
+        /*************validaciones***********************/
         //valdiaciones para el momento de enviar la respuesta de la consulta
         private bool validarRespuesta()
         {
@@ -108,25 +181,5 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
             errorProvider1.SetError(txtCuerpoRespuesta, "");    // Limpiar mensaje de error
 
         }
-
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            if (validarRespuesta())
-            {
-                // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
-                DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
-                borrarMensajeError();
-                ask = MessageBox.Show("Confirmacion de envio del mensaje ? ", "Confirmar Envio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (ask == DialogResult.Yes)
-                {
-                    //aca tendria que poner el metodo para enviar ese respuesta y que se guarde en al base de datos
-                }
-
-            }
-
-        }
-
-
     }
 }
