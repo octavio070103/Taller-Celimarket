@@ -471,7 +471,7 @@
             label11.Name = "label11";
             label11.Size = new Size(562, 13);
             label11.TabIndex = 2;
-            label11.Text = " Si el permiso es unicamente de horas en el mismo dia, asignar la misma fecga en las celdas \"desde\" y \"hasta\"";
+            label11.Text = " Si el permiso es unicamente de horas en el mismo dia, asignar la misma fecha en las celdas \"desde\" y \"hasta\"";
             // 
             // panel3
             // 

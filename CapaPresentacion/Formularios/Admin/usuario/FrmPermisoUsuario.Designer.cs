@@ -72,6 +72,7 @@
             label11 = new Label();
             dataGridPermisos = new DataGridView();
             Col_id_permiso = new DataGridViewTextBoxColumn();
+            Col_tipo_permiso = new DataGridViewTextBoxColumn();
             Col_fecha_inicio = new DataGridViewTextBoxColumn();
             Col_fecha_finalizacion = new DataGridViewTextBoxColumn();
             Col_estado_aprobacion = new DataGridViewTextBoxColumn();
@@ -112,6 +113,7 @@
             dateTimeFiltro.Name = "dateTimeFiltro";
             dateTimeFiltro.Size = new Size(101, 23);
             dateTimeFiltro.TabIndex = 18;
+            dateTimeFiltro.CloseUp += dateTimeFiltro_CloseUp;
             // 
             // iconbtnClean
             // 
@@ -556,7 +558,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridPermisos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridPermisos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridPermisos.Columns.AddRange(new DataGridViewColumn[] { Col_id_permiso, Col_fecha_inicio, Col_fecha_finalizacion, Col_estado_aprobacion, Col_nombre_rol, col_id_persona, Col_Dni_Usuario, Col_Nombre_Usuario, Col_Apellido_Usuario, Col_id_domicilio, Col_estado_permiso });
+            dataGridPermisos.Columns.AddRange(new DataGridViewColumn[] { Col_id_permiso, Col_tipo_permiso, Col_fecha_inicio, Col_fecha_finalizacion, Col_estado_aprobacion, Col_nombre_rol, col_id_persona, Col_Dni_Usuario, Col_Nombre_Usuario, Col_Apellido_Usuario, Col_id_domicilio, Col_estado_permiso });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -592,6 +594,14 @@
             Col_id_permiso.Name = "Col_id_permiso";
             Col_id_permiso.ReadOnly = true;
             Col_id_permiso.Visible = false;
+            Col_id_permiso.Width = 81;
+            // 
+            // Col_tipo_permiso
+            // 
+            Col_tipo_permiso.HeaderText = "Tipo Permiso";
+            Col_tipo_permiso.Name = "Col_tipo_permiso";
+            Col_tipo_permiso.ReadOnly = true;
+            Col_tipo_permiso.Width = 110;
             // 
             // Col_fecha_inicio
             // 
@@ -736,7 +746,10 @@
         private Label lblIdEmpleado;
         private TextBox textBox3;
         private TextBox txtJustificacion;
+        private TextBox txtIdPermiso;
+        private DateTimePicker dateTimeFiltro;
         private DataGridViewTextBoxColumn Col_id_permiso;
+        private DataGridViewTextBoxColumn Col_tipo_permiso;
         private DataGridViewTextBoxColumn Col_fecha_inicio;
         private DataGridViewTextBoxColumn Col_fecha_finalizacion;
         private DataGridViewTextBoxColumn Col_estado_aprobacion;
@@ -747,7 +760,5 @@
         private DataGridViewTextBoxColumn Col_Apellido_Usuario;
         private DataGridViewTextBoxColumn Col_id_domicilio;
         private DataGridViewTextBoxColumn Col_estado_permiso;
-        private TextBox txtIdPermiso;
-        private DateTimePicker dateTimeFiltro;
     }
 }
