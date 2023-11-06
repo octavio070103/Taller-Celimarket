@@ -185,7 +185,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void btnRegistroVen_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new ModuloRegistroGeren());
+            abrirFormularioHijo(new ModuloRegistroGeren(usuarioActual));
         }
 
 

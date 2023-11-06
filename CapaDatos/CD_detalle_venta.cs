@@ -53,6 +53,8 @@ namespace CapaDatos
 
                         // Obtenemos las salidas generadas por la ejecucion del procedimiento almacenado
                         mensajeResultado = comando.Parameters["@resultadoEjec"].Value.ToString();
+
+                        objConexion.Close();
                     }
 
 
@@ -65,6 +67,42 @@ namespace CapaDatos
 
             }
 
+        }
+
+
+        public DataTable listarDetalleVenta(int pIdVenta)
+        {
+            DataTable listaDetalle = new DataTable();
+
+            using ( SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_ListarDetalleVenta", objConexion);
+
+                    comando.Parameters.AddWithValue("@id_venta", pIdVenta);
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    listaDetalle.Load(dataReader);
+
+                    dataReader.Close();
+                    objConexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+
+                return listaDetalle;
+            }
+            
         }
 
     }

@@ -361,7 +361,7 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             cargarListaProductos();
             cargarMetodosPago();
-
+            /*
             // Columnas no visibles
             dtgvProductos.Columns[0].Visible = false; // 0 - Id producto
             dtgvProductos.Columns[3].Visible = false; // 3 - Descripcion producto
@@ -377,9 +377,9 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Columns[5].HeaderText = "Precio";
             dtgvProductos.Columns[6].HeaderText = "Stock";
             dtgvProductos.Columns[8].HeaderText = "Estado";
+            */
 
-
-            dtgvProductos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dtgvProductos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 
@@ -388,7 +388,11 @@ namespace CapaPresentacion.Formularios.Vendedor
             CL_Producto auxListaProd = new CL_Producto();
             List<producto> listaProductos = auxListaProd.listarProductos();
 
-            dtgvProductos.DataSource = listaProductos;
+            //dtgvProductos.DataSource = listaProductos;
+
+
+            // borrar si no sirve
+            mostrarProductosEnDataGridView(listaProductos);
         }
 
         private void cargarMetodosPago()
@@ -398,6 +402,69 @@ namespace CapaPresentacion.Formularios.Vendedor
             cboMetodoPago.DisplayMember = "nombre_tipo_pago";
             cboMetodoPago.ValueMember = "id_tipo_metodo_pago";
         }
+
+
+        // Borrar si no funciona
+
+        private void mostrarProductosEnDataGridView(List<capaEntidad.producto> p_listaProductos)
+        {
+            dtgvProductos.Rows.Clear(); // Limpiar filas existentes
+
+            //
+            dtgvProductos.Columns.Add("id_producto", "columna0"); // 0
+            dtgvProductos.Columns.Add("cod_barra_producto", "columna1"); // 1
+            dtgvProductos.Columns.Add("nombre_producto", "columna2"); // 2
+            dtgvProductos.Columns.Add("descripcion_producto", "columna3"); // 3
+            dtgvProductos.Columns.Add("precio_compra_producto", "columna4"); // 4
+            dtgvProductos.Columns.Add("precio_venta_producto", "columna5"); // 5
+            dtgvProductos.Columns.Add("stock_producto", "columna6"); // 6
+            dtgvProductos.Columns.Add("imagen_producto", "columna7"); // 7
+            
+            dtgvProductos.Columns.Add("marca_producto", "columna8");  // 9
+            dtgvProductos.Columns.Add("categoria_producto", "columna9"); // 10
+            dtgvProductos.Columns.Add("estado_producto", "columna10");  // 8
+            dtgvProductos.Columns.Add("fecha_producto", "columna11");  // 11
+
+            
+            dtgvProductos.Columns[0].Visible = false; // 0 - Id producto
+            /*dtgvProductos.Columns[3].Visible = false; // 3 - Descripcion producto
+            dtgvProductos.Columns[4].Visible = false; // 4 - Precio compra
+            dtgvProductos.Columns[7].Visible = false; // 7 - Imagen
+            dtgvProductos.Columns[9].Visible = false; // 9 - Marca
+            dtgvProductos.Columns[10].Visible = true; // 10 - Categoria
+            dtgvProductos.Columns[11].Visible = false; // 11 - Fecha creacion
+            /*
+            // Cambio de los nombres de las columnas
+            dtgvProductos.Columns[1].HeaderText = "Codigo de barras";
+            dtgvProductos.Columns[2].HeaderText = "Nombre";
+            dtgvProductos.Columns[5].HeaderText = "Precio";
+            dtgvProductos.Columns[6].HeaderText = "Stock";
+            dtgvProductos.Columns[8].HeaderText = "Estado";
+             //*/
+
+
+            foreach (capaEntidad.producto item in p_listaProductos)
+            {
+
+                // Agregar una fila al DataGridView con los datos del usuario
+                dtgvProductos.Rows.Add(
+                    new object[]
+                    { //items del producto
+                      item.Idproducto,item.cod_barra_producto,item.nombre_producto,item.descripcion_producto,item.precio_compra,item.precio_venta,item.stock_producto,item.imagen,
+                       //item de la tabla marca
+                      item.obj_marca.nombre_marca,
+                      // item de la tabla categoria
+                       item.obj_categoria.nombre_categoria,
+
+                       item.estado_producto== 1 ? "Activo" : "No activo"
+                     }
+                 );
+
+            }
+            dtgvProductos.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
+
+        }
+
 
     }
 }

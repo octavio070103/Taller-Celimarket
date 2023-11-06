@@ -36,5 +36,32 @@ namespace CapaLogica
             auxDetalleVenta.registrarDetalleVenta(listaDetalleVenta, out mensajeResultado);
         }
 
+        public DataTable listarVentasVendedor(int pIdUsuario)
+        {
+            CD_venta auxVenta = new CD_venta();
+
+            DataTable auxListaVentas = auxVenta.listarVentasVendedor(pIdUsuario);
+
+            return auxListaVentas;
+        }
+
+
+        public DataTable listarDetalleVenta(int pIdVenta)
+        {
+            CD_detalle_venta auxDetalle = new CD_detalle_venta();
+            DataTable listaDetalle = auxDetalle.listarDetalleVenta(pIdVenta);
+
+            return listaDetalle;
+        }
+
+
+        public factura obtenerDatosFactura(int pIdVenta)
+        {
+            CD_venta auxVenta = new CD_venta();
+            factura auxFactura = auxVenta.buscarFactura(pIdVenta);
+
+            return auxFactura;
+        }
+
     }
 }
