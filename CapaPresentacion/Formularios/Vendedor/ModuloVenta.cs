@@ -110,7 +110,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                 // Asigna los valores de las celdas de la fila a los textbox 
 
                 txtNombre.Text = filaElegida.Cells[3].Value.ToString();
-                txtCategoria.Text = filaElegida.Cells[10].Value.ToString();
+                txtCategoria.Text = filaElegida.Cells["categoria_producto"].Value.ToString();
                 txtPrecio.Text = filaElegida.Cells[5].Value.ToString();
 
             }
@@ -126,7 +126,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             {
 
                 txtNombre.Text = dtgvProductos.CurrentRow.Cells[2].Value.ToString();
-                txtCategoria.Text = dtgvProductos.CurrentRow.Cells[10].Value.ToString();
+                txtCategoria.Text = dtgvProductos.CurrentRow.Cells["categoria_producto"].Value.ToString();
                 txtPrecio.Text = dtgvProductos.CurrentRow.Cells[5].Value.ToString(); ;
             }
         }
@@ -379,8 +379,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Columns[8].HeaderText = "Estado";
             */
 
-            //dtgvProductos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            dtgvProductos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void cargarListaProductos()
@@ -388,10 +387,6 @@ namespace CapaPresentacion.Formularios.Vendedor
             CL_Producto auxListaProd = new CL_Producto();
             List<producto> listaProductos = auxListaProd.listarProductos();
 
-            //dtgvProductos.DataSource = listaProductos;
-
-
-            // borrar si no sirve
             mostrarProductosEnDataGridView(listaProductos);
         }
 
@@ -411,37 +406,28 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Rows.Clear(); // Limpiar filas existentes
 
             //
-            dtgvProductos.Columns.Add("id_producto", "columna0"); // 0
-            dtgvProductos.Columns.Add("cod_barra_producto", "columna1"); // 1
-            dtgvProductos.Columns.Add("nombre_producto", "columna2"); // 2
-            dtgvProductos.Columns.Add("descripcion_producto", "columna3"); // 3
-            dtgvProductos.Columns.Add("precio_compra_producto", "columna4"); // 4
-            dtgvProductos.Columns.Add("precio_venta_producto", "columna5"); // 5
-            dtgvProductos.Columns.Add("stock_producto", "columna6"); // 6
-            dtgvProductos.Columns.Add("imagen_producto", "columna7"); // 7
-            
-            dtgvProductos.Columns.Add("marca_producto", "columna8");  // 9
-            dtgvProductos.Columns.Add("categoria_producto", "columna9"); // 10
-            dtgvProductos.Columns.Add("estado_producto", "columna10");  // 8
-            dtgvProductos.Columns.Add("fecha_producto", "columna11");  // 11
+            dtgvProductos.Columns.Add("id_producto", "ID Producto"); // 0
+            dtgvProductos.Columns.Add("cod_barra_producto", "Codigo de barras"); // 1
+            dtgvProductos.Columns.Add("nombre_producto", "Nombre"); // 2
+            dtgvProductos.Columns.Add("descripcion_producto", "Descripcion"); // 3
+            dtgvProductos.Columns.Add("precio_compra_producto", "Precio compra"); // 4
+            dtgvProductos.Columns.Add("precio_venta_producto", "Precio venta"); // 5
+            dtgvProductos.Columns.Add("stock_producto", "Stock"); // 6
+            dtgvProductos.Columns.Add("imagen_producto", "Imagen"); // 7
 
-            
-            dtgvProductos.Columns[0].Visible = false; // 0 - Id producto
-            /*dtgvProductos.Columns[3].Visible = false; // 3 - Descripcion producto
-            dtgvProductos.Columns[4].Visible = false; // 4 - Precio compra
-            dtgvProductos.Columns[7].Visible = false; // 7 - Imagen
-            dtgvProductos.Columns[9].Visible = false; // 9 - Marca
-            dtgvProductos.Columns[10].Visible = true; // 10 - Categoria
-            dtgvProductos.Columns[11].Visible = false; // 11 - Fecha creacion
-            /*
-            // Cambio de los nombres de las columnas
-            dtgvProductos.Columns[1].HeaderText = "Codigo de barras";
-            dtgvProductos.Columns[2].HeaderText = "Nombre";
-            dtgvProductos.Columns[5].HeaderText = "Precio";
-            dtgvProductos.Columns[6].HeaderText = "Stock";
-            dtgvProductos.Columns[8].HeaderText = "Estado";
-             //*/
+            dtgvProductos.Columns.Add("marca_producto", "Marca");  // 9
+            dtgvProductos.Columns.Add("categoria_producto", "Categoria"); // 10
+            dtgvProductos.Columns.Add("estado_producto", "Estado");  // 8
+            dtgvProductos.Columns.Add("fecha_producto", "Fecha");  // 11
 
+
+            dtgvProductos.Columns["id_producto"].Visible = false; // 0 - Id producto
+            dtgvProductos.Columns["descripcion_producto"].Visible = false; // 3 - Descripcion producto
+            dtgvProductos.Columns["precio_compra_producto"].Visible = false; // 4 - Precio compra
+            dtgvProductos.Columns["imagen_producto"].Visible = false; // 7 - Imagen
+            dtgvProductos.Columns["marca_producto"].Visible = false; // 9 - Marca
+            dtgvProductos.Columns["categoria_producto"].Visible = true; // 10 - Categoria
+            dtgvProductos.Columns["fecha_producto"].Visible = false; // 11 - Fecha creacion
 
             foreach (capaEntidad.producto item in p_listaProductos)
             {
@@ -465,6 +451,22 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+        private void buscarProducto(string terminoBusqueda)
+        {
+            CL_Producto auxListaProd = new CL_Producto();
+            List<producto> listaProductos = auxListaProd.listarProductos();
 
+            var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.Contains(terminoBusqueda)).ToList();
+
+            mostrarProductosEnDataGridView(nuevaLista);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string terminoBusqueda = txtBuscar.Text;
+            dtgvProductos.Columns.Clear();
+            dtgvProductos.Rows.Clear();
+            buscarProducto(terminoBusqueda);
+        }
     }
 }

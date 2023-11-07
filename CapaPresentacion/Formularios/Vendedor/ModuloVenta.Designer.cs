@@ -45,6 +45,12 @@
             lblCarrito = new Label();
             btnPagar = new Button();
             dtgvListaCompra = new DataGridView();
+            nombre_producto_carrito = new DataGridViewTextBoxColumn();
+            cantidad_producto_carrito = new DataGridViewTextBoxColumn();
+            precio_producto_carrito = new DataGridViewTextBoxColumn();
+            categoria_producto_carrito = new DataGridViewTextBoxColumn();
+            subtotal_producto_carrito = new DataGridViewTextBoxColumn();
+            id_producto_carrito = new DataGridViewTextBoxColumn();
             pnlListaProductos = new Panel();
             panel1 = new Panel();
             label4 = new Label();
@@ -80,12 +86,7 @@
             lblBuscarClientes = new Label();
             txtBuscar = new TextBox();
             lblFiltro = new Label();
-            nombre_producto_carrito = new DataGridViewTextBoxColumn();
-            cantidad_producto_carrito = new DataGridViewTextBoxColumn();
-            precio_producto_carrito = new DataGridViewTextBoxColumn();
-            categoria_producto_carrito = new DataGridViewTextBoxColumn();
-            subtotal_producto_carrito = new DataGridViewTextBoxColumn();
-            id_producto_carrito = new DataGridViewTextBoxColumn();
+            button1 = new Button();
             pnlModuloVenta.SuspendLayout();
             pnlCarrito.SuspendLayout();
             pnlTotal.SuspendLayout();
@@ -100,6 +101,7 @@
             // pnlModuloVenta
             // 
             pnlModuloVenta.BackColor = Color.FromArgb(88, 89, 150);
+            pnlModuloVenta.Controls.Add(button1);
             pnlModuloVenta.Controls.Add(cboFiltroClientes);
             pnlModuloVenta.Controls.Add(pnlCarrito);
             pnlModuloVenta.Controls.Add(pnlListaProductos);
@@ -281,6 +283,47 @@
             dtgvListaCompra.TabIndex = 13;
             dtgvListaCompra.CellContentClick += dtgvListaCompra_CellContentClick;
             dtgvListaCompra.SelectionChanged += dtgvListaCompra_SelectionChanged;
+            // 
+            // nombre_producto_carrito
+            // 
+            nombre_producto_carrito.HeaderText = "Nombre";
+            nombre_producto_carrito.Name = "nombre_producto_carrito";
+            nombre_producto_carrito.ReadOnly = true;
+            // 
+            // cantidad_producto_carrito
+            // 
+            cantidad_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            cantidad_producto_carrito.HeaderText = "Cant.";
+            cantidad_producto_carrito.Name = "cantidad_producto_carrito";
+            cantidad_producto_carrito.ReadOnly = true;
+            cantidad_producto_carrito.Width = 65;
+            // 
+            // precio_producto_carrito
+            // 
+            precio_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            precio_producto_carrito.HeaderText = "Precio U.";
+            precio_producto_carrito.Name = "precio_producto_carrito";
+            precio_producto_carrito.ReadOnly = true;
+            precio_producto_carrito.Width = 87;
+            // 
+            // categoria_producto_carrito
+            // 
+            categoria_producto_carrito.HeaderText = "Categoria";
+            categoria_producto_carrito.Name = "categoria_producto_carrito";
+            categoria_producto_carrito.ReadOnly = true;
+            // 
+            // subtotal_producto_carrito
+            // 
+            subtotal_producto_carrito.HeaderText = "Subtotal";
+            subtotal_producto_carrito.Name = "subtotal_producto_carrito";
+            subtotal_producto_carrito.ReadOnly = true;
+            // 
+            // id_producto_carrito
+            // 
+            id_producto_carrito.HeaderText = "ID Producto";
+            id_producto_carrito.Name = "id_producto_carrito";
+            id_producto_carrito.ReadOnly = true;
+            id_producto_carrito.Visible = false;
             // 
             // pnlListaProductos
             // 
@@ -705,46 +748,15 @@
             lblFiltro.TabIndex = 8;
             lblFiltro.Text = "Filtro";
             // 
-            // nombre_producto_carrito
+            // button1
             // 
-            nombre_producto_carrito.HeaderText = "Nombre";
-            nombre_producto_carrito.Name = "nombre_producto_carrito";
-            nombre_producto_carrito.ReadOnly = true;
-            // 
-            // cantidad_producto_carrito
-            // 
-            cantidad_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            cantidad_producto_carrito.HeaderText = "Cant.";
-            cantidad_producto_carrito.Name = "cantidad_producto_carrito";
-            cantidad_producto_carrito.ReadOnly = true;
-            cantidad_producto_carrito.Width = 65;
-            // 
-            // precio_producto_carrito
-            // 
-            precio_producto_carrito.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            precio_producto_carrito.HeaderText = "Precio U.";
-            precio_producto_carrito.Name = "precio_producto_carrito";
-            precio_producto_carrito.ReadOnly = true;
-            precio_producto_carrito.Width = 87;
-            // 
-            // categoria_producto_carrito
-            // 
-            categoria_producto_carrito.HeaderText = "Categoria";
-            categoria_producto_carrito.Name = "categoria_producto_carrito";
-            categoria_producto_carrito.ReadOnly = true;
-            // 
-            // subtotal_producto_carrito
-            // 
-            subtotal_producto_carrito.HeaderText = "Subtotal";
-            subtotal_producto_carrito.Name = "subtotal_producto_carrito";
-            subtotal_producto_carrito.ReadOnly = true;
-            // 
-            // id_producto_carrito
-            // 
-            id_producto_carrito.HeaderText = "ID Producto";
-            id_producto_carrito.Name = "id_producto_carrito";
-            id_producto_carrito.ReadOnly = true;
-            id_producto_carrito.Visible = false;
+            button1.Location = new Point(272, 10);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 11;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmModuloVenta
             // 
@@ -830,5 +842,6 @@
         private DataGridViewTextBoxColumn categoria_producto_carrito;
         private DataGridViewTextBoxColumn subtotal_producto_carrito;
         private DataGridViewTextBoxColumn id_producto_carrito;
+        private Button button1;
     }
 }
