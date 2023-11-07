@@ -584,6 +584,7 @@
             ClientSize = new Size(727, 527);
             Controls.Add(panel1);
             Controls.Add(pnlBarraClientes);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Name = "frmFactura";
             Text = "frmFactura";
             Load += frmFactura_Load;
