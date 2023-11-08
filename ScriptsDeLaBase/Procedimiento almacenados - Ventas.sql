@@ -12,6 +12,27 @@ select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, coun
 	order by Cantidad_vendida DESC
 GO
 
+
+-- ***** POR PERIODOS *****
+
+CREATE PROCEDURE SP_ProductosMasVendidosPorPeriodo
+(
+	@fechaInicioPer DATETIME,
+	@fechaFinPer DATETIME
+)
+AS
+select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
+	from detalle_venta
+	inner join producto on detalle_venta.id_producto = producto.id_producto
+	inner join categoria on categoria.id_categoria = producto.id_categoria
+	inner join marca on marca.Id_Marca = producto.Id_Marca
+
+	WHERE fecha_creacion_detalle_venta BETWEEN @fechaInicioPer AND @fechaFinPer
+	group by detalle_venta.id_producto, Marca.Nombre, producto.descripcion_producto
+	order by Cantidad_vendida DESC
+GO
+
+
 ---------- CATEGORIAS MAS VENDIDAS -----------
 
 ALTER PROCEDURE SP_CategoriasMasVendidas
@@ -24,17 +45,25 @@ AS
 		order by CategoriaMasVendida DESC
 GO
 
-/* 
-ALTER PROCEDURE SP_CategoriasMasVendidas
+
+--- ***** POR PERIODO *****
+
+CREATE PROCEDURE SP_CategoriasMasVendidasPorPeriodo
+(
+	@fechaInicioPer DATETIME,
+	@fechaFinPer DATETIME
+)
 AS
 	select categoria.nombre_categoria, COUNT(categoria.id_categoria) AS CategoriaMasVendida 
 		from detalle_venta
 		inner join producto ON detalle_venta.id_producto = producto.id_producto
 		inner join categoria ON producto.id_categoria = categoria.id_categoria
+
+		WHERE fecha_creacion_detalle_venta BETWEEN @fechaInicioPer AND @fechaFinPer
 		group by producto.id_categoria, categoria.nombre_categoria
 		order by CategoriaMasVendida DESC
 GO
-*/
+
 
 ---------- DATOS DEL NEGOCIO -----------
 
@@ -54,8 +83,41 @@ AS
 	set @nroProductos = ( select COUNT(id_producto)  AS TotalProductos FROM producto )
 GO
 
+
+--- ***** POR PERIODO *****
+
+CREATE PROCEDURE SP_DatosDelNegocioPorPeriodo
+	@nroVentas INT OUT,
+	@totalRecaudado FLOAT OUT,
+	@nroClientes INT OUT,
+	@nroEmpleado INT OUT,
+	@nroProveedores INT OUT,
+	@nroProductos INT OUT,
+	@fechaInicioPer DATETIME,
+	@fechaFinPer DATETIME
+AS
+	set @nroVentas = ( select COUNT(id_venta) AS totalVentas FROM venta WHERE venta_fecha BETWEEN @fechaInicioPer AND @fechaFinPer)
+
+	set @totalRecaudado = ( SELECT ISNULL(SUM(subtotal_detalle_venta),0) AS totalRecaudado FROM detalle_venta 
+							WHERE fecha_creacion_detalle_venta BETWEEN @fechaInicioPer AND @fechaFinPer)--La función ISNULL toma dos argumentos: el primer argumento es el valor que se evalúa y el segundo argumento es el valor que se utiliza si el primer argumento es NULL. En este caso, si SUM(subtotal_detalle_venta) es NULL, se reemplaza por 0.
+	
+	set @nroClientes = ( select COUNT(id_cliente) AS numeroClientes FROM cliente 
+						  WHERE (fecha_creacion_cliente <= @fechaFinPer) AND (estado_cliente = 1) )
+
+	set @nroEmpleado = ( select COUNT(id_usuario) AS numeroEmpleados FROM usuario 
+						 WHERE (fecha_creacion_usuario <= @fechaFinPer) AND (estado_usuario = 1) )
+
+	set @nroProveedores = ( select COUNT(id_proveedor) AS numeroProveedores FROM proveedor 
+							WHERE (fecha_creacion <= @fechaFinPer) AND (estado_proveedor = 1))
+
+	set @nroProductos = ( select COUNT(id_producto)  AS TotalProductos FROM producto 
+						  WHERE (fecha_creacion_producto <= @fechaFinPer) AND (estado_producto = 1) )
+GO
+
+
+/*
 FROM venta WHERE MONTH(fecha_venta) = @mes);
-@mes INT,
+@mes INT,*/
 --******* LISTAR TODAS LAS VENTAS ******--
 
 
@@ -150,25 +212,3 @@ GO
 
 
 select * from Negocio
-/*
-SELECT P.nombre_producto, DV.cantidad_detalle_venta, DV.precio_detalle_venta,
-	   DV.subtotal_detalle_venta FROM venta AS V
-INNER JOIN detalle_venta AS DV on DV.id_venta = V.id_venta
-INNER JOIN producto AS P on P.id_producto = DV.id_producto
-WHERE V.id_venta = 5
-
-SELECT * FROM detalle_venta
-/*
-
-select venta.id_venta, producto.nombre_producto from venta -- venta.id_venta, producto.nombre_producto
-inner join detalle_venta on detalle_venta.id_venta = venta.id_venta
-inner join producto on producto.id_producto = detalle_venta.id_producto
-where venta.id_venta = 1
-
-*/
-/*
-select * from cliente
-select venta.id_venta, persona.nombre from venta
-inner join cliente on cliente.id_cliente = venta.id_cliente
-inner join persona on persona.id_persona = cliente.id_persona
-*/
