@@ -51,7 +51,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             factura auxFactura = auxVenta.obtenerDatosFactura(pIdVenta);
 
             //Datos de la Factura
-            lblFacturaTipo.Text = " A"; //agregar el campo tipo de factura
+            lblTipoFac.Text = " A"; //agregar el campo tipo de factura
             lblFacturaNro.Text = auxFactura.nroFactura.ToString();
             lblFechaFactura.Text = DateTime.Now.ToString("dd/MM/yyyy"); //fecha en la que se genera la factura
 
@@ -71,7 +71,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             lblNomVendedor.Text = auxFactura.nombreVendedor;//traer nom vendedor
             lblDniVendedor.Text = auxFactura.dniVendedor;
             lblFechaVenta.Text = auxFactura.fechaVenta;
-            lblMetPago.Text =auxFactura.nombre_tipo_pago +" " +auxFactura.nombre_metodo_pago;
+            lblMetPago.Text = auxFactura.nombre_tipo_pago + " " + auxFactura.nombre_metodo_pago;
         }
 
         private void frmFactura_Load(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             // Generamos el contenido HTML y CSS
             string contenidoHTML = ContenidoHTML.ObtenerContenidoHTML();
             //FACTURA
-            contenidoHTML = contenidoHTML.Replace("@tipoFac", lblFacturaTipo.Text);//falta 
+            contenidoHTML = contenidoHTML.Replace("@tipoFac", lblTipoFac.Text);
             contenidoHTML = contenidoHTML.Replace("@numFactura", lblFacturaNro.Text);
             contenidoHTML = contenidoHTML.Replace("@fechaFactura", lblFechaFactura.Text);//fecha en la que se realizo la factura
 
@@ -109,30 +109,32 @@ namespace CapaPresentacion.Formularios.Vendedor
             contenidoHTML = contenidoHTML.Replace("@nombre_negocio", lblNomNegocio.Text);
             contenidoHTML = contenidoHTML.Replace("@CUIT", lblCUIT.Text);
             contenidoHTML = contenidoHTML.Replace("@direccion", lblDomNegocio.Text);
-            contenidoHTML = contenidoHTML.Replace("@telefono_negocio", lblTelefNegocio.Text); //falta 
+            contenidoHTML = contenidoHTML.Replace("@telefono_negocio", lblTelefNegocio.Text);
             //cliente
             contenidoHTML = contenidoHTML.Replace("@Nombre", lblNombreCliente.Text);
             contenidoHTML = contenidoHTML.Replace("@dniCliente", lblDniCliente.Text);
-            contenidoHTML = contenidoHTML.Replace("@telefono_cliente", lblTelefCliente.Text);//falta
+            contenidoHTML = contenidoHTML.Replace("@telefono_cliente", lblTelefCliente.Text);
             //vendedor
-            contenidoHTML = contenidoHTML.Replace("@metPago", lblMetPago.Text);//falta 
+            contenidoHTML = contenidoHTML.Replace("@nombreVendedor", lblNomVendedor.Text);
+            contenidoHTML = contenidoHTML.Replace("@metPago", lblMetPago.Text);
             contenidoHTML = contenidoHTML.Replace("@fechaVenta", lblFechaVenta.Text);//fecha en la que se realizo la venta
 
             //aca obtneemos y reemplzamos en el html los productos que iran en nuestra factura
             string filas = string.Empty;
             decimal total = 0;
 
-            /*falta 
+            /*falta */
             foreach (DataGridViewRow row in dtgvProductos.Rows)
             {
                 filas += "<tr>";
+                filas += "<td>" + row.Cells["Producto"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Descripcion"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["PrecioUnitario"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Importe"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["MarcaProducto"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Precio"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Subtotal"].Value.ToString() + "</td>";
                 filas += "</tr>";
-                total += decimal.Parse(row.Cells["Importe"].Value.ToString());
-            }*/
+                total += decimal.Parse(row.Cells["Subtotal"].Value.ToString());
+            }
             contenidoHTML = contenidoHTML.Replace("@FILAS", filas);
             contenidoHTML = contenidoHTML.Replace("@Subtotal", total.ToString());
             contenidoHTML = contenidoHTML.Replace("@Descuento", total.ToString());
@@ -142,12 +144,12 @@ namespace CapaPresentacion.Formularios.Vendedor
             string estilosCSS = EstilosCSS.ObtenerEstilosCSS();
 
             bool logoObtenido = false;
-            byte[] byteImage = new CL_Negocio().obtenerLogoNegocio(out logoObtenido) ;//obtemos el logo de la empresa que cargamos en la BD,donde llammamos a ese metodo y le pasamos la var de slaida logoObtenido para saber si l opudo obtener o no
+            byte[] byteImage = new CL_Negocio().obtenerLogoNegocio(out logoObtenido);//obtemos el logo de la empresa que cargamos en la BD,donde llammamos a ese metodo y le pasamos la var de slaida logoObtenido para saber si l opudo obtener o no
             if (logoObtenido)
             {
 
             }
-            
+
             try
             {
                 // Crea un archivo temporal con extensión .html y escribe el contenido HTML,Guardar el contenido HTML en un archivo temporal para convertirlo a PDF al momento de mostrarlo e imporimirl oluego
@@ -163,6 +165,19 @@ namespace CapaPresentacion.Formularios.Vendedor
                 MessageBox.Show("Ocurrió un error al abrir el contenido HTML en el navegador: " + ex.Message);
             }
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblMetPago_Click(object sender, EventArgs e)
+        {
         }
 
         /* probar este con itex7

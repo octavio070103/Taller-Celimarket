@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,7 +60,7 @@ namespace CapaLogica
             <div class=""columna2"" style=""width: 50%; text-align: left; margin-left: 10%;"">
                 <p><strong>Vendedor: </strong>@nombreVendedor</p>
                 <p><strong>Metodo de pago: </strong>@metPago</p>
-                <p><strong>Horario: </strong>@fechaVenta</p>
+                <p><strong>Fecha Venta: </strong>@fechaVenta</p>
             </div>
         </div>
     </div>
@@ -68,16 +69,16 @@ namespace CapaLogica
         <thead style=""background-color: #D8D8D8;"">
             <tr>
                 <th>Articulo</th>
-                <th>Cantidad/th>
-                <th>Descripcion</th>
-                <th>Precio Unit/th>
+                <th>Cantidad</th>
+                <th>Marca</th>
+                <th>Precio Unit</th>
                 <th>Importe</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody  style=""text-align: center;"">
             <tr>
                 @FILAS
-            </tr>
+            </tr class =""tr-filas"">
             <tr>
                 <td style=""text-align: center;"">Subtotal</td>
                 <td style=""text-align: center;"">Descuento</td>

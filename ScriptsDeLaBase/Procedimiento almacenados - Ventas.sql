@@ -162,15 +162,17 @@ GO
 
 -- ***** LISTAR DETALLE VENTA *****
 
-CREATE PROCEDURE SP_ListarDetalleVenta
+ALTER PROCEDURE SP_ListarDetalleVenta
 (
   @id_venta INT
 )
 AS
   BEGIN
-    SELECT P.nombre_producto AS Producto, DV.cantidad_detalle_venta AS Cantidad,
+    SELECT P.nombre_producto AS Producto,m.Nombre as MarcaProducto,
+		   DV.cantidad_detalle_venta AS Cantidad,
 		   DV.precio_detalle_venta AS Precio, DV.subtotal_detalle_venta AS Subtotal FROM detalle_venta AS DV
     INNER JOIN producto AS P on P.id_producto = DV.id_producto
+	INNER JOIN Marca m ON  P.Id_Marca=m.Id_Marca
 	WHERE DV.id_venta = @id_venta
   END
 GO
