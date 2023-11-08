@@ -11,8 +11,9 @@ namespace CapaLogica
         public static string ObtenerEstilosCSS()
         {
             string estilosCSS = @"
-            body {
-                background: linear-gradient(to bottom, rgb(22, 72, 99), rgb(66, 125, 157));
+         
+            tr-filas{
+                text-align: center;    
             }
            ";
 

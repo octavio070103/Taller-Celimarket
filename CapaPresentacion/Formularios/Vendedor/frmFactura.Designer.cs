@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFactura));
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlBarraClientes = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -46,51 +46,51 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             panel1 = new Panel();
+            label22 = new Label();
+            label23 = new Label();
+            label24 = new Label();
             lblFechaFactura = new Label();
+            label25 = new Label();
             BtnImprimir = new FontAwesome.Sharp.IconButton();
             lblTotal = new Label();
             lblTot = new Label();
-            dtgvProductos = new DataGridView();
-            lblFacturaTipo = new Label();
+            lblFacturaTitulo = new Label();
             panel3 = new Panel();
             lblEmailNegocio = new Label();
-            label25 = new Label();
+            label14 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label17 = new Label();
+            label18 = new Label();
+            label19 = new Label();
             lblTelefNegocio = new Label();
+            label20 = new Label();
+            label21 = new Label();
             lblCUIT = new Label();
             label12 = new Label();
             lblNomNegocio = new Label();
             lblDomNegocio = new Label();
             panel2 = new Panel();
-            label2 = new Label();
-            lblMetPago = new Label();
-            lblTelefCliente = new Label();
-            lblNomVendedor = new Label();
-            label3 = new Label();
-            lblDniVendedor = new Label();
-            lblDniCliente = new Label();
-            label15 = new Label();
-            lblNombreCliente = new Label();
-            label4 = new Label();
-            label11 = new Label();
-            lblFechaVenta = new Label();
-            label1 = new Label();
-            lblFacturaNro = new Label();
             label5 = new Label();
+            lblMetPago = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label14 = new Label();
-            label16 = new Label();
-            label17 = new Label();
-            label18 = new Label();
-            label19 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label22 = new Label();
-            label23 = new Label();
-            label24 = new Label();
+            lblNomVendedor = new Label();
+            label2 = new Label();
+            lblDniVendedor = new Label();
+            lblTelefCliente = new Label();
+            label3 = new Label();
+            lblDniCliente = new Label();
+            label15 = new Label();
+            lblNombreCliente = new Label();
+            lblFechaVenta = new Label();
+            label4 = new Label();
+            label11 = new Label();
+            label1 = new Label();
+            lblFacturaNro = new Label();
+            dtgvProductos = new DataGridView();
+            lblTipoFac = new Label();
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -106,9 +106,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvProductos).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgvProductos).BeginInit();
             SuspendLayout();
             // 
             // pnlBarraClientes
@@ -299,6 +299,7 @@
             // 
             panel1.BackColor = SystemColors.ButtonFace;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(lblTipoFac);
             panel1.Controls.Add(label22);
             panel1.Controls.Add(label23);
             panel1.Controls.Add(label24);
@@ -307,7 +308,7 @@
             panel1.Controls.Add(BtnImprimir);
             panel1.Controls.Add(lblTotal);
             panel1.Controls.Add(lblTot);
-            panel1.Controls.Add(lblFacturaTipo);
+            panel1.Controls.Add(lblFacturaTitulo);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(label1);
@@ -318,463 +319,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(727, 494);
             panel1.TabIndex = 4;
-            // 
-            // lblFechaFactura
-            // 
-            lblFechaFactura.AutoSize = true;
-            lblFechaFactura.Location = new Point(633, 44);
-            lblFechaFactura.Name = "lblFechaFactura";
-            lblFechaFactura.Size = new Size(13, 15);
-            lblFechaFactura.TabIndex = 21;
-            lblFechaFactura.Text = "..";
-            // 
-            // BtnImprimir
-            // 
-            BtnImprimir.BackColor = Color.Silver;
-            BtnImprimir.BackgroundImage = (Image)resources.GetObject("BtnImprimir.BackgroundImage");
-            BtnImprimir.BackgroundImageLayout = ImageLayout.None;
-            BtnImprimir.Cursor = Cursors.Hand;
-            BtnImprimir.FlatAppearance.BorderColor = Color.Black;
-            BtnImprimir.FlatStyle = FlatStyle.Flat;
-            BtnImprimir.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            BtnImprimir.ForeColor = SystemColors.ControlLightLight;
-            BtnImprimir.IconChar = FontAwesome.Sharp.IconChar.None;
-            BtnImprimir.IconColor = Color.White;
-            BtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            BtnImprimir.IconSize = 30;
-            BtnImprimir.Location = new Point(428, 445);
-            BtnImprimir.Name = "BtnImprimir";
-            BtnImprimir.Size = new Size(96, 39);
-            BtnImprimir.TabIndex = 19;
-            BtnImprimir.Text = "Imprimir";
-            BtnImprimir.TextAlign = ContentAlignment.MiddleRight;
-            BtnImprimir.TextImageRelation = TextImageRelation.ImageBeforeText;
-            BtnImprimir.UseVisualStyleBackColor = false;
-            BtnImprimir.Click += BtnImprimir_Click;
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotal.Location = new Point(641, 427);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(27, 25);
-            lblTotal.TabIndex = 9;
-            lblTotal.Text = "...";
-            // 
-            // lblTot
-            // 
-            lblTot.AutoSize = true;
-            lblTot.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTot.Location = new Point(563, 427);
-            lblTot.Name = "lblTot";
-            lblTot.Size = new Size(72, 25);
-            lblTot.TabIndex = 8;
-            lblTot.Text = "TOTAL:";
-            // 
-            // dtgvProductos
-            // 
-            dtgvProductos.AllowUserToAddRows = false;
-            dtgvProductos.AllowUserToDeleteRows = false;
-            dtgvProductos.AllowUserToResizeColumns = false;
-            dtgvProductos.AllowUserToResizeRows = false;
-            dtgvProductos.BackgroundColor = SystemColors.ButtonFace;
-            dtgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dtgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle6;
-            dtgvProductos.GridColor = SystemColors.ButtonFace;
-            dtgvProductos.Location = new Point(24, 236);
-            dtgvProductos.Name = "dtgvProductos";
-            dtgvProductos.ReadOnly = true;
-            dtgvProductos.RowHeadersVisible = false;
-            dtgvProductos.RowTemplate.Height = 25;
-            dtgvProductos.Size = new Size(676, 188);
-            dtgvProductos.TabIndex = 7;
-            // 
-            // lblFacturaTipo
-            // 
-            lblFacturaTipo.AutoSize = true;
-            lblFacturaTipo.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFacturaTipo.Location = new Point(255, 38);
-            lblFacturaTipo.Name = "lblFacturaTipo";
-            lblFacturaTipo.Size = new Size(140, 25);
-            lblFacturaTipo.TabIndex = 6;
-            lblFacturaTipo.Text = "FACTURA TIPO";
-            // 
-            // panel3
-            // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(lblEmailNegocio);
-            panel3.Controls.Add(label9);
-            panel3.Controls.Add(label10);
-            panel3.Controls.Add(label14);
-            panel3.Controls.Add(label16);
-            panel3.Controls.Add(label17);
-            panel3.Controls.Add(label18);
-            panel3.Controls.Add(label19);
-            panel3.Controls.Add(lblTelefNegocio);
-            panel3.Controls.Add(label20);
-            panel3.Controls.Add(label21);
-            panel3.Controls.Add(lblCUIT);
-            panel3.Controls.Add(label12);
-            panel3.Controls.Add(lblNomNegocio);
-            panel3.Controls.Add(lblDomNegocio);
-            panel3.Location = new Point(361, 69);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(339, 161);
-            panel3.TabIndex = 2;
-            // 
-            // lblEmailNegocio
-            // 
-            lblEmailNegocio.AutoSize = true;
-            lblEmailNegocio.Location = new Point(189, 94);
-            lblEmailNegocio.Name = "lblEmailNegocio";
-            lblEmailNegocio.Size = new Size(13, 15);
-            lblEmailNegocio.TabIndex = 26;
-            lblEmailNegocio.Text = "..";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(493, 326);
-            label25.Name = "label25";
-            label25.Size = new Size(16, 15);
-            label25.TabIndex = 25;
-            label25.Text = "...";
-            // 
-            // lblTelefNegocio
-            // 
-            lblTelefNegocio.AutoSize = true;
-            lblTelefNegocio.Location = new Point(66, 94);
-            lblTelefNegocio.Name = "lblTelefNegocio";
-            lblTelefNegocio.Size = new Size(13, 15);
-            lblTelefNegocio.TabIndex = 21;
-            lblTelefNegocio.Text = "..";
-            // 
-            // lblCUIT
-            // 
-            lblCUIT.AutoSize = true;
-            lblCUIT.Location = new Point(256, 36);
-            lblCUIT.Name = "lblCUIT";
-            lblCUIT.Size = new Size(13, 15);
-            lblCUIT.TabIndex = 19;
-            lblCUIT.Text = "..";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(14, 6);
-            label12.Name = "label12";
-            label12.Size = new Size(159, 21);
-            label12.TabIndex = 12;
-            label12.Text = "Datos del Negocio: ";
-            // 
-            // lblNomNegocio
-            // 
-            lblNomNegocio.AutoSize = true;
-            lblNomNegocio.Location = new Point(88, 36);
-            lblNomNegocio.Name = "lblNomNegocio";
-            lblNomNegocio.Size = new Size(13, 15);
-            lblNomNegocio.TabIndex = 3;
-            lblNomNegocio.Text = "..";
-            // 
-            // lblDomNegocio
-            // 
-            lblDomNegocio.AutoSize = true;
-            lblDomNegocio.Location = new Point(131, 65);
-            lblDomNegocio.Name = "lblDomNegocio";
-            lblDomNegocio.Size = new Size(13, 15);
-            lblDomNegocio.TabIndex = 4;
-            lblDomNegocio.Text = "..";
-            // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(lblMetPago);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label8);
-            panel2.Controls.Add(lblNomVendedor);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(lblDniVendedor);
-            panel2.Controls.Add(lblTelefCliente);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(lblDniCliente);
-            panel2.Controls.Add(label15);
-            panel2.Controls.Add(lblNombreCliente);
-            panel2.Controls.Add(lblFechaVenta);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(label11);
-            panel2.Location = new Point(24, 69);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(337, 161);
-            panel2.TabIndex = 1;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(18, 63);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 15);
-            label2.TabIndex = 23;
-            label2.Text = "Teléfono:";
-            // 
-            // lblMetPago
-            // 
-            lblMetPago.AutoSize = true;
-            lblMetPago.Location = new Point(246, 140);
-            lblMetPago.Name = "lblMetPago";
-            lblMetPago.Size = new Size(13, 15);
-            lblMetPago.TabIndex = 22;
-            lblMetPago.Text = "..";
-            // 
-            // lblTelefCliente
-            // 
-            lblTelefCliente.AutoSize = true;
-            lblTelefCliente.Location = new Point(72, 63);
-            lblTelefCliente.Name = "lblTelefCliente";
-            lblTelefCliente.Size = new Size(13, 15);
-            lblTelefCliente.TabIndex = 5;
-            lblTelefCliente.Text = "..";
-            // 
-            // lblNomVendedor
-            // 
-            lblNomVendedor.AutoSize = true;
-            lblNomVendedor.Location = new Point(77, 111);
-            lblNomVendedor.Name = "lblNomVendedor";
-            lblNomVendedor.Size = new Size(13, 15);
-            lblNomVendedor.TabIndex = 20;
-            lblNomVendedor.Text = "..";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(170, 36);
-            label3.Name = "label3";
-            label3.Size = new Size(30, 15);
-            label3.TabIndex = 25;
-            label3.Text = "DNI:";
-            // 
-            // lblDniVendedor
-            // 
-            lblDniVendedor.AutoSize = true;
-            lblDniVendedor.Location = new Point(209, 111);
-            lblDniVendedor.Name = "lblDniVendedor";
-            lblDniVendedor.Size = new Size(13, 15);
-            lblDniVendedor.TabIndex = 18;
-            lblDniVendedor.Text = "..";
-            // 
-            // lblDniCliente
-            // 
-            lblDniCliente.AutoSize = true;
-            lblDniCliente.Location = new Point(224, 36);
-            lblDniCliente.Name = "lblDniCliente";
-            lblDniCliente.Size = new Size(13, 15);
-            lblDniCliente.TabIndex = 9;
-            lblDniCliente.Text = "..";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(16, 82);
-            label15.Name = "label15";
-            label15.Size = new Size(156, 21);
-            label15.TabIndex = 17;
-            label15.Text = "Datos del la Venta: ";
-            // 
-            // lblNombreCliente
-            // 
-            lblNombreCliente.AutoSize = true;
-            lblNombreCliente.Location = new Point(72, 36);
-            lblNombreCliente.Name = "lblNombreCliente";
-            lblNombreCliente.Size = new Size(13, 15);
-            lblNombreCliente.TabIndex = 8;
-            lblNombreCliente.Text = "..";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(18, 36);
-            label4.Name = "label4";
-            label4.Size = new Size(50, 15);
-            label4.TabIndex = 24;
-            label4.Text = "Cliente: ";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(16, 6);
-            label11.Name = "label11";
-            label11.Size = new Size(146, 21);
-            label11.TabIndex = 11;
-            label11.Text = "Datos del cliente: ";
-            // 
-            // lblFechaVenta
-            // 
-            lblFechaVenta.AutoSize = true;
-            lblFechaVenta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFechaVenta.Location = new Point(60, 138);
-            lblFechaVenta.Name = "lblFechaVenta";
-            lblFechaVenta.Size = new Size(16, 17);
-            lblFechaVenta.TabIndex = 10;
-            lblFechaVenta.Text = "..";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(275, 2);
-            label1.Name = "label1";
-            label1.Size = new Size(115, 28);
-            label1.TabIndex = 0;
-            label1.Text = "CeliMarket";
-            // 
-            // lblFacturaNro
-            // 
-            lblFacturaNro.AutoSize = true;
-            lblFacturaNro.Location = new Point(655, 24);
-            lblFacturaNro.Name = "lblFacturaNro";
-            lblFacturaNro.Size = new Size(13, 15);
-            lblFacturaNro.TabIndex = 6;
-            lblFacturaNro.Text = "..";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(145, 138);
-            label5.Name = "label5";
-            label5.Size = new Size(95, 15);
-            label5.TabIndex = 29;
-            label5.Text = "Metodo de Pago";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(19, 111);
-            label6.Name = "label6";
-            label6.Size = new Size(57, 15);
-            label6.TabIndex = 28;
-            label6.Text = "Vendedor";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(173, 111);
-            label7.Name = "label7";
-            label7.Size = new Size(30, 15);
-            label7.TabIndex = 27;
-            label7.Text = "DNI:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(19, 136);
-            label8.Name = "label8";
-            label8.Size = new Size(47, 17);
-            label8.TabIndex = 26;
-            label8.Text = "Fecha:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(147, 94);
-            label9.Name = "label9";
-            label9.Size = new Size(36, 15);
-            label9.TabIndex = 35;
-            label9.Text = "Email";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(146, 89);
-            label10.Name = "label10";
-            label10.Size = new Size(16, 15);
-            label10.TabIndex = 34;
-            label10.Text = "...";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(14, 119);
-            label14.Name = "label14";
-            label14.Size = new Size(164, 15);
-            label14.TabIndex = 33;
-            label14.Text = "IVA RESPONSABLE INSCRIPTO";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Location = new Point(13, 114);
-            label16.Name = "label16";
-            label16.Size = new Size(16, 15);
-            label16.TabIndex = 32;
-            label16.Text = "...";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(14, 94);
-            label17.Name = "label17";
-            label17.Size = new Size(55, 15);
-            label17.TabIndex = 31;
-            label17.Text = "Telefono:";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(215, 34);
-            label18.Name = "label18";
-            label18.Size = new Size(35, 15);
-            label18.TabIndex = 30;
-            label18.Text = "CUIT:";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Location = new Point(13, 89);
-            label19.Name = "label19";
-            label19.Size = new Size(16, 15);
-            label19.TabIndex = 29;
-            label19.Text = "...";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(14, 36);
-            label20.Name = "label20";
-            label20.Size = new Size(78, 15);
-            label20.TabIndex = 27;
-            label20.Text = "Razón social: ";
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Location = new Point(14, 65);
-            label21.Name = "label21";
-            label21.Size = new Size(119, 15);
-            label21.TabIndex = 28;
-            label21.Text = "Domicilio comercial: ";
             // 
             // label22
             // 
@@ -803,6 +347,466 @@
             label24.TabIndex = 26;
             label24.Text = "Factura N°: ";
             // 
+            // lblFechaFactura
+            // 
+            lblFechaFactura.AutoSize = true;
+            lblFechaFactura.Location = new Point(633, 44);
+            lblFechaFactura.Name = "lblFechaFactura";
+            lblFechaFactura.Size = new Size(13, 15);
+            lblFechaFactura.TabIndex = 21;
+            lblFechaFactura.Text = "..";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(493, 326);
+            label25.Name = "label25";
+            label25.Size = new Size(16, 15);
+            label25.TabIndex = 25;
+            label25.Text = "...";
+            // 
+            // BtnImprimir
+            // 
+            BtnImprimir.BackColor = Color.Silver;
+            BtnImprimir.BackgroundImage = (Image)resources.GetObject("BtnImprimir.BackgroundImage");
+            BtnImprimir.BackgroundImageLayout = ImageLayout.None;
+            BtnImprimir.Cursor = Cursors.Hand;
+            BtnImprimir.FlatAppearance.BorderColor = Color.Black;
+            BtnImprimir.FlatStyle = FlatStyle.Flat;
+            BtnImprimir.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnImprimir.ForeColor = SystemColors.ControlLightLight;
+            BtnImprimir.IconChar = FontAwesome.Sharp.IconChar.None;
+            BtnImprimir.IconColor = Color.White;
+            BtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnImprimir.IconSize = 30;
+            BtnImprimir.Location = new Point(24, 450);
+            BtnImprimir.Name = "BtnImprimir";
+            BtnImprimir.Size = new Size(96, 39);
+            BtnImprimir.TabIndex = 19;
+            BtnImprimir.Text = "Imprimir";
+            BtnImprimir.TextAlign = ContentAlignment.MiddleRight;
+            BtnImprimir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnImprimir.UseVisualStyleBackColor = false;
+            BtnImprimir.Click += BtnImprimir_Click;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotal.Location = new Point(641, 451);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(27, 25);
+            lblTotal.TabIndex = 9;
+            lblTotal.Text = "...";
+            // 
+            // lblTot
+            // 
+            lblTot.AutoSize = true;
+            lblTot.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTot.Location = new Point(563, 451);
+            lblTot.Name = "lblTot";
+            lblTot.Size = new Size(72, 25);
+            lblTot.TabIndex = 8;
+            lblTot.Text = "TOTAL:";
+            // 
+            // lblFacturaTitulo
+            // 
+            lblFacturaTitulo.AutoSize = true;
+            lblFacturaTitulo.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFacturaTitulo.Location = new Point(255, 38);
+            lblFacturaTitulo.Name = "lblFacturaTitulo";
+            lblFacturaTitulo.Size = new Size(140, 25);
+            lblFacturaTitulo.TabIndex = 6;
+            lblFacturaTitulo.Text = "FACTURA TIPO";
+            // 
+            // panel3
+            // 
+            panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(lblTelefNegocio);
+            panel3.Controls.Add(lblDomNegocio);
+            panel3.Controls.Add(lblNomNegocio);
+            panel3.Controls.Add(lblCUIT);
+            panel3.Controls.Add(lblEmailNegocio);
+            panel3.Controls.Add(label14);
+            panel3.Controls.Add(label9);
+            panel3.Controls.Add(label10);
+            panel3.Controls.Add(label17);
+            panel3.Controls.Add(label18);
+            panel3.Controls.Add(label19);
+            panel3.Controls.Add(label20);
+            panel3.Controls.Add(label21);
+            panel3.Controls.Add(label12);
+            panel3.Location = new Point(361, 69);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(339, 173);
+            panel3.TabIndex = 2;
+            // 
+            // lblEmailNegocio
+            // 
+            lblEmailNegocio.AutoSize = true;
+            lblEmailNegocio.Location = new Point(50, 115);
+            lblEmailNegocio.Name = "lblEmailNegocio";
+            lblEmailNegocio.Size = new Size(13, 15);
+            lblEmailNegocio.TabIndex = 36;
+            lblEmailNegocio.Text = "..";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(100, 136);
+            label14.Name = "label14";
+            label14.Size = new Size(164, 15);
+            label14.TabIndex = 33;
+            label14.Text = "IVA RESPONSABLE INSCRIPTO";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(14, 116);
+            label9.Name = "label9";
+            label9.Size = new Size(36, 15);
+            label9.TabIndex = 38;
+            label9.Text = "Email";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(13, 111);
+            label10.Name = "label10";
+            label10.Size = new Size(16, 15);
+            label10.TabIndex = 37;
+            label10.Text = "...";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(14, 94);
+            label17.Name = "label17";
+            label17.Size = new Size(55, 15);
+            label17.TabIndex = 31;
+            label17.Text = "Telefono:";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(208, 34);
+            label18.Name = "label18";
+            label18.Size = new Size(35, 15);
+            label18.TabIndex = 30;
+            label18.Text = "CUIT:";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(13, 89);
+            label19.Name = "label19";
+            label19.Size = new Size(16, 15);
+            label19.TabIndex = 29;
+            label19.Text = "...";
+            // 
+            // lblTelefNegocio
+            // 
+            lblTelefNegocio.AutoSize = true;
+            lblTelefNegocio.Location = new Point(66, 94);
+            lblTelefNegocio.Name = "lblTelefNegocio";
+            lblTelefNegocio.Size = new Size(13, 15);
+            lblTelefNegocio.TabIndex = 21;
+            lblTelefNegocio.Text = "..";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(14, 36);
+            label20.Name = "label20";
+            label20.Size = new Size(78, 15);
+            label20.TabIndex = 27;
+            label20.Text = "Razón social: ";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(14, 65);
+            label21.Name = "label21";
+            label21.Size = new Size(119, 15);
+            label21.TabIndex = 28;
+            label21.Text = "Domicilio comercial: ";
+            // 
+            // lblCUIT
+            // 
+            lblCUIT.AutoSize = true;
+            lblCUIT.Location = new Point(241, 34);
+            lblCUIT.Name = "lblCUIT";
+            lblCUIT.Size = new Size(13, 15);
+            lblCUIT.TabIndex = 19;
+            lblCUIT.Text = "..";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(14, 6);
+            label12.Name = "label12";
+            label12.Size = new Size(159, 21);
+            label12.TabIndex = 12;
+            label12.Text = "Datos del Negocio: ";
+            // 
+            // lblNomNegocio
+            // 
+            lblNomNegocio.AutoSize = true;
+            lblNomNegocio.Location = new Point(85, 36);
+            lblNomNegocio.Name = "lblNomNegocio";
+            lblNomNegocio.Size = new Size(13, 15);
+            lblNomNegocio.TabIndex = 3;
+            lblNomNegocio.Text = "..";
+            // 
+            // lblDomNegocio
+            // 
+            lblDomNegocio.AutoSize = true;
+            lblDomNegocio.Location = new Point(129, 65);
+            lblDomNegocio.Name = "lblDomNegocio";
+            lblDomNegocio.Size = new Size(13, 15);
+            lblDomNegocio.TabIndex = 4;
+            lblDomNegocio.Text = "..";
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(lblTelefCliente);
+            panel2.Controls.Add(lblNomVendedor);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(lblMetPago);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(label8);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(lblDniVendedor);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(lblDniCliente);
+            panel2.Controls.Add(label15);
+            panel2.Controls.Add(lblNombreCliente);
+            panel2.Controls.Add(lblFechaVenta);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(label11);
+            panel2.Location = new Point(24, 69);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(337, 173);
+            panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(19, 155);
+            label5.Name = "label5";
+            label5.Size = new Size(95, 15);
+            label5.TabIndex = 29;
+            label5.Text = "Metodo de Pago";
+            label5.Click += label5_Click;
+            // 
+            // lblMetPago
+            // 
+            lblMetPago.AutoSize = true;
+            lblMetPago.Location = new Point(114, 155);
+            lblMetPago.Name = "lblMetPago";
+            lblMetPago.Size = new Size(13, 15);
+            lblMetPago.TabIndex = 22;
+            lblMetPago.Text = "..";
+            lblMetPago.Click += lblMetPago_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(19, 111);
+            label6.Name = "label6";
+            label6.Size = new Size(57, 15);
+            label6.TabIndex = 28;
+            label6.Text = "Vendedor";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(177, 111);
+            label7.Name = "label7";
+            label7.Size = new Size(30, 15);
+            label7.TabIndex = 27;
+            label7.Text = "DNI:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(19, 133);
+            label8.Name = "label8";
+            label8.Size = new Size(47, 17);
+            label8.TabIndex = 26;
+            label8.Text = "Fecha:";
+            // 
+            // lblNomVendedor
+            // 
+            lblNomVendedor.AutoSize = true;
+            lblNomVendedor.Location = new Point(76, 111);
+            lblNomVendedor.Name = "lblNomVendedor";
+            lblNomVendedor.Size = new Size(13, 15);
+            lblNomVendedor.TabIndex = 20;
+            lblNomVendedor.Text = "..";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(18, 63);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 23;
+            label2.Text = "Teléfono:";
+            // 
+            // lblDniVendedor
+            // 
+            lblDniVendedor.AutoSize = true;
+            lblDniVendedor.Location = new Point(206, 111);
+            lblDniVendedor.Name = "lblDniVendedor";
+            lblDniVendedor.Size = new Size(13, 15);
+            lblDniVendedor.TabIndex = 18;
+            lblDniVendedor.Text = "..";
+            // 
+            // lblTelefCliente
+            // 
+            lblTelefCliente.AutoSize = true;
+            lblTelefCliente.Location = new Point(68, 63);
+            lblTelefCliente.Name = "lblTelefCliente";
+            lblTelefCliente.Size = new Size(13, 15);
+            lblTelefCliente.TabIndex = 5;
+            lblTelefCliente.Text = "..";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(176, 36);
+            label3.Name = "label3";
+            label3.Size = new Size(30, 15);
+            label3.TabIndex = 25;
+            label3.Text = "DNI:";
+            // 
+            // lblDniCliente
+            // 
+            lblDniCliente.AutoSize = true;
+            lblDniCliente.Location = new Point(204, 35);
+            lblDniCliente.Name = "lblDniCliente";
+            lblDniCliente.Size = new Size(13, 15);
+            lblDniCliente.TabIndex = 9;
+            lblDniCliente.Text = "..";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(16, 82);
+            label15.Name = "label15";
+            label15.Size = new Size(156, 21);
+            label15.TabIndex = 17;
+            label15.Text = "Datos del la Venta: ";
+            // 
+            // lblNombreCliente
+            // 
+            lblNombreCliente.AutoSize = true;
+            lblNombreCliente.Location = new Point(63, 35);
+            lblNombreCliente.Name = "lblNombreCliente";
+            lblNombreCliente.Size = new Size(13, 15);
+            lblNombreCliente.TabIndex = 8;
+            lblNombreCliente.Text = "..";
+            // 
+            // lblFechaVenta
+            // 
+            lblFechaVenta.AutoSize = true;
+            lblFechaVenta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFechaVenta.Location = new Point(58, 133);
+            lblFechaVenta.Name = "lblFechaVenta";
+            lblFechaVenta.Size = new Size(16, 17);
+            lblFechaVenta.TabIndex = 10;
+            lblFechaVenta.Text = "..";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(18, 36);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 15);
+            label4.TabIndex = 24;
+            label4.Text = "Cliente: ";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(16, 6);
+            label11.Name = "label11";
+            label11.Size = new Size(146, 21);
+            label11.TabIndex = 11;
+            label11.Text = "Datos del cliente: ";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(275, 2);
+            label1.Name = "label1";
+            label1.Size = new Size(115, 28);
+            label1.TabIndex = 0;
+            label1.Text = "CeliMarket";
+            // 
+            // lblFacturaNro
+            // 
+            lblFacturaNro.AutoSize = true;
+            lblFacturaNro.Location = new Point(655, 24);
+            lblFacturaNro.Name = "lblFacturaNro";
+            lblFacturaNro.Size = new Size(13, 15);
+            lblFacturaNro.TabIndex = 6;
+            lblFacturaNro.Text = "..";
+            // 
+            // dtgvProductos
+            // 
+            dtgvProductos.AllowUserToAddRows = false;
+            dtgvProductos.AllowUserToDeleteRows = false;
+            dtgvProductos.AllowUserToResizeColumns = false;
+            dtgvProductos.AllowUserToResizeRows = false;
+            dtgvProductos.BackgroundColor = SystemColors.ButtonFace;
+            dtgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dtgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
+            dtgvProductos.GridColor = SystemColors.ButtonFace;
+            dtgvProductos.Location = new Point(24, 248);
+            dtgvProductos.Name = "dtgvProductos";
+            dtgvProductos.ReadOnly = true;
+            dtgvProductos.RowHeadersVisible = false;
+            dtgvProductos.RowTemplate.Height = 25;
+            dtgvProductos.Size = new Size(676, 196);
+            dtgvProductos.TabIndex = 7;
+            // 
+            // lblTipoFac
+            // 
+            lblTipoFac.AutoSize = true;
+            lblTipoFac.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTipoFac.Location = new Point(390, 38);
+            lblTipoFac.Name = "lblTipoFac";
+            lblTipoFac.Size = new Size(22, 25);
+            lblTipoFac.TabIndex = 29;
+            lblTipoFac.Text = "..";
+            // 
             // frmFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -830,11 +834,11 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvProductos).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgvProductos).EndInit();
             ResumeLayout(false);
         }
 
@@ -861,7 +865,7 @@
         private Label lblTelefCliente;
         private Label lblDomNegocio;
         private Label lblNomNegocio;
-        private Label lblFacturaTipo;
+        private Label lblFacturaTitulo;
         private Label lblFacturaNro;
         private Label lblNombreCliente;
         private Label label11;
@@ -877,7 +881,6 @@
         private Label lblNomVendedor;
         private Label lblDniVendedor;
         private Label label15;
-        private Label lblEmailNegocio;
         private Label label25;
         private Label lblTelefNegocio;
         private Label lblMetPago;
@@ -888,10 +891,7 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
-        private Label label10;
         private Label label14;
-        private Label label16;
         private Label label17;
         private Label label18;
         private Label label19;
@@ -900,5 +900,9 @@
         private Label label22;
         private Label label23;
         private Label label24;
+        private Label lblEmailNegocio;
+        private Label label9;
+        private Label label10;
+        private Label lblTipoFac;
     }
 }
