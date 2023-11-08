@@ -97,7 +97,7 @@ namespace CapaPresentacion.Formularios.Admin.settings
                 direccion_negocio = txtDireNegocio.Text
 
             };
-            bool respuestaGuardadatos = new CapaLogica.CL_Negocio().guardarDatosNegocio(obj_negocio,out mensaje);
+            bool respuestaGuardadatos = new CapaLogica.CL_Negocio().guardarDatosNegocio(obj_negocio, out mensaje);
 
             if (respuestaGuardadatos)
             {

@@ -103,7 +103,7 @@
             BtnGuardarCambios.FlatStyle = FlatStyle.Flat;
             BtnGuardarCambios.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             BtnGuardarCambios.ForeColor = SystemColors.ControlLightLight;
-            BtnGuardarCambios.IconChar = FontAwesome.Sharp.IconChar.Xmark;
+            BtnGuardarCambios.IconChar = FontAwesome.Sharp.IconChar.Check;
             BtnGuardarCambios.IconColor = Color.White;
             BtnGuardarCambios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             BtnGuardarCambios.IconSize = 30;

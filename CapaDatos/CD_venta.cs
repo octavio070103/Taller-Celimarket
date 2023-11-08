@@ -181,12 +181,18 @@ namespace CapaDatos
                         {
                             nroFactura = int.Parse(dataReader["Numero de factura"].ToString()),
                             nombreCliente = dataReader["Cliente"].ToString(),
-                            dni = dataReader["DNI"].ToString(),
-                            telefono = dataReader["Telefono"].ToString(),
+                            dni_cliente = dataReader["DNI"].ToString(),
+                            telefono_cliente = dataReader["Telefono Cliente"].ToString(),
                             fechaVenta = dataReader["Fecha"].ToString(),
                             nombreNegocio = dataReader["Nombre"].ToString(),
                             cuitNegocio = dataReader["CUIT"].ToString(),
-                            direccionNegocio = dataReader["Direccion"].ToString()
+                            direccionNegocio = dataReader["Direccion"].ToString(),
+                            email_negocio = dataReader["email_negocio"].ToString(),
+                            telefono_negocio = dataReader["Telefono Negocio"].ToString(),
+                            nombreVendedor = dataReader["Vendedor"].ToString(),
+                            dniVendedor = dataReader["dni Vendedor"].ToString(),
+                            nombre_metodo_pago = dataReader["nombre_metodo_pago"].ToString(),
+                            nombre_tipo_pago = dataReader["nombre_tipo_pago"].ToString(),
                         };
 
                     }

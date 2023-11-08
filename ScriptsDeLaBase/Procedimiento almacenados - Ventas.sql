@@ -1,7 +1,7 @@
 ---------- PRODUCTOS MAS VENDIDOS ----------
 
 
-CREATE PROCEDURE SP_ProductosMasVendidos
+ALTER PROCEDURE SP_ProductosMasVendidos
 AS
 select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
 	from detalle_venta
@@ -14,7 +14,7 @@ GO
 
 ---------- CATEGORIAS MAS VENDIDAS -----------
 
-CREATE PROCEDURE SP_CategoriasMasVendidas
+ALTER PROCEDURE SP_CategoriasMasVendidas
 AS
 	select categoria.nombre_categoria, COUNT(categoria.id_categoria) AS CategoriaMasVendida 
 		from detalle_venta
@@ -38,7 +38,7 @@ GO
 
 ---------- DATOS DEL NEGOCIO -----------
 
-CREATE PROCEDURE SP_DatosDelNegocio
+ALTER PROCEDURE SP_DatosDelNegocio
 	@nroVentas INT OUT,
 	@totalRecaudado FLOAT OUT,
 	@nroClientes INT OUT,
@@ -59,7 +59,7 @@ FROM venta WHERE MONTH(fecha_venta) = @mes);
 --******* LISTAR TODAS LAS VENTAS ******--
 
 
-CREATE PROCEDURE SP_ListarVentas
+ALTER PROCEDURE SP_ListarVentas
 
 AS
 SELECT venta.id_venta AS ID_Venta, 
@@ -116,7 +116,7 @@ GO
 
 -- ***** DETALLES FACTURA *****
 
-CREATE PROCEDURE SP_ObtenerDatosFactura
+ALTER PROCEDURE SP_ObtenerDatosFactura
 (
   @id_venta INT
 )
@@ -125,14 +125,24 @@ AS
 	SELECT V.id_venta AS 'Numero de factura',
 		   P.apellido +' '+P.nombre AS 'Cliente',
 		   P.dni AS 'DNI',
-		   P.telefono AS 'Telefono',
+		   P.telefono AS 'Telefono Cliente',
 		   V.venta_fecha AS 'Fecha', 
 		   N.nombre_negocio AS 'Nombre',
 		   N.CUIT,
-		   N.direccion AS 'Direccion'
+		   N.direccion AS 'Direccion',
+		   N.email_negocio,
+		   N.telefono AS 'Telefono Negocio',
+		   perUsua.nombre+' '+perUsua.apellido AS 'Vendedor',
+		   perUsua.dni As 'dni Vendedor',
+		   met.nombre_metodo_pago,
+		   tpMet.nombre_tipo_pago
 		   FROM venta AS V
 	INNER JOIN cliente AS C on C.id_cliente = V.id_cliente
 	INNER JOIN persona AS P on P.id_persona = C.id_persona
+	INNER JOIN usuario usua ON V.id_usuario = usua.id_usuario
+	INNER JOIN persona perUsua ON usua.id_persona = perUsua.id_persona
+	INNER JOIN metodo_pago met ON v.id_metodo_pago=met.id_metodo_pago
+	INNER JOIN tipo_metodo_pago tpMet ON met.id_tipo_metodo_pago = tpMet.id_tipo_metodo_pago
 	CROSS JOIN Negocio AS N
 	WHERE id_venta = @id_venta
   END
