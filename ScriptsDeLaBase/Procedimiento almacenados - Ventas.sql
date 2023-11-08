@@ -17,8 +17,8 @@ GO
 
 CREATE PROCEDURE SP_ProductosMasVendidosPorPeriodo
 (
-	@fechaInicioPer DATETIME,
-	@fechaFinPer DATETIME
+	@fechaInicioPer DATE,
+	@fechaFinPer DATE
 )
 AS
 select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
