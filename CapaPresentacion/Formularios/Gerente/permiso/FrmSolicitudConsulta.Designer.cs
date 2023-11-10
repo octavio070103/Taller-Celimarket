@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSolicitudConsulta));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -47,13 +48,13 @@
             label5 = new Label();
             txtEmail = new TextBox();
             txtApellido = new TextBox();
-            label8 = new Label();
-            label7 = new Label();
+            lblTel = new Label();
+            lblDni = new Label();
             txtNombre = new TextBox();
-            label6 = new Label();
-            label4 = new Label();
-            label10 = new Label();
-            label9 = new Label();
+            lblApelli = new Label();
+            lblNombre = new Label();
+            lblCorreo = new Label();
+            lblRol = new Label();
             txtRol = new TextBox();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
@@ -67,10 +68,6 @@
             label2 = new Label();
             panel2 = new Panel();
             panelConsulAnteriores = new Panel();
-            plTituloConsulAntes = new Panel();
-            label11 = new Label();
-            Col_id_motivo_consulta = new DataGridViewTextBoxColumn();
-            Col_motivo_consulta = new DataGridViewTextBoxColumn();
             dataGridConsultas = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -79,6 +76,11 @@
             Col_estado_consulta = new DataGridViewTextBoxColumn();
             Col_fecha_consulta = new DataGridViewTextBoxColumn();
             Col_id_usuario = new DataGridViewTextBoxColumn();
+            plTituloConsulAntes = new Panel();
+            label11 = new Label();
+            Col_id_motivo_consulta = new DataGridViewTextBoxColumn();
+            Col_motivo_consulta = new DataGridViewTextBoxColumn();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
             pEncabezado.SuspendLayout();
@@ -89,8 +91,9 @@
             panel5.SuspendLayout();
             panel3.SuspendLayout();
             panelConsulAnteriores.SuspendLayout();
-            plTituloConsulAntes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridConsultas).BeginInit();
+            plTituloConsulAntes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel8
@@ -170,7 +173,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(301, 9);
+            label1.Location = new Point(207, 9);
             label1.Name = "label1";
             label1.Size = new Size(197, 21);
             label1.TabIndex = 0;
@@ -186,13 +189,13 @@
             pDatosEmpleado.Controls.Add(pTituloEmpleado);
             pDatosEmpleado.Controls.Add(txtEmail);
             pDatosEmpleado.Controls.Add(txtApellido);
-            pDatosEmpleado.Controls.Add(label8);
-            pDatosEmpleado.Controls.Add(label7);
+            pDatosEmpleado.Controls.Add(lblTel);
+            pDatosEmpleado.Controls.Add(lblDni);
             pDatosEmpleado.Controls.Add(txtNombre);
-            pDatosEmpleado.Controls.Add(label6);
-            pDatosEmpleado.Controls.Add(label4);
-            pDatosEmpleado.Controls.Add(label10);
-            pDatosEmpleado.Controls.Add(label9);
+            pDatosEmpleado.Controls.Add(lblApelli);
+            pDatosEmpleado.Controls.Add(lblNombre);
+            pDatosEmpleado.Controls.Add(lblCorreo);
+            pDatosEmpleado.Controls.Add(lblRol);
             pDatosEmpleado.Controls.Add(txtRol);
             pDatosEmpleado.Location = new Point(41, 119);
             pDatosEmpleado.Name = "pDatosEmpleado";
@@ -257,27 +260,27 @@
             txtApellido.Size = new Size(291, 19);
             txtApellido.TabIndex = 7;
             // 
-            // label8
+            // lblTel
             // 
-            label8.AutoSize = true;
-            label8.BorderStyle = BorderStyle.FixedSingle;
-            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(346, 59);
-            label8.Name = "label8";
-            label8.Size = new Size(64, 19);
-            label8.TabIndex = 14;
-            label8.Text = "Telefono";
+            lblTel.AutoSize = true;
+            lblTel.BorderStyle = BorderStyle.FixedSingle;
+            lblTel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTel.Location = new Point(346, 59);
+            lblTel.Name = "lblTel";
+            lblTel.Size = new Size(64, 19);
+            lblTel.TabIndex = 14;
+            lblTel.Text = "Telefono";
             // 
-            // label7
+            // lblDni
             // 
-            label7.AutoSize = true;
-            label7.BorderStyle = BorderStyle.FixedSingle;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(347, 78);
-            label7.Name = "label7";
-            label7.Size = new Size(66, 19);
-            label7.TabIndex = 10;
-            label7.Text = "DNI        ";
+            lblDni.AutoSize = true;
+            lblDni.BorderStyle = BorderStyle.FixedSingle;
+            lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDni.Location = new Point(347, 78);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(66, 19);
+            lblDni.TabIndex = 10;
+            lblDni.Text = "DNI        ";
             // 
             // txtNombre
             // 
@@ -289,51 +292,51 @@
             txtNombre.Size = new Size(229, 19);
             txtNombre.TabIndex = 5;
             // 
-            // label6
+            // lblApelli
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(347, 40);
-            label6.Name = "label6";
-            label6.Size = new Size(62, 19);
-            label6.TabIndex = 6;
-            label6.Text = "Apellido";
+            lblApelli.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblApelli.AutoSize = true;
+            lblApelli.BorderStyle = BorderStyle.FixedSingle;
+            lblApelli.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblApelli.Location = new Point(347, 40);
+            lblApelli.Name = "lblApelli";
+            lblApelli.Size = new Size(62, 19);
+            lblApelli.TabIndex = 6;
+            lblApelli.Text = "Apellido";
             // 
-            // label4
+            // lblNombre
             // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(-1, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 19);
-            label4.TabIndex = 3;
-            label4.Text = "Nombre               ";
+            lblNombre.Anchor = AnchorStyles.Left;
+            lblNombre.AutoSize = true;
+            lblNombre.BorderStyle = BorderStyle.FixedSingle;
+            lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.Location = new Point(-1, 40);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(120, 19);
+            lblNombre.TabIndex = 3;
+            lblNombre.Text = "Nombre               ";
             // 
-            // label10
+            // lblCorreo
             // 
-            label10.AutoSize = true;
-            label10.BorderStyle = BorderStyle.FixedSingle;
-            label10.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(-4, 59);
-            label10.Name = "label10";
-            label10.Size = new Size(123, 19);
-            label10.TabIndex = 8;
-            label10.Text = "Correo Electronico";
+            lblCorreo.AutoSize = true;
+            lblCorreo.BorderStyle = BorderStyle.FixedSingle;
+            lblCorreo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCorreo.Location = new Point(-4, 59);
+            lblCorreo.Name = "lblCorreo";
+            lblCorreo.Size = new Size(123, 19);
+            lblCorreo.TabIndex = 8;
+            lblCorreo.Text = "Correo Electronico";
             // 
-            // label9
+            // lblRol
             // 
-            label9.AutoSize = true;
-            label9.BorderStyle = BorderStyle.FixedSingle;
-            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(-3, 78);
-            label9.Name = "label9";
-            label9.Size = new Size(122, 19);
-            label9.TabIndex = 12;
-            label9.Text = "Rol                       ";
+            lblRol.AutoSize = true;
+            lblRol.BorderStyle = BorderStyle.FixedSingle;
+            lblRol.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRol.Location = new Point(-3, 78);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(122, 19);
+            lblRol.TabIndex = 12;
+            lblRol.Text = "Rol                       ";
             // 
             // txtRol
             // 
@@ -364,6 +367,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconbtnGuardar
             // 
@@ -447,9 +451,9 @@
             label13.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label13.Location = new Point(20, 11);
             label13.Name = "label13";
-            label13.Size = new Size(137, 15);
+            label13.Size = new Size(156, 15);
             label13.TabIndex = 5;
-            label13.Text = "MOTIVO DEL PERMISO:";
+            label13.Text = "MOTIVO DE LA CONSULTA:";
             // 
             // panel3
             // 
@@ -491,43 +495,6 @@
             panelConsulAnteriores.Size = new Size(700, 134);
             panelConsulAnteriores.TabIndex = 34;
             panelConsulAnteriores.Visible = false;
-            // 
-            // plTituloConsulAntes
-            // 
-            plTituloConsulAntes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            plTituloConsulAntes.BackColor = Color.White;
-            plTituloConsulAntes.BorderStyle = BorderStyle.FixedSingle;
-            plTituloConsulAntes.Controls.Add(label11);
-            plTituloConsulAntes.Location = new Point(40, 355);
-            plTituloConsulAntes.Name = "plTituloConsulAntes";
-            plTituloConsulAntes.Size = new Size(700, 17);
-            plTituloConsulAntes.TabIndex = 34;
-            plTituloConsulAntes.Visible = false;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.BackColor = Color.White;
-            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(270, 1);
-            label11.Name = "label11";
-            label11.Size = new Size(149, 15);
-            label11.TabIndex = 34;
-            label11.Text = "CONSULTAS ANTERIORES";
-            // 
-            // Col_id_motivo_consulta
-            // 
-            Col_id_motivo_consulta.HeaderText = "id_motivo_consulta";
-            Col_id_motivo_consulta.Name = "Col_id_motivo_consulta";
-            Col_id_motivo_consulta.Visible = false;
-            Col_id_motivo_consulta.Width = 129;
-            // 
-            // Col_motivo_consulta
-            // 
-            Col_motivo_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Col_motivo_consulta.HeaderText = "Motivo Consulta";
-            Col_motivo_consulta.Name = "Col_motivo_consulta";
-            Col_motivo_consulta.Width = 150;
             // 
             // dataGridConsultas
             // 
@@ -637,6 +604,47 @@
             Col_id_usuario.Visible = false;
             Col_id_usuario.Width = 95;
             // 
+            // plTituloConsulAntes
+            // 
+            plTituloConsulAntes.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            plTituloConsulAntes.BackColor = Color.White;
+            plTituloConsulAntes.BorderStyle = BorderStyle.FixedSingle;
+            plTituloConsulAntes.Controls.Add(label11);
+            plTituloConsulAntes.Location = new Point(40, 355);
+            plTituloConsulAntes.Name = "plTituloConsulAntes";
+            plTituloConsulAntes.Size = new Size(700, 17);
+            plTituloConsulAntes.TabIndex = 34;
+            plTituloConsulAntes.Visible = false;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.White;
+            label11.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(270, 1);
+            label11.Name = "label11";
+            label11.Size = new Size(149, 15);
+            label11.TabIndex = 34;
+            label11.Text = "CONSULTAS ANTERIORES";
+            // 
+            // Col_id_motivo_consulta
+            // 
+            Col_id_motivo_consulta.HeaderText = "id_motivo_consulta";
+            Col_id_motivo_consulta.Name = "Col_id_motivo_consulta";
+            Col_id_motivo_consulta.Visible = false;
+            Col_id_motivo_consulta.Width = 129;
+            // 
+            // Col_motivo_consulta
+            // 
+            Col_motivo_consulta.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Col_motivo_consulta.HeaderText = "Motivo Consulta";
+            Col_motivo_consulta.Name = "Col_motivo_consulta";
+            Col_motivo_consulta.Width = 150;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // FrmSolicitudConsulta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -676,9 +684,10 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panelConsulAnteriores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridConsultas).EndInit();
             plTituloConsulAntes.ResumeLayout(false);
             plTituloConsulAntes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridConsultas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -692,20 +701,20 @@
         private Panel panel1;
         private Label label3;
         private Panel pDatosEmpleado;
-        private Label label4;
+        private Label lblNombre;
         private TextBox txtDni;
         private TextBox txtTel;
         private TextBox txtEmail;
         private Panel pTituloEmpleado;
         private Label label5;
         private TextBox txtNombre;
-        private Label label6;
-        private Label label8;
+        private Label lblApelli;
+        private Label lblTel;
         private TextBox txtApellido;
-        private Label label9;
-        private Label label7;
+        private Label lblRol;
+        private Label lblDni;
         private TextBox txtRol;
-        private Label label10;
+        private Label lblCorreo;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private Panel pDatosConsulta;
@@ -717,7 +726,7 @@
         private Panel panel2;
         private TextBox txtComentarioConsulta;
         private Label label14;
-       // private DataGridView datagridConsultas;
+        // private DataGridView datagridConsultas;
         private Panel panelConsulAnteriores;
         private Panel plTituloConsulAntes;
         private Label label11;
@@ -732,5 +741,6 @@
         private DataGridViewTextBoxColumn Col_estado_consulta;
         private DataGridViewTextBoxColumn Col_fecha_consulta;
         private DataGridViewTextBoxColumn Col_id_usuario;
+        private ErrorProvider errorProvider1;
     }
 }

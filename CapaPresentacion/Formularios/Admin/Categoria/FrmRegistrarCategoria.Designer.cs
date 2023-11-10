@@ -108,6 +108,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // panelProductos
             // 
@@ -260,6 +261,7 @@
             Name = "FrmRegistrarCategoria";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmRegistrarCategoria";
+            Load += FrmRegistrarCategoria_Load;
             panel2.ResumeLayout(false);
             panelProductos.ResumeLayout(false);
             panelProductos.PerformLayout();

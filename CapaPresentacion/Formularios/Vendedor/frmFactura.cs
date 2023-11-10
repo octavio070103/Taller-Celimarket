@@ -20,6 +20,9 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using Microsoft.Win32;
+using DocumentFormat.OpenXml.ExtendedProperties;
+using static System.Resources.ResXFileRef;
+using Microsoft.VisualBasic.Logging;
 
 
 namespace CapaPresentacion.Formularios.Vendedor
@@ -122,7 +125,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             //aca obtneemos y reemplzamos en el html los productos que iran en nuestra factura
             string filas = string.Empty;
             decimal total = 0;
-
+            decimal iva = 0.21m;//a "m" al final de un número decimal indica que el literal numérico debe ser tratado como un tipo decimal en lugar de un double
             /*falta */
             foreach (DataGridViewRow row in dtgvProductos.Rows)
             {
@@ -137,18 +140,31 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
             contenidoHTML = contenidoHTML.Replace("@FILAS", filas);
             contenidoHTML = contenidoHTML.Replace("@Subtotal", total.ToString());
-            contenidoHTML = contenidoHTML.Replace("@Descuento", total.ToString());
-            contenidoHTML = contenidoHTML.Replace("@IVA", total.ToString());
-            contenidoHTML = contenidoHTML.Replace("@Total", total.ToString());
+            contenidoHTML = contenidoHTML.Replace("@Descuento", "0");
+            contenidoHTML = contenidoHTML.Replace("@IVA", (total * iva).ToString());//IVAAplicado=Subtotal*(0,21)
+            contenidoHTML = contenidoHTML.Replace("@Total", (total + (total * iva)).ToString());//total=subtotal+IVAAplicado
 
             string estilosCSS = EstilosCSS.ObtenerEstilosCSS();
+
 
             bool logoObtenido = false;
             byte[] byteImage = new CL_Negocio().obtenerLogoNegocio(out logoObtenido);//obtemos el logo de la empresa que cargamos en la BD,donde llammamos a ese metodo y le pasamos la var de slaida logoObtenido para saber si l opudo obtener o no
             if (logoObtenido)
             {
+                /*
+                System.Drawing.Image imgLogo = ByteToImage(byteImage); //aca digo que se cargue el piclogo con el resultado del metodo bytetoimage que me conveirte el array de byte en Image
+                string base64Image = ImageToBase64(imgLogo);
+                contenidoHTML = contenidoHTML.Replace("@imgBase64", base64Image);
+                */
 
+                string base64Image = ByteToBase64(byteImage);// Utilicé un nuevo método ByteToBase64 para convertir esos bytes a una cadena de datos base64.
+
+                // Continuación del código (reemplazar en el HTML)
+                contenidoHTML = contenidoHTML.Replace("@imgBase64", "data:image/png;base64," + base64Image);//reemplazp @imgBase64 en tu HTML con la URL de datos base64 de la imagen obtenida desde la base de datos.
+                                                                                                            //data:image/png;base64," es parte de la URL de datos (data URL) que se utiliza para incrustar datos directamente en el código fuente, en lugar de cargarlos desde un archivo externo. En este caso, se utiliza para incrustar una imagen en formato PNG en tu HTML.
+                                                                                                            //data:": Indica que estamos utilizando una URL de datos.,image/png": Especifica el tipo MIME de los datos, en este caso, una imagen en formato PNG.            ";base64,": Indica que los datos que siguen están codificados en base64.
             }
+
 
             try
             {
@@ -166,18 +182,19 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
 
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        //este metodo me va a permitir convertir mi arrat de bit que contiene mi iamgen a tipo Image para poder mostrar el logo
+        public System.Drawing.Image ByteToImage(byte[] imageBytes)
         {
+            MemoryStream ms = new MemoryStream();   //creo este obj para guardar en memeoria mi array
+            ms.Write(imageBytes, 0, imageBytes.Length); //aca leo ese array
+            System.Drawing.Image image = new Bitmap(ms);//cremaos nuestra imagen de tipo image
 
+            return image;
         }
-
-        private void label5_Click(object sender, EventArgs e)
+        //convertimos esa cadena de bytes a una representación de imagen en el HTML en este caso una cadena de datps nase64
+        public string ByteToBase64(byte[] byteImage)
         {
-        }
-
-        private void lblMetPago_Click(object sender, EventArgs e)
-        {
+            return Convert.ToBase64String(byteImage);//Utilicé un nuevo método ByteToBase64 para convertir esos bytes a una cadena de datos base64.
         }
 
         /* probar este con itex7

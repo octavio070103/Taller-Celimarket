@@ -19,11 +19,13 @@ namespace CapaLogica
 <head>
     <title>Factura de Venta</title>
 </head>
-<body style="" font-family: Arial, sans-serif;margin: 20px;"">
+<body style="" font-family: Arial, background-color: #E9EBF7;,sans-serif;margin: 20px;"">
 
     <div class=""header"" style=""display: flex; justify-content: space-between; align-items: center;"">
-        <div class=""logo"" style=""text-align: right; margin-left: 4%;""></div>
-        <div class=""title"" style=""text-align: center; margin-left: 10%;"">
+        <div class=""logo"">
+ <img src=""@imgBase64""  alt=""Logo"" width=""400"" height=""400"">
+    </div>
+        <div class=""title"" style=""text-align: left;"">
             <h1>Factura Tipo @tipoFac</h1>
         </div>
         <div class=""info-factura"" style=""text-align: left; margin-right: 4%;"">
@@ -80,12 +82,14 @@ namespace CapaLogica
                 @FILAS
             </tr class =""tr-filas"">
             <tr>
-                <td style=""text-align: center;"">Subtotal</td>
-                <td style=""text-align: center;"">Descuento</td>
-                <td style=""text-align: center;"">IVA</td>
-                <td style=""text-align: center;"">Total</td>
+                <td ></td>
+                <td style=""text-align: center;padding-top:30px;"">Subtotal</td>
+                <td style=""text-align: center;padding-top:30px;"">Descuento</td>
+                <td style=""text-align: center;padding-top:30px;"">IVA</td>
+                <td style=""text-align: center;padding-top:30px;"">Total</td>
             </tr>
             <tr>
+                <td ></td>
                 <td style=""text-align: center;"">@Subtotal</td>
                 <td style=""text-align: center;"">@Descuento</td>
                 <td style=""text-align: center;"">@IVA</td>

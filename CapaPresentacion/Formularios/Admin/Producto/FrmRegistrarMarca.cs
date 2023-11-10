@@ -12,11 +12,11 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 {
     public partial class FrmRegistrarMarca : Form
     {
-       
+
         public FrmRegistrarMarca()
         {
             InitializeComponent();
-        
+
         }
 
         private void picMinimizar_Click(object sender, EventArgs e)
@@ -41,6 +41,22 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             this.WindowState = FormWindowState.Normal;
             picRestaurar.Visible = false;
             picMaxPantalla.Visible = true;
+        }
+
+        private void iconbtnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estás seguro de que deseas cancelar la edicion de la categoria?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                LimpiarCampos();
+            }
+        }
+        public void LimpiarCampos()
+        {
+            txtNombreMarca.Text = "";
         }
     }
 }

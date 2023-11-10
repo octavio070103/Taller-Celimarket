@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistrarProducto));
             panel1 = new Panel();
             picMaxPantalla = new PictureBox();
@@ -36,14 +37,14 @@
             picMinimizar = new PictureBox();
             lblRegistrarUsuario = new Label();
             panelProductos = new Panel();
-            lblprueba = new Label();
-            label3 = new Label();
+            lblNomImg = new Label();
+            lblImg = new Label();
             picBoxIMGProducto = new PictureBox();
             txtCodBarra = new TextBox();
-            label4 = new Label();
-            label2 = new Label();
+            lblCodProduc = new Label();
+            lblMarca = new Label();
             comboBoxMarca = new ComboBox();
-            label1 = new Label();
+            lblCateg = new Label();
             comboBoxCateg = new ComboBox();
             lblDescripcion = new Label();
             lblStock = new Label();
@@ -58,6 +59,7 @@
             panel2 = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picMaxPantalla).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
@@ -66,6 +68,7 @@
             panelProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxIMGProducto).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -155,14 +158,14 @@
             // panelProductos
             // 
             panelProductos.BackColor = Color.FromArgb(67, 68, 89);
-            panelProductos.Controls.Add(lblprueba);
-            panelProductos.Controls.Add(label3);
+            panelProductos.Controls.Add(lblNomImg);
+            panelProductos.Controls.Add(lblImg);
             panelProductos.Controls.Add(picBoxIMGProducto);
             panelProductos.Controls.Add(txtCodBarra);
-            panelProductos.Controls.Add(label4);
-            panelProductos.Controls.Add(label2);
+            panelProductos.Controls.Add(lblCodProduc);
+            panelProductos.Controls.Add(lblMarca);
             panelProductos.Controls.Add(comboBoxMarca);
-            panelProductos.Controls.Add(label1);
+            panelProductos.Controls.Add(lblCateg);
             panelProductos.Controls.Add(comboBoxCateg);
             panelProductos.Controls.Add(lblDescripcion);
             panelProductos.Controls.Add(lblStock);
@@ -181,25 +184,25 @@
             panelProductos.Size = new Size(512, 417);
             panelProductos.TabIndex = 3;
             // 
-            // lblprueba
+            // lblNomImg
             // 
-            lblprueba.AutoSize = true;
-            lblprueba.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblprueba.Location = new Point(363, 333);
-            lblprueba.Name = "lblprueba";
-            lblprueba.Size = new Size(43, 19);
-            lblprueba.TabIndex = 100;
-            lblprueba.Text = "Ruta";
+            lblNomImg.AutoSize = true;
+            lblNomImg.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNomImg.Location = new Point(273, 333);
+            lblNomImg.Name = "lblNomImg";
+            lblNomImg.Size = new Size(43, 19);
+            lblNomImg.TabIndex = 100;
+            lblNomImg.Text = "Ruta";
             // 
-            // label3
+            // lblImg
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(344, 169);
-            label3.Name = "label3";
-            label3.Size = new Size(71, 19);
-            label3.TabIndex = 99;
-            label3.Text = "Imagen";
+            lblImg.AutoSize = true;
+            lblImg.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblImg.Location = new Point(344, 169);
+            lblImg.Name = "lblImg";
+            lblImg.Size = new Size(71, 19);
+            lblImg.TabIndex = 99;
+            lblImg.Text = "Imagen";
             // 
             // picBoxIMGProducto
             // 
@@ -224,25 +227,25 @@
             txtCodBarra.Size = new Size(213, 23);
             txtCodBarra.TabIndex = 97;
             // 
-            // label4
+            // lblCodProduc
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(17, 61);
-            label4.Name = "label4";
-            label4.Size = new Size(112, 19);
-            label4.TabIndex = 96;
-            label4.Text = "Codigo Barra";
+            lblCodProduc.AutoSize = true;
+            lblCodProduc.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCodProduc.Location = new Point(17, 61);
+            lblCodProduc.Name = "lblCodProduc";
+            lblCodProduc.Size = new Size(112, 19);
+            lblCodProduc.TabIndex = 96;
+            lblCodProduc.Text = "Codigo Barra";
             // 
-            // label2
+            // lblMarca
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(272, 6);
-            label2.Name = "label2";
-            label2.Size = new Size(60, 19);
-            label2.TabIndex = 95;
-            label2.Text = "Marca";
+            lblMarca.AutoSize = true;
+            lblMarca.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMarca.Location = new Point(272, 6);
+            lblMarca.Name = "lblMarca";
+            lblMarca.Size = new Size(60, 19);
+            lblMarca.TabIndex = 95;
+            lblMarca.Text = "Marca";
             // 
             // comboBoxMarca
             // 
@@ -253,15 +256,15 @@
             comboBoxMarca.TabIndex = 94;
             comboBoxMarca.Text = "Seleccione una Marca";
             // 
-            // label1
+            // lblCateg
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(17, 6);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 19);
-            label1.TabIndex = 93;
-            label1.Text = "Categoria";
+            lblCateg.AutoSize = true;
+            lblCateg.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCateg.Location = new Point(17, 6);
+            lblCateg.Name = "lblCateg";
+            lblCateg.Size = new Size(87, 19);
+            lblCateg.TabIndex = 93;
+            lblCateg.Text = "Categoria";
             // 
             // comboBoxCateg
             // 
@@ -420,6 +423,11 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FrmRegistrarProducto
             // 
@@ -443,6 +451,7 @@
             panelProductos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picBoxIMGProducto).EndInit();
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -465,17 +474,18 @@
         private TextBox txtNombre;
         private Label lblNombre;
         private ComboBox comboBoxCateg;
-        private Label label1;
-        private Label label2;
+        private Label lblCateg;
+        private Label lblMarca;
         private ComboBox comboBoxMarca;
         private PictureBox picCerrar;
         private PictureBox picRestaurar;
         private PictureBox picMinimizar;
         private PictureBox picMaxPantalla;
         private TextBox txtCodBarra;
-        private Label label4;
-        private Label label3;
+        private Label lblCodProduc;
+        private Label lblImg;
         private PictureBox picBoxIMGProducto;
-        private Label lblprueba;
+        private Label lblNomImg;
+        private ErrorProvider errorProvider1;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CapaLogica;
+using CapaPresentacion.Formularios.Admin.Mensajes;
 using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClosedXML.Excel.XLPredefinedFormat;
 
 namespace CapaPresentacion.Formularios.Admin.Categoria
 {
@@ -124,7 +126,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             txtNombreDato.Text = "";
             txtDescripDato.Text = "";
 
-            // Limpiar el ComboBox Roles Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
+            // Limpiar el ComboBox estado Eliminando todos los elementos ya que una vez que el usuario selecciona otros datos o slae del panel de datos del usuario debo de limpiarlo para que nose cargue siempre el combobox
             comboEstadoDato.Items.Clear();
             comboEstadoDato.Text = "Seleccione un Estado"; // aca le paso el texto predeterminado que quiero que tenga el combo
         }
@@ -144,8 +146,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         private void iconBtnModif_Click(object sender, EventArgs e)
         {
             //aca digo que si la categoria selecciono una columna en el data grid y ademas el id_cateogria que se encarga de guardar cuando se seleciono la categoria en el data grid es mayor a 0 que entre al if
-            //esto lo hago para asegurame de que la categoria que se selecciono  en el data grid  es validad y que ademas es un usuario valido pq su id es mayor a 0
-            if (dataGridCategoria.SelectedRows.Count > 0 && Convert.ToInt32(txtIdDato.Text) > 0)
+            //esto lo hago para asegurame de que la categoria que se selecciono  en el data grid  es validad y que ademas es un usuario valido pq su id es mayor a 0, y tambien hago una doble validacion qeue el txiddato no me venga vacio y qe sea mayor a 0
+            if (dataGridCategoria.SelectedRows.Count > 0 && !(string.IsNullOrWhiteSpace(txtIdDato.Text)) && Convert.ToInt32(txtIdDato.Text) > 0)
             {
                 DialogResult consulta = MessageBox.Show("¿Desea Editar los datos De la categoria?", "Editar Datos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
@@ -176,7 +178,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             {
                 // // Crear la variable "ask" del tipo DialogoREsult ya que MsgBoxREsult es parte del lenguaje Basic y no de C#
                 DialogResult ask;//se declara una variable llamada ask del tipo DialogResult, que se usará para almacenar el resultado del cuadro de diálogo.
-                                 //     borrarMensajeError();//borro los mensjaes de error en caso que lo haya
+                borrarMensajeError();//borro los mensjaes de error en caso que lo haya
 
                 ask = MessageBox.Show("Seguro que desea Editar la Categoria ?", "Confirmar Insercion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -222,6 +224,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
                     if (mensaje != "")
                     {
                         MessageBox.Show(mensaje);
+                        //    FrmMensaje formMsj = new FrmMensaje(mensaje);
+                        //  formMsj.ShowDialog();
                     }
 
                 }
@@ -233,13 +237,87 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         private bool validarCampos()
         {
             bool validacion = true;
+            string id_categoria = txtIdDato.Text;
+            string nombre_categoria = txtNombreDato.Text;
+            string descripcion_categoria = txtDescripDato.Text;
+            int estadocategoria = (comboEstadoDato.SelectedItem as string == "Activo") ? 1 : 0; // esto seria como un if pero en una sola linea estructura :result = (condición) ? valorSiCierto : valorSiFalso;
+            int numero = 0;
 
+            if (string.IsNullOrEmpty(id_categoria) || string.IsNullOrEmpty(nombre_categoria) || string.IsNullOrEmpty(descripcion_categoria))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
 
+            //validar que el campos id solo se ingresen numeros
+            if (!int.TryParse(id_categoria, out numero))
+            {
+                errorProvider1.SetError(lblIdCategDato, "Id categoria erroneo");
+                MessageBox.Show("El id no es correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos descripcion y Nombre contengan solo letras
+            if (!EsAlfabetico(nombre_categoria))
+            {
+                errorProvider1.SetError(lblNombreDato, "Ingrese el nombre de la categoria correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos descripcion y Nombre contengan solo letras
+            if (!EsAlfabetico(descripcion_categoria))
+            {
+                errorProvider1.SetError(lblDescripDato, "Ingrese el nombre de la categoria correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            capaEntidad.categoria obj_Categoria = new CL_Categoria().buscarCategoriaId(Convert.ToInt32(id_categoria)); //aca obtengo el estado categoria que tiene esa categoria en la bd para compararlo aantes de editar
+            if (estadocategoria == obj_Categoria.estado_categoria)
+            {
+                errorProvider1.SetError(comboEstadoDato, "No se puede modificar El estado ya que es el mismo Estado");
+                MessageBox.Show(" No se puede modificar El estado ya que es el mismo Estado ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
             return validacion;
         }
+
+        // Función para verificar si una cadena contiene solo letras y un sol oespacio por palabra
+        private bool EsAlfabetico(string texto)
+        {
+            bool espacioEncontrado = false;
+            foreach (char c in texto)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
+                    return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
+                }
+            }
+            return true;
+        }
+
         //limpia los mensajes de error que se muestran junto a los campos en caso de que hayan errores de validación.
         private void borrarMensajeError()
         {
+            errorProvider1.SetError(lblIdCategDato, ""); // Limpiar mensaje de error
+            errorProvider1.SetError(lblNombreDato, "");    // Limpiar mensaje de error
+            errorProvider1.SetError(lblDescripDato, ""); // Limpiar mensaje de error
         }
 
         /************************************* DAR DE BAJA *************************************/
@@ -266,9 +344,12 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
 
                     obj_CL_Categoria.darBajaCategoriaLogico(obj_categoria, out mensaje);
 
+                    limpiarCamposDato();//limpio todos los datos del panel dato
+
                     //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
                     FrmGestionarCategorias_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
-                    //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
+                                                                       //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
+
                 }
             }
             else
@@ -280,6 +361,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             if (mensaje != "")
             {
                 MessageBox.Show(mensaje);
+                // FrmMensaje formMsj = new FrmMensaje(mensaje);
+                //  formMsj.ShowDialog();
             }
         }
 
@@ -306,6 +389,8 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
 
 
                     obj_CL_Categoria.darDeAltaCategoria(obj_categoria, out mensaje);
+
+                    limpiarCamposDato();//limpio todos los datos del panel dato
 
                     //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
                     FrmGestionarCategorias_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
@@ -356,7 +441,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
 
                 //aca le pregunto al usuario en que parte quiere guardar al archivo excel a este obj lo llamare saveFile
                 SaveFileDialog saveFile = new SaveFileDialog();
-                saveFile.FileName = string.Format("ReporteCategoria{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
+                saveFile.FileName = string.Format("ReporteCategoria{0}.xlsx", System.DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
                 saveFile.Filter = "Excel Files | *.xlsx"; //aca estoy agregando un filtro a la ventana de donde quiero que se guarden para que al momento de mostrarse solo se muestren ese tipo de archivos con esa extension
 
                 //aca digo si en el evento showdialog de la ventana de savefile se dio al evento ok que entre al if
@@ -380,6 +465,20 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             else
             {
                 MessageBox.Show("No hay datos para exportar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estás seguro de que deseas cancelar la edicion de la categoria?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {//si cancela se borra todo el contenido del form sin editar lo que el usuario haya modficado o cambiado ya que no el dio a confirmar
+                limpiarCamposDato();//limpio todos los datos del panel dato
+                iconbtnGuardar.Visible = false;
+                iconBtnCancelar.Visible = false;
+                iconBtnModif.Visible = true;
+                // Desseleccionar todas las filas
+                dataGridCategoria.ClearSelection();
+                ReadOnlyCamposDatoCategoria(true);//configuro que el panel de datos de la categoria sea en lectura uniucamente es decir le digo que se active esa propiedad
             }
         }
     }

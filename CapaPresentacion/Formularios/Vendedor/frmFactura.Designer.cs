@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFactura));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlBarraClientes = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -46,16 +46,20 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             panel1 = new Panel();
+            lblTipoFac = new Label();
             label22 = new Label();
             label23 = new Label();
             label24 = new Label();
             lblFechaFactura = new Label();
-            label25 = new Label();
             BtnImprimir = new FontAwesome.Sharp.IconButton();
             lblTotal = new Label();
             lblTot = new Label();
             lblFacturaTitulo = new Label();
             panel3 = new Panel();
+            lblTelefNegocio = new Label();
+            lblDomNegocio = new Label();
+            lblNomNegocio = new Label();
+            lblCUIT = new Label();
             lblEmailNegocio = new Label();
             label14 = new Label();
             label9 = new Label();
@@ -63,23 +67,19 @@
             label17 = new Label();
             label18 = new Label();
             label19 = new Label();
-            lblTelefNegocio = new Label();
             label20 = new Label();
             label21 = new Label();
-            lblCUIT = new Label();
             label12 = new Label();
-            lblNomNegocio = new Label();
-            lblDomNegocio = new Label();
             panel2 = new Panel();
+            lblTelefCliente = new Label();
+            lblNomVendedor = new Label();
             label5 = new Label();
             lblMetPago = new Label();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
-            lblNomVendedor = new Label();
             label2 = new Label();
             lblDniVendedor = new Label();
-            lblTelefCliente = new Label();
             label3 = new Label();
             lblDniCliente = new Label();
             label15 = new Label();
@@ -90,7 +90,6 @@
             label1 = new Label();
             lblFacturaNro = new Label();
             dtgvProductos = new DataGridView();
-            lblTipoFac = new Label();
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -304,7 +303,6 @@
             panel1.Controls.Add(label23);
             panel1.Controls.Add(label24);
             panel1.Controls.Add(lblFechaFactura);
-            panel1.Controls.Add(label25);
             panel1.Controls.Add(BtnImprimir);
             panel1.Controls.Add(lblTotal);
             panel1.Controls.Add(lblTot);
@@ -319,6 +317,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(727, 494);
             panel1.TabIndex = 4;
+            // 
+            // lblTipoFac
+            // 
+            lblTipoFac.AutoSize = true;
+            lblTipoFac.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTipoFac.Location = new Point(390, 38);
+            lblTipoFac.Name = "lblTipoFac";
+            lblTipoFac.Size = new Size(22, 25);
+            lblTipoFac.TabIndex = 29;
+            lblTipoFac.Text = "..";
             // 
             // label22
             // 
@@ -355,15 +363,6 @@
             lblFechaFactura.Size = new Size(13, 15);
             lblFechaFactura.TabIndex = 21;
             lblFechaFactura.Text = "..";
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Location = new Point(493, 326);
-            label25.Name = "label25";
-            label25.Size = new Size(16, 15);
-            label25.TabIndex = 25;
-            label25.Text = "...";
             // 
             // BtnImprimir
             // 
@@ -441,6 +440,42 @@
             panel3.Size = new Size(339, 173);
             panel3.TabIndex = 2;
             // 
+            // lblTelefNegocio
+            // 
+            lblTelefNegocio.AutoSize = true;
+            lblTelefNegocio.Location = new Point(66, 94);
+            lblTelefNegocio.Name = "lblTelefNegocio";
+            lblTelefNegocio.Size = new Size(13, 15);
+            lblTelefNegocio.TabIndex = 21;
+            lblTelefNegocio.Text = "..";
+            // 
+            // lblDomNegocio
+            // 
+            lblDomNegocio.AutoSize = true;
+            lblDomNegocio.Location = new Point(129, 65);
+            lblDomNegocio.Name = "lblDomNegocio";
+            lblDomNegocio.Size = new Size(13, 15);
+            lblDomNegocio.TabIndex = 4;
+            lblDomNegocio.Text = "..";
+            // 
+            // lblNomNegocio
+            // 
+            lblNomNegocio.AutoSize = true;
+            lblNomNegocio.Location = new Point(85, 36);
+            lblNomNegocio.Name = "lblNomNegocio";
+            lblNomNegocio.Size = new Size(13, 15);
+            lblNomNegocio.TabIndex = 3;
+            lblNomNegocio.Text = "..";
+            // 
+            // lblCUIT
+            // 
+            lblCUIT.AutoSize = true;
+            lblCUIT.Location = new Point(241, 34);
+            lblCUIT.Name = "lblCUIT";
+            lblCUIT.Size = new Size(13, 15);
+            lblCUIT.TabIndex = 19;
+            lblCUIT.Text = "..";
+            // 
             // lblEmailNegocio
             // 
             lblEmailNegocio.AutoSize = true;
@@ -504,15 +539,6 @@
             label19.TabIndex = 29;
             label19.Text = "...";
             // 
-            // lblTelefNegocio
-            // 
-            lblTelefNegocio.AutoSize = true;
-            lblTelefNegocio.Location = new Point(66, 94);
-            lblTelefNegocio.Name = "lblTelefNegocio";
-            lblTelefNegocio.Size = new Size(13, 15);
-            lblTelefNegocio.TabIndex = 21;
-            lblTelefNegocio.Text = "..";
-            // 
             // label20
             // 
             label20.AutoSize = true;
@@ -531,15 +557,6 @@
             label21.TabIndex = 28;
             label21.Text = "Domicilio comercial: ";
             // 
-            // lblCUIT
-            // 
-            lblCUIT.AutoSize = true;
-            lblCUIT.Location = new Point(241, 34);
-            lblCUIT.Name = "lblCUIT";
-            lblCUIT.Size = new Size(13, 15);
-            lblCUIT.TabIndex = 19;
-            lblCUIT.Text = "..";
-            // 
             // label12
             // 
             label12.AutoSize = true;
@@ -549,24 +566,6 @@
             label12.Size = new Size(159, 21);
             label12.TabIndex = 12;
             label12.Text = "Datos del Negocio: ";
-            // 
-            // lblNomNegocio
-            // 
-            lblNomNegocio.AutoSize = true;
-            lblNomNegocio.Location = new Point(85, 36);
-            lblNomNegocio.Name = "lblNomNegocio";
-            lblNomNegocio.Size = new Size(13, 15);
-            lblNomNegocio.TabIndex = 3;
-            lblNomNegocio.Text = "..";
-            // 
-            // lblDomNegocio
-            // 
-            lblDomNegocio.AutoSize = true;
-            lblDomNegocio.Location = new Point(129, 65);
-            lblDomNegocio.Name = "lblDomNegocio";
-            lblDomNegocio.Size = new Size(13, 15);
-            lblDomNegocio.TabIndex = 4;
-            lblDomNegocio.Text = "..";
             // 
             // panel2
             // 
@@ -591,7 +590,24 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(337, 173);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint;
+            // 
+            // lblTelefCliente
+            // 
+            lblTelefCliente.AutoSize = true;
+            lblTelefCliente.Location = new Point(68, 63);
+            lblTelefCliente.Name = "lblTelefCliente";
+            lblTelefCliente.Size = new Size(13, 15);
+            lblTelefCliente.TabIndex = 5;
+            lblTelefCliente.Text = "..";
+            // 
+            // lblNomVendedor
+            // 
+            lblNomVendedor.AutoSize = true;
+            lblNomVendedor.Location = new Point(76, 111);
+            lblNomVendedor.Name = "lblNomVendedor";
+            lblNomVendedor.Size = new Size(13, 15);
+            lblNomVendedor.TabIndex = 20;
+            lblNomVendedor.Text = "..";
             // 
             // label5
             // 
@@ -601,7 +617,6 @@
             label5.Size = new Size(95, 15);
             label5.TabIndex = 29;
             label5.Text = "Metodo de Pago";
-            label5.Click += label5_Click;
             // 
             // lblMetPago
             // 
@@ -611,7 +626,6 @@
             lblMetPago.Size = new Size(13, 15);
             lblMetPago.TabIndex = 22;
             lblMetPago.Text = "..";
-            lblMetPago.Click += lblMetPago_Click;
             // 
             // label6
             // 
@@ -641,15 +655,6 @@
             label8.TabIndex = 26;
             label8.Text = "Fecha:";
             // 
-            // lblNomVendedor
-            // 
-            lblNomVendedor.AutoSize = true;
-            lblNomVendedor.Location = new Point(76, 111);
-            lblNomVendedor.Name = "lblNomVendedor";
-            lblNomVendedor.Size = new Size(13, 15);
-            lblNomVendedor.TabIndex = 20;
-            lblNomVendedor.Text = "..";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -667,15 +672,6 @@
             lblDniVendedor.Size = new Size(13, 15);
             lblDniVendedor.TabIndex = 18;
             lblDniVendedor.Text = "..";
-            // 
-            // lblTelefCliente
-            // 
-            lblTelefCliente.AutoSize = true;
-            lblTelefCliente.Location = new Point(68, 63);
-            lblTelefCliente.Name = "lblTelefCliente";
-            lblTelefCliente.Size = new Size(13, 15);
-            lblTelefCliente.TabIndex = 5;
-            lblTelefCliente.Text = "..";
             // 
             // label3
             // 
@@ -771,23 +767,23 @@
             dtgvProductos.BackgroundColor = SystemColors.ButtonFace;
             dtgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dtgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             dtgvProductos.GridColor = SystemColors.ButtonFace;
             dtgvProductos.Location = new Point(24, 248);
             dtgvProductos.Name = "dtgvProductos";
@@ -796,16 +792,6 @@
             dtgvProductos.RowTemplate.Height = 25;
             dtgvProductos.Size = new Size(676, 196);
             dtgvProductos.TabIndex = 7;
-            // 
-            // lblTipoFac
-            // 
-            lblTipoFac.AutoSize = true;
-            lblTipoFac.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTipoFac.Location = new Point(390, 38);
-            lblTipoFac.Name = "lblTipoFac";
-            lblTipoFac.Size = new Size(22, 25);
-            lblTipoFac.TabIndex = 29;
-            lblTipoFac.Text = "..";
             // 
             // frmFactura
             // 
@@ -881,7 +867,6 @@
         private Label lblNomVendedor;
         private Label lblDniVendedor;
         private Label label15;
-        private Label label25;
         private Label lblTelefNegocio;
         private Label lblMetPago;
         private Label label2;

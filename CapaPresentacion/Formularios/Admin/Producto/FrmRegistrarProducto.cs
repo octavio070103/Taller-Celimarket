@@ -1,4 +1,5 @@
-﻿using capaEntidad;
+﻿using CapaDatos;
+using capaEntidad;
 using CapaLogica;
 using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Spreadsheet;
@@ -12,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClosedXML.Excel.XLPredefinedFormat;
 
 namespace CapaPresentacion.Formularios.Admin.Producto
 {
@@ -93,8 +95,8 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     cod_barra_producto = Convert.ToInt32(txtCodBarra.Text),
                     nombre_producto = txtNombre.Text,
                     descripcion_producto = txtDescripcion.Text,
-                    precio_compra = Convert.ToInt32(txtPrecioCompra.Text),
-                    precio_venta = Convert.ToInt32(txtPrecioVenta.Text),
+                    precio_compra = decimal.Parse(txtPrecioCompra.Text),
+                    precio_venta = decimal.Parse(txtPrecioVenta.Text),
                     stock_producto = Convert.ToInt32(txtStock.Text),
                     imagen = nombreDeImg!,//le paso la url de la img que subi al momento de registrar
                     estado_producto = 1,
@@ -170,6 +172,90 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         private bool validarCampos()
         {
             bool validacion = true;
+            string codBarra = txtCodBarra.Text;
+            string nombreProduc = txtNombre.Text;
+            string precioCompra = txtPrecioCompra.Text;
+            string precioVenta = txtPrecioVenta.Text;
+            string stock = txtStock.Text;
+            string descripProduc = txtDescripcion.Text;
+            string validarNombreDeImg = nombreDeImg;
+
+            int numero = 0;
+            decimal valorDecimal;
+
+
+            if (string.IsNullOrEmpty(codBarra) || string.IsNullOrEmpty(nombreProduc) || string.IsNullOrEmpty(precioCompra) || string.IsNullOrEmpty(precioVenta)
+                || string.IsNullOrEmpty(stock) || string.IsNullOrEmpty(descripProduc) || string.IsNullOrEmpty(validarNombreDeImg))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
+
+            //recordar que para todas estas validaciones uso su negacion para que entre al if
+
+            //validar que el campos codbarra solo se ingresen numeros
+            if (!int.TryParse(codBarra, out numero))
+            {
+                errorProvider1.SetError(lblCodProduc, "Codigo de barra erroneo");
+                MessageBox.Show("Ingrese solo numeros en el cod de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos  nombreProduc contengan solo letras
+            if (!EsAlfabetico(nombreProduc))
+            {
+                errorProvider1.SetError(lblNombre, "Ingrese el nombre del producto correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos precioCompra y precioVenta solo se ingresen numeros (y que sean tipo decimal
+            if (!decimal.TryParse(precioCompra, out valorDecimal))
+            {
+                errorProvider1.SetError(lblPrecioCompra, "Precio Compra Erroneo");
+                MessageBox.Show(" El Valor de Precio compra debe de ser un decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+
+            if (!decimal.TryParse(precioVenta, out valorDecimal))
+            {
+                errorProvider1.SetError(lblPrecioVenta, "Precio Venta Erroneo");
+                MessageBox.Show(" El Valor de Precio Venta debe de ser un decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos codbarra solo se ingresen numeros (y que sean tipo int
+            if (!int.TryParse(stock, out numero))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("Ingrese solo numeros en el stock ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el stock sea mayor a 0 si el stock no es mayor que 0 entra al if ya que estoy ! negando
+            if (!(Convert.ToInt32(stock.ToString()) > 0))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("El stock minimo en 1 ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el stock sea menor a 100 si el stock no es menor que 0 entra al if ya que estoy ! negando
+            if (!(Convert.ToInt32(stock.ToString()) <= 100))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("El stock maximo es de 100 ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos  descripProduc contengan solo letras
+            if (!EsAlfabetico(descripProduc))
+            {
+                errorProvider1.SetError(lblDescripcion, "Ingrese la descripcion del producto correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
 
             return validacion;
         }
@@ -209,7 +295,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     picBoxIMGProducto.Image = Image.FromFile(fileActualPath); //Se carga la imagen seleccionada desde el archivo (fileActualPath) Esto permitirá mostrar la imagen en el formulario.
 
                     // Mostrar la ruta del archivo en el TextBox
-                    lblprueba.Text = nombreActualImg;
+                    lblNomImg.Text = nombreActualImg;
                 }
                 catch (Exception ex)
                 {
@@ -217,6 +303,71 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     MessageBox.Show("No se pudo agregar la imagen en el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+        // Función para verificar si una cadena contiene solo letras y un sol oespacio por palabra
+        private bool EsAlfabetico(string texto)
+        {
+            bool espacioEncontrado = false;
+            foreach (char c in texto)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
+                    return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
+                }
+            }
+            return true;
+        }
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estás seguro de que deseas cancelar el registro del producto?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {//si cancela se borra todo el contenido del form sin editar lo que el usuario haya modficado o cambiado ya que no el dio a confirmar
+                limpiarCamposDato();//limpio todos los datos del panel dato
+
+            }
+        }
+
+        private void limpiarCamposDato()
+        {
+            txtCodBarra.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtPrecioCompra.Text = string.Empty;
+            txtPrecioVenta.Text = string.Empty;
+            txtStock.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
+
+            // Liberar los recursos asociados con la imagen actual
+            if (picBoxIMGProducto.Image != null)
+            {
+                picBoxIMGProducto.Image.Dispose();
+                // Limpiar el contenido del PictureBox
+                picBoxIMGProducto.Image = null;
+                lblNomImg.Text = string.Empty;
+            }
+
+            // Limpiar el ComboBox Marca Eliminando todos los elementos ya que una vez que el usuario selecciona un item queda ese y no puedo vovler a ver el msj predeterminado
+            comboBoxCateg.Items.Clear();
+            comboBoxCateg.Text = "Seleccione una Categoria"; // aca le paso el texto predeterminado que quiero que tenga el combo
+
+            comboBoxMarca.Items.Clear();
+            comboBoxMarca.Text = "Seleccione una Marca"; // aca le paso el texto predeterminado que quiero que tenga el combo
+
+            //vuelvo a cargar los combo box que recien limpie 
+            FrmRegistrarProducto_Load(this, EventArgs.Empty);
         }
     }
 }

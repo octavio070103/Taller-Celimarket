@@ -89,7 +89,6 @@
             lblCeliMarket.Size = new Size(166, 40);
             lblCeliMarket.TabIndex = 2;
             lblCeliMarket.Text = "CeliMarket";
-            lblCeliMarket.Click += lblDeliMarket_Click;
             // 
             // txtPassword
             // 

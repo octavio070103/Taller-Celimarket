@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarCategorias));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
@@ -58,10 +59,12 @@
             col_nombre_categ = new DataGridViewTextBoxColumn();
             col_descrip_categ = new DataGridViewTextBoxColumn();
             col_estado_categoria = new DataGridViewTextBoxColumn();
+            errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridCategoria).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -241,9 +244,9 @@
             panelDatosUsuario.Controls.Add(lblNombreDato);
             panelDatosUsuario.Controls.Add(lblDescripDato);
             panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Location = new Point(584, 29);
+            panelDatosUsuario.Location = new Point(584, 27);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 362);
+            panelDatosUsuario.Size = new Size(238, 348);
             panelDatosUsuario.TabIndex = 13;
             // 
             // iconbtnGuardar
@@ -258,7 +261,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(21, 193);
+            iconbtnGuardar.Location = new Point(24, 238);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(202, 39);
             iconbtnGuardar.TabIndex = 25;
@@ -280,7 +283,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(21, 238);
+            iconBtnCancelar.Location = new Point(24, 283);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(202, 39);
             iconBtnCancelar.TabIndex = 11;
@@ -288,6 +291,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconBtnModif
             // 
@@ -301,7 +305,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(21, 193);
+            iconBtnModif.Location = new Point(24, 238);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(202, 39);
             iconBtnModif.TabIndex = 24;
@@ -338,6 +342,7 @@
             txtIdDato.Name = "txtIdDato";
             txtIdDato.Size = new Size(144, 23);
             txtIdDato.TabIndex = 10;
+            txtIdDato.TextAlign = HorizontalAlignment.Center;
             // 
             // txtDescripDato
             // 
@@ -345,6 +350,7 @@
             txtDescripDato.Name = "txtDescripDato";
             txtDescripDato.Size = new Size(144, 23);
             txtDescripDato.TabIndex = 9;
+            txtDescripDato.TextAlign = HorizontalAlignment.Center;
             // 
             // txtNombreDato
             // 
@@ -352,6 +358,7 @@
             txtNombreDato.Name = "txtNombreDato";
             txtNombreDato.Size = new Size(144, 23);
             txtNombreDato.TabIndex = 1;
+            txtNombreDato.TextAlign = HorizontalAlignment.Center;
             // 
             // lblDatosUsuario
             // 
@@ -474,6 +481,10 @@
             col_estado_categoria.Name = "col_estado_categoria";
             col_estado_categoria.ReadOnly = true;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // FrmGestionarCategorias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -490,6 +501,7 @@
             panelDatosUsuario.ResumeLayout(false);
             panelDatosUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridCategoria).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -521,5 +533,6 @@
         private DataGridViewTextBoxColumn col_descrip_categ;
         private DataGridViewTextBoxColumn col_estado_categoria;
         private FontAwesome.Sharp.IconButton iconBtnExcel;
+        private ErrorProvider errorProvider1;
     }
 }

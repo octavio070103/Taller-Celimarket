@@ -53,9 +53,7 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
             this.Close();
         }
 
-
-
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void btnEnviar_Click(object sender, EventArgs e)
         {
             if (validarRespuesta())
             {
@@ -66,14 +64,14 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
 
                 if (ask == DialogResult.Yes)
                 {
-                    string asunto = "La consulta que habias hecho "+txtConsultActual.Text +"\nRespuesta a la consulta: " +txtCuerpoRespuesta.Text;
+                    string asunto = "La consulta que habias hecho " + txtConsultActual.Text + "\nRespuesta a la consulta: " + txtCuerpoRespuesta.Text;
                     EnviarNotificacionPorCorreo(consultaActual, txtTituloRespuesta.Text, asunto);
                     //aca tendria que poner el metodo para enviar ese respuesta y que se guarde en al base de datos
                 }
 
             }
-
         }
+
         /******************************* Responder Consulta **************************/
         public void EnviarNotificacionPorCorreo(consulta obj_consulta, string asunto, string mensaje)
         {
@@ -123,15 +121,14 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
         private bool validarRespuesta()
         {
             bool validacion = true;
+            string destinatario = txtGmail.Text;
             string cuerpoRespuesta = txtCuerpoRespuesta.Text;
             string tituloRespuesta = txtTituloRespuesta.Text;
 
             // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(cuerpoRespuesta) || string.IsNullOrWhiteSpace(tituloRespuesta))
+            if (string.IsNullOrWhiteSpace(cuerpoRespuesta) || string.IsNullOrWhiteSpace(tituloRespuesta) || string.IsNullOrEmpty(destinatario))
             {
                 MessageBox.Show("Por favor, Rellene todos los campos para poder Responder la Consulta", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                errorProvider1.SetError(lblTituloRespuesta, "Ingrese un titulo valido");
-                errorProvider1.SetError(txtCuerpoRespuesta, "ingrese texto en el cuerpo de la respuesta");
                 validacion = false;
             }
 
@@ -181,5 +178,7 @@ namespace CapaPresentacion.Formularios.Admin.consulta_reclamo
             errorProvider1.SetError(txtCuerpoRespuesta, "");    // Limpiar mensaje de error
 
         }
+
+       
     }
 }

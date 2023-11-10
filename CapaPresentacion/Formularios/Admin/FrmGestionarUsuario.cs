@@ -308,7 +308,7 @@ namespace CapaPresentacion.Formularios.Admin
             txtNombreDato.ReadOnly = valor;
             txtApeDato.ReadOnly = valor;
             txtApeDato.ReadOnly = valor;
-            txtPasswordDato.ReadOnly = valor;
+            // txtPasswordDato.ReadOnly = valor;
             txtTelefDato.ReadOnly = valor;
             txtEmailDato.ReadOnly = valor;
             txtDomiciliodato.ReadOnly = valor;
@@ -539,12 +539,6 @@ namespace CapaPresentacion.Formularios.Admin
             {
                 // MessageBox.Show("Debe de completar todos los campos");
                 MessageBox.Show("Por favor, Rellene todos los campos para poder editar el Usuario", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                errorProvider1.SetError(lblDniDato, "Ingrese su DNI correctamente");
-                errorProvider1.SetError(lblNombreDato, "Ingrese su nombre correctamente");//El primer argumento es el control al que deseas asociar el mensaje de error..El segundo argumento es el mensaje de error que deseas mostrar.  
-                errorProvider1.SetError(lblApellidoDato, "Ingrese su Apellido correctamente");
-                errorProvider1.SetError(lblEmailDato, "Ingrese su Email correctamente");
-                errorProvider1.SetError(lblTelefDato, "Ingrese su Telefono correctamente");
-                errorProvider1.SetError(lblDomicilioDato, "Ingrese su Domicilio correctamente");
                 validacion = false;
             }
 
@@ -630,7 +624,7 @@ namespace CapaPresentacion.Formularios.Admin
             errorProvider1.SetError(lblEmailDato, ""); // Limpiar mensaje de error
             errorProvider1.SetError(lblTelefDato, ""); // Limpiar mensaje de error
             errorProvider1.SetError(lblDomicilioDato, ""); // Limpiar mensaje de error
-            errorProvider1.SetError(lblPassword, ""); // Limpiar mensaje de error
+                                                           // errorProvider1.SetError(lblPassword, ""); // Limpiar mensaje de error
         }
 
         private void limpiartxtDato()
@@ -761,7 +755,7 @@ namespace CapaPresentacion.Formularios.Admin
                 foreach (DataGridViewColumn columna in dataGridUsuarios.Columns) //aca digo que recorra las columns de mi datagrid usuario
                 {
                     //este if me permite no guardar la cabecera de columnas que no quiero por ej id_rol y id_usuario
-                    if (columna.HeaderText !="Id_usuario" && columna.HeaderText != "id_domicilio" && columna.HeaderText != "id_rol" && columna.HeaderText != "Password" )
+                    if (columna.HeaderText != "Id_usuario" && columna.HeaderText != "id_domicilio" && columna.HeaderText != "id_rol" && columna.HeaderText != "Password")
                     {
                         datatableExcel.Columns.Add(columna.HeaderText, typeof(string)); //aca agrego el headertext de mi columna que se esta recorriendo en ese momento al datatableExcel  es decir inserto todas las cabceras en mi datagridexcel
 

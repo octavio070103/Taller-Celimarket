@@ -38,6 +38,7 @@
             pictureBox1 = new PictureBox();
             label2 = new Label();
             label1 = new Label();
+            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -96,7 +97,7 @@
             iconBtnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnAceptar.IconColor = Color.Black;
             iconBtnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAceptar.Location = new Point(114, 234);
+            iconBtnAceptar.Location = new Point(54, 234);
             iconBtnAceptar.Name = "iconBtnAceptar";
             iconBtnAceptar.Size = new Size(75, 23);
             iconBtnAceptar.TabIndex = 17;
@@ -134,11 +135,27 @@
             label1.TabIndex = 14;
             label1.Text = "Caja Abierta Correctamente";
             // 
+            // iconBtnCancelar
+            // 
+            iconBtnCancelar.BackColor = Color.FromArgb(209, 29, 29);
+            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
+            iconBtnCancelar.ForeColor = Color.White;
+            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCancelar.IconColor = Color.Black;
+            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCancelar.Location = new Point(151, 234);
+            iconBtnCancelar.Name = "iconBtnCancelar";
+            iconBtnCancelar.Size = new Size(75, 23);
+            iconBtnCancelar.TabIndex = 23;
+            iconBtnCancelar.Text = "Cancelar";
+            iconBtnCancelar.UseVisualStyleBackColor = false;
+            // 
             // AdvertenciaAbrirCaja
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(282, 269);
+            Controls.Add(iconBtnCancelar);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -167,5 +184,6 @@
         private PictureBox pictureBox1;
         private Label label2;
         private Label label1;
+        private FontAwesome.Sharp.IconButton iconBtnCancelar;
     }
 }

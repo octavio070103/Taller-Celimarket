@@ -24,7 +24,9 @@ namespace CapaPresentacion.Formularios.Admin
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
-
+            
+             dateTimePickerNacimiento.MaxDate=DateTime.Now.AddYears(-18);//la fecha maxima para elegir de ancimiento es la fecha actual menos 18 anios,es decir que el minima de edad para poder registrador como usuario es de 18 anios
+            dateTimePickerNacimiento.MinDate=DateTime.Now.AddYears(-100);//la edad maxima para tener y registrarse es de 100 anios comparada a la fecha actual
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -42,8 +44,7 @@ namespace CapaPresentacion.Formularios.Admin
                 comboRolUsu.Items.Add(item.nombre_rol);
             }
 
-            //configuro el datatime de la fecha de nacimiento para que el maximo de fecha que me deje de poner sea la fecha en la que se ejecuta el programa
-            dateTimePickerNacimiento.MaxDate = DateTime.Now;
+           
             //dateTimePickerNacimiento.Value = DateTime.UtcNow;//configuro para que el valor inicial del datetime sea el de la fecha de hoy
         }
 
@@ -94,7 +95,7 @@ namespace CapaPresentacion.Formularios.Admin
 
                         };
 
-                         id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
+                        id_usuario_generado = new CL_usuario().registrarUsuario(obj_usuario, out mensaje);
                         if (mensaje != "")
                         {
                             MessageBox.Show(mensaje);
@@ -140,30 +141,20 @@ namespace CapaPresentacion.Formularios.Admin
             string email = txtEmailUsu.Text;
             string telefono = txtTelefUsu.Text;
             string password = txtPasswordUsu.Text;
+            string domicilio = txtDomRegistrado.Text;
+            DateTime validacionFechaMax = dateTimePickerNacimiento.MaxDate;
+            DateTime validacionFechaMin = dateTimePickerNacimiento.MinDate;
 
             int numero = 0;
 
             string nombreCompleto = nombre + " " + apellido;
 
             // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(dni) || string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(telefono) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(dni) || string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(apellido) || string.IsNullOrWhiteSpace(telefono)
+                || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(domicilio))
             {
                 // MessageBox.Show("Debe de completar todos los campos");
                 MessageBox.Show("Por favor, Rellene todos los campos para poder editar el Usuario", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                errorProvider1.SetError(lblDni, "Ingrese su DNI correctamente");
-                errorProvider1.SetError(lblNombre, "Ingrese su nombre correctamente");//El primer argumento es el control al que deseas asociar el mensaje de error..El segundo argumento es el mensaje de error que deseas mostrar.  
-                errorProvider1.SetError(lblApellido, "Ingrese su Apellido correctamente");
-                errorProvider1.SetError(lblEmail, "Ingrese su Email correctamente");
-                errorProvider1.SetError(lblTelefono, "Ingrese su Telefono correctamente");
-                errorProvider1.SetError(lblPassword, "Ingrese una contrasña valida");
-                return validacion = false;
-            }
-
-            //validar que el campos Dni solo se ingresen numeros
-            if (!int.TryParse(dni, out numero))
-            {
-                errorProvider1.SetError(lblDni, "Ingrese su DNI correctamente");
-                MessageBox.Show("El Dni debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
@@ -182,10 +173,41 @@ namespace CapaPresentacion.Formularios.Admin
                 validacion = false;
             }
 
+            //validar que el campos Dni solo se ingresen numeros
+            if (!int.TryParse(dni, out numero))
+            {
+                errorProvider1.SetError(lblDni, "Ingrese su DNI correctamente");
+                MessageBox.Show("El Dni debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos telefono solo se ingresen numeros
+            if (!int.TryParse(telefono, out numero))
+            {
+                errorProvider1.SetError(lblTelefono, "Ingrese su telefono correctamente");
+                MessageBox.Show("El telefono debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
             if (!validarEmail(email))
             {
                 errorProvider1.SetError(lblEmail, "Ingrese su email valido formato: correo@example.com");
                 MessageBox.Show(" El email debe de seguir el formato correo@example.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //aca pregunto que si le fechaMax es decir que el usuario minimamente tenga 18 anios para ser usuario que si tiene selccionada una fecha que no cumpla que me salta el error y no me dejed registrar
+            if (dateTimePickerNacimiento.Value > validacionFechaMax)//si la fecha que sel;cciono es mayor a la que MAx que deterine que salte la validacion
+            {
+                errorProvider1.SetError(lblFechaNacimiento, "Ingrese  una fecha validad");
+                MessageBox.Show(" Debe de tener como minimo 18 años para poder registrarse", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+            //aca pregunto que si le fechaMin es decir que el usuario com omaximo tenga 100 anios para ser usuario que si tiene mas de 100 selccionada una fecha que no cumpla que me salta el error y no me dejed registrar
+            if (validacionFechaMin > dateTimePickerNacimiento.Value)//si la fecha que sel;cciono es menor a la que Min que deterine que salte la validacion
+            {  
+                errorProvider1.SetError(lblFechaNacimiento, "Ingrese  una fecha validad");
+                MessageBox.Show(" El usuario puede tener 100 años como maximo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
 
@@ -241,13 +263,17 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void limpiarCampos()
         {
-            txtNombreUsu.Clear();
-            txtApelliUsu.Clear();
-            txtDniUsu.Clear();
-            txtTelefUsu.Clear();
-            txtEmailUsu.Clear();
-            txtPasswordUsu.Clear();
+            txtNombreUsu.Text=string.Empty;
+            txtApelliUsu.Text = string.Empty;
+            txtDniUsu.Text = string.Empty;
+            txtDomRegistrado.Text = string.Empty;
+            iconBtnDomicilio.Visible = true;
+            txtTelefUsu.Text = string.Empty;
+            txtEmailUsu.Text = string.Empty;
+            txtPasswordUsu.Text = string.Empty;
 
+            dateTimePickerNacimiento.Value = DateTime.MaxValue;
+           
         }
 
         private void iconBtnDomicilio_Click(object sender, EventArgs e)
@@ -285,6 +311,21 @@ namespace CapaPresentacion.Formularios.Admin
                 iconBtnDomicilio.Visible = true;
             }
 
+        }
+
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            //reseteo o elimino los valores de los campos al momento de canecelar para que quede todo vacio como cuando se inicia el fomr
+            txtNombreUsu.Text = string.Empty;
+            txtApelliUsu.Text = string.Empty;
+            txtDniUsu.Text = string.Empty;
+            txtTelefUsu.Text = string.Empty;
+            txtEmailUsu.Text = string.Empty;
+            txtPasswordUsu.Text = string.Empty;
+            txtDomRegistrado.Text = string.Empty;
+            iconBtnDomicilio.Visible = true;
+
+            dateTimePickerNacimiento.Value = DateTime.Now;
         }
     }
 }

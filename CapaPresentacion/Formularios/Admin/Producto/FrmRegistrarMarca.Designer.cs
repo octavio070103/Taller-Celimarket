@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistrarMarca));
             panelProductos = new Panel();
-            txtNombreCate = new TextBox();
+            txtNombreMarca = new TextBox();
             lblNombreCate = new Label();
             panel2 = new Panel();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
@@ -53,7 +53,7 @@
             // panelProductos
             // 
             panelProductos.BackColor = Color.FromArgb(67, 68, 89);
-            panelProductos.Controls.Add(txtNombreCate);
+            panelProductos.Controls.Add(txtNombreMarca);
             panelProductos.Controls.Add(lblNombreCate);
             panelProductos.Controls.Add(panel2);
             panelProductos.Dock = DockStyle.Fill;
@@ -62,14 +62,14 @@
             panelProductos.Size = new Size(274, 137);
             panelProductos.TabIndex = 7;
             // 
-            // txtNombreCate
+            // txtNombreMarca
             // 
-            txtNombreCate.Cursor = Cursors.IBeam;
-            txtNombreCate.Location = new Point(38, 36);
-            txtNombreCate.Multiline = true;
-            txtNombreCate.Name = "txtNombreCate";
-            txtNombreCate.Size = new Size(180, 23);
-            txtNombreCate.TabIndex = 77;
+            txtNombreMarca.Cursor = Cursors.IBeam;
+            txtNombreMarca.Location = new Point(38, 36);
+            txtNombreMarca.Multiline = true;
+            txtNombreMarca.Name = "txtNombreMarca";
+            txtNombreMarca.Size = new Size(180, 23);
+            txtNombreMarca.TabIndex = 77;
             // 
             // lblNombreCate
             // 
@@ -112,6 +112,7 @@
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
             // iconBtnCancelar
             // 
@@ -133,6 +134,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // panel1
             // 
@@ -244,7 +246,7 @@
         #endregion
 
         private Panel panelProductos;
-        private TextBox txtNombreCate;
+        private TextBox txtNombreMarca;
         private Label lblNombreCate;
         private Panel panel2;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;

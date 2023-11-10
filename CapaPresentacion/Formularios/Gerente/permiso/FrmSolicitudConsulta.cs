@@ -11,8 +11,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//using System.Windows.Controls; si tengo errore con algo activo este
 
 namespace CapaPresentacion.Formularios.Gerente.permiso
 {
@@ -106,7 +108,7 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
 
             }
             dataGridConsultas.ClearSelection();//quita la seleccion de fila por defecto que tiene el data grid
-            
+
         }
 
         private void cargarDatosPrimeraConsulta()
@@ -163,11 +165,79 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
                 {
                     MessageBox.Show(mensaje);
                 }
+                FrmSolicitudConsulta_Load(this, EventArgs.Empty);
             }
         }
         private bool validarCampos()
         {
             bool validacion = true;
+
+            string nombreUsu = txtNombre.Text;
+            string apeUsu = txtApellido.Text;
+            string correo = txtEmail.Text;
+            string dniUsu = txtDni.Text;
+            string rolUsu = txtRol.Text;
+            string telefUsu = txtTel.Text;
+            string consulta = txtComentarioConsulta.Text;
+            string? motivoConsulta = comboMotivo_consulta.SelectedItem.ToString();
+
+            int numero = 0;
+
+            if (string.IsNullOrEmpty(nombreUsu) || string.IsNullOrEmpty(apeUsu) || string.IsNullOrEmpty(correo) || string.IsNullOrEmpty(dniUsu) || string.IsNullOrEmpty(rolUsu)
+               || string.IsNullOrEmpty(telefUsu) || string.IsNullOrEmpty(consulta) || string.IsNullOrEmpty(motivoConsulta))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
+
+            // Validar que los campos nombreUsu  contengan solo letras
+            if (!EsAlfabetico(nombreUsu))
+            {
+                errorProvider1.SetError(lblNombre, "El nombre del usuario nose cargo correctamente");
+                MessageBox.Show("Cierre la Ventana y vuelva a abrirla por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos descripcion y Nombre contengan solo letras
+            if (!EsAlfabetico(apeUsu))
+            {
+                errorProvider1.SetError(lblApelli, "El apellido del usuario nose cargo correctamente");
+                MessageBox.Show("Cierre la Ventana y vuelva a abrirla por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            if (!validarEmail(correo))
+            {
+                errorProvider1.SetError(lblCorreo, "El email del usuario nose cargo correctamente");
+                MessageBox.Show("Cierre la Ventana y vuelva a abrirla por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos Dni solo se ingresen numeros
+            if (!int.TryParse(dniUsu, out numero))
+            {
+                errorProvider1.SetError(lblDni, "El dni del usuario nose cargo correctamente");
+                MessageBox.Show("Cierre la Ventana y vuelva a abrirla por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos descripcion y Nombre contengan solo letras
+            if (!EsAlfabetico(rolUsu))
+            {
+                errorProvider1.SetError(lblRol, "El rol del usuario nose cargo correctamente");
+                MessageBox.Show(" Cierre la Ventana y vuelva a abrirla por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos descripcion y Nombre contengan solo letras
+            if (!EsAlfabetico(motivoConsulta))
+            {
+                errorProvider1.SetError(comboMotivo_consulta, "Seleccione una Consulta Valida");
+                MessageBox.Show(" Veulva a seleccionar La consulta por favor", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+
             return validacion;
         }
 
@@ -192,5 +262,52 @@ namespace CapaPresentacion.Formularios.Gerente.permiso
 
         }
 
+        // Función para verificar si una cadena contiene solo letras y un sol oespacio por palabra
+        private bool EsAlfabetico(string texto)
+        {
+            bool espacioEncontrado = false;
+            foreach (char c in texto)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
+                    return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
+                }
+            }
+            return true;
+        }
+        // toma una cadena que representa un email y utiliza una expresión regular para verificar si se ajusta a un formato de email válido. 
+        // Si el email cumple con este formato, la función ValidarEmail devuelve true; de lo contrario, devuelve false.
+        public bool validarEmail(string email)
+        {
+            // Patrón de expresión regular para validar un email
+            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Utiliza la clase Regex para hacer la validación
+            return Regex.IsMatch(email, patron);
+        }
+
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estás seguro de que deseas cancelar el registro de la consulta ?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {//si cancela se borra todo el contenido del form sin editar lo que el usuario haya modficado o cambiado ya que no el dio a confirmar             
+                txtComentarioConsulta.Text = string.Empty;
+
+            }
+        }
     }
 }

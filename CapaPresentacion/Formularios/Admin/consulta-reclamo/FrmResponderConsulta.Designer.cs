@@ -57,7 +57,7 @@
             iconPicLink = new FontAwesome.Sharp.IconPictureBox();
             iconPicAdjArchiv = new FontAwesome.Sharp.IconPictureBox();
             iconPicOpcFormato = new FontAwesome.Sharp.IconPictureBox();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            btnEnviar = new FontAwesome.Sharp.IconButton();
             toolTipReConsulta = new ToolTip(components);
             errorProvider1 = new ErrorProvider(components);
             panel1.SuspendLayout();
@@ -300,7 +300,7 @@
             panel6.Controls.Add(iconPicLink);
             panel6.Controls.Add(iconPicAdjArchiv);
             panel6.Controls.Add(iconPicOpcFormato);
-            panel6.Controls.Add(iconButton1);
+            panel6.Controls.Add(btnEnviar);
             panel6.Cursor = Cursors.Hand;
             panel6.Dock = DockStyle.Bottom;
             panel6.Location = new Point(0, 459);
@@ -428,22 +428,22 @@
             iconPicOpcFormato.TabStop = false;
             toolTipReConsulta.SetToolTip(iconPicOpcFormato, "Opciones de Formato");
             // 
-            // iconButton1
+            // btnEnviar
             // 
-            iconButton1.BackColor = Color.FromArgb(0, 74, 221);
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(12, 18);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(83, 36);
-            iconButton1.TabIndex = 9;
-            iconButton1.Text = "Enviar";
-            iconButton1.UseVisualStyleBackColor = false;
-            iconButton1.Click += iconButton1_Click;
+            btnEnviar.BackColor = Color.FromArgb(0, 74, 221);
+            btnEnviar.FlatStyle = FlatStyle.Flat;
+            btnEnviar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEnviar.ForeColor = Color.White;
+            btnEnviar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnEnviar.IconColor = Color.Black;
+            btnEnviar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEnviar.Location = new Point(12, 18);
+            btnEnviar.Name = "btnEnviar";
+            btnEnviar.Size = new Size(83, 36);
+            btnEnviar.TabIndex = 9;
+            btnEnviar.Text = "Enviar";
+            btnEnviar.UseVisualStyleBackColor = false;
+            btnEnviar.Click += btnEnviar_Click;
             // 
             // errorProvider1
             // 
@@ -504,7 +504,7 @@
         private Panel panel5;
         private Panel panel7;
         private Panel panel6;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnEnviar;
         private PictureBox picRestaurar;
         private PictureBox picMinPantalla;
         private PictureBox picCerrar;

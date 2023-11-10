@@ -122,7 +122,7 @@
             // 
             dateTimePickerNacimiento.Format = DateTimePickerFormat.Short;
             dateTimePickerNacimiento.Location = new Point(99, 286);
-            dateTimePickerNacimiento.MaxDate = new DateTime(2023, 9, 24, 0, 0, 0, 0);
+            dateTimePickerNacimiento.MaxDate = new DateTime(2023, 11, 9, 0, 0, 0, 0);
             dateTimePickerNacimiento.Name = "dateTimePickerNacimiento";
             dateTimePickerNacimiento.Size = new Size(200, 23);
             dateTimePickerNacimiento.TabIndex = 73;
@@ -158,6 +158,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconbtnGuardar
             // 

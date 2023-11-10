@@ -28,26 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSolicitudPermiso));
             pEncabezado = new Panel();
             pSubtitulo = new Panel();
             label2 = new Label();
             label1 = new Label();
             pDatosEmpleado = new Panel();
-            label4 = new Label();
+            lblNombre = new Label();
             txtTelefono = new TextBox();
             txtDni = new TextBox();
             txtEmail = new TextBox();
             pTituloEmpleado = new Panel();
             label3 = new Label();
             txtNombre = new TextBox();
-            label6 = new Label();
-            label8 = new Label();
+            lblApelle = new Label();
+            lblTel = new Label();
             txtApellido = new TextBox();
-            label9 = new Label();
-            label5 = new Label();
+            lblRol = new Label();
+            lblDni = new Label();
             txtRol = new TextBox();
-            label7 = new Label();
+            lblCorreo = new Label();
             pDatosPermiso = new Panel();
             txtJustificacion = new TextBox();
             label14 = new Label();
@@ -69,14 +70,15 @@
             label17 = new Label();
             panel6 = new Panel();
             dateTimeHasta = new DateTimePicker();
-            label16 = new Label();
+            lblHasta = new Label();
             dateTimePickerDesde = new DateTimePicker();
-            label15 = new Label();
+            lblDesde = new Label();
             panel8 = new Panel();
             picCerrar = new PictureBox();
             picMinPantalla = new PictureBox();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
+            errorProvider1 = new ErrorProvider(components);
             pEncabezado.SuspendLayout();
             pSubtitulo.SuspendLayout();
             pDatosEmpleado.SuspendLayout();
@@ -94,6 +96,7 @@
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pEncabezado
@@ -144,35 +147,35 @@
             pDatosEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pDatosEmpleado.BackColor = Color.FromArgb(254, 254, 254);
             pDatosEmpleado.BorderStyle = BorderStyle.FixedSingle;
-            pDatosEmpleado.Controls.Add(label4);
+            pDatosEmpleado.Controls.Add(lblNombre);
             pDatosEmpleado.Controls.Add(txtTelefono);
             pDatosEmpleado.Controls.Add(txtDni);
             pDatosEmpleado.Controls.Add(txtEmail);
             pDatosEmpleado.Controls.Add(pTituloEmpleado);
             pDatosEmpleado.Controls.Add(txtNombre);
-            pDatosEmpleado.Controls.Add(label6);
-            pDatosEmpleado.Controls.Add(label8);
+            pDatosEmpleado.Controls.Add(lblApelle);
+            pDatosEmpleado.Controls.Add(lblTel);
             pDatosEmpleado.Controls.Add(txtApellido);
-            pDatosEmpleado.Controls.Add(label9);
-            pDatosEmpleado.Controls.Add(label5);
+            pDatosEmpleado.Controls.Add(lblRol);
+            pDatosEmpleado.Controls.Add(lblDni);
             pDatosEmpleado.Controls.Add(txtRol);
-            pDatosEmpleado.Controls.Add(label7);
+            pDatosEmpleado.Controls.Add(lblCorreo);
             pDatosEmpleado.Location = new Point(41, 114);
             pDatosEmpleado.Name = "pDatosEmpleado";
             pDatosEmpleado.Size = new Size(700, 123);
             pDatosEmpleado.TabIndex = 1;
             // 
-            // label4
+            // lblNombre
             // 
-            label4.Anchor = AnchorStyles.Left;
-            label4.AutoSize = true;
-            label4.BorderStyle = BorderStyle.FixedSingle;
-            label4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(-1, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(120, 19);
-            label4.TabIndex = 3;
-            label4.Text = "Nombre               ";
+            lblNombre.Anchor = AnchorStyles.Left;
+            lblNombre.AutoSize = true;
+            lblNombre.BorderStyle = BorderStyle.FixedSingle;
+            lblNombre.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNombre.Location = new Point(-1, 40);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(120, 19);
+            lblNombre.TabIndex = 3;
+            lblNombre.Text = "Nombre               ";
             // 
             // txtTelefono
             // 
@@ -232,28 +235,28 @@
             txtNombre.Size = new Size(229, 19);
             txtNombre.TabIndex = 5;
             // 
-            // label6
+            // lblApelle
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.BorderStyle = BorderStyle.FixedSingle;
-            label6.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(347, 40);
-            label6.Name = "label6";
-            label6.Size = new Size(62, 19);
-            label6.TabIndex = 6;
-            label6.Text = "Apellido";
+            lblApelle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lblApelle.AutoSize = true;
+            lblApelle.BorderStyle = BorderStyle.FixedSingle;
+            lblApelle.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblApelle.Location = new Point(347, 40);
+            lblApelle.Name = "lblApelle";
+            lblApelle.Size = new Size(62, 19);
+            lblApelle.TabIndex = 6;
+            lblApelle.Text = "Apellido";
             // 
-            // label8
+            // lblTel
             // 
-            label8.AutoSize = true;
-            label8.BorderStyle = BorderStyle.FixedSingle;
-            label8.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(347, 78);
-            label8.Name = "label8";
-            label8.Size = new Size(64, 19);
-            label8.TabIndex = 14;
-            label8.Text = "Telefono";
+            lblTel.AutoSize = true;
+            lblTel.BorderStyle = BorderStyle.FixedSingle;
+            lblTel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTel.Location = new Point(347, 78);
+            lblTel.Name = "lblTel";
+            lblTel.Size = new Size(64, 19);
+            lblTel.TabIndex = 14;
+            lblTel.Text = "Telefono";
             // 
             // txtApellido
             // 
@@ -265,27 +268,27 @@
             txtApellido.Size = new Size(294, 19);
             txtApellido.TabIndex = 7;
             // 
-            // label9
+            // lblRol
             // 
-            label9.AutoSize = true;
-            label9.BorderStyle = BorderStyle.FixedSingle;
-            label9.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(-3, 78);
-            label9.Name = "label9";
-            label9.Size = new Size(122, 19);
-            label9.TabIndex = 12;
-            label9.Text = "Rol                       ";
+            lblRol.AutoSize = true;
+            lblRol.BorderStyle = BorderStyle.FixedSingle;
+            lblRol.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblRol.Location = new Point(-3, 78);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(122, 19);
+            lblRol.TabIndex = 12;
+            lblRol.Text = "Rol                       ";
             // 
-            // label5
+            // lblDni
             // 
-            label5.AutoSize = true;
-            label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(346, 59);
-            label5.Name = "label5";
-            label5.Size = new Size(66, 19);
-            label5.TabIndex = 10;
-            label5.Text = "DNI        ";
+            lblDni.AutoSize = true;
+            lblDni.BorderStyle = BorderStyle.FixedSingle;
+            lblDni.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDni.Location = new Point(346, 59);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(66, 19);
+            lblDni.TabIndex = 10;
+            lblDni.Text = "DNI        ";
             // 
             // txtRol
             // 
@@ -296,16 +299,16 @@
             txtRol.Size = new Size(229, 19);
             txtRol.TabIndex = 13;
             // 
-            // label7
+            // lblCorreo
             // 
-            label7.AutoSize = true;
-            label7.BorderStyle = BorderStyle.FixedSingle;
-            label7.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(-4, 59);
-            label7.Name = "label7";
-            label7.Size = new Size(123, 19);
-            label7.TabIndex = 8;
-            label7.Text = "Correo Electronico";
+            lblCorreo.AutoSize = true;
+            lblCorreo.BorderStyle = BorderStyle.FixedSingle;
+            lblCorreo.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCorreo.Location = new Point(-4, 59);
+            lblCorreo.Name = "lblCorreo";
+            lblCorreo.Size = new Size(123, 19);
+            lblCorreo.TabIndex = 8;
+            lblCorreo.Text = "Correo Electronico";
             // 
             // pDatosPermiso
             // 
@@ -360,6 +363,7 @@
             comboMotivo_permiso.Name = "comboMotivo_permiso";
             comboMotivo_permiso.Size = new Size(166, 23);
             comboMotivo_permiso.TabIndex = 7;
+            comboMotivo_permiso.Text = "Seleccione el Motivo";
             // 
             // label13
             // 
@@ -508,9 +512,9 @@
             panel6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             panel6.BackColor = Color.FromArgb(167, 210, 143);
             panel6.Controls.Add(dateTimeHasta);
-            panel6.Controls.Add(label16);
+            panel6.Controls.Add(lblHasta);
             panel6.Controls.Add(dateTimePickerDesde);
-            panel6.Controls.Add(label15);
+            panel6.Controls.Add(lblDesde);
             panel6.Location = new Point(1, 28);
             panel6.Name = "panel6";
             panel6.Size = new Size(349, 25);
@@ -524,15 +528,15 @@
             dateTimeHasta.Size = new Size(86, 23);
             dateTimeHasta.TabIndex = 8;
             // 
-            // label16
+            // lblHasta
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(185, 7);
-            label16.Name = "label16";
-            label16.Size = new Size(41, 15);
-            label16.TabIndex = 7;
-            label16.Text = "Hasta:";
+            lblHasta.AutoSize = true;
+            lblHasta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblHasta.Location = new Point(185, 7);
+            lblHasta.Name = "lblHasta";
+            lblHasta.Size = new Size(41, 15);
+            lblHasta.TabIndex = 7;
+            lblHasta.Text = "Hasta:";
             // 
             // dateTimePickerDesde
             // 
@@ -542,15 +546,15 @@
             dateTimePickerDesde.Size = new Size(86, 23);
             dateTimePickerDesde.TabIndex = 6;
             // 
-            // label15
+            // lblDesde
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(20, 8);
-            label15.Name = "label15";
-            label15.Size = new Size(45, 15);
-            label15.TabIndex = 5;
-            label15.Text = "Desde:";
+            lblDesde.AutoSize = true;
+            lblDesde.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDesde.Location = new Point(20, 8);
+            lblDesde.Name = "lblDesde";
+            lblDesde.Size = new Size(45, 15);
+            lblDesde.TabIndex = 5;
+            lblDesde.Text = "Desde:";
             // 
             // panel8
             // 
@@ -634,6 +638,11 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FrmSolicitudPermiso
             // 
@@ -684,6 +693,7 @@
             panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMinPantalla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -697,17 +707,17 @@
         private Panel pSubtitulo;
         private Panel pTituloEmpleado;
         private Label label3;
-        private Label label4;
+        private Label lblNombre;
         private TextBox txtNombre;
         private TextBox txtDni;
-        private Label label5;
-        private Label label7;
+        private Label lblDni;
+        private Label lblCorreo;
         private TextBox txtEmail;
         private TextBox txtApellido;
-        private Label label6;
-        private Label label8;
+        private Label lblApelle;
+        private Label lblTel;
         private TextBox txtTelefono;
-        private Label label9;
+        private Label lblRol;
         private TextBox txtRol;
         private Panel panel1;
         private Label label10;
@@ -722,11 +732,11 @@
         private Label label14;
         private TextBox txtJustificacion;
         private Panel panel6;
-        private Label label15;
+        private Label lblDesde;
         private Label label17;
         private Panel panel7;
         private DateTimePicker dateTimeHasta;
-        private Label label16;
+        private Label lblHasta;
         private DateTimePicker dateTimePickerDesde;
         private Panel panel8;
         private PictureBox picMinPantalla;
@@ -737,5 +747,6 @@
         private Panel paneltituEstado;
         private Label label18;
         private Label lblEstadoPermiso;
+        private ErrorProvider errorProvider1;
     }
 }

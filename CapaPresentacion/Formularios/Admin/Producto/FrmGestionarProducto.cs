@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using static ClosedXML.Excel.XLPredefinedFormat;
 
 namespace CapaPresentacion.Formularios.Admin.Producto
 {
@@ -122,7 +123,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                     {
                         comboMarcaDato.SelectedIndex = indiceMarca;
                     }
-
+                    txtCodBarra.Text = obj_producto.cod_barra_producto.ToString();
                     txtNombreDato.Text = obj_producto.nombre_producto.ToString();
                     txtStockDato.Text = obj_producto.stock_producto.ToString();
                     txtDescripcionDato.Text = obj_producto.descripcion_producto.ToString();
@@ -186,10 +187,6 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             }
         }
 
-        private void limpiarCamposDato()
-        {
-
-        }
 
         //metodo para cargar combobox generico ,este metodo toma un obj de tipo T( tipo generico) y carga el combo box (para distintos objetos y distintos campo que quiero que se cargue dentro del cambo
         //T=tipodeObj representa el tipo de dato con el que trabajara,List<T> es una lista genérica que contiene elementos de tipo T,p_comboBox=es el combo al que quiero cargar,es un delegado funcional que toma un objeto de tipo T y devuelve una cadena.(ej si quiero obtener el nombre de cada rol le pasaria esto rol => rol.Nombre)
@@ -210,6 +207,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         {
             //el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
             txtIdProducto.ReadOnly = valor;
+            txtCodBarra.ReadOnly = valor;
             txtNombreDato.ReadOnly = valor;
             txtStockDato.ReadOnly = valor;
             txtDescripcionDato.ReadOnly = valor;
@@ -465,8 +463,124 @@ namespace CapaPresentacion.Formularios.Admin.Producto
         private bool validarCampos()
         {
             bool validacion = true;
+            string codBarra = txtCodBarra.Text;
+            string nombreProduc = txtNombreDato.Text;
+            string stockProducto = txtStockDato.Text;
+            string descripProduc = txtDescripcionDato.Text;
+            string precioCompra = txtPrecioCompraDato.Text;
+            string precioVenta = txtPrecioVenta.Text;
+            string validarNombreDeImg = "prueba";//aca iri la validacion de la img 
+
+            int numero = 0;
+            decimal valorDecimal;
+
+            if (string.IsNullOrEmpty(codBarra) || string.IsNullOrEmpty(nombreProduc) || string.IsNullOrEmpty(precioCompra) || string.IsNullOrEmpty(precioVenta)
+                || string.IsNullOrEmpty(stockProducto) || string.IsNullOrEmpty(descripProduc) || string.IsNullOrEmpty(validarNombreDeImg))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
+
+            //recordar que para todas estas validaciones uso su negacion para que entre al if
+
+            //validar que el campos codbarra solo se ingresen numeros
+            if (!int.TryParse(codBarra, out numero))
+            {
+                errorProvider1.SetError(lblCodBarraDato, "Codigo de barra erroneo");
+                MessageBox.Show("Ingrese solo numeros en el cod de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos  nombreProduc contengan solo letras
+            if (!EsAlfabetico(nombreProduc))
+            {
+                errorProvider1.SetError(lblNombreDato, "Ingrese el nombre del producto correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos precioCompra y precioVenta solo se ingresen numeros (y que sean tipo decimal
+            if (!decimal.TryParse(precioCompra, out valorDecimal))
+            {
+                errorProvider1.SetError(lblPrecioCompraDato, "Precio Compra Erroneo");
+                MessageBox.Show(" El Valor de Precio compra debe de ser un decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+
+            if (!decimal.TryParse(precioVenta, out valorDecimal))
+            {
+                errorProvider1.SetError(lblprecioVenta, "Precio Venta Erroneo");
+                MessageBox.Show(" El Valor de Precio Venta debe de ser un decimal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el campos codbarra solo se ingresen numeros (y que sean tipo int
+            if (!int.TryParse(stockProducto, out numero))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("Ingrese solo numeros en el stock ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el stock sea mayor a 0 si el stock no es mayor que 0 entra al if ya que estoy ! negando
+            if (!(Convert.ToInt32(stockProducto.ToString()) > 0))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("El stock minimo en 1 ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            //validar que el stock sea menor a 100 si el stock no es menor que 0 entra al if ya que estoy ! negando
+            if (!(Convert.ToInt32(stockProducto.ToString()) <= 100))
+            {
+                errorProvider1.SetError(lblStock, "stockerroneo");
+                MessageBox.Show("El stock maximo es de 100 ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            // Validar que los campos  descripProduc contengan solo letras
+            if (!EsAlfabetico(descripProduc))
+            {
+                errorProvider1.SetError(lbldescrip, "Ingrese la descripcion del producto correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
 
             return validacion;
+        }
+        // Función para verificar si una cadena contiene solo letras y un sol oespacio por palabra
+        private bool EsAlfabetico(string texto)
+        {
+            bool espacioEncontrado = false;
+            foreach (char c in texto)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
+                    return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
+                }
+            }
+            return true;
+        }
+
+        private void limpiarCamposDato()
+        {
+
         }
 
         private void iconBtnExcel_Click(object sender, EventArgs e)
@@ -509,7 +623,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
 
                 //aca le pregunto al usuario en que parte quiere guardar al archivo excel a este obj lo llamare saveFile
                 SaveFileDialog saveFile = new SaveFileDialog();
-                saveFile.FileName = string.Format("ReporteProducto{0}.xlsx", DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
+                saveFile.FileName = string.Format("ReporteProducto{0}.xlsx", System.DateTime.Now.ToString("ddMMyyyyHHmmss")); //aca le asigno el nobre predetemrinado que tendra mi archivo y con format obtengo un mayor control sobre el texto luego al nombre le concateno la fecha y hora
                 saveFile.Filter = "Excel Files | *.xlsx"; //aca estoy agregando un filtro a la ventana de donde quiero que se guarden para que al momento de mostrarse solo se muestren ese tipo de archivos con esa extension
 
                 //aca digo si en el evento showdialog de la ventana de savefile se dio al evento ok que entre al if
@@ -536,12 +650,33 @@ namespace CapaPresentacion.Formularios.Admin.Producto
             }
         }
 
+        //metodo que hace uso el formREgistrarProducto para que caudno se registre un producto en ese forma aca se actulice el datagrid
         public void actualizarDataGrid()
         {
             //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
             FrmGestionarProducto_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
             //tenemos dos formas de hacer esto de vovler a carga el datagrid actualizado una es volveindo aa cargar el formualrio y la otra es llamando al metodo mostrarDatagrid y pasarle la lista nueva
 
+        }
+
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            txtCodBarra.Text = string.Empty;
+            txtNombreDato.Text = string.Empty;
+            txtStockDato.Text = string.Empty;
+            txtDescripcionDato.Text = string.Empty;
+            txtPrecioCompraDato.Text = string.Empty;
+            txtPrecioVenta.Text = string.Empty;
+
+            // Limpiar el ComboBox Marca Eliminando todos los elementos ya que una vez que el usuario selecciona un item queda ese y no puedo vovler a ver el msj predeterminado
+            comboCategDato.Items.Clear();
+            comboCategDato.Text = "Seleccione una Categoria"; // aca le paso el texto predeterminado que quiero que tenga el combo
+
+            comboMarcaDato.Items.Clear();
+            comboMarcaDato.Text = "Seleccione una Marca"; // aca le paso el texto predeterminado que quiero que tenga el combo
+
+            //vuelvo a cargar los combo box que recien limpie 
+            FrmGestionarProducto_Load(this, EventArgs.Empty);
         }
     }
 }

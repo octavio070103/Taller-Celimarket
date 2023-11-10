@@ -63,7 +63,7 @@ END
 GO
 
 --PROCEDIMIENTO PARA ELIMINAR O DAR DE BAJA UNA CATEGORIA
-CREATE PROC SP_DARBAJACATEGORIA(
+ALTER PROC SP_DARBAJACATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a editar la categoria
 @Id_Categoria int,
 
@@ -94,10 +94,12 @@ BEGIN
 		SET @Mensaje= ' La Categoria NO existe en la Base de Datos'
 		SET @validacion=0 --cambio el valor de validacion a 0 ya que asi determino que la validacion fue por el caso false
 	END
-
-	IF EXISTS (SELECT * FROM categoria c
-	INNER JOIN producto p on p.id_categoria= c.id_categoria
-	where c.id_categoria = @Id_Categoria)
+	--aca verifico que esa categoria no este vinculada a un producto dado de alta para darla de baja ,sino esta se puede dar de baja normalmente
+	IF EXISTS (
+	SELECT p.id_categoria,p.nombre_producto
+	FROM producto p
+	INNER JOIN categoria c on p.id_categoria= c.id_categoria
+	where p.id_categoria = @Id_Categoria AND p.estado_producto=1)
 	BEGIN 
 		SET @Resultado=0 --seteo el resultado a =0 para que cuando lo reciba en mi programa pueda saber que fallo la validacion com oresultado es una var de salidad output
 		SET @Mensaje= ' La Categoria Ya esta vinculado a un Producto, No se Puede Dar de Baja'
@@ -113,16 +115,12 @@ BEGIN
 		set @Resultado=1 /*la BAJA del usuario fue correcta */
 		SET @Mensaje = 'EL USUARIO SE DIO DE BAJA CORRECTAMENTE.'
 	END
-	ELSE
-    BEGIN
-         SET @mensaje = 'Error al realizar la BAJA de la categoria. Intente nuevamente.'
-          
-    END
+
 END
 GO
 
 --PROCEDIMIENTO PARA DAR DE ALTA UNA CATEGORIA
-CREATE PROC SP_DARALTACATEGORIA(
+alter PROC SP_DARALTACATEGORIA(
 --estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a editar la categoria
 @Id_Categoria int,
 
@@ -159,16 +157,11 @@ BEGIN
 	BEGIN 
 		-- busca el registro en la tabla categoria cuyo id_categoria coincide con el valor que proporcionas en el parámetro @id_categoria, y luego actualiza ese registro estableciendo su estado_categoria en 0
 		update categoria set
-		estado_categoria=0
+		estado_categoria=1
 		WHERE id_categoria = @Id_Categoria; 
 		set @Resultado=1 /*la BAJA del usuario fue correcta */
 		SET @Mensaje = 'EL USUARIO SE DIO DE alta CORRECTAMENTE.'
 	END
-	ELSE
-    BEGIN
-         SET @mensaje = 'Error al realizar la Alta de la categoria. Intente nuevamente.'
-          
-    END
 
 END
 

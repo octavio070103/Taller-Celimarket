@@ -6,7 +6,9 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Admin.settings
@@ -21,11 +23,11 @@ namespace CapaPresentacion.Formularios.Admin.settings
         }
 
         //este metodo me va a permitir convertir mi arrat de bit que contiene mi iamgen a tipo Image para poder mostrar el logo
-        public Image ByteToImage(byte[] imageBytes)
+        public System.Drawing.Image ByteToImage(byte[] imageBytes)
         {
             MemoryStream ms = new MemoryStream();   //creo este obj para guardar en memeoria mi array
             ms.Write(imageBytes, 0, imageBytes.Length); //aca leo ese array
-            Image image = new Bitmap(ms);//cremaos nuestra imagen de tipo image
+            System.Drawing.Image image = new Bitmap(ms);//cremaos nuestra imagen de tipo image
 
             return image;
         }
@@ -87,26 +89,101 @@ namespace CapaPresentacion.Formularios.Admin.settings
         private void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-
-            negocio obj_negocio = new negocio()
+            if (validarCampos())
             {
-                nombre_negocio = txtNombreNegocio.Text,
-                CUIT = txtCUITNegocio.Text,
-                telefono_negocio = txtTelefNegocio.Text,
-                email_negocio = txtEmailNegocio.Text,
-                direccion_negocio = txtDireNegocio.Text
+                negocio obj_negocio = new negocio()
+                {
+                    nombre_negocio = txtNombreNegocio.Text,
+                    CUIT = txtCUITNegocio.Text,
+                    telefono_negocio = txtTelefNegocio.Text,
+                    email_negocio = txtEmailNegocio.Text,
+                    direccion_negocio = txtDireNegocio.Text
 
-            };
-            bool respuestaGuardadatos = new CapaLogica.CL_Negocio().guardarDatosNegocio(obj_negocio, out mensaje);
+                };
+                bool respuestaGuardadatos = new CapaLogica.CL_Negocio().guardarDatosNegocio(obj_negocio, out mensaje);
 
-            if (respuestaGuardadatos)
-            {
-                MessageBox.Show("Los cambios fueron guardados", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                MessageBox.Show("Los cambios No se pudieron guardar intentelo de nuevo", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (respuestaGuardadatos)
+                {
+                    MessageBox.Show("Los cambios fueron guardados", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Los cambios No se pudieron guardar intentelo de nuevo", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
+
+        private bool validarCampos()
+        {
+            bool validacion = true;
+
+            string nombreNegocio = txtNombreNegocio.Text;
+            string cuit = txtCUITNegocio.Text;
+            string telefono = txtTelefNegocio.Text;
+            string email = txtEmailNegocio.Text;
+            string direccion = txtDireNegocio.Text;
+
+            if (string.IsNullOrEmpty(nombreNegocio) || string.IsNullOrEmpty(cuit) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(email)
+              || string.IsNullOrEmpty(direccion))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
+
+            // Validar que los campos  nombreNegocio contengan solo letras
+            if (!EsAlfabetico(nombreNegocio))
+            {
+                errorProvider1.SetError(lblNombreNego, "Ingrese el nombre del negocio correctamente");
+                MessageBox.Show(" El nombre debe de contener solamente letras y un solo espacio de separacion entre nombres", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+
+            if (!validarEmail(email))
+            {
+                errorProvider1.SetError(lblEmail, "Ingrese su email valido formato: correo@example.com");
+                MessageBox.Show(" El email debe de seguir el formato correo@example.com", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                validacion = false;
+            }
+            return validacion;
+        }
+        private bool EsAlfabetico(string texto)
+        {
+            bool espacioEncontrado = false;
+            foreach (char c in texto)
+            {
+                if (char.IsWhiteSpace(c))
+                {
+                    if (espacioEncontrado)
+                    {
+                        // Se encontró un espacio en blanco después de otro espacio en blanco
+                        return false;
+                    }
+                    espacioEncontrado = true;
+                }
+                else if (!char.IsLetter(c))
+                {
+                    // El carácter no es una letra
+                    return false;
+                }
+                else
+                {
+                    // Reiniciar el indicador de espacio si se encuentra una letra
+                    espacioEncontrado = false;
+                }
+            }
+            return true;
+        }
+        // toma una cadena que representa un email y utiliza una expresión regular para verificar si se ajusta a un formato de email válido. 
+        // Si el email cumple con este formato, la función ValidarEmail devuelve true; de lo contrario, devuelve false.
+        public bool validarEmail(string email)
+        {
+            // Patrón de expresión regular para validar un email
+            string patron = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Utiliza la clase Regex para hacer la validación
+            return Regex.IsMatch(email, patron);
+        }
+
     }
 }
