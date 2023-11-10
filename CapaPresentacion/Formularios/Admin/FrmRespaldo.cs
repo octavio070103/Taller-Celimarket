@@ -115,7 +115,7 @@ namespace CapaPresentacion.Formularios.Admin
             string nameBaseDatos = "BD_CeliMarket";
             infoDataBase obj_infoDataBase = obj_dataBase.obtenerInfoDataBase(nameBaseDatos);
             txtNombreBD.Text = nameBaseDatos;
-            //txtSeleccionServidor.Text = obj_infoDataBase.serverName.ToString();
+            txtSeleccionServidor.Text = obj_infoDataBase.serverName.ToString();
             txtSeleccionBase.Text = nameBaseDatos;
             txtTamaBD.Text = obj_infoDataBase.size_DB.ToString() + "MB";
             txtCanTablaBD.Text = obj_infoDataBase.totalTablas.ToString();
