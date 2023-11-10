@@ -456,7 +456,8 @@ namespace CapaPresentacion.Formularios.Vendedor
             CL_Producto auxListaProd = new CL_Producto();
             List<producto> listaProductos = auxListaProd.listarProductos();
 
-            var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.Contains(terminoBusqueda)).ToList();
+            //var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.Contains(terminoBusqueda)).ToList();
+            var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.IndexOf(terminoBusqueda, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
 
             mostrarProductosEnDataGridView(nuevaLista);
         }
@@ -467,6 +468,14 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Columns.Clear();
             dtgvProductos.Rows.Clear();
             buscarProducto(terminoBusqueda);
+        }
+
+        private void picRecargar_Click(object sender, EventArgs e)
+        {
+            dtgvProductos.Columns.Clear();
+            dtgvProductos.Rows.Clear();
+            cargarListaProductos();
+
         }
     }
 }

@@ -63,5 +63,41 @@ namespace CapaLogica
             return auxFactura;
         }
 
+
+        public string[] obtenerDatosNegocioPorPeriodo( DateTime fechaInicio, DateTime fechaFin)
+        {
+            CD_venta auxVenta = new CD_venta();
+            string[] auxDatos = auxVenta.datosDelNegocioPorPeriodo(fechaInicio, fechaFin);
+
+            return auxDatos;
+        }
+
+
+        public List<productoMasVendido> productosMasVendidosPorPeriodo(DateTime pFechaInicio, DateTime pFechaFin)
+        {
+            CD_venta auxVenta = new CD_venta();
+            List<productoMasVendido> auxLista = auxVenta.productosMasVendidosPorPeriodo(pFechaInicio, pFechaFin);
+
+            return auxLista;
+        }
+
+
+        public List<categoriaMasVendida> categoriasMasVendidasPorPeriodo(DateTime pFechaInicio, DateTime pFechaFin)
+        {
+            CD_venta auxVenta = new CD_venta();
+            List<categoriaMasVendida> auxLista = auxVenta.categoriasMasVendidasPorPeriodo(pFechaInicio, pFechaFin);
+
+            return auxLista;
+        }
+
+
+        public DataTable listarVentasVendedorPorPeriodo(int pIdUsuario, DateTime pFechaInicio, DateTime pFechaFin)
+        {
+            CD_venta auxVenta = new CD_venta();
+            DataTable auxLista = auxVenta.listarVentasVendedorPorPeriodo(pIdUsuario, pFechaInicio, pFechaFin);
+
+            return auxLista;
+        }
+
     }
 }

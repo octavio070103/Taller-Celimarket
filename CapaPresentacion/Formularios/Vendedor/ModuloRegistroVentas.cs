@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaLogica;
 
 namespace CapaPresentacion.Formularios.Vendedor
 {
@@ -36,19 +37,46 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvRegistroVentas.DataSource = Obj_venta.listarVentasVendedor(usuarioActual.id_usuario);
         }
 
+        private void listarVentasVendedorPorPeriodo(DateTime pFechaInicio, DateTime pFechaFin)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+
+            dtgvRegistroVentas.DataSource = auxVenta.listarVentasVendedorPorPeriodo(usuarioActual.id_usuario, pFechaInicio.Date, pFechaFin.Date);
+        }
 
         /** Permite cargar la lista de ventas ni bien se abre el formulario
          */
         private void ModuloRegistroVentas_Load(object sender, EventArgs e)
         {
             listarVentasVendedor();
+            dtpFechaInicio_ValueChanged(sender, e);
 
-
-            dtgvRegistroVentas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dtgvRegistroVentas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-
+            configurarDatagridVentas();
         }
 
+        private void configurarDatagridVentas()
+        {
+            if (dtgvRegistroVentas.Rows.Count > 0)
+            {
+                dtgvRegistroVentas.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dtgvRegistroVentas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+
+                if (dtgvDetalleVenta.Rows.Count > 0)
+                {
+                    dtgvDetalleVenta.DataSource = null;
+                }
+
+            }
+            else
+            {
+                dtgvRegistroVentas.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+                if (dtgvDetalleVenta.Rows.Count > 0)
+                {
+                    dtgvDetalleVenta.DataSource = null;
+                }
+            }
+        }
 
         private void listarDetalleVenta(int pIdVenta)
         {
@@ -58,15 +86,23 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void dtgvRegistroVentas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idVenta = int.Parse(dtgvRegistroVentas.CurrentRow.Cells[0].Value.ToString());
-            listarDetalleVenta(idVenta);
-            dtgvDetalleVenta.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            if (dtgvRegistroVentas.Rows.Count > 0)
+            {
+                int idVenta = int.Parse(dtgvRegistroVentas.CurrentRow.Cells[0].Value.ToString());
+                listarDetalleVenta(idVenta);
+                dtgvDetalleVenta.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
         }
 
         private void btnVerDetalle_Click(object sender, EventArgs e)
         {
-            int idVenta = int.Parse(dtgvRegistroVentas.CurrentRow.Cells[0].Value.ToString());
-            abrirFormularioHijo( new frmFactura(idVenta));
+            if (dtgvRegistroVentas.Rows.Count > 0)
+            {
+                int idVenta = int.Parse(dtgvRegistroVentas.CurrentRow.Cells[0].Value.ToString());
+                abrirFormularioHijo(new frmFactura(idVenta));
+            }
+
         }
 
 
@@ -108,5 +144,47 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         }
 
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            listarVentasVendedorPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
+            configurarDatagridVentas();
+        }
+
+        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime auxFechaSelec = dtpFechaInicio.Value;
+
+            dtpFechaFin.MinDate = auxFechaSelec;
+        }
+
+        private void filtrarPorDias(int pDias)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            DateTime fechaFin = DateTime.Now.Date;
+            DateTime fechaInicio = fechaFin.AddDays(-1 * pDias).Date;
+
+            listarVentasVendedorPorPeriodo(fechaInicio, fechaFin);
+            configurarDatagridVentas();
+        }
+
+        private void btnFiltroSiete_Click(object sender, EventArgs e)
+        {
+            filtrarPorDias(7);
+        }
+
+        private void btnFiltroTreinta_Click(object sender, EventArgs e)
+        {
+            filtrarPorDias(30);
+        }
+
+        private void btnFiltroHisto_Click(object sender, EventArgs e)
+        {
+            listarVentasVendedor();
+        }
+
+        private void btnFiltroHoy_Click(object sender, EventArgs e)
+        {
+            filtrarPorDias(0);
+        }
     }
 }

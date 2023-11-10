@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using capaEntidad;
 using System.Globalization;
+using System.Collections;
 
 namespace CapaDatos
 {
@@ -212,5 +213,211 @@ namespace CapaDatos
             return auxFactura;
         }
 
+
+        public string[] datosDelNegocioPorPeriodo( DateTime fechaInicio, DateTime fechaFin)
+        {
+            string[] datosNegocio = null;
+
+            // Se instancia un objeto de la clase SqlConnection que servira para conectarse a la base de datos
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+
+                try
+                {
+                    // Se instancia un objeto de la clase SqlCommand que permitira ejecutar comandos de la base de datos
+                    SqlCommand cmd = new SqlCommand("SP_DatosDelNegocioPorPeriodo", Obj_conexion);
+
+                    // Se indica que el comando ejectura procedimientos almacenados en la base de datos
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Se instancian los parametros que seran utilizados para interactuar con el procedimiento almacenado
+                    SqlParameter nroVentas = new SqlParameter("@nroVentas", SqlDbType.Int);
+                    SqlParameter totalRecaudado = new SqlParameter("@totalRecaudado", SqlDbType.Float);
+                    SqlParameter nroClientes = new SqlParameter("@nroClientes", SqlDbType.Float);
+                    SqlParameter nroEmpleado = new SqlParameter("@nroEmpleado", SqlDbType.Int);
+                    SqlParameter nroProveedores = new SqlParameter("@nroProveedores", SqlDbType.Int);
+                    SqlParameter nroProductos = new SqlParameter("@nroProductos", SqlDbType.Int);
+
+                    // Se establece que los parametros seran utilizados para recoger los resultados generados por la base de datos
+                    nroVentas.Direction = ParameterDirection.Output;
+                    totalRecaudado.Direction = ParameterDirection.Output;
+                    nroClientes.Direction = ParameterDirection.Output;
+                    nroEmpleado.Direction = ParameterDirection.Output;
+                    nroProveedores.Direction = ParameterDirection.Output;
+                    nroProductos.Direction = ParameterDirection.Output;
+
+                    // Se agregan los parametros al comando, los cuales utilizara para recoger los datos
+                    cmd.Parameters.Add(nroVentas);
+                    cmd.Parameters.Add(totalRecaudado);
+                    cmd.Parameters.Add(nroClientes);
+                    cmd.Parameters.Add(nroEmpleado);
+                    cmd.Parameters.Add(nroProveedores);
+                    cmd.Parameters.Add(nroProductos);
+                    cmd.Parameters.AddWithValue("@fechaInicioPer", fechaInicio);
+                    cmd.Parameters.AddWithValue("@fechaFinPer", fechaFin);
+
+                    // Se abre la conexion con la base de datos
+                    Obj_conexion.Open();
+
+                    // Se ejecuta el procedimiento en la base de datos
+                    cmd.ExecuteNonQuery();
+
+                    // Se asignan los resultados obtenidos de la base de datos para mostrarlos en pantalla
+                    datosNegocio = new string[] {
+                        cmd.Parameters["@nroVentas"].Value.ToString(),
+                        cmd.Parameters["@totalRecaudado"].Value.ToString(),
+                        cmd.Parameters["@nroClientes"].Value.ToString(),
+                        cmd.Parameters["@nroEmpleado"].Value.ToString(),
+                        cmd.Parameters["@nroProveedores"].Value.ToString(),
+                        cmd.Parameters["@nroProductos"].Value.ToString()
+                    };
+
+                    Obj_conexion.Close();
+
+                }catch (Exception excepcion)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
+                }
+
+            }
+
+            return datosNegocio;
+        }
+
+
+        public List<productoMasVendido> productosMasVendidosPorPeriodo(DateTime fechaInicio, DateTime fechaFin)
+        {
+            List<productoMasVendido> auxListaVendidos = new List<productoMasVendido>();
+
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_ProductosMasVendidosPorPeriodo", Obj_conexion);
+
+                    cmd.Parameters.AddWithValue("@fechaInicioPer", fechaInicio);
+                    cmd.Parameters.AddWithValue("@fechaFinPer", fechaFin);
+
+                    // Se establece que el comando ejecutara procedimientos almacenados de la base de datos
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Se abre la conexion con la base de datos
+                    Obj_conexion.Open();
+
+                    // Se almacenan los resultados obtenidos de ejecutar el procedimiento en la base de datos
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+
+                    // Se cargan los resutados obtenidos de la bases de datos en los arraylist
+                    while (dataReader.Read())
+                    {
+                        productoMasVendido auxProducto = new productoMasVendido
+                        {
+                            nombreProducto = dataReader.GetString(0),
+                            cantidadVendida = dataReader.GetInt32(1)
+                        };
+
+                        auxListaVendidos.Add(auxProducto);
+                    }
+
+                    dataReader.Close();
+                    Obj_conexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
+                }
+
+            }
+
+            return auxListaVendidos;
+        }
+
+
+        public List<categoriaMasVendida> categoriasMasVendidasPorPeriodo(DateTime fechaInicio, DateTime fechaFin)
+        {
+            List<categoriaMasVendida> auxListaCategorias = new List<categoriaMasVendida>();
+
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("SP_CategoriasMasVendidasPorPeriodo", Obj_conexion);
+
+                    cmd.Parameters.AddWithValue("@fechaInicioPer", fechaInicio);
+                    cmd.Parameters.AddWithValue("@fechaFinPer", fechaFin);
+
+                    // Se establece que el comando ejecutara procedimientos almacenados de la base de datos
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Se abre la conexion con la base de datos
+                    Obj_conexion.Open();
+
+                    // Se almacenan los resultados obtenidos de ejecutar el procedimiento en la base de datos
+                    SqlDataReader dataReader = cmd.ExecuteReader();
+
+                    // Se cargan los resutados obtenidos de la bases de datos en los arraylist
+                    while (dataReader.Read())
+                    {
+                        categoriaMasVendida auxProducto = new categoriaMasVendida
+                        {
+                            nombreCategoria = dataReader.GetString(0),
+                            cantidadVendida = dataReader.GetInt32(1)
+                        };
+
+                        auxListaCategorias.Add(auxProducto);
+                    }
+
+                    dataReader.Close();
+                    Obj_conexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
+                }
+
+            }
+
+            return auxListaCategorias;
+        }
+
+
+        public DataTable listarVentasVendedorPorPeriodo(int pIdUsuario, DateTime pFechaInicio, DateTime pFechaFin)
+        {
+            DataTable listaVentas = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_ListarVentasVendedorPorPeriodo", objConexion);
+
+                    comando.Parameters.AddWithValue("@id_usuario", pIdUsuario);
+                    comando.Parameters.AddWithValue("@fechaInicioPer", pFechaInicio);
+                    comando.Parameters.AddWithValue("@fechaFinPer", pFechaFin);
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    listaVentas.Load(dataReader);
+
+                    dataReader.Close();
+                    objConexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+
+                return listaVentas;
+            }
+
+        }
     }
 }
