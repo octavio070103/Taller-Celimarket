@@ -22,18 +22,19 @@ namespace CapaLogica
 <body style="" font-family: Arial, background-color: #E9EBF7;,sans-serif;margin: 20px;"">
 
     <div class=""header"" style=""display: flex; justify-content: space-between; align-items: center;"">
-        <div class=""logo"">
- <img src=""@imgBase64""  alt=""Logo"" width=""400"" height=""400"">
+    <div class=""logo"">
+        <img src=""@imgBase64"" alt=""Logo"" width=""400"" height=""400"">
     </div>
-        <div class=""title"" style=""text-align: left;"">
-            <h1>Factura Tipo @tipoFac</h1>
-        </div>
-        <div class=""info-factura"" style=""text-align: left; margin-right: 4%;"">
-            <p>Factura Original</p>
-            <p>Factura: @numFactura</p>
-            <p>Fecha: @fechaFactura</p>
-        </div>
+    <div class=""title"" style=""text-align: left; margin-right:10%;"">
+        <h1>Factura Tipo @tipoFac</h1>
     </div>
+    <div class=""info-factura"" style=""text-align: left; margin-right: 4%;"">
+        <p>Factura Original</p>
+        <p>Factura: @numFactura</p>
+        <p>Fecha: @fechaFactura</p>
+    </div>
+</div>
+
 
     <div class=""info-Negocio"" style=""display: flex; justify-content: space-between; border: 1px solid #000;"">
         <div class=""columna"" style=""width: 48%; margin-right: 2%; margin-left: 2%;"">
