@@ -91,7 +91,9 @@ namespace CapaPresentacion.Formularios.Admin
                     }
                     else
                     {
-                        MessageBox.Show("Error al realizar  el Backup", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error al realizar  el Backup,Debe de Seleccionar una carpeta que este dentro del disco C ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        iconBtnFolder.Visible = true;
+                        txtSelectFolderPath.Text = "";
                     }
                 }
                 else
