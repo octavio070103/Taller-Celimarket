@@ -15,14 +15,6 @@ namespace CapaLogica
     {
         private D_cliente objCliente = new D_cliente();
 
-        /*
-        public DataTable MostrarClien()
-        {
-            DataTable tabla = new DataTable();
-            tabla = objetoCD.MostrarCliente();
-            return tabla;
-        }*/
-
         // Este metodo permite obtener la lista de clientes registrados
         public DataTable obtenerListaClientes()
         {
@@ -47,6 +39,14 @@ namespace CapaLogica
             pResultadoEjec = 0;
 
             objCliente.modificarDatosCliente( idCliente, auxCliente, out pResultadoEjec);
+        }
+
+        public DataTable buscarCliente(string pTerminoBusqueda, int pTipoBusqueda)
+        {
+            D_cliente auxCliente = new D_cliente();
+            DataTable listaCliente = auxCliente.buscarCliente(pTerminoBusqueda, pTipoBusqueda);
+
+            return listaCliente;
         }
 
     }

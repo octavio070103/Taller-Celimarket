@@ -319,5 +319,30 @@ namespace CapaPresentacion.Formularios.Vendedor
             return fecha;
         }
 
+
+        private void buscarCliente(string pTerminoBusqueda, string pTipoBusqueda)
+        {
+            CL_Cliente auxCliente = new CL_Cliente();
+
+            if (pTipoBusqueda == "DNI")
+            {
+                dtgvClientes.DataSource = null;
+                dtgvClientes.DataSource = auxCliente.buscarCliente(pTerminoBusqueda, 1);
+
+            }else if ( pTipoBusqueda == "Apellido")
+            {
+                dtgvClientes.DataSource = null;
+                dtgvClientes.DataSource = auxCliente.buscarCliente(pTerminoBusqueda, 2);
+
+            }
+        }
+
+
+        private void txtBuscadorClientes_TextChanged(object sender, EventArgs e)
+        {
+            dtgvClientes.DataSource = null;
+            string pTermino = txtBuscadorClientes.Text.ToString();
+            buscarCliente(pTermino, cboFiltroClientes.Text);
+        }
     }
 }
