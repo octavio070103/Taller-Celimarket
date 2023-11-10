@@ -26,7 +26,8 @@ namespace CapaPresentacion.Formularios.Admin
         {
             InitializeComponent();
             this.instanciaMenuAdministrador = p_MenuAdministrador;
-
+            // Desvincular el controlador de eventos
+          //  dataGridConsultas.ColumnHeaderMouseClick -= dataGridConsultas_CellClick;
 
         }
         private void FrmGestionarConsulta_Load(object sender, EventArgs e)
@@ -106,31 +107,38 @@ namespace CapaPresentacion.Formularios.Admin
         //este evento se activa cuando da click en el datagrid
         private void dataGridConsultas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            string mensaje = string.Empty;
-            string mensajeCorreo = "La consulta fue recibida y leida";
-            CL_Consulta obj_CL_Consulta = new CL_Consulta();
-            //obtenemos el id_consulta de la consulta que se selecciono para marcarla como leida es decir cambiar el estado de la consulta a leida
-            DataGridViewRow filaSeleccionada = dataGridConsultas.Rows[e.RowIndex]; //primero obtenemos la filaSeleccionada
+            if (e.RowIndex >=0) {
 
-            int id_consultaSeleccionada = Convert.ToInt32((filaSeleccionada.Cells["Col_id_consulta"].Value.ToString()));//obtenemos el valor de la columna id_consulta lo convertimos a entero
-            capaEntidad.consulta obj_consulta = obj_CL_Consulta.buscarConsultaPorIdConsulta(id_consultaSeleccionada); //aca le pasamos el id_consulta que obtuivmos para poder obtener el ese registro de consulta (obj_consulta) y asi cambiar  su estado a leido
+                string mensaje = string.Empty;
+                string mensajeCorreo = "La consulta fue recibida y leida";
+                CL_Consulta obj_CL_Consulta = new CL_Consulta();
+                //obtenemos el id_consulta de la consulta que se selecciono para marcarla como leida es decir cambiar el estado de la consulta a leida
 
-            //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna responder_consulta entonces que entre al if y me permita responder esa cosnulta
-            if (dataGridConsultas.Columns[e.ColumnIndex].Name == "Responder_Consulta")
-            {
-                FrmResponderConsulta ventanaEmergRespConsul = new FrmResponderConsulta(obj_consulta);
-                ventanaEmergRespConsul.ShowDialog();
-            }
+                DataGridViewRow filaSeleccionada = dataGridConsultas.Rows[e.RowIndex]; //primero obtenemos la filaSeleccionada
 
-            //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna MarcarLeido entonces que entre al if y me permita marcar como leido esa consulta
-            if (dataGridConsultas.Columns[e.ColumnIndex].Name == "MarcarLeido")
-            {
-                bool cambiarEstadoConsulta = obj_CL_Consulta.cambiarEstadoConsulta(obj_consulta, out mensaje);
-                if (cambiarEstadoConsulta)
+                int id_consultaSeleccionada = Convert.ToInt32((filaSeleccionada.Cells["Col_id_consulta"].Value.ToString()));//obtenemos el valor de la columna id_consulta lo convertimos a entero
+                capaEntidad.consulta obj_consulta = obj_CL_Consulta.buscarConsultaPorIdConsulta(id_consultaSeleccionada); //aca le pasamos el id_consulta que obtuivmos para poder obtener el ese registro de consulta (obj_consulta) y asi cambiar  su estado a leido
+
+                //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna responder_consulta entonces que entre al if y me permita responder esa cosnulta
+                if (dataGridConsultas.Columns[e.ColumnIndex].Name == "Responder_Consulta")
                 {
-                    EnviarNotificacionPorCorreo(obj_consulta, "Consulta Leida por el Administrador", mensajeCorreo);
+                    FrmResponderConsulta ventanaEmergRespConsul = new FrmResponderConsulta(obj_consulta);
+                    ventanaEmergRespConsul.ShowDialog();
+                }
+
+                //aca pregunto si la consuluma e.columIndex es decir si el indiice de la col que se selecciono es == a la columna MarcarLeido entonces que entre al if y me permita marcar como leido esa consulta
+                if (dataGridConsultas.Columns[e.ColumnIndex].Name == "MarcarLeido")
+                {
+                    bool cambiarEstadoConsulta = obj_CL_Consulta.cambiarEstadoConsulta(obj_consulta, out mensaje);
+                    if (cambiarEstadoConsulta)
+                    {
+                        MessageBox.Show(mensaje);
+                        EnviarNotificacionPorCorreo(obj_consulta, "Consulta Leida por el Administrador", mensajeCorreo);
+                    }
+                    FrmGestionarConsulta_Load(this, EventArgs.Empty);
                 }
             }
+         
         }
 
         /****************** FILTROS DE MI DATAGRID **********************/

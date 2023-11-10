@@ -119,7 +119,7 @@ namespace CapaPresentacion.Formularios.Admin
             txtSeleccionBase.Text = nameBaseDatos;
             txtTamaBD.Text = obj_infoDataBase.size_DB.ToString() + "MB";
             txtCanTablaBD.Text = obj_infoDataBase.totalTablas.ToString();
-            dateTimePicker1.Value = obj_infoDataBase.fecha_DB_Backup;
+            txtUltimoBackHora.Text = obj_infoDataBase.fecha_DB_Backup.ToString();
             txtTablasPrinci.Text = obj_infoDataBase.NombresTablas.ToString();
         }
     }

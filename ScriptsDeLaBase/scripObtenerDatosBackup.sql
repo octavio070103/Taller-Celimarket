@@ -1,4 +1,4 @@
-ALTER PROCEDURE SP_OBTENERINFO_DB(
+CREATE PROCEDURE SP_OBTENERINFO_DB(
 --var de entrada del proc almacenado 
 @nameBaseDatos VARCHAR(100),
 --var de salida del proc almacenado
@@ -44,8 +44,7 @@ AS
 		BEGIN
 		--si nunca hubo un backup debo devolver valores vacios en esos campos
 		SET @ruta_DB_Backup = '';
-		DECLARE @fecha DATETIME = CONVERT (DATE,GETDATE())
-		SET @fecha_DB_Backup = @fecha
+		SET @fecha_DB_Backup = GETDATE();
 		SET @tipo_Backup = '';
 		END
 
@@ -69,5 +68,3 @@ AS
  END
 
  GO		
-
-		SELECT CONVERT (DATE,GETDATE() )

@@ -34,9 +34,9 @@
             lblFiltrar = new Label();
             label1 = new Label();
             panelDatosUsuario = new Panel();
+            txtUltimoBackHora = new TextBox();
             txtTablasPrinci = new TextBox();
             txtCanTablaBD = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
             lblPassword = new Label();
             lblTelefDato = new Label();
             lbl = new Label();
@@ -106,9 +106,9 @@
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelDatosUsuario.BackColor = Color.White;
+            panelDatosUsuario.Controls.Add(txtUltimoBackHora);
             panelDatosUsuario.Controls.Add(txtTablasPrinci);
             panelDatosUsuario.Controls.Add(txtCanTablaBD);
-            panelDatosUsuario.Controls.Add(dateTimePicker1);
             panelDatosUsuario.Controls.Add(lblPassword);
             panelDatosUsuario.Controls.Add(lblTelefDato);
             panelDatosUsuario.Controls.Add(lbl);
@@ -121,6 +121,15 @@
             panelDatosUsuario.Name = "panelDatosUsuario";
             panelDatosUsuario.Size = new Size(257, 442);
             panelDatosUsuario.TabIndex = 17;
+            // 
+            // txtUltimoBackHora
+            // 
+            txtUltimoBackHora.Enabled = false;
+            txtUltimoBackHora.Location = new Point(26, 157);
+            txtUltimoBackHora.Name = "txtUltimoBackHora";
+            txtUltimoBackHora.ReadOnly = true;
+            txtUltimoBackHora.Size = new Size(209, 23);
+            txtUltimoBackHora.TabIndex = 35;
             // 
             // txtTablasPrinci
             // 
@@ -139,15 +148,6 @@
             txtCanTablaBD.ReadOnly = true;
             txtCanTablaBD.Size = new Size(93, 23);
             txtCanTablaBD.TabIndex = 28;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Enabled = false;
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(59, 158);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(144, 23);
-            dateTimePicker1.TabIndex = 30;
             // 
             // lblPassword
             // 
@@ -385,12 +385,12 @@
         private Label lbl;
         private TextBox txtNombreBD;
         private TextBox txtSelectFolderPath;
-        private DateTimePicker dateTimePicker1;
         private FontAwesome.Sharp.IconButton iconBtnImportar;
         private FontAwesome.Sharp.IconButton iconBtnRespaldar;
         private FontAwesome.Sharp.IconButton iconBtnFolder;
         private TextBox txtSeleccionServidor;
         private TextBox txtSeleccionBase;
         private TextBox txtTablasPrinci;
+        private TextBox txtUltimoBackHora;
     }
 }

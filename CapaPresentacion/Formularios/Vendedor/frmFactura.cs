@@ -111,6 +111,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             //negocio
             contenidoHTML = contenidoHTML.Replace("@nombre_negocio", lblNomNegocio.Text);
             contenidoHTML = contenidoHTML.Replace("@CUIT", lblCUIT.Text);
+            contenidoHTML = contenidoHTML.Replace("@email_negocio", lblEmailNegocio.Text);
             contenidoHTML = contenidoHTML.Replace("@direccion", lblDomNegocio.Text);
             contenidoHTML = contenidoHTML.Replace("@telefono_negocio", lblTelefNegocio.Text);
             //cliente

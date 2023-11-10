@@ -47,7 +47,9 @@ namespace CapaDatos
                         //obtenemos los valores de los parametros de salida de mi procedimiento almcenado
 
                         obj_infoDataBase.ruta_DB_Backup = cmd.Parameters["@ruta_DB_Backup"].Value.ToString();
-                        obj_infoDataBase.fecha_DB_Backup = Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value).Date;
+                        if (Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value) == null) 
+                        { obj_infoDataBase.fecha_DB_Backup = Convert.ToDateTime("2023-10-11"); }
+                        else { obj_infoDataBase.fecha_DB_Backup = Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value); }
                         obj_infoDataBase.tipo_Backup = cmd.Parameters["@tipo_Backup"].Value.ToString();
                         obj_infoDataBase.totalTablas = Convert.ToInt32(cmd.Parameters["@totalTablas"].Value);
                         obj_infoDataBase.NombresTablas = cmd.Parameters["@NombresTablas"].Value.ToString();
