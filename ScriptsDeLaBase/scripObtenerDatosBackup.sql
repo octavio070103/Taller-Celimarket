@@ -1,4 +1,4 @@
-Create PROCEDURE SP_OBTENERINFO_DB(
+ALTER PROCEDURE SP_OBTENERINFO_DB(
 --var de entrada del proc almacenado 
 @nameBaseDatos VARCHAR(100),
 --var de salida del proc almacenado
@@ -12,23 +12,33 @@ Create PROCEDURE SP_OBTENERINFO_DB(
 )
 AS 
  BEGIN
-		
+	declare @cant_backups INT=0	
 
-		 -- Obtener la ruta del archivo de respaldo más reciente
-    SELECT TOP 1
-	@ruta_DB_Backup = bmf.physical_device_name,
-	@fecha_DB_Backup = backup_finish_date,
-	@tipo_Backup = 
-	CASE bs.type
-		WHEN 'D' THEN 'Respaldo Completo' 
-		WHEN 'I' THEN 'Respaldo Diferencial' 
-		WHEN 'L' THEN 'Respaldo de Registro de Transacciones'
-		ELSE 'Desconocido'
+	SELECT
+    @cant_backups=COUNT(*) 
+	FROM msdb.dbo.backupset
+	WHERE type IN ('D', 'I', 'L') -- Filtra por respaldos completos, diferenciales y de registro de transacciones
+	GROUP BY database_name;
+	
+
+		 -- Obtener la ruta del archivo de respaldo más reciente si se realizo un backup en la base alguna vez
+    if(@cant_backups >0)
+	BEGIN
+		SELECT TOP 1
+		@ruta_DB_Backup = bmf.physical_device_name,
+		@fecha_DB_Backup = backup_finish_date,
+		@tipo_Backup = 
+		CASE bs.type
+			WHEN 'D' THEN 'Respaldo Completo' 
+			WHEN 'I' THEN 'Respaldo Diferencial' 
+			WHEN 'L' THEN 'Respaldo de Registro de Transacciones'
+			ELSE 'Desconocido'
+		END
+		FROM msdb.dbo.backupset bs
+		INNER JOIN msdb.dbo.backupmediafamily bmf ON bs.media_set_id = bmf.media_set_id
+		WHERE bs.database_name = @nameBaseDatos -- ACA LE PASO LA BD QUE quiero obtener esos datos
+		ORDER BY bs.backup_finish_date DESC;
 	END
-    FROM msdb.dbo.backupset bs
-	INNER JOIN msdb.dbo.backupmediafamily bmf ON bs.media_set_id = bmf.media_set_id
-    WHERE bs.database_name = @nameBaseDatos -- ACA LE PASO LA BD QUE quiero obtener esos datos
-    ORDER BY bs.backup_finish_date DESC;
 
 	-- Obtener el total de tablas en la base de datos solo las tablas que yo cree las del sistema o los diagramas no me cuenta con esta funcion
     SELECT @totalTablas = COUNT(TABLE_NAME)
