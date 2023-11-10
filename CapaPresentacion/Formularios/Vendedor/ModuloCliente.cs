@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Formularios.Vendedor
@@ -317,72 +318,6 @@ namespace CapaPresentacion.Formularios.Vendedor
 
             return fecha;
         }
-
-        /*
-                private DateTime transformarFecha( string pFecha)
-                {
-                    // Analiza la fecha en el formato original, lo clasfica segun su formato y lo transforma a un DateTime
-                    string formatoFecha = clasificarFecha(pFecha);
-                    DateTime fechaFormateada = DateTime.ParseExact(pFecha, formatoFecha, CultureInfo.InvariantCulture);
-
-                    return fechaFormateada;
-                }
-
-                private string clasificarFecha(string pFecha)
-                {
-                    // Se divide la fecha de en tres partes en base los caracteres "/" y se los almacena en un array
-                    string[] componentesFecha = pFecha.Split('/');
-                    string formatoFecha = "";
-
-                    if (componentesFecha.Length == 3)
-                    {
-                        // Se convierten las respectivas partes de la fecha correspondientes al dia, mes y año en enteros.
-                        int dia = Convert.ToInt32(componentesFecha[0]);
-                        int mes = Convert.ToInt32(componentesFecha[1]);
-                        int anio = Convert.ToInt32(componentesFecha[2]);
-
-                        // Se realizan las validacion correspondientes para verificar que sea una fecha valida
-                        if ( (dia >= 1 && dia <= 31) && (mes >= 1 && mes <= 12) && (anio >= 1000 && anio <= 9999))
-                        {
-                            // Se pasa a analizar que formato posee la fecha para asi poder clasificarla
-
-                            // Si la longitud del DIA es igual a 1, se pasa a clasificar la longitud del MES 
-                            if (componentesFecha[0].Length == 1)
-                            {
-                                // Si la longitud del MES es igual a 1, la fecha posee el formato "d/m/yyyy"
-                                if (componentesFecha[1].Length == 1)
-                                {
-                                    formatoFecha = "d/m/yyyy";
-                                }
-                                else
-                                {
-                                    // Si la longitud del MES es mayor a 1, la fecha posee el formato "d/mm/yyyy"
-                                    formatoFecha = "d/mm/yyyy";
-                                }
-
-                            }
-                            else
-                            {
-                             // Si la longitud del DIA es mayor a 1, nuevamente se pasa a clasificar la longitud del MES
-
-                                // Si la longitud del MES es igual a 1, la fecha posee el formato "dd/m/yyyy"
-                                if (componentesFecha[1].Length == 1)
-                                {
-                                    formatoFecha = "dd/m/yyyy";
-                                }
-                                else
-                                {
-                                // Si la longitud del MES es mayor a 1, la fecha posee el formato "dd/mm/yyyy"
-                                    formatoFecha = "dd/mm/yyyy";
-                                }
-
-                            }
-                        }
-                    }
-
-                    return formatoFecha;
-                }
-        */
 
     }
 }

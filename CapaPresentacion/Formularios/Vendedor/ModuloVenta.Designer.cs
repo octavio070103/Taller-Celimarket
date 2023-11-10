@@ -121,9 +121,9 @@
             // picRecargar
             // 
             picRecargar.Image = (Image)resources.GetObject("picRecargar.Image");
-            picRecargar.Location = new Point(327, 9);
+            picRecargar.Location = new Point(327, 11);
             picRecargar.Name = "picRecargar";
-            picRecargar.Size = new Size(26, 23);
+            picRecargar.Size = new Size(22, 20);
             picRecargar.SizeMode = PictureBoxSizeMode.Zoom;
             picRecargar.TabIndex = 12;
             picRecargar.TabStop = false;
@@ -726,6 +726,7 @@
             // 
             dtgvProductos.AllowUserToAddRows = false;
             dtgvProductos.AllowUserToDeleteRows = false;
+            dtgvProductos.AllowUserToResizeRows = false;
             dtgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvProductos.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -736,7 +737,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dtgvProductos.ColumnHeadersHeight = 30;
+            dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvProductos.EnableHeadersVisualStyles = false;
             dtgvProductos.Location = new Point(0, 37);
             dtgvProductos.MultiSelect = false;
@@ -755,7 +756,7 @@
             lblBuscarClientes.AutoSize = true;
             lblBuscarClientes.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblBuscarClientes.ForeColor = SystemColors.HighlightText;
-            lblBuscarClientes.Location = new Point(12, 7);
+            lblBuscarClientes.Location = new Point(12, 11);
             lblBuscarClientes.Name = "lblBuscarClientes";
             lblBuscarClientes.Size = new Size(74, 20);
             lblBuscarClientes.TabIndex = 7;
@@ -767,6 +768,7 @@
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(175, 23);
             txtBuscar.TabIndex = 9;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // lblFiltro
             // 

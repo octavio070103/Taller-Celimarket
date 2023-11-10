@@ -1,4 +1,4 @@
-ALTER PROCEDURE SP_OBTENERINFO_DB(
+CREATE PROCEDURE SP_OBTENERINFO_DB(
 --var de entrada del proc almacenado 
 @nameBaseDatos VARCHAR(100),
 --var de salida del proc almacenado

@@ -142,3 +142,33 @@ BEGIN
 END
 GO
 
+-- **** BUSCAR CLIENTE ****
+
+CREATE PROCEDURE SP_BuscarCliente
+(
+  @terminoBusqueda VARCHAR,
+  @tipoBusqueda INT
+)
+AS
+  BEGIN 
+
+    IF(@tipoBusqueda = 1) -- Busqueda por DNI
+	  BEGIN
+	    SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
+		FROM cliente AS C
+
+ 		INNER JOIN persona AS P on P.id_persona = C.id_persona
+		WHERE P.dni LIKE ('%'+@terminoBusqueda+'%')
+	  END
+
+	ELSE IF (@tipoBusqueda = 2) -- Busqueda por apellido
+	  BEGIN
+		SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
+		FROM cliente AS C
+
+ 		INNER JOIN persona AS P on P.id_persona = C.id_persona
+		WHERE upper(P.apellido) LIKE upper('%'+@terminoBusqueda+'%')
+	  END
+
+  END
+GO

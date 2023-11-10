@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using capaEntidad;
 using CapaLogica;
@@ -136,18 +137,26 @@ namespace CapaPresentacion.Formularios.Vendedor
         */
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            int idProducto = int.Parse(dtgvProductos.CurrentRow.Cells[0].Value.ToString());
 
             if (validarCampos() == true)
             {
-                float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
-                int idProducto = int.Parse(dtgvProductos.CurrentRow.Cells[0].Value.ToString());
+                if (productoYaAgregado(idProducto) == false)
+                {
+                    float subtotal = int.Parse(txtCantidad.Text) * float.Parse(txtPrecio.Text);
+                    //int idProducto = int.Parse(dtgvProductos.CurrentRow.Cells[0].Value.ToString());
 
-                dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal, idProducto);
+                    dtgvListaCompra.Rows.Add(txtNombre.Text, txtCantidad.Text, txtPrecio.Text, txtCategoria.Text, subtotal, idProducto);
 
-                // *** Calcula el total a pagar del carrito de compras
-                calcularTotal();
+                    // *** Calcula el total a pagar del carrito de compras
+                    calcularTotal();
 
-                limpiarCampos();
+                    limpiarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Este producto fue agregado al carrito previamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
             else
@@ -156,6 +165,28 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
 
 
+        }
+
+
+        private bool productoYaAgregado(int pIdProducto)
+        {
+            bool validacion = false;
+
+            if (dtgvListaCompra.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow fila in dtgvListaCompra.Rows)
+                {
+                    int auxIdProducto = int.Parse(fila.Cells["id_producto_carrito"].Value.ToString());
+
+                    // Si el producto ya se encuentra agregado al carrito, 'validacion' obtendra el valor true
+                    if (auxIdProducto == pIdProducto)
+                    {
+                        validacion = true;
+                    }
+                }
+            }
+
+            return validacion;
         }
 
 
@@ -285,8 +316,8 @@ namespace CapaPresentacion.Formularios.Vendedor
             bool validacion = true;
 
             if (txtNombre.Text == "" || txtPrecio.Text == "" || txtCategoria.Text == "" || txtCantidad.Text == ""
-                || txtCliente.Text == "" || cboMetodoPago.SelectedItem == null)
-            {
+                || cboMetodoPago.SelectedItem == null)
+            {//|| txtCliente.Text == "" 
 
                 validacion = false;
             }
@@ -318,12 +349,20 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             if (dtgvListaCompra.Rows.Count > 0)
             {
-                // **** Se rellenan los datos del resumen de venta para pasarlos como parametro
+                if (txtCliente.Text != "" && txtIdCliente.Text != "")
+                {
+                    // **** Se rellenan los datos del resumen de venta para pasarlos como parametro
 
-                string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text,
-                                             lblCalculoTotal.Text, txtIdVendedor.Text, txtIdCliente.Text,
-                                             cboMetodoPago.SelectedValue.ToString()};
-                abrirFormularioHijo(new frmResumenVenta(dtgvListaCompra, auxDatosResumen));
+                    string[] auxDatosResumen = { lblModificarCliente.Text, lblModificarMetodo.Text,
+                                                 lblCalculoTotal.Text, txtIdVendedor.Text, txtIdCliente.Text,
+                                                 cboMetodoPago.SelectedValue.ToString()};
+                    abrirFormularioHijo(new frmResumenVenta(dtgvListaCompra, auxDatosResumen));
+                }
+                else
+                {
+                    MessageBox.Show("Se debe completar el campo cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else
             {
@@ -468,6 +507,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Columns.Clear();
             dtgvProductos.Rows.Clear();
             buscarProducto(terminoBusqueda);
+            dtgvProductos.Columns["nombre_producto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void picRecargar_Click(object sender, EventArgs e)
@@ -475,7 +515,13 @@ namespace CapaPresentacion.Formularios.Vendedor
             dtgvProductos.Columns.Clear();
             dtgvProductos.Rows.Clear();
             cargarListaProductos();
-
+            dtgvProductos.Columns["nombre_producto"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            button1_Click(sender,e);
+        }
+
     }
 }
