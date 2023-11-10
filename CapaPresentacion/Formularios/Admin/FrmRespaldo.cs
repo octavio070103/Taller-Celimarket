@@ -111,6 +111,7 @@ namespace CapaPresentacion.Formularios.Admin
 
         private void FrmRespaldo_Load(object sender, EventArgs e)
         {
+
             string nameBaseDatos = "BD_CeliMarket";
             infoDataBase obj_infoDataBase = obj_dataBase.obtenerInfoDataBase(nameBaseDatos);
             txtNombreBD.Text = nameBaseDatos;

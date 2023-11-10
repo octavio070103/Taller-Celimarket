@@ -38,7 +38,15 @@ AS
 		INNER JOIN msdb.dbo.backupmediafamily bmf ON bs.media_set_id = bmf.media_set_id
 		WHERE bs.database_name = @nameBaseDatos -- ACA LE PASO LA BD QUE quiero obtener esos datos
 		ORDER BY bs.backup_finish_date DESC;
+	
 	END
+	ELSE
+		BEGIN
+		--si nunca hubo un backup debo devolver valores vacios en esos campos
+		SET @ruta_DB_Backup = '';
+		SET @fecha_DB_Backup = GETDATE();
+		SET @tipo_Backup = '';
+		END
 
 	-- Obtener el total de tablas en la base de datos solo las tablas que yo cree las del sistema o los diagramas no me cuenta con esta funcion
     SELECT @totalTablas = COUNT(TABLE_NAME)
