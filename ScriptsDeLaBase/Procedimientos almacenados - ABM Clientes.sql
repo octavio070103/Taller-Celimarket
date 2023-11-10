@@ -144,7 +144,7 @@ GO
 
 -- **** BUSCAR CLIENTE ****
 
-CREATE PROCEDURE SP_BuscarCliente
+ALTER PROCEDURE SP_BuscarCliente
 (
   @terminoBusqueda VARCHAR,
   @tipoBusqueda INT
@@ -158,7 +158,7 @@ AS
 		FROM cliente AS C
 
  		INNER JOIN persona AS P on P.id_persona = C.id_persona
-		WHERE P.dni LIKE ('%'+@terminoBusqueda+'%')
+		WHERE CONVERT(VARCHAR, P.dni) LIKE ('%'+@terminoBusqueda+'%')
 	  END
 
 	ELSE IF (@tipoBusqueda = 2) -- Busqueda por apellido

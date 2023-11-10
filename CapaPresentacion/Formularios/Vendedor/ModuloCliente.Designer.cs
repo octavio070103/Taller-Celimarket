@@ -93,6 +93,7 @@
             // 
             cboFiltroClientes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cboFiltroClientes.FormattingEnabled = true;
+            cboFiltroClientes.Items.AddRange(new object[] { "DNI", "Apellido", "Nombre" });
             cboFiltroClientes.Location = new Point(462, 36);
             cboFiltroClientes.Name = "cboFiltroClientes";
             cboFiltroClientes.Size = new Size(122, 23);
@@ -115,6 +116,7 @@
             txtBuscadorClientes.Name = "txtBuscadorClientes";
             txtBuscadorClientes.Size = new Size(213, 23);
             txtBuscadorClientes.TabIndex = 3;
+            txtBuscadorClientes.TextChanged += txtBuscadorClientes_TextChanged;
             // 
             // pnlListaClientes
             // 
