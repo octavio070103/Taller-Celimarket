@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModuloVenta));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             pnlModuloVenta = new Panel();
+            picRecargar = new PictureBox();
+            btnBuscar = new Button();
             cboFiltroClientes = new ComboBox();
             pnlCarrito = new Panel();
             lblModificarMetodo = new Label();
@@ -86,8 +89,8 @@
             lblBuscarClientes = new Label();
             txtBuscar = new TextBox();
             lblFiltro = new Label();
-            button1 = new Button();
             pnlModuloVenta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecargar).BeginInit();
             pnlCarrito.SuspendLayout();
             pnlTotal.SuspendLayout();
             pnlEncabezado.SuspendLayout();
@@ -101,7 +104,8 @@
             // pnlModuloVenta
             // 
             pnlModuloVenta.BackColor = Color.FromArgb(88, 89, 150);
-            pnlModuloVenta.Controls.Add(button1);
+            pnlModuloVenta.Controls.Add(picRecargar);
+            pnlModuloVenta.Controls.Add(btnBuscar);
             pnlModuloVenta.Controls.Add(cboFiltroClientes);
             pnlModuloVenta.Controls.Add(pnlCarrito);
             pnlModuloVenta.Controls.Add(pnlListaProductos);
@@ -113,6 +117,32 @@
             pnlModuloVenta.Name = "pnlModuloVenta";
             pnlModuloVenta.Size = new Size(795, 571);
             pnlModuloVenta.TabIndex = 0;
+            // 
+            // picRecargar
+            // 
+            picRecargar.Image = (Image)resources.GetObject("picRecargar.Image");
+            picRecargar.Location = new Point(327, 9);
+            picRecargar.Name = "picRecargar";
+            picRecargar.Size = new Size(26, 23);
+            picRecargar.SizeMode = PictureBoxSizeMode.Zoom;
+            picRecargar.TabIndex = 12;
+            picRecargar.TabStop = false;
+            picRecargar.Click += picRecargar_Click;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.BackColor = Color.DarkCyan;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuscar.ForeColor = SystemColors.ButtonHighlight;
+            btnBuscar.Location = new Point(269, 8);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(52, 23);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += button1_Click;
             // 
             // cboFiltroClientes
             // 
@@ -392,6 +422,7 @@
             txtIdVendedor.Name = "txtIdVendedor";
             txtIdVendedor.Size = new Size(43, 23);
             txtIdVendedor.TabIndex = 37;
+            txtIdVendedor.KeyPress += desactivarModificacion_KeyPress;
             // 
             // txtNombreVendedor
             // 
@@ -400,6 +431,7 @@
             txtNombreVendedor.Name = "txtNombreVendedor";
             txtNombreVendedor.Size = new Size(235, 23);
             txtNombreVendedor.TabIndex = 36;
+            txtNombreVendedor.KeyPress += desactivarModificacion_KeyPress;
             // 
             // label5
             // 
@@ -723,17 +755,17 @@
             lblBuscarClientes.AutoSize = true;
             lblBuscarClientes.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblBuscarClientes.ForeColor = SystemColors.HighlightText;
-            lblBuscarClientes.Location = new Point(12, 9);
+            lblBuscarClientes.Location = new Point(12, 7);
             lblBuscarClientes.Name = "lblBuscarClientes";
-            lblBuscarClientes.Size = new Size(52, 20);
+            lblBuscarClientes.Size = new Size(74, 20);
             lblBuscarClientes.TabIndex = 7;
-            lblBuscarClientes.Text = "Buscar";
+            lblBuscarClientes.Text = "Busqueda";
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(70, 11);
+            txtBuscar.Location = new Point(88, 9);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(192, 23);
+            txtBuscar.Size = new Size(175, 23);
             txtBuscar.TabIndex = 9;
             // 
             // lblFiltro
@@ -748,16 +780,6 @@
             lblFiltro.TabIndex = 8;
             lblFiltro.Text = "Filtro";
             // 
-            // button1
-            // 
-            button1.Location = new Point(272, 10);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 11;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // frmModuloVenta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -769,6 +791,7 @@
             Load += frmModuloVenta_Load;
             pnlModuloVenta.ResumeLayout(false);
             pnlModuloVenta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecargar).EndInit();
             pnlCarrito.ResumeLayout(false);
             pnlCarrito.PerformLayout();
             pnlTotal.ResumeLayout(false);
@@ -842,6 +865,7 @@
         private DataGridViewTextBoxColumn categoria_producto_carrito;
         private DataGridViewTextBoxColumn subtotal_producto_carrito;
         private DataGridViewTextBoxColumn id_producto_carrito;
-        private Button button1;
+        private Button btnBuscar;
+        private PictureBox picRecargar;
     }
 }

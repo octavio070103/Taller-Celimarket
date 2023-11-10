@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using CapaLogica;
+using DocumentFormat.OpenXml.Office.Word;
+using capaEntidad;
 
 namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 {
@@ -25,6 +28,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             graficoProductosMasVendidos();
             graficoCategoriasMasVendidas();
             datosDelNegocio();
+            dtpFechaInicio_ValueChanged(sender, e);
         }
 
 
@@ -150,5 +154,110 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 
         }
 
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            string[] datosNegocio = auxVenta.obtenerDatosNegocioPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
+            List<productoMasVendido> listaProductos = auxVenta.productosMasVendidosPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
+            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
+
+            asignarDatos(datosNegocio);
+            cargarGraficos(listaProductos, listaCategorias);
+        }
+
+
+        private void asignarDatos(string[] pDatosNegocio)
+        {
+            lblCantVentas.Text = pDatosNegocio[0];
+            lblTotalRecau.Text = pDatosNegocio[1];
+            lblNroClientes.Text = pDatosNegocio[2];
+            lblNroEmpleados.Text = pDatosNegocio[3];
+            lblNroProve.Text = pDatosNegocio[4];
+            lblNroProdu.Text = pDatosNegocio[5];
+        }
+
+        private void cargarGraficos(List<productoMasVendido> pListaProd, List<categoriaMasVendida> pListaCate)
+        {
+            // **** GRAFICO DE PRODUCTOS MAS VENDIDOS ****
+            List<string> nombresProducto = pListaProd.Select(p => p.nombreProducto).ToList();
+            List<int> cantidadesVendidas = pListaProd.Select(p => p.cantidadVendida).ToList();
+
+            chartProductosVen.Series[0].Points.DataBindXY(nombresProducto, cantidadesVendidas);
+
+            // **** GRAFICO DE CATEGORIAS MAS VENDIDAS ****
+            List<string> nombresCategorias = pListaCate.Select(p => p.nombreCategoria).ToList();
+            List<int> cantVendidasCate = pListaCate.Select(p => p.cantidadVendida).ToList();
+
+            chartCategoriasVen.Series[0].Points.DataBindXY(nombresCategorias, cantVendidasCate);
+        }
+
+
+        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime auxFechaSelec = dtpFechaInicio.Value;
+
+            dtpFechaFin.MinDate = auxFechaSelec;
+        }
+
+        private void btnFiltroSiete_Click(object sender, EventArgs e)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            DateTime fechaFin = DateTime.Now.Date;
+            DateTime fechaInicio = fechaFin.AddDays(-7).Date;
+
+            string[] auxDatos = auxVenta.obtenerDatosNegocioPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Productos mas vendidos ***
+            List<productoMasVendido> listaProd = auxVenta.productosMasVendidosPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Categorias mas vendidas ***
+            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
+
+            asignarDatos(auxDatos);
+            cargarGraficos(listaProd, listaCategorias);
+        }
+
+        private void btnFiltroTreinta_Click(object sender, EventArgs e)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            DateTime fechaFin = DateTime.Now.Date;
+            DateTime fechaInicio = fechaFin.AddDays(-30).Date;
+
+            string[] auxDatos = auxVenta.obtenerDatosNegocioPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Productos mas vendidos ***
+            List<productoMasVendido> listaProd = auxVenta.productosMasVendidosPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Categorias mas vendidas ***
+            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
+
+            asignarDatos(auxDatos);
+            cargarGraficos(listaProd, listaCategorias);
+        }
+
+        private void btnFiltroNove_Click(object sender, EventArgs e)
+        {
+            CL_Venta auxVenta = new CL_Venta();
+            DateTime fechaFin = DateTime.Now.Date;
+            DateTime fechaInicio = fechaFin.AddDays(-90).Date;
+
+            string[] auxDatos = auxVenta.obtenerDatosNegocioPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Productos mas vendidos ***
+            List<productoMasVendido> listaProd = auxVenta.productosMasVendidosPorPeriodo(fechaInicio, fechaFin);
+
+            // *** Categorias mas vendidas ***
+            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
+
+            asignarDatos(auxDatos);
+            cargarGraficos(listaProd, listaCategorias);
+        }
+
+        private void btnFiltroHisto_Click(object sender, EventArgs e)
+        {
+            datosDelNegocio();
+            graficoCategoriasMasVendidas();
+            graficoProductosMasVendidos();
+        }
     }
 }

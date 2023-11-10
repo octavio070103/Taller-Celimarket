@@ -17,8 +17,8 @@ GO
 
 CREATE PROCEDURE SP_ProductosMasVendidosPorPeriodo
 (
-	@fechaInicioPer DATETIME,
-	@fechaFinPer DATETIME
+	@fechaInicioPer DATE,
+	@fechaFinPer DATE
 )
 AS
 select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
@@ -157,6 +157,27 @@ AS
 	WHERE venta.id_usuario = @id_usuario;
   END
 GO
+
+
+-- **** POR PERIODO ****
+
+CREATE PROCEDURE SP_ListarVentasVendedorPorPeriodo
+(
+	@id_usuario INT,
+	@fechaInicioPer DATETIME,
+	@fechaFinPer DATETIME
+)
+AS 
+  BEGIN
+	SELECT venta.id_venta AS 'ID Venta', persona.apellido +' '+persona.nombre AS 'Cliente',
+		   venta.venta_fecha AS 'Fecha', MP.nombre_metodo_pago AS 'Metodo de pago' FROM venta
+	INNER JOIN cliente on cliente.id_cliente = venta.id_cliente
+	INNER JOIN persona on persona.id_persona = cliente.id_persona
+	INNER JOIN metodo_pago AS MP on MP.id_metodo_pago = venta.id_metodo_pago
+	WHERE (venta.id_usuario = @id_usuario) AND (venta_fecha BETWEEN @fechaInicioPer AND @fechaFinPer);
+  END
+GO
+
 
 --DROP PROCEDURE SP_ListarVentasVendedor
 
