@@ -63,7 +63,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             lblCUIT.Text = auxFactura.cuitNegocio;
             lblDomNegocio.Text = auxFactura.direccionNegocio;
             lblTelefNegocio.Text = auxFactura.telefono_negocio;
-            lblEmailNegocio.Text = auxFactura.email_negocio; //fijarse como traer el email del negocio
+            lblEmailNegocio.Text = auxFactura.email_negocio; 
 
             //datos del cliente
             lblNombreCliente.Text = auxFactura.nombreCliente;

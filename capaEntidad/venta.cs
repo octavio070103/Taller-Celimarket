@@ -14,5 +14,6 @@ namespace capaEntidad
         public int id_metodo_pago { get; set; }
         public DateTime fecha_venta { get; set; }
         public DateTime fecha_creacion_venta { get; set; }
+        public caja_apertura obj_caja_apertura { get; set; }
     }
 }

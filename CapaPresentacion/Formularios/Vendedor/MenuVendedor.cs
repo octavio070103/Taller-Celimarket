@@ -1,5 +1,6 @@
 ﻿using capaEntidad;
 using CapaLogica;
+using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
@@ -84,11 +85,39 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void button4_Click(object sender, EventArgs e)
         {
-            //**** Falta el codigo a ejecutar
-            abrirFormularioHijo(new frmModuloVenta(usuarioActual));
-            lblTituloMenu.Text = button5.Text;
+            //aca determino sino hay ninguna caja abierta que no pueda realizar la venta
+            determinarAperturaCaja();
+
+        }
+        private void determinarAperturaCaja()
+        {
+
+            caja_apertura obj_cajaAperturaActual = new CL_Caja().obtenerCajaAperturaPorFecha(DateTime.Now);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            //si entra al if significa que la caja no fue abierta anteriormente es decir no se abrio la caja por lo que no voy a pdoer realizar ninguna venta y no me deberia dejar navegar por el formulario debo de devolver al gome
+            if ((obj_cajaAperturaActual == null) || (obj_cajaAperturaActual.estado_apertura == 0)) //aca pregunto si la cajaApertura es null es decir que no se abrio ninguna cajaapertura en esta fecha que entre al if o si el estado_apertura==0 que pase lo mismo ya que esto siginifica que esa cajapertura fue cerrada
+            {
+
+                if (advertenciaIniciarVenta() == DialogResult.OK)
+                {
+                    //no hago nada sino puedo realizar la venta
+                }
+
+            }
+            else//si va por el elsse significa que si hay una caja abierta
+            {
+                //**** Falta el codigo a ejecutar
+                abrirFormularioHijo(new frmModuloVenta(usuarioActual));
+                lblTituloMenu.Text = button5.Text;
+            }
+
         }
 
+        private DialogResult advertenciaIniciarVenta()
+        {
+            Advertencia_iniciar_venta frmAdveriniciarVenta = new Advertencia_iniciar_venta();
+            DialogResult resultado = frmAdveriniciarVenta.ShowDialog();
+            return resultado;
+        }
 
         /** Permite abrir un formulario dentro del menu del vendedor.
         */

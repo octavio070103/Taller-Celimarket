@@ -10,8 +10,10 @@ using System.Windows.Controls;
 using System.Windows.Forms;
 using capaEntidad;
 using CapaLogica;
+using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
+using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 
 namespace CapaPresentacion.Formularios.Vendedor
 {
@@ -23,14 +25,9 @@ namespace CapaPresentacion.Formularios.Vendedor
         public frmModuloVenta(capaEntidad.usuario objUsuario)
         {
             InitializeComponent();
-
-            /** Permite personalizar los campos de Nombre de usuario y Rol cuando el usuario inicia sesion.
-             */
-
             usuarioActual = objUsuario;
         }
-
-
+     
         private void abrirFormularioHijo(Form formHijo)
         {
             //**** Este metodo abrira el formulario indicado por cada boton ****
@@ -395,6 +392,7 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void frmModuloVenta_Load(object sender, EventArgs e)
         {
+
             txtIdVendedor.Text = usuarioActual.id_usuario.ToString();
             txtNombreVendedor.Text = usuarioActual.obj_persona.apellido + " " + usuarioActual.obj_persona.nombre;
 

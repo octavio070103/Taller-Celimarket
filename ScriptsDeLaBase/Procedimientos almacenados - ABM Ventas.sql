@@ -10,20 +10,22 @@ GO
 
 
 -- REGISTRAR VENTA:
-CREATE PROCEDURE SP_RegistrarVenta
+ALTER PROCEDURE SP_RegistrarVenta
 (
   @venta_fecha DATE,
   @id_cliente INT,
   @id_metodo_pago INT,
   @id_usuario INT,
   @fecha_creacion_venta DATE,
+  @id_apertura_caja INT,
+
   @IdNuevaVenta INT OUTPUT,
   @resultadoEjec INT OUTPUT
 )
 AS
   BEGIN
-    INSERT INTO venta(venta_fecha, id_cliente,id_metodo_pago, id_usuario, fecha_creacion_venta )
-	VALUES (@venta_fecha, @id_cliente, @id_metodo_pago, @id_usuario, @fecha_creacion_venta);
+    INSERT INTO venta(venta_fecha, id_cliente,id_metodo_pago, id_usuario, fecha_creacion_venta,id_apertura_caja )
+	VALUES (@venta_fecha, @id_cliente, @id_metodo_pago, @id_usuario, @fecha_creacion_venta,@id_apertura_caja);
 
 	SET @IdNuevaVenta = SCOPE_IDENTITY();
 	SET @resultadoEjec = 1;

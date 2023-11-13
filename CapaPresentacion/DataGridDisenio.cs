@@ -59,14 +59,44 @@ namespace CapaPresentacion
                     pData.AlternatingRowsDefaultCellStyle.Padding = new Padding(0, 3, 0, 3);
                     break;
                 case 2:
-                    //Columna
-                    pData.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 0, 0);
-                    //Fila
-                    pData.RowsDefaultCellStyle.BackColor = Color.FromArgb(166, 166, 166);
-                    pData.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(107, 149, 183);
-                    //Fila alternativa
-                    pData.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
-                    pData.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(141, 183, 216);
+                    //hago que elc ontenido de las filas o rows este centrados 
+                    pData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                    //Ancho de columnas
+                    pData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //Alto de las filas
+                    pData.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    //No se agrege columnas automaticamente
+                    pData.AutoGenerateColumns = false;
+
+                    pData.BackgroundColor = Color.White; //color de fondo del datgrid
+                    //cambiar color de las grillas
+                    pData.GridColor = Color.FromArgb(1, 1, 1);// Color.FromArgb(1,1,1);//color de las grillas                                                     
+                    pData.BorderStyle = BorderStyle.None; //Quitamos el borde
+                    pData.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal; //le doy un borde horizontal a las celdas 
+
+                    //Propiedade de defaultCellStyle
+                    //ColumnHeaderDefaultCellStyle,cambiamos el formato de la cabecera aca
+                    pData.EnableHeadersVisualStyles = false; //descativamos el fromato predetemrinado de la cabecera del datagrid,  //desactivamos el estilo por defecto de la cabecera
+                    pData.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single; //le asingo un obrode al header de simple
+                    pData.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(47, 33, 75);
+                    pData.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;  //Color de letra de las columnas
+                    pData.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 10f, FontStyle.Bold);
+                    pData.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    pData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize; //activo para que el tamnio de la cabecera sea automatico 
+
+                    //Fila,propiedades de la filaDefaultCellstyle
+                    pData.RowsDefaultCellStyle.BackColor = Color.FromArgb(67, 68, 89);
+                    pData.RowsDefaultCellStyle.Font = new Font("Century Gothic", 9f, FontStyle.Regular); //Font para las filas
+                    pData.RowsDefaultCellStyle.ForeColor = Color.White;//color de las letras de las filas
+                    pData.RowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 33, 75);//color de fondo al seleccionar una fila  o celda
+                    pData.RowsDefaultCellStyle.SelectionForeColor = Color.White;//color de las letras al seleccionar la celda
+                    pData.RowsDefaultCellStyle.Padding = new Padding(0, 3, 0, 3);
+
+                    //Fila alternativa  o fila secundaria o fila de en medio
+                    pData.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(132, 133, 164);
+                    pData.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(112, 86, 164);
+                    pData.AlternatingRowsDefaultCellStyle.Padding = new Padding(0, 3, 0, 3);
                     break;
                 case 3:
                     //Columna

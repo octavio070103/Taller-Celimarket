@@ -45,8 +45,7 @@
             iconBtnCrearConsulta = new FontAwesome.Sharp.IconButton();
             iconbtnCrearPermiso = new FontAwesome.Sharp.IconButton();
             PMenuLat = new Panel();
-            iconPicSesion = new FontAwesome.Sharp.IconPictureBox();
-            iconBtnSesion = new FontAwesome.Sharp.IconButton();
+            BtnCerrarSesion = new Button();
             iconBtnCaja = new FontAwesome.Sharp.IconButton();
             iconBtnOperaciones = new FontAwesome.Sharp.IconButton();
             iconBtnEstadisticas = new FontAwesome.Sharp.IconButton();
@@ -68,7 +67,6 @@
             PVentana.SuspendLayout();
             panelCrearPoC.SuspendLayout();
             PMenuLat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPicSesion).BeginInit();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
@@ -296,8 +294,7 @@
             // PMenuLat
             // 
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(iconPicSesion);
-            PMenuLat.Controls.Add(iconBtnSesion);
+            PMenuLat.Controls.Add(BtnCerrarSesion);
             PMenuLat.Controls.Add(iconBtnCaja);
             PMenuLat.Controls.Add(iconBtnOperaciones);
             PMenuLat.Controls.Add(iconBtnEstadisticas);
@@ -308,45 +305,31 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(186, 604);
+            PMenuLat.MaximumSize = new Size(186, 0);
             PMenuLat.MinimumSize = new Size(40, 604);
             PMenuLat.Name = "PMenuLat";
             PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
-            // iconPicSesion
+            // BtnCerrarSesion
             // 
-            iconPicSesion.BackColor = Color.FromArgb(17, 17, 27);
-            iconPicSesion.BackgroundImage = (Image)resources.GetObject("iconPicSesion.BackgroundImage");
-            iconPicSesion.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPicSesion.ForeColor = SystemColors.ControlText;
-            iconPicSesion.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPicSesion.IconColor = SystemColors.ControlText;
-            iconPicSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPicSesion.IconSize = 35;
-            iconPicSesion.Location = new Point(0, 561);
-            iconPicSesion.Name = "iconPicSesion";
-            iconPicSesion.Size = new Size(35, 43);
-            iconPicSesion.TabIndex = 16;
-            iconPicSesion.TabStop = false;
-            // 
-            // iconBtnSesion
-            // 
-            iconBtnSesion.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnSesion.Dock = DockStyle.Bottom;
-            iconBtnSesion.FlatStyle = FlatStyle.Popup;
-            iconBtnSesion.ForeColor = Color.White;
-            iconBtnSesion.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnSesion.IconColor = Color.Black;
-            iconBtnSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnSesion.Location = new Point(0, 561);
-            iconBtnSesion.Name = "iconBtnSesion";
-            iconBtnSesion.Size = new Size(186, 43);
-            iconBtnSesion.TabIndex = 16;
-            iconBtnSesion.Text = "Cerrar Sesion";
-            iconBtnSesion.UseVisualStyleBackColor = false;
-            iconBtnSesion.Click += iconBtnSesion_Click;
+            BtnCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnCerrarSesion.BackColor = Color.FromArgb(17, 17, 27);
+            BtnCerrarSesion.Cursor = Cursors.Hand;
+            BtnCerrarSesion.FlatStyle = FlatStyle.Popup;
+            BtnCerrarSesion.ForeColor = SystemColors.ControlLightLight;
+            BtnCerrarSesion.Image = (Image)resources.GetObject("BtnCerrarSesion.Image");
+            BtnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnCerrarSesion.Location = new Point(-10, 558);
+            BtnCerrarSesion.Name = "BtnCerrarSesion";
+            BtnCerrarSesion.Padding = new Padding(10, 0, 0, 0);
+            BtnCerrarSesion.Size = new Size(151, 43);
+            BtnCerrarSesion.TabIndex = 26;
+            BtnCerrarSesion.Text = "Cerrar Sesion";
+            BtnCerrarSesion.TextAlign = ContentAlignment.MiddleRight;
+            BtnCerrarSesion.UseVisualStyleBackColor = false;
+            BtnCerrarSesion.Click += BtnCerrarSesion_Click;
             // 
             // iconBtnCaja
             // 
@@ -579,7 +562,6 @@
             PVentana.ResumeLayout(false);
             panelCrearPoC.ResumeLayout(false);
             PMenuLat.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPicSesion).EndInit();
             PLogo.ResumeLayout(false);
             PLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).EndInit();
@@ -610,12 +592,11 @@
         private FontAwesome.Sharp.IconButton iconBtnOperaciones;
         private Label lblNombreDelUsu;
         private Label lblRolDelUsu;
-        private FontAwesome.Sharp.IconPictureBox iconPicSesion;
-        private FontAwesome.Sharp.IconButton iconBtnSesion;
         private FontAwesome.Sharp.IconButton btnCrearF;
         private ToolTip toolTipMenuGerente;
         private Panel panelCrearPoC;
         private FontAwesome.Sharp.IconButton iconBtnCrearConsulta;
         private FontAwesome.Sharp.IconButton iconbtnCrearPermiso;
+        private Button BtnCerrarSesion;
     }
 }

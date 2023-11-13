@@ -48,21 +48,6 @@
             lblFiltrar = new Label();
             lblListaEmpleados = new Label();
             dataGridUsuarios = new DataGridView();
-            col_id_usuario = new DataGridViewTextBoxColumn();
-            col_dni = new DataGridViewTextBoxColumn();
-            col_nombre = new DataGridViewTextBoxColumn();
-            col_apellido = new DataGridViewTextBoxColumn();
-            col_email = new DataGridViewTextBoxColumn();
-            col_password = new DataGridViewTextBoxColumn();
-            col_telefono = new DataGridViewTextBoxColumn();
-            col_id_rol = new DataGridViewTextBoxColumn();
-            col_Rol = new DataGridViewTextBoxColumn();
-            col_id_domicilio = new DataGridViewTextBoxColumn();
-            col_domicilio_calle = new DataGridViewTextBoxColumn();
-            col_domicilio_numero = new DataGridViewTextBoxColumn();
-            col_domicilio_prov = new DataGridViewTextBoxColumn();
-            Estado_Valor = new DataGridViewTextBoxColumn();
-            col_estado = new DataGridViewTextBoxColumn();
             panelDatosUsuario = new Panel();
             lblFechaNac = new Label();
             dateTimePickerNacimientoDato = new DateTimePicker();
@@ -95,6 +80,21 @@
             errorProvider1 = new ErrorProvider(components);
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
             iconBtnExcel = new FontAwesome.Sharp.IconButton();
+            col_id_usuario = new DataGridViewTextBoxColumn();
+            col_dni = new DataGridViewTextBoxColumn();
+            col_nombre = new DataGridViewTextBoxColumn();
+            col_apellido = new DataGridViewTextBoxColumn();
+            col_email = new DataGridViewTextBoxColumn();
+            col_password = new DataGridViewTextBoxColumn();
+            col_telefono = new DataGridViewTextBoxColumn();
+            col_id_rol = new DataGridViewTextBoxColumn();
+            col_Rol = new DataGridViewTextBoxColumn();
+            col_id_domicilio = new DataGridViewTextBoxColumn();
+            col_domicilio_calle = new DataGridViewTextBoxColumn();
+            col_domicilio_numero = new DataGridViewTextBoxColumn();
+            col_domicilio_prov = new DataGridViewTextBoxColumn();
+            Estado_Valor = new DataGridViewTextBoxColumn();
+            col_estado = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -331,119 +331,6 @@
             dataGridUsuarios.Size = new Size(795, 349);
             dataGridUsuarios.TabIndex = 1;
             dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick_1;
-            // 
-            // col_id_usuario
-            // 
-            col_id_usuario.HeaderText = "Id_usuario";
-            col_id_usuario.Name = "col_id_usuario";
-            col_id_usuario.ReadOnly = true;
-            col_id_usuario.Visible = false;
-            col_id_usuario.Width = 77;
-            // 
-            // col_dni
-            // 
-            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_dni.HeaderText = "DNI";
-            col_dni.Name = "col_dni";
-            col_dni.ReadOnly = true;
-            col_dni.Width = 130;
-            // 
-            // col_nombre
-            // 
-            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_nombre.HeaderText = "Nombre";
-            col_nombre.Name = "col_nombre";
-            col_nombre.ReadOnly = true;
-            // 
-            // col_apellido
-            // 
-            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_apellido.HeaderText = "Apellido";
-            col_apellido.Name = "col_apellido";
-            col_apellido.ReadOnly = true;
-            // 
-            // col_email
-            // 
-            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_email.HeaderText = "Email";
-            col_email.Name = "col_email";
-            col_email.ReadOnly = true;
-            col_email.Width = 130;
-            // 
-            // col_password
-            // 
-            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_password.HeaderText = "Password";
-            col_password.Name = "col_password";
-            col_password.ReadOnly = true;
-            col_password.Visible = false;
-            col_password.Width = 87;
-            // 
-            // col_telefono
-            // 
-            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_telefono.HeaderText = "Telefono";
-            col_telefono.Name = "col_telefono";
-            col_telefono.ReadOnly = true;
-            // 
-            // col_id_rol
-            // 
-            col_id_rol.HeaderText = "id_rol";
-            col_id_rol.Name = "col_id_rol";
-            col_id_rol.ReadOnly = true;
-            col_id_rol.Visible = false;
-            col_id_rol.Width = 68;
-            // 
-            // col_Rol
-            // 
-            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_Rol.HeaderText = "Rol";
-            col_Rol.Name = "col_Rol";
-            col_Rol.ReadOnly = true;
-            // 
-            // col_id_domicilio
-            // 
-            col_id_domicilio.HeaderText = "id_domicilio";
-            col_id_domicilio.Name = "col_id_domicilio";
-            col_id_domicilio.ReadOnly = true;
-            col_id_domicilio.Visible = false;
-            col_id_domicilio.Width = 108;
-            // 
-            // col_domicilio_calle
-            // 
-            col_domicilio_calle.HeaderText = "Calle";
-            col_domicilio_calle.Name = "col_domicilio_calle";
-            col_domicilio_calle.ReadOnly = true;
-            col_domicilio_calle.Width = 67;
-            // 
-            // col_domicilio_numero
-            // 
-            col_domicilio_numero.HeaderText = "Numero";
-            col_domicilio_numero.Name = "col_domicilio_numero";
-            col_domicilio_numero.ReadOnly = true;
-            col_domicilio_numero.Width = 83;
-            // 
-            // col_domicilio_prov
-            // 
-            col_domicilio_prov.HeaderText = "Provincia";
-            col_domicilio_prov.Name = "col_domicilio_prov";
-            col_domicilio_prov.ReadOnly = true;
-            col_domicilio_prov.Width = 91;
-            // 
-            // Estado_Valor
-            // 
-            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Estado_Valor.HeaderText = "Estado Valor";
-            Estado_Valor.Name = "Estado_Valor";
-            Estado_Valor.ReadOnly = true;
-            Estado_Valor.Visible = false;
-            // 
-            // col_estado
-            // 
-            col_estado.HeaderText = "Estado";
-            col_estado.Name = "col_estado";
-            col_estado.ReadOnly = true;
-            col_estado.Width = 74;
             // 
             // panelDatosUsuario
             // 
@@ -875,6 +762,127 @@
             iconBtnExcel.UseVisualStyleBackColor = false;
             iconBtnExcel.Click += iconBtnExcel_Click;
             // 
+            // col_id_usuario
+            // 
+            col_id_usuario.HeaderText = "Id_usuario";
+            col_id_usuario.Name = "col_id_usuario";
+            col_id_usuario.ReadOnly = true;
+            col_id_usuario.Visible = false;
+            col_id_usuario.Width = 77;
+            // 
+            // col_dni
+            // 
+            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_dni.HeaderText = "DNI";
+            col_dni.MinimumWidth = 130;
+            col_dni.Name = "col_dni";
+            col_dni.ReadOnly = true;
+            // 
+            // col_nombre
+            // 
+            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_nombre.HeaderText = "Nombre";
+            col_nombre.MinimumWidth = 100;
+            col_nombre.Name = "col_nombre";
+            col_nombre.ReadOnly = true;
+            // 
+            // col_apellido
+            // 
+            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_apellido.HeaderText = "Apellido";
+            col_apellido.MinimumWidth = 100;
+            col_apellido.Name = "col_apellido";
+            col_apellido.ReadOnly = true;
+            // 
+            // col_email
+            // 
+            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_email.HeaderText = "Email";
+            col_email.MinimumWidth = 130;
+            col_email.Name = "col_email";
+            col_email.ReadOnly = true;
+            // 
+            // col_password
+            // 
+            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_password.HeaderText = "Password";
+            col_password.MinimumWidth = 90;
+            col_password.Name = "col_password";
+            col_password.ReadOnly = true;
+            col_password.Visible = false;
+            // 
+            // col_telefono
+            // 
+            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_telefono.HeaderText = "Telefono";
+            col_telefono.MinimumWidth = 100;
+            col_telefono.Name = "col_telefono";
+            col_telefono.ReadOnly = true;
+            // 
+            // col_id_rol
+            // 
+            col_id_rol.HeaderText = "id_rol";
+            col_id_rol.Name = "col_id_rol";
+            col_id_rol.ReadOnly = true;
+            col_id_rol.Visible = false;
+            col_id_rol.Width = 68;
+            // 
+            // col_Rol
+            // 
+            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_Rol.HeaderText = "Rol";
+            col_Rol.MinimumWidth = 80;
+            col_Rol.Name = "col_Rol";
+            col_Rol.ReadOnly = true;
+            // 
+            // col_id_domicilio
+            // 
+            col_id_domicilio.HeaderText = "id_domicilio";
+            col_id_domicilio.Name = "col_id_domicilio";
+            col_id_domicilio.ReadOnly = true;
+            col_id_domicilio.Visible = false;
+            col_id_domicilio.Width = 108;
+            // 
+            // col_domicilio_calle
+            // 
+            col_domicilio_calle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_calle.HeaderText = "Calle";
+            col_domicilio_calle.MinimumWidth = 67;
+            col_domicilio_calle.Name = "col_domicilio_calle";
+            col_domicilio_calle.ReadOnly = true;
+            // 
+            // col_domicilio_numero
+            // 
+            col_domicilio_numero.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_numero.HeaderText = "Numero";
+            col_domicilio_numero.MinimumWidth = 83;
+            col_domicilio_numero.Name = "col_domicilio_numero";
+            col_domicilio_numero.ReadOnly = true;
+            // 
+            // col_domicilio_prov
+            // 
+            col_domicilio_prov.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_prov.HeaderText = "Provincia";
+            col_domicilio_prov.MinimumWidth = 91;
+            col_domicilio_prov.Name = "col_domicilio_prov";
+            col_domicilio_prov.ReadOnly = true;
+            // 
+            // Estado_Valor
+            // 
+            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Estado_Valor.HeaderText = "Estado Valor";
+            Estado_Valor.Name = "Estado_Valor";
+            Estado_Valor.ReadOnly = true;
+            Estado_Valor.Visible = false;
+            // 
+            // col_estado
+            // 
+            col_estado.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_estado.HeaderText = "Estado";
+            col_estado.MinimumWidth = 74;
+            col_estado.Name = "col_estado";
+            col_estado.ReadOnly = true;
+            // 
             // FrmGestionarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -940,6 +948,18 @@
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private TextBox txtIdGuardado;
         private ComboBox comboFiltroEstado;
+        private TextBox txtDomiciliodato;
+        private ErrorProvider errorProvider1;
+        private Label lblPassword;
+        private TextBox txtPasswordDato;
+        private FontAwesome.Sharp.IconButton iconBtnAlta;
+        private FontAwesome.Sharp.IconButton iconbtnClean;
+        private ComboBox comboFiltroRol;
+        private Label lblRolFiltro;
+        private DateTimePicker dateTimePickerNacimientoDato;
+        private Label lblFechaNac;
+        private ComboBox comboBox1;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
         private DataGridViewTextBoxColumn col_nombre;
@@ -955,17 +975,5 @@
         private DataGridViewTextBoxColumn col_domicilio_prov;
         private DataGridViewTextBoxColumn Estado_Valor;
         private DataGridViewTextBoxColumn col_estado;
-        private TextBox txtDomiciliodato;
-        private ErrorProvider errorProvider1;
-        private Label lblPassword;
-        private TextBox txtPasswordDato;
-        private FontAwesome.Sharp.IconButton iconBtnAlta;
-        private FontAwesome.Sharp.IconButton iconbtnClean;
-        private ComboBox comboFiltroRol;
-        private Label lblRolFiltro;
-        private DateTimePicker dateTimePickerNacimientoDato;
-        private Label lblFechaNac;
-        private ComboBox comboBox1;
-        private FontAwesome.Sharp.IconButton iconBtnExcel;
     }
 }

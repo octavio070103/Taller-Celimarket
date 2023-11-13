@@ -145,7 +145,8 @@ namespace CapaPresentacion.Formularios.Vendedor
                 id_cliente = int.Parse(datosResumen[4].ToString()),
                 id_metodo_pago = int.Parse(datosResumen[5].ToString()),
                 fecha_venta = DateTime.Now,
-                fecha_creacion_venta = DateTime.Now
+                fecha_creacion_venta = DateTime.Now,
+                obj_caja_apertura = new CL_Caja().obtenerCajaAperturaPorFecha(DateTime.Now) //llamo al metodo objtecajhaprofecha y le paso la fecha de hoy asi puedo obtener la aperturaCajaque corresponde para esta venta
             };
 
             auxVenta.registrarVenta(ventaRealizada, out idVentaRegistrada, out resultadoEjec);

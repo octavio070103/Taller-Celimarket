@@ -47,6 +47,7 @@ namespace CapaDatos
                         //obtenemos los valores de los parametros de salida de mi procedimiento almcenado
 
                         obj_infoDataBase.ruta_DB_Backup = cmd.Parameters["@ruta_DB_Backup"].Value.ToString();
+                        //si es nulo el valor de la fecha que me trae le asigno un valor predeterminado para que no me de error
                         if (Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value) == null) 
                         { obj_infoDataBase.fecha_DB_Backup = Convert.ToDateTime("2023-10-11"); }
                         else { obj_infoDataBase.fecha_DB_Backup = Convert.ToDateTime(cmd.Parameters["@fecha_DB_Backup"].Value); }
