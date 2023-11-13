@@ -277,7 +277,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmAdministrarCaja(this,usuarioActual));
+            OpenChildForm(new FrmAdministrarCaja(this, usuarioActual));
         }
 
 
@@ -403,7 +403,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             formPermiso.Show();
         }
 
-        
+
     }
 
 }

@@ -377,6 +377,7 @@
             iconBtnOperaciones.Text = "Operaciones";
             toolTipMenuGerente.SetToolTip(iconBtnOperaciones, "Ver operaciones");
             iconBtnOperaciones.UseVisualStyleBackColor = false;
+            iconBtnOperaciones.Visible = false;
             iconBtnOperaciones.Click += iconBtnOperaciones_Click;
             iconBtnOperaciones.Leave += iconBtnOperaciones_Leave;
             iconBtnOperaciones.MouseEnter += iconBtnOperaciones_MouseEnter;
@@ -452,6 +453,7 @@
             iconBtnPersonal.Text = "Personal";
             toolTipMenuGerente.SetToolTip(iconBtnPersonal, "Gestionar Personal");
             iconBtnPersonal.UseVisualStyleBackColor = false;
+            iconBtnPersonal.Visible = false;
             iconBtnPersonal.Click += iconBtnPersonal_Click;
             iconBtnPersonal.Leave += iconBtnPersonal_Leave;
             iconBtnPersonal.MouseEnter += iconBtnPersonal_MouseEnter;
