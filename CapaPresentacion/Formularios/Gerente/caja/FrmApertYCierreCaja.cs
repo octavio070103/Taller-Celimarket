@@ -60,6 +60,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
             //si entra al if significa que la caja ya fue abierta anteriormente es decir ya se abrio la caja por lo que debo de poder visualizar los mov de la caja y no debo de poder reditar lso datos de los txt solo verlos
             if ((obj_cajaAperturaActual != null) && (obj_cajaAperturaActual.estado_apertura == 1))
             {
+                txtMontoApertura.Text = obj_cajaAperturaActual.monto_inicial_apertura.ToString();
                 mostrarDatosDeAperturaCaja(obj_cajaAperturaActual.id_apertura_caja);
             }
 
