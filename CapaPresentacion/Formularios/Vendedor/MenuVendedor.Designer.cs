@@ -37,8 +37,11 @@
             pictureBox4 = new PictureBox();
             btnMenu = new Button();
             PMenuLat = new Panel();
-            btnRegistroVen = new Button();
+            panelCrearSolicitud = new Panel();
+            iconBtnCrearConsulta = new FontAwesome.Sharp.IconButton();
+            iconbtnCrearPermiso = new FontAwesome.Sharp.IconButton();
             btnRegistrarConsultas = new Button();
+            btnRegistroVen = new Button();
             lblCerrarSesion = new Label();
             picCerrarSesion = new PictureBox();
             button5 = new Button();
@@ -55,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             PMenuLat.SuspendLayout();
+            panelCrearSolicitud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).BeginInit();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -165,8 +169,9 @@
             // 
             PMenuLat.AutoScroll = true;
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(btnRegistroVen);
+            PMenuLat.Controls.Add(panelCrearSolicitud);
             PMenuLat.Controls.Add(btnRegistrarConsultas);
+            PMenuLat.Controls.Add(btnRegistroVen);
             PMenuLat.Controls.Add(lblCerrarSesion);
             PMenuLat.Controls.Add(picCerrarSesion);
             PMenuLat.Controls.Add(button5);
@@ -178,23 +183,59 @@
             PMenuLat.Size = new Size(221, 610);
             PMenuLat.TabIndex = 2;
             // 
-            // btnRegistroVen
+            // panelCrearSolicitud
             // 
-            btnRegistroVen.BackColor = Color.FromArgb(17, 17, 27);
-            btnRegistroVen.Cursor = Cursors.Hand;
-            btnRegistroVen.Dock = DockStyle.Top;
-            btnRegistroVen.FlatStyle = FlatStyle.Popup;
-            btnRegistroVen.ForeColor = SystemColors.ControlLightLight;
-            btnRegistroVen.Image = (Image)resources.GetObject("btnRegistroVen.Image");
-            btnRegistroVen.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRegistroVen.Location = new Point(0, 268);
-            btnRegistroVen.Name = "btnRegistroVen";
-            btnRegistroVen.Padding = new Padding(10, 0, 0, 0);
-            btnRegistroVen.Size = new Size(221, 45);
-            btnRegistroVen.TabIndex = 4;
-            btnRegistroVen.Text = "Registro de ventas";
-            btnRegistroVen.UseVisualStyleBackColor = false;
-            btnRegistroVen.Click += btnRegistroVen_Click;
+            panelCrearSolicitud.BackColor = Color.White;
+            panelCrearSolicitud.Controls.Add(iconBtnCrearConsulta);
+            panelCrearSolicitud.Controls.Add(iconbtnCrearPermiso);
+            panelCrearSolicitud.Dock = DockStyle.Top;
+            panelCrearSolicitud.Location = new Point(0, 313);
+            panelCrearSolicitud.Name = "panelCrearSolicitud";
+            panelCrearSolicitud.Size = new Size(221, 66);
+            panelCrearSolicitud.TabIndex = 17;
+            panelCrearSolicitud.Visible = false;
+            // 
+            // iconBtnCrearConsulta
+            // 
+            iconBtnCrearConsulta.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnCrearConsulta.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCrearConsulta.Dock = DockStyle.Top;
+            iconBtnCrearConsulta.FlatStyle = FlatStyle.Popup;
+            iconBtnCrearConsulta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCrearConsulta.ForeColor = Color.White;
+            iconBtnCrearConsulta.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCrearConsulta.IconColor = Color.White;
+            iconBtnCrearConsulta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCrearConsulta.IconSize = 40;
+            iconBtnCrearConsulta.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnCrearConsulta.Location = new Point(0, 33);
+            iconBtnCrearConsulta.Name = "iconBtnCrearConsulta";
+            iconBtnCrearConsulta.Size = new Size(221, 33);
+            iconBtnCrearConsulta.TabIndex = 18;
+            iconBtnCrearConsulta.Text = "Crear una nueva consulta";
+            iconBtnCrearConsulta.UseVisualStyleBackColor = false;
+            iconBtnCrearConsulta.Click += iconBtnCrearConsulta_Click;
+            // 
+            // iconbtnCrearPermiso
+            // 
+            iconbtnCrearPermiso.BackColor = Color.FromArgb(17, 17, 27);
+            iconbtnCrearPermiso.BackgroundImageLayout = ImageLayout.None;
+            iconbtnCrearPermiso.Dock = DockStyle.Top;
+            iconbtnCrearPermiso.FlatStyle = FlatStyle.Popup;
+            iconbtnCrearPermiso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnCrearPermiso.ForeColor = Color.White;
+            iconbtnCrearPermiso.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconbtnCrearPermiso.IconColor = Color.White;
+            iconbtnCrearPermiso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnCrearPermiso.IconSize = 40;
+            iconbtnCrearPermiso.ImageAlign = ContentAlignment.MiddleLeft;
+            iconbtnCrearPermiso.Location = new Point(0, 0);
+            iconbtnCrearPermiso.Name = "iconbtnCrearPermiso";
+            iconbtnCrearPermiso.Size = new Size(221, 33);
+            iconbtnCrearPermiso.TabIndex = 17;
+            iconbtnCrearPermiso.Text = "Crear un nuevo Permiso";
+            iconbtnCrearPermiso.UseVisualStyleBackColor = false;
+            iconbtnCrearPermiso.Click += iconbtnCrearPermiso_Click;
             // 
             // btnRegistrarConsultas
             // 
@@ -205,14 +246,32 @@
             btnRegistrarConsultas.ForeColor = SystemColors.ControlLightLight;
             btnRegistrarConsultas.Image = (Image)resources.GetObject("btnRegistrarConsultas.Image");
             btnRegistrarConsultas.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRegistrarConsultas.Location = new Point(0, 223);
+            btnRegistrarConsultas.Location = new Point(0, 268);
             btnRegistrarConsultas.Name = "btnRegistrarConsultas";
             btnRegistrarConsultas.Padding = new Padding(10, 0, 0, 0);
             btnRegistrarConsultas.Size = new Size(221, 45);
-            btnRegistrarConsultas.TabIndex = 3;
+            btnRegistrarConsultas.TabIndex = 5;
             btnRegistrarConsultas.Text = "Consultas";
             btnRegistrarConsultas.UseVisualStyleBackColor = false;
-            btnRegistrarConsultas.Click += btnRegistrarConsultas_Click;
+            btnRegistrarConsultas.Click += btnRegistrarConsultas_Click_1;
+            // 
+            // btnRegistroVen
+            // 
+            btnRegistroVen.BackColor = Color.FromArgb(17, 17, 27);
+            btnRegistroVen.Cursor = Cursors.Hand;
+            btnRegistroVen.Dock = DockStyle.Top;
+            btnRegistroVen.FlatStyle = FlatStyle.Popup;
+            btnRegistroVen.ForeColor = SystemColors.ControlLightLight;
+            btnRegistroVen.Image = (Image)resources.GetObject("btnRegistroVen.Image");
+            btnRegistroVen.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRegistroVen.Location = new Point(0, 223);
+            btnRegistroVen.Name = "btnRegistroVen";
+            btnRegistroVen.Padding = new Padding(10, 0, 0, 0);
+            btnRegistroVen.Size = new Size(221, 45);
+            btnRegistroVen.TabIndex = 4;
+            btnRegistroVen.Text = "Registro de ventas";
+            btnRegistroVen.UseVisualStyleBackColor = false;
+            btnRegistroVen.Click += btnRegistroVen_Click;
             // 
             // lblCerrarSesion
             // 
@@ -363,6 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             PMenuLat.ResumeLayout(false);
             PMenuLat.PerformLayout();
+            panelCrearSolicitud.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picCerrarSesion).EndInit();
             PLogo.ResumeLayout(false);
             PLogo.PerformLayout();
@@ -386,11 +446,14 @@
         private PictureBox picMaxPantalla;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private Button btnRegistrarConsultas;
         private Button btnRegistroVen;
         private PictureBox pictureBox1;
         private Label lblNombreUsuario;
         private Label lblRolUsuario;
         private Label lblTituloMenu;
+        private Button btnRegistrarConsultas;
+        private Panel panelCrearSolicitud;
+        private FontAwesome.Sharp.IconButton iconBtnCrearConsulta;
+        private FontAwesome.Sharp.IconButton iconbtnCrearPermiso;
     }
 }

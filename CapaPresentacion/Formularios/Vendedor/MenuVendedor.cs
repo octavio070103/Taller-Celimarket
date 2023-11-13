@@ -1,6 +1,7 @@
 ﻿using capaEntidad;
 using CapaLogica;
 using CapaPresentacion.Formularios.Gerente.caja;
+using CapaPresentacion.Formularios.Gerente.permiso;
 using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
@@ -19,6 +20,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
     {
         private static capaEntidad.usuario usuarioActual;
         private Form formularioActivo = null;
+        private Form formularioSolicitudActualmente = null; //con estdeermino e lformacutal de la solicitud,si esta abierto el permiso o la cosnulta
 
         public MenuVendedo(capaEntidad.usuario objUsuario = null)
         {
@@ -193,10 +195,43 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         /** Permite acceder al modulo de registro de consultas
          */
-        private void btnRegistrarConsultas_Click(object sender, EventArgs e)
+        private void btnRegistrarConsultas_Click_1(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new frmModuloConsultas());
-            lblTituloMenu.Text = btnRegistrarConsultas.Text;
+            if (panelCrearSolicitud.Visible == true)
+            {
+                panelCrearSolicitud.Visible = false;
+            }
+            else
+            {
+                panelCrearSolicitud.Visible = true;
+            }
+        }
+        private void iconbtnCrearPermiso_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
+            formPermiso.Show();
+
+            formularioSolicitudActualmente = formPermiso;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void iconBtnCrearConsulta_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudConsulta formConsulta = new FrmSolicitudConsulta(usuarioActual);
+            formConsulta.Show();
+
+            formularioSolicitudActualmente = formConsulta;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void CerrarFormularioActual()
+        {
+            if (formularioSolicitudActualmente != null && !formularioSolicitudActualmente.IsDisposed)
+            {
+                formularioSolicitudActualmente.Close();
+            }
         }
 
         /** Permite volver al menu principal
@@ -238,5 +273,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             lblCerrarSesion_Click(sender, e);
         }
+
+      
     }
 }

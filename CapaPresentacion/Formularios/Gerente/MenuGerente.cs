@@ -31,6 +31,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         //esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
         private Form currentChildForm;
 
+        private Form formularioSolicitudActualmente = null; //con estdeermino e lformacutal de la solicitud,si esta abierto el permiso o la cosnulta
+
         private IconButton currentBtn;
 
         private Color colorFondoOriginal; // Variable para almacenar el color de fondo original
@@ -42,7 +44,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         public MenuGerente(capaEntidad.usuario objUsuario_login)
         {
             InitializeComponent();
-            panelCrearPoC.Visible = false; //escondo el panel del btn pedir
+            panelCrearSolicitud.Visible = false; //escondo el panel del btn pedir
 
             //if para entrar cuando en el pogram inicio llamando al menu sin hacer el login
             if (objUsuario_login == null)
@@ -216,6 +218,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "";
                 iconBtnOperaciones.Text = "";
                 iconBtnCaja.Text = "";
+                BtnCrearSolicitud.Text = "";
                 BtnCerrarSesion.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
@@ -239,6 +242,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "Estadisticas";
                 iconBtnOperaciones.Text = "Operaciones";
                 iconBtnCaja.Text = "Caja";
+                BtnCrearSolicitud.Text = "Solicitud";
                 BtnCerrarSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
@@ -378,32 +382,44 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             }
         }
 
-        private void btnCrearF_Click(object sender, EventArgs e)
+        private void BtnCrearSolicitud_Click(object sender, EventArgs e)
         {
-            if (panelCrearPoC.Visible == true)
+            if (panelCrearSolicitud.Visible == true)
             {
-                panelCrearPoC.Visible = false;
+                panelCrearSolicitud.Visible = false;
             }
             else
             {
-                panelCrearPoC.Visible = true;
+                panelCrearSolicitud.Visible = true;
             }
-
         }
-
         private void iconBtnCrearConsulta_Click(object sender, EventArgs e)
         {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
             FrmSolicitudConsulta formConsulta = new FrmSolicitudConsulta(usuarioActual);
             formConsulta.Show();
+
+            formularioSolicitudActualmente = formConsulta;    // Actualizar la referencia al formulario actualmente abierto
         }
 
         private void iconbtnCrearPermiso_Click(object sender, EventArgs e)
         {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
             FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
             formPermiso.Show();
+
+            formularioSolicitudActualmente = formPermiso;    // Actualizar la referencia al formulario actualmente abierto
         }
 
-
+        private void CerrarFormularioActual()
+        {
+            if (formularioSolicitudActualmente != null && !formularioSolicitudActualmente.IsDisposed)
+            {
+                formularioSolicitudActualmente.Close();
+            }
+        }
     }
 
 }
