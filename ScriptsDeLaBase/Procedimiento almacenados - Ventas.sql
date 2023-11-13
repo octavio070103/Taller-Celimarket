@@ -124,10 +124,10 @@ FROM venta WHERE MONTH(fecha_venta) = @mes);
 ALTER PROCEDURE SP_ListarVentas
 
 AS
-SELECT venta.id_venta AS ID_Venta, 
-	   venta.venta_fecha AS Fecha,
-	   persona.apellido+' '+persona.nombre AS Cliente, 
-	   metodo_pago.nombre_metodo_pago AS Metodo_pago,
+SELECT venta.id_venta AS 'ID Venta', 
+	   persona.apellido+' '+persona.nombre AS Cliente,
+	   venta.venta_fecha AS Fecha, 
+	   metodo_pago.nombre_metodo_pago AS 'Metodo de pago',
 	   usuario.email AS Vendedor
 FROM venta
 
@@ -135,6 +135,31 @@ FROM venta
 	inner join persona on persona.id_persona = cliente.id_persona
 	inner join usuario on usuario.id_usuario = venta.id_usuario
 	inner join metodo_pago on metodo_pago.id_metodo_pago = venta.id_metodo_pago
+
+ORDER BY venta.id_venta
+
+GO
+
+-- ***** POR PERIODOS *****
+
+CREATE PROCEDURE SP_ListarVentasPorPeriodo
+(
+  @fechaInicioPer DATETIME,
+  @fechaFinPer DATETIME
+)
+AS
+SELECT venta.id_venta AS 'ID Venta', 
+	   persona.apellido+' '+persona.nombre AS 'Cliente',
+	   venta.venta_fecha AS Fecha,
+	   metodo_pago.nombre_metodo_pago AS 'Metodo de pago',
+	   usuario.email AS Vendedor
+FROM venta
+
+	inner join cliente on cliente.id_cliente = venta.id_cliente
+	inner join persona on persona.id_persona = cliente.id_persona
+	inner join usuario on usuario.id_usuario = venta.id_usuario
+	inner join metodo_pago on metodo_pago.id_metodo_pago = venta.id_metodo_pago
+	WHERE venta_fecha BETWEEN @fechaInicioPer AND @fechaFinPer
 
 ORDER BY venta.id_venta
 

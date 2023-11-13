@@ -83,21 +83,23 @@
             lblFiltro.AutoSize = true;
             lblFiltro.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblFiltro.ForeColor = SystemColors.HighlightText;
-            lblFiltro.Location = new Point(413, 35);
+            lblFiltro.Location = new Point(390, 36);
             lblFiltro.Name = "lblFiltro";
-            lblFiltro.Size = new Size(43, 20);
+            lblFiltro.Size = new Size(82, 20);
             lblFiltro.TabIndex = 6;
-            lblFiltro.Text = "Filtro";
+            lblFiltro.Text = "Buscar por:";
             // 
             // cboFiltroClientes
             // 
             cboFiltroClientes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboFiltroClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFiltroClientes.FormattingEnabled = true;
-            cboFiltroClientes.Items.AddRange(new object[] { "DNI", "Apellido", "Nombre" });
-            cboFiltroClientes.Location = new Point(462, 36);
+            cboFiltroClientes.Items.AddRange(new object[] { "Apellido", "Nombre" });
+            cboFiltroClientes.Location = new Point(472, 36);
             cboFiltroClientes.Name = "cboFiltroClientes";
-            cboFiltroClientes.Size = new Size(122, 23);
+            cboFiltroClientes.Size = new Size(112, 23);
             cboFiltroClientes.TabIndex = 5;
+            cboFiltroClientes.KeyPress += cboFiltroClientes_KeyPress;
             // 
             // lblBuscarClientes
             // 
@@ -156,6 +158,7 @@
             // dtgvClientes
             // 
             dtgvClientes.AllowUserToAddRows = false;
+            dtgvClientes.AllowUserToResizeRows = false;
             dtgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvClientes.Location = new Point(0, 0);
@@ -167,6 +170,8 @@
             dtgvClientes.Size = new Size(555, 414);
             dtgvClientes.TabIndex = 0;
             dtgvClientes.CellContentClick += dtgvClientes_CellContentClick;
+            dtgvClientes.SelectionChanged += dtgvClientes_SelectionChanged;
+            dtgvClientes.DoubleClick += dtgvClientes_DoubleClick;
             // 
             // pnlInfoCliente
             // 

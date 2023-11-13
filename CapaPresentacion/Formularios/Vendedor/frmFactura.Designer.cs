@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFactura));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlBarraClientes = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -358,7 +358,7 @@
             // lblFechaFactura
             // 
             lblFechaFactura.AutoSize = true;
-            lblFechaFactura.Location = new Point(633, 44);
+            lblFechaFactura.Location = new Point(641, 44);
             lblFechaFactura.Name = "lblFechaFactura";
             lblFechaFactura.Size = new Size(13, 15);
             lblFechaFactura.TabIndex = 21;
@@ -443,7 +443,7 @@
             // lblTelefNegocio
             // 
             lblTelefNegocio.AutoSize = true;
-            lblTelefNegocio.Location = new Point(66, 94);
+            lblTelefNegocio.Location = new Point(75, 94);
             lblTelefNegocio.Name = "lblTelefNegocio";
             lblTelefNegocio.Size = new Size(13, 15);
             lblTelefNegocio.TabIndex = 21;
@@ -452,7 +452,7 @@
             // lblDomNegocio
             // 
             lblDomNegocio.AutoSize = true;
-            lblDomNegocio.Location = new Point(129, 65);
+            lblDomNegocio.Location = new Point(138, 65);
             lblDomNegocio.Name = "lblDomNegocio";
             lblDomNegocio.Size = new Size(13, 15);
             lblDomNegocio.TabIndex = 4;
@@ -461,7 +461,7 @@
             // lblNomNegocio
             // 
             lblNomNegocio.AutoSize = true;
-            lblNomNegocio.Location = new Point(85, 36);
+            lblNomNegocio.Location = new Point(94, 36);
             lblNomNegocio.Name = "lblNomNegocio";
             lblNomNegocio.Size = new Size(13, 15);
             lblNomNegocio.TabIndex = 3;
@@ -470,7 +470,7 @@
             // lblCUIT
             // 
             lblCUIT.AutoSize = true;
-            lblCUIT.Location = new Point(241, 34);
+            lblCUIT.Location = new Point(249, 34);
             lblCUIT.Name = "lblCUIT";
             lblCUIT.Size = new Size(13, 15);
             lblCUIT.TabIndex = 19;
@@ -479,7 +479,7 @@
             // lblEmailNegocio
             // 
             lblEmailNegocio.AutoSize = true;
-            lblEmailNegocio.Location = new Point(50, 115);
+            lblEmailNegocio.Location = new Point(59, 115);
             lblEmailNegocio.Name = "lblEmailNegocio";
             lblEmailNegocio.Size = new Size(13, 15);
             lblEmailNegocio.TabIndex = 36;
@@ -499,9 +499,9 @@
             label9.AutoSize = true;
             label9.Location = new Point(14, 116);
             label9.Name = "label9";
-            label9.Size = new Size(36, 15);
+            label9.Size = new Size(39, 15);
             label9.TabIndex = 38;
-            label9.Text = "Email";
+            label9.Text = "Email:";
             // 
             // label10
             // 
@@ -594,7 +594,7 @@
             // lblTelefCliente
             // 
             lblTelefCliente.AutoSize = true;
-            lblTelefCliente.Location = new Point(68, 63);
+            lblTelefCliente.Location = new Point(76, 63);
             lblTelefCliente.Name = "lblTelefCliente";
             lblTelefCliente.Size = new Size(13, 15);
             lblTelefCliente.TabIndex = 5;
@@ -614,14 +614,14 @@
             label5.AutoSize = true;
             label5.Location = new Point(19, 155);
             label5.Name = "label5";
-            label5.Size = new Size(95, 15);
+            label5.Size = new Size(98, 15);
             label5.TabIndex = 29;
-            label5.Text = "Metodo de Pago";
+            label5.Text = "Metodo de Pago:";
             // 
             // lblMetPago
             // 
             lblMetPago.AutoSize = true;
-            lblMetPago.Location = new Point(114, 155);
+            lblMetPago.Location = new Point(120, 155);
             lblMetPago.Name = "lblMetPago";
             lblMetPago.Size = new Size(13, 15);
             lblMetPago.TabIndex = 22;
@@ -632,14 +632,14 @@
             label6.AutoSize = true;
             label6.Location = new Point(19, 111);
             label6.Name = "label6";
-            label6.Size = new Size(57, 15);
+            label6.Size = new Size(60, 15);
             label6.TabIndex = 28;
-            label6.Text = "Vendedor";
+            label6.Text = "Vendedor:";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(177, 111);
+            label7.Location = new Point(185, 111);
             label7.Name = "label7";
             label7.Size = new Size(30, 15);
             label7.TabIndex = 27;
@@ -658,7 +658,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 63);
+            label2.Location = new Point(16, 63);
             label2.Name = "label2";
             label2.Size = new Size(55, 15);
             label2.TabIndex = 23;
@@ -667,7 +667,7 @@
             // lblDniVendedor
             // 
             lblDniVendedor.AutoSize = true;
-            lblDniVendedor.Location = new Point(206, 111);
+            lblDniVendedor.Location = new Point(221, 111);
             lblDniVendedor.Name = "lblDniVendedor";
             lblDniVendedor.Size = new Size(13, 15);
             lblDniVendedor.TabIndex = 18;
@@ -676,7 +676,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(176, 36);
+            label3.Location = new Point(184, 36);
             label3.Name = "label3";
             label3.Size = new Size(30, 15);
             label3.TabIndex = 25;
@@ -685,7 +685,7 @@
             // lblDniCliente
             // 
             lblDniCliente.AutoSize = true;
-            lblDniCliente.Location = new Point(204, 35);
+            lblDniCliente.Location = new Point(219, 35);
             lblDniCliente.Name = "lblDniCliente";
             lblDniCliente.Size = new Size(13, 15);
             lblDniCliente.TabIndex = 9;
@@ -697,14 +697,14 @@
             label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label15.Location = new Point(16, 82);
             label15.Name = "label15";
-            label15.Size = new Size(156, 21);
+            label15.Size = new Size(150, 21);
             label15.TabIndex = 17;
-            label15.Text = "Datos del la Venta: ";
+            label15.Text = "Datos de la venta: ";
             // 
             // lblNombreCliente
             // 
             lblNombreCliente.AutoSize = true;
-            lblNombreCliente.Location = new Point(63, 35);
+            lblNombreCliente.Location = new Point(68, 35);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(13, 15);
             lblNombreCliente.TabIndex = 8;
@@ -714,7 +714,7 @@
             // 
             lblFechaVenta.AutoSize = true;
             lblFechaVenta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblFechaVenta.Location = new Point(58, 133);
+            lblFechaVenta.Location = new Point(68, 134);
             lblFechaVenta.Name = "lblFechaVenta";
             lblFechaVenta.Size = new Size(16, 17);
             lblFechaVenta.TabIndex = 10;
@@ -752,7 +752,7 @@
             // lblFacturaNro
             // 
             lblFacturaNro.AutoSize = true;
-            lblFacturaNro.Location = new Point(655, 24);
+            lblFacturaNro.Location = new Point(661, 24);
             lblFacturaNro.Name = "lblFacturaNro";
             lblFacturaNro.Size = new Size(13, 15);
             lblFacturaNro.TabIndex = 6;
@@ -767,23 +767,23 @@
             dtgvProductos.BackgroundColor = SystemColors.ButtonFace;
             dtgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dtgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
             dtgvProductos.GridColor = SystemColors.ButtonFace;
             dtgvProductos.Location = new Point(24, 248);
             dtgvProductos.Name = "dtgvProductos";

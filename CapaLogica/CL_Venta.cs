@@ -99,5 +99,14 @@ namespace CapaLogica
             return auxLista;
         }
 
+
+        public DataTable listarVentasPorPeriodo(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            CD_venta auxVenta = new CD_venta();
+            DataTable listaVentas = auxVenta.listarVentasPorPeriodo(pFechaDesde, pFechaHasta);
+
+            return listaVentas;
+        }
+
     }
 }

@@ -206,6 +206,7 @@
             // 
             dtgvResumen.AllowUserToAddRows = false;
             dtgvResumen.AllowUserToDeleteRows = false;
+            dtgvResumen.AllowUserToResizeRows = false;
             dtgvResumen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvResumen.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResumen.CellBorderStyle = DataGridViewCellBorderStyle.None;

@@ -163,6 +163,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 
             asignarDatos(datosNegocio);
             cargarGraficos(listaProductos, listaCategorias);
+
         }
 
 
@@ -189,6 +190,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             List<int> cantVendidasCate = pListaCate.Select(p => p.cantidadVendida).ToList();
 
             chartCategoriasVen.Series[0].Points.DataBindXY(nombresCategorias, cantVendidasCate);
+
         }
 
 
@@ -258,6 +260,21 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             datosDelNegocio();
             graficoCategoriasMasVendidas();
             graficoProductosMasVendidos();
+        }
+
+        private void lblCantVentas_TextChanged(object sender, EventArgs e)
+        {
+            int auxCantidadVen = int.Parse(lblCantVentas.Text);
+
+            if (auxCantidadVen == 0)
+            {
+                MessageBox.Show("No hay ventas registradas en este periodo", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            btnFiltroHisto_Click(sender, e);
         }
     }
 }

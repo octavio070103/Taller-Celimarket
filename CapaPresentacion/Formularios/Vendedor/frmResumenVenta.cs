@@ -19,13 +19,15 @@ namespace CapaPresentacion.Formularios.Vendedor
         private string[] datosResumen;
         private DataGridView listaDetalle;
         private Form formularioActivo = null;
+        private frmModuloVenta formularioPadre = null;//
 
-        public frmResumenVenta(DataGridView pResumen, string[] pDatosResumen)
+        public frmResumenVenta(DataGridView pResumen, string[] pDatosResumen, frmModuloVenta pFormPadre)
         {
             InitializeComponent();
             cargarResumenVenta(pResumen, pDatosResumen);
             datosResumen = pDatosResumen;
             listaDetalle = pResumen;
+            formularioPadre = pFormPadre;//
         }
 
         private void abrirFormularioHijo(Form formHijo)
@@ -96,16 +98,16 @@ namespace CapaPresentacion.Formularios.Vendedor
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             string mensajeResultado = "";
-            registrarVentaCompleta(out mensajeResultado);
-            MessageBox.Show(mensajeResultado);
-            /*
-            frmFactura auxFatura = new frmFactura(dtgvResumen);
-            auxFatura.Show();
-            auxFatura.BringToFront();
+            int idVenta = 0;
+            registrarVentaCompleta(out mensajeResultado, out idVenta);
+            MessageBox.Show(mensajeResultado, "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            formularioPadre.reiniciarModuloVenta(sender, e);
+            frmFactura auxFactura = new frmFactura(idVenta);
+            //
+            formularioPadre.abrirFormularioHijo(auxFactura);
+
             this.Close();
-            /*
-            abrirFormularioHijo( new frmFactura(dtgvResumen) );
-            formularioActivo.Hide();*/
         }
 
 
@@ -133,7 +135,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
-        private void registrarVentaCompleta(out string mensajeResultado)
+        private void registrarVentaCompleta(out string mensajeResultado, out int pIdNuevaVenta)
         {
             CL_Venta auxVenta = new CL_Venta();
             int idVentaRegistrada = 2;
@@ -150,6 +152,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             };
 
             auxVenta.registrarVenta(ventaRealizada, out idVentaRegistrada, out resultadoEjec);
+            pIdNuevaVenta = idVentaRegistrada;
 
             List<detalle_venta> auxListaDetalle = new List<detalle_venta>();
 
