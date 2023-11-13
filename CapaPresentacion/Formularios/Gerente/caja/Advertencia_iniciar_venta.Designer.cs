@@ -32,7 +32,7 @@
             label1 = new Label();
             label2 = new Label();
             pictureBox1 = new PictureBox();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            iconBtnAceptar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -66,32 +66,34 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // iconButton1
+            // iconBtnAceptar
             // 
-            iconButton1.BackColor = Color.FromArgb(0, 74, 221);
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.ForeColor = Color.White;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.Location = new Point(89, 176);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(75, 23);
-            iconButton1.TabIndex = 8;
-            iconButton1.Text = "Aceptar";
-            iconButton1.UseVisualStyleBackColor = false;
+            iconBtnAceptar.BackColor = Color.FromArgb(0, 74, 221);
+            iconBtnAceptar.FlatStyle = FlatStyle.Flat;
+            iconBtnAceptar.ForeColor = Color.White;
+            iconBtnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnAceptar.IconColor = Color.Black;
+            iconBtnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnAceptar.Location = new Point(89, 176);
+            iconBtnAceptar.Name = "iconBtnAceptar";
+            iconBtnAceptar.Size = new Size(75, 23);
+            iconBtnAceptar.TabIndex = 8;
+            iconBtnAceptar.Text = "Aceptar";
+            iconBtnAceptar.UseVisualStyleBackColor = false;
+            iconBtnAceptar.Click += iconBtnAceptar_Click;
             // 
             // Advertencia_iniciar_venta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(260, 224);
-            Controls.Add(iconButton1);
+            Controls.Add(iconBtnAceptar);
             Controls.Add(pictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Advertencia_iniciar_venta";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Advertencia_iniciar_venta";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
@@ -103,6 +105,6 @@
         private Label label1;
         private Label label2;
         private PictureBox pictureBox1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton iconBtnAceptar;
     }
 }

@@ -16,5 +16,14 @@ namespace CapaPresentacion.Formularios.Gerente.caja
         {
             InitializeComponent();
         }
+
+        private void iconBtnAceptar_Click(object sender, EventArgs e)
+        {
+            // Establece el resultado de DialogResult como OK para indicar que el usuario eligió "Aceptar".
+            this.DialogResult = DialogResult.OK;
+
+            // Cierra la ventana emergente.
+            this.Close();
+        }
     }
 }

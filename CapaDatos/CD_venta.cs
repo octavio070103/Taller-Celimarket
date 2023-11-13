@@ -122,7 +122,7 @@ namespace CapaDatos
                     comando.Parameters.AddWithValue("@id_metodo_pago", objVenta.id_metodo_pago);
                     comando.Parameters.AddWithValue("@id_usuario", objVenta.id_usuario);
                     comando.Parameters.AddWithValue("@fecha_creacion_venta", objVenta.fecha_creacion_venta);
-
+                    comando.Parameters.AddWithValue("@id_apertura_caja", objVenta.obj_caja_apertura.id_apertura_caja);
                     //*** PARAMETROS DE SALIDA ***
                     // Parametros para las salidas generadas por el procedimiento almacenado
                     SqlParameter resultadoSalida = comando.Parameters.Add("@resultadoEjec", SqlDbType.Int);
@@ -459,5 +459,6 @@ namespace CapaDatos
             }
 
         }
+
     }
 }

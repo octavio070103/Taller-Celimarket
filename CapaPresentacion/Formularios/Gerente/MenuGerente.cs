@@ -216,7 +216,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "";
                 iconBtnOperaciones.Text = "";
                 iconBtnCaja.Text = "";
-                iconBtnSesion.Text = "";
+                BtnCerrarSesion.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
@@ -239,7 +239,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "Estadisticas";
                 iconBtnOperaciones.Text = "Operaciones";
                 iconBtnCaja.Text = "Caja";
-                iconBtnSesion.Text = "Cerrar Sesion";
+                BtnCerrarSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
                 lblRolDelUsu.Visible = true;
@@ -277,7 +277,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmAdministrarCaja(this));
+            OpenChildForm(new FrmAdministrarCaja(this,usuarioActual));
         }
 
 
@@ -363,9 +363,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void iconBtnSesion_Click(object sender, EventArgs e)
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-
             DialogResult salida = MessageBox.Show("Esta seguro que desea salir de la Aplicacion", "Salir", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
             if (salida == DialogResult.OK)
             {
@@ -378,6 +377,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 this.Close();
             }
         }
+
         private void btnCrearF_Click(object sender, EventArgs e)
         {
             if (panelCrearPoC.Visible == true)
@@ -403,7 +403,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             formPermiso.Show();
         }
 
-
+        
     }
 
 }
