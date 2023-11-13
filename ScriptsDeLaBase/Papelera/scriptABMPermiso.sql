@@ -41,7 +41,6 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 			SET @mensaje = 'NO se registro el permiso ya que este Usuario ya tiene un permiso activo'
 		  END
 END
-GO
 
 	/*EDITAR PERMISO */
 CREATE PROCEDURE SP_EDITARPERMISO(
@@ -98,7 +97,6 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 		END
 	  END
 END
-GO
 
 /*ACTUALIZAR EL ESTADO DEL PERMISO */
 CREATE PROCEDURE SP_ACTUALIZARESTADO(
@@ -142,4 +140,4 @@ BEGIN
 		SET @respuesta=1/* Cambiamos la variable de respuesta a 1, lo que equivale a "true" */
 	END
 END
-GO
+

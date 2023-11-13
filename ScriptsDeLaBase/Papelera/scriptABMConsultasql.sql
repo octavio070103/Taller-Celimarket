@@ -1,5 +1,5 @@
 /*REGISTRAR CONSULTA */
-CREATE PROCEDURE SP_REGISTRARCONSULTA(
+ALTER PROCEDURE SP_REGISTRARCONSULTA(
 	/*parametros de entrada (que necesitamos para registrar un CONSULTA) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar una consulta*/
 	@comentario_consulta VARCHAR(200),
 	@id_usuario INT,
@@ -38,7 +38,6 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 			SET @mensaje = 'NO se registro el Consulta ya que este Usuario ya tiene una Consulta Con el mismo Contenido'
 		  END
 END
-GO
 
 /*EDITAR Consulta */
 CREATE PROCEDURE SP_EDITARCONSULTA(
@@ -88,10 +87,9 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 		END
 	  END
 END
-GO
 
 /*ACTUALIZAR EL ESTADO DE LA CONSULTA */
-CREATE PROCEDURE SP_ACTUALIZARESTADOCONSULTA(
+ALTER PROCEDURE SP_ACTUALIZARESTADOCONSULTA(
 	/*parametros de entrada (que necesitamos para actualizar el estado de una consulta) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_consulta INT,
 	@estado_consulta VARCHAR(20),
