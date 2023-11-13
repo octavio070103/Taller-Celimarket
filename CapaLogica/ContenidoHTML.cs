@@ -23,9 +23,9 @@ namespace CapaLogica
 
     <div class=""header"" style=""display: flex; justify-content: space-between; align-items: center;"">
     <div class=""logo"">
-        <img src=""@imgBase64"" alt=""Logo"" width=""400"" height=""400"">
+        <img src=""@imgBase64"" alt=""Logo"" style=""max-width: 80%;margin-right: 10px;"" height=""auto"">
     </div>
-    <div class=""title"" style=""text-align: left; margin-right:10%;"">
+    <div class=""title"" style=""text-align: center; margin-right:10%;"">
         <h1>Factura Tipo @tipoFac</h1>
     </div>
     <div class=""info-factura"" style=""text-align: left; margin-right: 4%;"">

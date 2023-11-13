@@ -54,6 +54,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             factura auxFactura = auxVenta.obtenerDatosFactura(pIdVenta);
 
             //Datos de la Factura
+            cargarLogoNegocio();
             lblTipoFac.Text = " A"; //agregar el campo tipo de factura
             lblFacturaNro.Text = auxFactura.nroFactura.ToString();
             lblFechaFactura.Text = DateTime.Now.ToString("dd/MM/yyyy"); //fecha en la que se genera la factura
@@ -63,7 +64,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             lblCUIT.Text = auxFactura.cuitNegocio;
             lblDomNegocio.Text = auxFactura.direccionNegocio;
             lblTelefNegocio.Text = auxFactura.telefono_negocio;
-            lblEmailNegocio.Text = auxFactura.email_negocio; 
+            lblEmailNegocio.Text = auxFactura.email_negocio;
 
             //datos del cliente
             lblNombreCliente.Text = auxFactura.nombreCliente;
@@ -75,6 +76,30 @@ namespace CapaPresentacion.Formularios.Vendedor
             lblDniVendedor.Text = auxFactura.dniVendedor;
             lblFechaVenta.Text = auxFactura.fechaVenta;
             lblMetPago.Text = auxFactura.nombre_tipo_pago + " " + auxFactura.nombre_metodo_pago;
+        }
+        private void cargarLogoNegocio()
+        {
+            //obtengo la imagen o logo del negocio 
+
+            bool obtenido = false; //esta var va a cotnener el valor retornado del meto obtenerLogo el cual devuvelve true si pudo obtener el logo
+            byte[] byteimage = new CapaLogica.CL_Negocio().obtenerLogoNegocio(out obtenido);
+
+            //aca pregunto que si obtenido es true que entre al if
+            if (obtenido)
+            {
+                picLogoNegocio.SizeMode = PictureBoxSizeMode.StretchImage;
+                picLogoNegocio.Image = ByteToImage(byteimage); //aca digo que se cargue el piclogo con el resultado del metodo bytetoimage que me conveirte el array de byte en Image
+            }
+        }
+
+        //este metodo me va a permitir convertir mi arrat de bit que contiene mi iamgen a tipo Image para poder mostrar el logo
+        public System.Drawing.Image ByteToImage(byte[] imageBytes)
+        {
+            MemoryStream ms = new MemoryStream();   //creo este obj para guardar en memeoria mi array
+            ms.Write(imageBytes, 0, imageBytes.Length); //aca leo ese array
+            System.Drawing.Image image = new Bitmap(ms);//cremaos nuestra imagen de tipo image
+
+            return image;
         }
 
         private void frmFactura_Load(object sender, EventArgs e)
@@ -183,15 +208,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
 
         }
-        //este metodo me va a permitir convertir mi arrat de bit que contiene mi iamgen a tipo Image para poder mostrar el logo
-        public System.Drawing.Image ByteToImage(byte[] imageBytes)
-        {
-            MemoryStream ms = new MemoryStream();   //creo este obj para guardar en memeoria mi array
-            ms.Write(imageBytes, 0, imageBytes.Length); //aca leo ese array
-            System.Drawing.Image image = new Bitmap(ms);//cremaos nuestra imagen de tipo image
 
-            return image;
-        }
         //convertimos esa cadena de bytes a una representación de imagen en el HTML en este caso una cadena de datps nase64
         public string ByteToBase64(byte[] byteImage)
         {

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFactura));
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlBarraClientes = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -90,6 +90,7 @@
             label1 = new Label();
             lblFacturaNro = new Label();
             dtgvProductos = new DataGridView();
+            picLogoNegocio = new PictureBox();
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -108,6 +109,7 @@
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvProductos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picLogoNegocio).BeginInit();
             SuspendLayout();
             // 
             // pnlBarraClientes
@@ -296,7 +298,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ButtonFace;
+            panel1.BackColor = Color.White;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(lblTipoFac);
             panel1.Controls.Add(label22);
@@ -312,6 +314,7 @@
             panel1.Controls.Add(label1);
             panel1.Controls.Add(lblFacturaNro);
             panel1.Controls.Add(dtgvProductos);
+            panel1.Controls.Add(picLogoNegocio);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 33);
             panel1.Name = "panel1";
@@ -767,23 +770,23 @@
             dtgvProductos.BackgroundColor = SystemColors.ButtonFace;
             dtgvProductos.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dtgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             dtgvProductos.GridColor = SystemColors.ButtonFace;
             dtgvProductos.Location = new Point(24, 248);
             dtgvProductos.Name = "dtgvProductos";
@@ -792,6 +795,15 @@
             dtgvProductos.RowTemplate.Height = 25;
             dtgvProductos.Size = new Size(676, 196);
             dtgvProductos.TabIndex = 7;
+            // 
+            // picLogoNegocio
+            // 
+            picLogoNegocio.Location = new Point(24, 9);
+            picLogoNegocio.Name = "picLogoNegocio";
+            picLogoNegocio.Size = new Size(118, 54);
+            picLogoNegocio.SizeMode = PictureBoxSizeMode.StretchImage;
+            picLogoNegocio.TabIndex = 30;
+            picLogoNegocio.TabStop = false;
             // 
             // frmFactura
             // 
@@ -825,6 +837,7 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvProductos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picLogoNegocio).EndInit();
             ResumeLayout(false);
         }
 
@@ -889,5 +902,6 @@
         private Label label9;
         private Label label10;
         private Label lblTipoFac;
+        private PictureBox picLogoNegocio;
     }
 }
