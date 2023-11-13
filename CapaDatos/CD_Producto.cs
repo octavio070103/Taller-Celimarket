@@ -232,6 +232,7 @@ namespace CapaDatos
                     query.AppendLine("FROM producto p");// aca le doy el alias p a la tabla de producto y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
                     query.AppendLine("INNER JOIN marca m ON p.Id_Marca=m.Id_Marca");//le doy el alias m a marca, y realizo el INNER JOIN entre la tabla producto y la tabla marca
                     query.AppendLine("INNER JOIN categoria c ON p.id_categoria=c.id_categoria");//le doy el alias c, y realizo el INNER JOIN entre la tabla producto y la tabla categoria
+                    //query.AppendLine("WHERE stock_producto > 0");//
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);

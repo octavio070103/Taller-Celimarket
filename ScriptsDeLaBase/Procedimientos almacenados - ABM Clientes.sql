@@ -152,23 +152,31 @@ ALTER PROCEDURE SP_BuscarCliente
 AS
   BEGIN 
 
-    IF(@tipoBusqueda = 1) -- Busqueda por DNI
-	  BEGIN
-	    SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
-		FROM cliente AS C
-
- 		INNER JOIN persona AS P on P.id_persona = C.id_persona
-		WHERE CONVERT(VARCHAR, P.dni) LIKE ('%'+@terminoBusqueda+'%')
-	  END
-
-	ELSE IF (@tipoBusqueda = 2) -- Busqueda por apellido
+	  IF (@tipoBusqueda = 1) -- Busqueda por apellido
 	  BEGIN
 		SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
 		FROM cliente AS C
 
  		INNER JOIN persona AS P on P.id_persona = C.id_persona
-		WHERE upper(P.apellido) LIKE upper('%'+@terminoBusqueda+'%')
+		WHERE upper(P.apellido) LIKE upper(@terminoBusqueda+'%')
 	  END
+
+	  ELSE IF (@tipoBusqueda = 2)
+	    BEGIN
+		  SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
+		  FROM cliente AS C
+
+ 		  INNER JOIN persona AS P on P.id_persona = C.id_persona
+		  WHERE upper(P.nombre) LIKE upper(@terminoBusqueda+'%')
+		END
 
   END
 GO
+
+	    SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
+		FROM cliente AS C
+
+ 		INNER JOIN persona AS P on P.id_persona = C.id_persona
+		WHERE P.dni LIKE ('432'+'%')
+
+select * from persona

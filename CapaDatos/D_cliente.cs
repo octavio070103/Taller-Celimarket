@@ -206,6 +206,9 @@ namespace CapaDatos
                     // Se carga la lista de clientes con los resultados obtenidos de la base de datos.
                     listaClientes.Load(reader);
 
+                    reader.Close();
+                    objConexion.Close();
+
                 }
                 catch (Exception excepcion)
                 {

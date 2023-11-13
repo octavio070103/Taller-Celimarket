@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEstadisticas));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             pnlModuloEstadis = new Panel();
             pnlFiltro = new Panel();
             pnlBotones = new Panel();
@@ -44,6 +44,7 @@
             btnFiltroSiete = new Button();
             btnFiltroNove = new Button();
             btnFiltroTreinta = new Button();
+            label5 = new Label();
             btnAplicar = new Button();
             label4 = new Label();
             label3 = new Label();
@@ -79,8 +80,8 @@
             chartCategoriasVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartProductosVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlEncabezadoEsta = new Panel();
+            btnReiniciar = new Button();
             label11 = new Label();
-            label5 = new Label();
             pnlModuloEstadis.SuspendLayout();
             pnlFiltro.SuspendLayout();
             pnlBotones.SuspendLayout();
@@ -206,6 +207,16 @@
             btnFiltroTreinta.Text = "30 DIAS";
             btnFiltroTreinta.UseVisualStyleBackColor = false;
             btnFiltroTreinta.Click += btnFiltroTreinta_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(447, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(59, 19);
+            label5.TabIndex = 10;
+            label5.Text = "Últimos:";
             // 
             // btnAplicar
             // 
@@ -530,6 +541,7 @@
             lblCantVentas.TabIndex = 2;
             lblCantVentas.Text = "xxxx";
             lblCantVentas.TextAlign = ContentAlignment.MiddleRight;
+            lblCantVentas.TextChanged += lblCantVentas_TextChanged;
             // 
             // lblNroVentas
             // 
@@ -554,62 +566,79 @@
             // chartCategoriasVen
             // 
             chartCategoriasVen.Anchor = AnchorStyles.Bottom;
-            chartArea7.Name = "ChartArea1";
-            chartCategoriasVen.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            chartCategoriasVen.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            chartCategoriasVen.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chartCategoriasVen.Legends.Add(legend1);
             chartCategoriasVen.Location = new Point(406, 221);
             chartCategoriasVen.Name = "chartCategoriasVen";
             chartCategoriasVen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series7.IsValueShownAsLabel = true;
-            series7.LabelForeColor = Color.White;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            chartCategoriasVen.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelForeColor = Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chartCategoriasVen.Series.Add(series1);
             chartCategoriasVen.Size = new Size(382, 237);
             chartCategoriasVen.TabIndex = 1;
             chartCategoriasVen.Text = "chart1";
-            title7.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title7.Name = "Title1";
-            title7.Text = "Categorias más vendidas";
-            chartCategoriasVen.Titles.Add(title7);
+            title1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title1.Name = "Title1";
+            title1.Text = "Categorias más vendidas";
+            chartCategoriasVen.Titles.Add(title1);
             // 
             // chartProductosVen
             // 
             chartProductosVen.Anchor = AnchorStyles.Bottom;
-            chartArea8.Name = "ChartArea1";
-            chartProductosVen.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            chartProductosVen.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            chartProductosVen.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartProductosVen.Legends.Add(legend2);
             chartProductosVen.Location = new Point(14, 221);
             chartProductosVen.Name = "chartProductosVen";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series8.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            series8.IsValueShownAsLabel = true;
-            series8.LabelForeColor = Color.White;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            chartProductosVen.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = Color.White;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartProductosVen.Series.Add(series2);
             chartProductosVen.Size = new Size(382, 237);
             chartProductosVen.TabIndex = 2;
             chartProductosVen.Text = "chart2";
-            title8.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title8.Name = "Title1";
-            title8.Text = "Productos mas vendidos";
-            chartProductosVen.Titles.Add(title8);
+            title2.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title2.Name = "Title1";
+            title2.Text = "Productos mas vendidos";
+            chartProductosVen.Titles.Add(title2);
             // 
             // pnlEncabezadoEsta
             // 
             pnlEncabezadoEsta.BackColor = Color.FromArgb(47, 33, 75);
+            pnlEncabezadoEsta.Controls.Add(btnReiniciar);
             pnlEncabezadoEsta.Controls.Add(label11);
             pnlEncabezadoEsta.Dock = DockStyle.Top;
             pnlEncabezadoEsta.Location = new Point(0, 0);
             pnlEncabezadoEsta.Name = "pnlEncabezadoEsta";
             pnlEncabezadoEsta.Size = new Size(822, 49);
             pnlEncabezadoEsta.TabIndex = 0;
+            // 
+            // btnReiniciar
+            // 
+            btnReiniciar.Anchor = AnchorStyles.None;
+            btnReiniciar.BackColor = Color.BlueViolet;
+            btnReiniciar.FlatAppearance.BorderSize = 0;
+            btnReiniciar.FlatStyle = FlatStyle.Flat;
+            btnReiniciar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnReiniciar.ForeColor = SystemColors.HighlightText;
+            btnReiniciar.Location = new Point(12, 12);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(65, 30);
+            btnReiniciar.TabIndex = 24;
+            btnReiniciar.Text = "Reiniciar";
+            btnReiniciar.UseVisualStyleBackColor = false;
+            btnReiniciar.Click += btnReiniciar_Click;
             // 
             // label11
             // 
@@ -624,16 +653,6 @@
             label11.TabIndex = 1;
             label11.Text = "Estadísticas de ventas";
             label11.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(447, 9);
-            label5.Name = "label5";
-            label5.Size = new Size(59, 19);
-            label5.TabIndex = 10;
-            label5.Text = "Últimos:";
             // 
             // ModuloEstadisticas
             // 
@@ -720,5 +739,6 @@
         private Button btnFiltroSiete;
         private Button btnFiltroHisto;
         private Label label5;
+        private Button btnReiniciar;
     }
 }

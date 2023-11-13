@@ -185,14 +185,6 @@ namespace CapaPresentacion.Formularios.Vendedor
 
                         borrarMensajeError();
 
-                        /*
-                        dtgvClientes.CurrentRow.Cells[0].Value = txtDniCliente.Text;
-                        dtgvClientes.CurrentRow.Cells[1].Value = txtApellidoCliente.Text;
-                        dtgvClientes.CurrentRow.Cells[2].Value = txtNombreCliente.Text;
-                        dtgvClientes.CurrentRow.Cells[3].Value = txtTelefonoCliente.Text;
-                        dtgvClientes.CurrentRow.Cells[4].Value = txtFechaNac.Text;
-                        */
-
                     }
 
                 }
@@ -269,15 +261,44 @@ namespace CapaPresentacion.Formularios.Vendedor
 
         private void frmModuloCliente_Load(object sender, EventArgs e)
         {
+            cboFiltroClientes.SelectedIndex = 0;
             cargarListaClientes();
 
-            dtgvClientes.Columns[0].HeaderText = "ID Cliente";
-            dtgvClientes.Columns[1].HeaderText = "DNI";
-            dtgvClientes.Columns[2].HeaderText = "Apellido";
-            dtgvClientes.Columns[3].HeaderText = "Nombre";
-            dtgvClientes.Columns[4].HeaderText = "Fecha de nacimiento";
-            dtgvClientes.Columns[5].HeaderText = "Teléfono";
-            dtgvClientes.Columns[6].HeaderText = "Fecha de registro";
+            configurarDatagridView();
+
+        }
+
+
+        private void configurarDatagridView()
+        {
+            if (dtgvClientes.Rows.Count > 0)
+            {
+                dtgvClientes.Columns[0].HeaderText = "ID Cliente";
+                dtgvClientes.Columns[1].HeaderText = "DNI";
+                dtgvClientes.Columns[2].HeaderText = "Apellido";
+                dtgvClientes.Columns[3].HeaderText = "Nombre";
+                dtgvClientes.Columns[4].HeaderText = "Fecha de nacimiento";
+                dtgvClientes.Columns[5].HeaderText = "Teléfono";
+                dtgvClientes.Columns[6].HeaderText = "Fecha de registro";
+
+                dtgvClientes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dtgvClientes.Columns[3].MinimumWidth = TextRenderer.MeasureText(dtgvClientes.Columns[3].HeaderText, dtgvClientes.Font).Width + 20;
+            }
+            else
+            {
+                dtgvClientes.Columns[0].HeaderText = "ID Cliente";
+                dtgvClientes.Columns[1].HeaderText = "DNI";
+                dtgvClientes.Columns[2].HeaderText = "Apellido";
+                dtgvClientes.Columns[3].HeaderText = "Nombre";
+                dtgvClientes.Columns[4].HeaderText = "Fecha de nacimiento";
+                dtgvClientes.Columns[5].HeaderText = "Teléfono";
+                dtgvClientes.Columns[6].HeaderText = "Fecha de registro";
+
+                dtgvClientes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dtgvClientes.Columns[3].MinimumWidth = TextRenderer.MeasureText(dtgvClientes.Columns[3].HeaderText, dtgvClientes.Font).Width + 20;
+            }
+
+            //dtgvClientes.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void soloLetras_KeyPress(object sender, KeyPressEventArgs e)
@@ -323,26 +344,62 @@ namespace CapaPresentacion.Formularios.Vendedor
         private void buscarCliente(string pTerminoBusqueda, string pTipoBusqueda)
         {
             CL_Cliente auxCliente = new CL_Cliente();
+            int tipoBusqueda;
 
-            if (pTipoBusqueda == "DNI")
+            switch (pTipoBusqueda)
             {
-                dtgvClientes.DataSource = null;
-                dtgvClientes.DataSource = auxCliente.buscarCliente(pTerminoBusqueda, 1);
+                case "Apellido":
+                    tipoBusqueda = 1;
+                    break;
 
-            }else if ( pTipoBusqueda == "Apellido")
-            {
-                dtgvClientes.DataSource = null;
-                dtgvClientes.DataSource = auxCliente.buscarCliente(pTerminoBusqueda, 2);
+                case "Nombre":
+                    tipoBusqueda = 2;
+                    break;
 
+                default:
+                    tipoBusqueda = 0;
+                    break;
             }
+
+            dtgvClientes.DataSource = null;
+            dtgvClientes.DataSource = auxCliente.buscarCliente(pTerminoBusqueda, tipoBusqueda);
+            configurarDatagridView();
         }
 
 
         private void txtBuscadorClientes_TextChanged(object sender, EventArgs e)
         {
-            dtgvClientes.DataSource = null;
+            //dtgvClientes.DataSource = null;
             string pTermino = txtBuscadorClientes.Text.ToString();
             buscarCliente(pTermino, cboFiltroClientes.Text);
+            //configurarDatagridView();
+        }
+
+        private void cboFiltroClientes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Auxiliares auxiliar = new Auxiliares();
+            auxiliar.desactivarModificacion_KeyPress(sender, e);
+        }
+
+        private void dtgvClientes_DoubleClick(object sender, EventArgs e)
+        {
+            if (dtgvClientes.Rows.Count > 0)
+            {
+                btnEliminar.Enabled = true;
+                btnModificar.Enabled = true;
+
+                txtDniCliente.Text = dtgvClientes.CurrentRow.Cells[1].Value.ToString();
+                txtNombreCliente.Text = dtgvClientes.CurrentRow.Cells[3].Value.ToString();
+                txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
+                txtFechaNac.Text = dtgvClientes.CurrentRow.Cells[4].FormattedValue.ToString();
+                txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
+
+            }
+        }
+
+        private void dtgvClientes_SelectionChanged(object sender, EventArgs e)
+        {
+            dtgvClientes_DoubleClick(sender, e);
         }
     }
 }

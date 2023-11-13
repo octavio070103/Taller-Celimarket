@@ -43,11 +43,11 @@ namespace CapaDatos
         }
 
 
-        public DataTable listarVentasVendedor( int pIdUsuario)
+        public DataTable listarVentasVendedor(int pIdUsuario)
         {
             DataTable listaVentas = new DataTable();
 
-            using ( SqlConnection objConexion = new SqlConnection(CD_conexion.cadena) )
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
             {
                 try
                 {
@@ -67,7 +67,7 @@ namespace CapaDatos
                     objConexion.Close();
 
                 }
-                catch ( Exception excepcion )
+                catch (Exception excepcion)
                 {
                     // MENSAJE DE ERROR
                     Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
@@ -143,8 +143,9 @@ namespace CapaDatos
                     comando.ExecuteNonQuery();
 
                     // Obtenemos las salidas generadas por la ejecucion del procedimiento almacenado
-                    idVentaRegistrada = (int)comando.Parameters["@IdNuevaVenta"].Value;
-                    resultadoEjec = (int)comando.Parameters["@resultadoEjec"].Value;
+                    resultadoEjec = (int)resultadoSalida.Value;
+                    idVentaRegistrada = (int)auxIdVentaRegistrada.Value; //(int)comando.Parameters["@IdNuevaVenta"].Value;
+                    
 
                 }
                 catch (Exception excepcion)
@@ -158,7 +159,7 @@ namespace CapaDatos
         }
 
 
-        public factura buscarFactura( int pIdVenta)
+        public factura buscarFactura(int pIdVenta)
         {
             factura auxFactura = new factura();
 
@@ -176,7 +177,7 @@ namespace CapaDatos
 
                     SqlDataReader dataReader = comando.ExecuteReader();
 
-                    if(dataReader.Read())
+                    if (dataReader.Read())
                     {
                         auxFactura = new factura
                         {
@@ -202,7 +203,7 @@ namespace CapaDatos
 
                     objConexion.Close();
 
-                }            
+                }
                 catch (Exception excepcion)
                 {
                     Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
@@ -214,7 +215,7 @@ namespace CapaDatos
         }
 
 
-        public string[] datosDelNegocioPorPeriodo( DateTime fechaInicio, DateTime fechaFin)
+        public string[] datosDelNegocioPorPeriodo(DateTime fechaInicio, DateTime fechaFin)
         {
             string[] datosNegocio = null;
 
@@ -274,7 +275,8 @@ namespace CapaDatos
 
                     Obj_conexion.Close();
 
-                }catch (Exception excepcion)
+                }
+                catch (Exception excepcion)
                 {
                     Console.WriteLine("Error al ejecutar la consulta: " + excepcion.Message);
                 }
@@ -416,6 +418,44 @@ namespace CapaDatos
                 }
 
                 return listaVentas;
+            }
+
+        }
+
+
+        public DataTable listarVentasPorPeriodo(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            DataTable listaVentas = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_ListarVentasPorPeriodo", objConexion);
+
+                    comando.Parameters.AddWithValue("@fechaInicioPer", pFechaDesde);
+                    comando.Parameters.AddWithValue("@fechaFinPer", pFechaHasta);
+
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    objConexion.Open();
+
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    listaVentas.Load(dataReader);
+
+                    dataReader.Close();
+                    objConexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+
+                return listaVentas;
+
             }
 
         }

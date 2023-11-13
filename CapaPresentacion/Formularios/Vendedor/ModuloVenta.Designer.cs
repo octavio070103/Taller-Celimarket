@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModuloVenta));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlModuloVenta = new Panel();
             picRecargar = new PictureBox();
             btnBuscar = new Button();
@@ -147,6 +147,7 @@
             // cboFiltroClientes
             // 
             cboFiltroClientes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboFiltroClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFiltroClientes.FormattingEnabled = true;
             cboFiltroClientes.Location = new Point(413, 11);
             cboFiltroClientes.Name = "cboFiltroClientes";
@@ -285,20 +286,21 @@
             // 
             dtgvListaCompra.AllowUserToAddRows = false;
             dtgvListaCompra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dtgvListaCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvListaCompra.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dtgvListaCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dtgvListaCompra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtgvListaCompra.BackgroundColor = SystemColors.ButtonShadow;
             dtgvListaCompra.BorderStyle = BorderStyle.None;
             dtgvListaCompra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgvListaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgvListaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgvListaCompra.ColumnHeadersHeight = 30;
             dtgvListaCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dtgvListaCompra.Columns.AddRange(new DataGridViewColumn[] { nombre_producto_carrito, cantidad_producto_carrito, precio_producto_carrito, categoria_producto_carrito, subtotal_producto_carrito, id_producto_carrito });
@@ -311,8 +313,10 @@
             dtgvListaCompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListaCompra.Size = new Size(243, 261);
             dtgvListaCompra.TabIndex = 13;
+            dtgvListaCompra.CellClick += dtgvListaCompra_CellClick;
             dtgvListaCompra.CellContentClick += dtgvListaCompra_CellContentClick;
             dtgvListaCompra.SelectionChanged += dtgvListaCompra_SelectionChanged;
+            dtgvListaCompra.DoubleClick += dtgvListaCompra_DoubleClick;
             // 
             // nombre_producto_carrito
             // 
@@ -544,6 +548,7 @@
             // cboMetodoPago
             // 
             cboMetodoPago.Anchor = AnchorStyles.None;
+            cboMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMetodoPago.FormattingEnabled = true;
             cboMetodoPago.Location = new Point(109, 251);
             cboMetodoPago.Name = "cboMetodoPago";
@@ -729,14 +734,14 @@
             dtgvProductos.AllowUserToResizeRows = false;
             dtgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvProductos.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvProductos.EnableHeadersVisualStyles = false;
             dtgvProductos.Location = new Point(0, 37);
@@ -748,6 +753,7 @@
             dtgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvProductos.Size = new Size(526, 126);
             dtgvProductos.TabIndex = 0;
+            dtgvProductos.CellClick += dtgvProductos_CellClick;
             dtgvProductos.CellContentClick += dtgvProductos_CellContentClick;
             dtgvProductos.SelectionChanged += dtgvProductos_SelectionChanged;
             // 

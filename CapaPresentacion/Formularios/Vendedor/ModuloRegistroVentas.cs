@@ -186,5 +186,10 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             filtrarPorDias(0);
         }
+
+        private void btnReiniciar_Click(object sender, EventArgs e)
+        {
+            ModuloRegistroVentas_Load(sender, e);
+        }
     }
 }

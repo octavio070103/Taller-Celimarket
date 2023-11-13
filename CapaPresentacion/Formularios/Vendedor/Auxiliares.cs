@@ -25,5 +25,10 @@ namespace CapaPresentacion.Formularios.Vendedor
             }
         }
 
+        public void desactivarModificacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
     }
 }
