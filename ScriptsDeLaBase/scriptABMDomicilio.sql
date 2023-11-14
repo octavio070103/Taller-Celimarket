@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------- DOMICILIO ABM
-CREATE PROC SP_REGISTRARDOMICILIO(
+ALTER PROC SP_REGISTRARDOMICILIO(
 @codigo_postal int,
 @localidad varchar(100),
 @provincia varchar(100),

@@ -3,6 +3,7 @@ using CapaLogica;
 using CapaPresentacion.Formularios.Admin;
 using Proyecto_Taller.Presentacion.Formularios.Vendedor;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CapaPresentacion
 {
@@ -24,18 +25,46 @@ namespace CapaPresentacion
 
             lblDashInicio.Text = lblDashInicio.Text + " " + mesYAnioActual;//cargo el text con la fecha actual 
 
-            chartTop5ProductMasVendidos();
+            chartTop5ProductMasVendidosDelMes();
+            charVentasDelMesPorDia();
             cargarDatosNegocioEstadisticas();
         }
 
-        public void chartTop5ProductMasVendidos()
+        public void chartTop5ProductMasVendidosDelMes()
         {
+            DateTime fechaActual = DateTime.Now;
+            int anio = fechaActual.Year;
+            int mes = fechaActual.Month;
             CL_DashBoard obj_CL_DashBoard = new CL_DashBoard();
             // Se crean dos arraylist que contendran los nombres de los productos y sus cantidades vendidas
-            (var productos, var cantidadVen) = obj_CL_DashBoard.obtenerProductosMasVendidos();
+            List <ProductosMasVendidosDelMes> listaProducMasVendiPorMes = obj_CL_DashBoard.obtenerProductosMasVendidos(anio, mes);
 
-            // Se carga el grafico con los resultados obtenidos de la base de datos con los arraylist
+            // Se carga el grafico con los resultados obtenidos de la base de datos con los arraylist cargados
             chart3.Series[0].Points.DataBindXY(productos, cantidadVen);
+        }
+
+        public void charVentasDelMesPorDia()
+        {
+            DateTime fechaActual = DateTime.Now;
+            int anio = fechaActual.Year;
+            int mes = fechaActual.Month;
+
+            CL_DashBoard obj_CL_DashBoard = new CL_DashBoard();
+            // Se crean dos arraylist que contendran DiaVenta =los dias que se realizo esa venta y cantidadVenPorDia=la cantVenntas que se realizo ese dia
+            (var DiaVenta, var cantidadVenPorDia) = obj_CL_DashBoard.obtenerVentasDelMesPorDia(anio,mes);
+
+            // Se carga el grafico con los resultados obtenidos de la base de datos con los arraylist cargados
+            chartVentas.Series[0].Points.DataBindXY(DiaVenta, cantidadVenPorDia);
+        }
+
+        public void charStockProducPorCategor()
+        {
+            CL_DashBoard obj_CL_DashBoard = new CL_DashBoard();
+            // Se crean dos arraylist que contendran DiaVenta =los dias que se realizo esa venta y cantidadVenPorDia=la cantVenntas que se realizo ese dia
+            (var categoria, var stock) = obj_CL_DashBoard.obtenerStockProducPorCategor();
+
+            // Se carga el grafico con los resultados obtenidos de la base de datos con los arraylist cargados
+            chartStockProductoCateogria.Series[0].Points.DataBindXY(categoria, stock);
         }
 
         public void cargarDatosNegocioEstadisticas()

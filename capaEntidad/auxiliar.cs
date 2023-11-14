@@ -18,4 +18,12 @@ namespace capaEntidad
         public string nombreCategoria { get; set; }
         public int cantidadVendida { get; set; }
     }
+
+    public class ProductosMasVendidosDelMes
+    {
+        public int id_producto { get; set; }
+        public int cantProducVendido { get; set; }
+        public string nombre_producto { get; set; }
+       
+    }
 }

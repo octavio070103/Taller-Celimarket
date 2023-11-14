@@ -319,7 +319,7 @@ end
 GO
 
 ---------------------------------------------------------------------------- DOMICILIO ABM
-CREATE PROC SP_REGISTRARDOMICILIO(
+ALTER PROC SP_REGISTRARDOMICILIO(
 @calle varchar(200),
 @codigo_postal int,
 @numero int,
@@ -340,7 +340,7 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM domicilio WHERE calle=@calle AND numero=@numero)
 	BEGIN
 	--Insertamos el nuevo domicilio en la tabla Domicilio
-	INSERT INTO domicilio(calle,codigo_postal,numero,localidad,provincia,descripcion,estado_domicilio)
+	INSERT INTO domicilio(calle,codigo_postal,numero,localidad,provincia,descripcion_domicilio,estado_domicilio)
 	VALUES(@calle,@codigo_postal,@numero,@localidad,@provincia,@descripcion,@estado_domicilio)
 
 	--obtenemos el ID del domicilio registrado 
