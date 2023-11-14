@@ -108,5 +108,13 @@ namespace CapaLogica
             return listaVentas;
         }
 
+
+        public List<vendedorMasVentas> vendedoresMasVentasPeriodo(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            CD_venta auxVenta = new CD_venta();
+            List<vendedorMasVentas> auxListaVendedores = auxVenta.vendedoresConMasVentasPeriodo(pFechaDesde, pFechaHasta);
+
+            return auxListaVendedores;
+        }
     }
 }

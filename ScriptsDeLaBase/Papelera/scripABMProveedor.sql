@@ -1,4 +1,4 @@
-/*REGISTRAR USUARIO */
+/*REGISTRAR USUARIO *//*
 CREATE PROC SP_REGISTRARPROVEEDOR(
 /*estos son parametros de entrada que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar*/
 		@nombre VARCHAR(100),
@@ -10,7 +10,7 @@ CREATE PROC SP_REGISTRARPROVEEDOR(
 )
 as 
 begin 
-	set @id_Proveedor_resultadoa = 0 /*aca seteo con un valor inicial mi var de salida*/
+	set @id_Proveedor_resultado = 0 /*aca seteo con un valor inicial mi var de salida*/
 	set @mensaje=''
 
 	/*aca digo que sino exitse una persona en la tabla persona con el dni que quiero registrar SINO existe que entre al if ya que significa que ese dni no existe que esta disponible*/
@@ -42,4 +42,4 @@ begin
 
 end
 
-GO 
+GO */

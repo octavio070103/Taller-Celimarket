@@ -253,7 +253,7 @@ ADD CONSTRAINT DF_CierreCaja_fecha_cierre DEFAULT GETDATE() FOR fecha_cierre;
 CREATE TABLE venta(
 	id_venta INT IDENTITY(1,1),
 	venta_fecha DATE NOT NULL,
-	tipoFactura VARCHAR(1) NOT NULL, -- va a ser tipo a,b,c,o d
+	--tipoFactura VARCHAR(1) NOT NULL, -- va a ser tipo a,b,c,o d
 	id_cliente INT NOT NULL,
 	id_metodo_pago INT NOT NULL,
 	id_usuario INT NOT NULL,

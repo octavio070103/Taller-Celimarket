@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------- DOMICILIO ABM
-/*CREATE PROC SP_REGISTRARDOMICILIO(
+CREATE PROC SP_REGISTRARDOMICILIO(
 @codigo_postal int,
 @localidad varchar(100),
 @provincia varchar(100),
@@ -35,4 +35,4 @@ BEGIN
 		SET @mensaje='el domicilio ya existe, ya esta registrado'
 	END
 
-END*/
+END

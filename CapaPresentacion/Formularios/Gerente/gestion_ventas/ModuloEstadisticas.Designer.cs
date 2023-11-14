@@ -29,14 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEstadisticas));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             pnlModuloEstadis = new Panel();
             pnlFiltro = new Panel();
             pnlBotones = new Panel();
@@ -82,6 +85,7 @@
             pnlEncabezadoEsta = new Panel();
             btnReiniciar = new Button();
             label11 = new Label();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlModuloEstadis.SuspendLayout();
             pnlFiltro.SuspendLayout();
             pnlBotones.SuspendLayout();
@@ -101,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)chartCategoriasVen).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chartProductosVen).BeginInit();
             pnlEncabezadoEsta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // pnlModuloEstadis
@@ -285,6 +290,7 @@
             // 
             pnlContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             pnlContenedor.BackColor = Color.DimGray;
+            pnlContenedor.Controls.Add(chart1);
             pnlContenedor.Controls.Add(pnlProductos);
             pnlContenedor.Controls.Add(pnlEmpleados);
             pnlContenedor.Controls.Add(pnlProveedores);
@@ -566,20 +572,20 @@
             // chartCategoriasVen
             // 
             chartCategoriasVen.Anchor = AnchorStyles.Bottom;
-            chartArea1.Name = "ChartArea1";
-            chartCategoriasVen.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartCategoriasVen.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            chartCategoriasVen.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartCategoriasVen.Legends.Add(legend2);
             chartCategoriasVen.Location = new Point(406, 221);
             chartCategoriasVen.Name = "chartCategoriasVen";
             chartCategoriasVen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartCategoriasVen.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelForeColor = Color.White;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            chartCategoriasVen.Series.Add(series2);
             chartCategoriasVen.Size = new Size(382, 237);
             chartCategoriasVen.TabIndex = 1;
             chartCategoriasVen.Text = "chart1";
@@ -591,20 +597,20 @@
             // chartProductosVen
             // 
             chartProductosVen.Anchor = AnchorStyles.Bottom;
-            chartArea2.Name = "ChartArea1";
-            chartProductosVen.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartProductosVen.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            chartProductosVen.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartProductosVen.Legends.Add(legend3);
             chartProductosVen.Location = new Point(14, 221);
             chartProductosVen.Name = "chartProductosVen";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            series2.IsValueShownAsLabel = true;
-            series2.LabelForeColor = Color.White;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            chartProductosVen.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = Color.White;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartProductosVen.Series.Add(series3);
             chartProductosVen.Size = new Size(382, 237);
             chartProductosVen.TabIndex = 2;
             chartProductosVen.Text = "chart2";
@@ -654,6 +660,23 @@
             label11.Text = "Estadísticas de ventas";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // chart1
+            // 
+            chartArea1.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(14, 13);
+            chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(382, 195);
+            chart1.TabIndex = 7;
+            chart1.Text = "chart1";
+            // 
             // ModuloEstadisticas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -690,6 +713,7 @@
             ((System.ComponentModel.ISupportInitialize)chartProductosVen).EndInit();
             pnlEncabezadoEsta.ResumeLayout(false);
             pnlEncabezadoEsta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -740,5 +764,6 @@
         private Button btnFiltroHisto;
         private Label label5;
         private Button btnReiniciar;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }
