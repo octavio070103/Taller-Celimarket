@@ -211,7 +211,7 @@ namespace CapaDatos
             }
             return respuesta;
         }
-
+        
         public List<producto> listarProductos()
         {
             List<producto> lista = new List<producto>();
@@ -285,7 +285,81 @@ namespace CapaDatos
             return lista; // Devolvemos la lista de productos que obtuvimos en la consulta
         }
 
-        public producto buscarProducto(int id_producto)
+
+        public List<producto> listarProductosVenta()
+        {
+            List<producto> lista = new List<producto>();
+
+            //le paso cadena de la clase conexion 
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de errores por si tengo porblemas al coenctar con la BD
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla producto y que me traiga esos datos que le especifique
+                    StringBuilder query = new StringBuilder();
+
+                    //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente (p para PRODUCTO,C para catgoria y m para amrca). Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.(evi tando la ambigueadad)
+                    query.AppendLine("SELECT p.id_producto,p.cod_barra_producto,p.nombre_producto,p.descripcion_producto,p.precio_compra,p.precio_venta,p.stock_producto,p.imagen_producto,p.estado_producto,p.fecha_creacion_producto," +
+                        "m.id_marca,m.nombre," +
+                        "c.id_categoria,c.nombre_Categoria,c.descripcion_categoria");//con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("FROM producto p");// aca le doy el alias p a la tabla de producto y con from defino la fuente de datos sobre la cual se realizarán las operaciones de selección, filtrado y combinación.
+                    query.AppendLine("INNER JOIN marca m ON p.Id_Marca=m.Id_Marca");//le doy el alias m a marca, y realizo el INNER JOIN entre la tabla producto y la tabla marca
+                    query.AppendLine("INNER JOIN categoria c ON p.id_categoria=c.id_categoria");//le doy el alias c, y realizo el INNER JOIN entre la tabla producto y la tabla categoria
+                    query.AppendLine("WHERE stock_producto > 0");//
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();
+
+                    //using (){
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //aca se lectura a la consulta que realize con qeury
+                    while (dr.Read())//read obitene valores de las columnas devuelve true si hay rregistross para leer y F sino lo hay,como con el while reocrro las filas devuletas por las consultas con read verifico que tengas registros para leer
+                    {
+                        //a mi lista de producto le estoy agregrando un usaurio
+                        lista.Add(new producto
+                        {
+                            Idproducto = Convert.ToInt32(dr["id_producto"]),
+                            cod_barra_producto = Convert.ToInt32(dr["cod_barra_producto"]),
+                            nombre_producto = dr["nombre_producto"].ToString(),
+                            descripcion_producto = dr["descripcion_producto"].ToString(),
+                            precio_compra = Convert.ToDecimal(dr["precio_compra"]),
+                            precio_venta = Convert.ToDecimal(dr["precio_venta"]),
+                            stock_producto = Convert.ToInt32(dr["stock_producto"]),
+                            imagen = dr["imagen_producto"].ToString(),
+                            estado_producto = Convert.ToInt32(dr["estado_producto"]),
+                            fecha_creacion_producto = dr.GetDateTime(dr.GetOrdinal("fecha_creacion_producto")),
+
+                            //como los campos de mi tabla persona que los triago al momento de hacer el INER son de tipo Marca los debo de alamcenar en ese tipo de obj marca que formara parte de mi atributo producto
+                            obj_marca = new marca()
+                            {
+                                id_marca = Convert.ToInt32(dr["id_marca"]),
+                                nombre_marca = dr["nombre"].ToString()
+                            },
+                            //como los campos del categoria que traigo con el INNER JOIN son de tipo categoria los almaceno en ese tipo de obj que forma parte de  mi atributo de mi producto
+                            obj_categoria = new categoria()
+                            {
+                                id_categoria = Convert.ToInt32(dr["id_categoria"]),
+                                nombre_categoria = dr["nombre_Categoria"].ToString(),
+                                descripcion_categoria = dr["descripcion_categoria"].ToString()
+                            }
+
+                        });
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al ejecutar la consulta: " + ex.Message);
+                }
+            }
+            return lista; // Devolvemos la lista de productos que obtuvimos en la consulta
+        }
+
+            public producto buscarProducto(int id_producto)
         {
             //le paso cadena de la clase conexion 
             using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))

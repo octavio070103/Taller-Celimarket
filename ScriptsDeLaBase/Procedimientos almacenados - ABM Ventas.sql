@@ -4,10 +4,10 @@
 CREATE PROCEDURE SP_ObtenerMetodosPago
 AS
   BEGIN
-	SELECT * FROM tipo_metodo_pago
+	SELECT id_metodo_pago, nombre_metodo_pago +' - Cuotas '+ CONVERT(VARCHAR, cuota_posible) AS nombre_metodo_pago FROM metodo_pago--tipo_metodo_pago
   END
 GO
-
+-- Este ultimo procedimiento fue modificado 14/11 - 16:27
 
 -- REGISTRAR VENTA:
 ALTER PROCEDURE SP_RegistrarVenta

@@ -11,6 +11,7 @@ select TOP 5 Marca.Nombre+' - '+ producto.nombre_producto as Producto, SUM(detal
 	group by detalle_venta.id_producto, Marca.Nombre, producto.nombre_producto
 	order by Cantidad_vendida DESC
 GO
+-- Este ultimo procedimiento fue modificado 14/11 16:28
 /*
 ALTER PROCEDURE SP_ProductosMasVendidos -- select * from detalle_venta
 AS
@@ -43,7 +44,7 @@ select TOP 5 Marca.Nombre+' - '+ producto.nombre_producto as Producto, SUM(detal
 	group by detalle_venta.id_producto, Marca.Nombre, producto.nombre_producto
 	order by Cantidad_vendida DESC
 GO
-
+-- Este ultimo procedimiento fue modificado 14/11 16:28
 
 ---------- CATEGORIAS MAS VENDIDAS -----------
 
@@ -152,7 +153,7 @@ ORDER BY venta.id_venta
 
 GO
 
--- ***** POR PERIODOS *****
+-- ***** POR PERIODOS ***** 
 
 CREATE PROCEDURE SP_ListarVentasPorPeriodo
 (
