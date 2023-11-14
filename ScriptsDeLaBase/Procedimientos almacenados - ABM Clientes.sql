@@ -144,7 +144,7 @@ GO
 
 -- **** BUSCAR CLIENTE ****
 
-ALTER PROCEDURE SP_BuscarCliente
+CREATE PROCEDURE SP_BuscarCliente
 (
   @terminoBusqueda VARCHAR,
   @tipoBusqueda INT
