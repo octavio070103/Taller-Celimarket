@@ -87,7 +87,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                 txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
                 txtFechaNac.Text = dtgvClientes.CurrentRow.Cells[4].FormattedValue.ToString();
                 txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
-
+                dtpFechaNac.Value = transformarFecha(dtgvClientes.CurrentRow.Cells[4].FormattedValue.ToString()); //
             }
         }
 
@@ -139,7 +139,7 @@ namespace CapaPresentacion.Formularios.Vendedor
             txtNombreCliente.Text = "";
             txtTelefonoCliente.Text = "";
             txtFechaNac.Text = "";
-
+            dtpFechaNac.Text = null;//
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -155,7 +155,8 @@ namespace CapaPresentacion.Formularios.Vendedor
                     if (pregunta == DialogResult.Yes)
                     {
                         // Obtenemos la fecha de nacimiento en formato string y la transformamos a DateTime
-                        DateTime auxFechaFormateada = transformarFecha(txtFechaNac.Text);
+                        //DateTime auxFechaFormateada = transformarFecha(txtFechaNac.Text);
+                        DateTime auxFechaFormateada = dtpFechaNac.Value.Date;
 
                         persona auxPersona = new persona()
                         {
@@ -218,6 +219,12 @@ namespace CapaPresentacion.Formularios.Vendedor
             if (txtDniCliente.Text == "")
             {
                 errorProvider1.SetError(txtDniCliente, "Ingrese el DNI");
+                validacion = false;
+            }
+
+            if (txtDniCliente.Text != "" && txtDniCliente.Text.Length != 8)//
+            {
+                errorProvider1.SetError(txtDniCliente, "El DNI debe contener 8 dígitos");
                 validacion = false;
             }
 
@@ -393,6 +400,7 @@ namespace CapaPresentacion.Formularios.Vendedor
                 txtApellidoCliente.Text = dtgvClientes.CurrentRow.Cells[2].Value.ToString();
                 txtFechaNac.Text = dtgvClientes.CurrentRow.Cells[4].FormattedValue.ToString();
                 txtTelefonoCliente.Text = dtgvClientes.CurrentRow.Cells[5].Value.ToString();
+                dtpFechaNac.Value = transformarFecha(dtgvClientes.CurrentRow.Cells[4].FormattedValue.ToString()); //
 
             }
         }
@@ -401,5 +409,15 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             dtgvClientes_DoubleClick(sender, e);
         }
+
+
+        public void recargarListaClientes()
+        {
+            dtgvClientes.DataSource = null;
+            cargarListaClientes();
+
+            configurarDatagridView();
+        }
+
     }
 }

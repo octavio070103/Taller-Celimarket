@@ -39,6 +39,7 @@
             btnAgregar = new Button();
             dtgvClientes = new DataGridView();
             pnlInfoCliente = new Panel();
+            dtpFechaNac = new DateTimePicker();
             lblCorreoCliente = new Label();
             txtFechaNac = new TextBox();
             lblFechaNac = new Label();
@@ -177,6 +178,7 @@
             // 
             pnlInfoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pnlInfoCliente.BackColor = Color.White;
+            pnlInfoCliente.Controls.Add(dtpFechaNac);
             pnlInfoCliente.Controls.Add(lblCorreoCliente);
             pnlInfoCliente.Controls.Add(txtFechaNac);
             pnlInfoCliente.Controls.Add(lblFechaNac);
@@ -195,6 +197,14 @@
             pnlInfoCliente.Size = new Size(266, 502);
             pnlInfoCliente.TabIndex = 1;
             // 
+            // dtpFechaNac
+            // 
+            dtpFechaNac.Format = DateTimePickerFormat.Short;
+            dtpFechaNac.Location = new Point(103, 290);
+            dtpFechaNac.Name = "dtpFechaNac";
+            dtpFechaNac.Size = new Size(133, 23);
+            dtpFechaNac.TabIndex = 16;
+            // 
             // lblCorreoCliente
             // 
             lblCorreoCliente.AutoSize = true;
@@ -207,10 +217,11 @@
             // 
             // txtFechaNac
             // 
-            txtFechaNac.Location = new Point(103, 290);
+            txtFechaNac.Location = new Point(103, 322);
             txtFechaNac.Name = "txtFechaNac";
             txtFechaNac.Size = new Size(133, 23);
             txtFechaNac.TabIndex = 14;
+            txtFechaNac.Visible = false;
             // 
             // lblFechaNac
             // 
@@ -380,5 +391,6 @@
         private Label lblTelefonoCliente;
         private ErrorProvider errorProvider1;
         private Label lblCorreoCliente;
+        private DateTimePicker dtpFechaNac;
     }
 }

@@ -64,7 +64,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     if ( mensajeResultado == "Se registro al cliente correctamente.")
                     {
                         MessageBox.Show(mensajeResultado, "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                        auxModuloCliente.recargarListaClientes();
                         this.Close();
                     }
                     else
@@ -80,32 +80,6 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             {
                 MessageBox.Show("Se deben completar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            /* // BORRAR CUANDO YA NO SE UTILICE
-            string[] datosCliente;
-            borrarMensajeError();
-            validarCampos();
-
-            if (validarCampos() == true)
-            {
-                DialogResult pregunta = MessageBox.Show("¿Seguro que desea registrar un nuevo Cliente?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
-                if (pregunta == DialogResult.Yes)
-                {
-                    datosCliente = obtenerDatos();
-
-                    auxModuloCliente.agregarCliente(datosCliente);
-                    MessageBox.Show("El Cliente se registro correctamente", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Se deben completar todos los campos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            */
-            //******
 
         }
 
@@ -143,6 +117,13 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             if (txtDni.Text == "")
             {
                 errorProvider1.SetError(txtDni, "Ingrese el DNI");
+                validacion = false;
+
+            }
+
+            if (txtDni.Text != "" && txtDni.Text.Length != 8 )//
+            {
+                errorProvider1.SetError(txtDni, "El DNI debe contener 8 dígitos");
                 validacion = false;
             }
 

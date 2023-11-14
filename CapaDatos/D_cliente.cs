@@ -53,40 +53,49 @@ namespace CapaDatos
 
         public void registrarCliente(persona objCliente, out string mensajeResultado)
         {
+            mensajeResultado = "";
+
             using ( SqlConnection objConexion = new SqlConnection( CD_conexion.cadena ) )
             {
-                //AVISO: Encerrar en try catch
 
-                SqlCommand comando = new SqlCommand("SP_RegistrarCliente", objConexion);
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_RegistrarCliente", objConexion);
 
-                //*** PARAMETROS DE ENTRADA ***
-                comando.Parameters.AddWithValue("@dni", objCliente.dni);
-                comando.Parameters.AddWithValue("@nombre", objCliente.nombre);
-                comando.Parameters.AddWithValue("@apellido", objCliente.apellido);
-                comando.Parameters.AddWithValue("@fecha_nacimiento", objCliente.fecha_nacimiento);
-                comando.Parameters.AddWithValue("@telefono", objCliente.telefono);
-                // Asignamos el valor 1 al estado del cliente para establecer que esta dado de alta
-                comando.Parameters.AddWithValue("@estado_cliente", 1);
+                    //*** PARAMETROS DE ENTRADA ***
+                    comando.Parameters.AddWithValue("@dni", objCliente.dni);
+                    comando.Parameters.AddWithValue("@nombre", objCliente.nombre);
+                    comando.Parameters.AddWithValue("@apellido", objCliente.apellido);
+                    comando.Parameters.AddWithValue("@fecha_nacimiento", objCliente.fecha_nacimiento);
+                    comando.Parameters.AddWithValue("@telefono", objCliente.telefono);
+                    // Asignamos el valor 1 al estado del cliente para establecer que esta dado de alta
+                    comando.Parameters.AddWithValue("@estado_cliente", 1);
 
 
-                //*** PARAMETROS DE SALIDA ***
-                // Parametros para las salidas generadas por el procedimiento almacenado
-                SqlParameter mensajeSalida = comando.Parameters.Add("@mensaje", SqlDbType.VarChar, 500);
+                    //*** PARAMETROS DE SALIDA ***
+                    // Parametros para las salidas generadas por el procedimiento almacenado
+                    SqlParameter mensajeSalida = comando.Parameters.Add("@mensaje", SqlDbType.VarChar, 500);
 
-                // Se establece que la variable 'mensajeSalida' es un parametro de salida que almacenara el
-                // resultado que genere el procedimiento almacenado
-                mensajeSalida.Direction = ParameterDirection.Output;
+                    // Se establece que la variable 'mensajeSalida' es un parametro de salida que almacenara el
+                    // resultado que genere el procedimiento almacenado
+                    mensajeSalida.Direction = ParameterDirection.Output;
 
-                // Se establece que el comando a ejecutar es del tipo procedimiento almacenado
-                comando.CommandType = CommandType.StoredProcedure;
+                    // Se establece que el comando a ejecutar es del tipo procedimiento almacenado
+                    comando.CommandType = CommandType.StoredProcedure;
 
-                // Se abre la conexion con la base de datos
-                objConexion.Open();
+                    // Se abre la conexion con la base de datos
+                    objConexion.Open();
 
-                // Se ejecuta el procedimiento almacenado
-                comando.ExecuteNonQuery();
+                    // Se ejecuta el procedimiento almacenado
+                    comando.ExecuteNonQuery();
 
-                mensajeResultado = comando.Parameters["@mensaje"].Value.ToString();
+                    mensajeResultado = comando.Parameters["@mensaje"].Value.ToString();
+                }
+                catch ( Exception excepcion )
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
 
             }
 

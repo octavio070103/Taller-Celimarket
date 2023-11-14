@@ -158,7 +158,7 @@ AS
 		FROM cliente AS C
 
  		INNER JOIN persona AS P on P.id_persona = C.id_persona
-		WHERE upper(P.apellido) LIKE upper(@terminoBusqueda+'%')
+		WHERE upper(P.apellido) LIKE upper(@terminoBusqueda+'%') AND C.estado_cliente = 1
 	  END
 
 	  ELSE IF (@tipoBusqueda = 2)
@@ -167,11 +167,11 @@ AS
 		  FROM cliente AS C
 
  		  INNER JOIN persona AS P on P.id_persona = C.id_persona
-		  WHERE upper(P.nombre) LIKE upper(@terminoBusqueda+'%')
+		  WHERE upper(P.nombre) LIKE upper(@terminoBusqueda+'%') AND C.estado_cliente = 1
 		END
 
   END
-GO
+GO -- **** Este procedimiento fue modificado el 14/11 20:10
 
 	    SELECT C.id_cliente, P.dni, P.apellido, P.nombre, P.fecha_nacimiento, P.telefono, fecha_creacion 
 		FROM cliente AS C
