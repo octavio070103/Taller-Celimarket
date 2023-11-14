@@ -40,7 +40,7 @@ namespace CapaPresentacion
             List <ProductosMasVendidosDelMes> listaProducMasVendiPorMes = obj_CL_DashBoard.obtenerProductosMasVendidos(anio, mes);
 
             // Se carga el grafico con los resultados obtenidos de la base de datos con los arraylist cargados
-            chart3.Series[0].Points.DataBindXY(productos, cantidadVen);
+            //chart3.Series[0].Points.DataBindXY(productos, cantidadVen);
         }
 
         public void charVentasDelMesPorDia()
