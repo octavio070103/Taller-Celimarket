@@ -18,4 +18,11 @@ namespace capaEntidad
         public string nombreCategoria { get; set; }
         public int cantidadVendida { get; set; }
     }
+
+
+    public class vendedorMasVentas
+    {
+        public string nombreVendedor { get; set; }
+        public int cantidadVentas { get; set; }
+    }
 }

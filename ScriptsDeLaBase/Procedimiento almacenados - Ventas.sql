@@ -259,4 +259,25 @@ AS
 GO
 
 
-select * from Negocio
+-- **** VENDEDORES CON MAS VENTAS ****
+
+CREATE PROCEDURE SP_VendedoresMasVentas
+(
+  @fechaInicioPer DATETIME,
+  @fechaFinPer DATETIME
+)
+AS
+  BEGIN
+	SELECT TOP 5 V.id_usuario AS 'ID Usuario', P.apellido+' '+P.nombre AS 'Vendedor', 
+		   COUNT(V.id_usuario) AS 'Total' FROM venta AS V
+	INNER JOIN usuario AS Us on Us.id_usuario = V.id_usuario
+	INNER JOIN persona AS P on P.id_persona = Us.id_persona
+	WHERE V.venta_fecha BETWEEN @fechaInicioPer AND @fechaFinPer
+
+	GROUP BY V.id_usuario, P.apellido+' '+P.nombre
+	ORDER BY COUNT(V.id_usuario) DESC
+  END
+GO
+
+
+--select * from usuario

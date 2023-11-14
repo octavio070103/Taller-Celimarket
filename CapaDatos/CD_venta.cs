@@ -460,5 +460,54 @@ namespace CapaDatos
 
         }
 
+
+        public List<vendedorMasVentas> vendedoresConMasVentasPeriodo(DateTime pFechaDesde, DateTime pFechaHasta)
+        {
+            List<vendedorMasVentas> auxListaVendedores = new List<vendedorMasVentas> ();
+
+            using (SqlConnection objConexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand comando = new SqlCommand("SP_VendedoresMasVentas", objConexion);
+
+                    comando.Parameters.AddWithValue("@fechaInicioPer", pFechaDesde);
+                    comando.Parameters.AddWithValue("@fechaFinPer", pFechaHasta);
+
+                    // Se establece que el comando ejecutara procedimientos almacenados de la base de datos
+                    comando.CommandType = CommandType.StoredProcedure;
+
+                    // Se abre la conexion con la base de datos
+                    objConexion.Open();
+
+                    // Se almacenan los resultados obtenidos de ejecutar el procedimiento en la base de datos
+                    SqlDataReader dataReader = comando.ExecuteReader();
+
+                    // Se cargan los resutados obtenidos de la bases de datos en los arraylist
+                    while (dataReader.Read())
+                    {
+                        vendedorMasVentas auxVendedor = new vendedorMasVentas
+                        {
+                            nombreVendedor = dataReader.GetString(0),
+                            cantidadVentas = dataReader.GetInt32(1)
+                        };
+
+                        auxListaVendedores.Add(auxVendedor);
+                    }
+
+                    dataReader.Close();
+                    objConexion.Close();
+
+                }
+                catch (Exception excepcion)
+                {
+                    // MENSAJE DE ERROR
+                    Console.WriteLine("Error al conectar con la base de datos: " + excepcion.Message);
+                }
+            }
+
+            return auxListaVendedores;
+        }
+
     }
 }
