@@ -77,8 +77,10 @@ select @mensaje
 
 select * from producto
 GO
+
+--MODIFICADO HOY
 								/*EDITAR PRODUCTO */
- CREATE PROCEDURE SP_EDITARPRODUCTO(
+ ALTER PROCEDURE SP_EDITARPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/
 	@id_producto INT,
 	@cod_barra_producto INT,
@@ -105,12 +107,12 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 	 -- Validación de datos,verifica que no se produzca una colisión con otro producto ya existente.
 	 --Esta condición verifica si no existe ningún otro producto con el mismo código de barras (cod_barra_producto) o si existe otro producto con el mismo nombre (nombre_producto) y la misma marca (Id_Marca) que no sea el producto que se está editando (identificado por id_producto != @id_producto). 
 	 --Si esta condición se cumple, significa que no hay colisiones con otros productos en la base de datos y permite la actualización. De lo contrario, si se encuentra un producto con el mismo código de barras o un producto con el mismo nombre y marca, se establece un mensaje de error indicando que no se puede repetir el producto de la misma marca. Esto asegura que los productos sigan siendo únicos según tus criterios de codificación de barras y combinación de nombre y marca.
-	IF NOT EXISTS (select * from producto where ( cod_barra_producto=@cod_barra_producto OR (nombre_producto=@nombre_producto AND Id_Marca=@Id_Marca)) AND id_producto != @id_producto) 
+	IF NOT EXISTS (select * from producto where ( cod_barra_producto=@cod_barra_producto AND (nombre_producto=@nombre_producto AND Id_Marca=@Id_Marca)) AND id_producto != @id_producto) 
 	BEGIN 
 	-- Actualización del producto
 		update producto set
 		nombre_producto = @nombre_producto,
-		cod_barra_producto=@cod_barra_producto,
+		--cod_barra_producto=@cod_barra_producto,
 		descripcion_producto = @descripcion_producto,
 		precio_compra = @precio_compra,
 		precio_venta = @precio_venta,
@@ -129,6 +131,7 @@ BEGIN --el begin se utiliza para delimitar un bloque de codigo que contiene vari
 
 end
 GO
+
 								/*DAR BAJA PRODUCTO */
  CREATE PROC SP_DARBAJAPRODUCTO(
 /*parametros de entrada (que necesitamos para registrar un producto) que le enviaremos valores atraves de mi programa es decir aca recibiria los valores cargados por el usuario a registrar un producto*/

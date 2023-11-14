@@ -340,6 +340,7 @@
             // 
             txtIdDato.Location = new Point(79, 55);
             txtIdDato.Name = "txtIdDato";
+            txtIdDato.ReadOnly = true;
             txtIdDato.Size = new Size(144, 23);
             txtIdDato.TabIndex = 10;
             txtIdDato.TextAlign = HorizontalAlignment.Center;

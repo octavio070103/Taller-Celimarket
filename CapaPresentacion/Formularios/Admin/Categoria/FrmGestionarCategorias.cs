@@ -112,7 +112,6 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         private void ReadOnlyCamposDatoCategoria(bool valor)
         {
             //el parametro valor contiene el valor True o False dependiendo si quiero que este en modo lectura(true) o en modo edicion los campos (false)
-            txtIdDato.ReadOnly = valor;
             txtNombreDato.ReadOnly = valor;
             txtDescripDato.ReadOnly = valor;
 
@@ -274,12 +273,13 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             }
 
             capaEntidad.categoria obj_Categoria = new CL_Categoria().buscarCategoriaId(Convert.ToInt32(id_categoria)); //aca obtengo el estado categoria que tiene esa categoria en la bd para compararlo aantes de editar
-            if (estadocategoria == obj_Categoria.estado_categoria)
-            {
-                errorProvider1.SetError(comboEstadoDato, "No se puede modificar El estado ya que es el mismo Estado");
-                MessageBox.Show(" No se puede modificar El estado ya que es el mismo Estado ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                validacion = false;
-            }
+            /*
+             if (estadocategoria == obj_Categoria.estado_categoria)
+             {
+                 errorProvider1.SetError(comboEstadoDato, "No se puede modificar El estado ya que es el mismo Estado");
+                 MessageBox.Show(" No se puede modificar El estado ya que es el mismo Estado ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 validacion = false;
+             }*/
             return validacion;
         }
 

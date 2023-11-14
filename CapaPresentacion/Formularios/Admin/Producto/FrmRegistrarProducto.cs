@@ -124,7 +124,7 @@ namespace CapaPresentacion.Formularios.Admin.Producto
                 }
 
                 File.Copy(fileActualPath!, fileSavePath!);//aca guardo la coipa de la imagen en la ruta que especifique mas abajo
-
+                limpiarCamposDato();//limpio los campos una vez registre el producto
             }
         }
 

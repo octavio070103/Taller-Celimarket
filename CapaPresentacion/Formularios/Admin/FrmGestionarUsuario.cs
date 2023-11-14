@@ -414,7 +414,7 @@ namespace CapaPresentacion.Formularios.Admin
                 txtDomiciliodato.Text = "";
                 panelDatosUsuario.Visible = false;//escondo el panel de editar datos del usuario al cancelar 
             }
-
+            DetallesUsuario(false);//aca oculto el panel luego de que se caneclo la edicion del usuario
         }
 
         //guardar modificacion
@@ -483,6 +483,9 @@ namespace CapaPresentacion.Formularios.Admin
 
                         //listo los usuarios aca porque en teoria se actualizo la lista de los usuario es decir que se modifco esa lista entonces la actualizo
                         //por ewsto uso capaentidad.usuario ya que es necesario especificar de manera explícita a cuál usuario te estás refiriendo,lo HAGOcalificando el nombre de la clase usuario con el espacio de nombres al que pertenece. 
+                        
+                        //le pasamos los valores comunes que se paan cuando se carga pro primaera vez el formualrio 
+                        FrmGestionarUsuario_Load(this, EventArgs.Empty);//vuelvo a cargar el formualrio desde el principio permitiendome volver a cargar el dataGrid con los datos actulizados es decir co nel usuario dado de alta en este caso
 
                         limpiartxtDato();//limpio los campos del panel de datos 
                     }
