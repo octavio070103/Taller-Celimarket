@@ -3,7 +3,18 @@
 
 ALTER PROCEDURE SP_ProductosMasVendidos
 AS
-select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
+select TOP 5 Marca.Nombre+' - '+ producto.nombre_producto as Producto, SUM(detalle_venta.cantidad_detalle_venta) as Cantidad_vendida
+	from detalle_venta
+	inner join producto on detalle_venta.id_producto = producto.id_producto
+	inner join categoria on categoria.id_categoria = producto.id_categoria
+	inner join marca on marca.Id_Marca = producto.Id_Marca
+	group by detalle_venta.id_producto, Marca.Nombre, producto.nombre_producto
+	order by Cantidad_vendida DESC
+GO
+/*
+ALTER PROCEDURE SP_ProductosMasVendidos -- select * from detalle_venta
+AS
+select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, SUM(detalle_venta.cantidad_detalle_venta) as Cantidad_vendida
 	from detalle_venta
 	inner join producto on detalle_venta.id_producto = producto.id_producto
 	inner join categoria on categoria.id_categoria = producto.id_categoria
@@ -12,6 +23,7 @@ select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, coun
 	order by Cantidad_vendida DESC
 GO
 
+*/
 
 -- ***** POR PERIODOS *****
 
@@ -21,14 +33,14 @@ CREATE PROCEDURE SP_ProductosMasVendidosPorPeriodo
 	@fechaFinPer DATE
 )
 AS
-select TOP 5 Marca.Nombre+' - '+ producto.descripcion_producto as Producto, count(detalle_venta.id_producto) as Cantidad_vendida
+select TOP 5 Marca.Nombre+' - '+ producto.nombre_producto as Producto, SUM(detalle_venta.cantidad_detalle_venta) as Cantidad_vendida
 	from detalle_venta
 	inner join producto on detalle_venta.id_producto = producto.id_producto
 	inner join categoria on categoria.id_categoria = producto.id_categoria
 	inner join marca on marca.Id_Marca = producto.Id_Marca
 
 	WHERE fecha_creacion_detalle_venta BETWEEN @fechaInicioPer AND @fechaFinPer
-	group by detalle_venta.id_producto, Marca.Nombre, producto.descripcion_producto
+	group by detalle_venta.id_producto, Marca.Nombre, producto.nombre_producto
 	order by Cantidad_vendida DESC
 GO
 
