@@ -268,16 +268,15 @@ CREATE PROCEDURE SP_VendedoresMasVentas
 )
 AS
   BEGIN
-	SELECT TOP 5 V.id_usuario AS 'ID Usuario', P.apellido+' '+P.nombre AS 'Vendedor', 
-		   COUNT(V.id_usuario) AS 'Total' FROM venta AS V
+	SELECT TOP 5 P.apellido+' '+P.nombre AS 'Vendedor', COUNT(V.id_usuario) AS 'Total' FROM venta AS V
 	INNER JOIN usuario AS Us on Us.id_usuario = V.id_usuario
 	INNER JOIN persona AS P on P.id_persona = Us.id_persona
 	WHERE V.venta_fecha BETWEEN @fechaInicioPer AND @fechaFinPer
 
-	GROUP BY V.id_usuario, P.apellido+' '+P.nombre
+	GROUP BY P.apellido+' '+P.nombre
 	ORDER BY COUNT(V.id_usuario) DESC
   END
 GO
-
+--- Este ultimo procedimiento se modifico 14/11 02:58
 
 --select * from usuario

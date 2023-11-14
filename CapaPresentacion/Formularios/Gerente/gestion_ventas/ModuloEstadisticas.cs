@@ -13,6 +13,7 @@ using System.Collections;
 using CapaLogica;
 using DocumentFormat.OpenXml.Office.Word;
 using capaEntidad;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 {
@@ -156,13 +157,18 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
+            DateTime fechaDesde = dtpFechaInicio.Value.Date;
+            DateTime fechaHasta = dtpFechaFin.Value.Date;
+
             CL_Venta auxVenta = new CL_Venta();
-            string[] datosNegocio = auxVenta.obtenerDatosNegocioPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
-            List<productoMasVendido> listaProductos = auxVenta.productosMasVendidosPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
-            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(dtpFechaInicio.Value.Date, dtpFechaFin.Value.Date);
+            string[] datosNegocio = auxVenta.obtenerDatosNegocioPorPeriodo(fechaDesde, fechaHasta);
+            List<productoMasVendido> listaProductos = auxVenta.productosMasVendidosPorPeriodo(fechaDesde, fechaHasta);
+            List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaDesde, fechaHasta);
+            List<vendedorMasVentas> listaVendedores = auxVenta.vendedoresMasVentasPeriodo(fechaDesde, fechaHasta);
+
 
             asignarDatos(datosNegocio);
-            cargarGraficos(listaProductos, listaCategorias);
+            cargarGraficos(listaProductos, listaCategorias, listaVendedores);
 
         }
 
@@ -177,7 +183,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             lblNroProdu.Text = pDatosNegocio[5];
         }
 
-        private void cargarGraficos(List<productoMasVendido> pListaProd, List<categoriaMasVendida> pListaCate)
+        private void cargarGraficos(List<productoMasVendido> pListaProd, List<categoriaMasVendida> pListaCate, List<vendedorMasVentas> pListaVendedores)
         {
             // **** GRAFICO DE PRODUCTOS MAS VENDIDOS ****
             List<string> nombresProducto = pListaProd.Select(p => p.nombreProducto).ToList();
@@ -191,6 +197,15 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 
             chartCategoriasVen.Series[0].Points.DataBindXY(nombresCategorias, cantVendidasCate);
 
+            // **** GRAFICO DE VENDEDORES CON MAS VENTAS ****
+            List<string> nombresVendedores = pListaVendedores.Select(p => p.nombreVendedor).ToList();
+            List<int> cantidadVendidaVen = pListaVendedores.Select(p => p.cantidadVentas).ToList();
+
+            //Series serieVende = new Series("Ventas por vendedor");
+            //chartVendedores.Series.Add(serieVende);
+            //serieVende.Points.DataBindXY(nombresVendedores, cantidadVendidaVen);
+
+            chartVendedores.Series[0].Points.DataBindXY(nombresVendedores, cantidadVendidaVen);
         }
 
 
@@ -215,8 +230,11 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             // *** Categorias mas vendidas ***
             List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
 
+            // **** Vendedores con mas ventas ***
+            List<vendedorMasVentas> listaVendedores = auxVenta.vendedoresMasVentasPeriodo(fechaInicio, fechaFin);
+
             asignarDatos(auxDatos);
-            cargarGraficos(listaProd, listaCategorias);
+            cargarGraficos(listaProd, listaCategorias, listaVendedores);
         }
 
         private void btnFiltroTreinta_Click(object sender, EventArgs e)
@@ -233,8 +251,11 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             // *** Categorias mas vendidas ***
             List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
 
+            // **** Vendedores con mas ventas ***
+            List<vendedorMasVentas> listaVendedores = auxVenta.vendedoresMasVentasPeriodo(fechaInicio, fechaFin);
+
             asignarDatos(auxDatos);
-            cargarGraficos(listaProd, listaCategorias);
+            cargarGraficos(listaProd, listaCategorias, listaVendedores);
         }
 
         private void btnFiltroNove_Click(object sender, EventArgs e)
@@ -251,8 +272,11 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             // *** Categorias mas vendidas ***
             List<categoriaMasVendida> listaCategorias = auxVenta.categoriasMasVendidasPorPeriodo(fechaInicio, fechaFin);
 
+            // **** Vendedores con mas ventas ***
+            List<vendedorMasVentas> listaVendedores = auxVenta.vendedoresMasVentasPeriodo(fechaInicio, fechaFin);
+
             asignarDatos(auxDatos);
-            cargarGraficos(listaProd, listaCategorias);
+            cargarGraficos(listaProd, listaCategorias, listaVendedores);
         }
 
         private void btnFiltroHisto_Click(object sender, EventArgs e)
