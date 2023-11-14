@@ -32,45 +32,59 @@
             panel1 = new Panel();
             lblListaConsultas = new Label();
             tabControl1 = new TabControl();
-            tabPageCaja = new TabPage();
+            tabPageCajaApertura = new TabPage();
             panel2 = new Panel();
-            dataGridView1 = new DataGridView();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            label1 = new Label();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
-            iconBtnAbrirCaja = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
-            label2 = new Label();
-            textBox2 = new TextBox();
-            label3 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
-            textBox4 = new TextBox();
-            label5 = new Label();
-            comboBox1 = new ComboBox();
+            txtRolUsuAper = new TextBox();
             label6 = new Label();
+            dataGridMovEnCaja = new DataGridView();
+            id_venta = new DataGridViewTextBoxColumn();
+            venta_fecha = new DataGridViewTextBoxColumn();
+            id_cliente = new DataGridViewTextBoxColumn();
+            dni_cliente = new DataGridViewTextBoxColumn();
+            nombre_cliente = new DataGridViewTextBoxColumn();
+            id_usuario = new DataGridViewTextBoxColumn();
+            Dni_usuario = new DataGridViewTextBoxColumn();
+            nombre_usuario = new DataGridViewTextBoxColumn();
+            id_apertura_caja = new DataGridViewTextBoxColumn();
+            id_producto = new DataGridViewTextBoxColumn();
+            nombre_producto = new DataGridViewTextBoxColumn();
+            cantidad_detalle_venta = new DataGridViewTextBoxColumn();
+            subtotal_detalle_venta = new DataGridViewTextBoxColumn();
+            lblTituloDatelleMov = new Label();
+            BtnRegresarApertura = new FontAwesome.Sharp.IconButton();
+            iconBtnAbrirCaja = new FontAwesome.Sharp.IconButton();
+            txtUsuAper = new TextBox();
+            label2 = new Label();
+            txtTipoMovimientoAper = new TextBox();
+            label3 = new Label();
+            txtMontoApertura = new TextBox();
+            label4 = new Label();
+            txtFechaApertura = new TextBox();
+            label5 = new Label();
             tabPageCerrarCaja = new TabPage();
             panel4 = new Panel();
-            iconBtnImprimir = new FontAwesome.Sharp.IconButton();
-            label20 = new Label();
-            label19 = new Label();
-            label18 = new Label();
+            panelDatosCajaCerra = new Panel();
             label17 = new Label();
-            label16 = new Label();
-            label15 = new Label();
-            label13 = new Label();
             label12 = new Label();
+            lblDiferencia = new Label();
+            lblFechaApertura = new Label();
+            label15 = new Label();
+            label21 = new Label();
+            lblMontoCierre = new Label();
+            lblUsuAper = new Label();
+            label19 = new Label();
+            label13 = new Label();
+            lblNumVentas = new Label();
+            lblMontoInicial = new Label();
+            txtMontoCaja = new TextBox();
+            label1 = new Label();
+            txtFechaCierre = new TextBox();
+            iconBtnImprimir = new FontAwesome.Sharp.IconButton();
             iconButton5 = new FontAwesome.Sharp.IconButton();
             label11 = new Label();
-            textBox5 = new TextBox();
+            txtUsuCierre = new TextBox();
             label10 = new Label();
             label9 = new Label();
-            dateTimePicker1 = new DateTimePicker();
             dataGridView3 = new DataGridView();
             Column_Forma_Pago = new DataGridViewTextBoxColumn();
             Column_total = new DataGridViewTextBoxColumn();
@@ -83,17 +97,18 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             label8 = new Label();
-            iconBtnRegresar = new FontAwesome.Sharp.IconButton();
+            iconBtnRegresarCierre = new FontAwesome.Sharp.IconButton();
             iconBtnCerrarCaja = new FontAwesome.Sharp.IconButton();
             panel3 = new Panel();
             label7 = new Label();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
-            tabPageCaja.SuspendLayout();
+            tabPageCajaApertura.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridMovEnCaja).BeginInit();
             tabPageCerrarCaja.SuspendLayout();
             panel4.SuspendLayout();
+            panelDatosCajaCerra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel3.SuspendLayout();
@@ -125,121 +140,201 @@
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPageCaja);
+            tabControl1.Controls.Add(tabPageCajaApertura);
             tabControl1.Controls.Add(tabPageCerrarCaja);
             tabControl1.Location = new Point(-1, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(839, 607);
             tabControl1.TabIndex = 4;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
-            // tabPageCaja
+            // tabPageCajaApertura
             // 
-            tabPageCaja.Controls.Add(panel2);
-            tabPageCaja.Controls.Add(panel1);
-            tabPageCaja.Location = new Point(4, 24);
-            tabPageCaja.Name = "tabPageCaja";
-            tabPageCaja.Padding = new Padding(3);
-            tabPageCaja.Size = new Size(831, 579);
-            tabPageCaja.TabIndex = 0;
-            tabPageCaja.Text = "Caja";
-            tabPageCaja.UseVisualStyleBackColor = true;
+            tabPageCajaApertura.Controls.Add(panel2);
+            tabPageCajaApertura.Controls.Add(panel1);
+            tabPageCajaApertura.Location = new Point(4, 24);
+            tabPageCajaApertura.Name = "tabPageCajaApertura";
+            tabPageCajaApertura.Padding = new Padding(3);
+            tabPageCajaApertura.Size = new Size(831, 579);
+            tabPageCajaApertura.TabIndex = 0;
+            tabPageCajaApertura.Text = "Apertura Caja";
+            tabPageCajaApertura.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
+            panel2.AutoScroll = true;
             panel2.BackColor = Color.Gainsboro;
-            panel2.Controls.Add(dataGridView1);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(iconButton1);
-            panel2.Controls.Add(iconBtnAbrirCaja);
-            panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(textBox2);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(textBox3);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(textBox4);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(comboBox1);
+            panel2.Controls.Add(txtRolUsuAper);
             panel2.Controls.Add(label6);
-            panel2.Dock = DockStyle.Fill;
+            panel2.Controls.Add(dataGridMovEnCaja);
+            panel2.Controls.Add(lblTituloDatelleMov);
+            panel2.Controls.Add(BtnRegresarApertura);
+            panel2.Controls.Add(iconBtnAbrirCaja);
+            panel2.Controls.Add(txtUsuAper);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(txtTipoMovimientoAper);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(txtMontoApertura);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(txtFechaApertura);
+            panel2.Controls.Add(label5);
             panel2.Location = new Point(3, 75);
             panel2.Name = "panel2";
             panel2.Size = new Size(825, 501);
             panel2.TabIndex = 5;
             // 
-            // dataGridView1
+            // txtRolUsuAper
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewTextBoxColumn12 });
-            dataGridView1.Location = new Point(385, 64);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(542, 227);
-            dataGridView1.TabIndex = 16;
+            txtRolUsuAper.Location = new Point(44, 107);
+            txtRolUsuAper.Name = "txtRolUsuAper";
+            txtRolUsuAper.ReadOnly = true;
+            txtRolUsuAper.Size = new Size(254, 23);
+            txtRolUsuAper.TabIndex = 18;
             // 
-            // dataGridViewTextBoxColumn7
+            // label6
             // 
-            dataGridViewTextBoxColumn7.HeaderText = "Movimiento";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(44, 79);
+            label6.Name = "label6";
+            label6.Size = new Size(137, 25);
+            label6.TabIndex = 17;
+            label6.Text = "Rol del usuario";
             // 
-            // dataGridViewTextBoxColumn8
+            // dataGridMovEnCaja
             // 
-            dataGridViewTextBoxColumn8.HeaderText = "Monto";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridMovEnCaja.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridMovEnCaja.Columns.AddRange(new DataGridViewColumn[] { id_venta, venta_fecha, id_cliente, dni_cliente, nombre_cliente, id_usuario, Dni_usuario, nombre_usuario, id_apertura_caja, id_producto, nombre_producto, cantidad_detalle_venta, subtotal_detalle_venta });
+            dataGridMovEnCaja.Location = new Point(355, 64);
+            dataGridMovEnCaja.Name = "dataGridMovEnCaja";
+            dataGridMovEnCaja.RowTemplate.Height = 25;
+            dataGridMovEnCaja.Size = new Size(470, 227);
+            dataGridMovEnCaja.TabIndex = 16;
             // 
-            // dataGridViewTextBoxColumn9
+            // id_venta
             // 
-            dataGridViewTextBoxColumn9.HeaderText = "Tipo Documento";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            id_venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_venta.HeaderText = "id_venta";
+            id_venta.Name = "id_venta";
+            id_venta.Visible = false;
             // 
-            // dataGridViewTextBoxColumn10
+            // venta_fecha
             // 
-            dataGridViewTextBoxColumn10.HeaderText = "Serie";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            venta_fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            venta_fecha.HeaderText = "Fecha de la Venta";
+            venta_fecha.MinimumWidth = 70;
+            venta_fecha.Name = "venta_fecha";
             // 
-            // dataGridViewTextBoxColumn11
+            // id_cliente
             // 
-            dataGridViewTextBoxColumn11.HeaderText = "Correlativo";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            id_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_cliente.HeaderText = "id_cliente";
+            id_cliente.Name = "id_cliente";
+            id_cliente.Visible = false;
             // 
-            // dataGridViewTextBoxColumn12
+            // dni_cliente
             // 
-            dataGridViewTextBoxColumn12.HeaderText = "Observacion";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dni_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dni_cliente.HeaderText = "Dni del cliente";
+            dni_cliente.MinimumWidth = 100;
+            dni_cliente.Name = "dni_cliente";
             // 
-            // label1
+            // nombre_cliente
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(385, 21);
-            label1.Name = "label1";
-            label1.Size = new Size(211, 25);
-            label1.TabIndex = 15;
-            label1.Text = "Detalle de Movimientos";
+            nombre_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre_cliente.HeaderText = "nombre del cliente";
+            nombre_cliente.MinimumWidth = 100;
+            nombre_cliente.Name = "nombre_cliente";
             // 
-            // iconButton1
+            // id_usuario
             // 
-            iconButton1.BackColor = Color.Orange;
-            iconButton1.BackgroundImage = (Image)resources.GetObject("iconButton1.BackgroundImage");
-            iconButton1.BackgroundImageLayout = ImageLayout.None;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconButton1.ForeColor = Color.Black;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(184, 353);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(105, 38);
-            iconButton1.TabIndex = 14;
-            iconButton1.Text = "Regresar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            id_usuario.HeaderText = "id_usuario";
+            id_usuario.Name = "id_usuario";
+            id_usuario.Visible = false;
+            // 
+            // Dni_usuario
+            // 
+            Dni_usuario.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Dni_usuario.HeaderText = "Dni del usuario";
+            Dni_usuario.MinimumWidth = 150;
+            Dni_usuario.Name = "Dni_usuario";
+            // 
+            // nombre_usuario
+            // 
+            nombre_usuario.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre_usuario.HeaderText = "nombre del usuario";
+            nombre_usuario.MinimumWidth = 170;
+            nombre_usuario.Name = "nombre_usuario";
+            // 
+            // id_apertura_caja
+            // 
+            id_apertura_caja.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_apertura_caja.HeaderText = "id_apertura_caja";
+            id_apertura_caja.Name = "id_apertura_caja";
+            id_apertura_caja.Visible = false;
+            // 
+            // id_producto
+            // 
+            id_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_producto.HeaderText = "id_producto";
+            id_producto.Name = "id_producto";
+            id_producto.Visible = false;
+            // 
+            // nombre_producto
+            // 
+            nombre_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre_producto.HeaderText = "Nombre del producto";
+            nombre_producto.MinimumWidth = 150;
+            nombre_producto.Name = "nombre_producto";
+            // 
+            // cantidad_detalle_venta
+            // 
+            cantidad_detalle_venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cantidad_detalle_venta.HeaderText = "Cantidad Venta";
+            cantidad_detalle_venta.MinimumWidth = 70;
+            cantidad_detalle_venta.Name = "cantidad_detalle_venta";
+            // 
+            // subtotal_detalle_venta
+            // 
+            subtotal_detalle_venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            subtotal_detalle_venta.HeaderText = "subotal de la venta";
+            subtotal_detalle_venta.MinimumWidth = 70;
+            subtotal_detalle_venta.Name = "subtotal_detalle_venta";
+            // 
+            // lblTituloDatelleMov
+            // 
+            lblTituloDatelleMov.AutoSize = true;
+            lblTituloDatelleMov.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTituloDatelleMov.Location = new Point(355, 21);
+            lblTituloDatelleMov.Name = "lblTituloDatelleMov";
+            lblTituloDatelleMov.Size = new Size(299, 25);
+            lblTituloDatelleMov.TabIndex = 15;
+            lblTituloDatelleMov.Text = "Detalle de Movimientos En la Caja";
+            // 
+            // BtnRegresarApertura
+            // 
+            BtnRegresarApertura.BackColor = Color.Orange;
+            BtnRegresarApertura.BackgroundImage = (Image)resources.GetObject("BtnRegresarApertura.BackgroundImage");
+            BtnRegresarApertura.BackgroundImageLayout = ImageLayout.None;
+            BtnRegresarApertura.Cursor = Cursors.Hand;
+            BtnRegresarApertura.FlatAppearance.BorderColor = Color.Black;
+            BtnRegresarApertura.FlatStyle = FlatStyle.Flat;
+            BtnRegresarApertura.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnRegresarApertura.ForeColor = Color.Black;
+            BtnRegresarApertura.IconChar = FontAwesome.Sharp.IconChar.None;
+            BtnRegresarApertura.IconColor = Color.White;
+            BtnRegresarApertura.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnRegresarApertura.IconSize = 30;
+            BtnRegresarApertura.Location = new Point(184, 353);
+            BtnRegresarApertura.Name = "BtnRegresarApertura";
+            BtnRegresarApertura.Size = new Size(105, 38);
+            BtnRegresarApertura.TabIndex = 14;
+            BtnRegresarApertura.Text = "Regresar";
+            BtnRegresarApertura.TextAlign = ContentAlignment.MiddleRight;
+            BtnRegresarApertura.TextImageRelation = TextImageRelation.ImageBeforeText;
+            BtnRegresarApertura.UseVisualStyleBackColor = false;
+            BtnRegresarApertura.Click += BtnRegresarApertura_Click;
             // 
             // iconBtnAbrirCaja
             // 
@@ -265,12 +360,13 @@
             iconBtnAbrirCaja.UseVisualStyleBackColor = false;
             iconBtnAbrirCaja.Click += iconBtnAbrirCaja_Click;
             // 
-            // textBox1
+            // txtUsuAper
             // 
-            textBox1.Location = new Point(44, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(254, 23);
-            textBox1.TabIndex = 12;
+            txtUsuAper.Location = new Point(44, 49);
+            txtUsuAper.Name = "txtUsuAper";
+            txtUsuAper.ReadOnly = true;
+            txtUsuAper.Size = new Size(254, 23);
+            txtUsuAper.TabIndex = 12;
             // 
             // label2
             // 
@@ -282,76 +378,58 @@
             label2.TabIndex = 10;
             label2.Text = "Usuario de Turno";
             // 
-            // textBox2
+            // txtTipoMovimientoAper
             // 
-            textBox2.Location = new Point(44, 247);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(254, 23);
-            textBox2.TabIndex = 9;
+            txtTipoMovimientoAper.Location = new Point(44, 235);
+            txtTipoMovimientoAper.Name = "txtTipoMovimientoAper";
+            txtTipoMovimientoAper.ReadOnly = true;
+            txtTipoMovimientoAper.Size = new Size(254, 23);
+            txtTipoMovimientoAper.TabIndex = 9;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(44, 219);
+            label3.Location = new Point(44, 207);
             label3.Name = "label3";
             label3.Size = new Size(181, 25);
             label3.TabIndex = 8;
             label3.Text = "Tipo de Movimiento";
             // 
-            // textBox3
+            // txtMontoApertura
             // 
-            textBox3.Location = new Point(44, 310);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(254, 23);
-            textBox3.TabIndex = 7;
+            txtMontoApertura.Location = new Point(44, 298);
+            txtMontoApertura.Name = "txtMontoApertura";
+            txtMontoApertura.Size = new Size(254, 23);
+            txtMontoApertura.TabIndex = 7;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(44, 282);
+            label4.Location = new Point(44, 270);
             label4.Name = "label4";
             label4.Size = new Size(173, 25);
             label4.TabIndex = 6;
             label4.Text = "Monto de Apertura";
             // 
-            // textBox4
+            // txtFechaApertura
             // 
-            textBox4.Location = new Point(44, 179);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(254, 23);
-            textBox4.TabIndex = 5;
+            txtFechaApertura.Location = new Point(44, 167);
+            txtFechaApertura.Name = "txtFechaApertura";
+            txtFechaApertura.ReadOnly = true;
+            txtFechaApertura.Size = new Size(254, 23);
+            txtFechaApertura.TabIndex = 5;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(44, 151);
+            label5.Location = new Point(44, 139);
             label5.Name = "label5";
             label5.Size = new Size(226, 25);
             label5.TabIndex = 4;
             label5.Text = "Fecha y Hora de Apertura";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "CAJA-01", "CAJA-02", "CAJA-03" });
-            comboBox1.Location = new Point(44, 114);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(254, 23);
-            comboBox1.TabIndex = 3;
-            comboBox1.Text = "   Seleccione una caja";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(44, 86);
-            label6.Name = "label6";
-            label6.Size = new Size(49, 25);
-            label6.TabIndex = 2;
-            label6.Text = "Caja";
             // 
             // tabPageCerrarCaja
             // 
@@ -367,33 +445,194 @@
             // 
             // panel4
             // 
+            panel4.AutoScroll = true;
             panel4.BackColor = Color.Gainsboro;
+            panel4.Controls.Add(panelDatosCajaCerra);
+            panel4.Controls.Add(txtMontoCaja);
+            panel4.Controls.Add(label1);
+            panel4.Controls.Add(txtFechaCierre);
             panel4.Controls.Add(iconBtnImprimir);
-            panel4.Controls.Add(label20);
-            panel4.Controls.Add(label19);
-            panel4.Controls.Add(label18);
-            panel4.Controls.Add(label17);
-            panel4.Controls.Add(label16);
-            panel4.Controls.Add(label15);
-            panel4.Controls.Add(label13);
-            panel4.Controls.Add(label12);
             panel4.Controls.Add(iconButton5);
             panel4.Controls.Add(label11);
-            panel4.Controls.Add(textBox5);
+            panel4.Controls.Add(txtUsuCierre);
             panel4.Controls.Add(label10);
             panel4.Controls.Add(label9);
-            panel4.Controls.Add(dateTimePicker1);
             panel4.Controls.Add(dataGridView3);
             panel4.Controls.Add(label14);
             panel4.Controls.Add(dataGridView2);
             panel4.Controls.Add(label8);
-            panel4.Controls.Add(iconBtnRegresar);
+            panel4.Controls.Add(iconBtnRegresarCierre);
             panel4.Controls.Add(iconBtnCerrarCaja);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(3, 53);
             panel4.Name = "panel4";
             panel4.Size = new Size(825, 523);
             panel4.TabIndex = 4;
+            // 
+            // panelDatosCajaCerra
+            // 
+            panelDatosCajaCerra.Controls.Add(label17);
+            panelDatosCajaCerra.Controls.Add(label12);
+            panelDatosCajaCerra.Controls.Add(lblDiferencia);
+            panelDatosCajaCerra.Controls.Add(lblFechaApertura);
+            panelDatosCajaCerra.Controls.Add(label15);
+            panelDatosCajaCerra.Controls.Add(label21);
+            panelDatosCajaCerra.Controls.Add(lblMontoCierre);
+            panelDatosCajaCerra.Controls.Add(lblUsuAper);
+            panelDatosCajaCerra.Controls.Add(label19);
+            panelDatosCajaCerra.Controls.Add(label13);
+            panelDatosCajaCerra.Controls.Add(lblNumVentas);
+            panelDatosCajaCerra.Controls.Add(lblMontoInicial);
+            panelDatosCajaCerra.Location = new Point(6, 221);
+            panelDatosCajaCerra.Name = "panelDatosCajaCerra";
+            panelDatosCajaCerra.Size = new Size(393, 218);
+            panelDatosCajaCerra.TabIndex = 43;
+            panelDatosCajaCerra.Visible = false;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.Location = new Point(3, 19);
+            label17.Name = "label17";
+            label17.Size = new Size(157, 21);
+            label17.TabIndex = 35;
+            label17.Text = "Monto De Apertura";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(3, 181);
+            label12.Name = "label12";
+            label12.Size = new Size(89, 21);
+            label12.TabIndex = 25;
+            label12.Text = "Diferencia";
+            // 
+            // lblDiferencia
+            // 
+            lblDiferencia.AutoSize = true;
+            lblDiferencia.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDiferencia.Location = new Point(227, 181);
+            lblDiferencia.Name = "lblDiferencia";
+            lblDiferencia.Size = new Size(131, 21);
+            lblDiferencia.TabIndex = 26;
+            lblDiferencia.Text = "label Diferencia";
+            // 
+            // lblFechaApertura
+            // 
+            lblFechaApertura.AutoSize = true;
+            lblFechaApertura.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFechaApertura.Location = new Point(227, 118);
+            lblFechaApertura.Name = "lblFechaApertura";
+            lblFechaApertura.Size = new Size(129, 21);
+            lblFechaApertura.TabIndex = 40;
+            lblFechaApertura.Text = "labe fecha Aper";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(3, 146);
+            label15.Name = "label15";
+            label15.Size = new Size(102, 21);
+            label15.TabIndex = 27;
+            label15.Text = "Monto Final";
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label21.Location = new Point(3, 118);
+            label21.Name = "label21";
+            label21.Size = new Size(148, 21);
+            label21.TabIndex = 39;
+            label21.Text = "Fecha de Apertura";
+            // 
+            // lblMontoCierre
+            // 
+            lblMontoCierre.AutoSize = true;
+            lblMontoCierre.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMontoCierre.Location = new Point(228, 146);
+            lblMontoCierre.Name = "lblMontoCierre";
+            lblMontoCierre.Size = new Size(150, 21);
+            lblMontoCierre.TabIndex = 28;
+            lblMontoCierre.Text = "label Monto cierre";
+            // 
+            // lblUsuAper
+            // 
+            lblUsuAper.AutoSize = true;
+            lblUsuAper.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblUsuAper.Location = new Point(228, 82);
+            lblUsuAper.Name = "lblUsuAper";
+            lblUsuAper.Size = new Size(115, 21);
+            lblUsuAper.TabIndex = 38;
+            lblUsuAper.Text = "label usuAper";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label19.Location = new Point(3, 51);
+            label19.Name = "label19";
+            label19.Size = new Size(182, 21);
+            label19.TabIndex = 31;
+            label19.Text = "Transacciones / Ventas";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(3, 82);
+            label13.Name = "label13";
+            label13.Size = new Size(209, 21);
+            label13.TabIndex = 37;
+            label13.Text = "Usuario de turno Apertura";
+            // 
+            // lblNumVentas
+            // 
+            lblNumVentas.AutoSize = true;
+            lblNumVentas.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNumVentas.Location = new Point(227, 51);
+            lblNumVentas.Name = "lblNumVentas";
+            lblNumVentas.Size = new Size(145, 21);
+            lblNumVentas.TabIndex = 32;
+            lblNumVentas.Text = "label Num Ventas";
+            // 
+            // lblMontoInicial
+            // 
+            lblMontoInicial.AutoSize = true;
+            lblMontoInicial.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblMontoInicial.Location = new Point(227, 19);
+            lblMontoInicial.Name = "lblMontoInicial";
+            lblMontoInicial.Size = new Size(154, 21);
+            lblMontoInicial.TabIndex = 36;
+            lblMontoInicial.Text = "label saldo Ingreso";
+            // 
+            // txtMontoCaja
+            // 
+            txtMontoCaja.Location = new Point(17, 150);
+            txtMontoCaja.Name = "txtMontoCaja";
+            txtMontoCaja.Size = new Size(233, 23);
+            txtMontoCaja.TabIndex = 42;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(17, 126);
+            label1.Name = "label1";
+            label1.Size = new Size(144, 21);
+            label1.TabIndex = 41;
+            label1.Text = "Monto De La Caja";
+            // 
+            // txtFechaCierre
+            // 
+            txtFechaCierre.Location = new Point(17, 34);
+            txtFechaCierre.Name = "txtFechaCierre";
+            txtFechaCierre.ReadOnly = true;
+            txtFechaCierre.Size = new Size(233, 23);
+            txtFechaCierre.TabIndex = 34;
             // 
             // iconBtnImprimir
             // 
@@ -409,7 +648,7 @@
             iconBtnImprimir.IconColor = Color.White;
             iconBtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnImprimir.IconSize = 30;
-            iconBtnImprimir.Location = new Point(566, 445);
+            iconBtnImprimir.Location = new Point(571, 443);
             iconBtnImprimir.Name = "iconBtnImprimir";
             iconBtnImprimir.Size = new Size(105, 38);
             iconBtnImprimir.TabIndex = 33;
@@ -417,86 +656,8 @@
             iconBtnImprimir.TextAlign = ContentAlignment.MiddleRight;
             iconBtnImprimir.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnImprimir.UseVisualStyleBackColor = false;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label20.Location = new Point(222, 296);
-            label20.Name = "label20";
-            label20.Size = new Size(154, 21);
-            label20.TabIndex = 32;
-            label20.Text = "label saldo Ingreso";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label19.Location = new Point(17, 296);
-            label19.Name = "label19";
-            label19.Size = new Size(182, 21);
-            label19.TabIndex = 31;
-            label19.Text = "Transacciones / Ventas";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label18.Location = new Point(222, 255);
-            label18.Name = "label18";
-            label18.Size = new Size(154, 21);
-            label18.TabIndex = 30;
-            label18.Text = "label saldo Ingreso";
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label17.Location = new Point(17, 255);
-            label17.Name = "label17";
-            label17.Size = new Size(67, 21);
-            label17.TabIndex = 29;
-            label17.Text = "Ingreso";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(222, 213);
-            label16.Name = "label16";
-            label16.Size = new Size(165, 21);
-            label16.TabIndex = 28;
-            label16.Text = "label saldo de salida";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label15.Location = new Point(17, 213);
-            label15.Name = "label15";
-            label15.Size = new Size(57, 21);
-            label15.TabIndex = 27;
-            label15.Text = "Salida";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(222, 171);
-            label13.Name = "label13";
-            label13.Size = new Size(93, 21);
-            label13.TabIndex = 26;
-            label13.Text = "label saldo";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(17, 171);
-            label12.Name = "label12";
-            label12.Size = new Size(124, 21);
-            label12.TabIndex = 25;
-            label12.Text = "Saldo Apertura";
+            iconBtnImprimir.Visible = false;
+            iconBtnImprimir.Click += iconBtnImprimir_Click;
             // 
             // iconButton5
             // 
@@ -505,7 +666,7 @@
             iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
             iconButton5.IconColor = Color.Black;
             iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton5.Location = new Point(88, 135);
+            iconButton5.Location = new Point(124, 191);
             iconButton5.Name = "iconButton5";
             iconButton5.Size = new Size(75, 23);
             iconButton5.TabIndex = 24;
@@ -516,18 +677,19 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.Location = new Point(17, 134);
+            label11.Location = new Point(17, 191);
             label11.Name = "label11";
-            label11.Size = new Size(65, 21);
+            label11.Size = new Size(102, 21);
             label11.TabIndex = 23;
-            label11.Text = "Estado:";
+            label11.Text = "Estado Caja:";
             // 
-            // textBox5
+            // txtUsuCierre
             // 
-            textBox5.Location = new Point(17, 96);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(233, 23);
-            textBox5.TabIndex = 22;
+            txtUsuCierre.Location = new Point(17, 96);
+            txtUsuCierre.Name = "txtUsuCierre";
+            txtUsuCierre.ReadOnly = true;
+            txtUsuCierre.Size = new Size(233, 23);
+            txtUsuCierre.TabIndex = 22;
             // 
             // label10
             // 
@@ -545,22 +707,15 @@
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label9.Location = new Point(17, 10);
             label9.Name = "label9";
-            label9.Size = new Size(114, 21);
+            label9.Size = new Size(186, 21);
             label9.TabIndex = 20;
-            label9.Text = "Fecha de Caja";
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(17, 34);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(233, 23);
-            dateTimePicker1.TabIndex = 19;
+            label9.Text = "Fecha de Cierre de Caja";
             // 
             // dataGridView3
             // 
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { Column_Forma_Pago, Column_total });
-            dataGridView3.Location = new Point(405, 289);
+            dataGridView3.Location = new Point(410, 293);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.RowTemplate.Height = 25;
             dataGridView3.Size = new Size(410, 144);
@@ -584,7 +739,7 @@
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(405, 261);
+            label14.Location = new Point(410, 258);
             label14.Name = "label14";
             label14.Size = new Size(266, 25);
             label14.TabIndex = 17;
@@ -640,28 +795,29 @@
             label8.TabIndex = 15;
             label8.Text = "Detalle de Movimientos Del Dia";
             // 
-            // iconBtnRegresar
+            // iconBtnRegresarCierre
             // 
-            iconBtnRegresar.BackColor = Color.Orange;
-            iconBtnRegresar.BackgroundImage = (Image)resources.GetObject("iconBtnRegresar.BackgroundImage");
-            iconBtnRegresar.BackgroundImageLayout = ImageLayout.None;
-            iconBtnRegresar.Cursor = Cursors.Hand;
-            iconBtnRegresar.FlatAppearance.BorderColor = Color.Black;
-            iconBtnRegresar.FlatStyle = FlatStyle.Flat;
-            iconBtnRegresar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnRegresar.ForeColor = Color.Black;
-            iconBtnRegresar.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnRegresar.IconColor = Color.White;
-            iconBtnRegresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnRegresar.IconSize = 30;
-            iconBtnRegresar.Location = new Point(210, 445);
-            iconBtnRegresar.Name = "iconBtnRegresar";
-            iconBtnRegresar.Size = new Size(105, 38);
-            iconBtnRegresar.TabIndex = 14;
-            iconBtnRegresar.Text = "Regresar";
-            iconBtnRegresar.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnRegresar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnRegresar.UseVisualStyleBackColor = false;
+            iconBtnRegresarCierre.BackColor = Color.Orange;
+            iconBtnRegresarCierre.BackgroundImage = (Image)resources.GetObject("iconBtnRegresarCierre.BackgroundImage");
+            iconBtnRegresarCierre.BackgroundImageLayout = ImageLayout.None;
+            iconBtnRegresarCierre.Cursor = Cursors.Hand;
+            iconBtnRegresarCierre.FlatAppearance.BorderColor = Color.Black;
+            iconBtnRegresarCierre.FlatStyle = FlatStyle.Flat;
+            iconBtnRegresarCierre.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnRegresarCierre.ForeColor = Color.Black;
+            iconBtnRegresarCierre.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnRegresarCierre.IconColor = Color.White;
+            iconBtnRegresarCierre.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnRegresarCierre.IconSize = 30;
+            iconBtnRegresarCierre.Location = new Point(210, 445);
+            iconBtnRegresarCierre.Name = "iconBtnRegresarCierre";
+            iconBtnRegresarCierre.Size = new Size(105, 38);
+            iconBtnRegresarCierre.TabIndex = 14;
+            iconBtnRegresarCierre.Text = "Regresar";
+            iconBtnRegresarCierre.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnRegresarCierre.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnRegresarCierre.UseVisualStyleBackColor = false;
+            iconBtnRegresarCierre.Click += iconBtnRegresarCierre_Click;
             // 
             // iconBtnCerrarCaja
             // 
@@ -704,7 +860,7 @@
             label7.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = SystemColors.ControlLightLight;
             label7.ImageAlign = ContentAlignment.TopCenter;
-            label7.Location = new Point(240, -3);
+            label7.Location = new Point(274, 0);
             label7.Name = "label7";
             label7.Size = new Size(227, 45);
             label7.TabIndex = 1;
@@ -721,16 +877,19 @@
             MinimumSize = new Size(838, 604);
             Name = "FrmApertYCierreCaja";
             Text = "Administrar Caja";
+            Load += FrmApertYCierreCaja_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             tabControl1.ResumeLayout(false);
-            tabPageCaja.ResumeLayout(false);
+            tabPageCajaApertura.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridMovEnCaja).EndInit();
             tabPageCerrarCaja.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panelDatosCajaCerra.ResumeLayout(false);
+            panelDatosCajaCerra.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             panel3.ResumeLayout(false);
@@ -743,31 +902,23 @@
         private Panel panel1;
         private Label lblListaConsultas;
         private TabControl tabControl1;
-        private TabPage tabPageCaja;
+        private TabPage tabPageCajaApertura;
         private TabPage tabPageCerrarCaja;
         private Panel panel3;
         private Label label7;
         private Panel panel2;
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private Label label1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private DataGridView dataGridMovEnCaja;
+        private Label lblTituloDatelleMov;
+        private FontAwesome.Sharp.IconButton BtnRegresarApertura;
         private FontAwesome.Sharp.IconButton iconBtnAbrirCaja;
-        private TextBox textBox1;
+        private TextBox txtUsuAper;
         private Label label2;
-        private TextBox textBox2;
+        private TextBox txtTipoMovimientoAper;
         private Label label3;
-        private TextBox textBox3;
+        private TextBox txtMontoApertura;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox txtFechaApertura;
         private Label label5;
-        private ComboBox comboBox1;
-        private Label label6;
         private Panel panel4;
         private DataGridView dataGridView3;
         private DataGridViewTextBoxColumn Column_Forma_Pago;
@@ -781,22 +932,46 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private Label label8;
-        private FontAwesome.Sharp.IconButton iconBtnRegresar;
+        private FontAwesome.Sharp.IconButton iconBtnRegresarCierre;
         private FontAwesome.Sharp.IconButton iconBtnCerrarCaja;
         private FontAwesome.Sharp.IconButton iconButton5;
         private Label label11;
-        private TextBox textBox5;
+        private TextBox txtUsuCierre;
         private Label label10;
         private Label label9;
-        private DateTimePicker dateTimePicker1;
-        private Label label20;
+        private Label lblNumVentas;
         private Label label19;
-        private Label label18;
-        private Label label17;
-        private Label label16;
+        private Label lblMontoCierre;
         private Label label15;
-        private Label label13;
+        private Label lblDiferencia;
         private Label label12;
         private FontAwesome.Sharp.IconButton iconBtnImprimir;
+        private TextBox txtRolUsuAper;
+        private Label label6;
+        private TextBox txtFechaCierre;
+        private Label lblMontoInicial;
+        private Label label17;
+        private TabPage tabPageAperturaCaja;
+        private TabPage tabPagCerrarCaja;
+        private DataGridViewTextBoxColumn id_venta;
+        private DataGridViewTextBoxColumn venta_fecha;
+        private DataGridViewTextBoxColumn id_cliente;
+        private DataGridViewTextBoxColumn dni_cliente;
+        private DataGridViewTextBoxColumn nombre_cliente;
+        private DataGridViewTextBoxColumn id_usuario;
+        private DataGridViewTextBoxColumn Dni_usuario;
+        private DataGridViewTextBoxColumn nombre_usuario;
+        private DataGridViewTextBoxColumn id_apertura_caja;
+        private DataGridViewTextBoxColumn id_producto;
+        private DataGridViewTextBoxColumn nombre_producto;
+        private DataGridViewTextBoxColumn cantidad_detalle_venta;
+        private DataGridViewTextBoxColumn subtotal_detalle_venta;
+        private Label lblUsuAper;
+        private Label label13;
+        private Label lblFechaApertura;
+        private Label label21;
+        private TextBox txtMontoCaja;
+        private Label label1;
+        private Panel panelDatosCajaCerra;
     }
 }

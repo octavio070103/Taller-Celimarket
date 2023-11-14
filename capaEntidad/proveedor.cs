@@ -15,6 +15,7 @@ namespace capaEntidad
         public string email {  get; set; }
         public int telefono { get; set; }
         public bool estado_proveedor { get; set; }
+        public DateTime fecha_creacion_proveedor { get; set; }
 
     }
 }

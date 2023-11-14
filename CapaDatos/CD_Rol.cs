@@ -29,7 +29,7 @@ namespace CapaDatos
                     //creamo un obj query de tipo StringBuilder para cosntruit la consulta SQL
                     StringBuilder query = new StringBuilder();
                     //se agrega la consulta a query usando el método AppendLine
-                    query.AppendLine("SELECT id_rol, descripcion_rol FROM rol");
+                    query.AppendLine("SELECT id_rol, nombre_rol FROM rol");
 
                     //creo un obj cmd de tipo sqlcommand este objeto se utiliza para ejecutar comandos SQL en la base de datos. 
                     //Toma dos argumentos: la consulta SQL query(que la construimos como una cadena con el toString) o consulta nueva que se ejecutará y la conexión a la base de datos s decir el nuestro obj de tipo sql conenectrion que creamois llamado objConexion 
@@ -45,7 +45,7 @@ namespace CapaDatos
                             listaRol.Add(new rol
                             {
                                 id_rol = Convert.ToInt32(dr["id_rol"]),
-                                descripcion_rol = dr["descripcion_rol"].ToString()
+                                nombre_rol = dr["nombre_rol"].ToString()
 
                             }) ;
                         }
@@ -62,6 +62,41 @@ namespace CapaDatos
             }
             return listaRol; // Devolvemos la listaRol con los obj cargados y sino se encontro nada vendra vacia
 
+        }
+
+        public int obtenerIDRolSeleccionada(string nombre_rol)
+        {
+            int id_RolObtenido = 0; // Inicializa la variable a devolverque va a contener el valor del id_rol obteneido apartir del nombre del rol
+
+            using (SqlConnection obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                try
+                {
+                    // Consulta SQL parametrizada
+                    string query = "SELECT r.id_rol FROM rol r WHERE r.nombre_rol = @nombre_rol";
+
+                    using (SqlCommand cmd = new SqlCommand(query, obj_conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@nombre_rol", nombre_rol);
+                        obj_conexion.Open();
+
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.Read())
+                            {
+                                id_RolObtenido = dr.GetInt32(0); // Lee el valor del primer campo (en este caso, id_categoria)
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+            }
+
+            return id_RolObtenido;
         }
     }
 }

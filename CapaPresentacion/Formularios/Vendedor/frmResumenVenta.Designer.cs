@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResumenVenta));
-            panel1 = new Panel();
+            pnlResumen = new Panel();
             btnCancelar = new Button();
             btnConfirmar = new Button();
             lblTotalRes = new Label();
@@ -45,6 +45,7 @@
             precio_resumen = new DataGridViewTextBoxColumn();
             categoria_resumen = new DataGridViewTextBoxColumn();
             subtotal_resumen = new DataGridViewTextBoxColumn();
+            id_producto_resumen = new DataGridViewTextBoxColumn();
             pnlBarraClientes = new Panel();
             pictureBox2 = new PictureBox();
             pictureBox5 = new PictureBox();
@@ -56,7 +57,7 @@
             picMaxPantalla = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
-            panel1.SuspendLayout();
+            pnlResumen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResumen).BeginInit();
             pnlBarraClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -71,25 +72,25 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // pnlResumen
             // 
-            panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(btnCancelar);
-            panel1.Controls.Add(btnConfirmar);
-            panel1.Controls.Add(lblTotalRes);
-            panel1.Controls.Add(lblTotal);
-            panel1.Controls.Add(lblMetodoPago);
-            panel1.Controls.Add(lblNombreCli);
-            panel1.Controls.Add(lblMetodoRes);
-            panel1.Controls.Add(lblClienteRes);
-            panel1.Controls.Add(lblResumen);
-            panel1.Controls.Add(dtgvResumen);
-            panel1.Controls.Add(pnlBarraClientes);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(702, 511);
-            panel1.TabIndex = 0;
+            pnlResumen.BackColor = Color.SteelBlue;
+            pnlResumen.Controls.Add(btnCancelar);
+            pnlResumen.Controls.Add(btnConfirmar);
+            pnlResumen.Controls.Add(lblTotalRes);
+            pnlResumen.Controls.Add(lblTotal);
+            pnlResumen.Controls.Add(lblMetodoPago);
+            pnlResumen.Controls.Add(lblNombreCli);
+            pnlResumen.Controls.Add(lblMetodoRes);
+            pnlResumen.Controls.Add(lblClienteRes);
+            pnlResumen.Controls.Add(lblResumen);
+            pnlResumen.Controls.Add(dtgvResumen);
+            pnlResumen.Controls.Add(pnlBarraClientes);
+            pnlResumen.Dock = DockStyle.Fill;
+            pnlResumen.Location = new Point(0, 0);
+            pnlResumen.Name = "pnlResumen";
+            pnlResumen.Size = new Size(702, 511);
+            pnlResumen.TabIndex = 0;
             // 
             // btnCancelar
             // 
@@ -119,6 +120,7 @@
             btnConfirmar.TabIndex = 15;
             btnConfirmar.Text = "Confirmar pago";
             btnConfirmar.UseVisualStyleBackColor = false;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
             // lblTotalRes
             // 
@@ -202,15 +204,20 @@
             // 
             // dtgvResumen
             // 
+            dtgvResumen.AllowUserToAddRows = false;
+            dtgvResumen.AllowUserToDeleteRows = false;
+            dtgvResumen.AllowUserToResizeRows = false;
             dtgvResumen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvResumen.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResumen.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dtgvResumen.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvResumen.Columns.AddRange(new DataGridViewColumn[] { producto_resumen, cantidad_resumen, precio_resumen, categoria_resumen, subtotal_resumen });
+            dtgvResumen.Columns.AddRange(new DataGridViewColumn[] { producto_resumen, cantidad_resumen, precio_resumen, categoria_resumen, subtotal_resumen, id_producto_resumen });
             dtgvResumen.Location = new Point(30, 205);
             dtgvResumen.Name = "dtgvResumen";
+            dtgvResumen.ReadOnly = true;
             dtgvResumen.RowHeadersVisible = false;
             dtgvResumen.RowTemplate.Height = 25;
+            dtgvResumen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvResumen.Size = new Size(642, 211);
             dtgvResumen.TabIndex = 3;
             // 
@@ -225,21 +232,32 @@
             // 
             cantidad_resumen.HeaderText = "Cantidad";
             cantidad_resumen.Name = "cantidad_resumen";
+            cantidad_resumen.ReadOnly = true;
             // 
             // precio_resumen
             // 
             precio_resumen.HeaderText = "Precio";
             precio_resumen.Name = "precio_resumen";
+            precio_resumen.ReadOnly = true;
             // 
             // categoria_resumen
             // 
             categoria_resumen.HeaderText = "Categoria";
             categoria_resumen.Name = "categoria_resumen";
+            categoria_resumen.ReadOnly = true;
             // 
             // subtotal_resumen
             // 
             subtotal_resumen.HeaderText = "Subtotal";
             subtotal_resumen.Name = "subtotal_resumen";
+            subtotal_resumen.ReadOnly = true;
+            // 
+            // id_producto_resumen
+            // 
+            id_producto_resumen.HeaderText = "ID Producto";
+            id_producto_resumen.Name = "id_producto_resumen";
+            id_producto_resumen.ReadOnly = true;
+            id_producto_resumen.Visible = false;
             // 
             // pnlBarraClientes
             // 
@@ -390,11 +408,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(702, 511);
-            Controls.Add(panel1);
+            Controls.Add(pnlResumen);
             Name = "frmResumenVenta";
             Text = "frmResumenVenta";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            pnlResumen.ResumeLayout(false);
+            pnlResumen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResumen).EndInit();
             pnlBarraClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -412,7 +430,7 @@
 
         #endregion
 
-        private Panel panel1;
+        private Panel pnlResumen;
         private Panel pnlBarraClientes;
         private PictureBox picMaximizar;
         private PictureBox picMinimizar;
@@ -423,11 +441,6 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox1;
         private DataGridView dtgvResumen;
-        private DataGridViewTextBoxColumn producto_resumen;
-        private DataGridViewTextBoxColumn cantidad_resumen;
-        private DataGridViewTextBoxColumn precio_resumen;
-        private DataGridViewTextBoxColumn categoria_resumen;
-        private DataGridViewTextBoxColumn subtotal_resumen;
         private PictureBox pictureBox2;
         private PictureBox pictureBox5;
         private Label lblResumen;
@@ -439,5 +452,11 @@
         private Label lblTotalRes;
         private Button btnCancelar;
         private Button btnConfirmar;
+        private DataGridViewTextBoxColumn producto_resumen;
+        private DataGridViewTextBoxColumn cantidad_resumen;
+        private DataGridViewTextBoxColumn precio_resumen;
+        private DataGridViewTextBoxColumn categoria_resumen;
+        private DataGridViewTextBoxColumn subtotal_resumen;
+        private DataGridViewTextBoxColumn id_producto_resumen;
     }
 }

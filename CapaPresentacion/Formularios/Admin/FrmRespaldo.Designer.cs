@@ -28,32 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRespaldo));
             panel1 = new Panel();
             lblListaEmpleados = new Label();
             lblFiltrar = new Label();
             label1 = new Label();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            btnAgregar = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
             panelDatosUsuario = new Panel();
-            iconbtnGuardar = new FontAwesome.Sharp.IconButton();
-            iconBtnCancelar = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
-            dateTimePicker1 = new DateTimePicker();
+            txtUltimoBackHora = new TextBox();
+            txtTablasPrinci = new TextBox();
+            txtCanTablaBD = new TextBox();
             lblPassword = new Label();
-            txtPasswordDato = new TextBox();
-            lblEstadoDato = new Label();
-            lblEmailDato = new Label();
-            txtEmailDato = new TextBox();
             lblTelefDato = new Label();
-            txtTelefDato = new TextBox();
             lbl = new Label();
-            txtDniDato = new TextBox();
+            txtNombreBD = new TextBox();
             lblApellidoDato = new Label();
             lblNombreDato = new Label();
-            txtNombreDato = new TextBox();
+            txtTamaBD = new TextBox();
             lblDatoDelaBD = new Label();
+            iconBtnFolder = new FontAwesome.Sharp.IconButton();
+            txtSelectFolderPath = new TextBox();
+            lblEstadoDato = new Label();
+            iconBtnImportar = new FontAwesome.Sharp.IconButton();
+            iconBtnRespaldar = new FontAwesome.Sharp.IconButton();
+            txtSeleccionServidor = new TextBox();
+            txtSeleccionBase = new TextBox();
             panel1.SuspendLayout();
             panelDatosUsuario.SuspendLayout();
             SuspendLayout();
@@ -65,7 +63,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(822, 65);
+            panel1.Size = new Size(822, 76);
             panel1.TabIndex = 1;
             // 
             // lblListaEmpleados
@@ -104,271 +102,240 @@
             label1.TabIndex = 6;
             label1.Text = "Seleccionar La Base De Datos:";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(322, 107);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(209, 23);
-            comboBox1.TabIndex = 12;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(322, 152);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(209, 23);
-            comboBox2.TabIndex = 13;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.BackColor = Color.FromArgb(19, 173, 39);
-            btnAgregar.Cursor = Cursors.Hand;
-            btnAgregar.FlatAppearance.BorderColor = Color.Black;
-            btnAgregar.FlatStyle = FlatStyle.Flat;
-            btnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.Database;
-            btnAgregar.IconColor = Color.White;
-            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAgregar.IconSize = 30;
-            btnAgregar.Location = new Point(72, 229);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(166, 39);
-            btnAgregar.TabIndex = 14;
-            btnAgregar.Text = "Restaurar";
-            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
-            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAgregar.UseVisualStyleBackColor = false;
-            // 
-            // iconButton1
-            // 
-            iconButton1.BackColor = Color.FromArgb(19, 173, 39);
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Database;
-            iconButton1.IconColor = Color.White;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 30;
-            iconButton1.Location = new Point(298, 229);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(166, 39);
-            iconButton1.TabIndex = 15;
-            iconButton1.Text = "Respaldar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
-            // 
             // panelDatosUsuario
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panelDatosUsuario.BackColor = Color.White;
-            panelDatosUsuario.Controls.Add(iconbtnGuardar);
-            panelDatosUsuario.Controls.Add(iconBtnCancelar);
-            panelDatosUsuario.Controls.Add(textBox1);
-            panelDatosUsuario.Controls.Add(dateTimePicker1);
+            panelDatosUsuario.Controls.Add(txtUltimoBackHora);
+            panelDatosUsuario.Controls.Add(txtTablasPrinci);
+            panelDatosUsuario.Controls.Add(txtCanTablaBD);
             panelDatosUsuario.Controls.Add(lblPassword);
-            panelDatosUsuario.Controls.Add(txtPasswordDato);
-            panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Controls.Add(lblEmailDato);
-            panelDatosUsuario.Controls.Add(txtEmailDato);
             panelDatosUsuario.Controls.Add(lblTelefDato);
-            panelDatosUsuario.Controls.Add(txtTelefDato);
             panelDatosUsuario.Controls.Add(lbl);
-            panelDatosUsuario.Controls.Add(txtDniDato);
+            panelDatosUsuario.Controls.Add(txtNombreBD);
             panelDatosUsuario.Controls.Add(lblApellidoDato);
             panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(txtNombreDato);
+            panelDatosUsuario.Controls.Add(txtTamaBD);
             panelDatosUsuario.Controls.Add(lblDatoDelaBD);
-            panelDatosUsuario.Location = new Point(565, 71);
+            panelDatosUsuario.Location = new Point(565, 95);
             panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(257, 455);
+            panelDatosUsuario.Size = new Size(257, 442);
             panelDatosUsuario.TabIndex = 17;
             // 
-            // iconbtnGuardar
+            // txtUltimoBackHora
             // 
-            iconbtnGuardar.BackColor = Color.FromArgb(56, 182, 255);
-            iconbtnGuardar.BackgroundImageLayout = ImageLayout.Center;
-            iconbtnGuardar.Cursor = Cursors.Hand;
-            iconbtnGuardar.FlatAppearance.BorderColor = Color.Black;
-            iconbtnGuardar.FlatStyle = FlatStyle.Flat;
-            iconbtnGuardar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconbtnGuardar.ForeColor = SystemColors.ControlLightLight;
-            iconbtnGuardar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
-            iconbtnGuardar.IconColor = Color.White;
-            iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(35, 334);
-            iconbtnGuardar.Name = "iconbtnGuardar";
-            iconbtnGuardar.Size = new Size(188, 39);
-            iconbtnGuardar.TabIndex = 33;
-            iconbtnGuardar.Text = "Confirmar";
-            iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
-            iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconbtnGuardar.UseVisualStyleBackColor = false;
+            txtUltimoBackHora.Enabled = false;
+            txtUltimoBackHora.Location = new Point(26, 157);
+            txtUltimoBackHora.Name = "txtUltimoBackHora";
+            txtUltimoBackHora.ReadOnly = true;
+            txtUltimoBackHora.Size = new Size(209, 23);
+            txtUltimoBackHora.TabIndex = 35;
             // 
-            // iconBtnCancelar
+            // txtTablasPrinci
             // 
-            iconBtnCancelar.BackColor = Color.FromArgb(250, 21, 21);
-            iconBtnCancelar.Cursor = Cursors.Hand;
-            iconBtnCancelar.FlatAppearance.BorderColor = Color.Black;
-            iconBtnCancelar.FlatStyle = FlatStyle.Flat;
-            iconBtnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnCancelar.ForeColor = SystemColors.ControlLightLight;
-            iconBtnCancelar.IconChar = FontAwesome.Sharp.IconChar.Xmark;
-            iconBtnCancelar.IconColor = Color.White;
-            iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(35, 379);
-            iconBtnCancelar.Name = "iconBtnCancelar";
-            iconBtnCancelar.Size = new Size(188, 39);
-            iconBtnCancelar.TabIndex = 32;
-            iconBtnCancelar.Text = "Cancelar";
-            iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnCancelar.UseVisualStyleBackColor = false;
+            txtTablasPrinci.Location = new Point(26, 214);
+            txtTablasPrinci.Multiline = true;
+            txtTablasPrinci.Name = "txtTablasPrinci";
+            txtTablasPrinci.ReadOnly = true;
+            txtTablasPrinci.Size = new Size(209, 206);
+            txtTablasPrinci.TabIndex = 34;
             // 
-            // textBox1
+            // txtCanTablaBD
             // 
-            textBox1.BackColor = SystemColors.Window;
-            textBox1.Location = new Point(79, 294);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(144, 23);
-            textBox1.TabIndex = 31;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(79, 126);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(144, 23);
-            dateTimePicker1.TabIndex = 30;
+            txtCanTablaBD.Enabled = false;
+            txtCanTablaBD.Location = new Point(144, 98);
+            txtCanTablaBD.Name = "txtCanTablaBD";
+            txtCanTablaBD.ReadOnly = true;
+            txtCanTablaBD.Size = new Size(93, 23);
+            txtCanTablaBD.TabIndex = 28;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblPassword.ForeColor = SystemColors.WindowText;
-            lblPassword.Location = new Point(3, 193);
+            lblPassword.Location = new Point(17, 103);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(51, 17);
+            lblPassword.Size = new Size(129, 17);
             lblPassword.TabIndex = 29;
-            lblPassword.Text = "Tablas ";
-            // 
-            // txtPasswordDato
-            // 
-            txtPasswordDato.Location = new Point(79, 187);
-            txtPasswordDato.Name = "txtPasswordDato";
-            txtPasswordDato.Size = new Size(144, 23);
-            txtPasswordDato.TabIndex = 28;
-            // 
-            // lblEstadoDato
-            // 
-            lblEstadoDato.AutoSize = true;
-            lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(5, 274);
-            lblEstadoDato.Name = "lblEstadoDato";
-            lblEstadoDato.Size = new Size(167, 17);
-            lblEstadoDato.TabIndex = 22;
-            lblEstadoDato.Text = "Elegir donde se Guardara ";
-            // 
-            // lblEmailDato
-            // 
-            lblEmailDato.AutoSize = true;
-            lblEmailDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblEmailDato.ForeColor = SystemColors.WindowText;
-            lblEmailDato.Location = new Point(3, 164);
-            lblEmailDato.Name = "lblEmailDato";
-            lblEmailDato.Size = new Size(49, 17);
-            lblEmailDato.TabIndex = 17;
-            lblEmailDato.Text = "Estado";
-            // 
-            // txtEmailDato
-            // 
-            txtEmailDato.Location = new Point(79, 158);
-            txtEmailDato.Name = "txtEmailDato";
-            txtEmailDato.Size = new Size(144, 23);
-            txtEmailDato.TabIndex = 16;
+            lblPassword.Text = "Cantidad de Tablas ";
             // 
             // lblTelefDato
             // 
             lblTelefDato.AutoSize = true;
             lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(3, 222);
+            lblTelefDato.Location = new Point(70, 194);
             lblTelefDato.Name = "lblTelefDato";
-            lblTelefDato.Size = new Size(125, 17);
+            lblTelefDato.Size = new Size(118, 17);
             lblTelefDato.TabIndex = 13;
-            lblTelefDato.Text = "objetos principales";
-            // 
-            // txtTelefDato
-            // 
-            txtTelefDato.Location = new Point(79, 242);
-            txtTelefDato.Name = "txtTelefDato";
-            txtTelefDato.Size = new Size(144, 23);
-            txtTelefDato.TabIndex = 12;
+            lblTelefDato.Text = "Tablas principales";
             // 
             // lbl
             // 
             lbl.AutoSize = true;
             lbl.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lbl.ForeColor = SystemColors.WindowText;
-            lbl.Location = new Point(3, 48);
+            lbl.Location = new Point(17, 42);
             lbl.Name = "lbl";
             lbl.Size = new Size(58, 17);
             lbl.TabIndex = 11;
             lbl.Text = "Nombre";
             // 
-            // txtDniDato
+            // txtNombreBD
             // 
-            txtDniDato.Location = new Point(79, 42);
-            txtDniDato.Name = "txtDniDato";
-            txtDniDato.Size = new Size(144, 23);
-            txtDniDato.TabIndex = 10;
+            txtNombreBD.Location = new Point(93, 36);
+            txtNombreBD.Name = "txtNombreBD";
+            txtNombreBD.ReadOnly = true;
+            txtNombreBD.Size = new Size(144, 23);
+            txtNombreBD.TabIndex = 10;
             // 
             // lblApellidoDato
             // 
             lblApellidoDato.AutoSize = true;
             lblApellidoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblApellidoDato.ForeColor = SystemColors.WindowText;
-            lblApellidoDato.Location = new Point(3, 106);
+            lblApellidoDato.Location = new Point(59, 138);
             lblApellidoDato.Name = "lblApellidoDato";
-            lblApellidoDato.Size = new Size(153, 17);
+            lblApellidoDato.Size = new Size(141, 17);
             lblApellidoDato.TabIndex = 8;
-            lblApellidoDato.Text = "Ultimo Respaldo Hecho";
+            lblApellidoDato.Text = "Ultimo Backup Hecho";
             // 
             // lblNombreDato
             // 
             lblNombreDato.AutoSize = true;
             lblNombreDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreDato.ForeColor = SystemColors.WindowText;
-            lblNombreDato.Location = new Point(3, 77);
+            lblNombreDato.Location = new Point(17, 71);
             lblNombreDato.Name = "lblNombreDato";
             lblNombreDato.Size = new Size(57, 17);
             lblNombreDato.TabIndex = 7;
             lblNombreDato.Text = "Tamaño";
             // 
-            // txtNombreDato
+            // txtTamaBD
             // 
-            txtNombreDato.Location = new Point(79, 71);
-            txtNombreDato.Name = "txtNombreDato";
-            txtNombreDato.Size = new Size(144, 23);
-            txtNombreDato.TabIndex = 1;
+            txtTamaBD.Location = new Point(93, 65);
+            txtTamaBD.Name = "txtTamaBD";
+            txtTamaBD.ReadOnly = true;
+            txtTamaBD.Size = new Size(144, 23);
+            txtTamaBD.TabIndex = 1;
             // 
             // lblDatoDelaBD
             // 
             lblDatoDelaBD.AutoSize = true;
             lblDatoDelaBD.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatoDelaBD.Location = new Point(0, 9);
+            lblDatoDelaBD.Location = new Point(0, 3);
             lblDatoDelaBD.Name = "lblDatoDelaBD";
             lblDatoDelaBD.Size = new Size(261, 30);
             lblDatoDelaBD.TabIndex = 0;
             lblDatoDelaBD.Text = "Datos De La Base de datos";
+            // 
+            // iconBtnFolder
+            // 
+            iconBtnFolder.BackColor = Color.Orange;
+            iconBtnFolder.BackgroundImage = (Image)resources.GetObject("iconBtnFolder.BackgroundImage");
+            iconBtnFolder.BackgroundImageLayout = ImageLayout.None;
+            iconBtnFolder.Cursor = Cursors.Hand;
+            iconBtnFolder.FlatAppearance.BorderColor = Color.Black;
+            iconBtnFolder.FlatStyle = FlatStyle.Flat;
+            iconBtnFolder.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnFolder.ForeColor = SystemColors.ControlLightLight;
+            iconBtnFolder.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnFolder.IconColor = Color.White;
+            iconBtnFolder.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnFolder.IconSize = 30;
+            iconBtnFolder.Location = new Point(133, 204);
+            iconBtnFolder.Name = "iconBtnFolder";
+            iconBtnFolder.Size = new Size(144, 26);
+            iconBtnFolder.TabIndex = 20;
+            iconBtnFolder.Text = "Seleccione Carpeta";
+            iconBtnFolder.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnFolder.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnFolder.UseVisualStyleBackColor = false;
+            iconBtnFolder.Click += iconBtnFolder_Click;
+            // 
+            // txtSelectFolderPath
+            // 
+            txtSelectFolderPath.BackColor = SystemColors.Window;
+            txtSelectFolderPath.Location = new Point(135, 208);
+            txtSelectFolderPath.Name = "txtSelectFolderPath";
+            txtSelectFolderPath.Size = new Size(144, 23);
+            txtSelectFolderPath.TabIndex = 31;
+            // 
+            // lblEstadoDato
+            // 
+            lblEstadoDato.AutoSize = true;
+            lblEstadoDato.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblEstadoDato.ForeColor = SystemColors.Window;
+            lblEstadoDato.Location = new Point(29, 208);
+            lblEstadoDato.Name = "lblEstadoDato";
+            lblEstadoDato.Size = new Size(98, 21);
+            lblEstadoDato.TabIndex = 22;
+            lblEstadoDato.Text = "Guardar En:";
+            // 
+            // iconBtnImportar
+            // 
+            iconBtnImportar.BackColor = Color.Orange;
+            iconBtnImportar.BackgroundImage = (Image)resources.GetObject("iconBtnImportar.BackgroundImage");
+            iconBtnImportar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnImportar.Cursor = Cursors.Hand;
+            iconBtnImportar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnImportar.FlatStyle = FlatStyle.Flat;
+            iconBtnImportar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnImportar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnImportar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnImportar.IconColor = Color.White;
+            iconBtnImportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnImportar.IconSize = 30;
+            iconBtnImportar.Location = new Point(259, 252);
+            iconBtnImportar.Name = "iconBtnImportar";
+            iconBtnImportar.Size = new Size(123, 38);
+            iconBtnImportar.TabIndex = 18;
+            iconBtnImportar.Text = "Importar Base ";
+            iconBtnImportar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnImportar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnImportar.UseVisualStyleBackColor = false;
+            iconBtnImportar.Click += iconBtnImportar_Click;
+            // 
+            // iconBtnRespaldar
+            // 
+            iconBtnRespaldar.BackColor = Color.Orange;
+            iconBtnRespaldar.BackgroundImage = (Image)resources.GetObject("iconBtnRespaldar.BackgroundImage");
+            iconBtnRespaldar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnRespaldar.Cursor = Cursors.Hand;
+            iconBtnRespaldar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnRespaldar.FlatStyle = FlatStyle.Flat;
+            iconBtnRespaldar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnRespaldar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnRespaldar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnRespaldar.IconColor = Color.White;
+            iconBtnRespaldar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnRespaldar.IconSize = 30;
+            iconBtnRespaldar.Location = new Point(39, 252);
+            iconBtnRespaldar.Name = "iconBtnRespaldar";
+            iconBtnRespaldar.Size = new Size(129, 38);
+            iconBtnRespaldar.TabIndex = 19;
+            iconBtnRespaldar.Text = "Respaldar Base";
+            iconBtnRespaldar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnRespaldar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnRespaldar.UseVisualStyleBackColor = false;
+            iconBtnRespaldar.Click += iconBtnRespaldar_Click;
+            // 
+            // txtSeleccionServidor
+            // 
+            txtSeleccionServidor.Location = new Point(322, 110);
+            txtSeleccionServidor.Name = "txtSeleccionServidor";
+            txtSeleccionServidor.ReadOnly = true;
+            txtSeleccionServidor.Size = new Size(209, 23);
+            txtSeleccionServidor.TabIndex = 20;
+            // 
+            // txtSeleccionBase
+            // 
+            txtSeleccionBase.Location = new Point(322, 152);
+            txtSeleccionBase.Name = "txtSeleccionBase";
+            txtSeleccionBase.ReadOnly = true;
+            txtSeleccionBase.Size = new Size(209, 23);
+            txtSeleccionBase.TabIndex = 21;
             // 
             // FrmRespaldo
             // 
@@ -376,17 +343,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(txtSeleccionBase);
+            Controls.Add(iconBtnFolder);
+            Controls.Add(txtSeleccionServidor);
+            Controls.Add(iconBtnRespaldar);
+            Controls.Add(iconBtnImportar);
             Controls.Add(panelDatosUsuario);
-            Controls.Add(iconButton1);
-            Controls.Add(btnAgregar);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(txtSelectFolderPath);
             Controls.Add(label1);
             Controls.Add(lblFiltrar);
             Controls.Add(panel1);
+            Controls.Add(lblEstadoDato);
             MinimumSize = new Size(838, 604);
             Name = "FrmRespaldo";
-            Text = "Respaldo y Restauracion De La Base DeDa tos";
+            Text = "Base De Datos";
+            Load += FrmRespaldo_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelDatosUsuario.ResumeLayout(false);
@@ -401,28 +372,25 @@
         private Label lblListaEmpleados;
         private Label lblFiltrar;
         private Label label1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private FontAwesome.Sharp.IconButton btnAgregar;
-        private FontAwesome.Sharp.IconButton iconButton1;
         private Panel panelDatosUsuario;
         private Label lblPassword;
-        private TextBox txtPasswordDato;
+        private TextBox txtCanTablaBD;
         private TextBox txtIdGuardado;
         private Label lblEstadoDato;
-        private Label lblEmailDato;
-        private TextBox txtEmailDato;
         private Label lblTelefDato;
-        private TextBox txtTelefDato;
         private Label lblApellidoDato;
         private Label lblNombreDato;
-        private TextBox txtNombreDato;
+        private TextBox txtTamaBD;
         private Label lblDatoDelaBD;
         private Label lbl;
-        private TextBox txtDniDato;
-        private TextBox textBox1;
-        private DateTimePicker dateTimePicker1;
-        private FontAwesome.Sharp.IconButton iconbtnGuardar;
-        private FontAwesome.Sharp.IconButton iconBtnCancelar;
+        private TextBox txtNombreBD;
+        private TextBox txtSelectFolderPath;
+        private FontAwesome.Sharp.IconButton iconBtnImportar;
+        private FontAwesome.Sharp.IconButton iconBtnRespaldar;
+        private FontAwesome.Sharp.IconButton iconBtnFolder;
+        private TextBox txtSeleccionServidor;
+        private TextBox txtSeleccionBase;
+        private TextBox txtTablasPrinci;
+        private TextBox txtUltimoBackHora;
     }
 }

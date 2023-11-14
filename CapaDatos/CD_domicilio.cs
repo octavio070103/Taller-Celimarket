@@ -27,12 +27,12 @@ namespace CapaDatos
                         SqlCommand cmd = new SqlCommand("SP_REGISTRARDOMICILIO", Obj_conexion);
 
                         //le paso los parametros que necesita mi procedimiento almacenado(SP_REGISTRARDOMICILIO) que defini en mi BD para registrar el domicilio y asi evitar la inyeccion de SQL
-                        cmd.Parameters.AddWithValue("@calle",obj_domicilio.calle);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
-                        cmd.Parameters.AddWithValue("@codigo_postal",obj_domicilio.codigo_postal);
+                        cmd.Parameters.AddWithValue("@codigo_postal",obj_domicilio.codigo_postal);//AddWithValue nos permite agrgar un parametro a la consulta sQL y agregarle un valor,el primer arguemnto es el parametro que se utiliza en la conuslta SQL y el segundo es el valor que tendra ese parametro
+                        cmd.Parameters.AddWithValue("@localidad", obj_domicilio.localidad);
+                        cmd.Parameters.AddWithValue("@provincia", obj_domicilio.provincia);
                         cmd.Parameters.AddWithValue("@numero",obj_domicilio.numero);
-                        cmd.Parameters.AddWithValue("@localidad",obj_domicilio.localidad);
-                        cmd.Parameters.AddWithValue("@provincia",obj_domicilio.provincia);
-                        cmd.Parameters.AddWithValue("@descripcion", obj_domicilio.descripcion);
+                        cmd.Parameters.AddWithValue("@calle", obj_domicilio.calle);
+                        cmd.Parameters.AddWithValue("@descripcion_domicilio", obj_domicilio.descripcion);
                         cmd.Parameters.AddWithValue("@estado_domicilio", obj_domicilio.estado_domicilio);
 
                         //ya que declaramos la entradas de procedimiento almacenado nos faltaria la salida que tiene este procedimiento es decir el resultado de esa operacon
@@ -78,7 +78,7 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //se seleccionan columnas específicas utilizando sus nombres calificados con el alias de tabla correspondiente .Esto permite un mayor control sobre las columnas que  se incluyen en el resultado y evita conflictos de nombres si ambas tablas tienen columnas con el mismo nombre.
-                    query.AppendLine("SELECT d.id_domicilio,d.calle,d.codigo_postal,d.numero,d.localidad,d.provincia,d.descripcion,d.estado_domicilio");
+                    query.AppendLine("SELECT d.id_domicilio,d.codigo_postal,d.localidad,d.provincia,d.numero,d.calle,d.descripcion_domicilio,d.estado_domicilio");
                     query.AppendLine("FROM domicilio d");
                     query.AppendLine("WHERE id_domicilio = @id_domicilio");
 
@@ -103,12 +103,12 @@ namespace CapaDatos
                             return new domicilio
                             {
                                 id_domicilio = Convert.ToInt32(dr["id_domicilio"]),
-                                calle = dr["calle"].ToString(),
                                 codigo_postal = Convert.ToInt32(dr["codigo_postal"]),
-                                numero = Convert.ToInt32(dr["numero"]),
                                 localidad = dr["localidad"].ToString(),
                                 provincia = dr["provincia"].ToString(),
-                                descripcion = dr["descripcion"].ToString(),
+                                numero = Convert.ToInt32(dr["numero"]),
+                                calle = dr["calle"].ToString(),
+                                descripcion = dr["descripcion_domicilio"].ToString(),
                                 estado_domicilio = Convert.ToInt32(dr["estado_domicilio"])
                             };
                         }

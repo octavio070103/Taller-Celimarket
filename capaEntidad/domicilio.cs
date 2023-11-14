@@ -16,5 +16,7 @@ namespace capaEntidad
         public string provincia { get; set; }
         public string descripcion {  get; set; }
         public int estado_domicilio { get; set; }
+
+        public DateTime fecha_creacion_domicilio { get; set; }
     }
 }

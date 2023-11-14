@@ -15,6 +15,6 @@ namespace capaEntidad
         public DateTime fecha_nacimiento { get; set; }
         public string telefono {  get; set; }
 
-
+        public DateTime fecha_creacion_persona { get; set; }
     }
 }

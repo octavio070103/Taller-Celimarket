@@ -4,6 +4,7 @@ using CapaPresentacion.Formularios.Admin;
 using CapaPresentacion.Formularios.Gerente.caja;
 using CapaPresentacion.Formularios.Gerente.gestion_ventas;
 using CapaPresentacion.Formularios.Gerente.informes_de_operacion;
+using CapaPresentacion.Formularios.Gerente.permiso;
 using CapaPresentacion.Formularios.Gerente.personal;
 using FontAwesome.Sharp;
 using Proyecto_Taller.Presentacion.Formularios.Login;
@@ -30,6 +31,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         //esta avr de tipo form se utilizara para llevar un registro del formulario secundario que esta actualmente abierno en el formulario priniciapl
         private Form currentChildForm;
 
+        private Form formularioSolicitudActualmente = null; //con estdeermino e lformacutal de la solicitud,si esta abierto el permiso o la cosnulta
+
         private IconButton currentBtn;
 
         private Color colorFondoOriginal; // Variable para almacenar el color de fondo original
@@ -38,11 +41,13 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         //aca decalro una var de tipo estatica pq no va a varuar su valor y es un obj de clase usuario que esta en la capa de entidad
         private static capaEntidad.usuario usuarioActual;
-        public MenuGerente(capaEntidad.usuario objUsuario = null)
+        public MenuGerente(capaEntidad.usuario objUsuario_login)
         {
             InitializeComponent();
+            panelCrearSolicitud.Visible = false; //escondo el panel del btn pedir
 
-            if (objUsuario == null)
+            //if para entrar cuando en el pogram inicio llamando al menu sin hacer el login
+            if (objUsuario_login == null)
             {
                 usuarioActual = new capaEntidad.usuario()
                 {
@@ -62,14 +67,15 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     obj_rol = new rol()
                     {
                         id_rol = 1,
-                        descripcion_rol = "administrador"
+                        nombre_rol = "administrador"
                     }
                 };
             }
+            //aca es cuando si hizo login y esta cargado el objeto que le paso como parametro
             else
             {
                 //aca le doy asigno ese objeto usuario que me llega mediante el constructor que en este caso seria el usuario que ingreso en la clase FormLogin
-                usuarioActual = objUsuario;
+                usuarioActual = objUsuario_login;
             }
 
             //abro el formualrio de inicio
@@ -84,9 +90,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-      
+
             btnMenu.Visible = false; //oculto el boton del menu para que el usuairo al momento de iniciar no pueda verlo
-            
+
         }
 
         private void MenuGerente_Load(object sender, EventArgs e)
@@ -114,7 +120,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
             //pone los datos de uusario que se registra en el menu
             lblNombreDelUsu.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
-            lblRolDelUsu.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolDelUsu.Text = usuarioActual.obj_rol.nombre_rol;
 
         }
 
@@ -157,19 +163,19 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
-            
-                //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
-                if (currentChildForm != null)
-                {
-                    // cierra el formulario actual
-                    currentChildForm.Close();
-                
-                }
-                // Muestra el formulario principal (el "Home")
-                //MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
-                // menuGerente.Show();
-            
-           
+
+            //aca digo que si hay algun formulario hijo abierto que lo cierre antes de abrir el home
+            if (currentChildForm != null)
+            {
+                // cierra el formulario actual
+                currentChildForm.Close();
+
+            }
+            // Muestra el formulario principal (el "Home")
+            //MenuGerente menuGerente = new MenuGerente(usuarioActual); // Reemplaza "Form1" con el nombre real de tu formulario principal
+            // menuGerente.Show();
+
+
         }
 
         private void picMinPantalla_Click(object sender, EventArgs e)
@@ -212,7 +218,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "";
                 iconBtnOperaciones.Text = "";
                 iconBtnCaja.Text = "";
-                iconBtnSesion.Text = "";
+                BtnCrearSolicitud.Text = "";
+                BtnCerrarSesion.Text = "";
 
                 lblNombreDelUsu.Visible = false;//oculto el boton
                 lblRolDelUsu.Visible = false;
@@ -235,7 +242,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                 iconBtnEstadisticas.Text = "Estadisticas";
                 iconBtnOperaciones.Text = "Operaciones";
                 iconBtnCaja.Text = "Caja";
-                iconBtnSesion.Text = "Cerrar Sesion";
+                BtnCrearSolicitud.Text = "Solicitud";
+                BtnCerrarSesion.Text = "Cerrar Sesion";
 
                 lblNombreDelUsu.Visible = true;//oculto el boton
                 lblRolDelUsu.Visible = true;
@@ -273,7 +281,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         private void iconBtnCaja_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FrmAdministrarCaja(this));
+            OpenChildForm(new FrmAdministrarCaja(this, usuarioActual));
         }
 
 
@@ -359,9 +367,8 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void iconBtnSesion_Click(object sender, EventArgs e)
+        private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-
             DialogResult salida = MessageBox.Show("Esta seguro que desea salir de la Aplicacion", "Salir", MessageBoxButtons.OKCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
             if (salida == DialogResult.OK)
             {
@@ -372,6 +379,45 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
                 // Cerrar el formulario actual (formulario principal) después de redirigir.
                 this.Close();
+            }
+        }
+
+        private void BtnCrearSolicitud_Click(object sender, EventArgs e)
+        {
+            if (panelCrearSolicitud.Visible == true)
+            {
+                panelCrearSolicitud.Visible = false;
+            }
+            else
+            {
+                panelCrearSolicitud.Visible = true;
+            }
+        }
+        private void iconBtnCrearConsulta_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudConsulta formConsulta = new FrmSolicitudConsulta(usuarioActual);
+            formConsulta.Show();
+
+            formularioSolicitudActualmente = formConsulta;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void iconbtnCrearPermiso_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
+            formPermiso.Show();
+
+            formularioSolicitudActualmente = formPermiso;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void CerrarFormularioActual()
+        {
+            if (formularioSolicitudActualmente != null && !formularioSolicitudActualmente.IsDisposed)
+            {
+                formularioSolicitudActualmente.Close();
             }
         }
     }

@@ -28,16 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGestionarProducto));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel2 = new Panel();
-            iconBtnAlta = new FontAwesome.Sharp.IconButton();
-            iconBtnHistorial = new FontAwesome.Sharp.IconButton();
-            iconBtnElim = new FontAwesome.Sharp.IconButton();
-            iconBtnAgregar = new FontAwesome.Sharp.IconButton();
-            panelDatosUsuario = new Panel();
+            iconBtnExcel = new FontAwesome.Sharp.IconButton();
+            iconBtnMarca = new FontAwesome.Sharp.IconButton();
+            panelDatosProducto = new Panel();
+            txtCodBarra = new TextBox();
+            lblCodBarraDato = new Label();
+            txtIdProducto = new TextBox();
+            picImgEditarProducts = new PictureBox();
+            lblImg = new Label();
+            comboMarcaDato = new ComboBox();
+            comboCategDato = new ComboBox();
+            txtStockDato = new TextBox();
+            txtDescripcionDato = new TextBox();
+            lblCategoriaDato = new Label();
+            txtPrecioVenta = new TextBox();
+            lblprecioVenta = new Label();
             lblStock = new Label();
             iconbtnGuardar = new FontAwesome.Sharp.IconButton();
             iconBtnCancelar = new FontAwesome.Sharp.IconButton();
@@ -45,177 +56,261 @@
             comboEstadoDato = new ComboBox();
             lblEstadoDato = new Label();
             lblMarcaDato = new Label();
-            txtEmailDato = new TextBox();
-            lblTelefDato = new Label();
-            txtTelefDato = new TextBox();
-            lblIdDato = new Label();
-            txtDniDato = new TextBox();
-            txtApeDato = new TextBox();
-            lblPrecioCompraDato = new Label();
-            lblNombreDato = new Label();
             txtNombreDato = new TextBox();
+            txtPrecioCompraDato = new TextBox();
+            lblNombreDato = new Label();
             lblDatosUsuario = new Label();
-            dataGridUsuarios = new DataGridView();
+            lblPrecioCompraDato = new Label();
+            lbldescrip = new Label();
+            iconBtnDarAlta = new FontAwesome.Sharp.IconButton();
+            iconBtnCategorias = new FontAwesome.Sharp.IconButton();
+            dataGridProducto = new DataGridView();
+            Col_IDproducto = new DataGridViewTextBoxColumn();
+            Col_CodBarra = new DataGridViewTextBoxColumn();
+            Col_nombre_produc = new DataGridViewTextBoxColumn();
+            Col_Descrip_producto = new DataGridViewTextBoxColumn();
+            Col_precio_compra = new DataGridViewTextBoxColumn();
+            Col_precio_venta = new DataGridViewTextBoxColumn();
+            Col_stock_produc = new DataGridViewTextBoxColumn();
+            Col_nom_marca = new DataGridViewTextBoxColumn();
+            Col_nom_categ = new DataGridViewTextBoxColumn();
+            Col_estado_produc = new DataGridViewTextBoxColumn();
+            Col_img_producto = new DataGridViewTextBoxColumn();
+            iconBtnAgregar = new FontAwesome.Sharp.IconButton();
+            iconBtnDarBaja = new FontAwesome.Sharp.IconButton();
             lblCatalogoProducto = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            lblCategoriaDato = new Label();
-            label2 = new Label();
-            textBox3 = new TextBox();
+            errorProvider1 = new ErrorProvider(components);
             panel2.SuspendLayout();
-            panelDatosUsuario.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
+            panelDatosProducto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picImgEditarProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridProducto).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(67, 68, 89);
-            panel2.Controls.Add(iconBtnAlta);
-            panel2.Controls.Add(iconBtnHistorial);
-            panel2.Controls.Add(iconBtnElim);
+            panel2.Controls.Add(iconBtnExcel);
+            panel2.Controls.Add(iconBtnMarca);
+            panel2.Controls.Add(panelDatosProducto);
+            panel2.Controls.Add(iconBtnDarAlta);
+            panel2.Controls.Add(iconBtnCategorias);
+            panel2.Controls.Add(dataGridProducto);
             panel2.Controls.Add(iconBtnAgregar);
-            panel2.Controls.Add(panelDatosUsuario);
-            panel2.Controls.Add(dataGridUsuarios);
+            panel2.Controls.Add(iconBtnDarBaja);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 64);
+            panel2.Location = new Point(0, 69);
             panel2.Name = "panel2";
-            panel2.Size = new Size(822, 501);
+            panel2.Size = new Size(822, 496);
             panel2.TabIndex = 2;
             // 
-            // iconBtnAlta
+            // iconBtnExcel
             // 
-            iconBtnAlta.BackColor = Color.Orange;
-            iconBtnAlta.BackgroundImage = (Image)resources.GetObject("iconBtnAlta.BackgroundImage");
-            iconBtnAlta.BackgroundImageLayout = ImageLayout.None;
-            iconBtnAlta.Cursor = Cursors.Hand;
-            iconBtnAlta.FlatAppearance.BorderColor = Color.Black;
-            iconBtnAlta.FlatStyle = FlatStyle.Flat;
-            iconBtnAlta.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnAlta.ForeColor = SystemColors.ControlLightLight;
-            iconBtnAlta.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnAlta.IconColor = Color.White;
-            iconBtnAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAlta.IconSize = 30;
-            iconBtnAlta.Location = new Point(361, 23);
-            iconBtnAlta.Name = "iconBtnAlta";
-            iconBtnAlta.Size = new Size(89, 38);
-            iconBtnAlta.TabIndex = 17;
-            iconBtnAlta.Text = "Dar Alta";
-            iconBtnAlta.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnAlta.UseVisualStyleBackColor = false;
+            iconBtnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            iconBtnExcel.BackColor = Color.DarkGray;
+            iconBtnExcel.BackgroundImage = (Image)resources.GetObject("iconBtnExcel.BackgroundImage");
+            iconBtnExcel.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExcel.Cursor = Cursors.Hand;
+            iconBtnExcel.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExcel.FlatStyle = FlatStyle.Flat;
+            iconBtnExcel.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnExcel.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExcel.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExcel.IconColor = Color.White;
+            iconBtnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExcel.IconSize = 30;
+            iconBtnExcel.Location = new Point(12, 460);
+            iconBtnExcel.Name = "iconBtnExcel";
+            iconBtnExcel.Size = new Size(126, 27);
+            iconBtnExcel.TabIndex = 19;
+            iconBtnExcel.Text = "Descargar Excel";
+            iconBtnExcel.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExcel.UseVisualStyleBackColor = false;
+            iconBtnExcel.Click += iconBtnExcel_Click;
             // 
-            // iconBtnHistorial
+            // iconBtnMarca
             // 
-            iconBtnHistorial.BackColor = Color.FromArgb(216, 103, 30);
-            iconBtnHistorial.BackgroundImage = (Image)resources.GetObject("iconBtnHistorial.BackgroundImage");
-            iconBtnHistorial.BackgroundImageLayout = ImageLayout.None;
-            iconBtnHistorial.Cursor = Cursors.Hand;
-            iconBtnHistorial.FlatAppearance.BorderColor = Color.Black;
-            iconBtnHistorial.FlatStyle = FlatStyle.Flat;
-            iconBtnHistorial.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnHistorial.ForeColor = SystemColors.ControlLightLight;
-            iconBtnHistorial.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnHistorial.IconColor = Color.White;
-            iconBtnHistorial.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnHistorial.IconSize = 30;
-            iconBtnHistorial.Location = new Point(491, 23);
-            iconBtnHistorial.Name = "iconBtnHistorial";
-            iconBtnHistorial.Size = new Size(90, 39);
-            iconBtnHistorial.TabIndex = 16;
-            iconBtnHistorial.Text = "Historial";
-            iconBtnHistorial.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnHistorial.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnHistorial.UseVisualStyleBackColor = false;
+            iconBtnMarca.BackColor = Color.FromArgb(0, 84, 251);
+            iconBtnMarca.BackgroundImage = (Image)resources.GetObject("iconBtnMarca.BackgroundImage");
+            iconBtnMarca.BackgroundImageLayout = ImageLayout.None;
+            iconBtnMarca.Cursor = Cursors.Hand;
+            iconBtnMarca.FlatAppearance.BorderColor = Color.Black;
+            iconBtnMarca.FlatStyle = FlatStyle.Flat;
+            iconBtnMarca.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnMarca.ForeColor = SystemColors.ControlLightLight;
+            iconBtnMarca.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnMarca.IconColor = Color.White;
+            iconBtnMarca.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnMarca.IconSize = 30;
+            iconBtnMarca.Location = new Point(478, 20);
+            iconBtnMarca.Name = "iconBtnMarca";
+            iconBtnMarca.Size = new Size(91, 39);
+            iconBtnMarca.TabIndex = 18;
+            iconBtnMarca.Text = "Marca";
+            iconBtnMarca.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnMarca.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnMarca.UseVisualStyleBackColor = false;
+            iconBtnMarca.Visible = false;
+            iconBtnMarca.Click += iconBtnMarca_Click;
             // 
-            // iconBtnElim
+            // panelDatosProducto
             // 
-            iconBtnElim.BackColor = Color.FromArgb(250, 21, 21);
-            iconBtnElim.BackgroundImage = (Image)resources.GetObject("iconBtnElim.BackgroundImage");
-            iconBtnElim.BackgroundImageLayout = ImageLayout.None;
-            iconBtnElim.Cursor = Cursors.Hand;
-            iconBtnElim.FlatAppearance.BorderColor = Color.Black;
-            iconBtnElim.FlatStyle = FlatStyle.Flat;
-            iconBtnElim.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnElim.ForeColor = SystemColors.ControlLightLight;
-            iconBtnElim.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnElim.IconColor = Color.White;
-            iconBtnElim.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnElim.IconSize = 30;
-            iconBtnElim.Location = new Point(361, 23);
-            iconBtnElim.Name = "iconBtnElim";
-            iconBtnElim.Size = new Size(89, 39);
-            iconBtnElim.TabIndex = 15;
-            iconBtnElim.Text = "Eliminar";
-            iconBtnElim.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnElim.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnElim.UseVisualStyleBackColor = false;
+            panelDatosProducto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            panelDatosProducto.AutoScroll = true;
+            panelDatosProducto.BackColor = Color.White;
+            panelDatosProducto.Controls.Add(txtCodBarra);
+            panelDatosProducto.Controls.Add(lblCodBarraDato);
+            panelDatosProducto.Controls.Add(txtIdProducto);
+            panelDatosProducto.Controls.Add(picImgEditarProducts);
+            panelDatosProducto.Controls.Add(lblImg);
+            panelDatosProducto.Controls.Add(comboMarcaDato);
+            panelDatosProducto.Controls.Add(comboCategDato);
+            panelDatosProducto.Controls.Add(txtStockDato);
+            panelDatosProducto.Controls.Add(txtDescripcionDato);
+            panelDatosProducto.Controls.Add(lblCategoriaDato);
+            panelDatosProducto.Controls.Add(txtPrecioVenta);
+            panelDatosProducto.Controls.Add(lblprecioVenta);
+            panelDatosProducto.Controls.Add(lblStock);
+            panelDatosProducto.Controls.Add(iconbtnGuardar);
+            panelDatosProducto.Controls.Add(iconBtnCancelar);
+            panelDatosProducto.Controls.Add(iconBtnModif);
+            panelDatosProducto.Controls.Add(comboEstadoDato);
+            panelDatosProducto.Controls.Add(lblEstadoDato);
+            panelDatosProducto.Controls.Add(lblMarcaDato);
+            panelDatosProducto.Controls.Add(txtNombreDato);
+            panelDatosProducto.Controls.Add(txtPrecioCompraDato);
+            panelDatosProducto.Controls.Add(lblNombreDato);
+            panelDatosProducto.Controls.Add(lblDatosUsuario);
+            panelDatosProducto.Controls.Add(lblPrecioCompraDato);
+            panelDatosProducto.Controls.Add(lbldescrip);
+            panelDatosProducto.Location = new Point(588, 2);
+            panelDatosProducto.Name = "panelDatosProducto";
+            panelDatosProducto.Size = new Size(234, 490);
+            panelDatosProducto.TabIndex = 13;
             // 
-            // iconBtnAgregar
+            // txtCodBarra
             // 
-            iconBtnAgregar.BackColor = Color.FromArgb(19, 173, 39);
-            iconBtnAgregar.BackgroundImage = (Image)resources.GetObject("iconBtnAgregar.BackgroundImage");
-            iconBtnAgregar.BackgroundImageLayout = ImageLayout.None;
-            iconBtnAgregar.Cursor = Cursors.Hand;
-            iconBtnAgregar.FlatAppearance.BorderColor = Color.Black;
-            iconBtnAgregar.FlatStyle = FlatStyle.Flat;
-            iconBtnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
-            iconBtnAgregar.ForeColor = SystemColors.ControlLightLight;
-            iconBtnAgregar.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnAgregar.IconColor = Color.White;
-            iconBtnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnAgregar.IconSize = 30;
-            iconBtnAgregar.Location = new Point(230, 23);
-            iconBtnAgregar.Name = "iconBtnAgregar";
-            iconBtnAgregar.Size = new Size(89, 39);
-            iconBtnAgregar.TabIndex = 14;
-            iconBtnAgregar.Text = "Agregar";
-            iconBtnAgregar.TextAlign = ContentAlignment.MiddleRight;
-            iconBtnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconBtnAgregar.UseVisualStyleBackColor = false;
-            iconBtnAgregar.Click += iconBtnAgregar_Click;
+            txtCodBarra.Location = new Point(78, 89);
+            txtCodBarra.Multiline = true;
+            txtCodBarra.Name = "txtCodBarra";
+            txtCodBarra.Size = new Size(144, 18);
+            txtCodBarra.TabIndex = 83;
             // 
-            // panelDatosUsuario
+            // lblCodBarraDato
             // 
-            panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            panelDatosUsuario.BackColor = Color.White;
-            panelDatosUsuario.Controls.Add(textBox3);
-            panelDatosUsuario.Controls.Add(textBox2);
-            panelDatosUsuario.Controls.Add(lblCategoriaDato);
-            panelDatosUsuario.Controls.Add(textBox1);
-            panelDatosUsuario.Controls.Add(label1);
-            panelDatosUsuario.Controls.Add(lblStock);
-            panelDatosUsuario.Controls.Add(iconbtnGuardar);
-            panelDatosUsuario.Controls.Add(iconBtnCancelar);
-            panelDatosUsuario.Controls.Add(iconBtnModif);
-            panelDatosUsuario.Controls.Add(comboEstadoDato);
-            panelDatosUsuario.Controls.Add(lblEstadoDato);
-            panelDatosUsuario.Controls.Add(lblMarcaDato);
-            panelDatosUsuario.Controls.Add(txtEmailDato);
-            panelDatosUsuario.Controls.Add(lblTelefDato);
-            panelDatosUsuario.Controls.Add(txtTelefDato);
-            panelDatosUsuario.Controls.Add(txtDniDato);
-            panelDatosUsuario.Controls.Add(txtApeDato);
-            panelDatosUsuario.Controls.Add(lblNombreDato);
-            panelDatosUsuario.Controls.Add(txtNombreDato);
-            panelDatosUsuario.Controls.Add(lblDatosUsuario);
-            panelDatosUsuario.Controls.Add(lblIdDato);
-            panelDatosUsuario.Controls.Add(lblPrecioCompraDato);
-            panelDatosUsuario.Controls.Add(label2);
-            panelDatosUsuario.Location = new Point(584, 14);
-            panelDatosUsuario.Name = "panelDatosUsuario";
-            panelDatosUsuario.Size = new Size(238, 459);
-            panelDatosUsuario.TabIndex = 13;
+            lblCodBarraDato.AutoSize = true;
+            lblCodBarraDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCodBarraDato.ForeColor = SystemColors.WindowText;
+            lblCodBarraDato.Location = new Point(2, 89);
+            lblCodBarraDato.Name = "lblCodBarraDato";
+            lblCodBarraDato.Size = new Size(68, 17);
+            lblCodBarraDato.TabIndex = 82;
+            lblCodBarraDato.Text = "Cod Barra";
+            // 
+            // txtIdProducto
+            // 
+            txtIdProducto.Location = new Point(9, 3);
+            txtIdProducto.Name = "txtIdProducto";
+            txtIdProducto.Size = new Size(17, 23);
+            txtIdProducto.TabIndex = 81;
+            txtIdProducto.Visible = false;
+            // 
+            // picImgEditarProducts
+            // 
+            picImgEditarProducts.Location = new Point(79, 327);
+            picImgEditarProducts.Name = "picImgEditarProducts";
+            picImgEditarProducts.Size = new Size(100, 103);
+            picImgEditarProducts.SizeMode = PictureBoxSizeMode.StretchImage;
+            picImgEditarProducts.TabIndex = 80;
+            picImgEditarProducts.TabStop = false;
+            // 
+            // lblImg
+            // 
+            lblImg.AutoSize = true;
+            lblImg.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblImg.ForeColor = SystemColors.WindowText;
+            lblImg.Location = new Point(2, 334);
+            lblImg.Name = "lblImg";
+            lblImg.Size = new Size(54, 17);
+            lblImg.TabIndex = 39;
+            lblImg.Text = "Imagen";
+            // 
+            // comboMarcaDato
+            // 
+            comboMarcaDato.FlatStyle = FlatStyle.Popup;
+            comboMarcaDato.FormattingEnabled = true;
+            comboMarcaDato.Location = new Point(79, 60);
+            comboMarcaDato.Name = "comboMarcaDato";
+            comboMarcaDato.Size = new Size(144, 23);
+            comboMarcaDato.TabIndex = 38;
+            comboMarcaDato.Text = "Seleccione Marca";
+            // 
+            // comboCategDato
+            // 
+            comboCategDato.FlatStyle = FlatStyle.Popup;
+            comboCategDato.FormattingEnabled = true;
+            comboCategDato.Location = new Point(79, 36);
+            comboCategDato.Name = "comboCategDato";
+            comboCategDato.Size = new Size(144, 23);
+            comboCategDato.TabIndex = 37;
+            comboCategDato.Text = "Seleccione Categoria";
+            // 
+            // txtStockDato
+            // 
+            txtStockDato.Location = new Point(117, 140);
+            txtStockDato.Multiline = true;
+            txtStockDato.Name = "txtStockDato";
+            txtStockDato.Size = new Size(61, 22);
+            txtStockDato.TabIndex = 36;
+            txtStockDato.TextAlign = HorizontalAlignment.Center;
+            // 
+            // txtDescripcionDato
+            // 
+            txtDescripcionDato.Location = new Point(79, 168);
+            txtDescripcionDato.Multiline = true;
+            txtDescripcionDato.Name = "txtDescripcionDato";
+            txtDescripcionDato.Size = new Size(144, 75);
+            txtDescripcionDato.TabIndex = 34;
+            // 
+            // lblCategoriaDato
+            // 
+            lblCategoriaDato.AutoSize = true;
+            lblCategoriaDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCategoriaDato.ForeColor = SystemColors.WindowText;
+            lblCategoriaDato.Location = new Point(3, 37);
+            lblCategoriaDato.Name = "lblCategoriaDato";
+            lblCategoriaDato.Size = new Size(67, 17);
+            lblCategoriaDato.TabIndex = 33;
+            lblCategoriaDato.Text = "Categoria";
+            // 
+            // txtPrecioVenta
+            // 
+            txtPrecioVenta.Location = new Point(150, 269);
+            txtPrecioVenta.Name = "txtPrecioVenta";
+            txtPrecioVenta.Size = new Size(61, 23);
+            txtPrecioVenta.TabIndex = 31;
+            txtPrecioVenta.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lblprecioVenta
+            // 
+            lblprecioVenta.AutoSize = true;
+            lblprecioVenta.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblprecioVenta.ForeColor = SystemColors.WindowText;
+            lblprecioVenta.Location = new Point(140, 250);
+            lblprecioVenta.Name = "lblprecioVenta";
+            lblprecioVenta.Size = new Size(85, 17);
+            lblprecioVenta.TabIndex = 30;
+            lblprecioVenta.Text = "Precio Venta";
             // 
             // lblStock
             // 
             lblStock.AutoSize = true;
             lblStock.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblStock.ForeColor = SystemColors.WindowText;
-            lblStock.Location = new Point(3, 175);
+            lblStock.Location = new Point(5, 140);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(41, 17);
             lblStock.TabIndex = 29;
@@ -233,7 +328,7 @@
             iconbtnGuardar.IconColor = Color.White;
             iconbtnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconbtnGuardar.IconSize = 36;
-            iconbtnGuardar.Location = new Point(24, 365);
+            iconbtnGuardar.Location = new Point(24, 434);
             iconbtnGuardar.Name = "iconbtnGuardar";
             iconbtnGuardar.Size = new Size(202, 39);
             iconbtnGuardar.TabIndex = 25;
@@ -241,6 +336,7 @@
             iconbtnGuardar.TextAlign = ContentAlignment.MiddleRight;
             iconbtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconbtnGuardar.UseVisualStyleBackColor = false;
+            iconbtnGuardar.Click += iconbtnGuardar_Click;
             // 
             // iconBtnCancelar
             // 
@@ -254,7 +350,7 @@
             iconBtnCancelar.IconColor = Color.White;
             iconBtnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnCancelar.IconSize = 30;
-            iconBtnCancelar.Location = new Point(24, 410);
+            iconBtnCancelar.Location = new Point(24, 479);
             iconBtnCancelar.Name = "iconBtnCancelar";
             iconBtnCancelar.Size = new Size(202, 39);
             iconBtnCancelar.TabIndex = 11;
@@ -262,6 +358,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconBtnModif
             // 
@@ -275,7 +372,7 @@
             iconBtnModif.IconColor = Color.White;
             iconBtnModif.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconBtnModif.IconSize = 30;
-            iconBtnModif.Location = new Point(24, 365);
+            iconBtnModif.Location = new Point(24, 434);
             iconBtnModif.Name = "iconBtnModif";
             iconBtnModif.Size = new Size(202, 39);
             iconBtnModif.TabIndex = 24;
@@ -283,12 +380,13 @@
             iconBtnModif.TextAlign = ContentAlignment.MiddleRight;
             iconBtnModif.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnModif.UseVisualStyleBackColor = false;
+            iconBtnModif.Click += iconBtnModif_Click;
             // 
             // comboEstadoDato
             // 
             comboEstadoDato.FlatStyle = FlatStyle.Popup;
             comboEstadoDato.FormattingEnabled = true;
-            comboEstadoDato.Location = new Point(79, 325);
+            comboEstadoDato.Location = new Point(79, 298);
             comboEstadoDato.Name = "comboEstadoDato";
             comboEstadoDato.Size = new Size(144, 23);
             comboEstadoDato.TabIndex = 23;
@@ -299,7 +397,7 @@
             lblEstadoDato.AutoSize = true;
             lblEstadoDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblEstadoDato.ForeColor = SystemColors.WindowText;
-            lblEstadoDato.Location = new Point(5, 325);
+            lblEstadoDato.Location = new Point(5, 298);
             lblEstadoDato.Name = "lblEstadoDato";
             lblEstadoDato.Size = new Size(49, 17);
             lblEstadoDato.TabIndex = 22;
@@ -310,143 +408,299 @@
             lblMarcaDato.AutoSize = true;
             lblMarcaDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblMarcaDato.ForeColor = SystemColors.WindowText;
-            lblMarcaDato.Location = new Point(3, 133);
+            lblMarcaDato.Location = new Point(3, 66);
             lblMarcaDato.Name = "lblMarcaDato";
             lblMarcaDato.Size = new Size(45, 17);
             lblMarcaDato.TabIndex = 17;
             lblMarcaDato.Text = "Marca";
             // 
-            // txtEmailDato
+            // txtNombreDato
             // 
-            txtEmailDato.Location = new Point(79, 127);
-            txtEmailDato.Name = "txtEmailDato";
-            txtEmailDato.Size = new Size(144, 23);
-            txtEmailDato.TabIndex = 16;
+            txtNombreDato.Location = new Point(79, 113);
+            txtNombreDato.Multiline = true;
+            txtNombreDato.Name = "txtNombreDato";
+            txtNombreDato.Size = new Size(144, 20);
+            txtNombreDato.TabIndex = 16;
+            txtNombreDato.TextAlign = HorizontalAlignment.Center;
             // 
-            // lblTelefDato
+            // txtPrecioCompraDato
             // 
-            lblTelefDato.AutoSize = true;
-            lblTelefDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTelefDato.ForeColor = SystemColors.WindowText;
-            lblTelefDato.Location = new Point(7, 221);
-            lblTelefDato.Name = "lblTelefDato";
-            lblTelefDato.Size = new Size(54, 17);
-            lblTelefDato.TabIndex = 13;
-            lblTelefDato.Text = "Imagen";
-            // 
-            // txtTelefDato
-            // 
-            txtTelefDato.Location = new Point(79, 215);
-            txtTelefDato.Name = "txtTelefDato";
-            txtTelefDato.Size = new Size(144, 23);
-            txtTelefDato.TabIndex = 12;
-            // 
-            // lblIdDato
-            // 
-            lblIdDato.AutoSize = true;
-            lblIdDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblIdDato.ForeColor = SystemColors.WindowText;
-            lblIdDato.Location = new Point(0, 48);
-            lblIdDato.Name = "lblIdDato";
-            lblIdDato.Size = new Size(80, 17);
-            lblIdDato.TabIndex = 11;
-            lblIdDato.Text = "Id Producto";
-            // 
-            // txtDniDato
-            // 
-            txtDniDato.Location = new Point(79, 42);
-            txtDniDato.Name = "txtDniDato";
-            txtDniDato.Size = new Size(144, 23);
-            txtDniDato.TabIndex = 10;
-            // 
-            // txtApeDato
-            // 
-            txtApeDato.Location = new Point(117, 156);
-            txtApeDato.Name = "txtApeDato";
-            txtApeDato.Size = new Size(61, 23);
-            txtApeDato.TabIndex = 9;
-            // 
-            // lblPrecioCompraDato
-            // 
-            lblPrecioCompraDato.AutoSize = true;
-            lblPrecioCompraDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrecioCompraDato.ForeColor = SystemColors.WindowText;
-            lblPrecioCompraDato.Location = new Point(2, 162);
-            lblPrecioCompraDato.Name = "lblPrecioCompraDato";
-            lblPrecioCompraDato.Size = new Size(98, 17);
-            lblPrecioCompraDato.TabIndex = 8;
-            lblPrecioCompraDato.Text = "Precio Compra";
+            txtPrecioCompraDato.Location = new Point(46, 269);
+            txtPrecioCompraDato.Name = "txtPrecioCompraDato";
+            txtPrecioCompraDato.Size = new Size(61, 23);
+            txtPrecioCompraDato.TabIndex = 9;
+            txtPrecioCompraDato.TextAlign = HorizontalAlignment.Center;
             // 
             // lblNombreDato
             // 
             lblNombreDato.AutoSize = true;
             lblNombreDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             lblNombreDato.ForeColor = SystemColors.WindowText;
-            lblNombreDato.Location = new Point(3, 106);
+            lblNombreDato.Location = new Point(3, 114);
             lblNombreDato.Name = "lblNombreDato";
             lblNombreDato.Size = new Size(58, 17);
             lblNombreDato.TabIndex = 7;
             lblNombreDato.Text = "Nombre";
             // 
-            // txtNombreDato
-            // 
-            txtNombreDato.Location = new Point(79, 100);
-            txtNombreDato.Name = "txtNombreDato";
-            txtNombreDato.Size = new Size(144, 23);
-            txtNombreDato.TabIndex = 1;
-            // 
             // lblDatosUsuario
             // 
             lblDatosUsuario.AutoSize = true;
             lblDatosUsuario.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDatosUsuario.Location = new Point(32, 9);
+            lblDatosUsuario.Location = new Point(32, 0);
             lblDatosUsuario.Name = "lblDatosUsuario";
-            lblDatosUsuario.Size = new Size(180, 30);
+            lblDatosUsuario.Size = new Size(194, 30);
             lblDatosUsuario.TabIndex = 0;
-            lblDatosUsuario.Text = "Datos Del Usuario";
+            lblDatosUsuario.Text = "Datos Del Producto";
             // 
-            // dataGridUsuarios
+            // lblPrecioCompraDato
             // 
-            dataGridUsuarios.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle4.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
-            dataGridUsuarios.BorderStyle = BorderStyle.None;
-            dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.Padding = new Padding(2);
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle5.SelectionForeColor = Color.White;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Location = new Point(12, 98);
-            dataGridUsuarios.MultiSelect = false;
-            dataGridUsuarios.Name = "dataGridUsuarios";
-            dataGridUsuarios.ReadOnly = true;
-            dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(119, 105, 178);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(47, 33, 75);
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridUsuarios.RowHeadersVisible = false;
-            dataGridUsuarios.RowTemplate.Height = 28;
-            dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(795, 364);
-            dataGridUsuarios.TabIndex = 12;
+            lblPrecioCompraDato.AutoSize = true;
+            lblPrecioCompraDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblPrecioCompraDato.ForeColor = SystemColors.WindowText;
+            lblPrecioCompraDato.Location = new Point(25, 250);
+            lblPrecioCompraDato.Name = "lblPrecioCompraDato";
+            lblPrecioCompraDato.Size = new Size(98, 17);
+            lblPrecioCompraDato.TabIndex = 8;
+            lblPrecioCompraDato.Text = "Precio Compra";
+            // 
+            // lbldescrip
+            // 
+            lbldescrip.AutoSize = true;
+            lbldescrip.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lbldescrip.ForeColor = SystemColors.WindowText;
+            lbldescrip.Location = new Point(0, 174);
+            lbldescrip.Name = "lbldescrip";
+            lbldescrip.Size = new Size(80, 17);
+            lbldescrip.TabIndex = 35;
+            lbldescrip.Text = "Descripcion";
+            // 
+            // iconBtnDarAlta
+            // 
+            iconBtnDarAlta.BackColor = Color.Orange;
+            iconBtnDarAlta.BackgroundImage = (Image)resources.GetObject("iconBtnDarAlta.BackgroundImage");
+            iconBtnDarAlta.BackgroundImageLayout = ImageLayout.None;
+            iconBtnDarAlta.Cursor = Cursors.Hand;
+            iconBtnDarAlta.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDarAlta.FlatStyle = FlatStyle.Flat;
+            iconBtnDarAlta.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDarAlta.ForeColor = SystemColors.ControlLightLight;
+            iconBtnDarAlta.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnDarAlta.IconColor = Color.White;
+            iconBtnDarAlta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDarAlta.IconSize = 30;
+            iconBtnDarAlta.Location = new Point(205, 20);
+            iconBtnDarAlta.Name = "iconBtnDarAlta";
+            iconBtnDarAlta.Size = new Size(89, 38);
+            iconBtnDarAlta.TabIndex = 17;
+            iconBtnDarAlta.Text = "Dar Alta";
+            iconBtnDarAlta.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDarAlta.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDarAlta.UseVisualStyleBackColor = false;
+            iconBtnDarAlta.Click += iconBtnDarAlta_Click;
+            // 
+            // iconBtnCategorias
+            // 
+            iconBtnCategorias.BackColor = Color.FromArgb(216, 103, 30);
+            iconBtnCategorias.BackgroundImage = (Image)resources.GetObject("iconBtnCategorias.BackgroundImage");
+            iconBtnCategorias.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCategorias.Cursor = Cursors.Hand;
+            iconBtnCategorias.FlatAppearance.BorderColor = Color.Black;
+            iconBtnCategorias.FlatStyle = FlatStyle.Flat;
+            iconBtnCategorias.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCategorias.ForeColor = SystemColors.ControlLightLight;
+            iconBtnCategorias.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCategorias.IconColor = Color.White;
+            iconBtnCategorias.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCategorias.IconSize = 30;
+            iconBtnCategorias.Location = new Point(334, 20);
+            iconBtnCategorias.Name = "iconBtnCategorias";
+            iconBtnCategorias.Size = new Size(103, 39);
+            iconBtnCategorias.TabIndex = 16;
+            iconBtnCategorias.Text = "Categorias";
+            iconBtnCategorias.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnCategorias.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnCategorias.UseVisualStyleBackColor = false;
+            iconBtnCategorias.Click += iconBtnCategorias_Click;
+            // 
+            // dataGridProducto
+            // 
+            dataGridProducto.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridProducto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridProducto.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridProducto.BackgroundColor = Color.FromArgb(67, 68, 89);
+            dataGridProducto.BorderStyle = BorderStyle.None;
+            dataGridProducto.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.Padding = new Padding(2);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridProducto.Columns.AddRange(new DataGridViewColumn[] { Col_IDproducto, Col_CodBarra, Col_nombre_produc, Col_Descrip_producto, Col_precio_compra, Col_precio_venta, Col_stock_produc, Col_nom_marca, Col_nom_categ, Col_estado_produc, Col_img_producto });
+            dataGridProducto.Location = new Point(12, 85);
+            dataGridProducto.MultiSelect = false;
+            dataGridProducto.Name = "dataGridProducto";
+            dataGridProducto.ReadOnly = true;
+            dataGridProducto.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridProducto.RowHeadersVisible = false;
+            dataGridProducto.RowTemplate.Height = 28;
+            dataGridProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridProducto.Size = new Size(795, 363);
+            dataGridProducto.TabIndex = 12;
+            dataGridProducto.CellContentClick += dataGridProducto_CellContentClick;
+            // 
+            // Col_IDproducto
+            // 
+            Col_IDproducto.HeaderText = "ID Producto";
+            Col_IDproducto.Name = "Col_IDproducto";
+            Col_IDproducto.ReadOnly = true;
+            Col_IDproducto.Width = 96;
+            // 
+            // Col_CodBarra
+            // 
+            Col_CodBarra.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_CodBarra.HeaderText = "Cod Barra";
+            Col_CodBarra.MinimumWidth = 90;
+            Col_CodBarra.Name = "Col_CodBarra";
+            Col_CodBarra.ReadOnly = true;
+            // 
+            // Col_nombre_produc
+            // 
+            Col_nombre_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nombre_produc.HeaderText = "Nombre Producto";
+            Col_nombre_produc.MinimumWidth = 100;
+            Col_nombre_produc.Name = "Col_nombre_produc";
+            Col_nombre_produc.ReadOnly = true;
+            // 
+            // Col_Descrip_producto
+            // 
+            Col_Descrip_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_Descrip_producto.HeaderText = "Descripcion Producto";
+            Col_Descrip_producto.MinimumWidth = 140;
+            Col_Descrip_producto.Name = "Col_Descrip_producto";
+            Col_Descrip_producto.ReadOnly = true;
+            // 
+            // Col_precio_compra
+            // 
+            Col_precio_compra.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_precio_compra.HeaderText = "Precio Compra";
+            Col_precio_compra.MinimumWidth = 100;
+            Col_precio_compra.Name = "Col_precio_compra";
+            Col_precio_compra.ReadOnly = true;
+            // 
+            // Col_precio_venta
+            // 
+            Col_precio_venta.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_precio_venta.HeaderText = "Precio Venta";
+            Col_precio_venta.MinimumWidth = 100;
+            Col_precio_venta.Name = "Col_precio_venta";
+            Col_precio_venta.ReadOnly = true;
+            // 
+            // Col_stock_produc
+            // 
+            Col_stock_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_stock_produc.HeaderText = "Stock";
+            Col_stock_produc.MinimumWidth = 50;
+            Col_stock_produc.Name = "Col_stock_produc";
+            Col_stock_produc.ReadOnly = true;
+            // 
+            // Col_nom_marca
+            // 
+            Col_nom_marca.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nom_marca.HeaderText = "Marca";
+            Col_nom_marca.MinimumWidth = 65;
+            Col_nom_marca.Name = "Col_nom_marca";
+            Col_nom_marca.ReadOnly = true;
+            // 
+            // Col_nom_categ
+            // 
+            Col_nom_categ.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_nom_categ.HeaderText = "Categoria";
+            Col_nom_categ.MinimumWidth = 80;
+            Col_nom_categ.Name = "Col_nom_categ";
+            Col_nom_categ.ReadOnly = true;
+            // 
+            // Col_estado_produc
+            // 
+            Col_estado_produc.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_estado_produc.HeaderText = "Estado ";
+            Col_estado_produc.MinimumWidth = 70;
+            Col_estado_produc.Name = "Col_estado_produc";
+            Col_estado_produc.ReadOnly = true;
+            // 
+            // Col_img_producto
+            // 
+            Col_img_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Col_img_producto.HeaderText = "Imagen";
+            Col_img_producto.MinimumWidth = 70;
+            Col_img_producto.Name = "Col_img_producto";
+            Col_img_producto.ReadOnly = true;
+            // 
+            // iconBtnAgregar
+            // 
+            iconBtnAgregar.BackColor = Color.FromArgb(19, 173, 39);
+            iconBtnAgregar.BackgroundImage = (Image)resources.GetObject("iconBtnAgregar.BackgroundImage");
+            iconBtnAgregar.BackgroundImageLayout = ImageLayout.None;
+            iconBtnAgregar.Cursor = Cursors.Hand;
+            iconBtnAgregar.FlatAppearance.BorderColor = Color.Black;
+            iconBtnAgregar.FlatStyle = FlatStyle.Flat;
+            iconBtnAgregar.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnAgregar.ForeColor = SystemColors.ControlLightLight;
+            iconBtnAgregar.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnAgregar.IconColor = Color.White;
+            iconBtnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnAgregar.IconSize = 30;
+            iconBtnAgregar.Location = new Point(73, 20);
+            iconBtnAgregar.Name = "iconBtnAgregar";
+            iconBtnAgregar.Size = new Size(89, 39);
+            iconBtnAgregar.TabIndex = 14;
+            iconBtnAgregar.Text = "Agregar";
+            iconBtnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnAgregar.UseVisualStyleBackColor = false;
+            iconBtnAgregar.Click += iconBtnAgregar_Click;
+            // 
+            // iconBtnDarBaja
+            // 
+            iconBtnDarBaja.BackColor = Color.FromArgb(250, 21, 21);
+            iconBtnDarBaja.BackgroundImage = (Image)resources.GetObject("iconBtnDarBaja.BackgroundImage");
+            iconBtnDarBaja.BackgroundImageLayout = ImageLayout.None;
+            iconBtnDarBaja.Cursor = Cursors.Hand;
+            iconBtnDarBaja.FlatAppearance.BorderColor = Color.Black;
+            iconBtnDarBaja.FlatStyle = FlatStyle.Flat;
+            iconBtnDarBaja.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnDarBaja.ForeColor = SystemColors.ControlLightLight;
+            iconBtnDarBaja.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnDarBaja.IconColor = Color.White;
+            iconBtnDarBaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnDarBaja.IconSize = 30;
+            iconBtnDarBaja.Location = new Point(205, 20);
+            iconBtnDarBaja.Name = "iconBtnDarBaja";
+            iconBtnDarBaja.Size = new Size(97, 38);
+            iconBtnDarBaja.TabIndex = 15;
+            iconBtnDarBaja.Text = "Dar Baja";
+            iconBtnDarBaja.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnDarBaja.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnDarBaja.UseVisualStyleBackColor = false;
+            iconBtnDarBaja.Click += iconBtnDarBaja_Click;
             // 
             // lblCatalogoProducto
             // 
@@ -469,115 +723,84 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(822, 64);
+            panel1.Size = new Size(822, 69);
             panel1.TabIndex = 1;
             // 
-            // textBox1
+            // errorProvider1
             // 
-            textBox1.Location = new Point(117, 186);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(61, 23);
-            textBox1.TabIndex = 31;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = SystemColors.WindowText;
-            label1.Location = new Point(2, 192);
-            label1.Name = "label1";
-            label1.Size = new Size(85, 17);
-            label1.TabIndex = 30;
-            label1.Text = "Precio Venta";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(79, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(144, 23);
-            textBox2.TabIndex = 32;
-            // 
-            // lblCategoriaDato
-            // 
-            lblCategoriaDato.AutoSize = true;
-            lblCategoriaDato.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCategoriaDato.ForeColor = SystemColors.WindowText;
-            lblCategoriaDato.Location = new Point(3, 77);
-            lblCategoriaDato.Name = "lblCategoriaDato";
-            lblCategoriaDato.Size = new Size(67, 17);
-            lblCategoriaDato.TabIndex = 33;
-            lblCategoriaDato.Text = "Categoria";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.WindowText;
-            label2.Location = new Point(0, 250);
-            label2.Name = "label2";
-            label2.Size = new Size(80, 17);
-            label2.TabIndex = 35;
-            label2.Text = "Descripcion";
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(79, 244);
-            textBox3.Multiline = true;
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(144, 75);
-            textBox3.TabIndex = 34;
+            errorProvider1.ContainerControl = this;
             // 
             // FrmGestionarProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(822, 565);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FrmGestionarProducto";
             Text = "FrmRegistrarProducto";
+            Load += FrmGestionarProducto_Load;
             panel2.ResumeLayout(false);
-            panelDatosUsuario.ResumeLayout(false);
-            panelDatosUsuario.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
+            panelDatosProducto.ResumeLayout(false);
+            panelDatosProducto.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picImgEditarProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridProducto).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Panel panel2;
-        private FontAwesome.Sharp.IconButton iconBtnAlta;
-        private FontAwesome.Sharp.IconButton iconBtnHistorial;
-        private FontAwesome.Sharp.IconButton iconBtnElim;
+        private FontAwesome.Sharp.IconButton iconBtnDarAlta;
+        private FontAwesome.Sharp.IconButton iconBtnCategorias;
+        private FontAwesome.Sharp.IconButton iconBtnDarBaja;
         private FontAwesome.Sharp.IconButton iconBtnAgregar;
-        private Panel panelDatosUsuario;
+        private Panel panelDatosProducto;
         private Label lblStock;
-        private TextBox txtIdGuardado;
+        //private TextBox txtIdGuardado;
         private FontAwesome.Sharp.IconButton iconbtnGuardar;
         private FontAwesome.Sharp.IconButton iconBtnCancelar;
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private ComboBox comboEstadoDato;
         private Label lblEstadoDato;
         private Label lblMarcaDato;
-        private TextBox txtEmailDato;
-        private Label lblTelefDato;
-        private TextBox txtTelefDato;
-        private Label lblIdDato;
-        private TextBox txtDniDato;
-        private TextBox txtApeDato;
+        private TextBox txtPrecioCompraDato;
         private Label lblPrecioCompraDato;
         private Label lblNombreDato;
         private TextBox txtNombreDato;
         private Label lblDatosUsuario;
-        private DataGridView dataGridUsuarios;
+        private DataGridView dataGridProducto;
         private Label lblCatalogoProducto;
         private Panel panel1;
-        private TextBox textBox1;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox3;
-        private TextBox textBox2;
+        private TextBox txtPrecioVenta;
+        private Label lblprecioVenta;
+        private Label lbldescrip;
+        private TextBox txtDescripcionDato;
         private Label lblCategoriaDato;
+        private FontAwesome.Sharp.IconButton iconBtnMarca;
+        private TextBox txtStockDato;
+        private ComboBox comboMarcaDato;
+        private ComboBox comboCategDato;
+        private PictureBox picImgEditarProducts;
+        private Label lblImg;
+        private TextBox txtIdProducto;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
+        private DataGridViewTextBoxColumn Col_IDproducto;
+        private DataGridViewTextBoxColumn Col_CodBarra;
+        private DataGridViewTextBoxColumn Col_nombre_produc;
+        private DataGridViewTextBoxColumn Col_Descrip_producto;
+        private DataGridViewTextBoxColumn Col_precio_compra;
+        private DataGridViewTextBoxColumn Col_precio_venta;
+        private DataGridViewTextBoxColumn Col_stock_produc;
+        private DataGridViewTextBoxColumn Col_nom_marca;
+        private DataGridViewTextBoxColumn Col_nom_categ;
+        private DataGridViewTextBoxColumn Col_estado_produc;
+        private DataGridViewTextBoxColumn Col_img_producto;
+        private TextBox txtCodBarra;
+        private Label lblCodBarraDato;
+        private ErrorProvider errorProvider1;
     }
 }

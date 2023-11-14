@@ -41,7 +41,7 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
-            btnCategoria = new Button();
+            pSettings = new PictureBox();
             btnAdministrarAcceso = new Button();
             BtnProducto = new Button();
             BtnDashBoard = new Button();
@@ -65,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             PVentana.SuspendLayout();
             PMenuLat.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pSettings).BeginInit();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
@@ -218,7 +219,7 @@
             // PMenuLat
             // 
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(btnCategoria);
+            PMenuLat.Controls.Add(pSettings);
             PMenuLat.Controls.Add(btnAdministrarAcceso);
             PMenuLat.Controls.Add(BtnProducto);
             PMenuLat.Controls.Add(BtnDashBoard);
@@ -238,24 +239,17 @@
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
-            // btnCategoria
+            // pSettings
             // 
-            btnCategoria.BackColor = Color.FromArgb(17, 17, 27);
-            btnCategoria.Cursor = Cursors.Hand;
-            btnCategoria.Dock = DockStyle.Top;
-            btnCategoria.FlatStyle = FlatStyle.Popup;
-            btnCategoria.ForeColor = SystemColors.ControlLightLight;
-            btnCategoria.Image = (Image)resources.GetObject("btnCategoria.Image");
-            btnCategoria.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCategoria.Location = new Point(0, 412);
-            btnCategoria.Name = "btnCategoria";
-            btnCategoria.Padding = new Padding(10, 0, 0, 0);
-            btnCategoria.Size = new Size(186, 45);
-            btnCategoria.TabIndex = 33;
-            btnCategoria.Text = "   Categoria";
-            btnCategoria.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCategoria.UseVisualStyleBackColor = false;
-            btnCategoria.Click += btnCategoria_Click;
+            pSettings.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            pSettings.BackgroundImage = (Image)resources.GetObject("pSettings.BackgroundImage");
+            pSettings.BackgroundImageLayout = ImageLayout.Stretch;
+            pSettings.Location = new Point(159, 568);
+            pSettings.Name = "pSettings";
+            pSettings.Size = new Size(24, 24);
+            pSettings.TabIndex = 16;
+            pSettings.TabStop = false;
+            pSettings.Click += pSettings_Click;
             // 
             // btnAdministrarAcceso
             // 
@@ -274,6 +268,7 @@
             btnAdministrarAcceso.Text = "   Administrar Acceso";
             btnAdministrarAcceso.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdministrarAcceso.UseVisualStyleBackColor = false;
+            btnAdministrarAcceso.Visible = false;
             btnAdministrarAcceso.Click += btnAdministrarAcceso_Click;
             btnAdministrarAcceso.MouseEnter += btnAdministrarAcceso_MouseEnter;
             btnAdministrarAcceso.MouseLeave += btnAdministrarAcceso_MouseLeave;
@@ -390,12 +385,13 @@
             BtnCerrarSesion.ForeColor = SystemColors.ControlLightLight;
             BtnCerrarSesion.Image = (Image)resources.GetObject("BtnCerrarSesion.Image");
             BtnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
-            BtnCerrarSesion.Location = new Point(-5, 556);
+            BtnCerrarSesion.Location = new Point(-5, 558);
             BtnCerrarSesion.Name = "BtnCerrarSesion";
             BtnCerrarSesion.Padding = new Padding(10, 0, 0, 0);
-            BtnCerrarSesion.Size = new Size(191, 45);
+            BtnCerrarSesion.Size = new Size(134, 43);
             BtnCerrarSesion.TabIndex = 25;
             BtnCerrarSesion.Text = "Cerrar Sesion";
+            BtnCerrarSesion.TextAlign = ContentAlignment.MiddleRight;
             BtnCerrarSesion.UseVisualStyleBackColor = false;
             BtnCerrarSesion.Click += BtnCerrarSesion_Click;
             // 
@@ -509,6 +505,7 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             PVentana.ResumeLayout(false);
             PMenuLat.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pSettings).EndInit();
             PLogo.ResumeLayout(false);
             PLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -543,6 +540,6 @@
         private Button btnGestionUsuario;
         private Button BtnProducto;
         private Button btnAdministrarAcceso;
-        private Button btnCategoria;
+        private PictureBox pSettings;
     }
 }

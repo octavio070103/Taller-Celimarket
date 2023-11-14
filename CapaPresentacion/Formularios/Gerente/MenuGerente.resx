@@ -187,6 +187,9 @@
         AAAAAFO2YsX/AQPnO6JK20RlAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="toolTipMenuGerente.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>135, 17</value>
+  </metadata>
   <data name="btnMenu.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
@@ -492,18 +495,37 @@
         B/jeCFD+ABwmHfTeCFD+W8mD/HEEKH8ADpcu+nEELFL+v/vd/wNSHlY/GrynLAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="iconPicSesion.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BtnCrearSolicitud.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAACXElEQVRYR62XPYsUQRCGV0MDTUVMVAQzP4L7AYYe+BOMDQ1EzTzRU0EET8TMSC4zNPEDwVgEA9EL
+        DNT0FBTBD5Rbn7eqepxdetbu3n3g5aZrqrre2+me7R2J8Xh8DD1BX1Etn9EJm6gFio+iX5ppDn6i5Ziy
+        Dgr1n4sf6A66XqE+bSYoSh/7WoSKibo+9Sa8zliJUDFRJ54jNRd1JrzGmMfAClpG9SY832gxkB7f7RjX
+        m/Bco8XAYy+1BbyGzqO0qIVMzN6inme0GCjZwp8iPU8kiWoDgjqZeIQGX2KRmidyRJOBIZjvok873opQ
+        nkgSizZwHOnxPI1QHnUOOgNcr6Mti5aj/PWYwmC8A22PYR5VBn0Dmx6qZjOmmID4NnQJPUT7I+wQSPQN
+        LKErKPf+H5Lyl2KKDmJqfhclPqIDcTtvYFEw53TzxD8TPjYWvQinm79FN/3ScBN+bbQuwm9o4m3HONd8
+        d9zTWki8GTJQuwhXo3Rmc8H1qkWd10MGahbhObQz6mqav0f7sgZaoF7NdaJKbKA9cVv3L1vU+YB8O/rY
+        aDZAbVtz4TGjZBH+RtcizWBc/7H38bhRughfRNr8zYXfM0oWobbQoUhT3g2UqG8u/L5RtQbIP4nSY2pr
+        LjzHqDXw0svsce2NcF1z4XlGsQFyD3qJcSHCil/1kPH/5oKkiZNtCeSe8hLjMNKx7IGNnLLmgsT+yfYW
+        0sl2WmfQrihRjU7AiS/xN/EOlTUXJJf+OO32P9fPPDTBH3QfdUaLoegImnWy1Tde9yOD67PoO3qF7qHT
+        qNsF5YxGfwG1j4Q7xahAkgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolTipMenuGerente.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>135, 17</value>
+  </metadata>
+  <data name="BtnCerrarSesion.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
-        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCB0OEyl8VbHtAAAB0klEQVRYR+2XTysFURiHb1d2yp8i
-        f4qFjaUPcJUtFkopXwLFl8CODR9BIjvJTmRDEsmOja0NEoXjeee8kxlz7swdzr23dJ96ynnf98z8mOs0
-        t2CM6cQD/MTf8o7XOI/FQh7YsI0+WdZLVwYbnu0+M4glXMV7KUS4wxUc1m0xqDfhOL6i/DUGtJUNwwG6
-        DGBZRFcYeUxLOpaA3l4wZcyklrLRDbEAUWiFYdZQfkMJMaTtGNS3UJjWUja6oWyAKIzt2mkzpaUY1Kse
-        IPUG1BsBnH3Wx3iKXVr6RqYFXabCWFaATduOf0ZYn9myucJ4CFv3FkD+W9axVUsBrOW0vUThBnu05TdA
-        Guxxh7Dr6gcQ2JcMYX/+WwDWiyhHcF6efAVYwPoFqBT2/XwE3TULwJ7kzbURECwyYCw1APUR3MA2LQWw
-        dt9csDVvAep+EDn7rGt2FKf2neiGRoB/E8D/S2kUxpwBWMtr+QS+oRzJ/drKhuEPFJq1VBZmLuxoKmVf
-        252wQQ4HYR9nsEVbCeilBbjFOcz91WwUHzHkBXcwEYZ1/g9ZJXBBOasl/RGGj0SIhunAExTGdKt/uHgf
-        usKEPGC7jlcXbtSLs3iI8iX2HEva9kCh8AXoH35tPpdhkgAAAABJRU5ErkJggg==
+        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCgkBJylpmJaPAAABhklEQVRYR+2XvUoDURBGF0R9AtMJ
+        imDvS9gGFB9ASWXjO4gPYOdPYhvQThAbewsfwFgLYqmkUJHoeubeuSRX97qb/YmFe+BAdu63MwMJmySK
+        4/gQP7BsBtiO0iBUxXDHQMeE0WAW+niBZxm8R4OOCaO5rLziFe7gvLb4AWenaNBSGM3lZV/beFCf2ALv
+        2saD+sQWSBxAuV7gzxc4sadxX68XsYPrJjCKpIqgbTwoL+AxNvW6jYI89Fom5LD1/GibXyG2hu6J6y9h
+        a/nRNqkQ3UK3xCduu4NCmCbAyyncw6RHs/MRHbLMZpkLrNrKWDyVuUADe6aYnW5pC6RBdBkfzE2WS5yd
+        yALElnB0+DnOuMNCmCbfoCwfSPlMNPTaPQeE4XDB1vKjbTwo79rTuKfXTXzGLg6HCxQKoW08KNdfRvUC
+        /2gB2EjwGg06JozmKkPHhCFzZ6OVcKtjwhCSb7EWHuANvuE4JL0FovwKmtMx2eGmaVzBLEul//ksAwYl
+        LfWCRxrJSRR9AScAZ2iy3EL6AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="iconBtnCaja.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

@@ -131,49 +131,58 @@
         7CBEb7g4amIOyzYkWwjS69Wj8APss8vZQ1gBr/EUR+3rPwiCH8O/NknDowt2AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="col_id_usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_id_permiso.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_dni.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_tipo_permiso.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_nombre.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_fecha_inicio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_apellido.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_fecha_finalizacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_email.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_estado_aprobacion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_password.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_nombre_rol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_telefono.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="col_id_persona.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_id_rol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_Dni_Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_Rol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_Nombre_Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_id_domicilio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_Apellido_Usuario.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_domicilio_calle.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_id_domicilio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_domicilio_numero.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Col_estado_permiso.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="col_domicilio_prov.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Estado_Valor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="col_estado.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="iconBtnExcel.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        pQAAAKUBcMTeVQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKxSURBVEhLtZZf
+        SFNRHMcH0UPSY/WUUdBLQeLuuG2NZRQEWj4EBVOpFEwygwqhAhWby8xCMjD1IQx1ZtHDKp2lJQphkGQg
+        VFv4ByooCgp6iljEt/s97R7uP9eUGnx27v3dc77fc37nz70uAAsyN5ezZj7u2TufUM5pDMwllI+E1yKm
+        PWMdp7Y6jsGpKc/y2YQS0sSSGvgLSZqxjZOWLTDzOjdXE592EEoL27CtVc90Mxv3VGmVM+n1QiSpYdSU
+        F3RnBUuDpZA0jkT8pXJuS0vilYLomIrwLS+K2/zYGg5gdfUOVHT6EH9prmuEWvqcCIPUhIqH/Y9V5DUF
+        kH0mD8uqdsJ1zE5R6zYcaPWjtMNMZFiVJpx4YcBlpgVkamr7fI6iRkradqOs5xKya4KiJBvrD+JIuw9P
+        n8mRJKntEms5JZ6pwfEbRVrngMKOGlHyRxMadN9VpAm1XRzKQgZqcyWyTuZjXW0QG+pKZHz/le1YX1cs
+        nrEkK0/tkQa6CbVpwB3qaFB7vwsXHvbhxfsZ5DSWy3hVVxA/fiZRcO2sKMmh7iaTARmfUKZdmii3v6PB
+        ihP5ePf1M65PxGSMHG4vQPNIPzY1lIqSeC4etRn0aKQ14LA/fPuCyOSjJRncHFB+pU1ReKgXoVg3nr99
+        IwT0eKYpig67P6Wd5Iq+FjGRW86XY9fVahnPZJJJbNQ9/l+Wqc7IuBL65xtNF++5p2D0iXuz7aiIjKjw
+        NgSw9nT6o2Jfi99GuFeVBkwPtR0PO24SVuqKKmiMqKjs9KLwsh+59QGs0g67sjZzKqzcGVK+Dw56sqQB
+        sR7XusliYWq03Ad1XWlArC+cxZpQ/MGYctuoaTIg1ldmpiZMi7HnOqYbHetLP50Je80J1XNuxRYwYvxs
+        4cHFs4XbnzuUolznXIpObf8A128sL6p+zkLfcwAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>

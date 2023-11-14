@@ -41,8 +41,11 @@
             picCerrar = new PictureBox();
             PVentana = new Panel();
             PMenuLat = new Panel();
-            iconPicSesion = new FontAwesome.Sharp.IconPictureBox();
-            iconBtnSesion = new FontAwesome.Sharp.IconButton();
+            panelCrearSolicitud = new Panel();
+            iconBtnCrearConsulta = new FontAwesome.Sharp.IconButton();
+            iconbtnCrearPermiso = new FontAwesome.Sharp.IconButton();
+            BtnCrearSolicitud = new FontAwesome.Sharp.IconButton();
+            BtnCerrarSesion = new Button();
             iconBtnCaja = new FontAwesome.Sharp.IconButton();
             iconBtnOperaciones = new FontAwesome.Sharp.IconButton();
             iconBtnEstadisticas = new FontAwesome.Sharp.IconButton();
@@ -54,6 +57,7 @@
             lblRolDelUsu = new Label();
             pictureMenuHambur = new PictureBox();
             picUsuario = new PictureBox();
+            toolTipMenuGerente = new ToolTip(components);
             panelBarraSuperior.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -62,7 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).BeginInit();
             PVentana.SuspendLayout();
             PMenuLat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)iconPicSesion).BeginInit();
+            panelCrearSolicitud.SuspendLayout();
             PLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picUsuario).BeginInit();
@@ -139,7 +143,7 @@
             btnMenu.BackgroundImageLayout = ImageLayout.None;
             btnMenu.FlatAppearance.BorderSize = 0;
             btnMenu.FlatStyle = FlatStyle.Flat;
-            btnMenu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnMenu.ForeColor = SystemColors.ControlLightLight;
             btnMenu.Location = new Point(4, 2);
             btnMenu.Margin = new Padding(4, 3, 4, 3);
@@ -149,6 +153,7 @@
             btnMenu.TabIndex = 14;
             btnMenu.Text = "Menu Principal";
             btnMenu.TextAlign = ContentAlignment.MiddleRight;
+            toolTipMenuGerente.SetToolTip(btnMenu, "Menu principal");
             btnMenu.UseVisualStyleBackColor = false;
             btnMenu.Click += btnMenu_Click;
             // 
@@ -164,6 +169,7 @@
             picMinPantalla.SizeMode = PictureBoxSizeMode.Zoom;
             picMinPantalla.TabIndex = 1;
             picMinPantalla.TabStop = false;
+            toolTipMenuGerente.SetToolTip(picMinPantalla, "Minimizar Ventana");
             picMinPantalla.Click += picMinPantalla_Click;
             // 
             // picMaxPantalla
@@ -191,6 +197,7 @@
             picCerrar.SizeMode = PictureBoxSizeMode.Zoom;
             picCerrar.TabIndex = 0;
             picCerrar.TabStop = false;
+            toolTipMenuGerente.SetToolTip(picCerrar, "Cerrar Ventana");
             picCerrar.Click += picCerrar_Click;
             // 
             // PVentana
@@ -208,8 +215,9 @@
             // PMenuLat
             // 
             PMenuLat.BackColor = Color.FromArgb(17, 17, 27);
-            PMenuLat.Controls.Add(iconPicSesion);
-            PMenuLat.Controls.Add(iconBtnSesion);
+            PMenuLat.Controls.Add(panelCrearSolicitud);
+            PMenuLat.Controls.Add(BtnCrearSolicitud);
+            PMenuLat.Controls.Add(BtnCerrarSesion);
             PMenuLat.Controls.Add(iconBtnCaja);
             PMenuLat.Controls.Add(iconBtnOperaciones);
             PMenuLat.Controls.Add(iconBtnEstadisticas);
@@ -220,45 +228,107 @@
             PMenuLat.Dock = DockStyle.Left;
             PMenuLat.Location = new Point(0, 0);
             PMenuLat.Margin = new Padding(4, 3, 4, 3);
-            PMenuLat.MaximumSize = new Size(186, 604);
+            PMenuLat.MaximumSize = new Size(186, 0);
             PMenuLat.MinimumSize = new Size(40, 604);
             PMenuLat.Name = "PMenuLat";
             PMenuLat.Size = new Size(186, 604);
             PMenuLat.TabIndex = 15;
             PMenuLat.MouseDown += PMenuLat_MouseDown;
             // 
-            // iconPicSesion
+            // panelCrearSolicitud
             // 
-            iconPicSesion.BackColor = Color.FromArgb(17, 17, 27);
-            iconPicSesion.BackgroundImage = (Image)resources.GetObject("iconPicSesion.BackgroundImage");
-            iconPicSesion.BackgroundImageLayout = ImageLayout.Zoom;
-            iconPicSesion.ForeColor = SystemColors.ControlText;
-            iconPicSesion.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconPicSesion.IconColor = SystemColors.ControlText;
-            iconPicSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconPicSesion.IconSize = 35;
-            iconPicSesion.Location = new Point(0, 561);
-            iconPicSesion.Name = "iconPicSesion";
-            iconPicSesion.Size = new Size(35, 43);
-            iconPicSesion.TabIndex = 16;
-            iconPicSesion.TabStop = false;
+            panelCrearSolicitud.BackColor = Color.White;
+            panelCrearSolicitud.Controls.Add(iconBtnCrearConsulta);
+            panelCrearSolicitud.Controls.Add(iconbtnCrearPermiso);
+            panelCrearSolicitud.Dock = DockStyle.Top;
+            panelCrearSolicitud.Location = new Point(0, 443);
+            panelCrearSolicitud.Name = "panelCrearSolicitud";
+            panelCrearSolicitud.Size = new Size(186, 66);
+            panelCrearSolicitud.TabIndex = 16;
             // 
-            // iconBtnSesion
+            // iconBtnCrearConsulta
             // 
-            iconBtnSesion.BackColor = Color.FromArgb(17, 17, 27);
-            iconBtnSesion.Dock = DockStyle.Bottom;
-            iconBtnSesion.FlatStyle = FlatStyle.Popup;
-            iconBtnSesion.ForeColor = Color.White;
-            iconBtnSesion.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconBtnSesion.IconColor = Color.Black;
-            iconBtnSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconBtnSesion.Location = new Point(0, 561);
-            iconBtnSesion.Name = "iconBtnSesion";
-            iconBtnSesion.Size = new Size(186, 43);
-            iconBtnSesion.TabIndex = 16;
-            iconBtnSesion.Text = "Cerrar Sesion";
-            iconBtnSesion.UseVisualStyleBackColor = false;
-            iconBtnSesion.Click += iconBtnSesion_Click;
+            iconBtnCrearConsulta.BackColor = Color.FromArgb(17, 17, 27);
+            iconBtnCrearConsulta.BackgroundImageLayout = ImageLayout.None;
+            iconBtnCrearConsulta.Dock = DockStyle.Top;
+            iconBtnCrearConsulta.FlatStyle = FlatStyle.Popup;
+            iconBtnCrearConsulta.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconBtnCrearConsulta.ForeColor = Color.White;
+            iconBtnCrearConsulta.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnCrearConsulta.IconColor = Color.White;
+            iconBtnCrearConsulta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnCrearConsulta.IconSize = 40;
+            iconBtnCrearConsulta.ImageAlign = ContentAlignment.MiddleLeft;
+            iconBtnCrearConsulta.Location = new Point(0, 33);
+            iconBtnCrearConsulta.Name = "iconBtnCrearConsulta";
+            iconBtnCrearConsulta.Size = new Size(186, 33);
+            iconBtnCrearConsulta.TabIndex = 18;
+            iconBtnCrearConsulta.Text = "Crear una nueva consulta";
+            iconBtnCrearConsulta.UseVisualStyleBackColor = false;
+            iconBtnCrearConsulta.Click += iconBtnCrearConsulta_Click;
+            // 
+            // iconbtnCrearPermiso
+            // 
+            iconbtnCrearPermiso.BackColor = Color.FromArgb(17, 17, 27);
+            iconbtnCrearPermiso.BackgroundImageLayout = ImageLayout.None;
+            iconbtnCrearPermiso.Dock = DockStyle.Top;
+            iconbtnCrearPermiso.FlatStyle = FlatStyle.Popup;
+            iconbtnCrearPermiso.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            iconbtnCrearPermiso.ForeColor = Color.White;
+            iconbtnCrearPermiso.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconbtnCrearPermiso.IconColor = Color.White;
+            iconbtnCrearPermiso.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconbtnCrearPermiso.IconSize = 40;
+            iconbtnCrearPermiso.ImageAlign = ContentAlignment.MiddleLeft;
+            iconbtnCrearPermiso.Location = new Point(0, 0);
+            iconbtnCrearPermiso.Name = "iconbtnCrearPermiso";
+            iconbtnCrearPermiso.Size = new Size(186, 33);
+            iconbtnCrearPermiso.TabIndex = 17;
+            iconbtnCrearPermiso.Text = "Crear un nuevo Permiso";
+            iconbtnCrearPermiso.UseVisualStyleBackColor = false;
+            iconbtnCrearPermiso.Click += iconbtnCrearPermiso_Click;
+            // 
+            // BtnCrearSolicitud
+            // 
+            BtnCrearSolicitud.BackColor = Color.FromArgb(17, 17, 27);
+            BtnCrearSolicitud.BackgroundImage = (Image)resources.GetObject("BtnCrearSolicitud.BackgroundImage");
+            BtnCrearSolicitud.BackgroundImageLayout = ImageLayout.None;
+            BtnCrearSolicitud.Dock = DockStyle.Top;
+            BtnCrearSolicitud.FlatStyle = FlatStyle.Popup;
+            BtnCrearSolicitud.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            BtnCrearSolicitud.ForeColor = Color.White;
+            BtnCrearSolicitud.IconChar = FontAwesome.Sharp.IconChar.None;
+            BtnCrearSolicitud.IconColor = Color.White;
+            BtnCrearSolicitud.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            BtnCrearSolicitud.IconSize = 40;
+            BtnCrearSolicitud.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnCrearSolicitud.Location = new Point(0, 402);
+            BtnCrearSolicitud.Name = "BtnCrearSolicitud";
+            BtnCrearSolicitud.Size = new Size(186, 41);
+            BtnCrearSolicitud.TabIndex = 27;
+            BtnCrearSolicitud.Text = "Solicitud";
+            toolTipMenuGerente.SetToolTip(BtnCrearSolicitud, "Gestionar Caja");
+            BtnCrearSolicitud.UseVisualStyleBackColor = false;
+            BtnCrearSolicitud.Click += BtnCrearSolicitud_Click;
+            // 
+            // BtnCerrarSesion
+            // 
+            BtnCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnCerrarSesion.BackColor = Color.FromArgb(17, 17, 27);
+            BtnCerrarSesion.Cursor = Cursors.Hand;
+            BtnCerrarSesion.FlatStyle = FlatStyle.Popup;
+            BtnCerrarSesion.ForeColor = SystemColors.ControlLightLight;
+            BtnCerrarSesion.Image = (Image)resources.GetObject("BtnCerrarSesion.Image");
+            BtnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
+            BtnCerrarSesion.Location = new Point(-10, 558);
+            BtnCerrarSesion.Name = "BtnCerrarSesion";
+            BtnCerrarSesion.Padding = new Padding(10, 0, 0, 0);
+            BtnCerrarSesion.Size = new Size(151, 43);
+            BtnCerrarSesion.TabIndex = 26;
+            BtnCerrarSesion.Text = "Cerrar Sesion";
+            BtnCerrarSesion.TextAlign = ContentAlignment.MiddleRight;
+            BtnCerrarSesion.UseVisualStyleBackColor = false;
+            BtnCerrarSesion.Click += BtnCerrarSesion_Click;
             // 
             // iconBtnCaja
             // 
@@ -267,7 +337,7 @@
             iconBtnCaja.BackgroundImageLayout = ImageLayout.None;
             iconBtnCaja.Dock = DockStyle.Top;
             iconBtnCaja.FlatStyle = FlatStyle.Popup;
-            iconBtnCaja.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnCaja.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             iconBtnCaja.ForeColor = Color.White;
             iconBtnCaja.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnCaja.IconColor = Color.White;
@@ -279,6 +349,7 @@
             iconBtnCaja.Size = new Size(186, 52);
             iconBtnCaja.TabIndex = 22;
             iconBtnCaja.Text = "Punto de Venta";
+            toolTipMenuGerente.SetToolTip(iconBtnCaja, "Gestionar Caja");
             iconBtnCaja.UseVisualStyleBackColor = false;
             iconBtnCaja.Click += iconBtnCaja_Click;
             iconBtnCaja.Leave += iconBtnCaja_Leave;
@@ -291,7 +362,7 @@
             iconBtnOperaciones.BackgroundImageLayout = ImageLayout.None;
             iconBtnOperaciones.Dock = DockStyle.Top;
             iconBtnOperaciones.FlatStyle = FlatStyle.Popup;
-            iconBtnOperaciones.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnOperaciones.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             iconBtnOperaciones.ForeColor = Color.White;
             iconBtnOperaciones.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnOperaciones.IconColor = Color.White;
@@ -303,7 +374,9 @@
             iconBtnOperaciones.Size = new Size(186, 52);
             iconBtnOperaciones.TabIndex = 21;
             iconBtnOperaciones.Text = "Operaciones";
+            toolTipMenuGerente.SetToolTip(iconBtnOperaciones, "Ver operaciones");
             iconBtnOperaciones.UseVisualStyleBackColor = false;
+            iconBtnOperaciones.Visible = false;
             iconBtnOperaciones.Click += iconBtnOperaciones_Click;
             iconBtnOperaciones.Leave += iconBtnOperaciones_Leave;
             iconBtnOperaciones.MouseEnter += iconBtnOperaciones_MouseEnter;
@@ -315,7 +388,7 @@
             iconBtnEstadisticas.BackgroundImageLayout = ImageLayout.None;
             iconBtnEstadisticas.Dock = DockStyle.Top;
             iconBtnEstadisticas.FlatStyle = FlatStyle.Popup;
-            iconBtnEstadisticas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnEstadisticas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             iconBtnEstadisticas.ForeColor = Color.White;
             iconBtnEstadisticas.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnEstadisticas.IconColor = Color.White;
@@ -327,6 +400,7 @@
             iconBtnEstadisticas.Size = new Size(186, 52);
             iconBtnEstadisticas.TabIndex = 18;
             iconBtnEstadisticas.Text = "Estadisticas";
+            toolTipMenuGerente.SetToolTip(iconBtnEstadisticas, "Ver Estadisticas");
             iconBtnEstadisticas.UseVisualStyleBackColor = false;
             iconBtnEstadisticas.Click += iconBtnEstadisticas_Click;
             iconBtnEstadisticas.Leave += iconBtnEstadisticas_Leave;
@@ -339,7 +413,7 @@
             iconBtnVentas.BackgroundImageLayout = ImageLayout.None;
             iconBtnVentas.Dock = DockStyle.Top;
             iconBtnVentas.FlatStyle = FlatStyle.Popup;
-            iconBtnVentas.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnVentas.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             iconBtnVentas.ForeColor = Color.White;
             iconBtnVentas.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnVentas.IconColor = Color.White;
@@ -351,6 +425,7 @@
             iconBtnVentas.Size = new Size(186, 52);
             iconBtnVentas.TabIndex = 17;
             iconBtnVentas.Text = "Ventas";
+            toolTipMenuGerente.SetToolTip(iconBtnVentas, "Gestionar Ventas");
             iconBtnVentas.UseVisualStyleBackColor = false;
             iconBtnVentas.Click += iconBtnVentas_Click;
             iconBtnVentas.Leave += iconBtnVentas_Leave;
@@ -363,7 +438,7 @@
             iconBtnPersonal.BackgroundImageLayout = ImageLayout.None;
             iconBtnPersonal.Dock = DockStyle.Top;
             iconBtnPersonal.FlatStyle = FlatStyle.Popup;
-            iconBtnPersonal.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnPersonal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             iconBtnPersonal.ForeColor = Color.White;
             iconBtnPersonal.IconChar = FontAwesome.Sharp.IconChar.None;
             iconBtnPersonal.IconColor = Color.White;
@@ -375,7 +450,9 @@
             iconBtnPersonal.Size = new Size(186, 52);
             iconBtnPersonal.TabIndex = 16;
             iconBtnPersonal.Text = "Personal";
+            toolTipMenuGerente.SetToolTip(iconBtnPersonal, "Gestionar Personal");
             iconBtnPersonal.UseVisualStyleBackColor = false;
+            iconBtnPersonal.Visible = false;
             iconBtnPersonal.Click += iconBtnPersonal_Click;
             iconBtnPersonal.Leave += iconBtnPersonal_Leave;
             iconBtnPersonal.MouseEnter += iconBtnPersonal_MouseEnter;
@@ -474,7 +551,7 @@
             Margin = new Padding(4);
             Name = "MenuGerente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "f";
             Load += MenuGerente_Load;
             panelBarraSuperior.ResumeLayout(false);
             panelBarraSuperior.PerformLayout();
@@ -485,7 +562,7 @@
             ((System.ComponentModel.ISupportInitialize)picCerrar).EndInit();
             PVentana.ResumeLayout(false);
             PMenuLat.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)iconPicSesion).EndInit();
+            panelCrearSolicitud.ResumeLayout(false);
             PLogo.ResumeLayout(false);
             PLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureMenuHambur).EndInit();
@@ -516,7 +593,11 @@
         private FontAwesome.Sharp.IconButton iconBtnOperaciones;
         private Label lblNombreDelUsu;
         private Label lblRolDelUsu;
-        private FontAwesome.Sharp.IconPictureBox iconPicSesion;
-        private FontAwesome.Sharp.IconButton iconBtnSesion;
+        private ToolTip toolTipMenuGerente;
+        private Panel panelCrearSolicitud;
+        private FontAwesome.Sharp.IconButton iconBtnCrearConsulta;
+        private FontAwesome.Sharp.IconButton iconbtnCrearPermiso;
+        private Button BtnCerrarSesion;
+        private FontAwesome.Sharp.IconButton BtnCrearSolicitud;
     }
 }

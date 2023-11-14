@@ -17,5 +17,12 @@ namespace CapaLogica
 
             return obj_cd_rol.ListarRol();
         }
+
+        //con este metodo obtengo el id_rol atraves del nombre_rol que lo recibo como parametro
+        public int obtenerIDRolSeleccionada(string nombre_rol)
+        {
+            return obj_cd_rol.obtenerIDRolSeleccionada(nombre_rol);
+        }
+
     }
 }

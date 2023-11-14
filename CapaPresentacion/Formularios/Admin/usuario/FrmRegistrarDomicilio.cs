@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using capaEntidad;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,15 +13,25 @@ using System.Windows.Forms;
 namespace CapaPresentacion.Formularios.Admin.usuario
 {
 
-
     public partial class FrmRegistrarDomicilio : Form
     {
 
 
         public int id_domicilio_registrado;
-        public FrmRegistrarDomicilio()
+        public FrmRegistrarDomicilio(domicilio p_domicilio_actual)
         {
             InitializeComponent();
+            //aca pregunto si al momento de querer registrar un domiclio el parametro que se le pasa (que es el domiclio actual )es distinto de null significa que se quiere editar ese domicilio
+            if (p_domicilio_actual != null)
+            {
+                txtCalleDomi.Text = p_domicilio_actual.calle;
+                txtCodPostalDomi.Text = p_domicilio_actual.codigo_postal.ToString();
+                txtNumDomi.Text = p_domicilio_actual.numero.ToString();
+                txtLocalidadDomi.Text = p_domicilio_actual.localidad;
+                txtProvDomi.Text = p_domicilio_actual.provincia;
+                txtDescripcion.Text = p_domicilio_actual.descripcion;
+            }//sino sinifica que se quiere registrar un domicilio por primera vez
+
         }
 
         private void iconbtnGuardar_Click(object sender, EventArgs e)
@@ -100,7 +111,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             //valdiar que en el campo numDomicilio solo se ingrese numero
             if (!int.TryParse(numDomicilio, out numero))
             {
-                errorProviderDomicilio.SetError(lblCodPostal, "Ingrese en valor numerico El numero del domicilio");
+                errorProviderDomicilio.SetError(lblNumero, "Ingrese en valor numerico El numero del domicilio");
                 MessageBox.Show("El Numero de domicilio debe de contener solo numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 validacion = false;
             }
@@ -121,16 +132,7 @@ namespace CapaPresentacion.Formularios.Admin.usuario
                 validacion = false;
             }
 
-            //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita, y si esa descripcion del domiclio es distinta de null ya que como es un campo opcional si meviene null no tendria que validar nada
-            if (!string.IsNullOrWhiteSpace(descripDomi))
-            {
-                if (!EsAlfabetico(descripDomi))
-                {
-                    errorProviderDomicilio.SetError(lblDescripcion, "Ingrese su Calle");
-                    MessageBox.Show(" El nombre de la calle debe de contener solo letras , y un espacio por palabra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    validacion = false;
-                }
-            }
+           
 
             return validacion;
         }
@@ -172,6 +174,16 @@ namespace CapaPresentacion.Formularios.Admin.usuario
             errorProviderDomicilio.SetError(lblLocalidad, "");
             errorProviderDomicilio.SetError(lblProvincia, "");
 
+        }
+
+        private void picCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void picMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

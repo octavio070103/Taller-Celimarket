@@ -55,7 +55,7 @@ namespace CapaPresentacion.Formularios.Admin
                     obj_rol = new rol()
                     {
                         id_rol = 1,
-                        descripcion_rol = "administrador"
+                        nombre_rol = "administrador"
                     }
                 };
 
@@ -214,7 +214,7 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnGestionUsuario_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Admin.FrmGestionarUsuario(this));
+            OpenChildForm(new Admin.FrmGestionarUsuario(this, usuarioActual));
         }
 
         private void BtnGestionConsulta_Click(object sender, EventArgs e)
@@ -243,7 +243,11 @@ namespace CapaPresentacion.Formularios.Admin
         }
         private void btnCategoria_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Admin.Categoria.FrmGestionarCategorias(this));
+
+        }
+        private void pSettings_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new settings.FrmNegocioConfiguracion(this));
         }
         private void MenuAdministrador_Load(object sender, EventArgs e)
         {
@@ -273,7 +277,7 @@ namespace CapaPresentacion.Formularios.Admin
 
             //pone los datos de uusario que se registra en el menu
             lblNombreDelUsu.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
-            lblRolDelUsu.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolDelUsu.Text = usuarioActual.obj_rol.nombre_rol;
         }
 
 
@@ -387,6 +391,7 @@ namespace CapaPresentacion.Formularios.Admin
             }
         }
 
-        
+       
+
     }
 }

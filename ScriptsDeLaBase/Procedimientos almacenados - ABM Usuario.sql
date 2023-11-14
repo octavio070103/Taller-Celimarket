@@ -36,8 +36,8 @@ begin
 				SET @id_persona = SCOPE_IDENTITY()
 
 				--insertar en la tabla usuario relacionando la persona que inserte anteriormente con un usuario
-				insert into usuario(email,password,fecha_registro,estado_usuario,id_persona,id_rol,id_domicilio) 
-				values(@email,@password,GETDATE(),@estado_usuario,@id_persona,@id_rol,@id_domicilio)
+				insert into usuario(email,password,estado_usuario,id_persona,id_rol,id_domicilio) 
+				values(@email,@password,@estado_usuario,@id_persona,@id_rol,@id_domicilio)
 
 				set @mensaje = 'el usuario se registro correctamente'
 				set @id_Usuario_resultado = SCOPE_IDENTITY()/*si se inserto esta funcion me alamcena el id del usuario que se inserto o genero)*/
@@ -51,7 +51,7 @@ begin
 end
 
 GO 
-
+/*
 /*declaro var que voy a usar para ahcer la prueba de insertar*/
 declare @id_Usuario_generado int
 declare @mensaje varchar (500)
@@ -66,7 +66,7 @@ select @mensaje
 
 select * from usuario
 
-GO
+GO*/
 
 			/*EDITAR USUARIO */
 CREATE PROC SP_EDITARUSUARIO(
@@ -82,9 +82,10 @@ CREATE PROC SP_EDITARUSUARIO(
 		@estado_usuario bit,
 		@id_rol int,
 		@id_domicilio int,
-		@respuesta bit output,/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso la Rpespuesta que es 1 o 0 y un mensaje de salida*/
+	/*estos dos parametros me vana  servir para devolver un salida a mi procediiento almecenado(resultado de la op) en este caso la Rpespuesta que es 1 o 0 y un mensaje de salida*/
+		@respuesta bit output,
 		@mensaje varchar(500) output
-
+		
 )
 as 
 begin 
@@ -166,9 +167,7 @@ begin
 	set @mensaje='' /*proporciona informacion sobre la oepracion*/
 	declare @validacion bit = 1 /*declaro una var para saber si paso mis validaciones si validacion =1 significa que paso las reglas y si es = 0 significa que no */
 
-	/*aca digo que sino exitse un usuario en la tabla usuario con el dni que quiero editar SINO existe que entre al if ya que significa que ese dni no existe que esta disponible y que sea diferencite el mismo usuario que estoiy editando es decir que mita al usuario que estoy editando para que no me tome el dni del queestoy editando para el error*/
-	/*es decir verificar si ya existe un usuario en la tabla 'usuario' con el mismo 'dni', pero con un 'id_usuario' diferente al que se está editando. Esto es importante para asegurarse de que el 'dni' sea único, excepto para el usuario que se está editando. Si la validación es verdadera (es decir, no existe un usuario con el mismo 'dni' que no sea el que se está editando), se procede a realizar la actualización de los datos del usuario.*/
-	/*eliminamos un usuario pero solo sino esta relacionado a compras de proveedores o alguna venta ya que si en algun momento quieor ver el historial de esas tablas voy a tener conflictos ya que el usuario que las hizo no existe mas */
+	--si existe ese usuario en la base de datos y su estado de usuario ya es 0(ya esta dado de baja) va a entrar al if y me va a devovler ese mensaje
 	if EXISTS (SELECT * FROM usuario u
 	 where u.id_usuario=@id_usuario AND u.estado_usuario=0
 	)
@@ -178,6 +177,7 @@ begin
 		set @mensaje='EL USUARIO YA SE ENCUENTRA DADO DE BAJA NOSE PUEDE DAR DE BAJA DE NUEVO\n' 
 	END
 
+	--sino existe ese usuario en la base de datos va a entrar al if y me devolvera ese mensaje
 	if NOT EXISTS (SELECT * FROM usuario u
 	 where u.id_usuario=@id_usuario 
 	)
@@ -187,6 +187,7 @@ begin
 		set @mensaje='EL USUARIO NO EXISTE EN LA BASE DE DATOS \n' 
 	END
 
+	--si paso todas las anteriroes valdiaciones entonces entra en este if y se da de baja ese usuario que existe en la abse de datos y su estado era dadod e alta 
 	if(@validacion = 1)
 	begin
 	-- busca el registro en la tabla usuario cuyo id_usuario coincide con el valor que proporcionas en el parámetro @id_usuario, y luego actualiza ese registro estableciendo su estado_usuario en 0
@@ -318,7 +319,7 @@ end
 GO
 
 ---------------------------------------------------------------------------- DOMICILIO ABM
-CREATE PROC SP_REGISTRARDOMICILIO(
+ALTER PROC SP_REGISTRARDOMICILIO(
 @calle varchar(200),
 @codigo_postal int,
 @numero int,
@@ -339,7 +340,7 @@ BEGIN
 	IF NOT EXISTS(SELECT * FROM domicilio WHERE calle=@calle AND numero=@numero)
 	BEGIN
 	--Insertamos el nuevo domicilio en la tabla Domicilio
-	INSERT INTO domicilio(calle,codigo_postal,numero,localidad,provincia,descripcion,estado_domicilio)
+	INSERT INTO domicilio(calle,codigo_postal,numero,localidad,provincia,descripcion_domicilio,estado_domicilio)
 	VALUES(@calle,@codigo_postal,@numero,@localidad,@provincia,@descripcion,@estado_domicilio)
 
 	--obtenemos el ID del domicilio registrado 

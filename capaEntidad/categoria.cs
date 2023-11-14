@@ -10,6 +10,8 @@ namespace capaEntidad
     {
         public int id_categoria {  get; set; }
         public string nombre_categoria { get; set; } 
+        public string descripcion_categoria { get; set; }
         public int estado_categoria { get; set; }
+        public DateTime fecha_creacion_marca { get; set; }
     }
 }

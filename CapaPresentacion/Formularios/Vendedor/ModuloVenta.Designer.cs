@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModuloVenta));
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlModuloVenta = new Panel();
+            picRecargar = new PictureBox();
+            btnBuscar = new Button();
             cboFiltroClientes = new ComboBox();
             pnlCarrito = new Panel();
             lblModificarMetodo = new Label();
@@ -50,8 +53,16 @@
             precio_producto_carrito = new DataGridViewTextBoxColumn();
             categoria_producto_carrito = new DataGridViewTextBoxColumn();
             subtotal_producto_carrito = new DataGridViewTextBoxColumn();
+            id_producto_carrito = new DataGridViewTextBoxColumn();
             pnlListaProductos = new Panel();
             panel1 = new Panel();
+            label4 = new Label();
+            txtIdVendedor = new TextBox();
+            txtNombreVendedor = new TextBox();
+            label5 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
             txtIdCliente = new TextBox();
             btnQuitarCarrito = new Button();
             txtCantidad = new TextBox();
@@ -75,15 +86,11 @@
             btnModificar = new Button();
             lblListaProductos = new Label();
             dtgvProductos = new DataGridView();
-            id_producto = new DataGridViewTextBoxColumn();
-            nombre_producto = new DataGridViewTextBoxColumn();
-            categoria_producto = new DataGridViewTextBoxColumn();
-            precio_producto = new DataGridViewTextBoxColumn();
-            stock_producto = new DataGridViewTextBoxColumn();
             lblBuscarClientes = new Label();
             txtBuscar = new TextBox();
             lblFiltro = new Label();
             pnlModuloVenta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecargar).BeginInit();
             pnlCarrito.SuspendLayout();
             pnlTotal.SuspendLayout();
             pnlEncabezado.SuspendLayout();
@@ -97,6 +104,8 @@
             // pnlModuloVenta
             // 
             pnlModuloVenta.BackColor = Color.FromArgb(88, 89, 150);
+            pnlModuloVenta.Controls.Add(picRecargar);
+            pnlModuloVenta.Controls.Add(btnBuscar);
             pnlModuloVenta.Controls.Add(cboFiltroClientes);
             pnlModuloVenta.Controls.Add(pnlCarrito);
             pnlModuloVenta.Controls.Add(pnlListaProductos);
@@ -109,11 +118,38 @@
             pnlModuloVenta.Size = new Size(795, 571);
             pnlModuloVenta.TabIndex = 0;
             // 
+            // picRecargar
+            // 
+            picRecargar.Image = (Image)resources.GetObject("picRecargar.Image");
+            picRecargar.Location = new Point(327, 11);
+            picRecargar.Name = "picRecargar";
+            picRecargar.Size = new Size(22, 20);
+            picRecargar.SizeMode = PictureBoxSizeMode.Zoom;
+            picRecargar.TabIndex = 12;
+            picRecargar.TabStop = false;
+            picRecargar.Click += picRecargar_Click;
+            // 
+            // btnBuscar
+            // 
+            btnBuscar.BackColor = Color.DarkCyan;
+            btnBuscar.FlatAppearance.BorderSize = 0;
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnBuscar.ForeColor = SystemColors.ButtonHighlight;
+            btnBuscar.Location = new Point(269, 8);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(52, 23);
+            btnBuscar.TabIndex = 11;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += button1_Click;
+            // 
             // cboFiltroClientes
             // 
             cboFiltroClientes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboFiltroClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFiltroClientes.FormattingEnabled = true;
-            cboFiltroClientes.Location = new Point(413, 41);
+            cboFiltroClientes.Location = new Point(413, 11);
             cboFiltroClientes.Name = "cboFiltroClientes";
             cboFiltroClientes.Size = new Size(122, 23);
             cboFiltroClientes.TabIndex = 10;
@@ -132,7 +168,7 @@
             pnlCarrito.Controls.Add(dtgvListaCompra);
             pnlCarrito.Location = new Point(544, 39);
             pnlCarrito.Name = "pnlCarrito";
-            pnlCarrito.Size = new Size(244, 508);
+            pnlCarrito.Size = new Size(244, 520);
             pnlCarrito.TabIndex = 1;
             // 
             // lblModificarMetodo
@@ -182,7 +218,7 @@
             pnlTotal.BorderStyle = BorderStyle.FixedSingle;
             pnlTotal.Controls.Add(lblCalculoTotal);
             pnlTotal.Controls.Add(lblTotal);
-            pnlTotal.Location = new Point(16, 412);
+            pnlTotal.Location = new Point(16, 424);
             pnlTotal.Name = "pnlTotal";
             pnlTotal.Size = new Size(215, 25);
             pnlTotal.TabIndex = 16;
@@ -238,7 +274,7 @@
             btnPagar.FlatStyle = FlatStyle.Flat;
             btnPagar.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btnPagar.ForeColor = Color.FloralWhite;
-            btnPagar.Location = new Point(16, 454);
+            btnPagar.Location = new Point(16, 466);
             btnPagar.Name = "btnPagar";
             btnPagar.Size = new Size(215, 44);
             btnPagar.TabIndex = 13;
@@ -250,33 +286,37 @@
             // 
             dtgvListaCompra.AllowUserToAddRows = false;
             dtgvListaCompra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dtgvListaCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvListaCompra.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dtgvListaCompra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             dtgvListaCompra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dtgvListaCompra.BackgroundColor = SystemColors.ButtonShadow;
             dtgvListaCompra.BorderStyle = BorderStyle.None;
             dtgvListaCompra.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.White;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgvListaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgvListaCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgvListaCompra.ColumnHeadersHeight = 30;
             dtgvListaCompra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dtgvListaCompra.Columns.AddRange(new DataGridViewColumn[] { nombre_producto_carrito, cantidad_producto_carrito, precio_producto_carrito, categoria_producto_carrito, subtotal_producto_carrito });
+            dtgvListaCompra.Columns.AddRange(new DataGridViewColumn[] { nombre_producto_carrito, cantidad_producto_carrito, precio_producto_carrito, categoria_producto_carrito, subtotal_producto_carrito, id_producto_carrito });
             dtgvListaCompra.EnableHeadersVisualStyles = false;
             dtgvListaCompra.Location = new Point(0, 40);
             dtgvListaCompra.Name = "dtgvListaCompra";
             dtgvListaCompra.ReadOnly = true;
+            dtgvListaCompra.RowHeadersVisible = false;
             dtgvListaCompra.RowTemplate.Height = 25;
             dtgvListaCompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListaCompra.Size = new Size(243, 261);
             dtgvListaCompra.TabIndex = 13;
+            dtgvListaCompra.CellClick += dtgvListaCompra_CellClick;
             dtgvListaCompra.CellContentClick += dtgvListaCompra_CellContentClick;
             dtgvListaCompra.SelectionChanged += dtgvListaCompra_SelectionChanged;
+            dtgvListaCompra.DoubleClick += dtgvListaCompra_DoubleClick;
             // 
             // nombre_producto_carrito
             // 
@@ -312,6 +352,13 @@
             subtotal_producto_carrito.Name = "subtotal_producto_carrito";
             subtotal_producto_carrito.ReadOnly = true;
             // 
+            // id_producto_carrito
+            // 
+            id_producto_carrito.HeaderText = "ID Producto";
+            id_producto_carrito.Name = "id_producto_carrito";
+            id_producto_carrito.ReadOnly = true;
+            id_producto_carrito.Visible = false;
+            // 
             // pnlListaProductos
             // 
             pnlListaProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -319,15 +366,22 @@
             pnlListaProductos.Controls.Add(panel1);
             pnlListaProductos.Controls.Add(lblListaProductos);
             pnlListaProductos.Controls.Add(dtgvProductos);
-            pnlListaProductos.Location = new Point(12, 79);
+            pnlListaProductos.Location = new Point(12, 39);
             pnlListaProductos.Name = "pnlListaProductos";
-            pnlListaProductos.Size = new Size(526, 468);
+            pnlListaProductos.Size = new Size(526, 520);
             pnlListaProductos.TabIndex = 0;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txtIdVendedor);
+            panel1.Controls.Add(txtNombreVendedor);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(txtIdCliente);
             panel1.Controls.Add(btnQuitarCarrito);
             panel1.Controls.Add(txtCantidad);
@@ -349,15 +403,88 @@
             panel1.Controls.Add(lblNombre);
             panel1.Controls.Add(btnAgregar);
             panel1.Controls.Add(btnModificar);
-            panel1.Location = new Point(10, 182);
+            panel1.Location = new Point(10, 169);
             panel1.Name = "panel1";
-            panel1.Size = new Size(513, 278);
+            panel1.Size = new Size(513, 343);
             panel1.TabIndex = 30;
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.None;
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(103, 48);
+            label4.Name = "label4";
+            label4.Size = new Size(71, 19);
+            label4.TabIndex = 38;
+            label4.Text = "Vendedor:";
+            // 
+            // txtIdVendedor
+            // 
+            txtIdVendedor.Anchor = AnchorStyles.None;
+            txtIdVendedor.Location = new Point(43, 47);
+            txtIdVendedor.Name = "txtIdVendedor";
+            txtIdVendedor.Size = new Size(43, 23);
+            txtIdVendedor.TabIndex = 37;
+            txtIdVendedor.KeyPress += desactivarModificacion_KeyPress;
+            // 
+            // txtNombreVendedor
+            // 
+            txtNombreVendedor.Anchor = AnchorStyles.None;
+            txtNombreVendedor.Location = new Point(180, 48);
+            txtNombreVendedor.Name = "txtNombreVendedor";
+            txtNombreVendedor.Size = new Size(235, 23);
+            txtNombreVendedor.TabIndex = 36;
+            txtNombreVendedor.KeyPress += desactivarModificacion_KeyPress;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.None;
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(15, 47);
+            label5.Name = "label5";
+            label5.Size = new Size(26, 19);
+            label5.TabIndex = 35;
+            label5.Text = "ID:";
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.None;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label3.Location = new Point(15, 14);
+            label3.Name = "label3";
+            label3.Size = new Size(146, 19);
+            label3.TabIndex = 34;
+            label3.Text = "Datos del vendedor:";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(100, 111);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 19);
+            label2.TabIndex = 33;
+            label2.Text = "Cliente:";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            label1.Location = new Point(12, 88);
+            label1.Name = "label1";
+            label1.Size = new Size(124, 19);
+            label1.TabIndex = 32;
+            label1.Text = "Datos del cliente:";
             // 
             // txtIdCliente
             // 
             txtIdCliente.Anchor = AnchorStyles.None;
-            txtIdCliente.Location = new Point(63, 179);
+            txtIdCliente.Location = new Point(40, 110);
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.Size = new Size(43, 23);
             txtIdCliente.TabIndex = 31;
@@ -371,7 +498,7 @@
             btnQuitarCarrito.FlatStyle = FlatStyle.Flat;
             btnQuitarCarrito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnQuitarCarrito.ForeColor = SystemColors.ControlLightLight;
-            btnQuitarCarrito.Location = new Point(270, 232);
+            btnQuitarCarrito.Location = new Point(272, 290);
             btnQuitarCarrito.Name = "btnQuitarCarrito";
             btnQuitarCarrito.Size = new Size(96, 37);
             btnQuitarCarrito.TabIndex = 30;
@@ -382,7 +509,7 @@
             // txtCantidad
             // 
             txtCantidad.Anchor = AnchorStyles.None;
-            txtCantidad.Location = new Point(321, 140);
+            txtCantidad.Location = new Point(324, 213);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(75, 23);
             txtCantidad.TabIndex = 29;
@@ -392,7 +519,7 @@
             // 
             picFotoProducto.Anchor = AnchorStyles.None;
             picFotoProducto.BackColor = Color.Black;
-            picFotoProducto.Location = new Point(411, 52);
+            picFotoProducto.Location = new Point(410, 175);
             picFotoProducto.Name = "picFotoProducto";
             picFotoProducto.Size = new Size(94, 88);
             picFotoProducto.TabIndex = 21;
@@ -402,17 +529,17 @@
             // 
             lblDatos.Anchor = AnchorStyles.None;
             lblDatos.AutoSize = true;
-            lblDatos.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
-            lblDatos.Location = new Point(12, 10);
+            lblDatos.Font = new Font("Segoe UI", 10F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point);
+            lblDatos.Location = new Point(12, 149);
             lblDatos.Name = "lblDatos";
-            lblDatos.Size = new Size(160, 21);
+            lblDatos.Size = new Size(142, 19);
             lblDatos.TabIndex = 27;
             lblDatos.Text = "Datos del producto:";
             // 
             // txtPrecio
             // 
             txtPrecio.Anchor = AnchorStyles.None;
-            txtPrecio.Location = new Point(353, 98);
+            txtPrecio.Location = new Point(356, 175);
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(43, 23);
             txtPrecio.TabIndex = 28;
@@ -421,18 +548,19 @@
             // cboMetodoPago
             // 
             cboMetodoPago.Anchor = AnchorStyles.None;
+            cboMetodoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMetodoPago.FormattingEnabled = true;
-            cboMetodoPago.Items.AddRange(new object[] { "Visa", "Mastercard" });
-            cboMetodoPago.Location = new Point(107, 140);
+            cboMetodoPago.Location = new Point(109, 251);
             cboMetodoPago.Name = "cboMetodoPago";
             cboMetodoPago.Size = new Size(122, 23);
             cboMetodoPago.TabIndex = 26;
             cboMetodoPago.TextChanged += cboMetodoPago_TextChanged;
+            cboMetodoPago.KeyPress += desactivarModificacion_KeyPress;
             // 
             // btnElegirCliente
             // 
             btnElegirCliente.Anchor = AnchorStyles.None;
-            btnElegirCliente.Location = new Point(370, 179);
+            btnElegirCliente.Location = new Point(418, 111);
             btnElegirCliente.Name = "btnElegirCliente";
             btnElegirCliente.Size = new Size(26, 23);
             btnElegirCliente.TabIndex = 25;
@@ -443,7 +571,7 @@
             // txtCliente
             // 
             txtCliente.Anchor = AnchorStyles.None;
-            txtCliente.Location = new Point(112, 179);
+            txtCliente.Location = new Point(160, 111);
             txtCliente.Name = "txtCliente";
             txtCliente.Size = new Size(252, 23);
             txtCliente.TabIndex = 24;
@@ -453,7 +581,7 @@
             // txtCategoria
             // 
             txtCategoria.Anchor = AnchorStyles.None;
-            txtCategoria.Location = new Point(83, 97);
+            txtCategoria.Location = new Point(85, 215);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(146, 23);
             txtCategoria.TabIndex = 23;
@@ -464,7 +592,7 @@
             dateTimePicker1.Anchor = AnchorStyles.None;
             dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(299, 53);
+            dateTimePicker1.Location = new Point(416, 10);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(97, 23);
             dateTimePicker1.TabIndex = 22;
@@ -472,7 +600,7 @@
             // txtNombre
             // 
             txtNombre.Anchor = AnchorStyles.None;
-            txtNombre.Location = new Point(83, 53);
+            txtNombre.Location = new Point(85, 175);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(146, 23);
             txtNombre.TabIndex = 11;
@@ -483,18 +611,18 @@
             lblCliente.Anchor = AnchorStyles.None;
             lblCliente.AutoSize = true;
             lblCliente.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCliente.Location = new Point(10, 179);
+            lblCliente.Location = new Point(12, 110);
             lblCliente.Name = "lblCliente";
-            lblCliente.Size = new Size(54, 19);
+            lblCliente.Size = new Size(26, 19);
             lblCliente.TabIndex = 20;
-            lblCliente.Text = "Cliente:";
+            lblCliente.Text = "ID:";
             // 
             // lblFecha
             // 
             lblFecha.Anchor = AnchorStyles.None;
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblFecha.Location = new Point(248, 52);
+            lblFecha.Location = new Point(365, 9);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(47, 19);
             lblFecha.TabIndex = 19;
@@ -505,7 +633,7 @@
             lblCantidad.Anchor = AnchorStyles.None;
             lblCantidad.AutoSize = true;
             lblCantidad.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCantidad.Location = new Point(248, 140);
+            lblCantidad.Location = new Point(251, 213);
             lblCantidad.Name = "lblCantidad";
             lblCantidad.Size = new Size(67, 19);
             lblCantidad.TabIndex = 18;
@@ -516,7 +644,7 @@
             lblPrecio.Anchor = AnchorStyles.None;
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrecio.Location = new Point(247, 98);
+            lblPrecio.Location = new Point(250, 175);
             lblPrecio.Name = "lblPrecio";
             lblPrecio.Size = new Size(100, 19);
             lblPrecio.TabIndex = 17;
@@ -527,7 +655,7 @@
             lblCategoria.Anchor = AnchorStyles.None;
             lblCategoria.AutoSize = true;
             lblCategoria.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCategoria.Location = new Point(10, 98);
+            lblCategoria.Location = new Point(12, 216);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(71, 19);
             lblCategoria.TabIndex = 16;
@@ -538,7 +666,7 @@
             lblPago.Anchor = AnchorStyles.None;
             lblPago.AutoSize = true;
             lblPago.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPago.Location = new Point(10, 140);
+            lblPago.Location = new Point(12, 251);
             lblPago.Name = "lblPago";
             lblPago.Size = new Size(96, 19);
             lblPago.TabIndex = 15;
@@ -549,7 +677,7 @@
             lblNombre.Anchor = AnchorStyles.None;
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombre.Location = new Point(10, 53);
+            lblNombre.Location = new Point(12, 175);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(62, 19);
             lblNombre.TabIndex = 14;
@@ -563,7 +691,7 @@
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregar.ForeColor = SystemColors.ControlLightLight;
-            btnAgregar.Location = new Point(10, 232);
+            btnAgregar.Location = new Point(12, 290);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(152, 37);
             btnAgregar.TabIndex = 11;
@@ -580,7 +708,7 @@
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnModificar.ForeColor = SystemColors.ControlLightLight;
-            btnModificar.Location = new Point(168, 232);
+            btnModificar.Location = new Point(170, 290);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(96, 37);
             btnModificar.TabIndex = 12;
@@ -601,71 +729,52 @@
             // 
             // dtgvProductos
             // 
+            dtgvProductos.AllowUserToAddRows = false;
+            dtgvProductos.AllowUserToDeleteRows = false;
+            dtgvProductos.AllowUserToResizeRows = false;
             dtgvProductos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvProductos.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.ActiveBorder;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dtgvProductos.ColumnHeadersHeight = 30;
-            dtgvProductos.Columns.AddRange(new DataGridViewColumn[] { id_producto, nombre_producto, categoria_producto, precio_producto, stock_producto });
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dtgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvProductos.EnableHeadersVisualStyles = false;
             dtgvProductos.Location = new Point(0, 37);
             dtgvProductos.MultiSelect = false;
             dtgvProductos.Name = "dtgvProductos";
+            dtgvProductos.ReadOnly = true;
+            dtgvProductos.RowHeadersVisible = false;
             dtgvProductos.RowTemplate.Height = 25;
-            dtgvProductos.Size = new Size(526, 139);
+            dtgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvProductos.Size = new Size(526, 126);
             dtgvProductos.TabIndex = 0;
+            dtgvProductos.CellClick += dtgvProductos_CellClick;
             dtgvProductos.CellContentClick += dtgvProductos_CellContentClick;
             dtgvProductos.SelectionChanged += dtgvProductos_SelectionChanged;
-            // 
-            // id_producto
-            // 
-            id_producto.HeaderText = "ID";
-            id_producto.Name = "id_producto";
-            // 
-            // nombre_producto
-            // 
-            nombre_producto.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nombre_producto.HeaderText = "Nombre";
-            nombre_producto.Name = "nombre_producto";
-            // 
-            // categoria_producto
-            // 
-            categoria_producto.HeaderText = "Categoria";
-            categoria_producto.Name = "categoria_producto";
-            // 
-            // precio_producto
-            // 
-            precio_producto.HeaderText = "Precio";
-            precio_producto.Name = "precio_producto";
-            // 
-            // stock_producto
-            // 
-            stock_producto.HeaderText = "Stock";
-            stock_producto.Name = "stock_producto";
             // 
             // lblBuscarClientes
             // 
             lblBuscarClientes.AutoSize = true;
             lblBuscarClientes.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblBuscarClientes.ForeColor = SystemColors.HighlightText;
-            lblBuscarClientes.Location = new Point(12, 39);
+            lblBuscarClientes.Location = new Point(12, 11);
             lblBuscarClientes.Name = "lblBuscarClientes";
-            lblBuscarClientes.Size = new Size(52, 20);
+            lblBuscarClientes.Size = new Size(74, 20);
             lblBuscarClientes.TabIndex = 7;
-            lblBuscarClientes.Text = "Buscar";
+            lblBuscarClientes.Text = "Busqueda";
             // 
             // txtBuscar
             // 
-            txtBuscar.Location = new Point(70, 41);
+            txtBuscar.Location = new Point(88, 9);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(192, 23);
+            txtBuscar.Size = new Size(175, 23);
             txtBuscar.TabIndex = 9;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // lblFiltro
             // 
@@ -673,7 +782,7 @@
             lblFiltro.AutoSize = true;
             lblFiltro.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblFiltro.ForeColor = SystemColors.HighlightText;
-            lblFiltro.Location = new Point(364, 39);
+            lblFiltro.Location = new Point(364, 9);
             lblFiltro.Name = "lblFiltro";
             lblFiltro.Size = new Size(43, 20);
             lblFiltro.TabIndex = 8;
@@ -687,8 +796,10 @@
             Controls.Add(pnlModuloVenta);
             Name = "frmModuloVenta";
             Text = "Registrar venta";
+            Load += frmModuloVenta_Load;
             pnlModuloVenta.ResumeLayout(false);
             pnlModuloVenta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)picRecargar).EndInit();
             pnlCarrito.ResumeLayout(false);
             pnlCarrito.PerformLayout();
             pnlTotal.ResumeLayout(false);
@@ -748,16 +859,21 @@
         private Label lblModificarCliente;
         private Label lblModificarMetodo;
         private TextBox txtIdCliente;
-        private DataGridViewTextBoxColumn id_producto;
-        private DataGridViewTextBoxColumn nombre_producto;
-        private DataGridViewTextBoxColumn categoria_producto;
-        private DataGridViewTextBoxColumn precio_producto;
-        private DataGridViewTextBoxColumn stock_producto;
+        private Label lblCalculoTotal;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private TextBox txtIdVendedor;
+        private TextBox txtNombreVendedor;
+        private Label label5;
         private DataGridViewTextBoxColumn nombre_producto_carrito;
         private DataGridViewTextBoxColumn cantidad_producto_carrito;
         private DataGridViewTextBoxColumn precio_producto_carrito;
         private DataGridViewTextBoxColumn categoria_producto_carrito;
         private DataGridViewTextBoxColumn subtotal_producto_carrito;
-        private Label lblCalculoTotal;
+        private DataGridViewTextBoxColumn id_producto_carrito;
+        private Button btnBuscar;
+        private PictureBox picRecargar;
     }
 }

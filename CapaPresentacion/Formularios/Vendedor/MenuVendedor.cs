@@ -1,4 +1,7 @@
 ﻿using capaEntidad;
+using CapaLogica;
+using CapaPresentacion.Formularios.Gerente.caja;
+using CapaPresentacion.Formularios.Gerente.permiso;
 using CapaPresentacion.Formularios.Vendedor;
 using Proyecto_Taller.Presentacion.Formularios.Login;
 using System;
@@ -17,6 +20,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
     {
         private static capaEntidad.usuario usuarioActual;
         private Form formularioActivo = null;
+        private Form formularioSolicitudActualmente = null; //con estdeermino e lformacutal de la solicitud,si esta abierto el permiso o la cosnulta
 
         public MenuVendedo(capaEntidad.usuario objUsuario = null)
         {
@@ -50,7 +54,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
                     obj_rol = new rol()
                     {
                         id_rol = 6,
-                        descripcion_rol = "Vendedor"
+                        nombre_rol = "Vendedor"
                     }
                 };
             }
@@ -83,11 +87,39 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void button4_Click(object sender, EventArgs e)
         {
-            //**** Falta el codigo a ejecutar
-            abrirFormularioHijo(new frmModuloVenta());
-            lblTituloMenu.Text = button5.Text;
+            //aca determino sino hay ninguna caja abierta que no pueda realizar la venta
+            determinarAperturaCaja();
+
+        }
+        private void determinarAperturaCaja()
+        {
+
+            caja_apertura obj_cajaAperturaActual = new CL_Caja().obtenerCajaAperturaPorFecha(DateTime.Now);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            //si entra al if significa que la caja no fue abierta anteriormente es decir no se abrio la caja por lo que no voy a pdoer realizar ninguna venta y no me deberia dejar navegar por el formulario debo de devolver al gome
+            if ((obj_cajaAperturaActual == null) || (obj_cajaAperturaActual.estado_apertura == 0)) //aca pregunto si la cajaApertura es null es decir que no se abrio ninguna cajaapertura en esta fecha que entre al if o si el estado_apertura==0 que pase lo mismo ya que esto siginifica que esa cajapertura fue cerrada
+            {
+
+                if (advertenciaIniciarVenta() == DialogResult.OK)
+                {
+                    //no hago nada sino puedo realizar la venta
+                }
+
+            }
+            else//si va por el elsse significa que si hay una caja abierta
+            {
+                //**** Falta el codigo a ejecutar
+                abrirFormularioHijo(new frmModuloVenta(usuarioActual));
+                lblTituloMenu.Text = button5.Text;
+            }
+
         }
 
+        private DialogResult advertenciaIniciarVenta()
+        {
+            Advertencia_iniciar_venta frmAdveriniciarVenta = new Advertencia_iniciar_venta();
+            DialogResult resultado = frmAdveriniciarVenta.ShowDialog();
+            return resultado;
+        }
 
         /** Permite abrir un formulario dentro del menu del vendedor.
         */
@@ -128,7 +160,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void MenuVendedo_Load(object sender, EventArgs e)
         {
-            lblRolUsuario.Text = usuarioActual.obj_rol.descripcion_rol;
+            lblRolUsuario.Text = usuarioActual.obj_rol.nombre_rol;
             lblNombreUsuario.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
         }
 
@@ -163,10 +195,43 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
 
         /** Permite acceder al modulo de registro de consultas
          */
-        private void btnRegistrarConsultas_Click(object sender, EventArgs e)
+        private void btnRegistrarConsultas_Click_1(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new frmModuloConsultas());
-            lblTituloMenu.Text = btnRegistrarConsultas.Text;
+            if (panelCrearSolicitud.Visible == true)
+            {
+                panelCrearSolicitud.Visible = false;
+            }
+            else
+            {
+                panelCrearSolicitud.Visible = true;
+            }
+        }
+        private void iconbtnCrearPermiso_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudPermiso formPermiso = new FrmSolicitudPermiso(usuarioActual);
+            formPermiso.Show();
+
+            formularioSolicitudActualmente = formPermiso;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void iconBtnCrearConsulta_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario actual si está abierto
+            CerrarFormularioActual();
+            FrmSolicitudConsulta formConsulta = new FrmSolicitudConsulta(usuarioActual);
+            formConsulta.Show();
+
+            formularioSolicitudActualmente = formConsulta;    // Actualizar la referencia al formulario actualmente abierto
+        }
+
+        private void CerrarFormularioActual()
+        {
+            if (formularioSolicitudActualmente != null && !formularioSolicitudActualmente.IsDisposed)
+            {
+                formularioSolicitudActualmente.Close();
+            }
         }
 
         /** Permite volver al menu principal
@@ -184,7 +249,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
          */
         private void btnRegistroVen_Click(object sender, EventArgs e)
         {
-            abrirFormularioHijo(new ModuloRegistroGeren());
+            abrirFormularioHijo(new ModuloRegistroGeren(usuarioActual));
         }
 
 
@@ -208,5 +273,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Vendedor
         {
             lblCerrarSesion_Click(sender, e);
         }
+
+      
     }
 }

@@ -41,15 +41,9 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             pnlRegistrarCliente = new Panel();
-            comboBox1 = new ComboBox();
+            cboFiltro = new ComboBox();
             lblFiltrarCliente = new Label();
             dtgvSelecClientes = new DataGridView();
-            id_cliente = new DataGridViewTextBoxColumn();
-            dni_cliente = new DataGridViewTextBoxColumn();
-            apellido_cliente = new DataGridViewTextBoxColumn();
-            nombre_cliente = new DataGridViewTextBoxColumn();
-            telefono_cliente = new DataGridViewTextBoxColumn();
-            direccion_cliente = new DataGridViewTextBoxColumn();
             btnSeleccionar = new Button();
             lblBuscarCliente = new Label();
             lblSeleccionar = new Label();
@@ -216,7 +210,7 @@
             // pnlRegistrarCliente
             // 
             pnlRegistrarCliente.BackColor = Color.SteelBlue;
-            pnlRegistrarCliente.Controls.Add(comboBox1);
+            pnlRegistrarCliente.Controls.Add(cboFiltro);
             pnlRegistrarCliente.Controls.Add(lblFiltrarCliente);
             pnlRegistrarCliente.Controls.Add(dtgvSelecClientes);
             pnlRegistrarCliente.Controls.Add(btnSeleccionar);
@@ -229,69 +223,42 @@
             pnlRegistrarCliente.Size = new Size(620, 429);
             pnlRegistrarCliente.TabIndex = 4;
             // 
-            // comboBox1
+            // cboFiltro
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(478, 71);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(114, 23);
-            comboBox1.TabIndex = 17;
+            cboFiltro.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboFiltro.FormattingEnabled = true;
+            cboFiltro.Items.AddRange(new object[] { "Apellido", "Nombre" });
+            cboFiltro.Location = new Point(478, 69);
+            cboFiltro.Name = "cboFiltro";
+            cboFiltro.Size = new Size(114, 23);
+            cboFiltro.TabIndex = 17;
             // 
             // lblFiltrarCliente
             // 
             lblFiltrarCliente.AutoSize = true;
             lblFiltrarCliente.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblFiltrarCliente.ForeColor = SystemColors.HighlightText;
-            lblFiltrarCliente.Location = new Point(421, 71);
+            lblFiltrarCliente.Location = new Point(373, 69);
             lblFiltrarCliente.Name = "lblFiltrarCliente";
-            lblFiltrarCliente.Size = new Size(51, 21);
+            lblFiltrarCliente.Size = new Size(106, 21);
             lblFiltrarCliente.TabIndex = 16;
-            lblFiltrarCliente.Text = "Filtrar";
+            lblFiltrarCliente.Text = "Busqueda por";
             lblFiltrarCliente.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dtgvSelecClientes
             // 
+            dtgvSelecClientes.AllowUserToAddRows = false;
+            dtgvSelecClientes.AllowUserToDeleteRows = false;
+            dtgvSelecClientes.AllowUserToResizeRows = false;
             dtgvSelecClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvSelecClientes.Columns.AddRange(new DataGridViewColumn[] { id_cliente, dni_cliente, apellido_cliente, nombre_cliente, telefono_cliente, direccion_cliente });
             dtgvSelecClientes.Location = new Point(28, 108);
             dtgvSelecClientes.Name = "dtgvSelecClientes";
+            dtgvSelecClientes.ReadOnly = true;
+            dtgvSelecClientes.RowHeadersVisible = false;
             dtgvSelecClientes.RowTemplate.Height = 25;
+            dtgvSelecClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvSelecClientes.Size = new Size(564, 248);
             dtgvSelecClientes.TabIndex = 15;
-//            dtgvSelecClientes.SelectionChanged += obtenerDatosCliente;
-            // 
-            // id_cliente
-            // 
-            id_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            id_cliente.HeaderText = "ID";
-            id_cliente.Name = "id_cliente";
-            id_cliente.Width = 43;
-            // 
-            // dni_cliente
-            // 
-            dni_cliente.HeaderText = "DNI";
-            dni_cliente.Name = "dni_cliente";
-            // 
-            // apellido_cliente
-            // 
-            apellido_cliente.HeaderText = "Apellido";
-            apellido_cliente.Name = "apellido_cliente";
-            // 
-            // nombre_cliente
-            // 
-            nombre_cliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nombre_cliente.HeaderText = "Nombre";
-            nombre_cliente.Name = "nombre_cliente";
-            // 
-            // telefono_cliente
-            // 
-            telefono_cliente.HeaderText = "Telefono";
-            telefono_cliente.Name = "telefono_cliente";
-            // 
-            // direccion_cliente
-            // 
-            direccion_cliente.HeaderText = "Direccion";
-            direccion_cliente.Name = "direccion_cliente";
             // 
             // btnSeleccionar
             // 
@@ -340,6 +307,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(174, 23);
             txtNombre.TabIndex = 1;
+            txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // frmSeleccionarCliente
             // 
@@ -351,6 +319,7 @@
             Name = "frmSeleccionarCliente";
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmSeleccionarCliente";
+            Load += frmSeleccionarCliente_Load;
             pnlBarraClientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)picMinCliente).EndInit();
             ((System.ComponentModel.ISupportInitialize)picMaxCliente).EndInit();
@@ -385,15 +354,9 @@
         private TextBox txtNombre;
         private Label lblFiltrarCliente;
         private DataGridView dtgvSelecClientes;
-        private ComboBox comboBox1;
+        private ComboBox cboFiltro;
         private PictureBox picCerrar;
         private PictureBox picMaxCliente;
         private PictureBox picMinCliente;
-        private DataGridViewTextBoxColumn id_cliente;
-        private DataGridViewTextBoxColumn dni_cliente;
-        private DataGridViewTextBoxColumn apellido_cliente;
-        private DataGridViewTextBoxColumn nombre_cliente;
-        private DataGridViewTextBoxColumn telefono_cliente;
-        private DataGridViewTextBoxColumn direccion_cliente;
     }
 }

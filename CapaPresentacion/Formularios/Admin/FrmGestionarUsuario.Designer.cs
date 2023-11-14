@@ -34,10 +34,10 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            comboFiltroEstado = new ComboBox();
             lblRolFiltro = new Label();
             comboFiltroRol = new ComboBox();
             iconbtnClean = new FontAwesome.Sharp.IconButton();
-            comboFiltroEstado = new ComboBox();
             lblEstado = new Label();
             txtDniFiltro = new TextBox();
             txtNombreFiltro = new TextBox();
@@ -48,21 +48,6 @@
             lblFiltrar = new Label();
             lblListaEmpleados = new Label();
             dataGridUsuarios = new DataGridView();
-            col_id_usuario = new DataGridViewTextBoxColumn();
-            col_dni = new DataGridViewTextBoxColumn();
-            col_nombre = new DataGridViewTextBoxColumn();
-            col_apellido = new DataGridViewTextBoxColumn();
-            col_email = new DataGridViewTextBoxColumn();
-            col_password = new DataGridViewTextBoxColumn();
-            col_telefono = new DataGridViewTextBoxColumn();
-            col_id_rol = new DataGridViewTextBoxColumn();
-            col_Rol = new DataGridViewTextBoxColumn();
-            col_id_domicilio = new DataGridViewTextBoxColumn();
-            col_domicilio_calle = new DataGridViewTextBoxColumn();
-            col_domicilio_numero = new DataGridViewTextBoxColumn();
-            col_domicilio_prov = new DataGridViewTextBoxColumn();
-            Estado_Valor = new DataGridViewTextBoxColumn();
-            col_estado = new DataGridViewTextBoxColumn();
             panelDatosUsuario = new Panel();
             lblFechaNac = new Label();
             dateTimePickerNacimientoDato = new DateTimePicker();
@@ -94,6 +79,22 @@
             iconBtnPermiso = new FontAwesome.Sharp.IconButton();
             errorProvider1 = new ErrorProvider(components);
             iconBtnAlta = new FontAwesome.Sharp.IconButton();
+            iconBtnExcel = new FontAwesome.Sharp.IconButton();
+            col_id_usuario = new DataGridViewTextBoxColumn();
+            col_dni = new DataGridViewTextBoxColumn();
+            col_nombre = new DataGridViewTextBoxColumn();
+            col_apellido = new DataGridViewTextBoxColumn();
+            col_email = new DataGridViewTextBoxColumn();
+            col_password = new DataGridViewTextBoxColumn();
+            col_telefono = new DataGridViewTextBoxColumn();
+            col_id_rol = new DataGridViewTextBoxColumn();
+            col_Rol = new DataGridViewTextBoxColumn();
+            col_id_domicilio = new DataGridViewTextBoxColumn();
+            col_domicilio_calle = new DataGridViewTextBoxColumn();
+            col_domicilio_numero = new DataGridViewTextBoxColumn();
+            col_domicilio_prov = new DataGridViewTextBoxColumn();
+            Estado_Valor = new DataGridViewTextBoxColumn();
+            col_estado = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
             panelDatosUsuario.SuspendLayout();
@@ -103,10 +104,10 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(47, 33, 75);
+            panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblRolFiltro);
             panel1.Controls.Add(comboFiltroRol);
             panel1.Controls.Add(iconbtnClean);
-            panel1.Controls.Add(comboFiltroEstado);
             panel1.Controls.Add(lblEstado);
             panel1.Controls.Add(txtDniFiltro);
             panel1.Controls.Add(txtNombreFiltro);
@@ -121,6 +122,17 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(822, 92);
             panel1.TabIndex = 0;
+            // 
+            // comboFiltroEstado
+            // 
+            comboFiltroEstado.FlatStyle = FlatStyle.Popup;
+            comboFiltroEstado.FormattingEnabled = true;
+            comboFiltroEstado.Location = new Point(540, 61);
+            comboFiltroEstado.Name = "comboFiltroEstado";
+            comboFiltroEstado.Size = new Size(88, 23);
+            comboFiltroEstado.TabIndex = 28;
+            comboFiltroEstado.Text = "Filtrar Estado";
+            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged_1;
             // 
             // lblRolFiltro
             // 
@@ -141,6 +153,7 @@
             comboFiltroRol.Name = "comboFiltroRol";
             comboFiltroRol.Size = new Size(88, 23);
             comboFiltroRol.TabIndex = 26;
+            comboFiltroRol.Text = "Filtrar Rol";
             comboFiltroRol.TextChanged += comboFiltroRol_TextChanged;
             // 
             // iconbtnClean
@@ -166,17 +179,6 @@
             iconbtnClean.UseVisualStyleBackColor = false;
             iconbtnClean.Click += iconbtnClean_Click;
             // 
-            // comboFiltroEstado
-            // 
-            comboFiltroEstado.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboFiltroEstado.FlatStyle = FlatStyle.Popup;
-            comboFiltroEstado.FormattingEnabled = true;
-            comboFiltroEstado.Location = new Point(536, 62);
-            comboFiltroEstado.Name = "comboFiltroEstado";
-            comboFiltroEstado.Size = new Size(88, 23);
-            comboFiltroEstado.TabIndex = 24;
-            comboFiltroEstado.TextChanged += comboFiltroEstado_TextChanged;
-            // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
@@ -195,7 +197,7 @@
             txtDniFiltro.Location = new Point(48, 64);
             txtDniFiltro.Multiline = true;
             txtDniFiltro.Name = "txtDniFiltro";
-            txtDniFiltro.PlaceholderText = "DNI";
+            txtDniFiltro.PlaceholderText = "Filtrar DNI";
             txtDniFiltro.Size = new Size(97, 20);
             txtDniFiltro.TabIndex = 11;
             txtDniFiltro.TextChanged += txtDniFiltro_TextChanged;
@@ -208,7 +210,7 @@
             txtNombreFiltro.Location = new Point(211, 64);
             txtNombreFiltro.Multiline = true;
             txtNombreFiltro.Name = "txtNombreFiltro";
-            txtNombreFiltro.PlaceholderText = "Nombre";
+            txtNombreFiltro.PlaceholderText = "FiltrarNombre";
             txtNombreFiltro.Size = new Size(97, 20);
             txtNombreFiltro.TabIndex = 10;
             txtNombreFiltro.TextChanged += txtNombreFiltro_TextChanged;
@@ -221,7 +223,7 @@
             txtApeFiltro.Location = new Point(372, 64);
             txtApeFiltro.Multiline = true;
             txtApeFiltro.Name = "txtApeFiltro";
-            txtApeFiltro.PlaceholderText = "Apellido";
+            txtApeFiltro.PlaceholderText = "Filtrar Apellido";
             txtApeFiltro.Size = new Size(97, 20);
             txtApeFiltro.TabIndex = 9;
             txtApeFiltro.TextChanged += txtApeFiltro_TextChanged;
@@ -330,119 +332,6 @@
             dataGridUsuarios.TabIndex = 1;
             dataGridUsuarios.CellContentClick += dataGridUsuarios_CellContentClick_1;
             // 
-            // col_id_usuario
-            // 
-            col_id_usuario.HeaderText = "Id_usuario";
-            col_id_usuario.Name = "col_id_usuario";
-            col_id_usuario.ReadOnly = true;
-            col_id_usuario.Visible = false;
-            col_id_usuario.Width = 77;
-            // 
-            // col_dni
-            // 
-            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_dni.HeaderText = "DNI";
-            col_dni.Name = "col_dni";
-            col_dni.ReadOnly = true;
-            col_dni.Width = 130;
-            // 
-            // col_nombre
-            // 
-            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_nombre.HeaderText = "Nombre";
-            col_nombre.Name = "col_nombre";
-            col_nombre.ReadOnly = true;
-            // 
-            // col_apellido
-            // 
-            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_apellido.HeaderText = "Apellido";
-            col_apellido.Name = "col_apellido";
-            col_apellido.ReadOnly = true;
-            // 
-            // col_email
-            // 
-            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_email.HeaderText = "Email";
-            col_email.Name = "col_email";
-            col_email.ReadOnly = true;
-            col_email.Width = 130;
-            // 
-            // col_password
-            // 
-            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_password.HeaderText = "Password";
-            col_password.Name = "col_password";
-            col_password.ReadOnly = true;
-            col_password.Visible = false;
-            col_password.Width = 87;
-            // 
-            // col_telefono
-            // 
-            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_telefono.HeaderText = "Telefono";
-            col_telefono.Name = "col_telefono";
-            col_telefono.ReadOnly = true;
-            // 
-            // col_id_rol
-            // 
-            col_id_rol.HeaderText = "id_rol";
-            col_id_rol.Name = "col_id_rol";
-            col_id_rol.ReadOnly = true;
-            col_id_rol.Visible = false;
-            col_id_rol.Width = 68;
-            // 
-            // col_Rol
-            // 
-            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            col_Rol.HeaderText = "Rol";
-            col_Rol.Name = "col_Rol";
-            col_Rol.ReadOnly = true;
-            // 
-            // col_id_domicilio
-            // 
-            col_id_domicilio.HeaderText = "id_domicilio";
-            col_id_domicilio.Name = "col_id_domicilio";
-            col_id_domicilio.ReadOnly = true;
-            col_id_domicilio.Visible = false;
-            col_id_domicilio.Width = 108;
-            // 
-            // col_domicilio_calle
-            // 
-            col_domicilio_calle.HeaderText = "Calle";
-            col_domicilio_calle.Name = "col_domicilio_calle";
-            col_domicilio_calle.ReadOnly = true;
-            col_domicilio_calle.Width = 67;
-            // 
-            // col_domicilio_numero
-            // 
-            col_domicilio_numero.HeaderText = "Numero";
-            col_domicilio_numero.Name = "col_domicilio_numero";
-            col_domicilio_numero.ReadOnly = true;
-            col_domicilio_numero.Width = 83;
-            // 
-            // col_domicilio_prov
-            // 
-            col_domicilio_prov.HeaderText = "Provincia";
-            col_domicilio_prov.Name = "col_domicilio_prov";
-            col_domicilio_prov.ReadOnly = true;
-            col_domicilio_prov.Width = 91;
-            // 
-            // Estado_Valor
-            // 
-            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            Estado_Valor.HeaderText = "Estado Valor";
-            Estado_Valor.Name = "Estado_Valor";
-            Estado_Valor.ReadOnly = true;
-            Estado_Valor.Visible = false;
-            // 
-            // col_estado
-            // 
-            col_estado.HeaderText = "Estado";
-            col_estado.Name = "col_estado";
-            col_estado.ReadOnly = true;
-            col_estado.Width = 74;
-            // 
             // panelDatosUsuario
             // 
             panelDatosUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
@@ -513,6 +402,7 @@
             // 
             txtPasswordDato.Location = new Point(79, 185);
             txtPasswordDato.Name = "txtPasswordDato";
+            txtPasswordDato.ReadOnly = true;
             txtPasswordDato.Size = new Size(144, 23);
             txtPasswordDato.TabIndex = 28;
             // 
@@ -576,6 +466,7 @@
             iconBtnCancelar.TextAlign = ContentAlignment.MiddleRight;
             iconBtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconBtnCancelar.UseVisualStyleBackColor = false;
+            iconBtnCancelar.Click += iconBtnCancelar_Click;
             // 
             // iconBtnModif
             // 
@@ -846,12 +737,159 @@
             iconBtnAlta.UseVisualStyleBackColor = false;
             iconBtnAlta.Click += iconBtnAlta_Click;
             // 
+            // iconBtnExcel
+            // 
+            iconBtnExcel.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            iconBtnExcel.BackColor = Color.DarkGray;
+            iconBtnExcel.BackgroundImage = (Image)resources.GetObject("iconBtnExcel.BackgroundImage");
+            iconBtnExcel.BackgroundImageLayout = ImageLayout.None;
+            iconBtnExcel.Cursor = Cursors.Hand;
+            iconBtnExcel.FlatAppearance.BorderColor = Color.Black;
+            iconBtnExcel.FlatStyle = FlatStyle.Flat;
+            iconBtnExcel.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            iconBtnExcel.ForeColor = SystemColors.ControlLightLight;
+            iconBtnExcel.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconBtnExcel.IconColor = Color.White;
+            iconBtnExcel.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconBtnExcel.IconSize = 30;
+            iconBtnExcel.Location = new Point(12, 531);
+            iconBtnExcel.Name = "iconBtnExcel";
+            iconBtnExcel.Size = new Size(126, 27);
+            iconBtnExcel.TabIndex = 20;
+            iconBtnExcel.Text = "Descargar Excel";
+            iconBtnExcel.TextAlign = ContentAlignment.MiddleRight;
+            iconBtnExcel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconBtnExcel.UseVisualStyleBackColor = false;
+            iconBtnExcel.Click += iconBtnExcel_Click;
+            // 
+            // col_id_usuario
+            // 
+            col_id_usuario.HeaderText = "Id_usuario";
+            col_id_usuario.Name = "col_id_usuario";
+            col_id_usuario.ReadOnly = true;
+            col_id_usuario.Visible = false;
+            col_id_usuario.Width = 77;
+            // 
+            // col_dni
+            // 
+            col_dni.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_dni.HeaderText = "DNI";
+            col_dni.MinimumWidth = 130;
+            col_dni.Name = "col_dni";
+            col_dni.ReadOnly = true;
+            // 
+            // col_nombre
+            // 
+            col_nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_nombre.HeaderText = "Nombre";
+            col_nombre.MinimumWidth = 100;
+            col_nombre.Name = "col_nombre";
+            col_nombre.ReadOnly = true;
+            // 
+            // col_apellido
+            // 
+            col_apellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_apellido.HeaderText = "Apellido";
+            col_apellido.MinimumWidth = 100;
+            col_apellido.Name = "col_apellido";
+            col_apellido.ReadOnly = true;
+            // 
+            // col_email
+            // 
+            col_email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_email.HeaderText = "Email";
+            col_email.MinimumWidth = 130;
+            col_email.Name = "col_email";
+            col_email.ReadOnly = true;
+            // 
+            // col_password
+            // 
+            col_password.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_password.HeaderText = "Password";
+            col_password.MinimumWidth = 90;
+            col_password.Name = "col_password";
+            col_password.ReadOnly = true;
+            col_password.Visible = false;
+            // 
+            // col_telefono
+            // 
+            col_telefono.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_telefono.HeaderText = "Telefono";
+            col_telefono.MinimumWidth = 100;
+            col_telefono.Name = "col_telefono";
+            col_telefono.ReadOnly = true;
+            // 
+            // col_id_rol
+            // 
+            col_id_rol.HeaderText = "id_rol";
+            col_id_rol.Name = "col_id_rol";
+            col_id_rol.ReadOnly = true;
+            col_id_rol.Visible = false;
+            col_id_rol.Width = 68;
+            // 
+            // col_Rol
+            // 
+            col_Rol.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_Rol.HeaderText = "Rol";
+            col_Rol.MinimumWidth = 80;
+            col_Rol.Name = "col_Rol";
+            col_Rol.ReadOnly = true;
+            // 
+            // col_id_domicilio
+            // 
+            col_id_domicilio.HeaderText = "id_domicilio";
+            col_id_domicilio.Name = "col_id_domicilio";
+            col_id_domicilio.ReadOnly = true;
+            col_id_domicilio.Visible = false;
+            col_id_domicilio.Width = 108;
+            // 
+            // col_domicilio_calle
+            // 
+            col_domicilio_calle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_calle.HeaderText = "Calle";
+            col_domicilio_calle.MinimumWidth = 67;
+            col_domicilio_calle.Name = "col_domicilio_calle";
+            col_domicilio_calle.ReadOnly = true;
+            // 
+            // col_domicilio_numero
+            // 
+            col_domicilio_numero.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_numero.HeaderText = "Numero";
+            col_domicilio_numero.MinimumWidth = 83;
+            col_domicilio_numero.Name = "col_domicilio_numero";
+            col_domicilio_numero.ReadOnly = true;
+            // 
+            // col_domicilio_prov
+            // 
+            col_domicilio_prov.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_domicilio_prov.HeaderText = "Provincia";
+            col_domicilio_prov.MinimumWidth = 91;
+            col_domicilio_prov.Name = "col_domicilio_prov";
+            col_domicilio_prov.ReadOnly = true;
+            // 
+            // Estado_Valor
+            // 
+            Estado_Valor.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Estado_Valor.HeaderText = "Estado Valor";
+            Estado_Valor.Name = "Estado_Valor";
+            Estado_Valor.ReadOnly = true;
+            Estado_Valor.Visible = false;
+            // 
+            // col_estado
+            // 
+            col_estado.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            col_estado.HeaderText = "Estado";
+            col_estado.MinimumWidth = 74;
+            col_estado.Name = "col_estado";
+            col_estado.ReadOnly = true;
+            // 
             // FrmGestionarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(67, 68, 89);
             ClientSize = new Size(822, 565);
+            Controls.Add(iconBtnExcel);
             Controls.Add(iconBtnAlta);
             Controls.Add(iconBtnPermiso);
             Controls.Add(iconBtnElim);
@@ -910,6 +948,18 @@
         private FontAwesome.Sharp.IconButton iconBtnModif;
         private TextBox txtIdGuardado;
         private ComboBox comboFiltroEstado;
+        private TextBox txtDomiciliodato;
+        private ErrorProvider errorProvider1;
+        private Label lblPassword;
+        private TextBox txtPasswordDato;
+        private FontAwesome.Sharp.IconButton iconBtnAlta;
+        private FontAwesome.Sharp.IconButton iconbtnClean;
+        private ComboBox comboFiltroRol;
+        private Label lblRolFiltro;
+        private DateTimePicker dateTimePickerNacimientoDato;
+        private Label lblFechaNac;
+        private ComboBox comboBox1;
+        private FontAwesome.Sharp.IconButton iconBtnExcel;
         private DataGridViewTextBoxColumn col_id_usuario;
         private DataGridViewTextBoxColumn col_dni;
         private DataGridViewTextBoxColumn col_nombre;
@@ -925,15 +975,5 @@
         private DataGridViewTextBoxColumn col_domicilio_prov;
         private DataGridViewTextBoxColumn Estado_Valor;
         private DataGridViewTextBoxColumn col_estado;
-        private TextBox txtDomiciliodato;
-        private ErrorProvider errorProvider1;
-        private Label lblPassword;
-        private TextBox txtPasswordDato;
-        private FontAwesome.Sharp.IconButton iconBtnAlta;
-        private FontAwesome.Sharp.IconButton iconbtnClean;
-        private ComboBox comboFiltroRol;
-        private Label lblRolFiltro;
-        private DateTimePicker dateTimePickerNacimientoDato;
-        private Label lblFechaNac;
     }
 }

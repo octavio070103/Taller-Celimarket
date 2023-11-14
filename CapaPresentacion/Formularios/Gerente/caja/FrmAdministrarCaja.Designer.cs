@@ -37,18 +37,23 @@
             label2 = new Label();
             comboBox1 = new ComboBox();
             label1 = new Label();
-            dataGridUsuarios = new DataGridView();
-            column_caja = new DataGridViewTextBoxColumn();
-            column_usuario = new DataGridViewTextBoxColumn();
-            Column_fecha_apertura = new DataGridViewTextBoxColumn();
-            Column_monto_apertura = new DataGridViewTextBoxColumn();
-            column_fecha_cierre = new DataGridViewTextBoxColumn();
-            Column_monto_total = new DataGridViewTextBoxColumn();
-            column_caja_estado = new DataGridViewTextBoxColumn();
-            Column_opciones = new DataGridViewTextBoxColumn();
+            dataGridCajasCerradas = new DataGridView();
+            id_cierre_caja = new DataGridViewTextBoxColumn();
+            fecha_cierre = new DataGridViewTextBoxColumn();
+            monto_final = new DataGridViewTextBoxColumn();
+            diferencia_Cierre = new DataGridViewTextBoxColumn();
+            estado_cierre = new DataGridViewTextBoxColumn();
+            Dni_usuario_cierre = new DataGridViewTextBoxColumn();
+            Usuario_cierre = new DataGridViewTextBoxColumn();
+            id_apertura_caja = new DataGridViewTextBoxColumn();
+            fecha_apertura_caja = new DataGridViewTextBoxColumn();
+            Monto_inicial_apertura = new DataGridViewTextBoxColumn();
+            Dni_usuario_Apertura = new DataGridViewTextBoxColumn();
+            Usuario_apertura = new DataGridViewTextBoxColumn();
+            estado_apertura = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridCajasCerradas).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -85,7 +90,7 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(comboBox1);
             panel2.Controls.Add(label1);
-            panel2.Controls.Add(dataGridUsuarios);
+            panel2.Controls.Add(dataGridCajasCerradas);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 72);
             panel2.Name = "panel2";
@@ -120,20 +125,20 @@
             label1.TabIndex = 4;
             label1.Text = "Mostrar";
             // 
-            // dataGridUsuarios
+            // dataGridCajasCerradas
             // 
-            dataGridUsuarios.AllowUserToAddRows = false;
+            dataGridCajasCerradas.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(119, 105, 178);
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(47, 33, 75);
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
-            dataGridUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridUsuarios.BackgroundColor = Color.FromArgb(67, 68, 89);
-            dataGridUsuarios.BorderStyle = BorderStyle.None;
-            dataGridUsuarios.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridCajasCerradas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridCajasCerradas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridCajasCerradas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridCajasCerradas.BackgroundColor = Color.FromArgb(67, 68, 89);
+            dataGridCajasCerradas.BorderStyle = BorderStyle.None;
+            dataGridCajasCerradas.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(119, 105, 178);
             dataGridViewCellStyle2.Font = new Font("Century Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -142,14 +147,14 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(47, 33, 75);
             dataGridViewCellStyle2.SelectionForeColor = Color.White;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridUsuarios.Columns.AddRange(new DataGridViewColumn[] { column_caja, column_usuario, Column_fecha_apertura, Column_monto_apertura, column_fecha_cierre, Column_monto_total, column_caja_estado, Column_opciones });
-            dataGridUsuarios.Location = new Point(15, 39);
-            dataGridUsuarios.MultiSelect = false;
-            dataGridUsuarios.Name = "dataGridUsuarios";
-            dataGridUsuarios.ReadOnly = true;
-            dataGridUsuarios.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridCajasCerradas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridCajasCerradas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridCajasCerradas.Columns.AddRange(new DataGridViewColumn[] { id_cierre_caja, fecha_cierre, monto_final, diferencia_Cierre, estado_cierre, Dni_usuario_cierre, Usuario_cierre, id_apertura_caja, fecha_apertura_caja, Monto_inicial_apertura, Dni_usuario_Apertura, Usuario_apertura, estado_apertura });
+            dataGridCajasCerradas.Location = new Point(15, 39);
+            dataGridCajasCerradas.MultiSelect = false;
+            dataGridCajasCerradas.Name = "dataGridCajasCerradas";
+            dataGridCajasCerradas.ReadOnly = true;
+            dataGridCajasCerradas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(119, 105, 178);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -157,69 +162,117 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(47, 33, 75);
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridUsuarios.RowHeadersVisible = false;
-            dataGridUsuarios.RowTemplate.Height = 28;
-            dataGridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridUsuarios.Size = new Size(795, 429);
-            dataGridUsuarios.TabIndex = 2;
+            dataGridCajasCerradas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridCajasCerradas.RowHeadersVisible = false;
+            dataGridCajasCerradas.RowTemplate.Height = 28;
+            dataGridCajasCerradas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridCajasCerradas.Size = new Size(795, 429);
+            dataGridCajasCerradas.TabIndex = 2;
             // 
-            // column_caja
+            // id_cierre_caja
             // 
-            column_caja.HeaderText = "Caja";
-            column_caja.Name = "column_caja";
-            column_caja.ReadOnly = true;
-            column_caja.Width = 64;
+            id_cierre_caja.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_cierre_caja.HeaderText = "id_cierre_caja";
+            id_cierre_caja.Name = "id_cierre_caja";
+            id_cierre_caja.ReadOnly = true;
+            id_cierre_caja.Visible = false;
             // 
-            // column_usuario
+            // fecha_cierre
             // 
-            column_usuario.HeaderText = "Usuario";
-            column_usuario.Name = "column_usuario";
-            column_usuario.ReadOnly = true;
-            column_usuario.Width = 79;
+            fecha_cierre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            fecha_cierre.HeaderText = "Fecha Cierre Caja";
+            fecha_cierre.MinimumWidth = 100;
+            fecha_cierre.Name = "fecha_cierre";
+            fecha_cierre.ReadOnly = true;
             // 
-            // Column_fecha_apertura
+            // monto_final
             // 
-            Column_fecha_apertura.HeaderText = "Fecha Apertura";
-            Column_fecha_apertura.MinimumWidth = 20;
-            Column_fecha_apertura.Name = "Column_fecha_apertura";
-            Column_fecha_apertura.ReadOnly = true;
-            Column_fecha_apertura.Width = 117;
+            monto_final.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            monto_final.HeaderText = "Monto Final";
+            monto_final.MinimumWidth = 100;
+            monto_final.Name = "monto_final";
+            monto_final.ReadOnly = true;
             // 
-            // Column_monto_apertura
+            // diferencia_Cierre
             // 
-            Column_monto_apertura.HeaderText = "Monto Apertura";
-            Column_monto_apertura.Name = "Column_monto_apertura";
-            Column_monto_apertura.ReadOnly = true;
-            Column_monto_apertura.Width = 117;
+            diferencia_Cierre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            diferencia_Cierre.HeaderText = "Diferencia";
+            diferencia_Cierre.MinimumWidth = 100;
+            diferencia_Cierre.Name = "diferencia_Cierre";
+            diferencia_Cierre.ReadOnly = true;
             // 
-            // column_fecha_cierre
+            // estado_cierre
             // 
-            column_fecha_cierre.HeaderText = "Fecha Cierre";
-            column_fecha_cierre.Name = "column_fecha_cierre";
-            column_fecha_cierre.ReadOnly = true;
-            column_fecha_cierre.Width = 103;
+            estado_cierre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            estado_cierre.HeaderText = "Estado del Cierre";
+            estado_cierre.MinimumWidth = 150;
+            estado_cierre.Name = "estado_cierre";
+            estado_cierre.ReadOnly = true;
             // 
-            // Column_monto_total
+            // Dni_usuario_cierre
             // 
-            Column_monto_total.HeaderText = "Monto Total";
-            Column_monto_total.Name = "Column_monto_total";
-            Column_monto_total.ReadOnly = true;
-            Column_monto_total.Width = 96;
+            Dni_usuario_cierre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Dni_usuario_cierre.HeaderText = "Dni Usuario Cierre";
+            Dni_usuario_cierre.MinimumWidth = 150;
+            Dni_usuario_cierre.Name = "Dni_usuario_cierre";
+            Dni_usuario_cierre.ReadOnly = true;
             // 
-            // column_caja_estado
+            // Usuario_cierre
             // 
-            column_caja_estado.HeaderText = "Estado";
-            column_caja_estado.Name = "column_caja_estado";
-            column_caja_estado.ReadOnly = true;
-            column_caja_estado.Width = 74;
+            Usuario_cierre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Usuario_cierre.HeaderText = "Usuario Cierre";
+            Usuario_cierre.MinimumWidth = 170;
+            Usuario_cierre.Name = "Usuario_cierre";
+            Usuario_cierre.ReadOnly = true;
             // 
-            // Column_opciones
+            // id_apertura_caja
             // 
-            Column_opciones.HeaderText = "Opciones";
-            Column_opciones.Name = "Column_opciones";
-            Column_opciones.ReadOnly = true;
-            Column_opciones.Width = 93;
+            id_apertura_caja.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            id_apertura_caja.HeaderText = "id_apertura_caja";
+            id_apertura_caja.MinimumWidth = 136;
+            id_apertura_caja.Name = "id_apertura_caja";
+            id_apertura_caja.ReadOnly = true;
+            id_apertura_caja.Visible = false;
+            // 
+            // fecha_apertura_caja
+            // 
+            fecha_apertura_caja.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            fecha_apertura_caja.HeaderText = "Fecha Apertura";
+            fecha_apertura_caja.MinimumWidth = 100;
+            fecha_apertura_caja.Name = "fecha_apertura_caja";
+            fecha_apertura_caja.ReadOnly = true;
+            // 
+            // Monto_inicial_apertura
+            // 
+            Monto_inicial_apertura.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Monto_inicial_apertura.HeaderText = "Monto inicial";
+            Monto_inicial_apertura.MinimumWidth = 100;
+            Monto_inicial_apertura.Name = "Monto_inicial_apertura";
+            Monto_inicial_apertura.ReadOnly = true;
+            // 
+            // Dni_usuario_Apertura
+            // 
+            Dni_usuario_Apertura.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Dni_usuario_Apertura.HeaderText = "Dni de usuario Apertura";
+            Dni_usuario_Apertura.MinimumWidth = 150;
+            Dni_usuario_Apertura.Name = "Dni_usuario_Apertura";
+            Dni_usuario_Apertura.ReadOnly = true;
+            // 
+            // Usuario_apertura
+            // 
+            Usuario_apertura.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Usuario_apertura.HeaderText = "Usuario Apertura";
+            Usuario_apertura.MinimumWidth = 170;
+            Usuario_apertura.Name = "Usuario_apertura";
+            Usuario_apertura.ReadOnly = true;
+            // 
+            // estado_apertura
+            // 
+            estado_apertura.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            estado_apertura.HeaderText = "estado apertura";
+            estado_apertura.MinimumWidth = 150;
+            estado_apertura.Name = "estado_apertura";
+            estado_apertura.ReadOnly = true;
             // 
             // FrmAdministrarCaja
             // 
@@ -231,10 +284,11 @@
             MinimumSize = new Size(838, 604);
             Name = "FrmAdministrarCaja";
             Text = "FrmAdministrarCaja";
+            Load += FrmAdministrarCaja_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridUsuarios).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridCajasCerradas).EndInit();
             ResumeLayout(false);
         }
 
@@ -242,18 +296,23 @@
 
         private Panel panel1;
         private Panel panel2;
-        private DataGridView dataGridUsuarios;
-        private DataGridViewTextBoxColumn column_caja;
-        private DataGridViewTextBoxColumn column_usuario;
-        private DataGridViewTextBoxColumn Column_fecha_apertura;
-        private DataGridViewTextBoxColumn Column_monto_apertura;
-        private DataGridViewTextBoxColumn column_fecha_cierre;
-        private DataGridViewTextBoxColumn Column_monto_total;
-        private DataGridViewTextBoxColumn column_caja_estado;
-        private DataGridViewTextBoxColumn Column_opciones;
+        private DataGridView dataGridCajasCerradas;
         private FontAwesome.Sharp.IconButton iconButton1;
         private Label label2;
         private ComboBox comboBox1;
         private Label label1;
+        private DataGridViewTextBoxColumn id_cierre_caja;
+        private DataGridViewTextBoxColumn fecha_cierre;
+        private DataGridViewTextBoxColumn monto_final;
+        private DataGridViewTextBoxColumn diferencia_Cierre;
+        private DataGridViewTextBoxColumn estado_cierre;
+        private DataGridViewTextBoxColumn Dni_usuario_cierre;
+        private DataGridViewTextBoxColumn Usuario_cierre;
+        private DataGridViewTextBoxColumn id_apertura_caja;
+        private DataGridViewTextBoxColumn fecha_apertura_caja;
+        private DataGridViewTextBoxColumn Monto_inicial_apertura;
+        private DataGridViewTextBoxColumn Dni_usuario_Apertura;
+        private DataGridViewTextBoxColumn Usuario_apertura;
+        private DataGridViewTextBoxColumn estado_apertura;
     }
 }

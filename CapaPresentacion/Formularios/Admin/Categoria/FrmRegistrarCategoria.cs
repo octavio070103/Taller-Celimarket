@@ -1,4 +1,5 @@
-﻿using CapaLogica;
+﻿using capaEntidad;
+using CapaLogica;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClosedXML.Excel.XLPredefinedFormat;
 
 namespace CapaPresentacion.Formularios.Admin.Categoria
 {
@@ -17,6 +19,11 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
         public FrmRegistrarCategoria()
         {
             InitializeComponent();
+        }
+
+        private void FrmRegistrarCategoria_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void picMinimizar_Click(object sender, EventArgs e)
@@ -53,7 +60,7 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
                 capaEntidad.categoria obj_categoria = new capaEntidad.categoria()
                 {
                     nombre_categoria = txtNombreCate.Text,
-                    //agregar despues descripcion_categoria=txtDescripcionCate.Text,
+                    descripcion_categoria = txtDescripcionCate.Text,
                     estado_categoria = 1
                 };
 
@@ -78,6 +85,13 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             bool validacion = true;
             string nombreCateg = txtNombreCate.Text;
             string descripCateg = txtDescripcionCate.Text;
+
+            // Validar que los campos no estén vacíos
+            if (string.IsNullOrWhiteSpace(nombreCateg) || string.IsNullOrWhiteSpace(descripCateg))
+            {
+                MessageBox.Show("Por favor, Rellene todos los campos", "Campos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                validacion = false;
+            }
 
             //aca valdio que el campo solo contenga letras y un solo espacio por palabra escrita 
             if (!EsAlfabetico(nombreCateg))
@@ -133,6 +147,16 @@ namespace CapaPresentacion.Formularios.Admin.Categoria
             errorProviderCategoria.SetError(lblDescripcionCate, "");
 
         }
+
+        private void iconBtnCancelar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Estás seguro de que deseas cancelar?", "Confirmación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {//si cancela se borra todo el contenido del form
+                txtNombreCate.Text = "";
+                txtDescripcionCate.Text = "";
+            }
+        }
+
 
     }
 }

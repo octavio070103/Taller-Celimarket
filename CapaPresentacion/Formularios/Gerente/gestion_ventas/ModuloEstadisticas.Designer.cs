@@ -28,17 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEstadisticas));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModuloEstadisticas));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             pnlModuloEstadis = new Panel();
+            pnlFiltro = new Panel();
+            pnlBotones = new Panel();
+            btnFiltroHisto = new Button();
+            btnFiltroSiete = new Button();
+            btnFiltroNove = new Button();
+            btnFiltroTreinta = new Button();
+            label5 = new Label();
+            btnAplicar = new Button();
+            label4 = new Label();
+            label3 = new Label();
+            dtpFechaFin = new DateTimePicker();
+            label2 = new Label();
+            dtpFechaInicio = new DateTimePicker();
             pnlContenedor = new Panel();
+            chartVendedores = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlProductos = new Panel();
             lblNroProdu = new Label();
             picProductos = new PictureBox();
@@ -67,9 +85,13 @@
             chartCategoriasVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartProductosVen = new System.Windows.Forms.DataVisualization.Charting.Chart();
             pnlEncabezadoEsta = new Panel();
+            btnReiniciar = new Button();
             label11 = new Label();
             pnlModuloEstadis.SuspendLayout();
+            pnlFiltro.SuspendLayout();
+            pnlBotones.SuspendLayout();
             pnlContenedor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chartVendedores).BeginInit();
             pnlProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picProductos).BeginInit();
             pnlEmpleados.SuspendLayout();
@@ -90,6 +112,7 @@
             // pnlModuloEstadis
             // 
             pnlModuloEstadis.BackColor = Color.FromArgb(67, 68, 89);
+            pnlModuloEstadis.Controls.Add(pnlFiltro);
             pnlModuloEstadis.Controls.Add(pnlContenedor);
             pnlModuloEstadis.Controls.Add(pnlEncabezadoEsta);
             pnlModuloEstadis.Dock = DockStyle.Fill;
@@ -98,10 +121,177 @@
             pnlModuloEstadis.Size = new Size(822, 565);
             pnlModuloEstadis.TabIndex = 1;
             // 
+            // pnlFiltro
+            // 
+            pnlFiltro.Anchor = AnchorStyles.Top;
+            pnlFiltro.BackColor = SystemColors.GradientActiveCaption;
+            pnlFiltro.Controls.Add(pnlBotones);
+            pnlFiltro.Controls.Add(label5);
+            pnlFiltro.Controls.Add(btnAplicar);
+            pnlFiltro.Controls.Add(label4);
+            pnlFiltro.Controls.Add(label3);
+            pnlFiltro.Controls.Add(dtpFechaFin);
+            pnlFiltro.Controls.Add(label2);
+            pnlFiltro.Controls.Add(dtpFechaInicio);
+            pnlFiltro.Location = new Point(3, 48);
+            pnlFiltro.Name = "pnlFiltro";
+            pnlFiltro.Size = new Size(816, 38);
+            pnlFiltro.TabIndex = 4;
+            // 
+            // pnlBotones
+            // 
+            pnlBotones.BackColor = SystemColors.Window;
+            pnlBotones.Controls.Add(btnFiltroHisto);
+            pnlBotones.Controls.Add(btnFiltroSiete);
+            pnlBotones.Controls.Add(btnFiltroNove);
+            pnlBotones.Controls.Add(btnFiltroTreinta);
+            pnlBotones.Location = new Point(509, 6);
+            pnlBotones.Name = "pnlBotones";
+            pnlBotones.Size = new Size(291, 28);
+            pnlBotones.TabIndex = 7;
+            // 
+            // btnFiltroHisto
+            // 
+            btnFiltroHisto.BackColor = Color.DarkCyan;
+            btnFiltroHisto.FlatAppearance.BorderColor = Color.White;
+            btnFiltroHisto.FlatAppearance.BorderSize = 0;
+            btnFiltroHisto.FlatStyle = FlatStyle.Flat;
+            btnFiltroHisto.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFiltroHisto.ForeColor = SystemColors.ControlLightLight;
+            btnFiltroHisto.Location = new Point(219, 0);
+            btnFiltroHisto.Name = "btnFiltroHisto";
+            btnFiltroHisto.Size = new Size(72, 28);
+            btnFiltroHisto.TabIndex = 3;
+            btnFiltroHisto.Text = "HISTORICO";
+            btnFiltroHisto.UseVisualStyleBackColor = false;
+            btnFiltroHisto.Click += btnFiltroHisto_Click;
+            // 
+            // btnFiltroSiete
+            // 
+            btnFiltroSiete.BackColor = Color.DarkCyan;
+            btnFiltroSiete.FlatAppearance.BorderColor = Color.White;
+            btnFiltroSiete.FlatAppearance.BorderSize = 0;
+            btnFiltroSiete.FlatStyle = FlatStyle.Flat;
+            btnFiltroSiete.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFiltroSiete.ForeColor = SystemColors.ControlLightLight;
+            btnFiltroSiete.Location = new Point(0, 0);
+            btnFiltroSiete.Name = "btnFiltroSiete";
+            btnFiltroSiete.Size = new Size(72, 28);
+            btnFiltroSiete.TabIndex = 0;
+            btnFiltroSiete.Text = "7 DIAS";
+            btnFiltroSiete.UseVisualStyleBackColor = false;
+            btnFiltroSiete.Click += btnFiltroSiete_Click;
+            // 
+            // btnFiltroNove
+            // 
+            btnFiltroNove.BackColor = Color.DarkCyan;
+            btnFiltroNove.FlatAppearance.BorderColor = Color.White;
+            btnFiltroNove.FlatAppearance.BorderSize = 0;
+            btnFiltroNove.FlatStyle = FlatStyle.Flat;
+            btnFiltroNove.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFiltroNove.ForeColor = SystemColors.ControlLightLight;
+            btnFiltroNove.Location = new Point(146, 0);
+            btnFiltroNove.Name = "btnFiltroNove";
+            btnFiltroNove.Size = new Size(72, 28);
+            btnFiltroNove.TabIndex = 2;
+            btnFiltroNove.Text = "90 DIAS";
+            btnFiltroNove.UseVisualStyleBackColor = false;
+            btnFiltroNove.Click += btnFiltroNove_Click;
+            // 
+            // btnFiltroTreinta
+            // 
+            btnFiltroTreinta.BackColor = Color.DarkCyan;
+            btnFiltroTreinta.FlatAppearance.BorderColor = Color.White;
+            btnFiltroTreinta.FlatAppearance.BorderSize = 0;
+            btnFiltroTreinta.FlatStyle = FlatStyle.Flat;
+            btnFiltroTreinta.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFiltroTreinta.ForeColor = SystemColors.ControlLightLight;
+            btnFiltroTreinta.Location = new Point(73, 0);
+            btnFiltroTreinta.Name = "btnFiltroTreinta";
+            btnFiltroTreinta.Size = new Size(72, 28);
+            btnFiltroTreinta.TabIndex = 1;
+            btnFiltroTreinta.Text = "30 DIAS";
+            btnFiltroTreinta.UseVisualStyleBackColor = false;
+            btnFiltroTreinta.Click += btnFiltroTreinta_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(447, 9);
+            label5.Name = "label5";
+            label5.Size = new Size(59, 19);
+            label5.TabIndex = 10;
+            label5.Text = "Últimos:";
+            // 
+            // btnAplicar
+            // 
+            btnAplicar.BackColor = Color.DarkCyan;
+            btnAplicar.FlatAppearance.BorderSize = 0;
+            btnAplicar.FlatStyle = FlatStyle.Flat;
+            btnAplicar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAplicar.ForeColor = SystemColors.ControlLightLight;
+            btnAplicar.Location = new Point(375, 8);
+            btnAplicar.Name = "btnAplicar";
+            btnAplicar.Size = new Size(59, 23);
+            btnAplicar.TabIndex = 9;
+            btnAplicar.Text = "Aplicar";
+            btnAplicar.UseVisualStyleBackColor = false;
+            btnAplicar.Click += btnAplicar_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = SystemColors.ActiveCaptionText;
+            label4.Location = new Point(5, 8);
+            label4.Name = "label4";
+            label4.Size = new Size(84, 21);
+            label4.TabIndex = 8;
+            label4.Text = "PERIODO:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(237, 7);
+            label3.Name = "label3";
+            label3.Size = new Size(31, 20);
+            label3.TabIndex = 7;
+            label3.Text = "Fin:";
+            // 
+            // dtpFechaFin
+            // 
+            dtpFechaFin.Format = DateTimePickerFormat.Short;
+            dtpFechaFin.Location = new Point(274, 8);
+            dtpFechaFin.Name = "dtpFechaFin";
+            dtpFechaFin.Size = new Size(95, 23);
+            dtpFechaFin.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(88, 8);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 20);
+            label2.TabIndex = 5;
+            label2.Text = "Inicio:";
+            // 
+            // dtpFechaInicio
+            // 
+            dtpFechaInicio.Format = DateTimePickerFormat.Short;
+            dtpFechaInicio.Location = new Point(136, 8);
+            dtpFechaInicio.Name = "dtpFechaInicio";
+            dtpFechaInicio.Size = new Size(95, 23);
+            dtpFechaInicio.TabIndex = 4;
+            dtpFechaInicio.ValueChanged += dtpFechaInicio_ValueChanged;
+            // 
             // pnlContenedor
             // 
             pnlContenedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             pnlContenedor.BackColor = Color.DimGray;
+            pnlContenedor.Controls.Add(chartVendedores);
             pnlContenedor.Controls.Add(pnlProductos);
             pnlContenedor.Controls.Add(pnlEmpleados);
             pnlContenedor.Controls.Add(pnlProveedores);
@@ -110,10 +300,34 @@
             pnlContenedor.Controls.Add(pnlNroVentas);
             pnlContenedor.Controls.Add(chartCategoriasVen);
             pnlContenedor.Controls.Add(chartProductosVen);
-            pnlContenedor.Location = new Point(12, 77);
+            pnlContenedor.Location = new Point(8, 92);
             pnlContenedor.Name = "pnlContenedor";
-            pnlContenedor.Size = new Size(800, 476);
+            pnlContenedor.Size = new Size(804, 461);
             pnlContenedor.TabIndex = 3;
+            // 
+            // chartVendedores
+            // 
+            chartArea1.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea1.Name = "ChartArea1";
+            chartVendedores.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            chartVendedores.Legends.Add(legend1);
+            chartVendedores.Location = new Point(14, 13);
+            chartVendedores.Name = "chartVendedores";
+            chartVendedores.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            chartVendedores.Series.Add(series1);
+            chartVendedores.Size = new Size(382, 195);
+            chartVendedores.TabIndex = 7;
+            chartVendedores.Text = "chart1";
+            title1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title1.Name = "Title1";
+            title1.Text = "Top vendedores";
+            chartVendedores.Titles.Add(title1);
             // 
             // pnlProductos
             // 
@@ -121,7 +335,7 @@
             pnlProductos.Controls.Add(lblNroProdu);
             pnlProductos.Controls.Add(picProductos);
             pnlProductos.Controls.Add(lblProductos);
-            pnlProductos.Location = new Point(598, 158);
+            pnlProductos.Location = new Point(598, 152);
             pnlProductos.Name = "pnlProductos";
             pnlProductos.Size = new Size(188, 56);
             pnlProductos.TabIndex = 6;
@@ -163,7 +377,7 @@
             pnlEmpleados.Controls.Add(lblNroEmpleados);
             pnlEmpleados.Controls.Add(picEmpleados);
             pnlEmpleados.Controls.Add(lblEmpleados);
-            pnlEmpleados.Location = new Point(598, 89);
+            pnlEmpleados.Location = new Point(598, 83);
             pnlEmpleados.Name = "pnlEmpleados";
             pnlEmpleados.Size = new Size(188, 56);
             pnlEmpleados.TabIndex = 6;
@@ -205,7 +419,7 @@
             pnlProveedores.Controls.Add(lblNroProve);
             pnlProveedores.Controls.Add(picProveedores);
             pnlProveedores.Controls.Add(lblProveedores);
-            pnlProveedores.Location = new Point(404, 159);
+            pnlProveedores.Location = new Point(404, 153);
             pnlProveedores.Name = "pnlProveedores";
             pnlProveedores.Size = new Size(188, 56);
             pnlProveedores.TabIndex = 5;
@@ -247,7 +461,7 @@
             pnlClientes.Controls.Add(lblNroClientes);
             pnlClientes.Controls.Add(picClientes);
             pnlClientes.Controls.Add(lblClientes);
-            pnlClientes.Location = new Point(404, 89);
+            pnlClientes.Location = new Point(404, 83);
             pnlClientes.Name = "pnlClientes";
             pnlClientes.Size = new Size(188, 56);
             pnlClientes.TabIndex = 5;
@@ -290,7 +504,7 @@
             pnlRecaudado.Controls.Add(lblTotalRecau);
             pnlRecaudado.Controls.Add(picRecaudado);
             pnlRecaudado.Controls.Add(lblRecaudado);
-            pnlRecaudado.Location = new Point(598, 19);
+            pnlRecaudado.Location = new Point(598, 13);
             pnlRecaudado.Name = "pnlRecaudado";
             pnlRecaudado.Size = new Size(188, 56);
             pnlRecaudado.TabIndex = 5;
@@ -343,7 +557,7 @@
             pnlNroVentas.Controls.Add(lblCantVentas);
             pnlNroVentas.Controls.Add(lblNroVentas);
             pnlNroVentas.Controls.Add(picNroVentas);
-            pnlNroVentas.Location = new Point(404, 19);
+            pnlNroVentas.Location = new Point(404, 13);
             pnlNroVentas.Name = "pnlNroVentas";
             pnlNroVentas.Size = new Size(188, 56);
             pnlNroVentas.TabIndex = 4;
@@ -358,6 +572,7 @@
             lblCantVentas.TabIndex = 2;
             lblCantVentas.Text = "xxxx";
             lblCantVentas.TextAlign = ContentAlignment.MiddleRight;
+            lblCantVentas.TextChanged += lblCantVentas_TextChanged;
             // 
             // lblNroVentas
             // 
@@ -382,62 +597,79 @@
             // chartCategoriasVen
             // 
             chartCategoriasVen.Anchor = AnchorStyles.Bottom;
-            chartArea1.Name = "ChartArea1";
-            chartCategoriasVen.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chartCategoriasVen.Legends.Add(legend1);
-            chartCategoriasVen.Location = new Point(404, 236);
+            chartArea2.Name = "ChartArea1";
+            chartCategoriasVen.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            chartCategoriasVen.Legends.Add(legend2);
+            chartCategoriasVen.Location = new Point(406, 221);
             chartCategoriasVen.Name = "chartCategoriasVen";
             chartCategoriasVen.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = Color.White;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chartCategoriasVen.Series.Add(series1);
-            chartCategoriasVen.Size = new Size(382, 237);
-            chartCategoriasVen.TabIndex = 1;
-            chartCategoriasVen.Text = "chart1";
-            title1.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title1.Name = "Title1";
-            title1.Text = "Categorias más vendidas";
-            chartCategoriasVen.Titles.Add(title1);
-            // 
-            // chartProductosVen
-            // 
-            chartProductosVen.Anchor = AnchorStyles.Bottom;
-            chartArea2.Name = "ChartArea1";
-            chartProductosVen.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            chartProductosVen.Legends.Add(legend2);
-            chartProductosVen.Location = new Point(12, 236);
-            chartProductosVen.Name = "chartProductosVen";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
             series2.IsValueShownAsLabel = true;
             series2.LabelForeColor = Color.White;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            chartProductosVen.Series.Add(series2);
+            chartCategoriasVen.Series.Add(series2);
+            chartCategoriasVen.Size = new Size(382, 237);
+            chartCategoriasVen.TabIndex = 1;
+            chartCategoriasVen.Text = "chart1";
+            title2.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title2.Name = "Title1";
+            title2.Text = "Categorias más vendidas";
+            chartCategoriasVen.Titles.Add(title2);
+            // 
+            // chartProductosVen
+            // 
+            chartProductosVen.Anchor = AnchorStyles.Bottom;
+            chartArea3.Name = "ChartArea1";
+            chartProductosVen.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            chartProductosVen.Legends.Add(legend3);
+            chartProductosVen.Location = new Point(14, 221);
+            chartProductosVen.Name = "chartProductosVen";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            series3.IsValueShownAsLabel = true;
+            series3.LabelForeColor = Color.White;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            chartProductosVen.Series.Add(series3);
             chartProductosVen.Size = new Size(382, 237);
             chartProductosVen.TabIndex = 2;
             chartProductosVen.Text = "chart2";
-            title2.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            title2.Name = "Title1";
-            title2.Text = "Productos mas vendidos";
-            chartProductosVen.Titles.Add(title2);
+            title3.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            title3.Name = "Title1";
+            title3.Text = "Productos mas vendidos";
+            chartProductosVen.Titles.Add(title3);
             // 
             // pnlEncabezadoEsta
             // 
             pnlEncabezadoEsta.BackColor = Color.FromArgb(47, 33, 75);
+            pnlEncabezadoEsta.Controls.Add(btnReiniciar);
             pnlEncabezadoEsta.Controls.Add(label11);
             pnlEncabezadoEsta.Dock = DockStyle.Top;
             pnlEncabezadoEsta.Location = new Point(0, 0);
             pnlEncabezadoEsta.Name = "pnlEncabezadoEsta";
-            pnlEncabezadoEsta.Size = new Size(822, 71);
+            pnlEncabezadoEsta.Size = new Size(822, 49);
             pnlEncabezadoEsta.TabIndex = 0;
+            // 
+            // btnReiniciar
+            // 
+            btnReiniciar.Anchor = AnchorStyles.None;
+            btnReiniciar.BackColor = Color.BlueViolet;
+            btnReiniciar.FlatAppearance.BorderSize = 0;
+            btnReiniciar.FlatStyle = FlatStyle.Flat;
+            btnReiniciar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnReiniciar.ForeColor = SystemColors.HighlightText;
+            btnReiniciar.Location = new Point(12, 12);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(65, 30);
+            btnReiniciar.TabIndex = 24;
+            btnReiniciar.Text = "Reiniciar";
+            btnReiniciar.UseVisualStyleBackColor = false;
+            btnReiniciar.Click += btnReiniciar_Click;
             // 
             // label11
             // 
@@ -446,7 +678,7 @@
             label11.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = SystemColors.ControlLightLight;
             label11.ImageAlign = ContentAlignment.TopCenter;
-            label11.Location = new Point(236, 9);
+            label11.Location = new Point(234, 0);
             label11.Name = "label11";
             label11.Size = new Size(341, 45);
             label11.TabIndex = 1;
@@ -463,7 +695,11 @@
             Text = "ModuloEstadisticas";
             Load += ModuloEstadisticas_Load;
             pnlModuloEstadis.ResumeLayout(false);
+            pnlFiltro.ResumeLayout(false);
+            pnlFiltro.PerformLayout();
+            pnlBotones.ResumeLayout(false);
             pnlContenedor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chartVendedores).EndInit();
             pnlProductos.ResumeLayout(false);
             pnlProductos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picProductos).EndInit();
@@ -522,5 +758,20 @@
         private Label lblNroProve;
         private Label lblNroClientes;
         private Label label1;
+        private Panel pnlFiltro;
+        private DateTimePicker dtpFechaInicio;
+        private Label label3;
+        private DateTimePicker dtpFechaFin;
+        private Label label2;
+        private Label label4;
+        private Button btnAplicar;
+        private Panel pnlBotones;
+        private Button btnFiltroNove;
+        private Button btnFiltroTreinta;
+        private Button btnFiltroSiete;
+        private Button btnFiltroHisto;
+        private Label label5;
+        private Button btnReiniciar;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartVendedores;
     }
 }

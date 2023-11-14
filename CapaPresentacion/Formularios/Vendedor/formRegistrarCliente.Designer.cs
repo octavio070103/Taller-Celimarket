@@ -40,15 +40,13 @@
             pictureBox4 = new PictureBox();
             panel1 = new Panel();
             pnlRegistrarCliente = new Panel();
+            dtpFechaNac = new DateTimePicker();
             btnGuardar = new Button();
-            txtCorreo = new TextBox();
             lblTelefono = new Label();
-            lblCorreo = new Label();
-            lblDomicilio = new Label();
+            lblFechaNac = new Label();
             lblDni = new Label();
             lblApellido = new Label();
             lblNombre = new Label();
-            txtDomicilio = new TextBox();
             txtTelefono = new TextBox();
             txtDni = new TextBox();
             txtApellido = new TextBox();
@@ -185,15 +183,13 @@
             // pnlRegistrarCliente
             // 
             pnlRegistrarCliente.BackColor = Color.SteelBlue;
+            pnlRegistrarCliente.Controls.Add(dtpFechaNac);
             pnlRegistrarCliente.Controls.Add(btnGuardar);
-            pnlRegistrarCliente.Controls.Add(txtCorreo);
             pnlRegistrarCliente.Controls.Add(lblTelefono);
-            pnlRegistrarCliente.Controls.Add(lblCorreo);
-            pnlRegistrarCliente.Controls.Add(lblDomicilio);
+            pnlRegistrarCliente.Controls.Add(lblFechaNac);
             pnlRegistrarCliente.Controls.Add(lblDni);
             pnlRegistrarCliente.Controls.Add(lblApellido);
             pnlRegistrarCliente.Controls.Add(lblNombre);
-            pnlRegistrarCliente.Controls.Add(txtDomicilio);
             pnlRegistrarCliente.Controls.Add(txtTelefono);
             pnlRegistrarCliente.Controls.Add(txtDni);
             pnlRegistrarCliente.Controls.Add(txtApellido);
@@ -204,6 +200,14 @@
             pnlRegistrarCliente.Name = "pnlRegistrarCliente";
             pnlRegistrarCliente.Size = new Size(542, 388);
             pnlRegistrarCliente.TabIndex = 3;
+            // 
+            // dtpFechaNac
+            // 
+            dtpFechaNac.Format = DateTimePickerFormat.Short;
+            dtpFechaNac.Location = new Point(276, 117);
+            dtpFechaNac.Name = "dtpFechaNac";
+            dtpFechaNac.Size = new Size(195, 23);
+            dtpFechaNac.TabIndex = 15;
             // 
             // btnGuardar
             // 
@@ -220,50 +224,29 @@
             btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // txtCorreo
-            // 
-            txtCorreo.BackColor = Color.White;
-            txtCorreo.Location = new Point(276, 188);
-            txtCorreo.Margin = new Padding(4, 3, 4, 3);
-            txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(195, 23);
-            txtCorreo.TabIndex = 13;
-            // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblTelefono.ForeColor = SystemColors.HighlightText;
-            lblTelefono.Location = new Point(276, 230);
+            lblTelefono.Location = new Point(276, 159);
             lblTelefono.Name = "lblTelefono";
             lblTelefono.Size = new Size(68, 21);
             lblTelefono.TabIndex = 12;
             lblTelefono.Text = "Teléfono";
             lblTelefono.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // lblCorreo
+            // lblFechaNac
             // 
-            lblCorreo.AutoSize = true;
-            lblCorreo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCorreo.ForeColor = SystemColors.HighlightText;
-            lblCorreo.Location = new Point(276, 164);
-            lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(138, 21);
-            lblCorreo.TabIndex = 11;
-            lblCorreo.Text = "Correo electronico";
-            lblCorreo.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // lblDomicilio
-            // 
-            lblDomicilio.AutoSize = true;
-            lblDomicilio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDomicilio.ForeColor = SystemColors.HighlightText;
-            lblDomicilio.Location = new Point(276, 93);
-            lblDomicilio.Name = "lblDomicilio";
-            lblDomicilio.Size = new Size(76, 21);
-            lblDomicilio.TabIndex = 10;
-            lblDomicilio.Text = "Domicilio";
-            lblDomicilio.TextAlign = ContentAlignment.MiddleLeft;
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.ForeColor = SystemColors.HighlightText;
+            lblFechaNac.Location = new Point(276, 93);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(152, 21);
+            lblFechaNac.TabIndex = 10;
+            lblFechaNac.Text = "Fecha de nacimiento";
+            lblFechaNac.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblDni
             // 
@@ -301,19 +284,10 @@
             lblNombre.Text = "Nombre";
             lblNombre.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // txtDomicilio
-            // 
-            txtDomicilio.BackColor = Color.White;
-            txtDomicilio.Location = new Point(276, 117);
-            txtDomicilio.Margin = new Padding(4, 3, 4, 3);
-            txtDomicilio.Name = "txtDomicilio";
-            txtDomicilio.Size = new Size(195, 23);
-            txtDomicilio.TabIndex = 6;
-            // 
             // txtTelefono
             // 
             txtTelefono.BackColor = Color.White;
-            txtTelefono.Location = new Point(276, 254);
+            txtTelefono.Location = new Point(276, 183);
             txtTelefono.Margin = new Padding(4, 3, 4, 3);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(195, 23);
@@ -403,14 +377,11 @@
         private Panel panel1;
         private Panel pnlRegistrarCliente;
         private Button btnGuardar;
-        private TextBox txtCorreo;
         private Label lblTelefono;
-        private Label lblCorreo;
-        private Label lblDomicilio;
+        private Label lblFechaNac;
         private Label lblDni;
         private Label lblApellido;
         private Label lblNombre;
-        private TextBox txtDomicilio;
         private TextBox txtTelefono;
         private TextBox txtDni;
         private TextBox txtApellido;
@@ -418,5 +389,6 @@
         private TextBox txtNombre;
         private PictureBox picMaximizar;
         private ErrorProvider errorProvider1;
+        private DateTimePicker dtpFechaNac;
     }
 }

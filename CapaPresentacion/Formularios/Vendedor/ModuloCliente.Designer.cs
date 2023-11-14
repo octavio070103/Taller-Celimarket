@@ -38,17 +38,10 @@
             btnEliminar = new Button();
             btnAgregar = new Button();
             dtgvClientes = new DataGridView();
-            dni_cliente = new DataGridViewTextBoxColumn();
-            apellido_cliente = new DataGridViewTextBoxColumn();
-            nombre_cliente = new DataGridViewTextBoxColumn();
-            telefono_cliente = new DataGridViewTextBoxColumn();
-            direccion_cliente = new DataGridViewTextBoxColumn();
-            correo_cliente = new DataGridViewTextBoxColumn();
             pnlInfoCliente = new Panel();
-            txtCorreoCliente = new TextBox();
             lblCorreoCliente = new Label();
-            txtDireccionCliente = new TextBox();
-            lblDireccionCliente = new Label();
+            txtFechaNac = new TextBox();
+            lblFechaNac = new Label();
             txtTelefonoCliente = new TextBox();
             lblTelefonoCliente = new Label();
             txtNombreCliente = new TextBox();
@@ -90,20 +83,23 @@
             lblFiltro.AutoSize = true;
             lblFiltro.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblFiltro.ForeColor = SystemColors.HighlightText;
-            lblFiltro.Location = new Point(413, 35);
+            lblFiltro.Location = new Point(390, 36);
             lblFiltro.Name = "lblFiltro";
-            lblFiltro.Size = new Size(43, 20);
+            lblFiltro.Size = new Size(82, 20);
             lblFiltro.TabIndex = 6;
-            lblFiltro.Text = "Filtro";
+            lblFiltro.Text = "Buscar por:";
             // 
             // cboFiltroClientes
             // 
             cboFiltroClientes.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cboFiltroClientes.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFiltroClientes.FormattingEnabled = true;
-            cboFiltroClientes.Location = new Point(462, 36);
+            cboFiltroClientes.Items.AddRange(new object[] { "Apellido", "Nombre" });
+            cboFiltroClientes.Location = new Point(472, 36);
             cboFiltroClientes.Name = "cboFiltroClientes";
-            cboFiltroClientes.Size = new Size(122, 23);
+            cboFiltroClientes.Size = new Size(112, 23);
             cboFiltroClientes.TabIndex = 5;
+            cboFiltroClientes.KeyPress += cboFiltroClientes_KeyPress;
             // 
             // lblBuscarClientes
             // 
@@ -122,6 +118,7 @@
             txtBuscadorClientes.Name = "txtBuscadorClientes";
             txtBuscadorClientes.Size = new Size(213, 23);
             txtBuscadorClientes.TabIndex = 3;
+            txtBuscadorClientes.TextChanged += txtBuscadorClientes_TextChanged;
             // 
             // pnlListaClientes
             // 
@@ -161,54 +158,28 @@
             // dtgvClientes
             // 
             dtgvClientes.AllowUserToAddRows = false;
+            dtgvClientes.AllowUserToResizeRows = false;
             dtgvClientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvClientes.Columns.AddRange(new DataGridViewColumn[] { dni_cliente, apellido_cliente, nombre_cliente, telefono_cliente, direccion_cliente, correo_cliente });
             dtgvClientes.Location = new Point(0, 0);
             dtgvClientes.Name = "dtgvClientes";
+            dtgvClientes.ReadOnly = true;
+            dtgvClientes.RowHeadersVisible = false;
             dtgvClientes.RowTemplate.Height = 25;
+            dtgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvClientes.Size = new Size(555, 414);
             dtgvClientes.TabIndex = 0;
             dtgvClientes.CellContentClick += dtgvClientes_CellContentClick;
-            // 
-            // dni_cliente
-            // 
-            dni_cliente.HeaderText = "DNI";
-            dni_cliente.Name = "dni_cliente";
-            // 
-            // apellido_cliente
-            // 
-            apellido_cliente.HeaderText = "Apellido";
-            apellido_cliente.Name = "apellido_cliente";
-            // 
-            // nombre_cliente
-            // 
-            nombre_cliente.HeaderText = "Nombre";
-            nombre_cliente.Name = "nombre_cliente";
-            // 
-            // telefono_cliente
-            // 
-            telefono_cliente.HeaderText = "Teléfono";
-            telefono_cliente.Name = "telefono_cliente";
-            // 
-            // direccion_cliente
-            // 
-            direccion_cliente.HeaderText = "Dirección";
-            direccion_cliente.Name = "direccion_cliente";
-            // 
-            // correo_cliente
-            // 
-            correo_cliente.HeaderText = "Correo";
-            correo_cliente.Name = "correo_cliente";
+            dtgvClientes.SelectionChanged += dtgvClientes_SelectionChanged;
+            dtgvClientes.DoubleClick += dtgvClientes_DoubleClick;
             // 
             // pnlInfoCliente
             // 
             pnlInfoCliente.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pnlInfoCliente.BackColor = Color.White;
-            pnlInfoCliente.Controls.Add(txtCorreoCliente);
             pnlInfoCliente.Controls.Add(lblCorreoCliente);
-            pnlInfoCliente.Controls.Add(txtDireccionCliente);
-            pnlInfoCliente.Controls.Add(lblDireccionCliente);
+            pnlInfoCliente.Controls.Add(txtFechaNac);
+            pnlInfoCliente.Controls.Add(lblFechaNac);
             pnlInfoCliente.Controls.Add(txtTelefonoCliente);
             pnlInfoCliente.Controls.Add(lblTelefonoCliente);
             pnlInfoCliente.Controls.Add(txtNombreCliente);
@@ -224,39 +195,33 @@
             pnlInfoCliente.Size = new Size(266, 502);
             pnlInfoCliente.TabIndex = 1;
             // 
-            // txtCorreoCliente
-            // 
-            txtCorreoCliente.Location = new Point(86, 323);
-            txtCorreoCliente.Name = "txtCorreoCliente";
-            txtCorreoCliente.Size = new Size(150, 23);
-            txtCorreoCliente.TabIndex = 16;
-            // 
             // lblCorreoCliente
             // 
             lblCorreoCliente.AutoSize = true;
             lblCorreoCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblCorreoCliente.Location = new Point(14, 322);
+            lblCorreoCliente.Location = new Point(14, 293);
             lblCorreoCliente.Name = "lblCorreoCliente";
-            lblCorreoCliente.Size = new Size(54, 20);
+            lblCorreoCliente.Size = new Size(83, 20);
             lblCorreoCliente.TabIndex = 15;
-            lblCorreoCliente.Text = "Correo";
+            lblCorreoCliente.Text = "nacimiento";
             // 
-            // txtDireccionCliente
+            // txtFechaNac
             // 
-            txtDireccionCliente.Location = new Point(86, 279);
-            txtDireccionCliente.Name = "txtDireccionCliente";
-            txtDireccionCliente.Size = new Size(150, 23);
-            txtDireccionCliente.TabIndex = 14;
+            txtFechaNac.Location = new Point(103, 290);
+            txtFechaNac.Name = "txtFechaNac";
+            txtFechaNac.Size = new Size(133, 23);
+            txtFechaNac.TabIndex = 14;
             // 
-            // lblDireccionCliente
+            // lblFechaNac
             // 
-            lblDireccionCliente.AutoSize = true;
-            lblDireccionCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblDireccionCliente.Location = new Point(14, 278);
-            lblDireccionCliente.Name = "lblDireccionCliente";
-            lblDireccionCliente.Size = new Size(72, 20);
-            lblDireccionCliente.TabIndex = 13;
-            lblDireccionCliente.Text = "Dirección";
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFechaNac.Location = new Point(14, 273);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(72, 20);
+            lblFechaNac.TabIndex = 13;
+            lblFechaNac.Text = "Fecha de ";
+            lblFechaNac.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtTelefonoCliente
             // 
@@ -264,6 +229,7 @@
             txtTelefonoCliente.Name = "txtTelefonoCliente";
             txtTelefonoCliente.Size = new Size(150, 23);
             txtTelefonoCliente.TabIndex = 12;
+            txtTelefonoCliente.KeyPress += soloNumeros_KeyPress;
             // 
             // lblTelefonoCliente
             // 
@@ -277,16 +243,17 @@
             // 
             // txtNombreCliente
             // 
-            txtNombreCliente.Location = new Point(86, 187);
+            txtNombreCliente.Location = new Point(86, 139);
             txtNombreCliente.Name = "txtNombreCliente";
             txtNombreCliente.Size = new Size(150, 23);
             txtNombreCliente.TabIndex = 10;
+            txtNombreCliente.KeyPress += soloLetras_KeyPress;
             // 
             // lblNombreCliente
             // 
             lblNombreCliente.AutoSize = true;
             lblNombreCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombreCliente.Location = new Point(14, 186);
+            lblNombreCliente.Location = new Point(14, 138);
             lblNombreCliente.Name = "lblNombreCliente";
             lblNombreCliente.Size = new Size(64, 20);
             lblNombreCliente.TabIndex = 9;
@@ -294,16 +261,17 @@
             // 
             // txtApellidoCliente
             // 
-            txtApellidoCliente.Location = new Point(86, 141);
+            txtApellidoCliente.Location = new Point(86, 185);
             txtApellidoCliente.Name = "txtApellidoCliente";
             txtApellidoCliente.Size = new Size(150, 23);
             txtApellidoCliente.TabIndex = 8;
+            txtApellidoCliente.KeyPress += soloLetras_KeyPress;
             // 
             // lblApellidoCliente
             // 
             lblApellidoCliente.AutoSize = true;
             lblApellidoCliente.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            lblApellidoCliente.Location = new Point(14, 140);
+            lblApellidoCliente.Location = new Point(14, 184);
             lblApellidoCliente.Name = "lblApellidoCliente";
             lblApellidoCliente.Size = new Size(66, 20);
             lblApellidoCliente.TabIndex = 7;
@@ -315,6 +283,7 @@
             txtDniCliente.Name = "txtDniCliente";
             txtDniCliente.Size = new Size(150, 23);
             txtDniCliente.TabIndex = 6;
+            txtDniCliente.KeyPress += soloNumeros_KeyPress;
             // 
             // lblDniCliente
             // 
@@ -371,6 +340,7 @@
             Controls.Add(pnlVentanaClientes);
             Name = "frmModuloCliente";
             Text = "Clientes";
+            Load += frmModuloCliente_Load;
             pnlVentanaClientes.ResumeLayout(false);
             pnlVentanaClientes.PerformLayout();
             pnlListaClientes.ResumeLayout(false);
@@ -396,12 +366,6 @@
         private TextBox txtBuscadorClientes;
         private Label lblFiltro;
         private ComboBox cboFiltroClientes;
-        private DataGridViewTextBoxColumn dni_cliente;
-        private DataGridViewTextBoxColumn apellido_cliente;
-        private DataGridViewTextBoxColumn nombre_cliente;
-        private DataGridViewTextBoxColumn telefono_cliente;
-        private DataGridViewTextBoxColumn direccion_cliente;
-        private DataGridViewTextBoxColumn correo_cliente;
         private Panel pnlEncabezado;
         private Label lblEncabezado;
         private TextBox txtApellidoCliente;
@@ -410,12 +374,11 @@
         private Label lblDniCliente;
         private TextBox txtNombreCliente;
         private Label lblNombreCliente;
-        private TextBox txtDireccionCliente;
-        private Label lblDireccionCliente;
+        private TextBox txtFechaNac;
+        private Label lblFechaNac;
         private TextBox txtTelefonoCliente;
         private Label lblTelefonoCliente;
-        private TextBox txtCorreoCliente;
-        private Label lblCorreoCliente;
         private ErrorProvider errorProvider1;
+        private Label lblCorreoCliente;
     }
 }

@@ -39,14 +39,6 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-        /*                                                                          */
-
-
-        private void lblDeliMarket_Click(object sender, EventArgs e)
-        {
-
-        }
         /*
          * creacion de bordes redondeados para los controles de windows forms en C#
          */
@@ -163,7 +155,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
         }
 
         /*****************************Funcional****************************/
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             if (validarCampos())
             {
@@ -179,7 +171,9 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                 if (obj_usuario != null)
                 {
                     // Usuario autenticado con éxito
-                    MessageBox.Show("¡Inicio de sesión exitoso!", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnLogin.Text = "Hola de nuevo " + obj_usuario.obj_persona.nombre;
+                    // Simular una pausa de 3 segundos antes de mostrar el siguiente formulario
+                    await Task.Delay(1000);
 
                     switch (obj_usuario.obj_rol.id_rol)
                     {
@@ -206,7 +200,7 @@ namespace Proyecto_Taller.Presentacion.Formularios.Login
                             break;
                     }
 
-                   
+
                 }
                 else
                 {
