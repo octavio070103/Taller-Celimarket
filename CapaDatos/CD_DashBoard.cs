@@ -35,6 +35,7 @@ namespace CapaDatos
                     //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
                     query.AppendLine("SELECT TOP 5 dtv.id_producto,p.nombre_producto,SUM(dtv.cantidad_detalle_venta) as cantProducVendido");
                     query.AppendLine("FROM detalle_venta dtv");
+                    query.AppendLine("INNER JOIN producto p ON p.id_producto =dtv.id_producto");
                     query.AppendLine("WHERE YEAR(dtv.fecha_creacion_detalle_venta)=@anio AND MONTH(dtv.fecha_creacion_detalle_venta) = @mes");// le paso la condicion de bsuqueda ,que me triaga los regsitros que conicidan con ese anio y ese mes y me los agrupe para poder obtener los datos que quiero
                     query.AppendLine("GROUP BY dtv.id_producto,p.nombre_producto");
                     query.AppendLine("ORDER BY SUM(dtv.cantidad_detalle_venta) DESC");
@@ -96,7 +97,7 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
-                    query.AppendLine("SELECT venta_fecha,COUNT(venta_fecha) as cantVentaPorDia");
+                    query.AppendLine("SELECT FORMAT(venta_fecha, 'dd/MM') AS DiaVenta ,COUNT(venta_fecha) as cantVentaPorDia"); //con day traigo el dia que se realizo la venta ya que el mes y el anio no lo necesito traer porque en teoria es el mes y el anio en que se ejcuta la app 
                     query.AppendLine("from venta");
                     query.AppendLine("WHERE YEAR(venta_fecha)=@anio AND MONTH(venta_fecha) = @mes");// le paso la condicion de bsuqueda ,que me triaga los regsitros que conicidan con ese anio y ese mes y me los agrupe para poder obtener los datos que quiero
                     query.AppendLine("GROUP BY venta_fecha");
@@ -120,7 +121,7 @@ namespace CapaDatos
                         // Se cargan los resutados obtenidos de la bases de datos en los arraylist
                         while (dataReader.Read())
                         {
-                            DiaVenta.Add(Convert.ToDateTime(dataReader["venta_fecha"]));
+                            DiaVenta.Add(Convert.ToDateTime(dataReader["DiaVenta"]));
                             cantidadVenPorDia.Add(Convert.ToInt32(dataReader["cantVentaPorDia"]));
                         }
 
@@ -138,10 +139,10 @@ namespace CapaDatos
         }
 
         //creo un diccioanrio de datos para poder retornar los dos array que creo ,hago esto para no estar creando una clase ProductosMasVendidosque tenga de atributo estos dos array
-        public (ArrayList DiaVenta, ArrayList cantidadVenPorDia) obtenerStockProducPorCategor()
+        public (ArrayList categoria, ArrayList stock) obtenerStockProducPorCategor()
         {
-            ArrayList DiaVenta = new ArrayList(); //creo mi dos array que vna a contener el TOP5 de productos mas vendidos de mi BD y la cantidad de ventas que tuvieron
-            ArrayList cantidadVenPorDia = new ArrayList();
+            ArrayList categoria = new ArrayList(); //creo mi dos array que vna a contener el TOP5 de productos mas vendidos de mi BD y la cantidad de ventas que tuvieron
+            ArrayList stock = new ArrayList();
 
             //le paso cadena de la clase conexion ,aca Se instancia una conexión a la base de datos.
             using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))// Se instancia un Obj_conexion que servira para establecer conexion con la base de datos
@@ -153,9 +154,10 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
-                    query.AppendLine("SELECT venta_fecha,COUNT(venta_fecha) as cantVentaPorDia");
-                    query.AppendLine("from venta");
-                    query.AppendLine("GROUP BY venta_fecha");
+                    query.AppendLine("SELECT c.nombre_categoria,SUM(p.stock_producto) as stockPorCategoria");
+                    query.AppendLine("from producto p");
+                    query.AppendLine("INNER JOIN categoria c ON p.id_categoria=c.id_categoria");
+                    query.AppendLine("GROUP BY c.nombre_categoria");
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
@@ -173,8 +175,8 @@ namespace CapaDatos
                         // Se cargan los resutados obtenidos de la bases de datos en los arraylist
                         while (dataReader.Read())
                         {
-                            DiaVenta.Add(Convert.ToDateTime(dataReader["venta_fecha"]));
-                            cantidadVenPorDia.Add(Convert.ToInt32(dataReader["cantVentaPorDia"]));
+                            categoria.Add(dataReader["nombre_categoria"]).ToString();
+                            stock.Add(Convert.ToInt32(dataReader["stockPorCategoria"]));
                         }
 
                         dataReader.Close();
@@ -187,7 +189,7 @@ namespace CapaDatos
             }
 
 
-            return (DiaVenta, cantidadVenPorDia); //retonamos los arrays ya cargados en caso de que la consulta haya salido bien sino estaran vacios
+            return (categoria, stock); //retonamos los arrays ya cargados en caso de que la consulta haya salido bien sino estaran vacios
         }
 
         public negocioEstadistica obtenerDatosNegocioEstadisticas(int mes) //le paso el mes que quiero que me obtenga los datos del negocio

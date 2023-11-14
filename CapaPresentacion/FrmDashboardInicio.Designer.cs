@@ -100,6 +100,7 @@
             // chartVentas
             // 
             chartVentas.BackColor = Color.FromArgb(34, 41, 53);
+            chartArea4.BackColor = Color.FromArgb(34, 41, 53);
             chartArea4.Name = "ChartArea1";
             chartVentas.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
@@ -107,13 +108,14 @@
             chartVentas.Location = new Point(0, 60);
             chartVentas.Name = "chartVentas";
             series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             chartVentas.Series.Add(series4);
             chartVentas.Size = new Size(430, 182);
             chartVentas.TabIndex = 15;
             chartVentas.Text = "chart1";
+            title4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            title4.ForeColor = Color.White;
             title4.Name = "Title1";
             title4.Text = "Ventas del Mes ";
             chartVentas.Titles.Add(title4);
@@ -121,6 +123,7 @@
             // chartStockProductoCateogria
             // 
             chartStockProductoCateogria.BackColor = Color.FromArgb(34, 41, 53);
+            chartArea5.BackColor = Color.FromArgb(34, 41, 53);
             chartArea5.Name = "ChartArea1";
             chartStockProductoCateogria.ChartAreas.Add(chartArea5);
             legend5.Name = "Legend1";
@@ -135,14 +138,17 @@
             chartStockProductoCateogria.Size = new Size(430, 203);
             chartStockProductoCateogria.TabIndex = 16;
             chartStockProductoCateogria.Text = "chart2";
+            title5.Font = new Font("Times New Roman", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            title5.ForeColor = Color.White;
             title5.Name = "Title1";
-            title5.Text = "Stock Productos por categoria";
+            title5.Text = "Stock De Productos Por Categoria Del Mes";
             chartStockProductoCateogria.Titles.Add(title5);
             // 
             // chart3
             // 
             chart3.BackColor = Color.FromArgb(34, 41, 53);
             chart3.BorderlineColor = Color.FromArgb(34, 41, 53);
+            chartArea6.BackColor = Color.FromArgb(34, 41, 53);
             chartArea6.Name = "ChartArea1";
             chart3.ChartAreas.Add(chartArea6);
             legend6.Name = "Legend1";
@@ -150,16 +156,18 @@
             chart3.Location = new Point(436, 248);
             chart3.Name = "chart3";
             series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series6.LabelBackColor = Color.White;
             series6.Legend = "Legend1";
             series6.Name = "Series1";
             chart3.Series.Add(series6);
-            chart3.Size = new Size(364, 203);
+            chart3.Size = new Size(430, 203);
             chart3.TabIndex = 17;
             chart3.Text = "chartTopProductos";
+            title6.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            title6.ForeColor = Color.White;
             title6.Name = "Title1";
-            title6.Text = "Productos Mas Vendidos";
+            title6.Text = "Productos Mas Vendidos Del Mes";
             chart3.Titles.Add(title6);
             // 
             // panelNroClientes
@@ -168,9 +176,9 @@
             panelNroClientes.Controls.Add(lblNroCliente);
             panelNroClientes.Controls.Add(label17);
             panelNroClientes.Controls.Add(iconButton8);
-            panelNroClientes.Location = new Point(680, 60);
+            panelNroClientes.Location = new Point(708, 59);
             panelNroClientes.Name = "panelNroClientes";
-            panelNroClientes.Size = new Size(120, 58);
+            panelNroClientes.Size = new Size(130, 58);
             panelNroClientes.TabIndex = 20;
             // 
             // lblNroCliente
@@ -222,9 +230,9 @@
             panelNroEmpleados.Controls.Add(lblNroEmple);
             panelNroEmpleados.Controls.Add(label15);
             panelNroEmpleados.Controls.Add(iconButton7);
-            panelNroEmpleados.Location = new Point(680, 124);
+            panelNroEmpleados.Location = new Point(708, 123);
             panelNroEmpleados.Name = "panelNroEmpleados";
-            panelNroEmpleados.Size = new Size(120, 58);
+            panelNroEmpleados.Size = new Size(130, 58);
             panelNroEmpleados.TabIndex = 21;
             // 
             // lblNroEmple
@@ -276,9 +284,9 @@
             panelNroProveedores.Controls.Add(lblNroProvee);
             panelNroProveedores.Controls.Add(label13);
             panelNroProveedores.Controls.Add(iconButton6);
-            panelNroProveedores.Location = new Point(680, 188);
+            panelNroProveedores.Location = new Point(708, 187);
             panelNroProveedores.Name = "panelNroProveedores";
-            panelNroProveedores.Size = new Size(120, 54);
+            panelNroProveedores.Size = new Size(130, 56);
             panelNroProveedores.TabIndex = 22;
             // 
             // lblNroProvee
@@ -318,7 +326,7 @@
             iconButton6.IconSize = 30;
             iconButton6.Location = new Point(0, 0);
             iconButton6.Name = "iconButton6";
-            iconButton6.Size = new Size(36, 54);
+            iconButton6.Size = new Size(36, 56);
             iconButton6.TabIndex = 16;
             iconButton6.TextAlign = ContentAlignment.MiddleRight;
             iconButton6.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -330,9 +338,9 @@
             panelTotalCaja.Controls.Add(lblValorCaja);
             panelTotalCaja.Controls.Add(iconButton5);
             panelTotalCaja.Controls.Add(label11);
-            panelTotalCaja.Location = new Point(554, 188);
+            panelTotalCaja.Location = new Point(572, 187);
             panelTotalCaja.Name = "panelTotalCaja";
-            panelTotalCaja.Size = new Size(120, 54);
+            panelTotalCaja.Size = new Size(130, 56);
             panelTotalCaja.TabIndex = 25;
             // 
             // lblValorCaja
@@ -362,7 +370,7 @@
             iconButton5.IconSize = 30;
             iconButton5.Location = new Point(0, 0);
             iconButton5.Name = "iconButton5";
-            iconButton5.Size = new Size(36, 54);
+            iconButton5.Size = new Size(36, 56);
             iconButton5.TabIndex = 16;
             iconButton5.TextAlign = ContentAlignment.MiddleRight;
             iconButton5.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -384,9 +392,9 @@
             panelCantPromociones.Controls.Add(lblNroVentas);
             panelCantPromociones.Controls.Add(label9);
             panelCantPromociones.Controls.Add(iconButton4);
-            panelCantPromociones.Location = new Point(554, 124);
+            panelCantPromociones.Location = new Point(572, 123);
             panelCantPromociones.Name = "panelCantPromociones";
-            panelCantPromociones.Size = new Size(120, 58);
+            panelCantPromociones.Size = new Size(130, 58);
             panelCantPromociones.TabIndex = 24;
             // 
             // lblNroVentas
@@ -438,9 +446,9 @@
             panelGastos.Controls.Add(lblValorGasto);
             panelGastos.Controls.Add(iconButton3);
             panelGastos.Controls.Add(label7);
-            panelGastos.Location = new Point(554, 60);
+            panelGastos.Location = new Point(572, 59);
             panelGastos.Name = "panelGastos";
-            panelGastos.Size = new Size(120, 58);
+            panelGastos.Size = new Size(130, 58);
             panelGastos.TabIndex = 23;
             // 
             // lblValorGasto
@@ -492,9 +500,9 @@
             panelCantidadProductos.Controls.Add(lblNroProduc);
             panelCantidadProductos.Controls.Add(label5);
             panelCantidadProductos.Controls.Add(iconButton2);
-            panelCantidadProductos.Location = new Point(436, 188);
+            panelCantidadProductos.Location = new Point(436, 187);
             panelCantidadProductos.Name = "panelCantidadProductos";
-            panelCantidadProductos.Size = new Size(112, 54);
+            panelCantidadProductos.Size = new Size(130, 56);
             panelCantidadProductos.TabIndex = 28;
             // 
             // lblNroProduc
@@ -534,7 +542,7 @@
             iconButton2.IconSize = 30;
             iconButton2.Location = new Point(0, 0);
             iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(36, 54);
+            iconButton2.Size = new Size(36, 56);
             iconButton2.TabIndex = 16;
             iconButton2.TextAlign = ContentAlignment.MiddleRight;
             iconButton2.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -546,9 +554,9 @@
             panelTotalVentas.Controls.Add(lblTotalVentas);
             panelTotalVentas.Controls.Add(lblTVent);
             panelTotalVentas.Controls.Add(iconBtnRechazar);
-            panelTotalVentas.Location = new Point(436, 60);
+            panelTotalVentas.Location = new Point(436, 59);
             panelTotalVentas.Name = "panelTotalVentas";
-            panelTotalVentas.Size = new Size(112, 58);
+            panelTotalVentas.Size = new Size(130, 58);
             panelTotalVentas.TabIndex = 26;
             // 
             // lblTotalVentas
@@ -600,9 +608,9 @@
             panelStockDisponible.Controls.Add(lblTotalStock);
             panelStockDisponible.Controls.Add(iconButton1);
             panelStockDisponible.Controls.Add(lblEstadoStock);
-            panelStockDisponible.Location = new Point(436, 124);
+            panelStockDisponible.Location = new Point(436, 123);
             panelStockDisponible.Name = "panelStockDisponible";
-            panelStockDisponible.Size = new Size(112, 58);
+            panelStockDisponible.Size = new Size(130, 58);
             panelStockDisponible.TabIndex = 29;
             // 
             // lblTotalStock
@@ -655,7 +663,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 54);
+            panel1.Size = new Size(925, 54);
             panel1.TabIndex = 14;
             // 
             // lblDashInicio
@@ -677,7 +685,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(40, 48, 62);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(925, 604);
             Controls.Add(panelStockDisponible);
             Controls.Add(panelCantidadProductos);
             Controls.Add(panelTotalVentas);
