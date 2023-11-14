@@ -308,6 +308,7 @@
             // chartVendedores
             // 
             chartArea1.AlignmentOrientation = System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.Name = "ChartArea1";
             chartVendedores.ChartAreas.Add(chartArea1);
             legend1.Enabled = false;

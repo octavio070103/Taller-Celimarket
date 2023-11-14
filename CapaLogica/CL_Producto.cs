@@ -18,6 +18,11 @@ namespace CapaLogica
             return obj_cd_producto.listarProductos();
         }
 
+        public List<producto> listarProductosVenta()
+        {
+            return obj_cd_producto.listarProductosVenta();
+        }
+
         public producto buscarProducto(int id_producto)
         {
             return obj_cd_producto.buscarProducto(id_producto);

@@ -453,7 +453,7 @@ namespace CapaPresentacion.Formularios.Vendedor
         private void cargarListaProductos()
         {
             CL_Producto auxListaProd = new CL_Producto();
-            List<producto> listaProductos = auxListaProd.listarProductos();
+            List<producto> listaProductos = auxListaProd.listarProductosVenta();
 
             mostrarProductosEnDataGridView(listaProductos);
         }
@@ -462,8 +462,8 @@ namespace CapaPresentacion.Formularios.Vendedor
         {
             CL_Venta auxVenta = new CL_Venta();
             cboMetodoPago.DataSource = auxVenta.obtenerMetodosPago();
-            cboMetodoPago.DisplayMember = "nombre_tipo_pago";
-            cboMetodoPago.ValueMember = "id_tipo_metodo_pago";
+            cboMetodoPago.DisplayMember = "nombre_metodo_pago"; //cboMetodoPago.DisplayMember = "nombre_tipo_pago";
+            cboMetodoPago.ValueMember = "id_metodo_pago"; //cboMetodoPago.ValueMember = "id_tipo_metodo_pago";
         }
 
 
@@ -522,7 +522,7 @@ namespace CapaPresentacion.Formularios.Vendedor
         private void buscarProducto(string terminoBusqueda)
         {
             CL_Producto auxListaProd = new CL_Producto();
-            List<producto> listaProductos = auxListaProd.listarProductos();
+            List<producto> listaProductos = auxListaProd.listarProductosVenta();
 
             //var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.Contains(terminoBusqueda)).ToList();
             var nuevaLista = listaProductos.Where(producto => producto.nombre_producto.IndexOf(terminoBusqueda, StringComparison.OrdinalIgnoreCase) >= 0).ToList();

@@ -28,6 +28,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
         {
             graficoProductosMasVendidos();
             graficoCategoriasMasVendidas();
+            graficoTopVendedores();
             datosDelNegocio();
             dtpFechaInicio_ValueChanged(sender, e);
         }
@@ -99,6 +100,22 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
 
             dataReader.Close();
             Obj_conexion.Close();
+        }
+
+
+        private void graficoTopVendedores()
+        {
+            DateTime fechaDesde = dtpFechaInicio.MinDate.Date;
+            DateTime fechaHasta = DateTime.Now.Date;
+            CL_Venta auxVenta = new CL_Venta();
+            List<vendedorMasVentas> listaVendedores = new List<vendedorMasVentas>();
+            listaVendedores = auxVenta.vendedoresMasVentasPeriodo(fechaDesde, fechaHasta);
+
+            // **** GRAFICO DE VENDEDORES CON MAS VENTAS ****
+            List<string> nombresVendedores = listaVendedores.Select(p => p.nombreVendedor).ToList();
+            List<int> cantidadVendidaVen = listaVendedores.Select(p => p.cantidadVentas).ToList();
+
+            chartVendedores.Series[0].Points.DataBindXY(nombresVendedores, cantidadVendidaVen);
         }
 
 
@@ -284,6 +301,7 @@ namespace CapaPresentacion.Formularios.Gerente.gestion_ventas
             datosDelNegocio();
             graficoCategoriasMasVendidas();
             graficoProductosMasVendidos();
+            graficoTopVendedores();
         }
 
         private void lblCantVentas_TextChanged(object sender, EventArgs e)
