@@ -65,6 +65,67 @@ namespace CapaDatos
 
             return id_caja_apertura_registrado;
         }
+        public caja_apertura VerificarCajaAbiertaNoCerradaPasadoDia(DateTime fecha_actual)
+        {
+            //le paso cadena de la clase conexion , con using me garantizo la liberacion adecuada de los recursos que ya no son necesarios
+            using (SqlConnection Obj_conexion = new SqlConnection(CD_conexion.cadena))
+            {
+                //hago un capturador de excepeciones que peude ocurrir al momento de usar la Base de datos
+                try
+                {
+                    //hago una consulta a la BD mas precesimanete a la tabla caja_apertura y que me realice la consulta que le especifico
+                    StringBuilder query = new StringBuilder();
+
+                    //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
+                    query.AppendLine("select TOP 1 ap.id_apertura_caja,ap.fecha_apertura,ap.monto_inicial,ap.id_usuario,ap.estado_apertura");
+                    query.AppendLine("From AperturaCaja ap");   // aca le doy el alias u a la tabla de categoria y con from defino la fuente de datos sobre la cual se realizarán las operaciones de consulta
+                    query.AppendLine("WHERE CAST(ap.fecha_apertura AS date) < CAST(@fecha_actual AS date) AND ap.estado_apertura =1");//esta consulta se utiliza para filtrar(buscar) la fila en la tabla categoria  y solo realice esas operacion en aquel registro que su campo id_categoria coinidice con el parametro @id_categoria
+
+                    //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
+                    SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
+                    //le paso un valor al paraemtro @id_usuario para realizar la consulta
+                    cmd.Parameters.AddWithValue("@fecha_actual", fecha_actual);
+
+                    // Establece el tipo de comando a CommandType.Text, lo que significa que la consulta es una instrucción SQL textual.
+                    cmd.CommandType = CommandType.Text;
+                    Obj_conexion.Open();//Abre la conexión a la base de datos utilizando el objeto Obj_conexion. Esto prepara la conexión para ejecutar la consulta SQL.
+
+                    //using garantiza la liberación adecuada de los recursos cuando ya no son necesarios.
+                    using (SqlDataReader dr = cmd.ExecuteReader())//Crea y abre un SqlDataReader llamado dr para ejecutar la consulta SQL que se definió anteriormente en cmd. Este objeto dr se utiliza para leer los resultados de la consulta.
+                    {
+                        //Este condicional verifica si hay al menos una fila de resultados en el SqlDataReader.
+                        //Si es así, significa que se encontró un usuario con el dni y password proporcionados que coinciden en la base de datos.
+                        if (dr.Read())
+                        {
+                            //creo un objeto categoria y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
+                            return new caja_apertura
+                            {
+
+                                id_apertura_caja = Convert.ToInt32(dr["id_apertura_caja"]),
+                                fecha_apertura = Convert.ToDateTime(dr["fecha_apertura"]),
+                                monto_inicial_apertura = Convert.ToDecimal(dr["monto_inicial"]),
+                                obj_usuario = new usuario
+                                {
+                                    id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                },
+                                estado_apertura = Convert.ToInt32(dr["estado_apertura"])
+
+
+                            };
+                        }
+
+                    }// Al salir de este bloque, la conexión se cerrará automáticamente.
+
+                }
+                catch (Exception ex)
+                {
+                    // Maneja la excepción aquí, puedes imprimir un mensaje de error o registrar la excepción en un archivo de registro.
+                    Console.WriteLine("Error de conexión: " + ex.Message);
+                }
+            }
+            return null; // Devolvemos null si no se encontró la cajaApertura de esa fecha
+        }
+
         public caja_apertura obtenerCajaAperturaPorFecha(DateTime fecha_apertura)
         {
             //le paso cadena de la clase conexion , con using me garantizo la liberacion adecuada de los recursos que ya no son necesarios
@@ -123,7 +184,7 @@ namespace CapaDatos
                     Console.WriteLine("Error de conexión: " + ex.Message);
                 }
             }
-            return null; // Devolvemos null si no se encontró la categoria
+            return null; // Devolvemos null si no se encontró la cajaApertura de esa fecha
         }
 
         //tuve que rear un entidad nuevo porque nose uso obj en la entidad venta y para  no estar modificando l ohago asi y talvez despues lo modifique 

@@ -31,7 +31,23 @@ namespace CapaPresentacion.Formularios.Gerente.caja
 
         private void FrmApertYCierreCaja_Load(object sender, EventArgs e)
         {
-            CargarDatosAperturaCaja();
+            caja_apertura obj_cajaAperturaSinCerrar = new CL_Caja().VerificarCajaAbiertaNoCerradaPasadoDia(DateTime.Now);
+            if (obj_cajaAperturaSinCerrar != null)
+            {
+                AdvertenciaDebeCerrarLaCaja frmAdvertenciaDebeCerrarCaja = new AdvertenciaDebeCerrarLaCaja();
+                frmAdvertenciaDebeCerrarCaja.ShowDialog();
+
+                // Si hay una caja sin cerrar del día anterior, cambiar al tabControl 'cerrarCaja'
+                tabControl1.SelectTab("tabPageCerrarCaja");
+                
+                // Cargar datos específicos para la pestaña de cierre de caja
+                CargarDatosCerrarCaja(obj_cajaAperturaSinCerrar.fecha_apertura); //le paso la fecha en la que se abrio etsa caja para poder cargar los datos con la apertura caja correspondiente a esa fecha
+            }
+            else
+            {
+                CargarDatosAperturaCaja();
+            }
+           
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +61,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
             else if (tabControl1.SelectedTab != null && tabControl1.SelectedTab.Text == "Cerrar Caja")
             {
                 // Cargar datos específicos para la pestaña de cierre de caja
-                CargarDatosCerrarCaja();
+                CargarDatosCerrarCaja(DateTime.Now);
             }
         }
         private void CargarDatosAperturaCaja()
@@ -175,13 +191,13 @@ namespace CapaPresentacion.Formularios.Gerente.caja
         /************realizar el cierre de la caja*********/
 
         /*cargo los datos en la estania o tabcontrol de cerraCaja*/
-        private void CargarDatosCerrarCaja()
+        private void CargarDatosCerrarCaja(DateTime fecha_cierre)
         {
             // aca cargo los datos en la pestaña de cierre de caja
             txtFechaCierre.Text = DateTime.Now.ToString();
             txtUsuCierre.Text = usuarioActual.obj_persona.nombre + " " + usuarioActual.obj_persona.apellido;
 
-            caja_cierre obj_caja_cierreActual = new CL_Caja().obtenerCajaCierrePorFecha(DateTime.Now);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            caja_cierre obj_caja_cierreActual = new CL_Caja().obtenerCajaCierrePorFecha(fecha_cierre);//obtengo la caja apertura para la fecha en la que se cierra la caja
 
             //con este if determino si ya se cerro la caja solo se pueda ver los datos de esa caja actual si asi se desea
             if (obj_caja_cierreActual != null)

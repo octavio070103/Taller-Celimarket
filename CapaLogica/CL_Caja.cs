@@ -16,7 +16,10 @@ namespace CapaLogica
         {
             return obj_CD_Caja.RegistrarAperturaDeCaja(obj_caja_apertura, out mensaje);
         }
-
+        public caja_apertura VerificarCajaAbiertaNoCerradaPasadoDia(DateTime fecha_actual)
+        {
+            return obj_CD_Caja.VerificarCajaAbiertaNoCerradaPasadoDia(fecha_actual);
+        }
         public caja_apertura obtenerCajaAperturaPorFecha(DateTime fecha_apertura)
         {
             return obj_CD_Caja.obtenerCajaAperturaPorFecha(fecha_apertura);
