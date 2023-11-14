@@ -394,7 +394,6 @@ INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria)
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Frutas','Aqui se encuentras las Frutas cortadas y Frutos secos',1);
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Verduras','Aqui se encuentras las Verduras cortadas y ensaldas preparadas',1);
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Panaderia','Aqui se encuentras los Panificados,Pan rallado y rebozadores,Pizzas y prepizzas,Sandwiches,Empanadas y Tartas',1);
---INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Limpieza', 'Aqui se encuentras las Verduras cortadas y ensaldas preparadas',1);
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Desayuno', 'Galletitas, Bizcochitos y tostadas, Yerba, Infusiones, Cerales y barritas',1);
 INSERT INTO categoria (nombre_categoria,descripcion_categoria, estado_categoria) VALUES ('Congelados','Aqui se encuentras las Hamburguesas, Nuggets y reobazados, Papas, Pollos, Verduras y Frutas, Comidas y panificados, Helados y postres',1);
 
@@ -411,6 +410,9 @@ INSERT INTO Marca(Nombre)VALUES('Carrefour');
 INSERT INTO Marca(Nombre)VALUES('Cocinero');
 INSERT INTO Marca(Nombre)VALUES('Vicentin');
 INSERT INTO Marca(Nombre)VALUES('Coca-Cola');
+INSERT INTO Marca(Nombre) VALUES ('SinGlutenCo');
+INSERT INTO Marca(Nombre) VALUES ('HealthyLife');
+INSERT INTO Marca(Nombre) VALUES ('GlutenFree');
 
 --tipo_metodo_pago
 INSERT INTO tipo_metodo_pago(nombre_tipo_pago)VALUES('efectivo');

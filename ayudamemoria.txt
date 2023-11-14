@@ -1,0 +1,50 @@
+ADMINISTRADOR
+
+'Dashboard:esta funcion me permite tener un pantallazo inicial del mes del negocio aca voy a poder ver disitintos datos principales
+del mes 
+
+Gestionar usuario:esta funcion me permite poder 
+*ver todos los usuarios registrador,
+*realizar el ABM de los usuarios,donde voy a tener que seleccionar el usuario que quiero dar de alta,baja o modificarlo 
+*para modifcar debo de hacer doble click y se abrira un panel de edicicon del usuario
+*tambien se peuden ir filtrando los disitntos usuarios que veo en el datagrid 
+*voy a poder descargar un excel con un reporte de los usuarios
+*voy a poder agregar un nuevo usuario 
+*tambien voy a poder ver el listado depermisos pedidos pro los distintos usuarios
+*gestionar Permisos:aca voy a pdoer ver el listado de permisos de los usuario,realizar el filtrado de los permisos 
+aprobar o rechazar los permisso de los usuario y descargar un reporte de los permisos
+
+
+Gestionar Consulta:funcion me permite poder 
+*ver un listadi de las consultas hechas pro los usuarios,
+*Responder la consulta atraves de un correo y marcarlo como leido atrevss de los botones que estan en el datagrid
+*tambien se peuden ir filtrando los disitntos registros de cosnultas que veo en el datagrid 
+*voy a poder descargar un excel con un reporte de las consultas
+
+respaldo y restauracion:
+*voy a poder ver los datos de la base de datos a restuarar ,voy a poder realizar su pertinente respaldo y restauracion,
+esto se debe de gaurdar en el disco c
+
+Gestionar producto : esta funcion me permite poder 
+*ver un lsitado de los productos registrados,
+*realizar el ABM de los productos ,para esto voy a tener que seleccionar el producto que quiero dar de alta,baja o modificarlo 
+*para modifcar debo de hacer doble click y se abrira un panel de edicicon del producto
+*voy a poder agregar un nuevo producto
+*voy a poder descargar un excel con un reporte de los productos 
+*tambien voy a poder ver el listado de categporia que peuden tener mis ditintos producto y realizar el ABM del mismo 
+con su pertinente reporte de categoria
+
+tambien vamos a tener un boton de setting donde voy a pdoer deteminar los datos de mi negocio para configuiara la aplicacion
+
+-----------------------------------
+Gerente
+Punto de venta:
+*voy a poder ver la lista de cjaas cerradas a lo largo del tiempo
+*voy a poder realizar la apertura y cierre de las cajas a lo largo del dia 
+tambien voy a tener la opcion de imprimir el ticket del cierre de caja con los datos principales de la operacion
+
+Solicitud
+*voy a poder registrar una solicutd de permiso hacie el administrador pro disitions motivos y odnde esperar su respuesta atraves del correo y tambein mi solicitud va a ser respondida por el admin 
+y esta me saldria al abrri mi solicitud que cree,cda usuario puede tner un solo permiso activo
+*crear una nueva consulta hacie el admin con dsitintos motivos ,cada usuario puede tner muchas consultas creadas siempre y cuando sean dsitintas de contenido estas son respondidas 
+atraves del gmail y marcadas como leidas
