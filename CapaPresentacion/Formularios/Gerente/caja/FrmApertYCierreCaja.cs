@@ -275,7 +275,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
         private void mostrarDatosCajaCerrada(caja_cierre p_obj_caja_cierre, int p_cantVentas)
         {
             //cambio
-            if (p_obj_caja_cierre.obj_caja_apertura.fecha_apertura == DateTime.Now) {
+            if (p_obj_caja_cierre.obj_caja_apertura.fecha_apertura.Date == DateTime.Now.Date) {
                 iconBtnImprimir.Visible = true;
                 panelDatosCajaCerra.Visible = true; //muestro el panel que contiene los datos de la caja que se cerro
                 txtMontoCaja.ReadOnly = true; //hago que el monto caja nose pueda editar el valor

@@ -449,7 +449,8 @@ namespace CapaDatos
                     query.AppendLine("INNER JOIN persona persAper ON usuAper.id_persona=persAper.id_persona");
                     query.AppendLine("INNER JOIN usuario usuCierr ON cr.id_usuario=usuCierr.id_usuario");
                     query.AppendLine("INNER JOIN persona persCierr ON usuCierr.id_persona=persCierr.id_persona");
-                    query.AppendLine("WHERE CAST(cr.fecha_cierre as date) = CAST(@fecha_cierre AS date);");
+                    query.AppendLine("WHERE CAST(cr.fecha_cierre as date) = CAST(@fecha_cierre AS date)");
+                    query.AppendLine("ORDER BY cr.fecha_cierre DESC");//CAMBIE ESTO
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
                     SqlCommand cmd = new SqlCommand(query.ToString(), Obj_conexion);
