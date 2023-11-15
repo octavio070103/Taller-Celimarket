@@ -100,6 +100,10 @@ namespace CapaPresentacion.Formularios.Admin
                         {
                             MessageBox.Show(mensaje);
                         }
+                        if (id_usuario_generado >0)
+                        {
+                            limpiarCampos();
+                        }
                     }
 
                 }
@@ -272,7 +276,7 @@ namespace CapaPresentacion.Formularios.Admin
             txtEmailUsu.Text = string.Empty;
             txtPasswordUsu.Text = string.Empty;
 
-            dateTimePickerNacimiento.Value = DateTime.MaxValue;
+            dateTimePickerNacimiento.Value = dateTimePickerNacimiento.MaxDate;
            
         }
 

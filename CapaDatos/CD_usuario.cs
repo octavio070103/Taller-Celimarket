@@ -154,9 +154,9 @@ namespace CapaDatos
                             // string contrasenaCifrada = dr.GetString("ContraseñaUsuario");
                             string hashAlmacenado = dr["password"].ToString(); // Obtener el hash almacenado en la base de datos
                                                                                // Verificamos la contraseña proporcionada después de aplicar el hash y la sal
-                            bool contrasenaValida =password== hashAlmacenado; //BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);//("hola", "$2a$11$LfnTies.qV/kGdEomUxkTeoMTN5Ik1WC0tNhD6kcQCXN0QPxt2vZC");//(password, hashAlmacenado);
+                        //    bool contrasenaValida =password== hashAlmacenado; //BCrypt.Net.BCrypt.Verify(password, hashAlmacenado);//("hola", "$2a$11$LfnTies.qV/kGdEomUxkTeoMTN5Ik1WC0tNhD6kcQCXN0QPxt2vZC");//(password, hashAlmacenado);
 
-                            if (contrasenaValida)
+                            if ( (password == hashAlmacenado) || (BCrypt.Net.BCrypt.Verify(password, hashAlmacenado))) //debemos de verificar de las dos formas ya que hay contrasenia que no estan haseadas y hay otras que si
                             {
                                 //creo un objeto usuario y cargo en cada atributo del objeto usuario los datos recuperados de la consulta dr.read()
                                 return new usuario
