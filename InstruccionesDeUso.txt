@@ -48,3 +48,36 @@ Solicitud
 y esta me saldria al abrri mi solicitud que cree,cda usuario puede tner un solo permiso activo
 *crear una nueva consulta hacie el admin con dsitintos motivos ,cada usuario puede tner muchas consultas creadas siempre y cuando sean dsitintas de contenido estas son respondidas 
 atraves del gmail y marcadas como leidas
+
+
+--------------------------
+
+
+VENDEDOR
+
+*Cliente:
+ En esta funcionalidad voy a poder realizar tres cosas: Registrar nuevos clientes, Eliminar cliente de la lista y Modificar los datos de un cliente ya registrado.
+-Cuando deseo registrar un nuevo cliente, presiono el botón “AGREGAR” que me desplegara una nueva ventana donde voy a poder rellenar los datos del nuevo cliente y finalmente registrarlo.
+-Cuando deseo eliminar un cliente, lo selecciono dentro de la lista y presiono el botón “ELIMINAR” y luego realizo la confirmación para eliminarlo.
+-Cuando deseo modificar los datos de un cliente registrado, los selecciono dentro de la lista para completar con sus datos los textbox laterales, y una vez que modifique los datos que necesito, presiono el botón “MODIFICAR” y confirmo la acción.
+-Cuando deseo buscar un cliente dentro de la lista, escribo su nombre en la barra de búsqueda, en la cual podemos seleccionar si buscamos un cliente por su nombre o por su apellido, indicándolo en el combobox lateral a la barra.
+
+
+*Venta:
+Esta funcionalidad me permite realizar ventas siendo un usuario Vendedor.
+Para poder realizar esta venta, cuento con distintos botones que me permiten interactuar con el programa, como son “AGREGAR AL CARRITO”, “MODIFICAR”, “QUITAR” y “PAGAR”,
+-Cuando deseo agregar un producto al carrito, lo selecciono dentro de la lista de productos desplegada en el datagridview, lo que hace que se rellenen automáticamente los campos relacionados al producto y solo necesito indicar la cantidad del producto a agregar. Una vez indicado, presiono el botón “AGREGAR AL CARRITO”.
+-Cuando deseo modificar la cantidad del producto que deseo comprar, selecciono el producto dentro de la lista de compra del carrito, modifico la cantidad y presiono el botón “MODIFICAR”.
+-Cuando deseo quitar un producto de mi carrito, lo selecciono dentro de la lista de productos del carrito y presiono el botón “QUITAR”
+-Cuando deseo finalizar la compra, presiono el botón “PAGAR”, lo cual me desplega una ventana en donde se ve un pequeño resumen de venta, en donde se puede decidir confirmar el pago o no. 
+-Cuando se confirma el pago presionando el botón “CONFIRMAR PAGO”, se realiza la venta y se muestra la factura de venta, la cual se puede imprimir si así se desea.
+
+*Registro de ventas:
+Esta funcionalidad me permite acceder al listado de ventas que realice como vendedor, permitiéndome filtrar por periodos de tiempo, ya sea predeterminados o personalizados.
+Al seleccionar una venta de la lista y presionar el botón “VER DETALLE”, puedo acceder a la factura que corresponde a esa venta.
+Al presionar el botón “REINICIAR”, la lista de ventas vuelve a su estado base, en donde se muestra el histórico de todas las ventas realizadas por el vendedor.
+
+*Consulta
+*Voy a poder registrar una solicitud de permiso hacia el administrador por distintos motivos y donde espero su respuesta a través del correo y también mi solicitud va a ser respondida por el admin y esta me saldría al abrir mi solicitud que cree, cada usuario puede tener un solo un permiso activo
+*Crear una nueva consulta hacia el admin con distintas motivos , cada usuario puede tener muchas consultas creadas siempre y cuando sean distinta de contenido estas son respondidas 
+A  través del Gmail y marcadas como leídas
