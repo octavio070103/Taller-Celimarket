@@ -527,6 +527,7 @@
             picFotoProducto.Size = new Size(94, 88);
             picFotoProducto.TabIndex = 21;
             picFotoProducto.TabStop = false;
+            picFotoProducto.Visible = false;
             // 
             // lblDatos
             // 
