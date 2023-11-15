@@ -138,8 +138,11 @@ namespace CapaDatos
                     StringBuilder query = new StringBuilder();
 
                     //con el appendline me permite dar un salto de linea,basicamente lo que hago aca es crear la consulta(query) que le enviare a mi BD
-                    query.AppendLine("select ap.id_apertura_caja,ap.fecha_apertura,ap.monto_inicial,ap.id_usuario,ap.estado_apertura");
+                    query.AppendLine("select ap.id_apertura_caja,ap.fecha_apertura,ap.monto_inicial,ap.id_usuario,ap.estado_apertura,");
+                    query.AppendLine("p.id_persona,p.dni,p.nombre,p.apellido");
                     query.AppendLine("From AperturaCaja ap");   // aca le doy el alias u a la tabla de categoria y con from defino la fuente de datos sobre la cual se realizarán las operaciones de consulta
+                    query.AppendLine("INNER JOIN usuario u ON ap.id_usuario=u.id_usuario");
+                    query.AppendLine("INNER JOIN persona p ON p.id_persona=u.id_persona");
                     query.AppendLine("WHERE CAST(ap.fecha_apertura AS date)= CAST(@fecha_apertura AS date)");//esta consulta se utiliza para filtrar(buscar) la fila en la tabla categoria  y solo realice esas operacion en aquel registro que su campo id_categoria coinidice con el parametro @id_categoria
 
                     //creo un nuevo sqlcommand que me pide 2 cosass el query o consulta nueva y la conexion que abrimos es decir el objConexion 
@@ -168,6 +171,12 @@ namespace CapaDatos
                                     obj_usuario = new usuario
                                     {
                                         id_usuario = Convert.ToInt32(dr["id_usuario"]),
+                                        obj_persona=new persona
+                                        {
+                                            nombre = dr["nombre"].ToString(),
+                                            apellido = dr["apellido"].ToString(),
+                                            dni = dr["dni"].ToString(),
+                                        }
                                     },
                                     estado_apertura = Convert.ToInt32(dr["estado_apertura"])
                                

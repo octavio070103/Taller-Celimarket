@@ -265,6 +265,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
                 //si el id_caja_cierre_generado singifica que se realizo el cierre de caja de manera correcta y id_caja_cierre_generado contiene el id de la caja que se cerro,entonces si se cerro de manera correcta muestro la caja cerrada
                 if (id_caja_cierre_generado > 0)
                 {
+
                     mostrarDatosCajaCerrada(obj_caja_cierre, cantVentas); //carga y muestra los datos de la caja que se cerro 
 
                 }

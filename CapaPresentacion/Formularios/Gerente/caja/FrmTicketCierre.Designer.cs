@@ -673,6 +673,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmTicketCierre";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Caja Cerrada";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
