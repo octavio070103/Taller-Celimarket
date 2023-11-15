@@ -1,3 +1,9 @@
+***********************************************************
+
+NOMBRE QUE DEBE  DE TENER LA BASE DE DATOS : BD_CeliMarket
+
+*******************************************
+---------
 ADMINISTRADOR
 
 'Dashboard:esta funcion me permite tener un pantallazo inicial del mes del negocio aca voy a poder ver disitintos datos principales
