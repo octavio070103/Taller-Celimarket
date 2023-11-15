@@ -31,6 +31,7 @@ namespace CapaPresentacion.Formularios.Gerente.caja
 
         private void FrmApertYCierreCaja_Load(object sender, EventArgs e)
         {
+            //cambio
             caja_apertura obj_cajaAperturaSinCerrar = new CL_Caja().VerificarCajaAbiertaNoCerradaPasadoDia(DateTime.Now);
             if (obj_cajaAperturaSinCerrar != null)
             {
@@ -221,7 +222,18 @@ namespace CapaPresentacion.Formularios.Gerente.caja
             string mensaje = string.Empty;
             int id_caja_cierre_generado = 0;
 
-            caja_apertura obj_cajaAperturaActual = new CL_Caja().obtenerCajaAperturaPorFecha(DateTime.Now);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            //cambio
+            caja_apertura obj_cajaAperturaSinCerrar = new CL_Caja().VerificarCajaAbiertaNoCerradaPasadoDia(DateTime.Now);
+            caja_apertura obj_cajaAperturaActual = new caja_apertura();
+            if (obj_cajaAperturaSinCerrar != null)
+            {
+                 obj_cajaAperturaActual = new CL_Caja().obtenerCajaAperturaPorFecha(obj_cajaAperturaSinCerrar.fecha_apertura);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            }
+            else
+            {
+                 obj_cajaAperturaActual = new CL_Caja().obtenerCajaAperturaPorFecha(DateTime.Now);//obtengo la caja apertura para la fecha en la que se cierra la caja
+            }
+            
             List<ventaCaja> listaVentasPorAperturaCaja = new CL_Caja().listarVentasPorAperturaCaja(obj_cajaAperturaActual.id_apertura_caja);
             int cantVentas = listaVentasPorAperturaCaja.Count; //le asigno la cantidad de ventas de este cierre de caja que tuvo
             //obtengo el monto final 
@@ -262,22 +274,26 @@ namespace CapaPresentacion.Formularios.Gerente.caja
         /**********ME MUESTRA DATOS DE LA CAJA UNA VEZ QUE SE CERRO********/
         private void mostrarDatosCajaCerrada(caja_cierre p_obj_caja_cierre, int p_cantVentas)
         {
-            iconBtnImprimir.Visible = true;
-            panelDatosCajaCerra.Visible = true; //muestro el panel que contiene los datos de la caja que se cerro
-            txtMontoCaja.ReadOnly = true; //hago que el monto caja nose pueda editar el valor
-            //cargo los label con el datos pertinente
-            lblMontoInicial.Text = p_obj_caja_cierre.obj_caja_apertura.monto_inicial_apertura.ToString();
-            lblUsuAper.Text = p_obj_caja_cierre.obj_caja_apertura.obj_usuario.obj_persona.nombre + " " + p_obj_caja_cierre.obj_caja_apertura.obj_usuario.obj_persona.apellido;
-            lblFechaApertura.Text = p_obj_caja_cierre.obj_caja_apertura.fecha_apertura.ToString();
-            lblNumVentas.Text = p_cantVentas.ToString();
-            lblMontoCierre.Text = p_obj_caja_cierre.monto_final.ToString();
-            lblDiferencia.Text = p_obj_caja_cierre.diferencia_cierre_Caja.ToString();
+            //cambio
+            if (p_obj_caja_cierre.obj_caja_apertura.fecha_apertura == DateTime.Now) {
+                iconBtnImprimir.Visible = true;
+                panelDatosCajaCerra.Visible = true; //muestro el panel que contiene los datos de la caja que se cerro
+                txtMontoCaja.ReadOnly = true; //hago que el monto caja nose pueda editar el valor
+                                              //cargo los label con el datos pertinente
+                lblMontoInicial.Text = p_obj_caja_cierre.obj_caja_apertura.monto_inicial_apertura.ToString();
+                lblUsuAper.Text = p_obj_caja_cierre.obj_caja_apertura.obj_usuario.obj_persona.nombre + " " + p_obj_caja_cierre.obj_caja_apertura.obj_usuario.obj_persona.apellido;
+                lblFechaApertura.Text = p_obj_caja_cierre.obj_caja_apertura.fecha_apertura.ToString();
+                lblNumVentas.Text = p_cantVentas.ToString();
+                lblMontoCierre.Text = p_obj_caja_cierre.monto_final.ToString();
+                lblDiferencia.Text = p_obj_caja_cierre.diferencia_cierre_Caja.ToString();
+            }
+            
         }
 
         private bool validarCamposCierreCaja()
         {
             bool validacion = true;
-            string usuarioTurno = txtUsuAper.Text;
+            string usuarioTurno = txtUsuCierre.Text;
             string montoDeLaCaja = txtMontoCaja.Text;
 
             decimal numero = 0;
