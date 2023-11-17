@@ -1,0 +1,5 @@
+
+NOTA:
+Esta base de datos solo se utiliza por temas de compatibilidad.
+No contiene todos los datos de prueba cargados. 
+La version completa con todos los datos correspondientes es la version 2022.
